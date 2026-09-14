@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>What is Agentic AI? The Complete Guide | Clarigital</title>
+<meta name="description" content="Agentic AI explained — what AI agents are, how they differ from standard AI, the four components of every agent, and real-world examples. Updated April 2026.">
+<link rel="canonical" href="/ai-atlas/agentic-ai/">
+<meta property="og:title" content="What is Agentic AI? The Complete Guide">
+<meta property="og:description" content="AI agents don't just answer questions — they complete projects. Learn what agentic AI is, how it works, and why it's different from every AI tool you've used before.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/agentic-ai/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+
+/* CALLOUT BOXES */
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+
+/* COMPARISON TABLE */
+.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.88rem}
+.compare-table th{background:var(--bg2);color:var(--fg);font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid var(--border)}
+.compare-table td{padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--muted);vertical-align:top}
+.compare-table tr:hover td{background:var(--bg2)}
+.td-label{color:var(--fg);font-weight:600}
+
+/* COMPONENT CARDS */
+.component-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:20px 0}
+.component-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.component-card .cc-icon{font-size:1.4rem;margin-bottom:8px}
+.component-card h4{font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:6px}
+.component-card p{font-size:.82rem;margin:0}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What is Agentic AI? The Complete Guide", "description": "Agentic AI explained \u2014 what AI agents are, how they differ from standard AI, the four components of every agent, and real-world examples. Updated April 2026.", "url": "https://www.clarigital.com/ai-atlas/agentic-ai/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "What is Agentic AI? The Complete Guide", "description": "Agentic AI explained \u2014 what AI agents are, how they differ from standard AI, the four components of every agent, and real-world examples. Updated April 2026.", "url": "https://www.clarigital.com/ai-atlas/agentic-ai/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What is Agentic AI? The Complete Guide">
+<meta name="twitter:description" content="Agentic AI explained — what AI agents are, how they differ from standard AI, the four components of every agent, and real-world examples. Updated April 2026.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ai-atlas/">AI Atlas</a>
+      <span class="sep">›</span>
+      <span>Agentic AI</span>
+    </nav>
+    <div class="label-tag">Agentic AI</div>
+    <h1>What is Agentic AI?</h1>
+    <p class="hero-lead">Standard AI answers questions. Agentic AI completes projects. This is the guide to what that difference actually means — and why it matters more than any AI development since ChatGPT.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Concept Guide</span>
+      <span class="meta-tag">AI Atlas</span>
+      <span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="art-layout">
+
+    <!-- MAIN CONTENT -->
+    <div>
+      
+
+      <!-- SIMPLE LANE -->
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+        <h2 id="s-green-0">The one-sentence difference</h2>
+        <p>Every AI tool you have used so far — ChatGPT, Claude, Gemini, Copilot — works the same basic way: you type something, it responds, the exchange is over. You are in control of every step. You decide what to ask next. The AI waits.</p>
+        <p>Agentic AI works differently. You describe a goal. The AI figures out the steps required to reach it, takes those steps itself — including using tools, searching the internet, writing and running code, and checking its own results — and keeps going until the goal is achieved. You are not driving. The AI is.</p>
+        <p>The word "agentic" comes from "agency" — the capacity to act independently in pursuit of a goal. An AI agent has agency. A standard AI chatbot does not.</p>
+
+        <div class="callout callout-blue">
+          <p><strong>The clearest way to think about it:</strong> A standard AI is like a very knowledgeable person you can ask questions. An AI agent is like a very capable person you can give a project to.</p>
+        </div>
+
+        <h2 id="s-green-1">A concrete example</h2>
+        <p>Say you ask an AI to research the top five competitors to your business, summarise their pricing, and produce a comparison table.</p>
+        <p><strong>Standard AI (ChatGPT, Claude, Gemini):</strong> Gives you an answer based on what it was trained on — which may be months or years out of date. It cannot visit websites. It cannot check current pricing. What it produces is a best guess from old data.</p>
+        <p><strong>Agentic AI:</strong> Opens each competitor's website. Reads the pricing pages. Checks when they were last updated. Cross-references against any public announcements. Writes the comparison table. Then tells you: "Three of these pages had last-updated dates from Q4 2024 — you may want to verify directly."</p>
+        <p>Same request. Completely different process and result.</p>
+
+        <h2 id="s-green-2">Why this is new</h2>
+        <p>The ability to use tools is the key development. For most of AI's history, language models could only do one thing: generate text. They could not visit websites. They could not run code. They could not send emails or read files or query databases. They were minds with no hands.</p>
+        <p>The combination of a reasoning model with the ability to use tools — and the ability to decide which tools to use, in what order, and how to interpret the results — is what creates an agent. The reasoning was always there. The tools are what changed everything.</p>
+
+        <h2 id="s-green-3">What agentic AI is not</h2>
+        <p>It is not magic, and it is not sentient. An agent does not understand goals the way a person does. It follows a structured loop: observe the current state, decide on an action, take the action, observe the new state, repeat. That loop can produce remarkably capable behaviour. But it is still a loop running on a statistical model, not genuine understanding.</p>
+        <p>It is also not always better than standard AI. For a question with a clear answer — "what is the capital of France?" — the overhead of an agent is wasteful. Agentic AI earns its complexity when the task requires multiple steps, external information, or actions that change the world in some way.</p>
+
+        <h2 id="s-green-4">Where you encounter it today</h2>
+        <p>You may already be using agentic AI without knowing the term. These are all agents in practice:</p>
+        <ul>
+          <li><strong>ChatGPT with browsing and code execution on</strong> — it decides when to search, when to write code, when to interpret results</li>
+          <li><strong>Claude with tool use enabled</strong> — reads files, uses connected apps, chains steps together</li>
+          <li><strong>Perplexity</strong> — automatically searches multiple sources and synthesises results for every query</li>
+          <li><strong>Zapier AI and Make AI</strong> — trigger actions across apps based on conditions, without manual input</li>
+          <li><strong>GitHub Copilot Workspace</strong> — takes a bug report or feature request and proposes, writes, and tests code changes across a whole repository</li>
+        </ul>
+
+        <div class="callout callout-green">
+          <p><strong>The short version:</strong> If an AI can take actions in the world — not just generate text — it is operating as an agent. The more it can decide which actions to take, the more agentic it is.</p>
+        </div>
+
+      </div>
+
+      <!-- WORKING LANE -->
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+        <h2 id="s-indigo-0">The four components of every AI agent</h2>
+        <p>Every AI agent — regardless of which framework built it or which model powers it — has four components. These are not optional. Remove any one of them and the system is no longer an agent in the full sense.</p>
+
+        <div class="component-grid">
+          <div class="component-card">
+            <div class="cc-icon">👁</div>
+            <h4>Perception</h4>
+            <p>What the agent can observe. Text, files, web pages, API responses, images, database results. The agent's view of the world is limited to what it can perceive.</p>
+          </div>
+          <div class="component-card">
+            <div class="cc-icon">🧠</div>
+            <h4>Memory</h4>
+            <p>What the agent can remember. Within a session (context window), and optionally across sessions (external storage). Memory determines whether the agent can learn from its own actions.</p>
+          </div>
+          <div class="component-card">
+            <div class="cc-icon">🗺</div>
+            <h4>Planning</h4>
+            <p>How the agent decides what to do next. It breaks a goal into steps, selects which tool to use, evaluates the result, and decides whether to continue, backtrack, or stop.</p>
+          </div>
+          <div class="component-card">
+            <div class="cc-icon">⚡</div>
+            <h4>Action</h4>
+            <p>What the agent can do. Search the web, run code, read and write files, call APIs, send messages, create calendar events. The range of available tools defines the range of possible actions.</p>
+          </div>
+        </div>
+
+        <h2 id="s-indigo-1">The agent loop — step by step</h2>
+        <p>An agent does not think and then act once. It runs a continuous loop until the task is complete or it reaches a stopping condition. The loop works like this:</p>
+
+        <ol style="margin:0 0 1.2rem 1.4rem;color:var(--muted)">
+          <li style="margin-bottom:.8rem;font-size:.93rem;line-height:1.65"><strong style="color:var(--fg)">Receive goal</strong> — The user or system provides a goal. This could be a natural language instruction ("research our top five competitors") or a structured task object from another agent.</li>
+          <li style="margin-bottom:.8rem;font-size:.93rem;line-height:1.65"><strong style="color:var(--fg)">Plan</strong> — The agent uses its reasoning model to break the goal into steps. It identifies which tools it will need. If it is a capable model, it may also anticipate likely obstacles and plan for them.</li>
+          <li style="margin-bottom:.8rem;font-size:.93rem;line-height:1.65"><strong style="color:var(--fg)">Act</strong> — It executes the first action — a web search, a file read, a code execution, an API call. It observes the result.</li>
+          <li style="margin-bottom:.8rem;font-size:.93rem;line-height:1.65"><strong style="color:var(--fg)">Observe</strong> — The result is fed back into the context. The agent now has new information. Its next decision is made with that information present.</li>
+          <li style="margin-bottom:.8rem;font-size:.93rem;line-height:1.65"><strong style="color:var(--fg)">Evaluate</strong> — Is the goal achieved? Is more action needed? Should the approach change? The agent assesses its current state against the original goal.</li>
+          <li style="margin-bottom:.8rem;font-size:.93rem;line-height:1.65"><strong style="color:var(--fg)">Continue or stop</strong> — If more work remains, the loop repeats from step 3. If the goal is met, the agent produces a final output and halts.</li>
+        </ol>
+
+        <p>This loop is sometimes called the <strong>ReAct pattern</strong> (Reasoning + Acting), a term from a 2022 research paper by Yao et al. at Princeton and Google Brain that formalised how reasoning and tool use could be interleaved.</p>
+
+        <h2 id="s-indigo-2">How agents differ from standard AI — the full comparison</h2>
+        <table class="compare-table">
+          <thead>
+            <tr><th>Dimension</th><th>Standard AI (LLM)</th><th>AI Agent</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-label">Input</td><td>A prompt</td><td>A goal</td></tr>
+            <tr><td class="td-label">Output</td><td>A response</td><td>A completed task</td></tr>
+            <tr><td class="td-label">Control</td><td>Human decides every next step</td><td>Agent decides next steps autonomously</td></tr>
+            <tr><td class="td-label">Tools</td><td>None (or manual)</td><td>Search, code execution, APIs, files, more</td></tr>
+            <tr><td class="td-label">Memory</td><td>Within one conversation</td><td>Within session + optionally persistent</td></tr>
+            <tr><td class="td-label">Self-correction</td><td>Only if prompted</td><td>Evaluates its own output and retries</td></tr>
+            <tr><td class="td-label">Best for</td><td>Questions, drafts, analysis, ideas</td><td>Multi-step tasks, research, workflows, automation</td></tr>
+            <tr><td class="td-label">Risk</td><td>Hallucination in responses</td><td>Hallucination + wrong actions with real consequences</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="s-indigo-3">Types of agents in practice</h2>
+        <p>Not all agents are the same. The AI research community has converged on a few broad categories based on how the agent plans and acts:</p>
+
+        <h3>Single-agent systems</h3>
+        <p>One model with access to tools. The model receives a goal, plans steps, uses tools, and produces an output. Most of the agentic AI tools available to consumers today are single-agent systems — ChatGPT with tools enabled, Claude with tool use, Perplexity's search synthesis. Simple, direct, effective for most tasks.</p>
+
+        <h3>Multi-agent systems</h3>
+        <p>Multiple agents working together, each with a specific role. An orchestrator agent receives the goal and breaks it into sub-tasks. Specialist agents — a researcher, a writer, a fact-checker, a coder — each handle one sub-task. The orchestrator assembles the results. This mirrors how a team of humans operates. <a href="/ai-atlas/agentic-ai/multi-agent-systems/" style="color:var(--indigo)">Multi-agent systems are covered in full in their own guide.</a></p>
+
+        <h3>Tool-augmented agents</h3>
+        <p>The most common form. The core is a language model; the augmentation is a set of tools it can call. The model decides when to use which tool. Tools are defined as functions with descriptions the model can read — it decides to call "search_web" or "run_python_code" or "read_file" based on what the task requires.</p>
+
+        <h3>RAG-augmented agents</h3>
+        <p>RAG stands for Retrieval-Augmented Generation. The agent can query a knowledge base — a company's internal documents, a database of research papers, a product catalogue — before deciding how to respond or act. This gives the agent access to specific, current, or proprietary information that was not in its training data. <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" style="color:var(--indigo)">LlamaIndex specialises in this pattern.</a></p>
+
+        <h2 id="s-indigo-4">The tools an agent can use</h2>
+        <p>Tools are defined as functions with a name, description, and parameter schema. The agent's model reads the description and decides whether to call the function. Common tools in production agent systems include:</p>
+        <ul>
+          <li><strong>Web search</strong> — query a search engine and receive results</li>
+          <li><strong>Web browsing</strong> — retrieve and parse the full content of a URL</li>
+          <li><strong>Code execution</strong> — write and run Python, JavaScript, or other code; receive the output</li>
+          <li><strong>File operations</strong> — read, write, edit, and create files</li>
+          <li><strong>Database queries</strong> — query structured data sources via SQL or API</li>
+          <li><strong>API calls</strong> — interact with external services (calendar, email, CRM, payments, maps)</li>
+          <li><strong>Memory operations</strong> — store and retrieve information across sessions</li>
+          <li><strong>Sub-agent calls</strong> — in multi-agent systems, call a specialist agent as if it were a tool</li>
+        </ul>
+
+        <p>The emerging standard for how tools are defined and connected to agents is <strong>MCP (Model Context Protocol)</strong>, developed by Anthropic and adopted across the major frameworks. MCP defines a universal interface — a "USB port" for AI agents — so any tool built to the MCP standard works with any agent built to the MCP standard. Official documentation is at <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" style="color:var(--indigo)">modelcontextprotocol.io</a>.</p>
+
+      </div>
+
+      <!-- DEEP LANE -->
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+        <h2 id="s-red-0">Technical foundations</h2>
+        <p>Agentic AI builds on large language models (LLMs) but extends them in specific, documented ways. Understanding what is actually happening at the implementation level requires understanding three things: how tool use works at the model API level, how the agent loop is formalised, and what the current research says about the limits of the approach.</p>
+
+        <h2 id="s-red-1">Tool use at the API level</h2>
+        <p>Tool use is not a separate model — it is a feature of how modern LLM APIs accept and return structured data. The Anthropic Claude API, OpenAI API, and Google Gemini API all implement tool use in broadly the same way, following a pattern that has become a de facto standard.</p>
+
+        <p>The developer defines tools as JSON schema objects. Each tool has a name, a description written in natural language, and an input schema specifying what parameters the tool accepts and their types. This schema is passed to the model alongside the user's prompt as part of the API request.</p>
+
+        <p>The model's response can then include, instead of or alongside text, a <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.87rem">tool_use</code> content block specifying which tool to call and what parameters to pass. The calling application executes the tool — the model itself never directly executes code or accesses the internet — and returns the result as a <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.87rem">tool_result</code> content block. The model then continues its response with that result in context.</p>
+
+        <p>This is the fundamental loop. The model reasons, selects a tool, the application runs the tool, the result comes back, the model reasons again. The model is a reasoning engine; the application is an execution engine. The two are distinct.</p>
+
+        <h2 id="s-red-2">The ReAct framework</h2>
+        <p>The formal academic basis for most production agent implementations is the ReAct framework, introduced in the paper "ReAct: Synergizing Reasoning and Acting in Language Models" (Yao et al., 2022, arXiv:2210.03629). ReAct demonstrated that interleaving chain-of-thought reasoning with action steps — rather than reasoning first and then acting — produced substantially better performance on knowledge-intensive and decision-making tasks.</p>
+
+        <p>The ReAct loop is: <em>Thought → Action → Observation → Thought → Action → Observation …</em> where each Thought is the model's explicit reasoning about what to do next, each Action is a tool call, and each Observation is the result. Making the reasoning visible (rather than implicit) both improves accuracy and allows humans or other systems to inspect and validate the agent's decision-making.</p>
+
+        <p>LangChain, CrewAI, LlamaIndex, and AutoGen all implement variants of this pattern, with additional abstractions for memory management, multi-agent coordination, and error handling layered on top.</p>
+
+        <h2 id="s-red-3">Context window as the limiting constraint</h2>
+        <p>Every agent's capability is bounded by its context window — the amount of text the model can hold in working memory at once. As an agent completes steps, each tool result is appended to the context. Long-running tasks accumulate context. When the context limit is reached, the agent must either summarise or discard earlier information.</p>
+
+        <p>Context management is one of the most actively researched areas in agentic AI. Current approaches include:</p>
+        <ul>
+          <li><strong>Summarisation</strong> — the agent periodically compresses earlier parts of the context into a shorter summary</li>
+          <li><strong>External memory</strong> — relevant results are written to a vector database and retrieved only when needed, rather than kept in the context continuously</li>
+          <li><strong>Scratchpads</strong> — intermediate results are written to files and read back selectively</li>
+          <li><strong>Hierarchical agents</strong> — sub-agents handle portions of the task, returning only summaries to the orchestrator rather than full execution traces</li>
+        </ul>
+
+        <h2 id="s-red-4">Safety: the OWASP Top 10 for Agentic AI</h2>
+        <p>The Open Web Application Security Project (OWASP) published the first formal taxonomy of agentic AI security risks in 2026. Understanding these is not optional for anyone deploying agent systems. The ten risk categories, in brief:</p>
+
+        <ol style="margin:0 0 1.2rem 1.4rem;color:var(--muted)">
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Prompt injection</strong> — malicious content in the environment (a web page, a document) instructs the agent to change its behaviour</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Insecure tool permissions</strong> — agent granted broader access than the task requires; exploited to take unintended actions</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Uncontrolled resource consumption</strong> — agent enters a loop or takes unnecessarily expensive actions; API costs escalate without limit</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Excessive autonomy</strong> — agent takes consequential, irreversible actions without requiring human confirmation</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Cascading failures in multi-agent systems</strong> — one agent's error propagates through the system before it can be caught</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Memory poisoning</strong> — malicious content stored in the agent's persistent memory influences future behaviour</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Credential and data exposure</strong> — tools require credentials; improperly stored credentials can be leaked through the agent's outputs</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Goal misalignment</strong> — agent optimises for a proxy metric rather than the actual intent; achieves the letter of the goal but not the spirit</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Inadequate logging</strong> — agent actions are not logged; post-incident investigation is impossible</li>
+          <li style="margin-bottom:.6rem;font-size:.9rem"><strong style="color:var(--fg)">Supply chain risks</strong> — third-party tools or models integrated into an agent pipeline introduce vulnerabilities</li>
+        </ol>
+
+        <p>Full documentation at <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener" style="color:var(--indigo)">owasp.org</a>.</p>
+
+        <h2 id="s-red-5">Regulatory context — EU AI Act</h2>
+        <p>The EU AI Act (Regulation 2024/1689), which came into force in August 2024, classifies certain agentic AI deployments as high-risk systems subject to mandatory conformity assessments, documentation requirements, and human oversight obligations. The high-risk classification applies when an agent system is deployed in domains including education, employment, critical infrastructure, law enforcement, and essential private services. Developers and deployers of agent systems in the EU should consult the Act directly at <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener" style="color:var(--indigo)">eur-lex.europa.eu</a>. High-risk provisions take full effect from August 2026.</p>
+
+        <h2 id="s-red-6">Key research papers</h2>
+        <ul>
+          <li><strong>ReAct (2022)</strong> — Yao et al., arXiv:2210.03629 — foundational paper formalising the reasoning-action interleaving pattern</li>
+          <li><strong>Toolformer (2023)</strong> — Schick et al., Meta AI — demonstrated that language models can learn to use tools in a self-supervised manner</li>
+          <li><strong>AutoGPT (2023)</strong> — Significant AI — first widely adopted open-source autonomous agent, demonstrated the pattern at scale</li>
+          <li><strong>Chain-of-Thought Prompting (2022)</strong> — Wei et al., Google Brain — established the value of explicit reasoning steps, prerequisite for reliable agent planning</li>
+          <li><strong>LLM as Agent Survey (2023)</strong> — Wang et al., arXiv:2308.11432 — comprehensive survey of agentic AI architectures and research directions</li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Source note:</strong> Technical specifications in this guide are drawn from official API documentation (Anthropic, OpenAI, Google), the cited research papers, and the OWASP Agentic AI Security Project. All links above are to primary sources.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">The one-sentence difference</a><a href="#s-green-1">A concrete example</a><a href="#s-green-2">Why this is new</a><a href="#s-green-3">What agentic AI is not</a><a href="#s-green-4">Where you encounter it today</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">The four components of every AI agent</a><a href="#s-indigo-1">The agent loop — step by step</a><a href="#s-indigo-2">How agents differ from standard AI — the full comparison</a><a href="#s-indigo-3">Types of agents in practice</a><a href="#s-indigo-4">The tools an agent can use</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Technical foundations</a><a href="#s-red-1">Tool use at the API level</a><a href="#s-red-2">The ReAct framework</a><a href="#s-red-3">Context window as the limiting constraint</a><a href="#s-red-4">Safety: the OWASP Top 10 for Agentic AI</a><a href="#s-red-5">Regulatory context — EU AI Act</a><a href="#s-red-6">Key research papers</a></div></div>
+      <div class="sidebar-card">
+        <h4>In this section</h4>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link" style="color:var(--fg);font-weight:600">What is Agentic AI</a>
+        <a href="/ai-atlas/agentic-ai/how-agents-work/" class="sidebar-link">How AI Agents Work</a>
+        <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="sidebar-link">Multi-Agent Systems</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Agentic Frameworks</h4>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="sidebar-link">LangChain / LangGraph</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" class="sidebar-link">CrewAI</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" class="sidebar-link">Microsoft AutoGen</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="sidebar-link">LlamaIndex</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Related AI Atlas guides</h4>
+        <a href="/ai-atlas/start-here/" class="sidebar-link">What is AI?</a>
+        <a href="/ai-atlas/tools/chatgpt/" class="sidebar-link">ChatGPT Guide</a>
+        <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude Guide</a>
+        <a href="/ai-atlas/specialist-tools/automation/" class="sidebar-link">Automation Tools</a>
+        <a href="/ai-atlas/prompt-library/" class="sidebar-link">Prompt Library</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Learn Agentic AI</h4>
+        <p class="sidebar-text" style="margin-bottom:10px">Structured course covering all levels — from first concepts to building with frameworks.</p>
+        <a href="/courses/agentic-ai/" class="sidebar-link">Agentic AI Course →</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Official sources</h4>
+        <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" class="sidebar-link">Model Context Protocol</a>
+        <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener" class="sidebar-link">OWASP Top 10 Agentic AI</a>
+        <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener" class="sidebar-link">ReAct Paper (arXiv)</a>
+        <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener" class="sidebar-link">EU AI Act</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

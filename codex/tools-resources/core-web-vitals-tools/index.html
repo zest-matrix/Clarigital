@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Core Web Vitals Tools: PageSpeed Insights, | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Core Web Vitals Tools: PageSpeed Insights, | Digital Codex">
+<meta property="og:description" content="How to measure Core Web Vitals — using Google PageSpeed Insights, Chrome Lighthouse, Chrome User Experience Report (CrUX), and interpreting lab vs field da">
+<meta property="og:url" content="https://www.clarigital.com/codex/tools-resources/core-web-vitals-tools/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="How to measure Core Web Vitals — using Google PageSpeed Insights, Chrome Lighthouse, Chrome User Experience Report (CrUX), and interpreting lab vs field data.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/codex/tools-resources/core-web-vitals-tools/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Core Web Vitals Tools: PageSpeed Insights, Lighthouse & CrUX","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-06","articleSection":"Tools &amp; Resources","wordCount":"4,900"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.nav-search-form{display:flex;align-items:center;gap:0;margin-left:.5rem}
+.nav-search-input{border:1.5px solid var(--g200);border-radius:6px 0 0 6px;padding:5px 10px;font-size:.8rem;width:160px;outline:none;font-family:inherit}
+.nav-search-input:focus{border-color:var(--navy)}
+.nav-search-btn{background:var(--navy);color:#fff;border:none;border-radius:0 6px 6px 0;padding:5px 10px;cursor:pointer;font-size:.8rem;font-family:inherit}
+@media(max-width:900px){.nav-search-form{display:none}}
+</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Core Web Vitals Tools: PageSpeed Insights, | Digital Codex">
+<meta name="twitter:description" content="How to measure Core Web Vitals — using Google PageSpeed Insights, Chrome Lighthouse, Chrome User Experience Report (CrUX), and interpreting lab vs field da">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Tools Resources", "item": "https://www.clarigital.com/codex/tools-resources/"}, {"@type": "ListItem", "position": 4, "name": "Core Web Vitals Tools: PageSpeed Insights,", "item": "https://www.clarigital.com/codex/tools-resources/core-web-vitals-tools/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/history/" >History</a></li><li><a href="/codex/tools-resources/" class="cur">Tools</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/history/" class="di">History</a><a href="/codex/tools-resources/" class="di">Tools</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#lab-vs-field">Lab Data vs Field Data</a><a class="cnl" href="#pagespeed-insights">PageSpeed Insights</a><a class="cnl" href="#lighthouse">Chrome Lighthouse</a><a class="cnl" href="#crux">Chrome User Experience Report (CrUX)</a><a class="cnl" href="#gsc-cwv">Core Web Vitals in Search Console</a><a class="cnl" href="#interpreting-scores">Interpreting Scores</a><a class="cnl" href="#lcp-diagnosis">Diagnosing LCP Problems</a><a class="cnl" href="#inp-diagnosis">Diagnosing INP Problems</a><a class="cnl" href="#cls-diagnosis">Diagnosing CLS Problems</a><a class="cnl" href="#cwv-workflow">Improvement Workflow</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/tools-resources/">Tools &amp; Resources</a><span class="sep">/</span><span class="cur">Core Web Vitals Tools</span></nav>
+  <span class="label-tag">Tools &amp; Resources &#183; Session 13, Guide 10</span>
+  <h1>Core Web Vitals Tools &#183; PageSpeed Insights, Lighthouse &#38; CrUX</h1>
+  <p class="hero-lead">Core Web Vitals — LCP, INP, and CLS — are Google's official page experience metrics and a documented ranking factor in Google Search. Measuring them correctly requires understanding the difference between lab data (simulated performance measurements on a controlled device) and field data (real user experience measurements from actual Chrome users). Google provides several free official tools for both types of measurement. This guide covers how to use each tool and what the results mean.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Tools &amp; Resources</span><span class="meta-tag mt-gray">4,900 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+  <li>The critical difference between lab data and field data — why they can contradict each other</li>
+  <li>How to use Google PageSpeed Insights to get both lab and field Core Web Vitals data</li>
+  <li>How Chrome Lighthouse works and when to use it instead of PageSpeed Insights</li>
+  <li>What the Chrome User Experience Report (CrUX) is and how to access it</li>
+  <li>How to find Core Web Vitals data in Google Search Console</li>
+  <li>How to interpret Good, Needs Improvement, and Poor thresholds</li>
+  <li>Common causes and diagnostic approaches for LCP problems</li>
+  <li>Common causes and diagnostic approaches for INP problems</li>
+  <li>Common causes and diagnostic approaches for CLS problems</li>
+  <li>A practical workflow for identifying and prioritising Core Web Vitals improvements</li>
+</ul></div></div>
+
+<div class="chapter" id="lab-vs-field">
+<div class="chap-hdr"><h2>Lab Data vs Field Data</h2><button class="share-btn" onclick="copyLink('lab-vs-field')">Share</button></div>
+<p>The most important concept in Core Web Vitals measurement is the distinction between lab data and field data — because these can show dramatically different results for the same page.</p>
+<p><strong>Lab data</strong> is a simulated measurement: a tool (Lighthouse, WebPageTest) loads the page in a controlled environment — a specific emulated device, a specific throttled network connection, a specific browser configuration. Lab data is reproducible (you get similar results each time you test the same page) and detailed (you can identify specific resources causing problems). But it represents a single simulated scenario, not the range of real user experiences.</p>
+<p><strong>Field data</strong> (also called Real User Monitoring, or RUM) is aggregated from actual Chrome users visiting the page in their real environments — their actual devices, their actual network connections, their actual browser configurations. Google collects this data through the Chrome User Experience Report (CrUX) and reports it in PageSpeed Insights and Google Search Console. Field data represents the actual experience distribution of real visitors.</p>
+<p>Google uses field data for the Core Web Vitals ranking signal — not lab data. A page that performs well in Lighthouse but has poor field data (because real users have slower devices or connections than the lab simulation) will be affected by the ranking signal based on the field data. Always check field data, not just lab data, when assessing Core Web Vitals for SEO purposes.</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">LCP target</p><div class="stat-n">&lt;2.5s</div><p class="stat-l">Largest Contentful Paint under 2.5 seconds = Good</p></div>
+  <div class="stat-card"><p class="stat-h">INP target</p><div class="stat-n">&lt;200ms</div><p class="stat-l">Interaction to Next Paint under 200ms = Good</p></div>
+  <div class="stat-card"><p class="stat-h">CLS target</p><div class="stat-n">&lt;0.1</p><p class="stat-l">Cumulative Layout Shift score under 0.1 = Good</p></div>
+</div>
+</div>
+
+<div class="chapter" id="pagespeed-insights">
+<div class="chap-hdr"><h2>Google PageSpeed Insights</h2><button class="share-btn" onclick="copyLink('pagespeed-insights')">Share</button></div>
+<p>PageSpeed Insights (pagespeed.web.dev) is Google's primary free Core Web Vitals measurement tool. Enter any URL and PSI returns both field data (from CrUX, if the page has sufficient traffic to be in the CrUX dataset) and lab data (from a Lighthouse simulation). PSI is the recommended starting point for Core Web Vitals assessment because it combines both data types in a single interface.</p>
+<p>The field data section (top of the PSI report) shows the 75th percentile Core Web Vitals values from real users — categorised as Good, Needs Improvement, or Poor. The 75th percentile threshold matters: a page's Core Web Vitals are assessed by Google at the 75th percentile, meaning 75% of users must have a Good experience for the page to pass the Good threshold. A page where 80% of users experience Good LCP but 20% experience Poor LCP does not qualify as Good.</p>
+<p>The lab data section shows Lighthouse performance scores and individual resource diagnostics — identifying specific resources (large images, render-blocking scripts, large JavaScript bundles) contributing to performance problems. Use the lab data diagnostics to identify specific fixes; use the field data to confirm whether fixes have improved the real user experience.</p>
+</div>
+
+<div class="chapter" id="lighthouse">
+<div class="chap-hdr"><h2>Chrome Lighthouse</h2><button class="share-btn" onclick="copyLink('lighthouse')">Share</button></div>
+<p>Lighthouse is Google's open-source automated auditing tool for web page quality. It is built into Chrome DevTools (F12 → Lighthouse tab) and also runs as the lab simulation engine behind PageSpeed Insights. Lighthouse assesses Performance, Accessibility, Best Practices, SEO, and Progressive Web App criteria.</p>
+<p>Using Lighthouse in Chrome DevTools (rather than PSI) provides additional control: you can run it while authenticated on password-protected pages; test in a staging environment before deploying changes; and test on a development branch URL that is not publicly accessible. DevTools Lighthouse also provides more detailed diagnostic output than PSI's simplified interface.</p>
+<p>Lighthouse performance scores (0–100) are calculated from a weighted combination of lab metrics: LCP (25%), Total Blocking Time (30%), Speed Index (10%), First Contentful Paint (10%), and CLS (25%). The score is useful as a relative benchmark but not as an absolute threshold — a score of 90 does not guarantee Good Core Web Vitals field data, and a score of 70 does not necessarily mean the page fails Core Web Vitals thresholds in the field.</p>
+</div>
+
+<div class="chapter" id="crux">
+<div class="chap-hdr"><h2>Chrome User Experience Report (CrUX)</h2><button class="share-btn" onclick="copyLink('crux')">Share</button></div>
+<p>The Chrome User Experience Report (CrUX) is Google's dataset of real-user performance data collected from Chrome browsers that have opted into syncing browsing history and usage statistics. CrUX powers the field data shown in PageSpeed Insights and Google Search Console. It is available as a public BigQuery dataset (for analysts who want raw data), via a REST API (the CrUX API), and via the CrUX Dashboard in Looker Studio (a pre-built visualisation of CrUX data for any domain).</p>
+<p>The CrUX dataset has a minimum traffic threshold for page-level data: pages must have sufficient traffic to be included (typically several hundred to a few thousand real user sessions per month). For low-traffic pages, PSI may show "No field data available for this page" — in which case only lab data is shown. The CrUX Dashboard aggregates data at the origin (domain) level, which is more widely available than page-level data.</p>
+</div>
+
+<div class="chapter" id="gsc-cwv">
+<div class="chap-hdr"><h2>Core Web Vitals in Google Search Console</h2><button class="share-btn" onclick="copyLink('gsc-cwv')">Share</button></div>
+<p>GSC's Core Web Vitals report (Experience → Core Web Vitals) shows Good, Needs Improvement, and Poor page counts for the site — using CrUX field data. The report groups pages with the same URL pattern together and identifies which issues are affecting performance across groups of pages, making it more actionable for large sites than checking individual pages in PSI.</p>
+<p>Click into any issue in GSC (e.g. "Poor LCP: 2 issues") to see the specific pages affected and the specific CWV values. GSC also provides a validation workflow: after fixing issues identified in the report, request validation. GSC will monitor the affected pages for 28 days and confirm whether the fix improved the CWV values to Good status.</p>
+</div>
+
+<div class="chapter" id="interpreting-scores">
+<div class="chap-hdr"><h2>Interpreting Core Web Vitals Scores</h2><button class="share-btn" onclick="copyLink('interpreting-scores')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Metric</th><th>Good</th><th>Needs Improvement</th><th>Poor</th></tr></thead>
+  <tbody>
+    <tr><td>LCP</td><td>≤2.5s</td><td>2.5–4.0s</td><td>&gt;4.0s</td></tr>
+    <tr><td>INP</td><td>≤200ms</td><td>200–500ms</td><td>&gt;500ms</td></tr>
+    <tr><td>CLS</td><td>≤0.1</td><td>0.1–0.25</td><td>&gt;0.25</td></tr>
+  </tbody>
+</table></div>
+<p>The Core Web Vitals ranking signal requires that a page pass all three metrics at the Good threshold (at the 75th percentile of real user data) to be considered Good. Passing two out of three does not provide the same ranking benefit. Prioritise the metric where the page is furthest from the Good threshold — particularly if it is in the Poor category.</p>
+</div>
+
+<div class="chapter" id="lcp-diagnosis">
+<div class="chap-hdr"><h2>Diagnosing LCP Problems</h2><button class="share-btn" onclick="copyLink('lcp-diagnosis')">Share</button></div>
+<p>The LCP element is typically the largest image (hero image, product image) or the largest text block visible in the initial viewport. PSI and Lighthouse identify which element is the LCP element and what is delaying its rendering. Common LCP causes and fixes:</p>
+<ul>
+  <li><strong>Large, unoptimised images.</strong> Images not compressed or not served in next-gen formats (WebP, AVIF). Fix: compress images; convert to WebP; use responsive images with srcset.</li>
+  <li><strong>No preload on LCP image.</strong> The LCP image is discovered late in the page load (after stylesheets and scripts load). Fix: add <code>&lt;link rel="preload"&gt;</code> for the LCP image in the <code>&lt;head&gt;</code>.</li>
+  <li><strong>Render-blocking resources.</strong> CSS stylesheets or synchronous JavaScript in the <code>&lt;head&gt;</code> blocking the browser from rendering content. Fix: defer non-critical JavaScript; inline critical CSS.</li>
+  <li><strong>Slow server response time (TTFB).</strong> The server takes too long to respond, delaying the start of all rendering. Fix: improve server infrastructure; add CDN; enable caching.</li>
+</ul>
+</div>
+
+<div class="chapter" id="inp-diagnosis">
+<div class="chap-hdr"><h2>Diagnosing INP Problems</h2><button class="share-btn" onclick="copyLink('inp-diagnosis')">Share</button></div>
+<p>INP (Interaction to Next Paint) measures how quickly the page responds to user interactions — clicks, taps, keyboard input. Poor INP is typically caused by JavaScript that blocks the main thread, preventing the browser from responding to user interactions promptly. Common causes: large JavaScript bundles executing synchronously on the main thread; third-party scripts (tag managers, analytics, chat widgets, advertising scripts) blocking the main thread; long tasks (JavaScript executing for more than 50ms continuously).</p>
+<p>Diagnosis tool: Chrome DevTools Performance panel. Record a session and look for long tasks (red-capped bars in the Main thread). Identify the specific scripts executing in those long tasks — these are the candidates for code splitting, deferred loading, or removal.</p>
+</div>
+
+<div class="chapter" id="cls-diagnosis">
+<div class="chap-hdr"><h2>Diagnosing CLS Problems</h2><button class="share-btn" onclick="copyLink('cls-diagnosis')">Share</button></div>
+<p>CLS (Cumulative Layout Shift) measures unexpected movement of page content during loading. The most common causes:</p>
+<ul>
+  <li><strong>Images without explicit dimensions.</strong> Images loaded without width and height attributes in the HTML cause the browser to allocate no space initially and then shift content when the image loads. Fix: always include explicit width and height attributes on <code>&lt;img&gt;</code> tags.</li>
+  <li><strong>Late-loading ad units.</strong> Ad slots that load after the initial render cause content below them to shift downward. Fix: reserve explicit space for ad slots.</li>
+  <li><strong>Web fonts causing text reflow.</strong> Pages using web fonts where the fallback font has different metrics can cause text layout to shift when the web font loads. Fix: use <code>font-display: optional</code> or preload critical web fonts.</li>
+  <li><strong>Dynamic content injection.</strong> JavaScript that inserts banners, cookie consent bars, or promotional strips into the visible page after load. Fix: reserve space for dynamic insertions; insert above the visible content instead of into the visible content.</li>
+</ul>
+</div>
+
+<div class="chapter" id="cwv-workflow">
+<div class="chap-hdr"><h2>Core Web Vitals Improvement Workflow</h2><button class="share-btn" onclick="copyLink('cwv-workflow')">Share</button></div>
+<ol>
+  <li>Check GSC Core Web Vitals report — identify which pages and issues are in the Poor category.</li>
+  <li>Run PSI on the worst-performing URLs — review both field data (confirm the problem is real) and lab data (diagnose specific causes).</li>
+  <li>Prioritise: high-traffic pages with Poor status first; Needs Improvement pages for high-traffic URLs second.</li>
+  <li>Implement fixes — image optimisation, preloading, script deferral, dimension attributes.</li>
+  <li>Verify with Lighthouse in DevTools that lab scores improve after fixes.</li>
+  <li>Return to GSC and request validation — monitor for 28 days to confirm field data improves.</li>
+</ol>
+
+<div class="chapter" id="sources">
+<h2>Authentic Sources</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>Every factual claim in this guide is drawn from official sources, primary documents, or directly documented historical records. We learn from official sources and explain them in our own words — we never copy.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">Google PageSpeed Insights</a></strong><p>Official Google tool for measuring Core Web Vitals with both field data (CrUX) and lab data (Lighthouse).</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://developers.google.com/web/tools/lighthouse" target="_blank" rel="noopener">Google Developers — Lighthouse</a></strong><p>Official documentation for Chrome Lighthouse — metrics, scoring, and diagnostic categories.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://developer.chrome.com/docs/crux/" target="_blank" rel="noopener">Chrome for Developers — CrUX</a></strong><p>Official documentation for the Chrome User Experience Report — data collection, field data methodology, and access.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://web.dev/lcp/" target="_blank" rel="noopener">web.dev — Largest Contentful Paint</a></strong><p>Google's web.dev official guide to LCP — causes, measurement, and optimisation techniques.</p></div></div>
+</div>
+
+<div class="related-guides">
+  <h3 class="rg-head">Related Guides</h3>
+  <div class="rg-grid"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">GA4 Setup & Configuration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/seo/technical/page-speed/" class="related-card"><span class="rc-tag">Technical SEO</span><span class="rc-title">Page Speed Optimisation</span><span class="rc-arr">&#8594;</span></a><a href="/codex/analytics-cro/google-tag-manager/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">Google Tag Manager</span><span class="rc-arr">&#8594;</span></a></div>
+</div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 4,900 &nbsp;&#183;&nbsp; <strong>Session:</strong> 13 of 16</p></div>
+</div></div></article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#lab-vs-field" class="sb-link on">Lab vs Field Data</a><a href="#pagespeed-insights" class="sb-link">PageSpeed Insights</a><a href="#lighthouse" class="sb-link">Lighthouse</a><a href="#crux" class="sb-link">CrUX</a><a href="#gsc-cwv" class="sb-link">GSC Core Web Vitals</a><a href="#interpreting-scores" class="sb-link">Interpreting Scores</a><a href="#lcp-diagnosis" class="sb-link">LCP Diagnosis</a><a href="#inp-diagnosis" class="sb-link">INP Diagnosis</a><a href="#cls-diagnosis" class="sb-link">CLS Diagnosis</a><a href="#cwv-workflow" class="sb-link">Improvement Workflow</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box"><div class="sb-head">Tools &amp; Resources</div><div class="sb-body"><a href="/codex/tools-resources/google-search-console-guide/" class="sb-link">1. Google Search Console</a><a href="/codex/tools-resources/google-analytics-tools/" class="sb-link">2. GA4 & Looker Studio</a><a href="/codex/tools-resources/core-web-vitals-tools/" class="sb-link sb-cur">3. Core Web Vitals Tools</a><a href="/codex/tools-resources/seo-research-tools/" class="sb-link">4. SEO Research Tools</a><a href="/codex/tools-resources/cms-platforms-overview/" class="sb-link">5. CMS Platforms</a><a href="/codex/tools-resources/email-marketing-platforms/" class="sb-link">6. Email Platforms</a><a href="/codex/tools-resources/social-media-scheduling-tools/" class="sb-link">7. Scheduling Tools</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>600 guides. All authentic sources.</h2><p>Official documentation only.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A&#8211;Z Glossary</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides. Official sources only.</p></div>
+  <div class="ft-col"><h5>Tools &amp; Resources</h5><ul><li><a href='/tools-resources/google-search-console-guide/'>Google Search Console</a></li><li><a href='/tools-resources/google-analytics-tools/'>GA4 & Looker Studio</a></li><li><a href='/tools-resources/core-web-vitals-tools/'>Core Web Vitals Tools</a></li><li><a href='/tools-resources/seo-research-tools/'>SEO Research Tools</a></li><li><a href='/tools-resources/cms-platforms-overview/'>CMS Platforms</a></li></ul></div>
+  <div class="ft-col"><h5>Other Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/social-media/">Social Media</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Official sources only &#183; No affiliate links</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+// Auto-run search if ?q= param present on homepage
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+
+</body>
+</html>

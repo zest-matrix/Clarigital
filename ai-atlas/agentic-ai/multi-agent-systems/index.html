@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Multi-Agent Systems Explained | Clarigital</title>
+<meta name="description" content="Multi-agent systems explained — what they are, how orchestrator and specialist agents work together, real-world examples, frameworks, and when to use...">
+<link rel="canonical" href="/ai-atlas/agentic-ai/multi-agent-systems/">
+<meta property="og:title" content="Multi-Agent Systems Explained — When and How to Use Them">
+<meta property="og:description" content="Multiple AI agents working together as a team. This is how multi-agent systems work, why they outperform single agents on complex tasks, and what the leading frameworks do.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/agentic-ai/multi-agent-systems/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.callout-red{border-left-color:var(--red)}
+.agent-diagram{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:24px;margin:20px 0}
+.agent-row{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.agent-box{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;text-align:center;min-width:120px}
+.agent-box .ab-role{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
+.agent-box .ab-name{font-size:.84rem;font-weight:700;color:var(--fg)}
+.agent-box.orchestrator{border-color:var(--indigo);background:var(--indigo-dim)}
+.agent-box.orchestrator .ab-name{color:var(--indigo)}
+.agent-arrow{color:var(--faint);font-size:1.1rem}
+.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.88rem}
+.compare-table th{background:var(--bg2);color:var(--fg);font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid var(--border)}
+.compare-table td{padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--muted);vertical-align:top}
+.compare-table tr:hover td{background:var(--bg2)}
+.td-label{color:var(--fg);font-weight:600}
+.framework-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:20px 0}
+.fw-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.fw-card h4{font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:6px}
+.fw-card p{font-size:.82rem;margin:0 0 8px}
+.fw-card a{font-size:.8rem;color:var(--indigo)}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Multi-Agent Systems Explained \u2014 When and How to Use Them", "description": "Multi-agent systems explained \u2014 what they are, how orchestrator and specialist agents work together, real-world examples, frameworks, and when to use...", "url": "https://www.clarigital.com/ai-atlas/agentic-ai/multi-agent-systems/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Multi-Agent Systems Explained \u2014 When and How to Use Them", "description": "Multi-agent systems explained \u2014 what they are, how orchestrator and specialist agents work together, real-world examples, frameworks, and when to use...", "url": "https://www.clarigital.com/ai-atlas/agentic-ai/multi-agent-systems/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Multi-Agent Systems Explained — When and How to Use Them">
+<meta name="twitter:description" content="Multi-agent systems explained — what they are, how orchestrator and specialist agents work together, real-world examples, frameworks, and when to use...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ai-atlas/">AI Atlas</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/agentic-ai/">Agentic AI</a>
+      <span class="sep">›</span>
+      <span>Multi-Agent Systems</span>
+    </nav>
+    <div class="label-tag">Agentic AI</div>
+    <h1>Multi-Agent Systems</h1>
+    <p class="hero-lead">A single AI agent is like a single employee. A multi-agent system is like a team — each member with a defined role, coordinated by a manager, working toward a shared goal. This guide explains how that team works, when to use it, and what can go wrong.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Concept Guide</span>
+      <span class="meta-tag">AI Atlas</span>
+      <span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="art-layout">
+    <div>
+      
+
+      <!-- SIMPLE LANE -->
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+        <h2 id="s-green-0">One agent doing everything vs a team doing it better</h2>
+        <p>A single AI agent can handle a surprisingly wide range of tasks. But single agents have limits. The bigger the task, the more complex the decisions, the longer the execution — the more likely a single agent is to lose track of the goal, make errors, or hit context window limits and forget earlier instructions.</p>
+        <p>Multi-agent systems solve this by dividing a complex task among multiple agents, each with a clear role. One agent plans. Others execute. One reviews. The output of each becomes the input to the next, or is assembled by a coordinating agent into a final result.</p>
+        <p>The human parallel is exact: a professional team works better than one person trying to do everything, because each person can focus, specialise, and be held accountable for their specific piece.</p>
+
+        <h2 id="s-green-1">The two types of agents in every multi-agent system</h2>
+        <p>Every multi-agent system has at least two roles, no matter how it is designed:</p>
+
+        <div class="agent-diagram">
+          <div style="text-align:center;margin-bottom:16px;font-size:.8rem;color:var(--muted)">Example: Content Research System</div>
+          <div class="agent-row" style="margin-bottom:16px">
+            <div class="agent-box orchestrator">
+              <div class="ab-role">Orchestrator</div>
+              <div class="ab-name">Manager Agent</div>
+            </div>
+          </div>
+          <div class="agent-row">
+            <div class="agent-box">
+              <div class="ab-role">Specialist</div>
+              <div class="ab-name">Research Agent</div>
+            </div>
+            <div class="agent-box">
+              <div class="ab-role">Specialist</div>
+              <div class="ab-name">Writer Agent</div>
+            </div>
+            <div class="agent-box">
+              <div class="ab-role">Specialist</div>
+              <div class="ab-name">Fact-Check Agent</div>
+            </div>
+          </div>
+        </div>
+
+        <p><strong>The orchestrator</strong> receives the original goal and is responsible for the overall result. It breaks the goal into sub-tasks, assigns each sub-task to a specialist agent, monitors progress, and assembles the final output. It does not necessarily do any of the detailed work itself — its job is coordination and quality control.</p>
+        <p><strong>Specialist agents</strong> each have a focused capability. A researcher that finds and summarises sources. A writer that takes research and produces structured content. A fact-checker that verifies claims. A coder that writes and tests code. Each specialist does one thing well.</p>
+
+        <h2 id="s-green-2">A concrete example — writing a market research report</h2>
+        <p>With a single agent: you prompt it with the request. It tries to research, synthesise, structure, and write all at once. The context fills up with research. The writing quality suffers. Sources get confused.</p>
+        <p>With a multi-agent system:</p>
+        <ul>
+          <li><strong>Orchestrator agent</strong> receives the goal and creates a research plan</li>
+          <li><strong>Research agent 1</strong> searches for data on market size and trends</li>
+          <li><strong>Research agent 2</strong> searches for competitor information</li>
+          <li><strong>Analysis agent</strong> takes both research outputs and identifies key patterns</li>
+          <li><strong>Writer agent</strong> takes the analysis and structures it into a report</li>
+          <li><strong>Review agent</strong> checks the report for factual consistency and flags any gaps</li>
+          <li><strong>Orchestrator agent</strong> reviews the flagged gaps, requests fixes if needed, delivers the final report</li>
+        </ul>
+        <p>Each agent does only its part. Each works with a focused context. The result is more reliable and higher quality than any single agent could produce on the same task.</p>
+
+        <h2 id="s-green-3">Why this matters now</h2>
+        <p>Multi-agent systems are not theoretical. As of 2026 they are in active production use in software development (automated coding, testing, and review pipelines), marketing (research, brief writing, campaign planning), customer operations (query routing, resolution, escalation), and financial analysis (data gathering, modelling, reporting).</p>
+        <p>The frameworks that make building them practical — <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" style="color:var(--indigo)">CrewAI</a>, <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" style="color:var(--indigo)">LangGraph</a>, <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" style="color:var(--indigo)">AutoGen</a> — are all open source and well-documented. The barrier to building is lower than it has ever been.</p>
+
+        <div class="callout callout-green">
+          <p><strong>When to use multi-agent:</strong> When a task is too long, too complex, or too multidisciplinary for one agent to handle reliably. When you need parallel work streams. When you need independent quality checking. Otherwise, a single agent is simpler and easier to debug.</p>
+        </div>
+
+      </div>
+
+      <!-- WORKING LANE -->
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+        <h2 id="s-indigo-0">Communication patterns between agents</h2>
+        <p>The way agents in a multi-agent system communicate defines how the system behaves. Three patterns appear in most production systems:</p>
+
+        <h3>Hierarchical (orchestrator/worker)</h3>
+        <p>The most common pattern. A single orchestrator agent receives the goal, assigns sub-tasks to worker agents, receives results, and coordinates the final output. Workers report only to the orchestrator — they do not communicate with each other directly. Simple to reason about. Easy to debug. Scales well when tasks can be cleanly divided.</p>
+
+        <h3>Sequential (pipeline)</h3>
+        <p>Agents are arranged in a chain. Each agent receives the output of the previous agent, processes it, and passes it to the next. Like a factory line — material moves in one direction, each station adds value. Best for tasks with a natural sequence of transformations: research → analysis → writing → review.</p>
+
+        <h3>Collaborative (peer-to-peer)</h3>
+        <p>Agents communicate with each other directly, not through a central coordinator. Useful when agents need to negotiate, debate, or iteratively refine a shared output. More complex to implement and harder to debug, but produces better outcomes on tasks that require diverse perspectives or adversarial checking (e.g. one agent argues for a position, another argues against it).</p>
+
+        <h2 id="s-indigo-1">How the orchestrator assigns work</h2>
+        <p>An orchestrator agent does not simply delegate — it must describe what it wants clearly enough for a specialist agent to act on it. This is the same as writing a good brief for a human team member. In practice, the orchestrator:</p>
+        <ul>
+          <li>Defines the sub-task in specific, actionable terms</li>
+          <li>Specifies what a successful output looks like</li>
+          <li>Passes any relevant context the specialist needs (but not everything — context management is critical)</li>
+          <li>Receives the output and evaluates it against the success criteria</li>
+          <li>Accepts or rejects: if rejected, the orchestrator sends the specialist's output back with feedback for revision</li>
+        </ul>
+
+        <h2 id="s-indigo-2">Memory in multi-agent systems</h2>
+        <p>Memory in multi-agent systems operates at two levels that are easy to confuse:</p>
+        <p><strong>Agent-level memory</strong> — what each individual agent knows. Its system prompt defines its role and capabilities. Its conversation history for the current sub-task is in its context window. It may have access to a shared knowledge base.</p>
+        <p><strong>System-level memory</strong> — shared state that all agents can read and write. A shared document store. A task log showing what has been completed. A results database where specialist agents write their outputs for the orchestrator to read. This is what allows agents to coordinate without being in the same conversation.</p>
+
+        <h2 id="s-indigo-3">The four frameworks and which pattern they use</h2>
+        <div class="framework-grid">
+          <div class="fw-card">
+            <h4>LangGraph</h4>
+            <p>Graph-based state machine. Each node is an agent or function. Edges define transitions. Supports all three patterns. Most flexible and powerful — steepest learning curve.</p>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">Full guide →</a>
+          </div>
+          <div class="fw-card">
+            <h4>CrewAI</h4>
+            <p>Role-based framework. Agents have roles, goals, and backstories. Orchestrator/worker pattern with sequential task execution. Easiest to get started with.</p>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">Full guide →</a>
+          </div>
+          <div class="fw-card">
+            <h4>AutoGen</h4>
+            <p>Conversation-based. Agents communicate by sending messages to each other. Supports collaborative peer-to-peer patterns well. Now in maintenance mode — merging into Microsoft Agent Framework.</p>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">Full guide →</a>
+          </div>
+          <div class="fw-card">
+            <h4>LlamaIndex</h4>
+            <p>Specialises in knowledge-augmented agents. Best when agents need to reason over large document sets. Combines multi-agent coordination with RAG pipelines.</p>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">Full guide →</a>
+          </div>
+        </div>
+
+        <h2 id="s-indigo-4">When to use multi-agent vs single agent</h2>
+        <table class="compare-table">
+          <thead>
+            <tr><th>Situation</th><th>Use</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-label">Simple task, one step</td><td>Single agent</td><td>Overhead of multi-agent adds nothing</td></tr>
+            <tr><td class="td-label">Long task but sequential</td><td>Single agent with good memory</td><td>Multi-agent adds complexity without benefit</td></tr>
+            <tr><td class="td-label">Task with multiple distinct skills needed</td><td>Multi-agent</td><td>Specialists outperform generalists on focused work</td></tr>
+            <tr><td class="td-label">Task requiring parallel work streams</td><td>Multi-agent</td><td>Parallelism is only possible with multiple agents</td></tr>
+            <tr><td class="td-label">Task requiring independent quality checking</td><td>Multi-agent</td><td>A separate reviewer catches errors the original agent missed</td></tr>
+            <tr><td class="td-label">Very long tasks exceeding context limits</td><td>Multi-agent</td><td>Each agent handles a portion; context limits are not hit</td></tr>
+          </tbody>
+        </table>
+
+        <div class="callout callout-blue">
+          <p><strong>The principal-agent problem in AI:</strong> A specialist agent may optimise for completing its assigned sub-task in ways that do not serve the overall goal. The orchestrator must evaluate outputs against the original intent, not just task completion. This is the AI equivalent of the classic management problem — delegation without loss of direction.</p>
+        </div>
+
+      </div>
+
+      <!-- DEEP LANE -->
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+        <h2 id="s-red-0">Formal architecture: graph, DAG, and hierarchical patterns</h2>
+        <p>Multi-agent system architectures can be described formally using three models from computer science:</p>
+
+        <h3>Directed Acyclic Graph (DAG)</h3>
+        <p>Tasks are arranged as a graph where each node is an agent or sub-task, edges represent dependencies, and the graph has no cycles — a task can only be executed after all its dependencies are complete. DAG scheduling allows parallel execution of independent branches. This is how most software build systems work and is directly applicable to multi-agent pipelines where some research tasks can run in parallel while others must wait for prior results.</p>
+        <p>LangGraph implements agent workflows as directed graphs — not necessarily acyclic, as cycles are needed to support retry and feedback loops.</p>
+
+        <h3>Actor model</h3>
+        <p>Each agent is an actor — an independent process with a mailbox. Actors communicate only by sending messages. No shared state (in the strict model). This provides strong isolation: one agent failing does not directly corrupt another's state. AutoGen's conversation-based pattern approximates the actor model. Useful for systems requiring high fault isolation.</p>
+
+        <h3>Hierarchical task networks (HTN)</h3>
+        <p>The orchestrator represents the top-level task. It decomposes this into sub-tasks, which may themselves be decomposable. This recursive decomposition continues until tasks are primitive enough for a single agent to execute without further breakdown. HTN planning has formal roots in AI planning research and underpins how sophisticated orchestrators break down complex goals.</p>
+
+        <h2 id="s-red-1">Cascading failure — the primary risk of multi-agent systems</h2>
+        <p>In a single-agent system, a hallucination or error affects one output. In a multi-agent system, an error in an early agent's output propagates downstream — it becomes the input to the next agent, which reasons on top of it and potentially amplifies the error. By the time the final output is produced, the original error may be deeply embedded and difficult to trace.</p>
+        <p>Mitigation strategies used in production systems:</p>
+        <ul>
+          <li><strong>Output validation at each step</strong> — schemas, type checking, or a dedicated validator agent checks each specialist's output before it is passed downstream</li>
+          <li><strong>Source attribution</strong> — each agent's output includes the sources it was derived from, enabling the orchestrator to trace errors back to their origin</li>
+          <li><strong>Independent review agents</strong> — a separate agent whose only job is to challenge or verify the outputs of worker agents, with no knowledge of their reasoning process</li>
+          <li><strong>Human-in-the-loop checkpoints</strong> — the orchestrator pauses at defined points and presents intermediate outputs for human review before proceeding</li>
+          <li><strong>Comprehensive logging</strong> — every agent action, tool call, and output is logged with timestamps; essential for post-incident analysis</li>
+        </ul>
+
+        <h2 id="s-red-2">Context isolation between agents</h2>
+        <p>A common architectural mistake is giving all agents access to all context. Specialist agents should receive only the context they need for their specific sub-task. This serves two purposes: it keeps each agent's context window focused (improving reasoning quality) and it limits the blast radius of prompt injection attacks — a malicious instruction embedded in a document read by the research agent cannot affect the writer agent if the two do not share context.</p>
+
+        <h2 id="s-red-3">Prompt injection in multi-agent systems</h2>
+        <p>Prompt injection is more dangerous in multi-agent systems than in single-agent ones. The attack surface is larger: every external source any agent reads is a potential injection vector. A web page read by a research agent can contain hidden instructions that redirect the agent's behaviour. If that agent's output is passed without sanitisation to downstream agents, the injection propagates through the system.</p>
+        <p>The OWASP Top 10 for Agentic AI (2026) identifies prompt injection as the primary risk category. Defensive measures include: treating all external content as untrusted data (not instructions), parsing external content in a separate sandboxed context, and flagging any content that contains instruction-like patterns for human review. Full documentation at <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener" style="color:var(--indigo)">owasp.org</a>.</p>
+
+        <h2 id="s-red-4">Inter-agent communication standards</h2>
+        <p>As multi-agent systems become more common, the need for standardised inter-agent communication has driven the development of two emerging specifications:</p>
+        <p><strong>Model Context Protocol (MCP)</strong> — standardises how agents connect to tools and data sources. A sub-agent can be exposed as an MCP server, making it callable by an orchestrator in the same way as any other tool. Official spec: <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" style="color:var(--indigo)">modelcontextprotocol.io</a>.</p>
+        <p><strong>Agent-to-Agent (A2A) Protocol</strong> — Google's proposed standard for agent-to-agent communication across different systems and providers. Still in early specification phase as of April 2026.</p>
+
+        <h2 id="s-red-5">Production considerations</h2>
+        <ul>
+          <li><strong>Cost scaling</strong> — each agent in a multi-agent system makes its own API calls. A 10-agent system processing a complex task can make 50–100+ API calls. Budget must account for this multiplier.</li>
+          <li><strong>Latency</strong> — sequential pipelines add latency with each agent step. Parallel execution reduces latency but increases complexity and cost simultaneously.</li>
+          <li><strong>Observability</strong> — tracing a request through a multi-agent system requires distributed tracing infrastructure. Tools like LangSmith (for LangChain) and built-in logging in CrewAI provide this; raw systems require custom instrumentation.</li>
+          <li><strong>Testing</strong> — multi-agent systems are harder to test than single-agent systems. Each agent can be unit-tested independently, but integration testing requires orchestrating the full system against representative inputs. Evaluation frameworks (RAGAS, LangSmith evaluators) are commonly used.</li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Source note:</strong> Architecture patterns and risk descriptions in this guide draw from official framework documentation (LangGraph, CrewAI, AutoGen, LlamaIndex), the OWASP Agentic AI Top 10 (2026), and the Model Context Protocol specification. All external links point to primary sources.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">One agent doing everything vs a team doing it better</a><a href="#s-green-1">The two types of agents in every multi-agent system</a><a href="#s-green-2">A concrete example — writing a market research report</a><a href="#s-green-3">Why this matters now</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Communication patterns between agents</a><a href="#s-indigo-1">How the orchestrator assigns work</a><a href="#s-indigo-2">Memory in multi-agent systems</a><a href="#s-indigo-3">The four frameworks and which pattern they use</a><a href="#s-indigo-4">When to use multi-agent vs single agent</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Formal architecture: graph, DAG, and hierarchical patterns</a><a href="#s-red-1">Cascading failure — the primary risk of multi-agent system</a><a href="#s-red-2">Context isolation between agents</a><a href="#s-red-3">Prompt injection in multi-agent systems</a><a href="#s-red-4">Inter-agent communication standards</a><a href="#s-red-5">Production considerations</a></div></div>
+      <div class="sidebar-card">
+        <h4>In this section</h4>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link">What is Agentic AI</a>
+        <a href="/ai-atlas/agentic-ai/how-agents-work/" class="sidebar-link">How AI Agents Work</a>
+        <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="sidebar-link" style="color:var(--fg);font-weight:600">Multi-Agent Systems</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Agentic Frameworks</h4>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="sidebar-link">LangChain / LangGraph</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" class="sidebar-link">CrewAI</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" class="sidebar-link">Microsoft AutoGen</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="sidebar-link">LlamaIndex</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Related guides</h4>
+        <a href="/ai-atlas/start-here/" class="sidebar-link">What is AI?</a>
+        <a href="/ai-atlas/specialist-tools/automation/" class="sidebar-link">Automation Tools</a>
+        <a href="/ai-atlas/specialist-tools/coding/" class="sidebar-link">AI Coding Tools</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Official sources</h4>
+        <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" class="sidebar-link">Model Context Protocol</a>
+        <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener" class="sidebar-link">OWASP Top 10 Agentic</a>
+        <a href="https://docs.crewai.com" target="_blank" rel="noopener" class="sidebar-link">CrewAI Docs</a>
+        <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener" class="sidebar-link">LangGraph Docs</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Learn Agentic AI</h4>
+        <p class="sidebar-text" style="margin-bottom:10px">Structured course — Beginner to Advanced.</p>
+        <a href="/courses/agentic-ai/" class="sidebar-link">Agentic AI Course →</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

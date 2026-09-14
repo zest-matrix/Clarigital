@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Netflix Personalisation Case Study: How Data | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netflix Personalisation Case Study: How Data | Digital Codex">
+<meta property="og:description" content="How Netflix built a personalisation system that drives content recommendations, email marketing, artwork selection, and retention — all from viewing...">
+<meta property="og:url" content="https://www.clarigital.com/codex/case-studies/netflix-email-personalisation/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="How Netflix built a personalisation system that drives content recommendations, email marketing, artwork selection, and retention — all from viewing...">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/codex/case-studies/netflix-email-personalisation/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Netflix Personalisation Case Study: How Data Drives Every Marketing Touchpoint","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-06","articleSection":"Case Studies","wordCount":"4,900"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.nav-search-form{display:flex;align-items:center;gap:0;margin-left:.5rem}
+.nav-search-input{border:1.5px solid var(--g200);border-radius:6px 0 0 6px;padding:5px 10px;font-size:.8rem;width:160px;outline:none;font-family:inherit}
+.nav-search-input:focus{border-color:var(--navy)}
+.nav-search-btn{background:var(--navy);color:#fff;border:none;border-radius:0 6px 6px 0;padding:5px 10px;cursor:pointer;font-size:.8rem;font-family:inherit}
+@media(max-width:900px){.nav-search-form{display:none}}
+</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Netflix Personalisation Case Study: How Data | Digital Codex">
+<meta name="twitter:description" content="How Netflix built a personalisation system that drives content recommendations, email marketing, artwork selection, and retention — all from viewing...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Case Studies", "item": "https://www.clarigital.com/codex/case-studies/"}, {"@type": "ListItem", "position": 4, "name": "Netflix Personalisation Case Study: How Data", "item": "https://www.clarigital.com/codex/case-studies/netflix-email-personalisation/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/case-studies/" class="cur">Case Studies</a></li><li><a href="/codex/history/">History</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/case-studies/" class="di cur">Case Studies</a><a href="/codex/history/" class="di">History</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#netflix-context">Netflix's Personalisation Context</a><a class="cnl" href="#recommendation-engine">The Recommendation Engine</a><a class="cnl" href="#artwork-personalisation">Artwork Personalisation</a><a class="cnl" href="#email-strategy">Email Marketing Strategy</a><a class="cnl" href="#a-b-testing-netflix">A/B Testing at Netflix Scale</a><a class="cnl" href="#retention-personalisation">Personalisation for Retention</a><a class="cnl" href="#data-infrastructure">Data Infrastructure</a><a class="cnl" href="#content-investment">Personalisation Driving Content Investment</a><a class="cnl" href="#results-netflix">Documented Results</a><a class="cnl" href="#lessons-netflix">Lessons for Marketers</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/case-studies/">Case Studies</a><span class="sep">/</span><span class="cur">Netflix Personalisation Case Study</span></nav>
+  <span class="label-tag">Case Studies &#183; Session 14, Guide 2</span>
+  <h1>Netflix Personalisation &#183; Data-Driven Marketing at Scale</h1>
+  <p class="hero-lead">Netflix's personalisation system is one of the most extensively documented examples of data-driven marketing in existence — because Netflix has published significant technical details about it through its technology blog, research papers, and public presentations. Every subscriber sees a different homepage, different recommendation rows, different artwork for the same titles, and receives emails referencing the specific shows they have been watching. At over 260 million subscribers globally, this personalisation operates at a scale that makes it one of the most studied marketing systems in the world.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Case Study</span><span class="meta-tag mt-gray">4,900 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="callout orange"><strong>Source note</strong><p>This case study draws primarily from Netflix's Technology Blog (netflixtechblog.com), official Netflix press releases, documented Netflix research papers, and Netflix earnings call transcripts. Netflix has been unusually transparent about its recommendation and personalisation technology through its public technical publications.</p></div>
+
+<div class="chapter" id="netflix-context">
+<div class="chap-hdr"><h2>Netflix's Personalisation Context</h2><button class="share-btn" onclick="copyLink('netflix-context')">Share</button></div>
+<p>Netflix launched its streaming service in 2007 — pivoting from the DVD-by-mail model it had operated since 1998. By 2024 Netflix had over 260 million paid subscribers across 190 countries, making it the world's largest subscription streaming service. The business model is built entirely on retention: subscribers pay a monthly fee, and Netflix retains them by ensuring they consistently find content worth watching.</p>
+<p>This business model creates a direct economic incentive for personalisation: a subscriber who cannot quickly find something they want to watch will cancel. Netflix has publicly stated that the majority of what subscribers watch is influenced by its recommendation system. The system is not a nice-to-have feature — it is the retention mechanism that justifies the subscription fee.</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">Subscribers</p><div class="stat-n">260M+</div><p class="stat-l">Paid subscribers globally as of 2024 (Netflix Q4 2023 earnings)</p></div>
+  <div class="stat-card"><p class="stat-h">Content library</p><div class="stat-n">15,000+</div><p class="stat-l">Titles in the catalogue requiring discovery and recommendation</p></div>
+  <div class="stat-card"><p class="stat-h">Recommendation influence</p><div class="stat-n">~80%</div><p class="stat-l">Proportion of viewed content influenced by Netflix's recommendation system (Netflix Technology Blog)</p></div>
+</div>
+</div>
+
+<div class="chapter" id="recommendation-engine">
+<div class="chap-hdr"><h2>The Recommendation Engine</h2><button class="share-btn" onclick="copyLink('recommendation-engine')">Share</button></div>
+<p>Netflix's recommendation system — documented extensively in the Netflix Technology Blog — uses multiple machine learning algorithms working in combination. The system processes signals including: what a subscriber has watched (and how much of it); how they rated content (via the thumbs up/down system); what similar subscribers have watched; the time of day and device being used; and the context of the session (is the subscriber browsing for something new or returning to finish something?).</p>
+<p>Netflix describes its recommendation objective not as "predict what you want to watch next" but as "maximise the probability that you will find something valuable enough to watch and not cancel." This framing is important: the goal is not accuracy in a narrow sense but business outcome (retention). The recommendation system's success is measured by subscriber retention and engagement, not by recommendation accuracy scores in isolation.</p>
+<p>The 2009 Netflix Prize — a public competition where Netflix offered $1 million to any team that could improve the accuracy of its recommendation algorithm by 10% — produced significant academic contributions to recommendation system research. The winning entry combined multiple algorithms. Netflix has documented that it did not fully implement the winning solution as submitted because the marginal accuracy improvement did not justify the engineering complexity at production scale — a practical insight about the difference between research accuracy and production deployment.</p>
+</div>
+
+<div class="chapter" id="artwork-personalisation">
+<div class="chap-hdr"><h2>Artwork Personalisation</h2><button class="share-btn" onclick="copyLink('artwork-personalisation')">Share</button></div>
+<p>Netflix published a detailed technical post in December 2017 on its Technology Blog describing its personalised artwork system — the mechanism by which different subscribers see different thumbnail images for the same title. The system operates on the insight that what makes a piece of content attractive varies by viewer: a subscriber who watches primarily action films might be shown the action-focused artwork for a romantic comedy that also contains action sequences; a subscriber whose viewing history is primarily dramas might be shown the character-focused artwork for the same film.</p>
+<p>The artwork personalisation system uses machine learning to select from a library of candidate artworks for each title — choosing the image most likely to generate a click from a specific subscriber based on their viewing history. Netflix A/B tested this system extensively and documented that personalised artwork improved the probability of subscribers clicking through to watch a title compared to a single static artwork shown to all subscribers.</p>
+<p>Netflix has also published research on what makes effective thumbnail artwork — findings that have implications beyond Netflix for any business using image-based content discovery: faces in thumbnails (particularly emotive expressions) significantly outperform landscape or text-only images; contrast and colour composition affect click rates; and motion-based thumbnails (animated thumbnails on hover) affect viewing decisions differently from static images.</p>
+</div>
+
+<div class="chapter" id="email-strategy">
+<div class="chap-hdr"><h2>Email Marketing Strategy</h2><button class="share-btn" onclick="copyLink('email-strategy')">Share</button></div>
+<p>Netflix's email marketing is built on the same personalisation infrastructure as its on-platform recommendation system. Rather than sending the same newsletter to all subscribers, Netflix sends emails referencing specific shows the subscriber has been watching ("Season 2 of [Show] is now available"), shows similar to their watching history, and re-engagement emails for subscribers who have not logged in recently.</p>
+<p>Netflix has documented its approach to email frequency management: the company monitors email engagement signals (opens, clicks, login conversions from email) and manages send frequency at the individual subscriber level — sending more emails to subscribers who engage with them and fewer to those who do not. This prevents the universal subscriber list fatigue that occurs when high-frequency emails are sent regardless of engagement.</p>
+<p>Netflix's email strategy also reflects a product-led approach: the purpose of every email is to bring the subscriber back to the product, not to persuade them of Netflix's value through marketing language. The subject lines reference specific content ("New episodes of X are here"), not marketing messages about Netflix as a brand. This content-specific approach produces higher open rates because subscribers recognise emails about shows they care about.</p>
+</div>
+
+<div class="chapter" id="a-b-testing-netflix">
+<div class="chap-hdr"><h2>A/B Testing at Netflix Scale</h2><button class="share-btn" onclick="copyLink('a-b-testing-netflix')">Share</button></div>
+<p>Netflix has published extensively about its A/B testing methodology — both the scale (Netflix runs hundreds of concurrent A/B tests) and the philosophy. Netflix's approach to testing has several documented principles that differ from typical marketing A/B testing:</p>
+<ul>
+  <li><strong>Long test durations.</strong> Netflix runs tests long enough to observe subscriber behaviour over multiple weeks, because short-term engagement metrics do not reliably predict long-term retention outcomes. A feature that increases short-term viewing might reduce long-term retention if it encourages binge-watching that exhausts content interest.</li>
+  <li><strong>Primary metric alignment with business outcomes.</strong> Netflix tests for retention and engagement metrics that are proven predictors of subscription cancellation, not just immediate engagement metrics like clicks or session length.</li>
+  <li><strong>Holdout groups for long-term impact.</strong> Netflix uses persistent holdout groups — subscribers who never receive certain features — to measure the long-term impact of product changes on retention, beyond what short-term tests can reveal.</li>
+</ul>
+</div>
+
+<div class="chapter" id="retention-personalisation">
+<div class="chap-hdr"><h2>Personalisation for Retention</h2><button class="share-btn" onclick="copyLink('retention-personalisation')">Share</button></div>
+<p>Netflix's personalisation system extends to retention interventions: identifying subscribers showing cancellation risk signals (declining viewing time, long gaps between sessions, accessing the account settings) and targeting them with specific re-engagement content or promotions. This proactive retention approach uses the same behavioural data that drives content recommendations, applied to the business problem of predicting and preventing cancellation.</p>
+<p>Netflix has been transparent about the fact that its personalisation investment is fundamentally a retention investment. The company has stated in investor communications that subscriber acquisition cost is high and reducing churn has a direct positive impact on unit economics — each month a subscriber stays reduces the acquisition cost's impact on the overall customer relationship value.</p>
+</div>
+
+<div class="chapter" id="data-infrastructure">
+<div class="chap-hdr"><h2>Data Infrastructure</h2><button class="share-btn" onclick="copyLink('data-infrastructure')">Share</button></div>
+<p>Netflix has published technical details about its data infrastructure through the Netflix Technology Blog — including its migration from on-premises data centres to AWS (Amazon Web Services), which Netflix documented as a multi-year effort completed in 2016. Netflix is one of the most cited case studies for large-scale cloud migration, using the parallel running of on-premises and cloud systems to validate each migration step before full transition.</p>
+<p>Netflix's open-source data engineering tools — including Hollow (for managing large datasets), Metacat (a metadata management tool), and Genie (for big data orchestration) — have been published to GitHub, providing transparency into the technical systems underlying the personalisation platform. These publications have contributed to the broader data engineering community while establishing Netflix's technical reputation.</p>
+</div>
+
+<div class="chapter" id="content-investment">
+<div class="chap-hdr"><h2>Personalisation Driving Content Investment</h2><button class="share-btn" onclick="copyLink('content-investment')">Share</button></div>
+<p>Netflix's personalisation data directly informs its content investment decisions — creating a feedback loop between viewing behaviour and content commissioning. Netflix has stated in investor communications that its data on what subscribers watch, how long they watch, at what point they stop, and how content discovery happens influences decisions about which genres and formats to invest in for original productions.</p>
+<p>Netflix's willingness to commission diverse, niche, and international content (Korean drama, Spanish thriller, Indian original productions) is partly enabled by the personalisation system's ability to connect niche content with the specific subscribers most likely to enjoy it — making a niche show viable if it deeply engages a specific audience segment, even if it does not have mass appeal. A show that becomes the favourite show of 10 million subscribers has more retention value than a show that is the third-choice option for 100 million subscribers.</p>
+</div>
+
+<div class="chapter" id="results-netflix">
+<div class="chap-hdr"><h2>Documented Results</h2><button class="share-btn" onclick="copyLink('results-netflix')">Share</button></div>
+<p>Netflix's Q4 2023 earnings reported revenue of $8.8 billion (annual revenue of $33.7 billion) with subscriber count exceeding 260 million. The company has consistently cited its personalisation and recommendation system as a core competitive advantage that differentiates Netflix from streaming competitors with comparable content libraries.</p>
+<p>Netflix has documented that its recommendation system reduces subscriber "time to play" — the time between opening the app and starting to watch something — which the company considers a key predictor of session satisfaction and retention. Netflix has also published that without personalisation, subscribers would face the problem of discovering content in a library of thousands of titles — which the company describes as the equivalent of browsing a video store without staff recommendations.</p>
+</div>
+
+<div class="chapter" id="lessons-netflix">
+<div class="chap-hdr"><h2>Lessons for Marketers</h2><button class="share-btn" onclick="copyLink('lessons-netflix')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Principle</th><th>Netflix Application</th><th>Marketing Application</th></tr></thead>
+  <tbody>
+    <tr><td>Personalisation is a retention tool, not just an engagement tool</td><td>Recommendation system explicitly optimised for subscription retention, not watch time</td><td>Email personalisation and content recommendations should be measured by retention and CLV, not just click rates</td></tr>
+    <tr><td>Context matters as much as content history</td><td>Device type, time of day, and session context inform recommendations</td><td>Email send time, device context, and browsing context should inform personalisation decisions</td></tr>
+    <tr><td>Test for business outcomes, not engagement proxies</td><td>Tests measure retention and subscription outcomes, not just session engagement</td><td>Marketing A/B tests should measure revenue impact and CLV, not just click rates</td></tr>
+    <tr><td>Proactive retention outperforms reactive win-back</td><td>Identifies at-risk subscribers before they cancel, not after</td><td>Customer health scoring and early retention intervention is more effective than post-cancellation win-back</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="sources">
+<h2>Sources &#38; Authentication</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>Every fact, figure, and claim in this case study is drawn from official company publications, earnings reports, documented press coverage of verified events, or directly cited primary sources. No marketing blogs or aggregator sites are used. Where figures are from official earnings reports or company statements, this is noted. We learn from primary sources and explain them in our own words.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://netflixtechblog.com/" target="_blank" rel="noopener">Netflix Technology Blog</a></strong><p>Netflix's official engineering and data science blog — primary source for recommendation system, A/B testing, and personalisation documentation.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://ir.netflix.net/" target="_blank" rel="noopener">Netflix Investor Relations</a></strong><p>Official Netflix investor communications including earnings reports with subscriber and revenue data.</p></div><div class="source-card"><span class="src-tag" style="background:#f0fdf4;color:#166534">Press</span><strong><a href="https://netflixtechblog.com/artwork-personalization-c589f074ad76" target="_blank" rel="noopener">Netflix Tech Blog — Artwork Personalisation</a></strong><p>Netflix's December 2017 post documenting the personalised artwork system — specific mechanism and approach.</p></div><div class="source-card"><span class="src-tag" style="background:#f0fdf4;color:#166534">Press</span><strong><a href="https://netflixtechblog.com/its-all-a-bout-testing-the-netflix-experimentation-platform-4e1ca458c15b" target="_blank" rel="noopener">Netflix Tech Blog — Experimentation Platform</a></strong><p>Netflix's documented A/B testing methodology and platform architecture.</p></div></div>
+</div>
+
+<div class="related-guides">
+  <h3 class="rg-head">Related Guides</h3>
+  <div class="rg-grid"><a href="/codex/business-strategy/growth-hacking-frameworks/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Growth Hacking Frameworks</span><span class="rc-arr">&#8594;</span></a><a href="/codex/analytics-cro/ab-testing-methodology/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">A/B Testing Methodology</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/brand-positioning-strategy/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Brand Positioning Strategy</span><span class="rc-arr">&#8594;</span></a></div>
+</div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 4,900 &nbsp;&#183;&nbsp; <strong>Session:</strong> 14 of 16</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#netflix-context" class="sb-link on">Context</a><a href="#recommendation-engine" class="sb-link">Recommendation Engine</a><a href="#artwork-personalisation" class="sb-link">Artwork Personalisation</a><a href="#email-strategy" class="sb-link">Email Strategy</a><a href="#a-b-testing-netflix" class="sb-link">A/B Testing</a><a href="#retention-personalisation" class="sb-link">Retention</a><a href="#data-infrastructure" class="sb-link">Data Infrastructure</a><a href="#content-investment" class="sb-link">Content Investment</a><a href="#results-netflix" class="sb-link">Results</a><a href="#lessons-netflix" class="sb-link">Lessons</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box"><div class="sb-head">Case Studies</div><div class="sb-body"><a href="/codex/case-studies/airbnb-seo-content-strategy/" class="sb-link">1. Airbnb SEO & Content</a><a href="/codex/case-studies/netflix-email-personalisation/" class="sb-link sb-cur">2. Netflix Personalisation</a><a href="/codex/case-studies/spotify-data-marketing/" class="sb-link">3. Spotify Data Marketing</a><a href="/codex/case-studies/slack-b2b-product-led-growth/" class="sb-link">4. Slack Product-Led Growth</a><a href="/codex/case-studies/booking-com-ab-testing/" class="sb-link">5. Booking.com A/B Testing</a><a href="/codex/case-studies/amazon-product-page-optimisation/" class="sb-link">6. Amazon Product Pages</a><a href="/codex/case-studies/hubspot-inbound-marketing-story/" class="sb-link">7. HubSpot Inbound</a><a href="/codex/case-studies/mailchimp-small-business-story/" class="sb-link">8. Mailchimp's Journey</a><a href="/codex/case-studies/old-spice-social-media-campaign/" class="sb-link">9. Old Spice Campaign</a><a href="/codex/case-studies/dove-real-beauty-campaign/" class="sb-link">10. Dove Real Beauty</a><a href="/codex/case-studies/red-bull-content-marketing/" class="sb-link">11. Red Bull Content</a><a href="/codex/case-studies/blendtec-will-it-blend/" class="sb-link">12. Blendtec YouTube</a><a href="/codex/case-studies/zendesk-brand-search-campaign/" class="sb-link">13. Zendesk Brand Search</a><a href="/codex/case-studies/google-adwords-quality-score-case/" class="sb-link">14. Quality Score Impact</a><a href="/codex/case-studies/john-lewis-christmas-campaigns/" class="sb-link">15. John Lewis Christmas</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>600 guides. All authentic sources.</h2><p>Primary sources only &#8212; no marketing blogs.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/case-studies/" class="btn btn-outline-w btn-lg">More Case Studies</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides. Primary sources only.</p></div>
+  <div class="ft-col"><h5>Case Studies</h5><ul><li><a href='/case-studies/airbnb-seo-content-strategy/'>Airbnb SEO & Content</a></li><li><a href='/case-studies/netflix-email-personalisation/'>Netflix Personalisation</a></li><li><a href='/case-studies/spotify-data-marketing/'>Spotify Data Marketing</a></li><li><a href='/case-studies/slack-b2b-product-led-growth/'>Slack Product-Led Growth</a></li><li><a href='/case-studies/booking-com-ab-testing/'>Booking.com A/B Testing</a></li></ul></div>
+  <div class="ft-col"><h5>Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/history/">History</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Primary sources only &#183; No affiliate links</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+// Auto-run search if ?q= param present on homepage
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Microsoft AutoGen | Clarigital</title>
+<meta name="description" content="Microsoft AutoGen explained — conversational multi-agent framework, how it works, 13 prompts, and the important maintenance mode caveat. Migrating to...">
+<link rel="canonical" href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">
+<meta property="og:title" content="Microsoft AutoGen — Complete Guide to Conversational AI Agents">
+<meta property="og:description" content="AutoGen pioneered multi-agent AI conversations. Still widely used and documented — but now in maintenance mode, merging into Microsoft's Agent Framework. Full guide with 13 prompts.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/autogen/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;--amber:#F59E0B;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-amber{background:rgba(245,158,11,.12);color:var(--amber);border-color:rgba(245,158,11,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative}
+.prompt-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.88rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.callout-amber{border-left-color:var(--amber)}
+.warning-box{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:10px;padding:16px 18px;margin:0 0 28px}
+.warning-box .wb-title{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--amber);margin-bottom:7px}
+.warning-box p{font-size:.9rem;margin:0;color:var(--muted)}
+.warning-box a{color:var(--amber)}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Microsoft AutoGen \u2014 Complete Guide to Conversational AI Agents", "description": "Microsoft AutoGen explained \u2014 conversational multi-agent framework, how it works, 13 prompts, and the important maintenance mode caveat. Migrating to...", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/autogen/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Microsoft AutoGen \u2014 Complete Guide to Conversational AI Agents", "description": "Microsoft AutoGen explained \u2014 conversational multi-agent framework, how it works, 13 prompts, and the important maintenance mode caveat. Migrating to...", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/autogen/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft AutoGen — Complete Guide to Conversational AI Agents">
+<meta name="twitter:description" content="Microsoft AutoGen explained — conversational multi-agent framework, how it works, 13 prompts, and the important maintenance mode caveat. Migrating to...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ai-atlas/">AI Atlas</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/">Specialist Tools</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/agentic-frameworks/">Agentic Frameworks</a>
+      <span class="sep">›</span>
+      <span>AutoGen</span>
+    </nav>
+    <div class="label-tag">Agentic Frameworks</div>
+    <h1>Microsoft AutoGen</h1>
+    <p class="hero-lead">AutoGen is Microsoft Research's framework for building multi-agent AI systems through conversation. Agents talk to each other, pass code back and forth, execute it, and iterate until the goal is achieved. It pioneered many patterns now standard across the field — and it remains widely used, well-documented, and relevant for specific use cases today.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-amber">Maintenance mode</span>
+      <span class="meta-tag mt-indigo">Agentic Framework</span>
+      <span class="meta-tag">Free · MIT (mostly)</span>
+      <span class="meta-tag">Python</span>
+      <span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="art-layout">
+    <div>
+
+      <div class="warning-box">
+        <div class="wb-title">⚠ Important — AutoGen is in maintenance mode</div>
+        <p>As of 2025, AutoGen is being merged into <strong style="color:var(--fg)">Microsoft's Agent Framework (AG2)</strong>. No new features are being added to AutoGen. Bug fixes only. If you are starting a new project, consider AG2 or another actively developed framework. If you have existing AutoGen code, it continues to work and the migration path to AG2 is documented at <a href="https://microsoft.github.io/autogen" target="_blank" rel="noopener">microsoft.github.io/autogen</a>. This guide covers AutoGen as it stands — it remains useful for understanding the conversational multi-agent pattern it pioneered.</p>
+      </div>
+
+      
+
+      <!-- SIMPLE LANE -->
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+        <h2 id="s-green-0">The core idea: agents that talk to each other</h2>
+        <p>Every other major framework — LangChain, CrewAI, LlamaIndex — structures agents around tool calls and task assignments. AutoGen takes a different approach: agents communicate by sending messages to each other in a conversation, just as humans on a team would.</p>
+        <p>An AutoGen system is a group chat. Each agent is a participant. The conversation has a topic (the goal). Agents take turns speaking — proposing solutions, writing code, reviewing each other's work, requesting clarification, running tests. The conversation continues until the task is complete or someone signals it is done.</p>
+        <p>This conversational model turns out to be surprisingly powerful for tasks that involve iterative refinement: a coder agent writes code, an executor agent runs it, the coder reads the output and fixes errors, the executor runs it again. The back-and-forth between agents mirrors exactly how human developers actually work.</p>
+
+        <h2 id="s-green-1">The two core agent types</h2>
+        <p><strong>AssistantAgent</strong> — powered by an LLM. Receives messages, reasons about them, writes responses. Can write code, propose solutions, answer questions, or direct the conversation. Does not execute code itself.</p>
+        <p><strong>UserProxyAgent</strong> — acts on behalf of a human (or autonomously). Executes code that the AssistantAgent writes. Can ask the human to intervene at any point. Can be set to fully autonomous (no human intervention) or to pause before executing each piece of code.</p>
+        <p>The most common pattern: one AssistantAgent that writes code, one UserProxyAgent that executes it and returns the output. The two agents exchange messages until the task is complete.</p>
+
+        <h2 id="s-green-2">What AutoGen is best for</h2>
+        <p>AutoGen's conversational pattern shines in three scenarios:</p>
+        <ul>
+          <li><strong>Code generation and debugging</strong> — write, run, observe output, fix, repeat. The natural back-and-forth of software development maps directly onto the agent conversation model.</li>
+          <li><strong>Research tasks requiring debate</strong> — multiple agents with different perspectives argue, challenge, and refine ideas. The diversity of views produces better outputs than a single agent.</li>
+          <li><strong>Learning and teaching applications</strong> — a student agent asks questions, a teacher agent answers, the student summarises what it learned, the teacher corrects gaps. The dialogue format is natural for education.</li>
+        </ul>
+
+        <div class="callout callout-amber">
+          <p><strong>New project decision:</strong> AutoGen is in maintenance mode. For new projects, evaluate <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" style="color:var(--amber)">CrewAI</a> (easier, actively developed) or <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" style="color:var(--amber)">LangGraph</a> (more powerful, actively developed) first. AutoGen's value today is primarily for existing codebases and for understanding the conversational multi-agent pattern it established.</p>
+        </div>
+
+      </div>
+
+      <!-- WORKING LANE -->
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+        <h2 id="s-indigo-0">How a conversation-based workflow operates</h2>
+        <p>A basic AutoGen workflow has three components: two or more agents, a task description, and a trigger that starts the conversation. The UserProxyAgent initiates by sending the task to the AssistantAgent. The AssistantAgent responds — typically with a plan and some code. The UserProxyAgent executes the code and returns the result. The AssistantAgent reads the result, identifies any issues, and responds with corrected code or a follow-up step. This continues until one agent signals completion using a termination keyword (commonly "TERMINATE").</p>
+        <p>The code execution in UserProxyAgent runs in a local Docker container by default, providing sandboxing. The agent can be configured to run code directly in the local environment (faster but less safe) or not at all (for workflows that do not involve code).</p>
+
+        <h2 id="s-indigo-1">Prompts for building and working with AutoGen</h2>
+
+        <h3>Understanding and getting started</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Explain AutoGen's conversational model</div>
+          <div class="prompt-text">I understand how LangChain agents work (tool calls, ReAct loop). Explain how AutoGen's conversational model is different. What are the concrete advantages and disadvantages of having agents communicate via messages rather than via tool calls? When would I choose AutoGen over LangChain for a real task?</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Should I use AutoGen for my project?</div>
+          <div class="prompt-text">I want to build [describe your project]. AutoGen is in maintenance mode and being merged into AG2. Given this, should I use AutoGen, migrate to AG2, or use a different framework like CrewAI or LangGraph? Give me a specific recommendation with reasoning, considering both the technical fit and the long-term maintenance risk.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Building with AutoGen</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Basic two-agent coding workflow</div>
+          <div class="prompt-text">Write a basic AutoGen setup in Python with an AssistantAgent and a UserProxyAgent. The task: write a Python function that takes a list of URLs, fetches each one, and returns a dictionary of {url: word_count}. The assistant writes the code, the proxy executes it, and they iterate until a working solution is produced. Use gpt-4o as the model. Configure the UserProxyAgent to not require human input.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Multi-agent group chat</div>
+          <div class="prompt-text">Build an AutoGen GroupChat with three agents: a product manager (defines requirements), a software engineer (writes code), and a code reviewer (reviews the code and requests changes). The goal is to produce a working Python script for [describe task]. Show how to set up the GroupChat and GroupChatManager, how to define each agent's system message, and how to trigger the conversation.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Data analysis workflow</div>
+          <div class="prompt-text">Build an AutoGen workflow for data analysis. The AssistantAgent receives a task: "Analyse this CSV file and produce a summary of key statistics and any notable patterns." The UserProxyAgent has access to a local Python environment with pandas and matplotlib. The workflow should: load the CSV, compute summary stats, identify outliers, produce a chart, and write a plain English summary. Show the full code including how to pass the file path.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Debate and critique workflow</div>
+          <div class="prompt-text">Build an AutoGen system where two AssistantAgents debate a position. One agent argues FOR [a position], one argues AGAINST. A third agent (the moderator) summarises the strongest points from both sides after three rounds of debate and produces a balanced assessment. Show the GroupChat setup with all three agents and the termination condition.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Configure safe code execution</div>
+          <div class="prompt-text">My AutoGen UserProxyAgent is executing code directly in my local environment, which is risky. Show me how to configure it to execute in a Docker sandbox instead. What Docker image should I use? What are the resource limits I should set? How do I handle the case where Docker is not available on the target machine?</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Migrating and transitioning</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Migrate AutoGen code to AG2</div>
+          <div class="prompt-text">I have existing AutoGen code that I want to migrate to AG2 (Microsoft's Agent Framework, the successor to AutoGen). Here is my current code: [paste]. Identify what needs to change, what APIs have moved, and what the AG2 equivalents are. Show the migrated code alongside the original so I can see what changed.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Rewrite AutoGen workflow in CrewAI</div>
+          <div class="prompt-text">I have this AutoGen multi-agent workflow: [paste code]. Rewrite it using CrewAI. Map each AutoGen agent to a CrewAI Agent with appropriate role, goal, and backstory. Map the conversation flow to CrewAI tasks. Note any functionality that works differently or that CrewAI handles in a fundamentally different way.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Debugging</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Debug an AutoGen conversation that won't terminate</div>
+          <div class="prompt-text">My AutoGen agents keep talking to each other and never terminate. The conversation has exceeded 30 messages. Here is my setup: [paste code]. What termination conditions should I add? Show me how to set a maximum message count, how to configure the TERMINATE keyword correctly, and how to add a fallback timeout condition.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Handle code execution errors gracefully</div>
+          <div class="prompt-text">My AutoGen UserProxyAgent sometimes gets stuck when the AssistantAgent writes code that produces an unhandled exception. The agents loop trying to fix it for too many turns. Show me how to configure the UserProxyAgent to limit retries, pass the full error trace back to the assistant, and gracefully abort with a useful error message after 3 failed attempts.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Add human-in-the-loop checkpoints</div>
+          <div class="prompt-text">I want my AutoGen workflow to pause and ask a human for approval before executing certain types of code — specifically anything that writes to disk or makes external API calls. Show me how to configure the UserProxyAgent's human_input_mode and is_termination_msg to implement this selective pause pattern.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+      </div>
+
+      <!-- DEEP LANE -->
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+        <h2 id="s-red-0">AutoGen's architecture — the ConversableAgent model</h2>
+        <p>AutoGen's core abstraction is the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">ConversableAgent</code> base class. Every agent in AutoGen is a subclass of ConversableAgent, which provides: a send method (to send messages to another agent), a receive method (to process incoming messages and generate a reply), a message history (stored as a list of role/content pairs), and configurable reply functions that determine how the agent responds to any given message.</p>
+
+        <p>The reply function chain is the key architectural mechanism. When an agent receives a message, it passes it through a registered list of reply functions in order, stopping at the first one that produces a non-None response. The default chain includes: a termination check (does the message contain the TERMINATE keyword?), a tool execution check (does the message contain a tool call result?), and an LLM response generation. Developers can insert custom reply functions anywhere in this chain — enabling fine-grained control over agent behaviour without subclassing.</p>
+
+        <h2 id="s-red-1">GroupChat — the multi-agent coordination mechanism</h2>
+        <p>For systems with more than two agents, AutoGen provides the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">GroupChat</code> class and its manager, <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">GroupChatManager</code>. The GroupChatManager is itself an LLM-backed agent whose job is to select which agent speaks next. It receives the conversation history and generates the name of the next speaker based on the context — effectively implementing dynamic routing without explicit conditional edges.</p>
+
+        <p>Speaker selection can also be configured as: round-robin (each agent speaks in turn), random, or custom (a developer-provided function determines the next speaker). The LLM-based selection is the most flexible but most expensive option; round-robin is the most predictable for structured workflows.</p>
+
+        <h2 id="s-red-2">Code execution sandboxing</h2>
+        <p>AutoGen's UserProxyAgent can execute code in three modes, configured via the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">code_execution_config</code> parameter:</p>
+        <ul>
+          <li><strong>Local execution</strong> — code runs directly in the Python process. Fast, no setup, but no isolation. Appropriate only for trusted code in development environments.</li>
+          <li><strong>Docker execution</strong> — code runs in a Docker container with configurable resource limits. Provides strong isolation. Requires Docker. The recommended mode for any production or semi-production use.</li>
+          <li><strong>No execution</strong> — code blocks are returned as text, not executed. Useful for code review or documentation workflows where execution is not the goal.</li>
+        </ul>
+
+        <h2 id="s-red-3">AutoGen's contribution to the field</h2>
+        <p>AutoGen's influence extends well beyond its current usage. Three patterns it established are now standard across agentic AI:</p>
+        <ul>
+          <li><strong>Conversational coordination</strong> — using natural language messages as the coordination mechanism between agents, rather than structured API calls. Now present in every major framework.</li>
+          <li><strong>Code-writing and code-executing agent pair</strong> — separating the agent that writes code from the agent that executes it, so that code review and approval can be inserted between the two. Standard safety pattern in production agent systems.</li>
+          <li><strong>Human-in-the-loop as a first-class citizen</strong> — AutoGen made it easy to pause agent execution at any point and request human input. Most other frameworks have since added similar capabilities.</li>
+        </ul>
+
+        <h2 id="s-red-4">The transition to AG2 (Microsoft Agent Framework)</h2>
+        <p>Microsoft announced the consolidation of AutoGen into its Agent Framework (referred to as AG2 in community discussions) in 2025. The key changes in AG2: a unified agent base class compatible with MCP, improved async support, native integration with Azure AI services, and a cleaner separation between the agent runtime and the agent logic. The migration guide and AG2 documentation are maintained at <a href="https://microsoft.github.io/autogen" target="_blank" rel="noopener" style="color:var(--indigo)">microsoft.github.io/autogen</a>.</p>
+        <p>For teams with significant investment in AutoGen, the migration path is well-documented and the two APIs are deliberately similar. For teams starting fresh, AG2 or an alternative framework is the recommended starting point.</p>
+
+        <h2 id="s-red-5">Official documentation</h2>
+        <ul>
+          <li>AutoGen / AG2 docs: <a href="https://microsoft.github.io/autogen" target="_blank" rel="noopener" style="color:var(--indigo)">microsoft.github.io/autogen</a></li>
+          <li>GitHub: <a href="https://github.com/microsoft/autogen" target="_blank" rel="noopener" style="color:var(--indigo)">github.com/microsoft/autogen</a></li>
+          <li>Research paper: Wu et al. (2023). AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation. arXiv:2308.08155</li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Source note:</strong> All technical specifications are drawn from the official AutoGen documentation and the original AutoGen research paper (arXiv:2308.08155). Maintenance mode status is documented at the official GitHub repository. Verified April 2026.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">The core idea: agents that talk to each other</a><a href="#s-green-1">The two core agent types</a><a href="#s-green-2">What AutoGen is best for</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">How a conversation-based workflow operates</a><a href="#s-indigo-1">Prompts for building and working with AutoGen</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">AutoGen&#x27;s architecture — the ConversableAgent model</a><a href="#s-red-1">GroupChat — the multi-agent coordination mechanism</a><a href="#s-red-2">Code execution sandboxing</a><a href="#s-red-3">AutoGen&#x27;s contribution to the field</a><a href="#s-red-4">The transition to AG2 (Microsoft Agent Framework)</a><a href="#s-red-5">Official documentation</a></div></div>
+      <div class="sidebar-card" style="border-color:rgba(245,158,11,.25)">
+        <h4 style="color:var(--amber)">Status: Maintenance only</h4>
+        <p class="sidebar-text">AutoGen is being merged into <strong style="color:var(--fg)">AG2 (Microsoft Agent Framework)</strong>. No new features. Bug fixes only.</p>
+        <a href="https://microsoft.github.io/autogen" target="_blank" rel="noopener" class="sidebar-link" style="color:var(--amber);margin-top:8px">Migration docs ↗</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Pricing</h4>
+        <p class="sidebar-text">AutoGen — Free, MIT licence</p>
+        <p class="sidebar-text" style="margin-top:6px">You pay for LLM API usage only</p>
+      </div>
+      <div class="sidebar-card">
+        <h4>Other frameworks</h4>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="sidebar-link">LangChain / LangGraph</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" class="sidebar-link">CrewAI</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="sidebar-link">LlamaIndex</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/" class="sidebar-link">Compare all four →</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Concept guides</h4>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link">What is Agentic AI</a>
+        <a href="/ai-atlas/agentic-ai/how-agents-work/" class="sidebar-link">How Agents Work</a>
+        <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="sidebar-link">Multi-Agent Systems</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Official docs</h4>
+        <a href="https://microsoft.github.io/autogen" target="_blank" rel="noopener" class="sidebar-link">AutoGen / AG2 ↗</a>
+        <a href="https://github.com/microsoft/autogen" target="_blank" rel="noopener" class="sidebar-link">GitHub ↗</a>
+        <a href="https://arxiv.org/abs/2308.08155" target="_blank" rel="noopener" class="sidebar-link">Research paper ↗</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>Frameworks</h5><ul>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},2000);
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

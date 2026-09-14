@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>GA4 Setup & Configuration: Install, Configure & | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="GA4 Setup & Configuration: Install, Configure & | Digital Codex">
+<meta property="og:description" content="Complete GA4 setup — creating a GA4 property, installing the tag via gtag.js or GTM, configuring data streams, implementing Consent Mode v2, data...">
+<meta property="og:url" content="https://www.clarigital.com/codex/analytics-cro/ga4-setup-configuration/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="Complete GA4 setup — creating a GA4 property, installing the tag via gtag.js or GTM, configuring data streams, implementing Consent Mode v2, data...">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/codex/analytics-cro/ga4-setup-configuration/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"GA4 Setup & Configuration: Install, Configure & Verify","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-06","articleSection":"Analytics & CRO","wordCount":"5,000"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.nav-search-form{display:flex;align-items:center;gap:0;margin-left:.5rem}
+.nav-search-input{border:1.5px solid var(--g200);border-radius:6px 0 0 6px;padding:5px 10px;font-size:.8rem;width:160px;outline:none;font-family:inherit}
+.nav-search-input:focus{border-color:var(--navy)}
+.nav-search-btn{background:var(--navy);color:#fff;border:none;border-radius:0 6px 6px 0;padding:5px 10px;cursor:pointer;font-size:.8rem;font-family:inherit}
+@media(max-width:900px){.nav-search-form{display:none}}
+</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GA4 Setup & Configuration: Install, Configure & | Digital Codex">
+<meta name="twitter:description" content="Complete GA4 setup — creating a GA4 property, installing the tag via gtag.js or GTM, configuring data streams, implementing Consent Mode v2, data...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Analytics Cro", "item": "https://www.clarigital.com/codex/analytics-cro/"}, {"@type": "ListItem", "position": 4, "name": "GA4 Setup & Configuration: Install, Configure &", "item": "https://www.clarigital.com/codex/analytics-cro/ga4-setup-configuration/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/content-marketing/">Content</a></li><li><a href="/codex/social-media/">Social</a></li><li><a href="/codex/analytics-cro/" class="cur">Analytics</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/content-marketing/" class="di">Content</a><a href="/codex/social-media/" class="di">Social</a><a href="/codex/analytics-cro/" class="di cur">Analytics</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#ga4-vs-ua">GA4 vs Universal Analytics</a><a class="cnl" href="#create-property">Creating the Property</a><a class="cnl" href="#data-streams">Data Streams</a><a class="cnl" href="#tag-installation">Tag Installation</a><a class="cnl" href="#consent-mode">Consent Mode v2</a><a class="cnl" href="#data-retention">Data Retention</a><a class="cnl" href="#account-structure">Account Structure</a><a class="cnl" href="#gsc-integration">Search Console Link</a><a class="cnl" href="#ads-linking">Google Ads Linking</a><a class="cnl" href="#verification">Verification & Debugging</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/analytics-cro/">Analytics &amp; CRO</a><span class="sep">/</span><span class="cur">GA4 Setup & Configuration</span></nav>
+  <span class="label-tag">Analytics &amp; CRO &#183; Session 12, Guide 1</span>
+  <h1>GA4 Setup &#38; Configuration &#183; Install, Configure &#38; Verify</h1>
+  <p class="hero-lead">Google Analytics 4 is Google's current analytics platform, replacing Universal Analytics (UA) which was permanently sunset on 1 July 2024. GA4 is a fundamental redesign — moving from session-based to event-based measurement, adding built-in privacy controls through Consent Mode, and enabling cross-device reporting. Configuring GA4 correctly from day one prevents months of data quality problems: missing conversions, broken attribution, and privacy compliance gaps. This guide covers the complete setup process drawing entirely from Google's official documentation.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Analytics &amp; CRO</span><span class="meta-tag mt-gray">5,000 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+  <li>How GA4 differs from Universal Analytics — event model, cross-platform, privacy architecture</li>
+  <li>How to create a GA4 property and configure the correct account structure</li>
+  <li>How data streams work — web, iOS, Android — and when to use multiple streams</li>
+  <li>Three tag installation methods: gtag.js, Google Tag Manager, and CMS plugins</li>
+  <li>What Consent Mode v2 is and how to implement it for GDPR/UK compliance</li>
+  <li>How to configure data retention settings and why 14 months is the right choice</li>
+  <li>How to link GA4 to Google Search Console and Google Ads</li>
+  <li>How to verify data is collecting correctly using DebugView and Realtime</li>
+</ul></div></div>
+
+<div class="chapter" id="ga4-vs-ua">
+<div class="chap-hdr"><h2>GA4 vs Universal Analytics</h2><button class="share-btn" onclick="copyLink('ga4-vs-ua')">Share</button></div>
+<p>Universal Analytics measured user behaviour as sessions containing pageviews, goals, and events — sessions were the primary unit. GA4 measures everything as events. A pageview is an event. A scroll is an event. A purchase is an event. Every interaction is an event with parameters attached, and all reports are built from this unified event stream. This model is more flexible and naturally cross-platform — the same event schema works for websites, iOS apps, and Android apps in a single property.</p>
+<p>GA4 also introduces machine learning throughout: predictive audiences, modelled conversions for non-consenting users, and anomaly detection are built in. These features address the data gaps created by privacy regulations and browser cookie restrictions — GA4 estimates behaviour it cannot directly measure using aggregate patterns from users who have consented.</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">UA sunset</p><div class="stat-n">1 Jul 2024</div><p class="stat-l">UA permanently stopped processing data (Google official announcement)</p></div>
+  <div class="stat-card"><p class="stat-h">Primary unit</p><div class="stat-n">Events</div><p class="stat-l">Everything in GA4 is an event — pageviews, scrolls, purchases, custom interactions</p></div>
+  <div class="stat-card"><p class="stat-h">Platforms</p><div class="stat-n">Web + App</div><p class="stat-l">One GA4 property can measure website, iOS, and Android together</p></div>
+</div>
+</div>
+
+<div class="chapter" id="create-property">
+<div class="chap-hdr"><h2>Creating the GA4 Property</h2><button class="share-btn" onclick="copyLink('create-property')">Share</button></div>
+<p>Navigate to analytics.google.com → Admin (gear icon, lower left) → Create Property. The setup wizard prompts for:</p>
+<ul>
+  <li><strong>Property name.</strong> Use a descriptive name: "yoursite.com — Production." The Production/Development distinction matters — always create a separate property for staging and development environments to prevent test data from contaminating production analytics.</li>
+  <li><strong>Reporting time zone.</strong> Set to your primary business time zone. This determines how days are counted in reports and how day-level data aligns with business calendars.</li>
+  <li><strong>Currency.</strong> Set to the currency in which your revenue is denominated. This affects the currency formatting in revenue reports.</li>
+  <li><strong>Industry and size.</strong> Used for Google's benchmarking features. Does not affect data collection.</li>
+  <li><strong>Business objectives.</strong> GA4 uses these to pre-configure relevant conversion events. Choose the objectives that match your primary goals — you can modify conversions later.</li>
+</ul>
+<div class="callout orange"><strong>Always create a separate Development property</strong><p>Test traffic, bot traffic, and development events contaminate production analytics if mixed. Google's own setup documentation recommends separate properties for production and development environments. Set up both before implementing the tag — it costs nothing and prevents significant data quality problems.</p></div>
+</div>
+
+<div class="chapter" id="data-streams">
+<div class="chap-hdr"><h2>Data Streams</h2><button class="share-btn" onclick="copyLink('data-streams')">Share</button></div>
+<p>A data stream is a source of data flowing into the property. Web streams collect browser-side data from websites; app streams collect data from iOS or Android applications. One property supports multiple streams — a website plus both mobile apps in a single property provides unified cross-platform reporting.</p>
+<h3>Web stream configuration</h3>
+<p>After the property is created, GA4 guides you to set up a web data stream. Provide the website URL and a stream name, and GA4 generates a Measurement ID (G-XXXXXXXXXX) — this ID is used in the tracking tag. Within the web stream settings, configure:</p>
+<ul>
+  <li><strong>Enhanced Measurement.</strong> GA4 automatically collects scrolls (90% depth), outbound clicks, site search queries, video engagement, and file downloads without additional code. Review each event and disable those irrelevant to your site — unnecessary events add noise to reports.</li>
+  <li><strong>Cross-domain measurement.</strong> If the user journey spans multiple domains (main site + checkout domain, or multiple regional subdomains on different root domains), add all domains to the cross-domain list so GA4 treats them as one continuous session. Without this, users crossing domains appear as new sessions — breaking funnel and attribution data.</li>
+  <li><strong>Unwanted referral exclusion.</strong> Payment processors (PayPal, Stripe hosted checkouts) and your own domains should be in the referral exclusion list to prevent them from appearing as traffic sources and breaking attribution.</li>
+</ul>
+</div>
+
+<div class="chapter" id="tag-installation">
+<div class="chap-hdr"><h2>Tag Installation</h2><button class="share-btn" onclick="copyLink('tag-installation')">Share</button></div>
+<p>The Google Tag (gtag.js) sends event data from the user's browser to GA4. Three installation paths:</p>
+<h3>Direct gtag.js (simplest)</h3>
+<p>Paste the snippet provided in the data stream settings into the <code>&lt;head&gt;</code> of every page. The snippet loads the gtag.js library and configures it with your Measurement ID. This requires direct template access and must be present on every page — typically added to the site's global header template.</p>
+<h3>Google Tag Manager (recommended)</h3>
+<p>GTM installs a single container snippet on the site; all tags (GA4, Ads, Clarity, etc.) are then deployed through the GTM interface without further code changes. This is Google's recommended approach for most implementations: it separates tag management from development deployments, enables preview/debug before publishing, maintains version history, and allows non-developers to manage tags. Requires a one-time GTM container snippet installation by a developer, then all subsequent tag changes are code-free. See the Google Tag Manager guide in this series.</p>
+<h3>CMS integrations</h3>
+<p>WordPress: Google's official Site Kit plugin connects GA4, Search Console, and Ads from within WordPress without code. Shopify: use the GA4 integration in Shopify's native Preferences or a dedicated GA4 app from the Shopify App Store. Squarespace, Wix, and other hosted platforms all provide GA4 integration fields in their analytics settings.</p>
+</div>
+
+<div class="chapter" id="consent-mode">
+<div class="chap-hdr"><h2>Consent Mode v2</h2><button class="share-btn" onclick="copyLink('consent-mode')">Share</button></div>
+<p>Google Consent Mode v2 is required from March 2024 for sites using GA4 and Google Ads in the European Economic Area (EEA), UK, and Switzerland. It allows GA4 to adjust data collection based on user consent choices, while using machine learning to model the behaviour of non-consenting users.</p>
+<h3>The four consent signals in Consent Mode v2</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Signal</th><th>Controls</th><th>Default</th></tr></thead>
+  <tbody>
+    <tr><td><code>analytics_storage</code></td><td>Analytics cookies and measurement</td><td>Should default to "denied" before consent is obtained</td></tr>
+    <tr><td><code>ad_storage</code></td><td>Advertising cookies used for ad targeting</td><td>Should default to "denied"</td></tr>
+    <tr><td><code>ad_user_data</code> (v2 new)</td><td>Whether user data can be sent to Google for advertising purposes</td><td>Should default to "denied"</td></tr>
+    <tr><td><code>ad_personalization</code> (v2 new)</td><td>Whether data can be used for personalised advertising</td><td>Should default to "denied"</td></tr>
+  </tbody>
+</table></div>
+<h3>Modelled conversions</h3>
+<p>When a user declines consent, GA4 sends cookieless pings (no personal data, no cookies) that indicate an interaction occurred without identifying the user. Google's modelling uses these pings alongside patterns from consenting users to estimate the conversions that occurred among non-consenting users. GA4 reports include both measured conversions (from consenting users) and modelled conversions, with clear labelling. This maintains measurement quality while respecting consent — an approach documented in Google's official Consent Mode technical documentation.</p>
+<h3>Implementing Consent Mode</h3>
+<p>Consent Mode requires your Consent Management Platform (CMP) to fire the consent signals when users make choices. Google maintains an official list of certified CMPs that support Consent Mode v2 (accessible from the Consent Mode documentation). Popular certified options include Cookiebot by Usercentrics, OneTrust, and Sirdata. The CMP fires the <code>gtag('consent', 'update', {...})</code> command based on the user's consent choice, which GA4 reads to adjust its collection behaviour.</p>
+</div>
+
+<div class="chapter" id="data-retention">
+<div class="chap-hdr"><h2>Data Retention Settings</h2><button class="share-btn" onclick="copyLink('data-retention')">Share</button></div>
+<p>GA4 stores event-level data for a configurable period — after which it is permanently deleted. The default is 2 months. Change this to 14 months immediately after setup: Admin → Data Settings → Data Retention → Event data retention → 14 months → Save.</p>
+<p>Why 14 months: Exploration reports (custom analysis in GA4) draw from raw event data. With 2-month retention, any Exploration query looking back more than 2 months returns incomplete data — meaning year-over-year comparisons in explorations are impossible. Standard reports (Acquisition, Engagement, etc.) use aggregated data retained indefinitely, so this setting only affects Explorations and the Segment Overlap report.</p>
+<p>14 months is the maximum available — Google limits retention to this period as a privacy measure. GA4's standard report data is unaffected and retained indefinitely.</p>
+</div>
+
+<div class="chapter" id="account-structure">
+<div class="chap-hdr"><h2>Account and Property Structure</h2><button class="share-btn" onclick="copyLink('account-structure')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Scenario</th><th>Recommended Structure</th><th>Reason</th></tr></thead>
+  <tbody>
+    <tr><td>Single website</td><td>1 account → Production property + Development property</td><td>Keeps test data separate from production data</td></tr>
+    <tr><td>Website + mobile app</td><td>1 account → 1 property with web stream + iOS stream + Android stream</td><td>Unified cross-platform reporting in one property</td></tr>
+    <tr><td>Multiple brands</td><td>1 account → separate property per brand</td><td>Keeps brand data separate; enables brand-level reporting and access control</td></tr>
+    <tr><td>Agency managing clients</td><td>Separate account per client (client-owned); agency access via user permissions</td><td>Client owns their data; clean separation of client accounts</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="gsc-integration">
+<div class="chap-hdr"><h2>Google Search Console Integration</h2><button class="share-btn" onclick="copyLink('gsc-integration')">Share</button></div>
+<p>Linking GA4 to Google Search Console brings organic search performance data (impressions, clicks, average position, CTR) into GA4 — enabling analysis of how search visibility connects to on-site behaviour. Link via: Admin → Product Links → Search Console Links → Link.</p>
+<p>After linking, organic search data appears in GA4 under Reports → Acquisition → Search Console. This shows which landing pages are receiving the most search traffic, which queries are driving sessions, and — with conversion data configured — which organic queries are driving conversions. This integration is the closest you can get to connecting GSC's search funnel data with GA4's on-site conversion data without a separate reporting tool.</p>
+</div>
+
+<div class="chapter" id="ads-linking">
+<div class="chap-hdr"><h2>Google Ads Linking</h2><button class="share-btn" onclick="copyLink('ads-linking')">Share</button></div>
+<p>Linking GA4 to Google Ads enables: importing GA4 conversions into Google Ads for Smart Bidding optimisation; importing GA4 audiences into Google Ads for remarketing; and viewing full campaign performance (cost, clicks, sessions, conversions) in GA4. Link via: Admin → Product Links → Google Ads Links → Link.</p>
+<p>After linking, confirm that auto-tagging is enabled in Google Ads (Settings → Account settings → Auto-tagging → on). Auto-tagging adds the gclid parameter to all Google Ads URLs, enabling GA4 to attribute sessions and conversions to the correct campaign, ad group, and keyword.</p>
+</div>
+
+<div class="chapter" id="verification">
+<div class="chap-hdr"><h2>Verification and Debugging</h2><button class="share-btn" onclick="copyLink('verification')">Share</button></div>
+<ul>
+  <li><strong>Realtime report (Reports → Realtime).</strong> Visit the site from a separate browser or device. You should appear as an active user in the Realtime report within seconds. No user = tag not firing.</li>
+  <li><strong>DebugView (Admin → DebugView).</strong> Install Google Analytics Debugger (Chrome extension by Google), enable it, browse the site. DebugView shows every event with all parameters in real time — the best tool for confirming events are named correctly and parameters are populated.</li>
+  <li><strong>GA4 Setup Assistant (Admin → Setup Assistant).</strong> A checklist showing the status of key configuration items: data streams, conversions, Google Signals, Search Console link. Use this to confirm no critical setup steps are incomplete.</li>
+  <li><strong>Google Tag Assistant (tagassistant.google.com).</strong> Google's official tag debugging tool — validates that the GA4 tag is firing correctly and shows any configuration errors detected.</li>
+</ul>
+
+<div class="chapter" id="sources">
+<h2>Authentic Sources</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>Every factual claim in this guide is drawn from official Google documentation, regulatory bodies, or platform-published technical specifications. No third-party blogs or marketing tools are used as primary sources. All content is written in our own words — we learn from official sources and explain them; we never copy.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/9304153" target="_blank" rel="noopener">Google Analytics Help — Set Up GA4</a></strong><p>Official step-by-step GA4 property creation and setup documentation.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://developers.google.com/tag-platform/security/guides/consent" target="_blank" rel="noopener">Google Developers — Consent Mode</a></strong><p>Official implementation guide for Google Consent Mode v2.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/7667196" target="_blank" rel="noopener">Google Analytics Help — Data Retention</a></strong><p>Official documentation on GA4 data retention settings.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/9216061" target="_blank" rel="noopener">Google Analytics Help — Link to Search Console</a></strong><p>Official documentation for connecting GA4 to Google Search Console.</p></div></div>
+</div>
+
+<div class="related-guides">
+  <h3 class="rg-head">Related Guides</h3>
+  <div class="rg-grid"><a href="/codex/seo/fundamentals/core-web-vitals/" class="related-card"><span class="rc-tag">SEO</span><span class="rc-title">Core Web Vitals</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/saas-metrics-kpis/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">SaaS Metrics & KPIs</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/marketing-funnel-frameworks/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Marketing Funnel Frameworks</span><span class="rc-arr">&#8594;</span></a></div>
+</div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 5,000 &nbsp;&#183;&nbsp; <strong>Session:</strong> 12 of 16</p></div>
+</div></article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#ga4-vs-ua" class="sb-link on">GA4 vs UA</a><a href="#create-property" class="sb-link">Create Property</a><a href="#data-streams" class="sb-link">Data Streams</a><a href="#tag-installation" class="sb-link">Tag Installation</a><a href="#consent-mode" class="sb-link">Consent Mode</a><a href="#data-retention" class="sb-link">Data Retention</a><a href="#account-structure" class="sb-link">Account Structure</a><a href="#gsc-integration" class="sb-link">Search Console</a><a href="#ads-linking" class="sb-link">Ads Linking</a><a href="#verification" class="sb-link">Verification</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box"><div class="sb-head">Analytics &amp; CRO</div><div class="sb-body"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="sb-link sb-cur">1. GA4 Setup & Configuration</a><a href="/codex/analytics-cro/ga4-events-conversions/" class="sb-link">2. GA4 Events & Conversions</a><a href="/codex/analytics-cro/ga4-reports-exploration/" class="sb-link">3. GA4 Reports & Exploration</a><a href="/codex/analytics-cro/google-tag-manager/" class="sb-link">4. Google Tag Manager</a><a href="/codex/analytics-cro/attribution-modelling/" class="sb-link">5. Attribution Modelling</a><a href="/codex/analytics-cro/cohort-funnel-analysis/" class="sb-link">6. Cohort & Funnel Analysis</a><a href="/codex/analytics-cro/business-metrics-kpis/" class="sb-link">7. Business Metrics & KPIs</a><a href="/codex/analytics-cro/privacy-first-analytics/" class="sb-link">8. Privacy-First Analytics</a><a href="/codex/analytics-cro/cro-framework/" class="sb-link">9. CRO Framework</a><a href="/codex/analytics-cro/ab-testing-methodology/" class="sb-link">10. A/B Testing Methodology</a><a href="/codex/analytics-cro/heatmaps-session-recording/" class="sb-link">11. Heatmaps & Session Recording</a><a href="/codex/analytics-cro/landing-page-optimisation/" class="sb-link">12. Landing Page Optimisation</a><a href="/codex/analytics-cro/form-optimisation/" class="sb-link">13. Form Optimisation</a><a href="/codex/analytics-cro/trust-signals-social-proof/" class="sb-link">14. Trust Signals & Social Proof</a><a href="/codex/analytics-cro/cro-metrics-measurement/" class="sb-link">15. CRO Metrics & Measurement</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>600 guides. All authentic sources.</h2><p>Official documentation only.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A&#8211;Z Glossary</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides. Official sources only.</p></div>
+  <div class="ft-col"><h5>Analytics &amp; CRO</h5><ul><li><a href='/analytics-cro/ga4-setup-configuration/'>GA4 Setup & Configuration</a></li><li><a href='/analytics-cro/ga4-events-conversions/'>GA4 Events & Conversions</a></li><li><a href='/analytics-cro/ga4-reports-exploration/'>GA4 Reports & Exploration</a></li><li><a href='/analytics-cro/google-tag-manager/'>Google Tag Manager</a></li><li><a href='/analytics-cro/attribution-modelling/'>Attribution Modelling</a></li></ul></div>
+  <div class="ft-col"><h5>Other Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/content-marketing/">Content</a></li><li><a href="/codex/social-media/">Social Media</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Official sources only &#183; No affiliate links</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+// Auto-run search if ?q= param present on homepage
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ChatGPT — The Complete Guide | Clarigital AI Atlas</title>
+<meta name="description" content="The complete ChatGPT guide — history, how it works, 20 prompts for beginners, 20 advanced prompts, API integration, and technical depth. Three reading...">
+<link rel="canonical" href="/ai-atlas/tools/chatgpt">
+<meta property="og:title" content="ChatGPT — The Complete Guide">
+<meta property="og:description" content="The complete ChatGPT guide — history, how it works, 20 prompts for beginners, 20 advanced prompts, API integration, and technical depth. Three reading levels. Official sources only.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/tools/chatgpt">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ChatGPT \u2014 The Complete Guide", "description": "The complete ChatGPT guide \u2014 history, how it works, 20 prompts for beginners, 20 advanced prompts, API integration, and technical depth. Three reading...", "url": "https://www.clarigital.com/ai-atlas/tools/chatgpt", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Tools", "item": "https://www.clarigital.com/ai-atlas/tools/"}, {"@type": "ListItem", "position": 4, "name": "ChatGPT \u2014 The Complete Guide", "item": "https://www.clarigital.com/ai-atlas/tools/chatgpt/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/tools/">Tools</a><span class="sep">/</span><span>ChatGPT</span></nav>
+    <span class="label-tag">AI Tool Guide</span>
+    <h1>ChatGPT — The Complete Guide</h1>
+    <p class="hero-lead">Everything about ChatGPT — from what it is and how it was made, to how to use it today, the best prompts for every situation, and how to integrate it into your work. Written for beginners, practitioners, and experts. Official sources only.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">ChatGPT</span>
+      <span class="meta-tag mt-gray">OpenAI</span>
+      <span class="meta-tag mt-gray">~9,800 words</span>
+      <span class="meta-tag mt-gray">Updated April 2026</span>
+    
+  </div>
+  <div style="margin-top:16px"><a href="https://openai.com/chatgpt" target="_blank" rel="noopener" class="btn-official" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;font-size:.85rem;font-weight:600;padding:10px 20px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Visit ChatGPT ↗</a><span style="font-size:.75rem;color:var(--muted);margin-left:10px">openai.com</span></div>
+
+  </div>
+</section>
+
+
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     SIMPLE LANE
+════════════════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+<h2 id="s-green-0">What is ChatGPT, in plain English?</h2>
+<p>ChatGPT is a computer program you can have a conversation with. You type something — a question, a request, an idea — and it replies in natural, human-sounding language. It can write, explain, summarise, translate, answer questions, help with decisions, and much more.</p>
+<p>It was made by a company called OpenAI, based in San Francisco. It launched on 30 November 2022 and became the fastest-growing consumer application in history — one million people signed up in the first five days.</p>
+<p>You can use it for free at <strong>chat.openai.com</strong> or on the ChatGPT app on your phone. You do not need to download anything for the web version.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">The simplest way to think about it</div>
+  <p style="color:var(--fg);margin:0">ChatGPT is like having a very knowledgeable friend who is available 24 hours a day, never judges your questions, and can help with almost anything involving words and ideas. Ask it anything. The worst that can happen is it gives you an imperfect answer — and you can ask it to try again.</p>
+</div>
+
+<h2 id="s-green-1">Who made ChatGPT?</h2>
+<p>ChatGPT was made by <strong>OpenAI</strong>. OpenAI was founded in December 2015 by a group that included Elon Musk (who later left the board), Sam Altman (who became CEO), Greg Brockman, Ilya Sutskever, and others. It started as a non-profit research organisation with the mission to ensure that artificial intelligence benefits all of humanity.</p>
+<p>In 2019, OpenAI restructured into a &#8220;capped-profit&#8221; company and accepted a $1 billion investment from Microsoft. Microsoft has since invested a total of $13 billion and integrated ChatGPT technology into its products including Bing, Word, Excel, Outlook, and Windows.</p>
+<p>OpenAI&#8217;s headquarters are in San Francisco. As of early 2026, the company employs over 1,000 people and is valued at over $80 billion.</p>
+
+<h2 id="s-green-2">The history of ChatGPT — the full story</h2>
+
+<h3>It started with a research paper</h3>
+<p>The technology that made ChatGPT possible was published in 2017 — a research paper from Google called &#8220;Attention Is All You Need.&#8221; It described a new kind of neural network called the transformer. OpenAI&#8217;s researchers read this paper and began building on it immediately.</p>
+
+<h3>GPT-1: The first step (2018)</h3>
+<p>In June 2018, OpenAI released GPT-1 — Generative Pre-trained Transformer, version 1. It had 117 million parameters (think of parameters as the &#8220;settings&#8221; that determine how the AI behaves) and was trained on a dataset of books. It could generate coherent paragraphs of text, which was impressive at the time but limited by today&#8217;s standards.</p>
+
+<h3>GPT-2: Too dangerous to release? (2019)</h3>
+<p>GPT-2 (February 2019) had 1.5 billion parameters — more than ten times larger than GPT-1. OpenAI was so concerned about potential misuse — fake news, spam, automated propaganda — that they initially refused to release the full model. This was controversial. Many researchers thought OpenAI was being overly cautious. Eventually, the full model was released in November 2019 and the predicted harms did not materialise at the predicted scale.</p>
+
+<h3>GPT-3: The world noticed (2020)</h3>
+<p>GPT-3 (May 2020) had 175 billion parameters. OpenAI released it through a limited API — you had to apply for access. The outputs were startling. Developers, writers, and researchers who got access shared examples of GPT-3 writing convincing news articles, answering complex questions, generating code, and composing poetry. For the first time, many people genuinely could not tell whether a piece of text was written by a human or a machine.</p>
+<p>But GPT-3 was still a developer tool. It had no friendly interface. Most people never touched it.</p>
+
+<h3>InstructGPT: Learning to be helpful (2022)</h3>
+<p>The missing ingredient was alignment — making the AI actually helpful rather than just technically capable. In early 2022, OpenAI published InstructGPT, which used a technique called Reinforcement Learning from Human Feedback (RLHF). Human trainers rated the AI&#8217;s responses, and those ratings were used to teach the model to give better, more helpful, less harmful answers.</p>
+<p>InstructGPT, despite being smaller than GPT-3, was preferred by users in testing. The lesson: size matters less than alignment.</p>
+
+<h3>30 November 2022: ChatGPT launches</h3>
+<p>ChatGPT was built on the InstructGPT foundation and wrapped in a simple chat interface. Anyone could use it. No application required. Free to start.</p>
+<p>The reception was extraordinary. Within 48 hours, the servers were overwhelmed. Within a week, OpenAI had to implement waitlists. Within two months, 100 million users had signed up — a milestone that took Instagram 2.5 years and TikTok nine months.</p>
+<p>Technology journalists called it a &#8220;ChatGPT moment&#8221; — a reference to the iPhone moment of 2007. Something had fundamentally changed.</p>
+
+<h3>GPT-4: A genuine leap (March 2023)</h3>
+<p>GPT-4 launched on 14 March 2023. Unlike its predecessors, GPT-4 could understand images as well as text — you could show it a photo and ask questions about it. Its performance on standardised tests was remarkable: it scored in the 90th percentile on the US Bar Exam (GPT-3.5 had scored around the 10th percentile), the 88th percentile on the LSAT, and 99th percentile on many sections of the GRE.</p>
+<p>GPT-4 was available in ChatGPT Plus (the paid tier) and through the API.</p>
+
+<h3>GPT-4o: The fast, multimodal model (May 2024)</h3>
+<p>GPT-4o (the &#8220;o&#8221; stands for &#8220;omni&#8221;) was released in May 2024. It was designed to be faster and more efficient than GPT-4, and it could natively handle text, images, and audio in a single model rather than using separate systems. The demo showing real-time voice conversation — including the ability to pick up on tone of voice and respond with appropriate emotion — was widely shared and described as the closest thing to the fictional AI &#8220;JARVIS&#8221; from Iron Man.</p>
+<p>GPT-4o became available to free users, making the most capable model accessible without a subscription for the first time.</p>
+
+<h3>2025–2026: Continued evolution</h3>
+<p>OpenAI continued to release improvements including GPT-4o mini (a faster, cheaper version), o1 and o3 reasoning models (designed for complex multi-step problems), and deeper integrations with the operating system, browser, and third-party tools. ChatGPT grew to over 200 million weekly active users as of late 2024, according to OpenAI&#8217;s public statements.</p>
+
+<h2 id="s-green-3">What can ChatGPT do? Real examples.</h2>
+
+<div class="callout callout-simple">
+  <div class="callout-head">A mum using ChatGPT for the first time</div>
+  <p style="color:var(--fg);margin:0">&#8220;My daughter asked me to write a speech for her school play. I had no idea where to start. I typed into ChatGPT: &#8216;Write a 2-minute speech for a 10-year-old to deliver at a school play about kindness. Make it warm and easy to memorise.&#8217; It gave me three different versions. We picked the one she liked, changed her name to hers, and she learned it in one evening. I was amazed.&#8221;</p>
+</div>
+
+<p>Here are the most common things people use ChatGPT for, with a real example of each:</p>
+
+<h3>1. Writing help</h3>
+<p>ChatGPT is excellent at writing first drafts. Emails to colleagues, complaints to companies, cover letters for jobs, birthday messages, school essays, social media posts, thank you notes, blog articles. Give it context — who it&#8217;s for, what you want to say, how it should sound — and it writes.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Try this now</div>
+  <div class="prompt-text">Write a polite but firm email to my landlord asking him to fix the leaking tap that I reported 3 weeks ago and he still hasn&#8217;t fixed. Tone: professional but assertive. My name is [your name].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>2. Getting clear answers</h3>
+<p>When you search Google, you get a list of links. When you ask ChatGPT, you get an explanation. For questions like &#8220;what does this medical term mean?&#8221; or &#8220;how does my mortgage work?&#8221; or &#8220;why is my electricity bill so high?&#8221; — ChatGPT explains in plain language, at whatever level you ask for.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Try this now</div>
+  <div class="prompt-text">Explain what &#8220;compound interest&#8221; means in simple language. Use an example with real numbers to show how it works over 10 years with £1,000.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>3. Summarising long things</h3>
+<p>Paste in a long document — a contract, a report, a news article, a product manual — and ask ChatGPT to summarise it, pull out the key points, or explain what you need to know. This is one of its most practically useful features.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Try this now</div>
+  <div class="prompt-text">Here is a document: [paste the text]. Summarise it in 5 bullet points. Then tell me: what are the 3 most important things I need to know or act on?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>4. Learning anything</h3>
+<p>ChatGPT is like a patient tutor who knows every subject. You can ask it to explain something you don&#8217;t understand, ask follow-up questions, ask it to simplify, or ask it to give you examples. It never makes you feel stupid for asking basic questions.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Try this now</div>
+  <div class="prompt-text">I want to learn how to make bread from scratch. I have never done it before. Explain the process step by step, like you&#8217;re teaching someone who has never baked. What equipment do I need? What are the most common mistakes?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>5. Planning and organising</h3>
+<p>Ask ChatGPT to plan a holiday, organise a week of meals, create a study schedule, write a to-do list for a project, or plan a birthday party. It is excellent at taking a vague goal and turning it into a structured plan.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Try this now</div>
+  <div class="prompt-text">Plan a 7-day holiday to Japan for 2 adults and 1 child aged 8. Budget: moderate. We like food, culture, and some nature. We don&#8217;t want to spend every day in museums. Give us a day-by-day itinerary with travel tips.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>6. Translating</h3>
+<p>ChatGPT can translate between most major languages — and not just word for word, but naturally, in the right tone. Useful for emails, signs you photographed on holiday, documents, or just understanding something in another language.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Try this now</div>
+  <div class="prompt-text">Translate this into French, keeping a warm and friendly tone: [paste your text]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h2 id="s-green-4">Things ChatGPT cannot do (be careful)</h2>
+<p>ChatGPT is not perfect. Knowing its limitations will save you from problems:</p>
+<ul>
+  <li><strong>It can be wrong.</strong> It sometimes states incorrect facts confidently. Always verify important information — especially medical, legal, or financial information — from official sources.</li>
+  <li><strong>It has a knowledge cutoff.</strong> ChatGPT was trained on data up to a certain date. It does not know about events that happened after its training (though the web browsing feature can help with this).</li>
+  <li><strong>It does not remember previous conversations</strong> (unless you enable Memory in settings). Each new chat starts fresh.</li>
+  <li><strong>It cannot access your personal files</strong> unless you upload them in the chat.</li>
+  <li><strong>It cannot take actions in the real world</strong> — it cannot send emails on your behalf, make purchases, or call anyone (without specific integrations).</li>
+</ul>
+
+<div class="callout callout-simple">
+  <div class="callout-head">The golden rule</div>
+  <p style="color:var(--fg);margin:0">Treat ChatGPT like a very capable colleague who sometimes makes mistakes. Their ideas are always worth hearing. Their facts always need checking on anything important. Their drafts are excellent starting points. They should never be the final authority on anything critical.</p>
+</div>
+
+<h2 id="s-green-5">How to get started right now — step by step</h2>
+<ol style="margin:1rem 0 1.4rem 1.4rem;color:var(--muted)">
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Go to <strong style="color:#F1F5F9">chat.openai.com</strong> on your computer or phone browser</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Click <strong style="color:#F1F5F9">&#8220;Sign up&#8221;</strong> and create a free account with your email address</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Once logged in, you&#8217;ll see a text box at the bottom that says &#8220;Message ChatGPT&#8221;</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Type your first message and press Enter or the send button</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">ChatGPT will reply. You can then continue the conversation, ask follow-up questions, or ask it to change its answer</li>
+</ol>
+
+<div class="prompt-box">
+  <div class="prompt-label">Your very first message — try this</div>
+  <div class="prompt-text">Hello! I&#8217;ve never used ChatGPT before. I&#8217;m [brief description of who you are — e.g. a teacher, a parent, a student, a small business owner]. What are the 5 most useful things you could help me with in my daily life? Give me specific examples, not general descriptions.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h2 id="s-green-6">Free vs paid — what&#8217;s the difference?</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 24px">
+  <div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.75rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Free tier</div>
+    <ul style="list-style:none;font-size:.85rem;color:var(--muted)">
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> GPT-4o (with usage limits)</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Image creation with DALL&#8209;E</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Web browsing</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> File uploads (limited)</li>
+      <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#EF4444">&#10007;</span> Usage caps apply</li>
+    </ul>
+  </div>
+  <div style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.75rem;font-weight:700;color:#10B981;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">ChatGPT Plus ($20/month)</div>
+    <ul style="list-style:none;font-size:.85rem;color:var(--muted)">
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Unlimited GPT-4o access</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Access to o1/o3 reasoning models</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> More image generations</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Larger file uploads</li>
+      <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Priority access during busy times</li>
+    </ul>
+  </div>
+</div>
+
+<p>For most everyday users, the <strong>free tier is sufficient</strong>. You can do a lot before hitting usage limits. If you find yourself using it heavily every day and hitting the limits, Plus is worth considering.</p>
+<p><em>Source: <a href="https://openai.com/chatgpt/pricing/" target="_blank" style="color:#6366F1">openai.com/chatgpt/pricing</a> — April 2026</em></p>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     WORKING LANE
+════════════════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+<h2 id="s-indigo-0">The fundamentals of getting great results from ChatGPT</h2>
+<p>ChatGPT is only as good as the instructions you give it. The biggest mistake new users make is asking vague questions and being disappointed by vague answers. The solution is simple: be specific.</p>
+
+<div class="callout callout-tip">
+  <div class="callout-head">The anatomy of a great prompt</div>
+  <p style="color:var(--fg);margin:0"><strong>Role:</strong> Who is ChatGPT in this conversation?<br>
+  <strong>Task:</strong> What exactly do you want it to produce?<br>
+  <strong>Context:</strong> What does it need to know to do this well?<br>
+  <strong>Format:</strong> How do you want the output structured?<br>
+  <strong>Constraints:</strong> Length, tone, what to avoid.</p>
+</div>
+
+<h3>Weak prompt vs strong prompt</h3>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0">
+  <div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:8px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#EF4444;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Weak</div>
+    <p style="font-size:.85rem;color:var(--muted);margin:0">&#8220;Write me an email about a meeting.&#8221;</p>
+  </div>
+  <div style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#10B981;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Strong</div>
+    <p style="font-size:.85rem;color:var(--muted);margin:0">&#8220;Write a professional email to my team of 8 people announcing a mandatory all-hands meeting on Friday 14 March at 10am. The purpose is to discuss the Q1 results and our priorities for Q2. Tone: positive and forward-looking. Max 150 words. Include a request to confirm attendance.&#8221;</p>
+  </div>
+</div>
+
+<h2 id="s-indigo-1">20 high-value prompts for work</h2>
+
+<div class="prompt-box">
+  <div class="prompt-label">1. Rewrite for clarity</div>
+  <div class="prompt-text">Rewrite the following text to make it clearer and more concise. Remove jargon. Keep the meaning exactly the same. Show me the original word count and the new word count: [paste text]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">2. Devil&#8217;s advocate</div>
+  <div class="prompt-text">Here is my plan/idea/argument: [describe it]. Play devil&#8217;s advocate. What are the 5 strongest objections someone could make against this? Be specific, not generic.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">3. Meeting preparation</div>
+  <div class="prompt-text">I have a meeting with [who] about [topic] on [date]. My goal in this meeting is [goal]. Prepare me: what are the 5 most likely questions they will ask? What should my key talking points be? What should I be careful about?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">4. Summarise and extract actions</div>
+  <div class="prompt-text">Here are my meeting notes: [paste notes]. Summarise in 3 sentences. Then list all action items with the person responsible and deadline (if mentioned). Then flag any decisions made.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">5. Explain to a non-expert</div>
+  <div class="prompt-text">Explain [technical topic] to someone who has no background in [field]. Use an everyday analogy. Then give a slightly more detailed explanation once the basic concept is clear. No jargon without explanation.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">6. Build a framework</div>
+  <div class="prompt-text">Create a framework for [task/decision/process]. It should cover: the key steps, what to consider at each step, common mistakes to avoid, and how to know when you&#8217;ve done it well. Format as a structured guide I can reuse.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">7. Competitive analysis</div>
+  <div class="prompt-text">I run [describe your business/product]. My main competitors are [list them]. Analyse each competitor&#8217;s likely strengths and weaknesses from the perspective of a customer choosing between us. What gaps do I have? What do I do better?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">8. Job application cover letter</div>
+  <div class="prompt-text">Write a cover letter for this job: [paste job description]. My relevant experience: [brief summary]. Key skills to highlight: [list]. Tone: confident but not arrogant. Max 300 words. Do not start with &#8220;I am writing to apply&#8221;.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">9. Data interpretation</div>
+  <div class="prompt-text">Here is some data: [paste or describe the data]. What patterns do you see? What stands out as unusual or significant? What questions should I be asking about this data that I might not have thought of?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">10. First draft of anything</div>
+  <div class="prompt-text">Write a first draft of [type of content] for [audience]. Purpose: [goal]. Key points that must be included: [list]. Tone: [formal/conversational/warm/persuasive]. Length: approximately [word count]. This is a draft — I&#8217;ll edit it.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h2 id="s-indigo-2">Using ChatGPT for personal tasks</h2>
+
+<div class="prompt-box">
+  <div class="prompt-label">11. Meal planning</div>
+  <div class="prompt-text">Create a 7-day meal plan for [number] people. Preferences: [list]. Dietary restrictions: [list]. Budget: [amount] per week. Include a shopping list organised by category (produce, dairy, meat, etc.).</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">12. Help with a difficult conversation</div>
+  <div class="prompt-text">I need to have a difficult conversation with [relationship — friend, colleague, family member] about [issue]. I want to be kind but honest. My main concern is [concern]. Help me think through what to say, how to start the conversation, and how to handle the likely responses.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">13. Understanding a bill or document</div>
+  <div class="prompt-text">Here is a document I received: [paste text]. Explain it to me in plain language. What does it mean? What are my obligations? What should I pay attention to? What questions should I ask?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">14. Learning a new skill</div>
+  <div class="prompt-text">I want to learn [skill]. I am a complete beginner. Create a structured 30-day learning plan. Include: what to learn each week, recommended free resources, practice exercises, and how to know I&#8217;m making progress.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">15. Decision making</div>
+  <div class="prompt-text">I need to decide between: [option A] and [option B]. Here is my situation: [describe context]. Help me think through this decision. Consider the short-term and long-term implications, what I might be overlooking, and what I should ask myself before deciding.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h2 id="s-indigo-3">Advanced techniques</h2>
+
+<h3>Chain of thought prompting</h3>
+<p>For complex problems, ask ChatGPT to show its reasoning step by step before giving an answer. This produces more accurate results and lets you follow the logic.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Chain of thought</div>
+  <div class="prompt-text">Think through this step by step before giving your final answer: [your question or problem]. Show your reasoning at each step.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>Assigning a persona</h3>
+<p>Telling ChatGPT to act as a specific expert produces more targeted, specialised responses.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Expert persona</div>
+  <div class="prompt-text">You are an experienced [type of expert — e.g. financial advisor, marketing director, GP, HR specialist]. I am going to describe my situation, and I want you to give me advice as that expert would. Be specific and practical, not generic. Here is my situation: [describe it].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>Iterative refinement</h3>
+<p>Do not accept the first output if it is not quite right. Ask ChatGPT to revise with specific instructions. This is how you get to excellent output.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Iteration prompt</div>
+  <div class="prompt-text">This is good but I want you to change the following: [specific instructions — e.g. make it shorter / more formal / less jargon / add an example / rewrite the opening]. Keep everything else the same.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>Few-shot prompting</h3>
+<p>Give ChatGPT examples of what you want, and it will follow the pattern precisely.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Few-shot example</div>
+  <div class="prompt-text">I want you to write [type of content] in the same style and format as these examples:
+Example 1: [paste example]
+Example 2: [paste example]
+Now write one about: [your topic]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h2 id="s-indigo-4">ChatGPT in your existing tools</h2>
+<p>ChatGPT is not just a website. It is embedded in an expanding ecosystem of tools:</p>
+
+<ul>
+  <li><strong>ChatGPT app</strong> (iOS and Android) — voice conversations, photo analysis, available offline for basic features</li>
+  <li><strong>ChatGPT in macOS</strong> — keyboard shortcut access from any application</li>
+  <li><strong>Microsoft Copilot</strong> — runs on GPT-4o, built into Windows, Edge, Word, Excel, Outlook, Teams</li>
+  <li><strong>ChatGPT plugins and GPTs</strong> — custom versions built for specific tasks (coding assistant, language tutor, recipe helper)</li>
+  <li><strong>API integration</strong> — for developers building ChatGPT-powered applications</li>
+</ul>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     DEEP LANE
+════════════════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+<h2 id="s-red-0">Architecture and training: the technical foundation</h2>
+<p>ChatGPT is based on the GPT (Generative Pre-trained Transformer) family of models. The architecture is a decoder-only transformer — in contrast to the encoder-decoder architecture of the original &#8220;Attention Is All You Need&#8221; paper, GPT models use only the decoder stack, which is optimised for next-token generation rather than sequence-to-sequence tasks.</p>
+
+<h3>Pre-training</h3>
+<p>GPT models are trained using self-supervised learning on large text corpora. The training objective is causal language modelling: given a sequence of tokens t&#8321;, t&#8322;, ..., t_{n-1}, predict t_n. The loss function is cross-entropy over the vocabulary. Pre-training data for GPT-3 included: CommonCrawl (filtered), WebText2, Books1, Books2, and English Wikipedia — totalling approximately 570GB of text after filtering.</p>
+<p>Pre-training for frontier models (GPT-4 and beyond) uses data that OpenAI has not fully disclosed, citing competitive sensitivity. The GPT-4 technical report notes that they &#8220;will not specify the architecture (e.g. model size), hardware, training compute, dataset construction, training method, or similar.&#8221;</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">OpenAI (2023). &#8220;GPT-4 Technical Report.&#8221; <a href="https://arxiv.org/abs/2303.08774" target="_blank" style="color:#EF4444">arxiv.org/abs/2303.08774</a></p>
+</div>
+
+<h3>RLHF — Reinforcement Learning from Human Feedback</h3>
+<p>The alignment methodology that distinguishes ChatGPT from a raw language model is RLHF, described in detail in the InstructGPT paper. The process involves three stages:</p>
+<ol style="margin:1rem 0 1.4rem 1.4rem;color:var(--muted)">
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem"><strong style="color:#F1F5F9">Supervised fine-tuning (SFT):</strong> Human labellers write example outputs for a set of prompts. The base model is fine-tuned on these demonstrations.</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem"><strong style="color:#F1F5F9">Reward model training:</strong> For a set of prompts, the SFT model generates multiple completions. Human labellers rank these completions by quality. A reward model (RM) is trained to predict the human-preferred ranking.</li>
+  <li style="line-height:1.7;font-size:.97rem"><strong style="color:#F1F5F9">RL fine-tuning with PPO:</strong> The SFT model is further fine-tuned using Proximal Policy Optimisation (PPO) against the reward model. A KL-divergence penalty is applied to prevent the model from deviating too far from the SFT baseline.</li>
+</ol>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">Ouyang, L., Wu, J., Jiang, X., Almeida, D., Wainwright, C.L., Mishkin, P., Zhang, C., Agarwal, S., Slama, K., Ray, A., Schulman, J., Hilton, J., Kelton, F., Miller, L., Simens, M., Askell, A., Welinder, P., Christiano, P., Leike, J., &amp; Lowe, R. (2022). &#8220;Training language models to follow instructions with human feedback.&#8221; <a href="https://arxiv.org/abs/2203.02155" target="_blank" style="color:#EF4444">arxiv.org/abs/2203.02155</a></p>
+</div>
+
+<h3>GPT-4: Multimodality and emergent capabilities</h3>
+<p>GPT-4 introduced vision capabilities — the model accepts both image and text tokens as input. The vision encoder used in GPT-4 is based on the CLIP (Contrastive Language-Image Pre-Training) approach pioneered by OpenAI in 2021, which trains visual and language representations jointly through contrastive learning.</p>
+<p>GPT-4&#8217;s performance on standardised benchmarks represents a qualitative shift: 90th percentile on the Uniform Bar Exam (UBE), 99th percentile on the GRE Verbal, 88th percentile on LSAT. The GPT-4 technical report provides extensive benchmark results across academic and professional examinations.</p>
+
+<h3>GPT-4o: Omni-modal architecture</h3>
+<p>GPT-4o (May 2024) represents a departure from the modular approach of earlier multimodal systems (which used separate encoders for different modalities). GPT-4o is a single end-to-end model trained across text, vision, and audio simultaneously, allowing native audio understanding and generation without the latency and quality loss of a pipeline approach. The model achieves near-human response times in voice conversation (average of 320ms) and can interpret audio tone, laughter, and emotional context.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">OpenAI (2024). &#8220;Hello GPT-4o.&#8221; OpenAI Blog. <a href="https://openai.com/index/hello-gpt-4o/" target="_blank" style="color:#EF4444">openai.com/index/hello-gpt-4o</a></p>
+</div>
+
+<h3>Reasoning models: o1 and o3</h3>
+<p>The o1 series (September 2024) introduced a new paradigm: models that spend more inference-time compute &#8220;thinking&#8221; before producing a response. Rather than generating tokens immediately, o1 produces an internal &#8220;chain of thought&#8221; before the final answer — similar to how a human might work through a hard problem on scratch paper. This approach dramatically improves performance on mathematical reasoning, competitive coding, and scientific tasks, at the cost of higher latency and compute cost per query.</p>
+<p>o1 achieved 83% on AIME 2024 (vs 13% for GPT-4o), 89th percentile on Codeforces, and PhD-level performance on GPQA (Graduate-Level Google-Proof Q&amp;A).</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">OpenAI (2024). &#8220;Learning to Reason with LLMs.&#8221; OpenAI Blog. <a href="https://openai.com/index/learning-to-reason-with-llms/" target="_blank" style="color:#EF4444">openai.com/index/learning-to-reason-with-llms</a></p>
+</div>
+
+<h3>API integration — technical reference</h3>
+<p>OpenAI&#8217;s API provides programmatic access to GPT-4o, GPT-4o-mini, o1, o3-mini, and other models. The API uses a REST interface with JSON payloads.</p>
+
+<div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:1.25rem;margin:1.2rem 0;overflow-x:auto">
+  <div style="font-size:.68rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem">Basic API call (Python)</div>
+  <pre style="font-family:monospace;font-size:.82rem;color:var(--fg);line-height:1.6;margin:0;white-space:pre-wrap">from openai import OpenAI
+
+client = OpenAI(api_key="your-api-key")
+
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Explain transformer architecture simply."}
+    ],
+    temperature=0.7,
+    max_tokens=500
+)
+
+print(response.choices[0].message.content)</pre>
+</div>
+
+<p>Key parameters: <strong style="color:#F1F5F9">temperature</strong> (0–2, controls randomness — lower is more deterministic), <strong style="color:#F1F5F9">max_tokens</strong> (limits response length), <strong style="color:#F1F5F9">top_p</strong> (nucleus sampling, alternative to temperature).</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Official API documentation</div>
+  <p style="color:var(--fg);margin:0"><a href="https://platform.openai.com/docs/overview" target="_blank" style="color:#EF4444">platform.openai.com/docs/overview</a> — OpenAI&#8217;s complete developer documentation, including API reference, rate limits, pricing, and model specifications.</p>
+</div>
+
+<h3>Safety and alignment: OpenAI&#8217;s approach</h3>
+<p>OpenAI&#8217;s safety work encompasses: RLHF alignment (as above), usage policies enforced through the moderation API, red-teaming before model releases, and ongoing superalignment research (using AI to assist in evaluating AI outputs at superhuman capability levels). The Preparedness Framework (published November 2023) describes OpenAI&#8217;s approach to evaluating catastrophic risk from frontier models across four categories: cybersecurity, CBRN (chemical, biological, radiological, nuclear), persuasion/manipulation, and model autonomy.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">OpenAI (2023). &#8220;OpenAI&#8217;s Preparedness Framework (Beta).&#8221; <a href="https://openai.com/safety/preparedness" target="_blank" style="color:#EF4444">openai.com/safety/preparedness</a></p>
+</div>
+
+</div>
+<!-- end lane sections -->
+
+</div>
+
+<!-- SIDEBAR -->
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is ChatGPT, in plain English?</a><a href="#s-green-1">Who made ChatGPT?</a><a href="#s-green-2">The history of ChatGPT — the full story</a><a href="#s-green-3">What can ChatGPT do? Real examples.</a><a href="#s-green-4">Things ChatGPT cannot do (be careful)</a><a href="#s-green-5">How to get started right now — step by step</a><a href="#s-green-6">Free vs paid — what&amp;#8217;s the difference?</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">The fundamentals of getting great results from ChatGPT</a><a href="#s-indigo-1">20 high-value prompts for work</a><a href="#s-indigo-2">Using ChatGPT for personal tasks</a><a href="#s-indigo-3">Advanced techniques</a><a href="#s-indigo-4">ChatGPT in your existing tools</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Architecture and training: the technical foundation</a></div></div>
+  <div class="sidebar-card">
+    <h4>ChatGPT guide</h4>
+    <a href="#" class="sidebar-link active">Overview &amp; history</a>
+    <a href="/ai-atlas/tools/claude/" class="sidebar-link">Compare: Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="sidebar-link">Compare: Gemini</a>
+    <a href="/ai-atlas/which-ai/" class="sidebar-link">Which AI to use?</a>
+    <a href="/ai-atlas/prompt-library/" class="sidebar-link">Full prompt library</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Quick facts</h4>
+    <div style="font-size:.82rem;color:var(--muted);line-height:1.7">
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">OpenAI</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Launched</span><span style="color:var(--fg);font-weight:500">Nov 2022</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Current model</span><span style="color:var(--fg);font-weight:500">GPT-4o</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Free tier</span><span style="color:#10B981;font-weight:500">Yes</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Plus plan</span><span style="color:var(--fg);font-weight:500">$20/month</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Weekly users</span><span style="color:var(--fg);font-weight:500">200M+</span></div>
+    </div>
+  </div>
+  <div class="sidebar-card">
+    <h4>Official sources</h4>
+    <a href="https://openai.com/chatgpt" class="sidebar-link" target="_blank">openai.com/chatgpt</a>
+    <a href="https://openai.com/research" class="sidebar-link" target="_blank">OpenAI Research</a>
+    <a href="https://arxiv.org/abs/2303.08774" class="sidebar-link" target="_blank">GPT-4 Technical Report</a>
+    <a href="https://arxiv.org/abs/2203.02155" class="sidebar-link" target="_blank">InstructGPT paper</a>
+    <a href="https://platform.openai.com/docs" class="sidebar-link" target="_blank">API Documentation</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Other AI tools</h4>
+    <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude (Anthropic)</a>
+    <a href="/ai-atlas/tools/gemini/" class="sidebar-link">Gemini (Google)</a>
+    <a href="/ai-atlas/tools/copilot/" class="sidebar-link">Copilot (Microsoft)</a>
+    <a href="/ai-atlas/tools/perplexity/" class="sidebar-link">Perplexity</a>
+  </div>
+</div>
+
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  // Lane tabs
+  var tabs=[];
+  var sections=[];
+  function showLane(color){
+    tabs.forEach(function(t){t.classList.toggle('active',t.id==='tab-'+color);});
+    sections.forEach(function(s){s.classList.toggle('active',s.id==='lane-'+color);});
+  }
+  window.showLane=showLane;
+  // Default active tab
+  var first=document.querySelector('.lane-tab');
+  if(first){var m=first.id.match(/tab-(\w+)/);if(m)showLane(m[1]);}
+  // Prompt copy
+  window.copyPrompt=function(btn){
+    var text=btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+      setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},1800);
+    });
+  };
+})();
+</script>
+</body>
+</html>

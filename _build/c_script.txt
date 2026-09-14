@@ -1,0 +1,90 @@
+
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showTrack(track){var el=document.getElementById("track-"+track);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});document.querySelectorAll(".track-tab").forEach(function(t){t.classList.toggle("active",t.id==="tab-"+track);});}
+var SKEY='cl-seo-lessons';
+function getP(){try{return JSON.parse(localStorage.getItem(SKEY))||{};}catch(e){return {};}}
+function saveP(p){localStorage.setItem(SKEY,JSON.stringify(p));}
+function toggleLesson(id){var p=getP();p[id]=!p[id];saveP(p);renderP();}
+function renderP(){
+  var p=getP();
+  var tracks={
+    beginner: ['b-l1', 'b-l2', 'b-l3', 'b-l4', 'b-l5'],
+    intermediate: ['i-l1', 'i-l2', 'i-l3', 'i-l4', 'i-l5'],
+    advanced: ['a-l1', 'a-l2', 'a-l3', 'a-l4', 'a-l5'],
+  };
+  Object.keys(tracks).forEach(function(track){
+    var _s={beginner:'b',intermediate:'i',advanced:'a'}[track]||track;
+    var ids=tracks[track];
+    var done=ids.filter(function(id){return p[id];}).length;
+    var fill=document.getElementById('prog-'+_s);
+    var label=document.getElementById('prog-'+_s+'-label');
+    if(fill)fill.style.width=Math.round((done/ids.length)*100)+'%';
+    if(label)label.textContent=done+' of '+ids.length+' lessons';
+    ids.forEach(function(id){var el=document.getElementById(id);if(el){if(p[id])el.classList.add('done');else el.classList.remove('done');}});
+  });
+}
+function answerQ(qid,chosen,correct){
+  var q=document.getElementById(qid);
+  if(q.classList.contains('answered'))return;
+  q.classList.add('answered');
+  var opts=q.querySelectorAll('.quiz-opt');
+  opts.forEach(function(opt,i){
+    var letter=['a','b','c','d'][i];
+    if(letter===correct)opt.classList.add('correct');
+    else if(letter===chosen&&chosen!==correct)opt.classList.add('wrong');
+    opt.disabled=true;
+  });
+  var exp=document.getElementById('exp-'+qid);
+  if(exp)exp.classList.add('show');
+}
+function toggleQuiz(id){
+  var body=document.getElementById(id);
+  if(!body)return;
+  var open=body.classList.toggle('open');
+  var icon=document.getElementById(id+'-icon');
+  if(!icon){
+    var sec=body.parentNode;
+    var btn=sec?sec.querySelector('.quiz-toggle'):null;
+    if(btn)icon=btn.querySelector('.qt-arrow');
+  }
+  if(icon)icon.textContent=open?'▴':'▾';
+  var btn2=body.parentNode?body.parentNode.querySelector('.quiz-toggle'):null;
+  if(btn2)btn2.setAttribute('aria-expanded',open?'true':'false');
+}
+function checkAnswer(btn,ok){
+  var q=btn.closest?btn.closest('.quiz-q'):null;
+  if(!q)return;
+  var opts=q.querySelectorAll('.quiz-opt');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('correct','wrong');opts[i].disabled=true;}
+  btn.classList.add(ok?'correct':'wrong');
+  var fb=q.querySelector('.quiz-feedback');
+  if(fb){
+    fb.textContent=ok?'Correct.':'Not quite. The right answer is highlighted above.';
+    fb.className='quiz-feedback '+(ok?'ok':'no');
+    if(!ok){
+      for(var j=0;j<opts.length;j++){
+        if(opts[j].getAttribute('onclick')&&opts[j].getAttribute('onclick').indexOf('true')>-1){
+          opts[j].classList.add('correct');
+        }
+      }
+    }
+  }
+}
+(function(){
+  renderP();
+  var saved=localStorage.getItem('cl-seo-track');
+  if(!saved||['beginner','intermediate','advanced'].indexOf(saved)<0)saved='beginner';
+  if(document.getElementById('track-'+saved)){
+    document.querySelectorAll('.track-panel').forEach(function(p){p.classList.remove('active');});
+    document.querySelectorAll('.track-tab').forEach(function(t){t.classList.remove('active');});
+    document.getElementById('track-'+saved).classList.add('active');
+    document.getElementById('tab-'+saved).classList.add('active');
+  }
+})();

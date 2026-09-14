@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>CrewAI — The Complete Guide to Role-Based AI Agents | Clarigital</title>
+<meta name="description" content="CrewAI explained — role-based multi-agent AI framework, how crews and tasks work, 14 copy-paste prompts, pricing, and when to choose it over LangChain. April 2026.">
+<link rel="canonical" href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">
+<meta property="og:title" content="CrewAI — The Complete Guide to Role-Based AI Agents">
+<meta property="og:description" content="CrewAI is the easiest way to build multi-agent AI systems. Agents have roles, goals, and backstories. They collaborate like a real team. Complete guide with 14 prompts.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/crewai/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative}
+.prompt-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.88rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.callout-red{border-left-color:var(--red)}
+.agent-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:8px 0}
+.agent-card .ac-role{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:5px}
+.agent-card h4{font-size:.9rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.agent-card p{font-size:.83rem;margin:0}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CrewAI \u2014 The Complete Guide to Role-Based AI Agents", "description": "CrewAI explained \u2014 role-based multi-agent AI framework, how crews and tasks work, 14 copy-paste prompts, pricing, and when to choose it over LangChain. April 2026.", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/crewai/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "CrewAI \u2014 The Complete Guide to Role-Based AI Agents", "description": "CrewAI explained \u2014 role-based multi-agent AI framework, how crews and tasks work, 14 copy-paste prompts, pricing, and when to choose it over LangChain. April 2026.", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/crewai/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CrewAI — The Complete Guide to Role-Based AI Agents">
+<meta name="twitter:description" content="CrewAI explained — role-based multi-agent AI framework, how crews and tasks work, 14 copy-paste prompts, pricing, and when to choose it over LangChain. April 2026.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ai-atlas/">AI Atlas</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/">Specialist Tools</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/agentic-frameworks/">Agentic Frameworks</a>
+      <span class="sep">›</span>
+      <span>CrewAI</span>
+    </nav>
+    <div class="label-tag">Agentic Frameworks</div>
+    <h1>CrewAI</h1>
+    <p class="hero-lead">CrewAI is the most accessible framework for building multi-agent AI systems. Agents are defined with a role, a goal, and a backstory — just like hiring a team. They collaborate on tasks, pass results between each other, and produce a final output that no single agent could produce alone. It is the fastest path from idea to working multi-agent system.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Agentic Framework</span>
+      <span class="meta-tag">Free · Open Source · MIT</span>
+      <span class="meta-tag">Python</span>
+      <span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="art-layout">
+    <div>
+      
+
+      <!-- SIMPLE LANE -->
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+        <h2 id="s-green-0">The hiring analogy — and why it works</h2>
+        <p>CrewAI's central insight is that multi-agent systems map directly onto how human teams work. You hire people with specific roles. Each person has a goal they are trying to achieve in their role. Each person brings a background and perspective that shapes how they approach problems. They work on tasks, pass results to colleagues, and the team produces something none of them could produce alone.</p>
+        <p>CrewAI makes you define agents exactly this way. Before writing any logic, you define: what is this agent's role? What goal is it trying to achieve? What backstory explains how it approaches problems? These three fields are not decorative — they are fed directly to the LLM as part of the agent's system prompt, and they shape every decision the agent makes.</p>
+
+        <h2 id="s-green-1">The four core concepts</h2>
+
+        <div class="agent-card">
+          <div class="ac-role">Concept 1</div>
+          <h4>Agent</h4>
+          <p>An AI entity with a role, goal, and backstory. Powered by an LLM. Given a set of tools it can use. Defined in Python as a simple object. The role, goal, and backstory shape how it reasons and responds.</p>
+        </div>
+
+        <div class="agent-card">
+          <div class="ac-role">Concept 2</div>
+          <h4>Task</h4>
+          <p>A specific piece of work assigned to an agent. Has a description (what to do), an expected output (what a successful result looks like), and is assigned to one agent. Tasks can pass their output to the next task automatically.</p>
+        </div>
+
+        <div class="agent-card">
+          <div class="ac-role">Concept 3</div>
+          <h4>Crew</h4>
+          <p>The assembled team — a list of agents and a list of tasks. You define whether they work sequentially (one after another) or hierarchically (one agent manages the others). You call <code style="background:var(--bg3);padding:1px 5px;border-radius:4px;font-size:.85rem">crew.kickoff()</code> to start.</p>
+        </div>
+
+        <div class="agent-card">
+          <div class="ac-role">Concept 4</div>
+          <h4>Tool</h4>
+          <p>A capability an agent can use during its task — web search, file reading, code execution, API calls. CrewAI has built-in tools and integrates with LangChain tools. Tools are assigned to specific agents, not to the whole crew.</p>
+        </div>
+
+        <h2 id="s-green-2">A real example — content research crew</h2>
+        <p>Say you want a crew that researches a topic and writes a structured article. You define three agents:</p>
+        <ul>
+          <li><strong>Senior Research Analyst</strong> — role: researcher, goal: find accurate and recent information, backstory: experienced at identifying reliable sources</li>
+          <li><strong>Content Writer</strong> — role: writer, goal: produce clear and engaging content, backstory: skilled at turning research into readable articles</li>
+          <li><strong>Editor</strong> — role: editor, goal: ensure accuracy and quality, backstory: meticulous about factual claims and structure</li>
+        </ul>
+        <p>You define two tasks: Research (assigned to the analyst, with web search tool enabled) and Write (assigned to the writer, with the research output passed in automatically). The crew runs sequentially — research first, then writing. The editor reviews the output. You call <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">crew.kickoff(inputs={"topic": "agentic AI in 2026"})</code> and receive the finished article.</p>
+
+        <div class="callout callout-green">
+          <p><strong>Why choose CrewAI:</strong> You want to build a multi-agent system and you want to be running in hours, not days. You do not need the full complexity of LangGraph. You are prototyping a workflow or your team is non-technical. CrewAI is the fastest path to a working multi-agent system.</p>
+        </div>
+
+        <h2 id="s-green-3">What it costs</h2>
+        <p>CrewAI is free and open source under the MIT licence. You pay only for the underlying LLM API calls (OpenAI, Anthropic, Google, or any other provider). CrewAI Enterprise — with additional features for deployment, monitoring, and team management — is available at custom pricing for organisations.</p>
+
+      </div>
+
+      <!-- WORKING LANE -->
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+        <h2 id="s-indigo-0">How sequential and hierarchical process modes work</h2>
+        <p>CrewAI supports two process modes, set on the Crew object:</p>
+        <p><strong>Sequential</strong> — tasks run in the order they are listed. The output of each task is automatically passed as context to the next task. Simple, predictable, easy to debug. Suitable for most use cases where work has a natural order.</p>
+        <p><strong>Hierarchical</strong> — a manager LLM (either a specified agent or automatically created) coordinates the crew. The manager breaks the goal into tasks, assigns them to agents, evaluates outputs, and decides when the goal is achieved. More flexible, more expensive (extra model calls for the manager), suitable for open-ended goals where the task breakdown is not known in advance.</p>
+
+        <h2 id="s-indigo-1">Prompts for building and working with CrewAI</h2>
+        <p>Use these with Claude, ChatGPT, or any capable model when building with CrewAI.</p>
+
+        <h3>Getting started</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Design a crew for my use case</div>
+          <div class="prompt-text">I want to build a CrewAI crew that [describe your goal — e.g. "researches a company and produces a sales brief"]. Design the agents I need — give each one a role, goal, and backstory. Define the tasks they should complete. Tell me whether sequential or hierarchical process mode is more appropriate and why.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Write the full Python code for a crew</div>
+          <div class="prompt-text">Write complete Python code for a CrewAI crew that does the following: [describe the workflow]. Use the latest CrewAI syntax. Define all agents with role, goal, and backstory. Define all tasks with description and expected_output. Assign tools where appropriate — use SerperDevTool for web search. Run the crew with crew.kickoff() and print the result.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Write an agent with custom tools</div>
+          <div class="prompt-text">I need a CrewAI agent that can read files from a local directory and summarise their contents. Show me how to create a custom tool that reads a file given its path, how to register it with CrewAI's @tool decorator, and how to assign it to an agent. Include error handling if the file doesn't exist.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Specific workflows</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Research and report crew</div>
+          <div class="prompt-text">Build a 3-agent CrewAI crew: a researcher (uses web search), an analyst (identifies key insights from the research), and a report writer (produces a structured markdown report). The topic is passed as input. Tasks run sequentially. Use Claude claude-sonnet-4-20250514 as the LLM for all agents. Show the full code including imports and crew.kickoff().</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Sales prospecting crew</div>
+          <div class="prompt-text">Build a CrewAI crew that takes a company name as input and produces a sales brief. It should include: a company researcher (finds recent news, funding, and size), a product fit analyst (identifies how our product could help based on what the researcher found), and a brief writer (formats everything into a 1-page sales brief). Define all agents, tasks, and the crew. Include web search for the researcher.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Code review crew</div>
+          <div class="prompt-text">Build a CrewAI crew that reviews Python code. Agents: a security reviewer (checks for security vulnerabilities), a performance reviewer (checks for inefficiencies and suggests improvements), and a documentation reviewer (checks for missing docstrings and unclear variable names). Each agent reviews independently. A lead reviewer agent synthesises the findings into a final report. Show the full implementation.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Social media content crew</div>
+          <div class="prompt-text">Build a CrewAI crew that takes a blog post as input and produces social media content. Agents: a content strategist (identifies the 3 most shareable insights), a LinkedIn writer (writes a professional post with the insights), a Twitter/X writer (writes 5 tweets forming a thread). Sequential process. The blog post text is passed in via kickoff inputs.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Debugging and improving</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Debug a crew that's not producing good output</div>
+          <div class="prompt-text">My CrewAI crew keeps producing [describe the problem — e.g. "generic answers that don't use the web search results"]. Here is my crew definition: [paste code]. Diagnose what is going wrong. Is it the agent's goal definition? The task description? The tool assignment? The expected_output field? Give me specific fixes to try.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Improve agent role definitions</div>
+          <div class="prompt-text">My CrewAI agents are not performing as expected. Here are their current role, goal, and backstory definitions: [paste]. Rewrite these to be more specific and directive. The agents should produce [describe desired output]. Make the goal fields measurable and specific. Make the backstories explain exactly how the agent should approach its work.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Add verbose logging to a crew</div>
+          <div class="prompt-text">Show me how to enable verbose logging in CrewAI so I can see what each agent is thinking, what tools it is calling, and what outputs it produces at each step. I want to see the full trace in the terminal. Also show me how to capture this output to a file for later analysis.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Pass structured output between tasks</div>
+          <div class="prompt-text">I want my first CrewAI task to produce a structured JSON output (a list of objects with specific fields) and my second task to consume that structured output reliably. Show me how to use Pydantic output models in CrewAI tasks to enforce the output format, and how the second agent receives and uses the parsed output.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Compare CrewAI vs LangGraph for my use case</div>
+          <div class="prompt-text">I want to build [describe your workflow]. Help me decide between CrewAI and LangGraph. For my specific use case, what are the concrete advantages and disadvantages of each? Which would you recommend and why? If I start with CrewAI, what would be the migration path to LangGraph if I need more control later?</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+      </div>
+
+      <!-- DEEP LANE -->
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+        <h2 id="s-red-0">How CrewAI constructs agent system prompts</h2>
+        <p>Understanding CrewAI at the code level requires understanding that role, goal, and backstory are not metadata — they are injected directly into the agent's system prompt. CrewAI constructs each agent's system prompt as a formatted string that includes these fields, the list of available tools with their descriptions, and the current task description.</p>
+        <p>This means the quality of role/goal/backstory definitions directly affects agent performance. Vague role definitions produce vague reasoning. Specific, directive definitions produce focused, high-quality outputs. Writing effective agent definitions is the primary skill in CrewAI development — more impactful than any code change.</p>
+
+        <h2 id="s-red-1">Task context and output chaining</h2>
+        <p>In sequential process mode, each task's output is stored in a <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">TaskOutput</code> object. By default, subsequent tasks receive the previous task's raw output as context. This can be explicitly controlled using the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">context</code> parameter on a Task, which specifies exactly which prior tasks' outputs are passed as context — useful when a downstream task needs output from task 1 but not task 2.</p>
+
+        <p>Structured output can be enforced using Pydantic models via the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">output_pydantic</code> parameter on a Task. CrewAI instructs the LLM to produce JSON matching the schema and parses the response into the specified Pydantic model. This enables reliable structured data passing between tasks — the receiving agent gets a typed object, not raw text.</p>
+
+        <h2 id="s-red-2">Hierarchical process and the manager LLM</h2>
+        <p>In hierarchical mode, CrewAI creates a manager agent whose system prompt includes the full list of available agents and their capabilities. The manager LLM receives the goal, decides which agent to call first, calls it, receives the result, decides on the next step, and continues until the goal is achieved or the maximum iterations limit is reached. The manager is backed by the same LLM as the other agents by default, but can be configured separately — using a more capable (and more expensive) model for the manager while using cheaper models for workers is a common production pattern.</p>
+
+        <h2 id="s-red-3">Memory types in CrewAI</h2>
+        <p>CrewAI supports four memory types, all optional:</p>
+        <ul>
+          <li><strong>Short-term memory</strong> — conversation history within the current crew run. Stored in a RAG system; relevant chunks retrieved at each step rather than the full history.</li>
+          <li><strong>Long-term memory</strong> — persists across crew runs. Stored in a local SQLite database by default. Agents can recall relevant context from previous runs.</li>
+          <li><strong>Entity memory</strong> — tracks entities (people, organisations, concepts) mentioned across the crew run. Enables consistent reference to entities across many steps.</li>
+          <li><strong>Contextual memory</strong> — combines all memory types to produce a unified context for each agent step.</li>
+        </ul>
+        <p>Memory is enabled at the Crew level with <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">memory=True</code>. It requires an embedding model (OpenAI's text-embedding-3-small by default).</p>
+
+        <h2 id="s-red-4">Tool integration — built-in and custom</h2>
+        <p>CrewAI ships with a built-in tools library including web search (Serper, Tavily), file operations, web scraping, and code execution. Tools are assigned to agents via the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">tools</code> parameter. Custom tools are created by subclassing <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">BaseTool</code> or using the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">@tool</code> decorator. LangChain tools are also directly compatible — any LangChain tool object can be passed in the tools list.</p>
+
+        <h2 id="s-red-5">CrewAI vs LangGraph — the technical tradeoffs</h2>
+        <p>CrewAI abstracts the agent loop entirely — developers define agents and tasks, and CrewAI handles the planning, tool calling, and output chaining. This makes development faster but control less granular. LangGraph exposes the graph structure directly — developers define every node and edge, enabling precise control over flow but requiring more code.</p>
+        <p>CrewAI is the better choice for: rapidly prototyping multi-agent workflows, teams with limited Python experience, workflows with clear sequential task structures. LangGraph is the better choice for: complex conditional workflows, workflows requiring checkpointing and resumption, and production systems requiring full observability and fine-grained control.</p>
+        <p>The two are not mutually exclusive — CrewAI can be integrated into a LangGraph graph as a node, enabling hybrid architectures where the orchestration layer uses LangGraph and specialist multi-agent sub-tasks use CrewAI.</p>
+
+        <h2 id="s-red-6">Official documentation and resources</h2>
+        <ul>
+          <li>Documentation: <a href="https://docs.crewai.com" target="_blank" rel="noopener" style="color:var(--indigo)">docs.crewai.com</a></li>
+          <li>GitHub: <a href="https://github.com/crewAIInc/crewAI" target="_blank" rel="noopener" style="color:var(--indigo)">github.com/crewAIInc/crewAI</a></li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Source note:</strong> All technical specifications are drawn from the official CrewAI documentation at docs.crewai.com and the CrewAI GitHub repository. Verified April 2026.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">The hiring analogy — and why it works</a><a href="#s-green-1">The four core concepts</a><a href="#s-green-2">A real example — content research crew</a><a href="#s-green-3">What it costs</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">How sequential and hierarchical process modes work</a><a href="#s-indigo-1">Prompts for building and working with CrewAI</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">How CrewAI constructs agent system prompts</a><a href="#s-red-1">Task context and output chaining</a><a href="#s-red-2">Hierarchical process and the manager LLM</a><a href="#s-red-3">Memory types in CrewAI</a><a href="#s-red-4">Tool integration — built-in and custom</a><a href="#s-red-5">CrewAI vs LangGraph — the technical tradeoffs</a><a href="#s-red-6">Official documentation and resources</a></div></div>
+      <div class="sidebar-card">
+        <h4>Pricing</h4>
+        <p class="sidebar-text" style="margin-bottom:8px"><strong style="color:var(--green)">CrewAI</strong> — Free, open source (MIT)</p>
+        <p class="sidebar-text" style="margin-bottom:8px">You pay for LLM API usage only</p>
+        <p class="sidebar-text"><strong style="color:var(--fg)">CrewAI Enterprise</strong> — Custom pricing</p>
+      </div>
+      <div class="sidebar-card">
+        <h4>Other frameworks</h4>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="sidebar-link">LangChain / LangGraph</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" class="sidebar-link">Microsoft AutoGen</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="sidebar-link">LlamaIndex</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/" class="sidebar-link">Compare all four →</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Concept guides</h4>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link">What is Agentic AI</a>
+        <a href="/ai-atlas/agentic-ai/how-agents-work/" class="sidebar-link">How Agents Work</a>
+        <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="sidebar-link">Multi-Agent Systems</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Official docs</h4>
+        <a href="https://docs.crewai.com" target="_blank" rel="noopener" class="sidebar-link">CrewAI Docs ↗</a>
+        <a href="https://github.com/crewAIInc/crewAI" target="_blank" rel="noopener" class="sidebar-link">GitHub ↗</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>Frameworks</h5><ul>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},2000);
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

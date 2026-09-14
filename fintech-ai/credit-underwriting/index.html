@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Credit and Underwriting | Clarigital</title>
+<meta name="description" content="AI credit scoring — thin-file lending, alternative data from bank statements and GST, SHAP reason codes, reject inference and proxy discrimination testing.">
+<link rel="canonical" href="/fintech-ai/credit-underwriting/">
+<meta property="og:type" content="article"><meta property="og:title" content="Credit and Underwriting">
+<meta property="og:description" content="AI credit scoring — thin-file lending, alternative data from bank statements and GST, SHAP reason codes, reject inference and proxy discrimination testing."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/credit-underwriting/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Credit and Underwriting">
+<meta name="twitter:description" content="AI credit scoring — thin-file lending, alternative data from bank statements and GST, SHAP reason codes, reject inference and proxy discrimination testing."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Credit and Underwriting", "description": "AI credit scoring \u2014 thin-file lending, alternative data from bank statements and GST, SHAP reason codes, reject inference and proxy discrimination testing.", "url": "https://www.clarigital.com/fintech-ai/credit-underwriting/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Credit and Underwriting", "item": "https://www.clarigital.com/fintech-ai/credit-underwriting/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h4{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2,#243044)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;align-items:center;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green,#10B981);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo,#6366F1);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber,#F59E0B);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint,#64748b)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+</style>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><span class="sep">&rsaquo;</span><span>Credit and Underwriting</span></nav>
+  <div class="label-tag">Module 02</div>
+  <div class="ft-tag">Fintech AI</div><h1>Credit and Underwriting</h1>
+  <p class="hero-lead">Predicting whether someone will repay, and being able to explain the answer. This module covers the decisioning pipeline, alternative data for borrowers the bureau cannot see, model choice under explainability constraints, deterministic adverse action reason codes, and the failure modes that decide whether a lending book performs.</p>
+  <div class="art-meta"><span class="meta-tag">Verified May 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>What underwriting actually decides</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>The thin-file problem</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>What AI can and cannot do here</a><a href="#s-green-3"><span class="tdot" style="background:var(--green)"></span>The constraint that shapes everything</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>The decisioning pipeline</a><a class="sub" href="#s-indigo-order"><span class="tdot" style="background:var(--indigo)"></span>Order your data pulls by cost</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Where the data comes from in India</a><a class="sub" href="#s-indigo-access"><span class="tdot" style="background:var(--indigo)"></span>Access is licensed, again</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Feature engineering — where the model quality actually is</a><a class="sub" href="#s-indigo-signals"><span class="tdot" style="background:var(--indigo)"></span>The features that carry the most weight</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>Choosing a model, with the explainability constraint</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>Generating adverse action reasons</a><a class="sub" href="#s-indigo-determinism"><span class="tdot" style="background:var(--indigo)"></span>Determinism is non-negotiable</a><a href="#s-indigo-5"><span class="tdot" style="background:var(--indigo)"></span>The registry</a><a href="#s-indigo-6"><span class="tdot" style="background:var(--indigo)"></span>A prompt for designing your credit policy</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>The reject inference problem</a><a class="sub" href="#s-amber-ri"><span class="tdot" style="background:var(--amber)"></span>What to do about it</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>Proxy discrimination, tested properly</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>SHAP is less stable than it looks</a><a class="sub" href="#s-amber-stable"><span class="tdot" style="background:var(--amber)"></span>Mitigations that work</a><a href="#s-amber-3"><span class="tdot" style="background:var(--amber)"></span>Monitoring: models decay, and quietly</a><a href="#s-amber-4"><span class="tdot" style="background:var(--amber)"></span>Unit economics, honestly</a><a href="#s-amber-5"><span class="tdot" style="background:var(--amber)"></span>The decision log, and where this module ends</a><a class="sub" href="#s-amber-handoff"><span class="tdot" style="background:var(--amber)"></span>Where this module ends</a></div></div>
+    
+    
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<div class="note"><span class="note-lbl">Build sheet</span><p>Every tool for this module, how to use each one, what it costs, the best combinations and three recommended builds: <a href="/fintech-ai/credit-underwriting/build-sheet/"><strong>Credit Build Sheet &rarr;</strong></a></p></div><h2 id="s-green-0">What underwriting actually decides</h2>
+<p>Underwriting answers one question: <strong>will this person pay us back?</strong> Everything else — the score, the model, the data — exists to estimate that.</p><p>A lender is really making three separate judgements:</p><ol><li><strong>Capacity</strong> — can they afford the repayment out of their income?</li><li><strong>Willingness</strong> — have they repaid obligations before when they could have chosen not to?</li><li><strong>Stability</strong> — is their situation likely to hold for the life of the loan?</li></ol><p>A credit bureau score compresses mostly the second into one number. That works well for people with a borrowing history. It fails completely for people without one &rsquo; and in India that is most of the working-age population.</p>
+<h2 id="s-green-1">The thin-file problem</h2>
+<p>Roughly 50 crore working-age Indians have no credit bureau score. Not because they are risky, but because they have never taken formal credit. The bureau has nothing to report.</p><p>There is an important distinction people collapse:</p><table><tr><th>Situation</th><th>What the bureau shows</th><th>What it means</th></tr><tr><td><strong>Thin file / new-to-credit</strong></td><td>No history, or "NH" / "-1"</td><td>An <em>unknown</em> borrower, not a bad one. The data is missing, not negative.</td></tr><tr><td><strong>Low score</strong></td><td>Score below roughly 600</td><td>A <em>known</em> borrower with a poor record — missed payments, defaults, settlements.</td></tr></table><p>Treating the first like the second is the single largest source of unnecessary rejection in Indian lending, and it is what alternative data exists to fix.</p><div class="note"><span class="note-lbl">Note</span><p>This is also where the commercial opportunity sits. Everybody can lend to a prime salaried borrower with a 780 CIBIL score, and the margin reflects that. The lenders making money in India are the ones who learned to underwrite the people the bureau cannot see.</p></div>
+<h2 id="s-green-2">What AI can and cannot do here</h2>
+<table><tr><th>Task</th><th>How well AI does it</th></tr><tr><td>Predict default probability from structured history</td><td><strong>Very well.</strong> Gradient-boosted models beat logistic regression consistently.</td></tr><tr><td>Extract income and obligations from a bank statement</td><td><strong>Very well.</strong> Classification of recurring inflows and outflows is largely solved.</td></tr><tr><td>Find signal in transaction patterns</td><td><strong>Well.</strong> This is where alternative data pays.</td></tr><tr><td>Score a borrower with genuinely no data</td><td><strong>Not at all.</strong> No model creates information that does not exist.</td></tr><tr><td>Explain <em>why</em> it rejected someone</td><td><strong>Partially, and this is the hard part.</strong> Post-hoc attribution gives an approximation, not the decision process.</td></tr><tr><td>Prove it does not discriminate</td><td><strong>No.</strong> It can be tested for disparate outcomes; it cannot certify fairness.</td></tr><tr><td>Decide the credit policy</td><td><strong>It should not.</strong> Risk appetite is a business decision, not a model output.</td></tr></table>
+<h2 id="s-green-3">The constraint that shapes everything</h2>
+<p>If you decline someone, you must tell them why &rsquo; specifically. Not "did not meet our criteria". A real, accurate, specific reason.</p><p>In India this flows from RBI expectations on digital lending and fair practices. In the US it is codified in ECOA and Regulation B, and the CFPB has stated plainly that the obligation applies fully when the decision comes from a complex model, and that generic reason codes are insufficient.</p><p>This is not a reporting feature you add before launch. It is an architectural constraint that decides which models you may use.</p><div class="warn"><span class="note-lbl">Watch out</span><p>Read this carefully, because it is the most commonly misunderstood point in AI lending: regulators distinguish between a post-hoc explanation and the reasons that actually drove the decision. If your documented process says a linear scorecard decides, but a neural network is actually making the call and SHAP is describing it afterwards, that discrepancy is itself a compliance failure. The explanation must describe the real decision path.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">The decisioning pipeline</h2>
+<p>Eight stages. The two most teams under-build are the policy layer and reason generation — which are also the two a regulator will look at first.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Decisioning pipeline</span><button class="cb-copy" type="button">Copy</button></div><pre><code>APPLICATION
+  |
+  1. ELIGIBILITY GATE    age, geography, product rules, KYC status
+  |                      -&gt; hard rules, no model. Cheap rejects first.
+  |
+  2. DATA ASSEMBLY       bureau pull(s) + AA bank statements + GST/EPFO
+  |                      + device &amp; application signals
+  |                      -&gt; each source has a cost. Order them cheapest-first
+  |                         and stop early where a decision is already certain.
+  |
+  3. FEATURE ENGINEERING derive ~50-300 features from raw data
+  |                      (this is where most of the model quality lives)
+  |
+  4. SCORING             PD model -&gt; probability of default
+  |
+  5. POLICY LAYER        score + hard rules + affordability -&gt; decision
+  |                      -&gt; the model gives probability; POLICY gives the answer
+  |
+  6. LIMIT &amp; PRICING     how much, at what rate, over what tenure
+  |
+  7. REASON GENERATION   if declined: specific, accurate, deterministic reasons
+  |
+  8. DECISION LOG        immutable record: inputs, model version, policy
+  |                      version, score, reasons, any human override
+  |
+OUTCOME  approve / decline / refer to human / counter-offer</code></pre></div><h3 id="s-indigo-order">Order your data pulls by cost</h3><p>Every bureau pull and every AA fetch costs money. A meaningful share of applications can be declined on hard eligibility rules before you spend anything &rsquo; wrong geography, under-age, product mismatch, existing default with you.</p><p>A sensible sequence: free internal rules, then the cheapest external signal, then bureau, then AA data only for applicants still in contention. Teams that pull everything for every applicant are paying several times more than necessary for the same decision.</p>
+<h2 id="s-indigo-1">Where the data comes from in India</h2>
+<p>Six underwriting paths that Indian lenders actually run, roughly in order of cost and depth:</p><table><tr><th>Path</th><th>Signal</th><th>Best for</th></tr><tr><td><strong>Bureau pull</strong></td><td>Score, tradelines, DPD history, enquiries</td><td>Anyone with a credit history. Fast, cheap, decisive.</td></tr><tr><td><strong>Bank statement analysis</strong> via Account Aggregator</td><td>12 months of inflows, EMIs, surplus, bounce rate</td><td><strong>The thin-file lender&rsquo;s primary signal.</strong></td></tr><tr><td><strong>GST returns</strong> (GSTR-1 / GSTR-3B)</td><td>Turnover, growth, filing regularity, tax paid</td><td>MSME credit. The unlock for business lending.</td></tr><tr><td><strong>EPFO contributions</strong></td><td>Employer-confirmed income, tenure, continuity</td><td>Salaried borrowers. Employer-verified, hard to fake.</td></tr><tr><td><strong>UPI transaction patterns</strong></td><td>Velocity, merchant category spread, consistency</td><td>Self-employed, gig workers, small merchants.</td></tr><tr><td><strong>Utility and telecom payments</strong></td><td>Payment regularity on recurring bills</td><td>Supplementary signal for new-to-credit.</td></tr></table><div class="note"><span class="note-lbl">Note</span><p>EPFO and GST are underrated. They are employer- and government-confirmed, which makes them far harder to manipulate than self-declared income or uploaded documents. For salaried and MSME segments respectively they often carry more signal per rupee of data cost than anything else available.</p></div><h3 id="s-indigo-access">Access is licensed, again</h3><p>The four Indian credit bureaus — TransUnion CIBIL, Experian, Equifax and CRIF High Mark — require membership, which requires being a regulated lender or going through one. Account Aggregator data requires being a registered Financial Information User. Neither is available to an unlicensed startup directly.</p><p>This is why most new lenders start as a technology partner to an NBFC, or buy through an aggregation platform that holds the licences.</p>
+<h2 id="s-indigo-2">Feature engineering — where the model quality actually is</h2>
+<p>Model choice matters less than people expect. Feature quality matters more than people expect. Two teams using the same gradient-boosted library on the same population will differ mostly because one derived better features.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Python — features from Account Aggregator bank statement data</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from collections import defaultdict
+from statistics import mean, pstdev
+
+def cashflow_features(txns, months=12):
+    &quot;&quot;&quot;txns: list of {date, amount, narration, type: &#x27;credit&#x27;|&#x27;debit&#x27;}
+    Amounts positive. This is the thin-file lender&#x27;s primary signal set.&quot;&quot;&quot;
+    f = {}
+    by_month = defaultdict(lambda: {&quot;in&quot;: 0.0, &quot;out&quot;: 0.0})
+    for t in txns:
+        m = t[&quot;date&quot;][:7]                      # YYYY-MM
+        by_month[m][&quot;in&quot; if t[&quot;type&quot;] == &quot;credit&quot; else &quot;out&quot;] += t[&quot;amount&quot;]
+
+    ins  = [v[&quot;in&quot;]  for v in by_month.values()]
+    outs = [v[&quot;out&quot;] for v in by_month.values()]
+    if not ins:
+        return {&quot;insufficient_data&quot;: True}
+
+    # --- Income: level and, more importantly, STABILITY ---
+    f[&quot;avg_monthly_inflow&quot;] = mean(ins)
+    f[&quot;inflow_volatility&quot;]  = pstdev(ins) / mean(ins) if mean(ins) else 0
+    f[&quot;months_observed&quot;]    = len(by_month)
+
+    # Salary credits: same-ish amount, same-ish day each month
+    sal = [t for t in txns if t[&quot;type&quot;] == &quot;credit&quot;
+           and any(k in t[&quot;narration&quot;].upper()
+                   for k in (&quot;SALARY&quot;, &quot;SAL &quot;, &quot;NEFT-SAL&quot;, &quot;PAYROLL&quot;))]
+    f[&quot;salary_months&quot;] = len({t[&quot;date&quot;][:7] for t in sal})
+    f[&quot;is_salaried&quot;]   = f[&quot;salary_months&quot;] &gt;= max(3, len(by_month) * 0.6)
+
+    # --- Obligations: existing EMIs are the affordability denominator ---
+    emi = [t for t in txns if t[&quot;type&quot;] == &quot;debit&quot;
+           and any(k in t[&quot;narration&quot;].upper()
+                   for k in (&quot;EMI&quot;, &quot;ACH-D&quot;, &quot;NACH&quot;, &quot;LOAN&quot;, &quot;ECS&quot;))]
+    emi_by_month = defaultdict(float)
+    for t in emi:
+        emi_by_month[t[&quot;date&quot;][:7]] += t[&quot;amount&quot;]
+    f[&quot;avg_monthly_emi&quot;] = mean(emi_by_month.values()) if emi_by_month else 0.0
+    f[&quot;foir&quot;] = (f[&quot;avg_monthly_emi&quot;] / f[&quot;avg_monthly_inflow&quot;]
+                 if f[&quot;avg_monthly_inflow&quot;] else 1.0)   # fixed-obligation ratio
+
+    # --- Distress signals: the highest-value features in this set ---
+    bounces = [t for t in txns if any(k in t[&quot;narration&quot;].upper()
+               for k in (&quot;RETURN&quot;, &quot;BOUNCE&quot;, &quot;INSUFFICIENT&quot;, &quot;ECS RTN&quot;, &quot;CHQ RTN&quot;))]
+    f[&quot;bounce_count_12m&quot;]  = len(bounces)
+    f[&quot;bounce_months&quot;]     = len({t[&quot;date&quot;][:7] for t in bounces})
+    f[&quot;has_recent_bounce&quot;] = any(t[&quot;date&quot;][:7] in sorted(by_month)[-3:] for t in bounces)
+
+    # --- Buffer: does money survive the month? ---
+    f[&quot;avg_monthly_surplus&quot;] = mean(ins) - mean(outs)
+    f[&quot;surplus_ratio&quot;] = f[&quot;avg_monthly_surplus&quot;] / mean(ins) if mean(ins) else 0
+
+    return f
+
+# Note what is NOT here: no device model, no contact list, no location,
+# no app-usage. Those are either prohibited under the RBI digital lending
+# rules or carry serious proxy-discrimination risk. See the Advanced lane.</code></pre></div><h3 id="s-indigo-signals">The features that carry the most weight</h3><p>Consistently, across Indian lending portfolios:</p><ol><li><strong>Bounce and return history</strong> — the strongest single alternative-data signal. Someone whose payments have been returned in the last three months is a different risk from someone whose have not.</li><li><strong>Fixed obligation to income ratio</strong> — affordability, not willingness. Catches over-leveraged borrowers the bureau has not caught up with.</li><li><strong>Income stability</strong> rather than income level. A steady ₹30,000 is safer than a volatile ₹60,000.</li><li><strong>Surplus ratio</strong> — whether money survives the month at all.</li><li><strong>Recent credit-seeking</strong> — a burst of enquiries across lenders is a well-established distress signal.</li></ol>
+<h2 id="s-indigo-3">Choosing a model, with the explainability constraint</h2>
+<table><tr><th>Model</th><th>Accuracy</th><th>Explainability</th><th>Verdict for credit</th></tr><tr><td><strong>Logistic regression / scorecard</strong></td><td>Lower</td><td>Native — coefficients are the reasons</td><td>Still the default at banks. Defensible, stable, boring, and boring is a feature here.</td></tr><tr><td><strong>Gradient boosting</strong> (XGBoost, LightGBM)</td><td>Higher</td><td>Post-hoc via SHAP</td><td>The practical standard for fintech lenders. Needs a disciplined reason-code layer.</td></tr><tr><td><strong>Neural networks</strong></td><td>Marginal gain on tabular data</td><td>Hard</td><td>Rarely worth the regulatory cost on structured credit data.</td></tr><tr><td><strong>LLMs as the decision-maker</strong></td><td>Poor</td><td>Very hard</td><td><strong>Do not.</strong> Non-deterministic, unstable, unexplainable in the required sense.</td></tr><tr><td><strong>Hybrid</strong> — model score as one input to a rules policy</td><td>Good</td><td>Good</td><td>What most defensible production systems actually are.</td></tr></table><div class="warn"><span class="note-lbl">Watch out</span><p>The last row is the practical answer. Let the model produce a probability. Let an explicit, versioned policy layer turn that probability plus hard rules plus affordability into a decision. You can then explain the decision as policy, with the score as one documented input — which is a far easier thing to defend than "the model said no".</p></div>
+<h2 id="s-indigo-4">Generating adverse action reasons</h2>
+<p>This is the part that decides whether the system is shippable.</p><p>The established technique groups SHAP contributions by reason category, sums within group, ranks, and returns the top few that pushed toward decline. Grouping matters — five correlated features about repayment history should surface as one reason, not crowd out everything else.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Python — SHAP to deterministic adverse action reason codes</span><button class="cb-copy" type="button">Copy</button></div><pre><code>import numpy as np
+
+# Map each raw feature to a REGULATOR-FACING reason group.
+# The group is what the applicant sees. Grouping matters: five features
+# about repayment history should surface as one reason, not five.
+FEATURE_TO_REASON = {
+    &quot;bounce_count_12m&quot;:    &quot;RECENT_PAYMENT_RETURNS&quot;,
+    &quot;bounce_months&quot;:       &quot;RECENT_PAYMENT_RETURNS&quot;,
+    &quot;has_recent_bounce&quot;:   &quot;RECENT_PAYMENT_RETURNS&quot;,
+    &quot;foir&quot;:                &quot;EXISTING_OBLIGATIONS_HIGH&quot;,
+    &quot;avg_monthly_emi&quot;:     &quot;EXISTING_OBLIGATIONS_HIGH&quot;,
+    &quot;avg_monthly_inflow&quot;:  &quot;INCOME_BELOW_REQUIREMENT&quot;,
+    &quot;surplus_ratio&quot;:       &quot;INSUFFICIENT_SURPLUS&quot;,
+    &quot;inflow_volatility&quot;:   &quot;INCOME_NOT_STABLE&quot;,
+    &quot;months_observed&quot;:     &quot;INSUFFICIENT_HISTORY&quot;,
+    &quot;bureau_score&quot;:        &quot;CREDIT_BUREAU_HISTORY&quot;,
+    &quot;bureau_dpd_max&quot;:      &quot;CREDIT_BUREAU_HISTORY&quot;,
+    &quot;enquiries_6m&quot;:        &quot;RECENT_CREDIT_SEEKING&quot;,
+}
+
+REASON_TEXT = {
+    &quot;RECENT_PAYMENT_RETURNS&quot;:    &quot;Recent returned or bounced payments on your bank account&quot;,
+    &quot;EXISTING_OBLIGATIONS_HIGH&quot;: &quot;Existing loan repayments are high relative to your income&quot;,
+    &quot;INCOME_BELOW_REQUIREMENT&quot;:  &quot;Income is below the level required for this product&quot;,
+    &quot;INSUFFICIENT_SURPLUS&quot;:      &quot;Limited surplus remaining after monthly expenses&quot;,
+    &quot;INCOME_NOT_STABLE&quot;:         &quot;Income received varies significantly month to month&quot;,
+    &quot;INSUFFICIENT_HISTORY&quot;:      &quot;Not enough account history available to assess&quot;,
+    &quot;CREDIT_BUREAU_HISTORY&quot;:     &quot;Repayment history reported by the credit bureau&quot;,
+    &quot;RECENT_CREDIT_SEEKING&quot;:     &quot;Several recent applications for credit&quot;,
+}
+
+def adverse_action_reasons(shap_values, feature_names, top_n=3):
+    &quot;&quot;&quot;Group SHAP contributions by reason, keep only those pushing
+    TOWARD decline, rank, and return the top N.
+
+    DETERMINISM IS A HARD REQUIREMENT. The same applicant with the same
+    data must produce the same reasons in the same order, every time.
+    Ties are broken by reason code alphabetically, never by dict order.&quot;&quot;&quot;
+    grouped = {}
+    for name, sv in zip(feature_names, shap_values):
+        reason = FEATURE_TO_REASON.get(name)
+        if reason is None:
+            continue                      # unmapped feature -&gt; see assertion below
+        grouped[reason] = grouped.get(reason, 0.0) + float(sv)
+
+    # Sign convention: positive SHAP = pushes toward higher default risk
+    adverse = {r: v for r, v in grouped.items() if v &gt; 0}
+
+    ranked = sorted(adverse.items(), key=lambda kv: (-round(kv[1], 10), kv[0]))
+    return [{&quot;code&quot;: r, &quot;text&quot;: REASON_TEXT[r], &quot;contribution&quot;: round(v, 6)}
+            for r, v in ranked[:top_n]]
+
+def assert_all_features_mapped(feature_names):
+    &quot;&quot;&quot;Run in CI. An unmapped feature means a decision could be driven by
+    something you cannot explain to an applicant or a regulator.&quot;&quot;&quot;
+    missing = [f for f in feature_names if f not in FEATURE_TO_REASON]
+    assert not missing, f&quot;Unmapped features cannot be used in a credit model: {missing}&quot;</code></pre></div><h3 id="s-indigo-determinism">Determinism is non-negotiable</h3><p>If the same applicant reapplies with identical data and receives a different reason ranking, the audit trail fails immediately under examination. Sort keys must be fully specified, ties broken deterministically, and floating-point rounding fixed &rsquo; not left to dictionary iteration order.</p><div class="note"><span class="note-lbl">Note</span><p>The CI assertion in the code above is worth copying. If a feature enters the model without a mapped reason code, a decision could be driven by something you cannot articulate to the applicant. Failing the build is the right response.</p></div>
+<h2 id="s-indigo-5">The registry</h2>
+<div class="reg"><div class="reg-head"><h4>India — credit data sources</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">TransUnion CIBIL<span class="pill p-indirect">indirect</span></div><div class="d">Largest Indian bureau. Membership requires being a regulated lender or going through one.</div></div><div class="reg-row"><div class="n">Experian India<span class="pill p-indirect">indirect</span></div><div class="d">Bureau. Same access model.</div></div><div class="reg-row"><div class="n">Equifax India<span class="pill p-indirect">indirect</span></div><div class="d">Bureau. Same access model.</div></div><div class="reg-row"><div class="n">CRIF High Mark<span class="pill p-indirect">indirect</span></div><div class="d">Bureau, historically strong in microfinance coverage.</div></div><div class="reg-row"><div class="n">Account Aggregator network<span class="pill p-indirect">indirect</span></div><div class="d">Consented bank statement data. Requires FIU registration; reached through AA providers and TSPs.</div></div><div class="reg-row"><div class="n">GSTN (GST returns)<span class="pill p-indirect">indirect</span></div><div class="d">GSTR-1 / GSTR-3B filings for MSME income assessment. Consent-based, via authorised providers.</div></div><div class="reg-row"><div class="n">EPFO<span class="pill p-indirect">indirect</span></div><div class="d">Employer-confirmed salary and tenure for salaried borrowers.</div></div><div class="reg-row"><div class="n">NPCI / UPI data<span class="pill p-indirect">indirect</span></div><div class="d">Transaction velocity and merchant category signals; reached via PSP or aggregator relationships.</div></div></div><div class="reg"><div class="reg-head"><h4>Decisioning and data platforms</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">Perfios<span class="pill p-direct">direct</span></div><div class="d">Bank statement analysis plus broader financial data. One of the most widely used in Indian lending.</div></div><div class="reg-row"><div class="n">FinBox<span class="pill p-direct">direct</span></div><div class="d">Alt-data underwriting, device and bureau integration, decisioning layer.</div></div><div class="reg-row"><div class="n">Lentra<span class="pill p-direct">direct</span></div><div class="d">Full-stack lending infrastructure — origination through decisioning.</div></div><div class="reg-row"><div class="n">Finflux<span class="pill p-direct">direct</span></div><div class="d">Loan origination and management system with decisioning.</div></div><div class="reg-row"><div class="n">Karza<span class="pill p-direct">direct</span></div><div class="d">Verification and financial intelligence, bank statement analysis, fraud signals.</div></div><div class="reg-row"><div class="n">Setu<span class="pill p-direct">direct</span></div><div class="d">Account Aggregator and data infrastructure APIs.</div></div><div class="reg-row"><div class="n">Digitap / Deepvue<span class="pill p-direct">direct</span></div><div class="d">Alt-data and verification API aggregators covering multiple underwriting paths.</div></div></div><div class="reg"><div class="reg-head"><h4>Modelling and explainability</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">XGBoost / LightGBM / CatBoost<span class="pill p-oss">oss</span></div><div class="d">The practical standard for tabular credit models. Apache 2.0 / MIT.</div></div><div class="reg-row"><div class="n">SHAP<span class="pill p-oss">oss</span></div><div class="d">Shapley-value attribution. The dominant method for reason codes on tree ensembles. MIT.</div></div><div class="reg-row"><div class="n">scikit-learn<span class="pill p-oss">oss</span></div><div class="d">Logistic regression, calibration, metrics. BSD.</div></div><div class="reg-row"><div class="n">Optbinning<span class="pill p-oss">oss</span></div><div class="d">Weight-of-evidence binning and scorecard construction — the traditional credit toolkit.</div></div><div class="reg-row"><div class="n">Evidently / NannyML<span class="pill p-oss">oss</span></div><div class="d">Drift and performance monitoring in production.</div></div><div class="reg-row"><div class="n">Fairlearn / AIF360<span class="pill p-oss">oss</span></div><div class="d">Group fairness metrics and bias testing.</div></div></div><div class="warn"><span class="note-lbl">Watch out</span><p>Registry reflects what was publicly visible in May 2026. Bureau and AA access terms in particular change; verify current requirements with the provider and with your compliance function before designing around them.</p></div>
+<h2 id="s-indigo-6">A prompt for designing your credit policy</h2>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Prompt — paste into any AI</span><button class="cb-copy" type="button">Copy</button></div><pre><code>You are a credit risk head who has built underwriting policy for
+Indian NBFCs and fintech lenders.
+
+My product:
+- Loan type and ticket size: [e.g. unsecured personal, Rs 25k-2L]
+- Target segment: [e.g. salaried tier-2, self-employed, MSME, gig]
+- Tenure: [e.g. 6-24 months]
+- Expected volume: [applications per month]
+- Data I can access: [bureau / AA / GST / EPFO / UPI / none yet]
+- Licence position: [own NBFC / partner with an NBFC / unlicensed]
+
+Give me:
+
+1. An underwriting waterfall - which checks in which order, and why
+   that order minimises data cost per decision.
+2. The 15-20 features I should build first, and which data source
+   each comes from.
+3. Hard-rule declines that should happen BEFORE any model runs.
+4. A starting policy grid: score band x FOIR band -&gt; decision and limit.
+5. The adverse action reason codes I will need, mapped to features.
+6. What my approval rate and early-delinquency rate should roughly
+   look like in months 1-6 if the policy is calibrated sensibly, and
+   what it means if they diverge.
+7. The three ways this policy will most likely be gamed.
+
+Be specific to the Indian context. Flag where you are uncertain or
+where current regulation should be checked with a qualified adviser.</code></pre></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">The reject inference problem</h2>
+<p>This is the deepest methodological problem in credit modelling and most teams meet it late.</p><p>You only observe repayment behaviour for applicants you <em>approved</em>. The ones you declined have no outcome. So your training data is not a sample of applicants &rsquo; it is a sample of applicants your existing policy already liked.</p><p>Train naively on that and the model learns to reproduce your current policy, including its mistakes, while appearing to perform well because it is evaluated on the same biased sample.</p><h3 id="s-amber-ri">What to do about it</h3><ul><li><strong>Hold out a random approval slice.</strong> Approve a small random percentage of applicants who would otherwise be declined, at reduced limits. Expensive, and the only method that produces genuinely unbiased data. Budget for the losses as a data acquisition cost.</li><li><strong>Reject inference techniques</strong> — parcelling, augmentation, fuzzy assignment — infer likely outcomes for declined applicants. Standard practice, and all of them rest on assumptions that can be wrong.</li><li><strong>Use bureau performance on declines.</strong> If a declined applicant borrowed elsewhere, the bureau will eventually show how that performed. Cheap, partial, and genuinely useful.</li></ul><div class="note"><span class="note-lbl">Note</span><p>The random approval slice is the one that separates lenders who understand their risk from lenders who are extrapolating. It feels wasteful in a board meeting and it is the only way to find out whether the population just outside your cut-off is actually bad.</p></div>
+<h2 id="s-amber-1">Proxy discrimination, tested properly</h2>
+<p>You are not permitted to use caste, religion, gender or similar characteristics. The harder question is whether your features <em>stand in</em> for them.</p><p>Pincode correlates with community in India. Device price correlates with income and with much else. App usage, language settings, and name-derived features all carry demographic signal.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Python — disparate impact testing</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from collections import defaultdict
+
+def disparate_impact(decisions, groups):
+    &quot;&quot;&quot;decisions: list of &#x27;approve&#x27;|&#x27;decline&#x27;
+       groups:    list of protected-attribute labels, SAME ORDER
+
+    The four-fifths rule: if the approval rate for any group falls below
+    80% of the highest group&#x27;s rate, that is a flag requiring investigation.
+    It is a screening heuristic, not a legal test, and it applies to
+    outcomes - not to whether the attribute was an input.&quot;&quot;&quot;
+    tot, appr = defaultdict(int), defaultdict(int)
+    for d, g in zip(decisions, groups):
+        tot[g] += 1
+        if d == &quot;approve&quot;:
+            appr[g] += 1
+
+    rates = {g: appr[g] / tot[g] for g in tot if tot[g] &gt;= 100}
+    if not rates:
+        return {&quot;error&quot;: &quot;insufficient volume per group&quot;}
+
+    best = max(rates.values())
+    return {
+        &quot;approval_rates&quot;: rates,
+        &quot;impact_ratios&quot;: {g: (r / best) for g, r in rates.items()},
+        &quot;flags&quot;: [g for g, r in rates.items() if best and (r / best) &lt; 0.80],
+    }
+
+def proxy_strength(feature_values, protected_labels):
+    &quot;&quot;&quot;How well does a single feature predict the protected attribute?
+    High AUC here means the feature is carrying demographic signal,
+    whether or not you intended it to.&quot;&quot;&quot;
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.model_selection import cross_val_score
+    import numpy as np
+    X = np.array(feature_values).reshape(-1, 1)
+    y = np.array(protected_labels)
+    auc = cross_val_score(LogisticRegression(max_iter=1000), X, y,
+                          cv=5, scoring=&quot;roc_auc&quot;).mean()
+    return {&quot;proxy_auc&quot;: auc,
+            &quot;assessment&quot;: &quot;strong proxy&quot; if auc &gt; 0.70
+                          else &quot;moderate proxy&quot; if auc &gt; 0.60
+                          else &quot;weak&quot;}</code></pre></div><div class="warn"><span class="note-lbl">Watch out</span><p>To test for disparate impact you generally need the protected characteristic. To comply with data minimisation you should not be holding it. Jurisdictions resolve this differently and some permit collection specifically for fairness testing. Resolve it with counsel rather than by assumption — and note that not testing is not a defence.</p></div><p>India does not have a US-style disparate impact doctrine in credit. The supervisory and reputational exposure is nonetheless real, and the RBI digital lending rules were themselves a response to conduct that looked defensible to the firms doing it.</p>
+<h2 id="s-amber-2">SHAP is less stable than it looks</h2>
+<p>A point that rarely appears in vendor material: SHAP explanations are not perfectly stable. Retrain on slightly different data, or perturb an input marginally, and the ranking of contributions can shift &rsquo; particularly among correlated features.</p><p>For model understanding that is tolerable. For a regulated adverse action notice that must be reproducible, it is a problem.</p><h3 id="s-amber-stable">Mitigations that work</h3><ul><li><strong>Group aggressively.</strong> Individual feature attributions move; grouped reason categories are far more stable because correlated features sum within the same group.</li><li><strong>Pin the model version to the decision.</strong> The reason is reproducible against the model that made the decision, not against the current model.</li><li><strong>Use TreeSHAP exact</strong> rather than sampling approximations for the production path.</li><li><strong>Test reproducibility in CI.</strong> Same input, same model version, identical reason ranking — assert it.</li><li><strong>Prune correlated features.</strong> Two features measuring the same thing split attribution between them and destabilise the ranking.</li></ul><div class="note"><span class="note-lbl">Note</span><p>This is also an argument for the hybrid architecture. If the policy layer is doing the deciding and the score is one input, your explanation rests on explicit policy rules rather than on the stability of a post-hoc attribution method.</p></div>
+<h2 id="s-amber-3">Monitoring: models decay, and quietly</h2>
+<p>A credit model degrades for reasons unrelated to code. The population shifts, the economy shifts, your marketing changes who applies, and competitors change who is left for you.</p><table><tr><th>What to watch</th><th>Signal</th><th>Typical cadence</th></tr><tr><td><strong>Population Stability Index</strong></td><td>Has the applicant mix shifted? PSI above ~0.25 on key features warrants investigation</td><td>Weekly</td></tr><tr><td><strong>Score distribution</strong></td><td>Sudden shift usually means a data pipeline problem, not a population change</td><td>Daily</td></tr><tr><td><strong>Approval rate by segment</strong></td><td>Drift here precedes both risk and fairness problems</td><td>Weekly</td></tr><tr><td><strong>Early delinquency (first EMI, 30+ DPD)</strong></td><td>The earliest real outcome signal you get</td><td>Monthly by cohort</td></tr><tr><td><strong>Vintage curves</strong></td><td>Compare each origination cohort at the same age — the only fair comparison</td><td>Monthly</td></tr><tr><td><strong>Feature null rates</strong></td><td>A source silently returning nulls is a common and expensive failure</td><td>Daily</td></tr></table><div class="warn"><span class="note-lbl">Watch out</span><p>Watch feature null rates closely. When an upstream provider degrades and starts returning nulls, a tree model does not error — it routes down the default branch and keeps scoring confidently. Portfolios have been damaged by a data outage nobody noticed for weeks because nothing looked broken.</p></div>
+<h2 id="s-amber-4">Unit economics, honestly</h2>
+<p>The arithmetic that decides whether a lending product works, before any model quality is considered:</p><div class="cb"><div class="cb-head"><span class="cb-lang">Unit economics per approved loan</span><button class="cb-copy" type="button">Copy</button></div><pre><code>Revenue
+  interest earned over expected life
+  + processing fee
+  - cost of funds
+
+Costs
+  - acquisition cost / approval rate        &lt;- declined applicants cost you too
+  - data cost per application / approval rate
+  - expected credit loss (PD x LGD x EAD)
+  - servicing and collections cost
+  = contribution per loan
+
+The term everyone underestimates:
+  data cost per APPROVAL, not per application.
+
+  At a 20% approval rate, Rs 60 of data pulls per application
+  becomes Rs 300 per approved loan. On a Rs 25,000 ticket at
+  thin margins, that is not a rounding error.
+
+The lever most teams miss:
+  Declining cheaply is worth as much as approving accurately.
+  Every rupee of data spent on an applicant you were always
+  going to decline is pure loss.</code></pre></div><p>Two consequences follow. First, the eligibility gate and pull ordering in the Intermediate lane are commercial decisions, not engineering tidiness. Second, a small improvement in approval rate at constant risk improves unit economics more than a large improvement in model AUC.</p>
+<h2 id="s-amber-5">The decision log, and where this module ends</h2>
+<div class="cb"><div class="cb-head"><span class="cb-lang">JSON — minimum credit decision record</span><button class="cb-copy" type="button">Copy</button></div><pre><code>{
+  &quot;decision_id&quot;: &quot;dec_01HXZ...&quot;,
+  &quot;application_id&quot;: &quot;app_7741&quot;,
+  &quot;timestamp&quot;: &quot;2026-05-22T10:02:11Z&quot;,
+
+  &quot;data_sources&quot;: [
+    {&quot;source&quot;: &quot;cibil&quot;, &quot;pulled_at&quot;: &quot;...&quot;, &quot;ref&quot;: &quot;enq_9912&quot;, &quot;cost_paise&quot;: 4500},
+    {&quot;source&quot;: &quot;aa_bank_statement&quot;, &quot;consent_ref&quot;: &quot;cons_441a&quot;,
+     &quot;months&quot;: 12, &quot;accounts&quot;: 1}
+  ],
+
+  &quot;features_snapshot&quot;: { &quot;...&quot;: &quot;full feature vector as scored&quot; },
+  &quot;feature_null_count&quot;: 0,
+
+  &quot;model&quot;: {
+    &quot;name&quot;: &quot;pd_unsecured_v3&quot;,
+    &quot;version&quot;: &quot;3.4.2&quot;,
+    &quot;trained_on&quot;: &quot;2026-02-18&quot;,
+    &quot;score&quot;: 0.0731,
+    &quot;score_band&quot;: &quot;B2&quot;
+  },
+
+  &quot;policy&quot;: {
+    &quot;version&quot;: &quot;credit-policy-v11&quot;,
+    &quot;hard_rules_passed&quot;: [&quot;age&quot;, &quot;geo&quot;, &quot;kyc_complete&quot;],
+    &quot;hard_rules_failed&quot;: [],
+    &quot;foir_computed&quot;: 0.41,
+    &quot;foir_cap&quot;: 0.50
+  },
+
+  &quot;decision&quot;: {
+    &quot;outcome&quot;: &quot;approve&quot;,
+    &quot;limit&quot;: 120000, &quot;tenure_months&quot;: 18, &quot;apr&quot;: 0.24,
+    &quot;adverse_reasons&quot;: [],
+    &quot;human_override&quot;: null
+  },
+
+  &quot;explainability&quot;: {
+    &quot;method&quot;: &quot;TreeSHAP-exact&quot;,
+    &quot;reason_codes_computed&quot;: true,
+    &quot;determinism_hash&quot;: &quot;sha256:7c1f...&quot;
+  }
+}</code></pre></div><p>The <code>determinism_hash</code> is worth adopting. Hash the sorted reason codes and contributions at decision time. If the same applicant is re-scored later against the same model version, the hash must match. It turns reproducibility from a claim into a test.</p><h3 id="s-amber-handoff">Where this module ends</h3><ul><li><strong>Identity verification</strong> happens before any of this — Module 01.</li><li><strong>Fraud at application</strong> — synthetic identities, first-payment default rings, application farming — is Fraud &amp; Risk. Credit models assume the applicant is real; fraud models do not.</li><li><strong>Collections and recovery</strong> after delinquency is Customer Operations, and recovery conduct is tightly regulated.</li><li><strong>Model risk management</strong> — validation, documentation, challenger models, independent review — is Governance.</li><li><strong>What you may collect and how automated the decision may be</strong> sits in the India and global regulatory spine pages.</li></ul><div class="warn"><span class="note-lbl">Watch out</span><p>Illustrative code, as throughout. A credit decisioning system affecting real borrowers needs independent model validation, legal review of the adverse action path, and sign-off from whoever is accountable for credit risk at your firm or your partner lender.</p></div>
+<h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI Digital Lending Directions</strong> &mdash; the RE/LSP split, disclosure obligations and the cooling-off requirement. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI Fair Practices Code</strong> &mdash; the obligation to give reasons for a rejection. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>Account Aggregator framework</strong> &mdash; the consent architecture for financial data. <a href="https://sahamati.org.in" target="_blank" rel="noopener">sahamati.org.in</a></li><li><span class="src-k src-official">official</span><strong>CIC (Regulation) Act and RBI directions</strong> &mdash; bureau reporting, dispute handling and the 30-day resolution clock. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li></ol><p style="font-size:.8rem;color:var(--muted);margin-top:12px">Tooling, pricing and cost sources for this module are on its build sheet: <a href="/fintech-ai/credit-underwriting/build-sheet/#sources"><strong>sources &rarr;</strong></a></p><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Regulation in this area is actively developing; the date is part of the claim.</p></div></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=[], secs=[];
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  
+  
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

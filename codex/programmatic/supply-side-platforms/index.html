@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Supply-Side Platforms (SSPs): How Publishers | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Supply-Side Platforms (SSPs): How Publishers | Digital Codex">
+<meta property="og:description" content="How SSPs help publishers maximise revenue — header bidding, floor prices, yield management, and choosing the right SSP stack.">
+<meta property="og:url" content="https://www.clarigital.com/codex/programmatic/supply-side-platforms/">
+<meta property="og:site_name" content="Digital Codex">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Supply-Side Platforms (SSPs): How Publishers", "description": "How SSPs help publishers maximise revenue \u2014 header bidding, floor prices, yield management, and choosing the right SSP stack.", "url": "https://www.clarigital.com/codex/programmatic/supply-side-platforms/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Supply-Side Platforms (SSPs): How Publishers", "description": "How SSPs help publishers maximise revenue \u2014 header bidding, floor prices, yield management, and choosing the right SSP stack.", "url": "https://www.clarigital.com/codex/programmatic/supply-side-platforms/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<meta name="description" content="How SSPs help publishers maximise revenue — header bidding, floor prices, yield management, and choosing the right SSP stack.">
+<link rel="canonical" href="/codex/programmatic/supply-side-platforms/">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+</style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Supply-Side Platforms (SSPs): How Publishers | Digital Codex">
+<meta name="twitter:description" content="How SSPs help publishers maximise revenue — header bidding, floor prices, yield management, and choosing the right SSP stack.">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/case-studies/">Cases</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/business-strategy/" class="di">Business</a><a href="/codex/programmatic/" class="di cur">Programmatic Advertising</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#ssp-role">What an SSP Does</a><a class="cnl" href="#header-bidding">Header Bidding: How It Works</a><a class="cnl" href="#waterfall-vs-header">Waterfall vs Header Bidding</a><a class="cnl" href="#floor-prices">Floor Prices and Yield Management</a><a class="cnl" href="#major-ssps">Major SSPs</a><a class="cnl" href="#publisher-data">Publisher First-Party Data</a><a class="cnl" href="#ssp-reporting">SSP Reporting for Publishers</a><a class="cnl" href="#advertiser-view">The Advertiser View of SSPs</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/programmatic/">Programmatic Advertising</a><span class="sep">/</span><span>Supply-Side Platforms (SSPs)</span></nav>
+  <span class="label-tag">Programmatic Advertising &#183; Guide 3</span>
+  <h1>Supply-Side Platforms &#183; Header Bidding, Yield &#38; Publisher Revenue</h1>
+  <p class="hero-lead">A Supply-Side Platform (SSP) is the publisher's equivalent of the advertiser's DSP — the technology that connects publisher inventory to the programmatic marketplace and maximises revenue from every impression. Understanding how SSPs work matters to advertisers too: SSP configuration decisions affect the quality of inventory available, the transparency of the supply chain, and the economics of every programmatic impression.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Programmatic Advertising</span>
+    <span class="meta-tag mt-gray">4,800 words</span>
+    <span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="chapter" id="ssp-role">
+<div class="chap-hdr"><h2>What an SSP Does</h2><button class="share-btn" onclick="copyLink('ssp-role')">Share</button></div>
+<p>An SSP connects a publisher's ad inventory to multiple programmatic demand sources — DSPs, ad networks, and direct advertisers — simultaneously, running auctions to find the highest-paying buyer for each impression. Before SSPs, publishers using programmatic had to choose between selling through a single ad network (which had no incentive to maximise price) or managing multiple direct integrations (which was technically complex). SSPs solved both problems by providing a single integration point that aggregated demand from multiple sources and used competition between buyers to maximise revenue.</p>
+<p>Core SSP functions: connecting to multiple demand sources (DSPs, exchanges, ad networks, and direct advertisers); managing the publisher's ad stack (deciding whether to serve a programmatic ad or a direct-sold campaign for each impression); setting and enforcing floor prices (minimum CPMs below which impressions will not be sold); providing real-time reporting on fill rates, eCPM, and revenue; and managing brand safety preferences (blocking specific advertisers or content categories).</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">Header bidding adoption</p><div class="stat-n">80%+</div><p class="stat-l">The majority of large publishers now use header bidding, replacing the sequential waterfall model</p></div>
+  <div class="stat-card"><p class="stat-h">Revenue lift from header bidding</p><div class="stat-n">20–50%</div><p class="stat-l">Publishers switching from waterfall to header bidding documented 20–50% revenue increases</p></div>
+  <div class="stat-card"><p class="stat-h">SSP fee range</p><div class="stat-n">10–20%</div><p class="stat-l">SSPs typically take 10–20% of revenue — fees vary by deal type and publisher scale</p></div>
+</div>
+</div>
+
+<div class="chapter" id="header-bidding">
+<div class="chap-hdr"><h2>Header Bidding: How It Works</h2><button class="share-btn" onclick="copyLink('header-bidding')">Share</button></div>
+<p>Header bidding is a programmatic technique where publishers offer their inventory to multiple demand sources simultaneously before making an ad call to their primary ad server. The name comes from the original implementation method: JavaScript code placed in the HTML page header fires bid requests to multiple SSPs and exchanges in parallel before the page load completes.</p>
+<p>The header bidding sequence: when a user loads a publisher's page, the header bidding wrapper (typically Prebid.js, the open-source standard) fires simultaneous bid requests to all configured SSP demand partners. Each SSP has a defined timeout (typically 300–500ms) to respond with a bid. All bids received within the timeout window are passed to the publisher's primary ad server (usually Google Ad Manager). The ad server then competes these bids against its own direct-sold inventory and its own programmatic demand (Google AdX). The highest-paying ad — whether from header bidding or the ad server's own demand — wins and is served.</p>
+<p>The critical advantage of header bidding over the previous waterfall model: every buyer sees every impression and can compete on equal terms, rather than buyers being offered impressions sequentially in a priority order where lower-priority buyers only see impressions that higher-priority buyers have passed on. This competition drives higher CPMs for publishers.</p>
+</div>
+
+<div class="chapter" id="waterfall-vs-header">
+<div class="chap-hdr"><h2>Waterfall vs Header Bidding</h2><button class="share-btn" onclick="copyLink('waterfall-vs-header')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Dimension</th><th>Waterfall</th><th>Header Bidding</th></tr></thead>
+  <tbody>
+    <tr><td>How demand is accessed</td><td>Sequentially — each demand source is offered impressions in priority order; lower priority sources only see what higher ones pass on</td><td>Simultaneously — all demand sources see every impression at the same time</td></tr>
+    <tr><td>Price discovery</td><td>Poor — lower-priority buyers with higher CPMs may never see impressions they would pay more for</td><td>Good — competition drives impressions to the highest-paying buyer</td></tr>
+    <tr><td>Publisher revenue</td><td>Lower — sequential structure typically undervalues inventory</td><td>Higher — documented 20–50% revenue increases in publisher case studies</td></tr>
+    <tr><td>Page load impact</td><td>Lower — only one demand source called at a time</td><td>Higher — multiple simultaneous calls; mitigated by timeout management</td></tr>
+    <tr><td>Complexity</td><td>Simple</td><td>Higher — requires wrapper configuration, timeout management, bid caching</td></tr>
+    <tr><td>Current prevalence</td><td>Legacy — mostly replaced by header bidding</td><td>Dominant — industry standard for large publishers</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="floor-prices">
+<div class="chap-hdr"><h2>Floor Prices and Yield Management</h2><button class="share-btn" onclick="copyLink('floor-prices')">Share</button></div>
+<p>A floor price is the minimum CPM below which a publisher will not sell an impression. Floor prices prevent publishers from selling their inventory at CPMs so low they would be better served by house ads or leaving the slot empty. Floor price strategy is one of the most complex yield management decisions in programmatic — set floors too high and fill rates drop, leaving revenue on the table; set floors too low and inventory is sold below its market value.</p>
+<p>Dynamic floor pricing — where the SSP automatically adjusts floor prices based on historical bid data, time of day, content category, and audience quality — has replaced static floor prices for most sophisticated publishers. SSPs including Google Ad Manager, Magnite, and PubMatic offer dynamic floor tools that aim to capture the maximum clearing price for each impression without sacrificing fill rate.</p>
+<p>From the advertiser's perspective, floor prices affect win rates and effective CPMs. An advertiser bidding £2 CPM may win many impressions on one publisher (whose floor is £0.50) and none on another (whose floor is £3). DSPs that provide insight into floor prices by site and deal type enable more accurate bid optimisation.</p>
+</div>
+
+<div class="chapter" id="major-ssps">
+<div class="chap-hdr"><h2>Major SSPs</h2><button class="share-btn" onclick="copyLink('major-ssps')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>SSP</th><th>Owner</th><th>Primary Strength</th></tr></thead>
+  <tbody>
+    <tr><td>Google Ad Manager (with AdX)</td><td>Google</td><td>Largest single source of programmatic demand; deep DV360 integration; required for Google advertising ecosystem access</td></tr>
+    <tr><td>Magnite</td><td>Independent</td><td>Formed from Rubicon Project + Telaria merger; strongest in CTV and video; large independent SSP</td></tr>
+    <tr><td>PubMatic</td><td>Independent</td><td>Strong in mobile and app inventory; Publisher Console data transparency tools</td></tr>
+    <tr><td>Index Exchange</td><td>Independent</td><td>Known for supply quality and transparency; strong publisher relationships in premium news and magazine inventory</td></tr>
+    <tr><td>OpenX</td><td>Independent</td><td>Premium publisher focus; strong data privacy and consent management integration</td></tr>
+    <tr><td>Xandr (Microsoft)</td><td>Microsoft</td><td>Premium video inventory; AppNexus heritage with strong DSP buyer relationships</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="publisher-data">
+<div class="chap-hdr"><h2>Publisher First-Party Data</h2><button class="share-btn" onclick="copyLink('publisher-data')">Share</button></div>
+<p>As third-party cookies phase out, publisher first-party data — logged-in user data, subscription data, declared interest data — is becoming the most valuable targeting asset in programmatic. Publishers who can offer verified, consent-based audience segments to advertisers command significant CPM premiums over contextual-only inventory. SSPs are developing data clean room and private marketplace tools that allow publishers to monetise their first-party data while maintaining user privacy.</p>
+<p>From an advertiser perspective, publisher first-party data available through private marketplace deals is often the highest-quality programmatic targeting available — because it is based on actual user behaviour and declared intent on that publisher's properties, rather than modelled third-party segments with documented accuracy limitations.</p>
+</div>
+
+<div class="chapter" id="ssp-reporting">
+<div class="chap-hdr"><h2>SSP Reporting for Publishers</h2><button class="share-btn" onclick="copyLink('ssp-reporting')">Share</button></div>
+<p>Key SSP metrics publishers monitor: effective CPM (eCPM) — the average CPM across all demand sources and fill rates; fill rate — percentage of available impressions that were sold; bid density — number of competing bids per impression (higher bid density means better price competition); and win rate by demand partner — which DSPs and exchanges are winning the most impressions. These metrics guide decisions about which SSP partners to prioritise, where to set floor prices, and which content categories are most valuable to programmatic buyers.</p>
+</div>
+
+<div class="chapter" id="advertiser-view">
+<div class="chap-hdr"><h2>The Advertiser View of SSPs</h2><button class="share-btn" onclick="copyLink('advertiser-view')">Share</button></div>
+<p>Advertisers interact with SSPs indirectly — through their DSP — but SSP choices affect campaign outcomes in important ways. Supply path optimisation (described in the <a href="/codex/programmatic/demand-side-platforms/">DSP guide</a>) involves selecting which SSP paths to prefer for each publisher. Publishers who use high-quality SSPs with low fraud rates, good viewability measurement, and transparent reporting provide better campaign outcomes than publishers using low-quality supply chains. Checking the ads.txt file of publisher sites before adding them to include lists is the basic due diligence step for supply path quality.</p>
+</div>
+
+
+<div class="chapter" id="ssp-identity">
+<div class="chap-hdr"><h2>SSP Identity Solutions in a Cookieless World</h2><button class="share-btn" onclick="copyLink('ssp-identity')">Share</button></div>
+<p>As third-party cookies phase out, SSPs are investing in identity solutions that help publishers monetise their inventory without cookie-based audience targeting. Publishers with large registered user bases — media companies with newsletter subscribers, streaming platforms with logged-in viewers, e-commerce sites with account holders — have first-party identity data that can be activated for audience targeting even in a cookieless environment.</p>
+<p>SSPs are building data clean room infrastructure that allows publishers to share their first-party audience data with advertisers without exposing individual user data. A publisher can create audience segments from their logged-in user data (e.g., "users who read about personal finance three or more times per month") and make these segments available to advertisers through the SSP's private marketplace — commanding a significant CPM premium over contextual-only inventory.</p>
+<p>Unified ID 2.0 (UID2) — the industry's primary email-based identity solution — is being integrated by most major SSPs. When a user authenticates (logs in or provides an email address) on a publisher's site, the SSP can convert that email to a UID2 token and include it in bid requests. DSPs with UID2 integration can then match that token to their own CRM data, enabling people-based targeting without third-party cookies.</p>
+</div>
+
+<div class="chapter" id="ssp-video-ctv">
+<div class="chap-hdr"><h2>SSP Role in Video and CTV Supply</h2><button class="share-btn" onclick="copyLink('ssp-video-ctv')">Share</button></div>
+<p>The SSP's role in video and connected TV supply is more complex than in display because the technical standards, deal structures, and measurement frameworks are different. Video inventory is typically valued at 5–10× display CPMs, making the economics of SSP fee structures more significant — a 15% SSP fee on a £20 video CPM is £3/thousand impressions, compared to £0.15 on a £1 display CPM.</p>
+<p>For CTV specifically, the SSP acts as the programmatic monetisation layer for broadcaster streaming apps and AVOD platforms. Magnite (through its SpotX acquisition) is the dominant CTV-focused SSP, with direct integrations across major streaming platforms. The CTV SSP provides: programmatic deal management; audience data activation through ACR (Automatic Content Recognition) data integration; and measurement integration with third-party brand lift and cross-device attribution vendors.</p>
+<p>Publisher-direct CTV deals are often conducted outside the SSP entirely — large streaming platforms (Netflix, Disney+, Amazon Prime Video) sell their advertising directly or through managed service arrangements rather than through programmatic SSP infrastructure. The SSP is more relevant for mid-tier publisher streaming content and AVOD platforms where programmatic automation provides efficiency that direct sales teams cannot achieve at the same scale.</p>
+</div>
+
+<div class="chapter" id="ssp-selection-criteria">
+<div class="chap-hdr"><h2>SSP Selection Criteria for Publishers</h2><button class="share-btn" onclick="copyLink('ssp-selection-criteria')">Share</button></div>
+<p>Publishers evaluating SSPs should assess: demand quality (which SSP has the strongest DSP buyer relationships and generates the most competitive bidding on their specific inventory type?); technology capability (does the SSP support header bidding, first-party data activation, server-side connections, and advanced deal types?); transparency (does the SSP provide clear reporting on win rates, CPMs, and buyer identity?); and fee structure (how does the SSP's take rate compare to alternatives, and are there minimum guarantees or revenue share options?).</p>
+<p>Most large publishers use multiple SSPs simultaneously through header bidding — the question is not which single SSP to use but which combination of SSPs maximises competition for their inventory. The incremental revenue from adding a new SSP must justify the integration and management overhead. The diminishing returns curve: the first 3–4 SSPs in a header bidding stack provide the most incremental demand; beyond that, additional SSPs add latency without proportional revenue uplift.</p>
+</div>
+
+<div class="chapter" id="sources">
+<h2>Sources &#38; Further Reading</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>All frameworks, data, and examples in this guide draw from official documentation, peer-reviewed research, and documented practitioner case studies. We learn from primary sources and explain them in our own words.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://prebid.org/overview/intro.html" target="_blank" rel="noopener">Prebid.org — Header Bidding Documentation</a></strong><p>Official Prebid.js documentation — the open-source header bidding standard used by the majority of large publishers.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/admanager/" target="_blank" rel="noopener">Google Ad Manager — Official Documentation</a></strong><p>Official Google Ad Manager documentation for publishers managing programmatic inventory.</p></div><div class="source-card"><span class="src-tag" style="background:#f0fdf4;color:#166534">Framework</span><strong><a href="https://www.magnite.com/resources/" target="_blank" rel="noopener">Magnite — Publisher Resources</a></strong><p>Magnite's documented resources on header bidding, yield optimisation, and SSP strategy.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://www.iab.com/guidelines/ads-txt/" target="_blank" rel="noopener">IAB — Ads.txt and Sellers.json</a></strong><p>IAB documentation on Authorised Digital Sellers and supply chain transparency standards.</p></div></div>
+</div>
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/attribution-modelling/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">Attribution Modelling</span><span class="rc-arr">&#8594;</span></a><a href="/codex/paid-advertising/facebook-instagram/campaign-objectives/" class="related-card"><span class="rc-tag">Meta Ads</span><span class="rc-title">Campaign Objectives</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/marketing-budget-allocation/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Marketing Budget Allocation</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 4,800</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#ssp-role" class="sb-link on">What an SSP Does</a><a href="#header-bidding" class="sb-link">Header Bidding: How It Works</a><a href="#waterfall-vs-header" class="sb-link">Waterfall vs Header Bidding</a><a href="#floor-prices" class="sb-link">Floor Prices and Yield Management</a><a href="#major-ssps" class="sb-link">Major SSPs</a><a href="#publisher-data" class="sb-link">Publisher First-Party Data</a><a href="#ssp-reporting" class="sb-link">SSP Reporting for Publishers</a><a href="#advertiser-view" class="sb-link">The Advertiser View of SSPs</a><a href="#sources" class="sb-link">Sources</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>218 guides. Official sources only.</h2><p>The complete digital marketing knowledge base.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/programmatic/" class="btn btn-outline-w btn-lg">More Programmatic Advertising</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>Official sources only &#183; No affiliate links</p></div>
+  <div class="ft-col"><h5>Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/programmatic/">Programmatic Advertising</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 218 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+  <div class="ft-col"><h5>Legal</h5><ul><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-of-use/">Terms of Use</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');
+function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);
+if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+</body>
+</html>

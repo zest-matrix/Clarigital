@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Google Panda: Thin Content, Quality & Recovery | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Panda: Thin Content, Quality & Recovery | Digital Codex">
+<meta property="og:description" content="What Google Panda targeted, how it identifies thin and low-quality content, the site-wide impact mechanism, and a complete recovery framework.">
+<meta property="og:url" content="https://www.clarigital.com/codex/seo/algorithm/panda/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="What Google Panda targeted, how it identifies thin and low-quality content, the site-wide impact mechanism, and a complete recovery framework.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/codex/seo/algorithm/panda/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Google Panda: Thin Content, Quality & Recovery","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-04","articleSection":"Google Algorithm Updates"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Google Panda: Thin Content, Quality & Recovery | Digital Codex">
+<meta name="twitter:description" content="What Google Panda targeted, how it identifies thin and low-quality content, the site-wide impact mechanism, and a complete recovery framework.">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Seo", "item": "https://www.clarigital.com/codex/seo/"}, {"@type": "ListItem", "position": 4, "name": "Algorithm", "item": "https://www.clarigital.com/codex/seo/algorithm/"}, {"@type": "ListItem", "position": 5, "name": "Google Panda: Thin Content, Quality & Recovery", "item": "https://www.clarigital.com/codex/seo/algorithm/panda/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/" class="cur">SEO</a></li><li><a href="/codex/sem/">SEM</a></li><li><a href="/codex/social-media/">Social</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/sem/" class="di">SEM</a><a href="/codex/social-media/" class="di">Social</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/all-guides/" class="di">All Guides</a><a href="/codex/glossary/" class="di">Glossary</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#what-is-panda">What is Panda</a><a class="cnl" href="#what-panda-targets">What It Targets</a><a class="cnl" href="#site-wide-mechanism">Site-Wide Mechanism</a><a class="cnl" href="#panda-signals">Quality Signals</a><a class="cnl" href="#recovery">Recovery Framework</a><a class="cnl" href="#panda-today">Panda Today</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/seo/">SEO</a><span class="sep">/</span><span class="cur">Google Panda</span></nav>
+  <span class="label-tag">Algorithm Updates &#183; Session 4, Guide 2</span>
+  <h1>Google Panda &#183; Thin Content, Quality Signal &#38; Recovery</h1>
+  <p class="hero-lead">Google Panda (launched February 2011) was the first major algorithm to target content quality rather than link manipulation. It introduced a site-wide quality signal that penalised sites with significant proportions of thin, duplicated, or low-value content — even affecting high-quality pages on the same domain. Understanding how Panda works is fundamental to understanding how Google evaluates content quality today.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Google Algorithm Updates</span><span class="meta-tag mt-gray">2,800 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+  <li>What triggered the development of Panda and what content farms were</li>
+  <li>The specific content types Panda targeted and still targets</li>
+  <li>How Panda's site-wide signal works — why bad pages hurt good pages</li>
+  <li>The quality signals Google uses to assess page and site quality</li>
+  <li>A step-by-step recovery framework for sites affected by quality updates</li>
+  <li>How Panda evolved into the Helpful Content system used today</li>
+</ul></div></div>
+
+<div class="chapter" id="what-is-panda">
+<div class="chap-hdr"><h2>What is Google Panda</h2><button class="share-btn" onclick="copyLink('what-is-panda')">Share</button></div>
+<p>Google Panda was an algorithm update launched in February 2011, developed by Google engineer Navneet Panda (hence the name). Its origin was a specific problem: content farms — companies that paid freelancers to produce thousands of articles targeting high-traffic keywords at minimal cost per article. Demand Media (eHow, Livestrong), Suite101, Associated Content, and Mahalo had collectively produced tens of millions of thin, low-quality articles that ranked well due to domain authority and sheer volume.</p>
+<p>Google's internal research at the time found significant user dissatisfaction with content farm results — users frequently returned to search results immediately after visiting these sites, a signal of poor content quality. Panda was built to classify the quality of pages and sites using a machine learning model trained on human quality ratings.</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">Launch date</p><div class="stat-n">Feb 2011</div><p class="stat-l">United States first; worldwide rollout over months</p></div>
+  <div class="stat-card"><p class="stat-h">Queries affected</p><div class="stat-n">~12<span class="u">%</span></div><p class="stat-l">Of US queries affected at launch — Google's own estimate</p></div>
+  <div class="stat-card"><p class="stat-h">Incorporated into core</p><div class="stat-n">Jan 2016</div><p class="stat-l">Panda became part of Google's core ranking signals</p></div>
+</div>
+</div>
+
+<div class="chapter" id="what-panda-targets">
+<div class="chap-hdr"><h2>What Panda Targets</h2><button class="share-btn" onclick="copyLink('what-panda-targets')">Share</button></div>
+<p>Google's guidance at the time of Panda's launch (and in subsequent documentation) identified specific content patterns the algorithm was designed to identify and demote:</p>
+<ul>
+  <li><strong>Thin content.</strong> Pages with very little substantive content — a few sentences, a short paragraph — that do not genuinely address the user's query. The threshold is not a word count but a quality assessment: does the page provide sufficient information to be genuinely useful?</li>
+  <li><strong>Duplicate content.</strong> Pages that reproduce content from other pages on the same site (e.g. CMS-generated pages that differ only in a parameter) or content copied from other websites without significant original contribution.</li>
+  <li><strong>Content farm content.</strong> Articles written to target keywords rather than to genuinely inform readers — recognisable by keyword repetition, generic framing, lack of specific expertise, and absence of original research or perspective.</li>
+  <li><strong>Auto-generated content.</strong> Pages created programmatically by concatenating existing content, spinning articles through synonym replacement, or generating text from templates with minimal human editorial input.</li>
+  <li><strong>Poor user experience alongside content.</strong> Excessive advertising relative to content, intrusive interstitials, misleading page structure — Panda incorporated user experience signals alongside content quality.</li>
+  <li><strong>High ad-to-content ratios.</strong> Pages where the visible content area is dominated by advertising, particularly above-the-fold advertising that pushes substantive content below the visible screen area.</li>
+</ul>
+</div>
+
+<div class="chapter" id="site-wide-mechanism">
+<div class="chap-hdr"><h2>The Site-Wide Impact Mechanism</h2><button class="share-btn" onclick="copyLink('site-wide-mechanism')">Share</button></div>
+<p>Panda's most significant structural characteristic is its site-wide impact. A site with a significant proportion of low-quality pages received a site-wide quality signal that could suppress rankings for all pages — including high-quality pages that would rank well in isolation. This is the mechanism through which content farms with some excellent content still lost rankings across their entire domain.</p>
+<p>The practical implication: publishing low-quality content does not only harm the specific low-quality pages. It affects the entire domain's perceived quality level. A news site that publishes 500 high-quality investigative articles and 2,000 thin press release rewrites receives a lower site quality score than if it had published only the 500 high-quality articles.</p>
+<div class="callout orange"><strong>The threshold is proportional, not absolute</strong><p>There is no specific number of low-quality pages that triggers a Panda impact. The signal is proportional — a site where 5% of pages are thin content is in a different position than a site where 60% of pages are thin content. The second site faces a meaningful site-wide quality depression; the first may not.</p></div>
+</div>
+
+<div class="chapter" id="panda-signals">
+<div class="chap-hdr"><h2>Quality Signals Panda Uses</h2><button class="share-btn" onclick="copyLink('panda-signals')">Share</button></div>
+<p>Google's guidance around the time of Panda's launch described the quality assessment in terms of questions a human quality rater would ask. These questions remain relevant as they map directly to the Helpful Content system used today:</p>
+<ul>
+  <li>Would you trust the information in this article?</li>
+  <li>Is this article written by an expert or enthusiast who knows the topic well?</li>
+  <li>Does the site have duplicate, overlapping, or redundant articles on the same or similar topics?</li>
+  <li>Would you be comfortable giving this page your credit card information?</li>
+  <li>Does this article have spelling, stylistic, or factual errors?</li>
+  <li>Are the topics driven by genuine interest or by guessing at what might rank in search engines?</li>
+  <li>Does the article provide original content or information, original reporting, original research, or original analysis?</li>
+  <li>Does the page provide substantial value when compared to other pages in search results?</li>
+</ul>
+<p>These questions were published by Google's then-head of search spam, Matt Cutts, in the context of Panda guidance. They remain the most direct public insight into how Google's quality models think about content.</p>
+</div>
+
+<div class="chapter" id="recovery">
+<div class="chap-hdr"><h2>Panda Recovery Framework</h2><button class="share-btn" onclick="copyLink('recovery')">Share</button></div>
+<p>Recovering from a Panda-type quality impact requires improving the overall quality level of the site — not just the specific pages that appear low-quality. Recovery is typically assessed at the next core update (every few months), not immediately after changes are made.</p>
+<h3>Step 1: Audit all content</h3>
+<p>Crawl the entire site and categorise every page by quality level. For each URL: Is it substantive and genuinely useful? Does it have significant organic traffic and engagement? Is it thin, duplicated, or auto-generated?</p>
+<h3>Step 2: Decision matrix for each page type</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Page Type</th><th>Action</th><th>Rationale</th></tr></thead>
+  <tbody>
+    <tr><td>High quality, good traffic</td><td>Keep — improve further</td><td>These are your assets; reinforce them</td></tr>
+    <tr><td>Medium quality, some traffic</td><td>Improve substantially</td><td>Add depth, original research, expert perspective</td></tr>
+    <tr><td>Thin, no traffic, no links</td><td>Delete and 410</td><td>Removing genuinely unhelpful content raises average site quality</td></tr>
+    <tr><td>Thin but has backlinks</td><td>301-redirect to better resource</td><td>Preserves link equity while removing the quality drag</td></tr>
+    <tr><td>Duplicate (near-identical pages)</td><td>Consolidate into one canonical</td><td>Reduces duplicate content signals; concentrates link equity</td></tr>
+    <tr><td>Programmatically generated, zero value</td><td>noindex or delete</td><td>These pages contribute most to site-wide quality depression</td></tr>
+  </tbody>
+</table></div>
+<h3>Step 3: Build quality infrastructure</h3>
+<p>After removing or improving low-quality content, establish processes that prevent recurrence: editorial standards, author guidelines, minimum content length and quality thresholds, editorial review before publication.</p>
+</div>
+
+<div class="chapter" id="panda-today">
+<div class="chap-hdr"><h2>Panda in 2026: The Helpful Content System</h2><button class="share-btn" onclick="copyLink('panda-today')">Share</button></div>
+<p>Panda was incorporated into Google's core ranking algorithm in January 2016 — it no longer runs as a separate, periodic update but operates continuously as part of the core system. The quality signals it introduced evolved into what Google now calls the Helpful Content system (launched August 2022).</p>
+<p>The Helpful Content system extends Panda's logic: it creates a site-wide signal based on the proportion of content created primarily for search engines vs content created primarily for people. The mechanism is the same as Panda — a poor overall content quality ratio depresses the entire domain's ability to rank. The detection methods are more sophisticated, now using classifiers trained on the expanded E-E-A-T framework rather than the simpler quality signals of 2011.</p>
+<p>Sites recovering from Helpful Content impacts follow the same framework as Panda recovery: identify and remove genuinely unhelpful content, improve borderline content, and establish content standards that prioritise genuine user value over keyword targeting.</p>
+</div>
+
+<div class="chapter" id="sources"><h2>Authentic Sources</h2><div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://developers.google.com/search/updates/helpful-content-system" target="_blank" rel="noopener">Google Search Central — Helpful Content System</a></strong><p>The current evolution of Panda — the site-wide quality signal active in 2026.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://developers.google.com/search/blog/2011/02/finding-more-high-quality-sites-in" target="_blank" rel="noopener">Google Search Central Blog — Panda Launch Post (2011)</a></strong><p>Original Google announcement of Panda describing its goals and the types of sites targeted.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://developers.google.com/search/updates/core-updates" target="_blank" rel="noopener">Google Search Central — Core Updates</a></strong><p>How to assess core update impact and approach recovery — the current quality framework.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf" target="_blank" rel="noopener">Google — Search Quality Evaluator Guidelines</a></strong><p>The human rater guidelines whose quality assessments trained the Panda and Helpful Content models.</p></div></div></div>
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">GA4 Setup & Configuration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/content-marketing/content-seo-integration/" class="related-card"><span class="rc-tag">Content Marketing</span><span class="rc-title">Content & SEO Integration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/tools-resources/google-search-console-guide/" class="related-card"><span class="rc-tag">Tools</span><span class="rc-title">Google Search Console Guide</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 4 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 2,800 &nbsp;&#183;&nbsp; <strong>Session:</strong> 4 of 16 &nbsp;&#183;&nbsp; <strong>Sources:</strong> Official only</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#what-is-panda" class="sb-link on">What is Google Panda</a><a href="#what-panda-targets" class="sb-link">What Panda Targets</a><a href="#site-wide-mechanism" class="sb-link">Site-Wide Impact</a><a href="#panda-signals" class="sb-link">Quality Signals</a><a href="#recovery" class="sb-link">Recovery Framework</a><a href="#panda-today" class="sb-link">Panda in 2026</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box"><div class="sb-head">Algorithm Updates</div><div class="sb-body"><a href="/codex/seo/algorithm/google-algorithm-updates-timeline/" class="sb-link">1. Algorithm Timeline</a><a href="/codex/seo/algorithm/panda/" class="sb-link sb-cur">2. Google Panda</a><a href="/codex/seo/algorithm/penguin/" class="sb-link">3. Google Penguin</a><a href="/codex/seo/algorithm/hummingbird-rankbrain/" class="sb-link">4. Hummingbird & RankBrain</a><a href="/codex/seo/algorithm/bert-mum/" class="sb-link">5. BERT & MUM</a><a href="/codex/seo/algorithm/helpful-content-update/" class="sb-link">6. Helpful Content Update</a><a href="/codex/seo/algorithm/core-updates/" class="sb-link">7. Core Updates</a></div></div>
+  <div class="sb-box"><div class="sb-head">Related</div><div class="sb-body">
+    <a href="/codex/seo/fundamentals/ranking-factors/" class="sb-link">Ranking Factors</a>
+    <a href="/codex/seo/on-page/eeat/" class="sb-link">E-E-A-T Guide</a>
+    <a href="/codex/seo/on-page/keyword-research/" class="sb-link">Keyword Research</a>
+  </div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>600 guides. All authentic sources.</h2><p>Official documentation only — no bloggers.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A&#8211;Z Glossary</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides. Official sources only.</p></div>
+  <div class="ft-col"><h5>Algorithm Updates</h5><ul><li><a href='/seo/algorithm/google-algorithm-updates-timeline/'>Algorithm Timeline</a></li><li><a href='/seo/algorithm/panda/'>Google Panda</a></li><li><a href='/seo/algorithm/penguin/'>Google Penguin</a></li><li><a href='/seo/algorithm/hummingbird-rankbrain/'>Hummingbird & RankBrain</a></li></ul></div>
+  <div class="ft-col"><h5>Off-Page SEO</h5><ul><li><a href='/seo/off-page/backlink-fundamentals/'>Backlink Fundamentals</a></li><li><a href='/seo/off-page/link-building-strategies/'>Link Building</a></li><li><a href='/seo/off-page/anchor-text-strategy/'>Anchor Text</a></li><li><a href='/seo/off-page/xml-sitemaps-robots-txt/'>Sitemaps & Robots.txt</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Authentic sources only &#183; No affiliate links</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+</body>
+</html>

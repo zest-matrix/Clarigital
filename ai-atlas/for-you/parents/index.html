@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI for Parents and Families | AI Atlas — Clarigital</title>
+<meta name="description" content="Everything parents need to know about AI. Homework help, meal planning, school letters, medical explanations, bedtime stories, 20 ready-to-use prompts,...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/ai-atlas/for-you/parents/">
+<meta property="og:title" content="AI for Parents and Families — The Complete Guide | AI Atlas">
+<meta property="og:description" content="Everything parents need to know about AI. Homework help, meal planning, school letters, medical explanations, bedtime stories, 20 ready-to-use prompts, and family safety.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/for-you/parents/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzRGNDZFNSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD48L3N2Zz4="><meta name="theme-color" content="#0A0F1E">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI for Parents and Families \u2014 The Complete Guide | AI Atlas", "description": "Everything parents need to know about AI. Homework help, meal planning, school letters, medical explanations, bedtime stories, 20 ready-to-use prompts,...", "url": "https://www.clarigital.com/ai-atlas/for-you/parents/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "For You", "item": "https://www.clarigital.com/ai-atlas/for-you/"}, {"@type": "ListItem", "position": 4, "name": "AI for Parents and Families \u2014 The Complete Guide | AI Atlas", "item": "https://www.clarigital.com/ai-atlas/for-you/parents/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/for-you/">For You</a><span class="sep">/</span><span>Parents</span></nav>
+    <span class="label-tag">AI For You</span>
+    <h1>AI for Parents and Families</h1>
+    <p class="hero-lead">You do not need to be technical to use AI. This guide is written for parents — managing households, raising children, helping with homework, planning family life, and staying on top of everything. Here is exactly how AI can help, with ready-to-use prompts for every situation.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">For Parents</span><span class="meta-tag mt-gray">~8,200 words</span><span class="meta-tag mt-gray">Beginner friendly</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+<h2 id="s-green-0">You already know everything you need to start</h2>
+<p>The most common thing parents say when they first try AI is: &#8220;I didn&#8217;t realise it was that simple.&#8221; There is no technical knowledge required. If you can send a text message or type an email, you can use AI. You talk to it exactly the way you would talk to a knowledgeable friend.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">What kind of parent uses AI?</div>
+  <p style="color:var(--fg);margin:0">Every kind. A mum in Leeds helping her son with his GCSE history essay. A dad in Mumbai planning a week of family meals. A single parent in Toronto writing a formal complaint to their child&#8217;s school. A grandparent in Sydney trying to understand a medical letter. AI does not care about your background or technical ability. It just tries to help.</p>
+</div>
+
+<h2 id="s-green-1">The three AI tools most useful for parents</h2>
+<div style="display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0 28px">
+  <div style="background:var(--card-bg);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.7rem;font-weight:700;color:#10B981;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Best overall — start here</div>
+    <div style="font-size:1rem;font-weight:700;color:var(--fg);margin-bottom:4px">ChatGPT — chat.openai.com (free)</div>
+    <p style="font-size:.85rem">Works for everything — writing, questions, homework help, planning. If you only try one, try this.</p>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Best for factual questions with sources</div>
+    <div style="font-size:1rem;font-weight:700;color:var(--fg);margin-bottom:4px">Perplexity — perplexity.ai (free)</div>
+    <p style="font-size:.85rem">Medical questions, school topics, news. Every answer comes with source links you can verify.</p>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Best for reading documents</div>
+    <div style="font-size:1rem;font-weight:700;color:var(--fg);margin-bottom:4px">Claude — claude.ai (free)</div>
+    <p style="font-size:.85rem">Upload a letter, contract, school report, or medical document — Claude reads it and explains it clearly.</p>
+  </div>
+</div>
+
+<h2 id="s-green-2">10 situations where AI helps parents every day</h2>
+
+<h3>1. Understanding a letter or document</h3>
+<p>Medical letters, school reports, insurance documents, legal notices — paste the text into Claude or ChatGPT and ask: &#8220;What does this mean in plain English? What do I need to do?&#8221;</p>
+<div class="prompt-box"><div class="prompt-label">Understand any document</div><div class="prompt-text">Here is a letter/document I received: [paste the text]. Explain it in plain, simple language. What is it asking me to do? Are there any deadlines? Is there anything I should be concerned about? What questions should I ask?</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>2. Homework help without doing it for them</h3>
+<p>Ask AI to explain rather than produce. &#8220;Explain the causes of World War One for a 14-year-old&#8221; is different from &#8220;Write an essay about World War One.&#8221;</p>
+<div class="prompt-box"><div class="prompt-label">Homework help without cheating</div><div class="prompt-text">My child is [age] and studying [subject]. They struggle to understand [topic]. Explain it in simple language a [age]-year-old would understand. Use an everyday analogy or real-life example. Do not write their homework — just help them understand the concept.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>3. Weekly meal planning</h3>
+<div class="prompt-box"><div class="prompt-label">Weekly meal plan</div><div class="prompt-text">Plan a week of dinners for a family of [number] including children aged [ages]. Preferences: [list]. We avoid: [allergies or dislikes]. Weekday cooking time: [how long]. Budget: approximately [amount] per week. Include a shopping list by category. Practical, not fancy.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>4. Writing a formal email or letter</h3>
+<div class="prompt-box"><div class="prompt-label">Formal letter or email</div><div class="prompt-text">Help me write a formal email to [recipient — school / company / landlord / council]. The situation: [describe]. I want to: [goal — complain / request / ask for a meeting]. Tone: firm but polite. My name is [name].</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>5. Understanding a medical situation</h3>
+<div class="callout callout-simple"><div class="callout-head">Important: AI is not a doctor</div><p style="color:var(--fg);margin:0">AI can explain medical terms and help you understand a letter or test result. It cannot diagnose your child or replace a GP&#8217;s advice. Use it to become more informed — not to replace medical care.</p></div>
+<div class="prompt-box"><div class="prompt-label">Medical explanation</div><div class="prompt-text">My child has been diagnosed with / prescribed [condition or medication]. Explain: what this is in simple terms, what it means day-to-day, what to watch for, and what questions I should ask the doctor. Use NHS or reliable medical sources.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>6. Planning a birthday party</h3>
+<div class="prompt-box"><div class="prompt-label">Party planning</div><div class="prompt-text">Help me plan a birthday party for my [age]-year-old who loves [interests]. Budget: [amount]. Number of children: [number]. Duration: [hours]. Venue: [home / venue]. Give me: theme, activities, food ideas, timeline, and invitation wording.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>7. Family holiday planning</h3>
+<div class="prompt-box"><div class="prompt-label">Family holiday</div><div class="prompt-text">Plan a family holiday for [adults and children with ages]. Destination: [or &#8220;suggest somewhere&#8221;]. Budget: [amount]. Duration: [days]. Needs: child-friendly accommodation, activities for [ages], not too much travel each day, beach or pool. Suggest an itinerary and practical tips.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>8. Navigating a school situation</h3>
+<div class="prompt-box"><div class="prompt-label">School situation</div><div class="prompt-text">My child is experiencing [describe situation] at school. I want to address this with [school / teacher / headteacher]. Help me: approach it constructively, know what to say and what to avoid, advocate for my child without being dismissed, and identify what outcomes to push for.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>9. Personalised bedtime stories</h3>
+<div class="prompt-box"><div class="prompt-label">Personalised bedtime story</div><div class="prompt-text">Write a bedtime story for a [age]-year-old called [name] who loves [interests]. Warm, gentle, happy ending. About 5 minutes to read aloud. Feature [name] as the main character who is [quality you want to celebrate — brave / kind / curious].</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>10. Parenting advice when stuck</h3>
+<div class="prompt-box"><div class="prompt-label">Parenting advice</div><div class="prompt-text">I am dealing with this situation with my [age]-year-old: [describe]. I have tried: [what you&#8217;ve done]. Give me practical suggestions — not generic advice. What might be causing this? What are realistic things to try? What should I avoid? When should I seek professional support?</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+</div>
+
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+<h2 id="s-indigo-0">20 ready-to-use prompts for parents</h2>
+
+<div class="prompt-box"><div class="prompt-label">1. Explain a school subject to help at home</div><div class="prompt-text">My [age]-year-old is learning [topic] in [subject] and I want to help at home. Explain [topic] as if I last studied it decades ago. Give me the key concepts, common misconceptions, and 3 ways to help my child practise at home.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">2. Morning or bedtime routine</div><div class="prompt-text">Help me create a [morning / bedtime] routine for my [age]-year-old who struggles with [specific challenge]. Make it age-appropriate, achievable, positively framed, and practical. Include a suggested schedule with times.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">3. Explain a news story to your child</div><div class="prompt-text">My [age]-year-old has heard about [news event] and is asking questions. Explain it honestly but age-appropriately for a [age]-year-old. What happened, why it matters, and how to discuss it without causing anxiety. Suggest 3 questions to start the conversation.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">4. Simple family budget</div><div class="prompt-text">Help me create a monthly family budget. Income: approximately [amount]. Main expenses: [list]. Goal: [save more / reduce debt / plan for holiday / emergency fund]. Give me a realistic breakdown and 3 practical suggestions to reach my goal.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">5. Screen time conversation with your child</div><div class="prompt-text">I want to talk with my [age]-year-old about healthy screen time habits. Help me frame it positively (not as punishment), understand their perspective, suggest realistic age-appropriate limits, and come up with alternatives they might actually enjoy.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">6. School lunchbox ideas for the week</div><div class="prompt-text">Give me 5 different lunchbox ideas for my [age]-year-old for the school week. They like: [preferences]. Dislikes: [list]. Allergens to avoid: [list]. Must be nut-free if required, easy to eat cold, nutritious, and not boring. Include a brief shopping list.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">7. Answer a tricky question from your child</div><div class="prompt-text">My [age]-year-old has asked: &#8220;[their question — why do people die / where do babies come from / why is that person homeless].&#8221; Help me answer honestly but age-appropriately. What should I say? What should I avoid? How do I keep the door open for follow-up questions?</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">8. Book recommendations for your child</div><div class="prompt-text">Suggest 10 books for a [age]-year-old who loves [interests]. Mix easy reads and slightly challenging ones. One-sentence description each. Prioritise well-praised books, not just popular ones. Include one classic and one recent book.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">9. Toddler activity ideas</div><div class="prompt-text">Give me 10 activities for a [age]-year-old toddler. Each should take 15-30 minutes, use things I probably have at home, be good for their development at this age, and be genuinely engaging. Group as active / creative / calm. Include the developmental benefit of each.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">10. Parents&#8217; evening preparation</div><div class="prompt-text">I have parents&#8217; evening for my [age]-year-old in [year group]. I am concerned about [specific issue if any]. Help me prepare: important questions to ask their teacher, how to raise concerns constructively, what to do with feedback, and how to involve my child in any follow-up actions.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">11. Explain AI to your child</div><div class="prompt-text">My [age]-year-old is curious about AI and starting to use it at school. Help me explain what AI is honestly and age-appropriately. Cover: what it is, how it works simply, what it is good for, what it gets wrong, and important rules for using it safely and honestly at school.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">12. Sibling conflict mediation</div><div class="prompt-text">My children aged [ages] keep arguing about [specific issue]. The usual outcome is [describe]. Help me understand what drives this from each child&#8217;s perspective, create a fair system, have a constructive family conversation, and intervene effectively without taking sides.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">13. School speech or talk</div><div class="prompt-text">My [age]-year-old needs to give a [type of speech] about [topic]. Length: [approximate]. Help me help them write it: suggest structure, key points, an engaging opening, and an age-appropriate closing. Write it in a voice a [age]-year-old could deliver naturally.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">14. Full rainy day plan</div><div class="prompt-text">I&#8217;m stuck inside with [number] children aged [ages] on a rainy day. Give me a full-day activity plan: keeps them engaged, minimal mess, uses what I probably have at home, mix of active / creative / calm. Include times and transitions. Realistic, not Pinterest-perfect.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">15. Understanding a school report</div><div class="prompt-text">Here is my child&#8217;s school report: [paste or describe]. Help me: understand what grades and comments actually mean, identify areas going well and areas of concern, suggest ways to support development at home, and prepare questions for their teacher.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">16. Healthy habits — positive framing</div><div class="prompt-text">I want to encourage healthier habits in my [age]-year-old around [sleep / eating / exercise / phone use]. I don&#8217;t want to be preachy or create anxiety. What is normal and healthy for this age? How do I introduce changes gradually and make it a family decision rather than a rule?</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">17. Online safety conversation</div><div class="prompt-text">My [age]-year-old is starting to use the internet / social media / online gaming. Help me have a conversation that is honest and age-appropriate, covers key risks without causing panic, establishes clear family rules they understand, and keeps communication open so they come to me if something goes wrong.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">18. Navigating SEND support (UK)</div><div class="prompt-text">My child has [condition or suspected difficulty — ADHD / dyslexia / autism]. We are navigating the SEND system in the UK. Help me understand: what support my child is entitled to, how to request an EHCP assessment, what to ask the SENCO, what my rights are as a parent, and what organisations can help.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">19. Talking to children about money</div><div class="prompt-text">I want to teach my [age]-year-old about money in an age-appropriate way. What concepts can they understand at this age? Practical ways to introduce earning / saving / spending / giving? Whether pocket money is appropriate and how much? Activities that build healthy financial habits early?</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">20. Self-care for exhausted parents</div><div class="prompt-text">I am a parent of [number] children aged [ages] and I am exhausted. I have [brief description of schedule]. Help me think about small, realistic ways to prioritise my own wellbeing, how to ask for help without guilt, what warning signs of burnout look like, and practical strategies other parents have found helpful.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+</div>
+
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+<h2 id="s-red-0">AI safety for your family — what every parent should know</h2>
+
+<h3>Age-appropriate use</h3>
+<p>Most AI services — ChatGPT, Claude, Gemini — have a minimum age of 13 in their terms of service, consistent with COPPA and similar regulations. For children under 13, parents should use AI on their behalf. For teenagers, supervised introduction with clear family agreements is generally appropriate.</p>
+
+<h3>The academic integrity question</h3>
+<p>Using AI to <em>understand</em> something is valuable. Using AI to <em>produce</em> work submitted as your own, when the school does not permit this, is academic dishonesty. Have this conversation explicitly with your child. Check what your child&#8217;s school&#8217;s policy actually says.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">The right framing for school work</div>
+  <p style="color:var(--fg);margin:0">Teach your child to use AI as a <strong>tutor</strong> (explain this to me) rather than a <strong>ghostwriter</strong> (write this for me). A useful test: if they can explain in their own words what the AI helped them understand — they learned. If they cannot explain it — they outsourced the thinking.</p>
+</div>
+
+<h3>Privacy — what not to share with AI</h3>
+<ul>
+  <li>Never share full name, address, school name, or phone number</li>
+  <li>Never share passwords or account details</li>
+  <li>Be careful about identifiable photos in image-processing AI tools</li>
+  <li>Know that conversations may be reviewed to improve the product (unless opted out)</li>
+  <li>Do not share sensitive medical, financial, or legal information in consumer tools without reading the privacy policy</li>
+</ul>
+
+<h3>What AI gets wrong — and why this matters for children</h3>
+<p>AI can produce confident-sounding incorrect information (called hallucination). Children may lack the critical thinking to question a confident-sounding wrong answer. For anything factual, teach your child to verify AI answers against a second source.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Official guidance</div>
+  <p style="color:var(--fg);margin:0">ICO (UK): Children&#8217;s privacy and AI services — <a href="https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/childrens-information/" target="_blank" style="color:#EF4444">ico.org.uk</a></p>
+</div>
+</div>
+
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">You already know everything you need to start</a><a href="#s-green-1">The three AI tools most useful for parents</a><a href="#s-green-2">10 situations where AI helps parents every day</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">20 ready-to-use prompts for parents</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">AI safety for your family — what every parent should know</a></div></div>
+  <div class="sidebar-card"><h4>Best AI for parents</h4>
+    <a href="/ai-atlas/tools/chatgpt/" class="sidebar-link">ChatGPT — start here</a>
+    <a href="/ai-atlas/tools/perplexity/" class="sidebar-link">Perplexity — factual questions</a>
+    <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude — documents</a>
+  </div>
+  <div class="sidebar-card"><h4>Other For You guides</h4>
+    <a href="/ai-atlas/for-you/students/" class="sidebar-link">AI for Students</a>
+    <a href="/ai-atlas/for-you/teachers/" class="sidebar-link">AI for Teachers</a>
+    <a href="/ai-atlas/for-you/small-business/" class="sidebar-link">AI for Small Business</a>
+    <a href="/ai-atlas/for-you/job-seekers/" class="sidebar-link">AI for Job Seekers</a>
+  </div>
+</div>
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),
+      drawer=document.getElementById('navDrawer'),
+      close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+// Lane switcher
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+
+}
+// Copy prompt
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent=orig;},2000);
+  });
+}
+// Init first lane on page load
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

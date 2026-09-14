@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Programmatic Advertising Fundamentals: How | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programmatic Advertising Fundamentals: How | Digital Codex">
+<meta property="og:description" content="The complete guide to programmatic advertising — how RTB works, the technology stack, deal types, targeting, and why programmatic now dominates digital display.">
+<meta property="og:url" content="https://www.clarigital.com/codex/programmatic/programmatic-advertising-fundamentals/">
+<meta property="og:site_name" content="Digital Codex">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Programmatic Advertising Fundamentals: How", "description": "The complete guide to programmatic advertising \u2014 how RTB works, the technology stack, deal types, targeting, and why programmatic now dominates digital display.", "url": "https://www.clarigital.com/codex/programmatic/programmatic-advertising-fundamentals/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Programmatic Advertising Fundamentals: How", "description": "The complete guide to programmatic advertising \u2014 how RTB works, the technology stack, deal types, targeting, and why programmatic now dominates digital display.", "url": "https://www.clarigital.com/codex/programmatic/programmatic-advertising-fundamentals/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<meta name="description" content="The complete guide to programmatic advertising — how RTB works, the technology stack, deal types, targeting, and why programmatic now dominates digital display.">
+<link rel="canonical" href="/codex/programmatic/programmatic-advertising-fundamentals/">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+</style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Programmatic Advertising Fundamentals: How | Digital Codex">
+<meta name="twitter:description" content="The complete guide to programmatic advertising — how RTB works, the technology stack, deal types, targeting, and why programmatic now dominates digital dis">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/case-studies/">Cases</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/business-strategy/" class="di">Business</a><a href="/codex/programmatic/" class="di cur">Programmatic Advertising</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#what-is-programmatic">What Programmatic Advertising Is</a><a class="cnl" href="#rtb-mechanics">Real-Time Bidding: The Complete Mechanics</a><a class="cnl" href="#programmatic-stack">The Technology Stack: Every Layer Explained</a><a class="cnl" href="#deal-types">Deal Types: Open Auction to Programmatic Guaranteed</a><a class="cnl" href="#programmatic-vs-direct">Programmatic vs Direct Media Buying</a><a class="cnl" href="#history-programmatic">How Programmatic Developed</a><a class="cnl" href="#programmatic-channels">Channels: Display, Video, Audio, CTV, DOOH</a><a class="cnl" href="#programmatic-economics">The Economics of Programmatic Buying</a><a class="cnl" href="#common-misconceptions">Common Misconceptions</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/programmatic/">Programmatic Advertising</a><span class="sep">/</span><span>Programmatic Advertising Fundamentals</span></nav>
+  <span class="label-tag">Programmatic Advertising &#183; Guide 1</span>
+  <h1>Programmatic Advertising Fundamentals &#183; RTB, DSPs, SSPs &#38; the Ecosystem</h1>
+  <p class="hero-lead">Programmatic advertising now accounts for the majority of digital display spending worldwide. Yet the terminology — DSPs, SSPs, RTB, PMPs, header bidding — creates a barrier that prevents many marketers from using the channel strategically. This guide explains how the programmatic ecosystem works from first principles, using official IAB documentation and documented industry research.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Programmatic Advertising</span>
+    <span class="meta-tag mt-gray">5,100 words</span>
+    <span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+  <li>How the programmatic ecosystem connects advertisers to publishers through DSPs, SSPs, and ad exchanges</li>
+  <li>The exact sequence of a real-time bidding auction — what happens in 100 milliseconds</li>
+  <li>The four deal types from open auction through programmatic guaranteed</li>
+  <li>Why programmatic differs fundamentally from direct media buying</li>
+  <li>The economic incentives of every party in the supply chain</li>
+  <li>How programmatic has expanded from display to video, audio, CTV, and DOOH</li>
+</ul></div></div>
+
+<div class="chapter" id="what-is-programmatic">
+<div class="chap-hdr"><h2>What Programmatic Advertising Is</h2><button class="share-btn" onclick="copyLink('what-is-programmatic')">Share</button></div>
+<p>Programmatic advertising is the automated buying and selling of digital advertising inventory using software, algorithms, and real-time auctions. Instead of a media buyer negotiating with a publisher's sales team, agreeing a rate card price, and signing an insertion order — a process that could take days or weeks — programmatic executes the equivalent transaction in approximately 100 milliseconds, every time a user loads a webpage.</p>
+<p>The Interactive Advertising Bureau (IAB), the industry body that sets programmatic standards, defines programmatic as "the automation of the buying, placement, and optimisation of media inventory via a bidding system." The three key words are: automation (no human deal-making required for each transaction), placement (the ad is served to a specific impression in a specific context), and bidding system (price is determined by competition in real time, not by a pre-agreed rate card).</p>
+<p>The scale of programmatic is significant. According to IAB and eMarketer documented estimates, programmatic now accounts for more than 90% of US digital display advertising spending — meaning that almost every banner ad, in-stream video ad, or connected TV pre-roll you see has been bought and sold through an automated auction in the fraction of a second before it appeared on your screen.</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">Programmatic share of display</p><div class="stat-n">90%+</div><p class="stat-l">Programmatic now dominates digital display — IAB and eMarketer documented estimates</p></div>
+  <div class="stat-card"><p class="stat-h">RTB auction duration</p><div class="stat-n">&lt;100ms</div><p class="stat-l">A full real-time bidding auction completes before the page finishes loading</p></div>
+  <div class="stat-card"><p class="stat-h">First RTB exchange</p><div class="stat-n">2009</div><p class="stat-l">DoubleClick launched the first major RTB exchange in 2009, acquired by Google</p></div>
+</div>
+<p>Programmatic matters to every digital marketer — not just those who run display campaigns — because it underpins the delivery infrastructure of display, video, audio, connected TV, and increasingly digital out-of-home advertising. Understanding how it works enables better briefing of media agencies, better interpretation of campaign data, better fraud protection decisions, and more informed budget allocation across channels.</p>
+</div>
+
+<div class="chapter" id="rtb-mechanics">
+<div class="chap-hdr"><h2>Real-Time Bidding: The Complete Mechanics</h2><button class="share-btn" onclick="copyLink('rtb-mechanics')">Share</button></div>
+<p>Real-Time Bidding (RTB) is the most common programmatic transaction type. It is a fully automated auction that occurs every time a user loads a page that has programmatic ad inventory. The full sequence takes place in the time between a user clicking a link and the page appearing in their browser.</p>
+<p>Here is the exact sequence:</p>
+<ol>
+  <li><strong>User loads a page.</strong> A user navigates to a webpage that has programmatic display inventory — for example, a news article with a banner ad slot.</li>
+  <li><strong>Publisher's ad server fires a bid request.</strong> The publisher's Supply-Side Platform (SSP) sends a bid request to one or more ad exchanges. The bid request contains: the ad slot dimensions and position; the page URL and content category; available user data signals (if consent exists) including audience segments, device type, browser, geographic location, and time of day; and a timestamp.</li>
+  <li><strong>Ad exchange distributes the bid request.</strong> The ad exchange distributes the bid request simultaneously to all connected Demand-Side Platforms (DSPs). This happens in parallel, not sequentially.</li>
+  <li><strong>DSPs evaluate and bid.</strong> Each DSP receives the bid request and runs it through its bidding logic in milliseconds. The DSP checks: does this impression match any active campaign's targeting criteria? If yes, what is the maximum bid for this impression based on the campaign's bidding strategy? DSPs that want to compete submit their bids back to the ad exchange.</li>
+  <li><strong>Auction resolution.</strong> The ad exchange collects all bids and determines the winner. In a standard second-price auction (the Vickrey model, documented in academic auction theory since 1961), the winning bidder pays the second-highest bid plus one cent — not their own maximum bid. This creates an incentive for honest bidding at true maximum value. In first-price auctions (increasingly common after the industry moved away from second-price in 2019), the winner pays their own bid.</li>
+  <li><strong>Ad is served.</strong> The winning DSP's ad server delivers the creative to the publisher's page. The entire process — bid request, auction, winner determination, ad delivery — completes in 50–100 milliseconds.</li>
+  <li><strong>Impression is recorded.</strong> The ad server logs the impression. Verification vendors (if integrated) measure viewability and check for invalid traffic. Attribution systems record the impression for later conversion attribution.</li>
+</ol>
+<div class="callout orange"><strong>First-price vs second-price auctions</strong><p>For most of programmatic's history, second-price auctions were standard — the winner paid the second-highest bid plus one cent. In 2019, Google and most major exchanges shifted to first-price auctions, where the winner pays their own bid. This change affected bid strategies significantly: in a first-price world, bidding your true maximum will mean you often overpay. Sophisticated DSPs use bid shading — bidding below the maximum based on historical clearing price data — to optimise win rates and CPMs simultaneously.</p></div>
+</div>
+
+<div class="chapter" id="programmatic-stack">
+<div class="chap-hdr"><h2>The Technology Stack: Every Layer Explained</h2><button class="share-btn" onclick="copyLink('programmatic-stack')">Share</button></div>
+<p>The programmatic supply chain involves multiple technology layers, each serving a specific function. Understanding every layer is important for understanding where costs, fraud, and inefficiency enter the chain.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Platform</th><th>Role</th><th>Used By</th><th>Examples</th></tr></thead>
+  <tbody>
+    <tr><td><strong>DSP (Demand-Side Platform)</strong></td><td>Buys ad inventory on behalf of advertisers across multiple exchanges. Single interface for targeting, bidding, and reporting across many sources of supply.</td><td>Advertisers, agencies</td><td>Google DV360, The Trade Desk, Amazon DSP, Xandr</td></tr>
+    <tr><td><strong>SSP (Supply-Side Platform)</strong></td><td>Sells publisher inventory to multiple buyers simultaneously. Manages yield — ensuring publishers get the best price for every impression.</td><td>Publishers, media owners</td><td>Google Ad Manager, Magnite, PubMatic, Index Exchange</td></tr>
+    <tr><td><strong>Ad Exchange</strong></td><td>The marketplace where DSPs and SSPs connect and where RTB auctions occur. Routes bid requests to DSPs and returns winning bids to SSPs.</td><td>Intermediary layer</td><td>Google AdX, Xandr Exchange, OpenX, Magnite</td></tr>
+    <tr><td><strong>DMP (Data Management Platform)</strong></td><td>Collects, organises, and activates third-party audience data for targeting. Being replaced by CDPs and first-party data solutions as cookies phase out.</td><td>Advertisers, agencies</td><td>Oracle BlueKai, Lotame, Adobe Audience Manager</td></tr>
+    <tr><td><strong>CDP (Customer Data Platform)</strong></td><td>Unifies first-party customer data from multiple sources for activation in advertising and marketing.</td><td>Advertisers</td><td>Segment, Tealium, Salesforce CDP</td></tr>
+    <tr><td><strong>Ad Server (Advertiser)</strong></td><td>Stores creative assets, serves the winning ad, and records impressions and clicks. The system of record for advertiser campaign delivery.</td><td>Advertisers, agencies</td><td>Google Campaign Manager 360 (CM360)</td></tr>
+    <tr><td><strong>Ad Server (Publisher)</strong></td><td>Manages the publisher's direct-sold campaigns and integrates programmatic demand. Decides in real time which ad to serve: direct-sold or programmatic.</td><td>Publishers</td><td>Google Ad Manager (formerly DFP)</td></tr>
+    <tr><td><strong>Verification Vendor</strong></td><td>Independently measures viewability (was the ad seen?), brand safety (where did the ad appear?), and invalid traffic (was a real human the viewer?).</td><td>Advertisers</td><td>Integral Ad Science (IAS), DoubleVerify, MOAT</td></tr>
+    <tr><td><strong>Identity Solutions</strong></td><td>Provides privacy-preserving audience identifiers as third-party cookies phase out.</td><td>DSPs, publishers</td><td>Unified ID 2.0, LiveRamp RampID, Google Privacy Sandbox</td></tr>
+  </tbody>
+</table></div>
+<p>The cost of the supply chain — the percentage of each advertiser pound that goes to technology fees rather than reaching actual users — is called the "tax" on programmatic. The ANA and ISBA have both published documented research showing that in open programmatic, a significant percentage of advertiser spend is absorbed by the technology layers before reaching publisher revenue. This is one reason why private marketplace deals and direct programmatic arrangements often show better effective CPMs for publishers despite lower gross CPMs for advertisers.</p>
+</div>
+
+<div class="chapter" id="deal-types">
+<div class="chap-hdr"><h2>Deal Types: Open Auction to Programmatic Guaranteed</h2><button class="share-btn" onclick="copyLink('deal-types')">Share</button></div>
+<p>Not all programmatic transactions are open RTB auctions. The industry has developed a spectrum of deal types that offer different levels of inventory exclusivity, price certainty, and control — allowing advertisers to access premium inventory while still using programmatic infrastructure for delivery and measurement.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Deal Type</th><th>How It Works</th><th>Price Mechanism</th><th>Inventory Guarantee</th><th>Best For</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Open Auction (RTB)</strong></td><td>Any buyer can bid on any available impression that clears the publisher's floor price</td><td>Auction — winner pays above floor</td><td>None — compete for available impressions</td><td>Scale, efficiency, prospecting</td></tr>
+    <tr><td><strong>Private Marketplace (PMP)</strong></td><td>Publisher invites specific advertisers to a private auction with first-look access before the open auction</td><td>Auction with publisher-set floor price</td><td>None — no volume guarantee</td><td>Premium inventory access with auction efficiency</td></tr>
+    <tr><td><strong>Preferred Deal (Unreserved Fixed Rate)</strong></td><td>Publisher offers specific inventory to a buyer at a fixed CPM before it goes to any auction. Buyer can accept or pass on each impression.</td><td>Fixed CPM — no auction</td><td>None — buyer chooses impression by impression</td><td>Specific premium placements at fixed cost</td></tr>
+    <tr><td><strong>Programmatic Guaranteed (PG)</strong></td><td>Fixed number of impressions reserved for a specific buyer at an agreed fixed CPM. Guaranteed delivery, guaranteed price.</td><td>Fixed CPM — negotiated</td><td>Yes — volume, price, and placement guaranteed</td><td>Guaranteed reach on premium inventory; brand campaigns with firm delivery targets</td></tr>
+  </tbody>
+</table></div>
+<p>The choice between deal types is primarily a trade-off between cost efficiency and inventory quality/certainty. Open auction provides the lowest CPMs but the least control over where ads appear. Programmatic guaranteed provides the highest certainty but at the cost of negotiation time and typically higher CPMs. Most sophisticated programmatic strategies use a combination: programmatic guaranteed for high-value brand placements where certainty matters, PMPs for premium contextual environments, and open auction for scale and efficiency.</p>
+</div>
+
+<div class="chapter" id="programmatic-vs-direct">
+<div class="chap-hdr"><h2>Programmatic vs Direct Media Buying</h2><button class="share-btn" onclick="copyLink('programmatic-vs-direct')">Share</button></div>
+<p>Before programmatic, all display advertising was bought directly: a media buyer called or emailed a publisher's sales team, negotiated a CPM rate for a specific placement over a specific time period, signed an insertion order, and sent creative. This process typically took days to weeks and required a personal relationship with each publisher's sales team.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Dimension</th><th>Direct Buying</th><th>Programmatic</th></tr></thead>
+  <tbody>
+    <tr><td>Setup time</td><td>Days to weeks — negotiation, IO, trafficking</td><td>Hours — campaign configuration</td></tr>
+    <tr><td>Scale</td><td>Limited to publishers with sales relationships</td><td>Thousands of publishers via single DSP</td></tr>
+    <tr><td>Targeting precision</td><td>Context and demographics — limited audience data</td><td>Audience, contextual, behavioural, first-party data</td></tr>
+    <tr><td>Inventory transparency</td><td>High — you know exactly where your ad will appear</td><td>Variable — open auction provides less visibility</td></tr>
+    <tr><td>Price certainty</td><td>Fixed CPM agreed in advance</td><td>Variable (auction) or fixed (PG/preferred deals)</td></tr>
+    <tr><td>Minimum spend</td><td>Often high — publisher minimums</td><td>No hard minimum in most DSPs</td></tr>
+    <tr><td>Optimisation</td><td>Manual and limited once IO is signed</td><td>Continuous automated optimisation</td></tr>
+    <tr><td>Brand safety control</td><td>High — pre-approved placements</td><td>Variable — requires active management in open auction</td></tr>
+  </tbody>
+</table></div>
+<p>Most large advertisers today use both models, allocating them by objective: programmatic for audience targeting at scale and for campaigns where real-time optimisation matters; direct deals for high-impact premium placements (homepage takeovers, sponsorship integrations, contextually exclusive positions) where guaranteed premium placement justifies the negotiation overhead and higher CPMs.</p>
+</div>
+
+<div class="chapter" id="history-programmatic">
+<div class="chap-hdr"><h2>How Programmatic Developed</h2><button class="share-btn" onclick="copyLink('history-programmatic')">Share</button></div>
+<p>The origins of programmatic lie in the problem of unsold display inventory. In the late 2000s, publishers were running large amounts of display inventory that their direct sales teams could not sell — remnant inventory that was going unused. Ad networks emerged to aggregate this inventory and sell it in bulk at low CPMs, but they lacked transparency and precision.</p>
+<p>DoubleClick, acquired by Google in 2008, launched one of the first real-time bidding exchanges in 2009. The critical innovation was moving from static CPM deals to per-impression auctions — enabling buyers to value each impression individually based on audience data rather than paying a flat rate for a generic placement. This shift transformed the economics of display advertising: instead of paying for 100,000 impressions to reach a broad demographic, an advertiser could pay premium rates only for impressions served to users who matched specific audience criteria.</p>
+<p>The subsequent decade saw rapid expansion: SSPs emerged to help publishers manage competing programmatic demand; DMPs emerged to provide audience data; verification vendors emerged to measure viewability and detect fraud; and programmatic expanded from display to video (2013), mobile (2014), audio (2017), connected TV (2018), and digital out-of-home (2019–2020).</p>
+<p>The most significant structural challenge to programmatic has been the deprecation of third-party cookies — the tracking mechanism that enabled cross-site audience targeting. Safari blocked third-party cookies in 2017; Firefox followed in 2019; Chrome's phaseout, initially scheduled for 2022, was delayed multiple times before Google committed to Privacy Sandbox as a cookieless alternative. This transition is reshaping how audience targeting works in programmatic throughout 2024–2026.</p>
+</div>
+
+<div class="chapter" id="programmatic-channels">
+<div class="chap-hdr"><h2>Channels: Display, Video, Audio, CTV, DOOH</h2><button class="share-btn" onclick="copyLink('programmatic-channels')">Share</button></div>
+<p>Programmatic infrastructure now powers advertising delivery across multiple media channels beyond its original display origins:</p>
+<p><strong>Display (web and mobile).</strong> The original programmatic channel. Banner ads, native ads, and rich media placements across websites and apps. Standard IAB formats are defined in the IAB New Ad Portfolio specification. Still the highest-volume programmatic channel by impression count.</p>
+<p><strong>Programmatic video.</strong> In-stream (pre-roll, mid-roll, post-roll), out-stream (plays in content feed), and in-banner video. Priced at significantly higher CPMs than display due to higher engagement. The IAB VAST and VPAID standards govern video ad serving. YouTube's programmatic buying is managed separately through Google Ads and DV360 rather than through the open exchange.</p>
+<p><strong>Programmatic audio.</strong> Podcast and streaming audio advertising (Spotify, Pandora, iHeartRadio) bought programmatically. The IAB DAAST standard governs digital audio ad serving. Growing rapidly as podcast consumption increases but with different targeting and measurement challenges due to cookieless audio environments.</p>
+<p><strong>Connected TV (CTV).</strong> Advertising on smart TVs, streaming sticks (Roku, Amazon Fire), and gaming consoles reaching streaming content viewers. CTV programmatic is purchased through specialised DSPs and directly through streaming services. Measured by completion rate and brand lift rather than click-through rate. Detailed in the <a href="/codex/programmatic/connected-tv-advertising/">Connected TV guide</a>.</p>
+<p><strong>Digital Out-of-Home (DOOH).</strong> Programmatic buying of digital billboard, retail screen, and transit screen advertising. Triggered by real-world conditions (weather, traffic, time of day) and audience data from mobile devices near the screen. An emerging channel that brings programmatic efficiency to physical world advertising formats.</p>
+</div>
+
+<div class="chapter" id="programmatic-economics">
+<div class="chap-hdr"><h2>The Economics of Programmatic Buying</h2><button class="share-btn" onclick="copyLink('programmatic-economics')">Share</button></div>
+<p>Understanding programmatic economics means understanding where money flows through the supply chain — and where it leaks. The documented concern about programmatic transparency centres on how much of each advertiser pound actually reaches publisher revenue versus being absorbed by technology fees.</p>
+<p>The ISBA Programmatic Supply Chain Transparency Study (2020 and 2023 updates) — one of the most rigorous documented studies of programmatic economics — found that in a sample of major UK advertiser campaigns, only 51p of every £1 of advertiser spend reached publishers in 2020, with 15p unattributable to any identified party in the supply chain. The 2023 follow-up showed improvement but significant fees remained. These findings drove increased adoption of supply path optimisation (SPO) — the practice of identifying and preferring direct, lower-cost paths to quality inventory.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Cost Component</th><th>Typical Range</th><th>Who Takes It</th></tr></thead>
+  <tbody>
+    <tr><td>DSP technology fee</td><td>10–15% of media spend</td><td>DSP platform</td></tr>
+    <tr><td>SSP/exchange fee</td><td>10–20% of revenue</td><td>SSP platform</td></tr>
+    <tr><td>Data costs (if third-party segments)</td><td>$0.50–$3.00 CPM</td><td>Data provider</td></tr>
+    <tr><td>Verification vendor fee</td><td>$0.10–$0.30 CPM</td><td>IAS, DoubleVerify, etc.</td></tr>
+    <tr><td>Publisher revenue</td><td>Remainder after all fees</td><td>Publisher</td></tr>
+  </tbody>
+</table></div>
+<p>Effective programmatic buyers manage these costs through: direct deals (bypassing exchange fees); supply path optimisation (reducing the number of intermediaries between DSP and publisher); and negotiated DSP fee structures (larger budgets command lower percentages). For <a href="/codex/business-strategy/marketing-budget-allocation/">budget allocation</a> purposes, the working assumption should be that 25–40% of open-auction programmatic spend goes to technology fees rather than delivering ads to real users.</p>
+</div>
+
+<div class="chapter" id="common-misconceptions">
+<div class="chap-hdr"><h2>Common Misconceptions About Programmatic</h2><button class="share-btn" onclick="copyLink('common-misconceptions')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Misconception</th><th>Reality</th></tr></thead>
+  <tbody>
+    <tr><td>"Programmatic means cheap"</td><td>Open auction programmatic can be cheap — but premium programmatic inventory (top publisher PMPs, programmatic guaranteed) is not cheap. The price reflects the quality of the inventory and audience.</td></tr>
+    <tr><td>"Programmatic is only for display"</td><td>Programmatic now delivers display, video, audio, CTV, and DOOH. The delivery infrastructure is channel-agnostic.</td></tr>
+    <tr><td>"Lower CPM = better performance"</td><td>A £1 CPM impression that reaches a bot generates zero business outcome. A £20 CPM impression that reaches a qualified buyer in a brand-safe context may generate significant return. CPM alone is a poor optimisation target.</td></tr>
+    <tr><td>"Programmatic targeting is precise"</td><td>Third-party audience data accuracy has been documented as lower than commonly assumed — segment overlap studies show significant inaccuracy in third-party demographic segments. First-party data is substantially more accurate.</td></tr>
+    <tr><td>"My agency handles programmatic so I don't need to understand it"</td><td>Agency fee structures, supply path choices, and bidding strategies directly affect campaign ROI. Sophisticated client-side oversight is documented as producing better outcomes than fully delegated programmatic management.</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="sources">
+<h2>Sources &#38; Further Reading</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>All frameworks, data, and examples in this guide draw from official documentation, peer-reviewed research, and documented practitioner case studies. We learn from primary sources and explain them in our own words.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://www.iab.com/guidelines/real-time-bidding-rtb-project/" target="_blank" rel="noopener">IAB — RTB Project Documentation</a></strong><p>IAB Tech Lab's official RTB specification — the industry standard for real-time bidding protocol.</p></div><div class="source-card"><span class="src-tag" style="background:#fdf4ff;color:#6b21a8">Research</span><strong><a href="https://www.isba.org.uk/knowledge/digital-communications/programmatic-supply-chain-transparency-study/" target="_blank" rel="noopener">ISBA — Supply Chain Transparency Study</a></strong><p>ISBA's documented programmatic supply chain transparency research — primary source for supply chain economics data.</p></div><div class="source-card"><span class="src-tag" style="background:#fdf4ff;color:#6b21a8">Research</span><strong><a href="https://www.ana.net/content/show/id/programmatic-media-supply-chain-transparency" target="_blank" rel="noopener">ANA — Programmatic Transparency</a></strong><p>ANA's documented research on programmatic transparency and value delivered to advertisers.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://www.iab.com/newadportfolio/" target="_blank" rel="noopener">IAB New Ad Portfolio</a></strong><p>Official IAB standard ad formats for display, native, and rich media programmatic delivery.</p></div></div>
+</div>
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/attribution-modelling/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">Attribution Modelling</span><span class="rc-arr">&#8594;</span></a><a href="/codex/paid-advertising/facebook-instagram/campaign-objectives/" class="related-card"><span class="rc-tag">Meta Ads</span><span class="rc-title">Campaign Objectives</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/marketing-budget-allocation/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Marketing Budget Allocation</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 5,100</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#what-is-programmatic" class="sb-link on">What Programmatic Advertising Is</a><a href="#rtb-mechanics" class="sb-link">Real-Time Bidding: The Complete Mechanics</a><a href="#programmatic-stack" class="sb-link">The Technology Stack: Every Layer Explained</a><a href="#deal-types" class="sb-link">Deal Types: Open Auction to Programmatic Guaranteed</a><a href="#programmatic-vs-direct" class="sb-link">Programmatic vs Direct Media Buying</a><a href="#history-programmatic" class="sb-link">How Programmatic Developed</a><a href="#programmatic-channels" class="sb-link">Channels: Display, Video, Audio, CTV, DOOH</a><a href="#programmatic-economics" class="sb-link">The Economics of Programmatic Buying</a><a href="#common-misconceptions" class="sb-link">Common Misconceptions</a><a href="#sources" class="sb-link">Sources</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>218 guides. Official sources only.</h2><p>The complete digital marketing knowledge base.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/programmatic/" class="btn btn-outline-w btn-lg">More Programmatic Advertising</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>Official sources only &#183; No affiliate links</p></div>
+  <div class="ft-col"><h5>Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/programmatic/">Programmatic Advertising</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 218 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+  <div class="ft-col"><h5>Legal</h5><ul><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-of-use/">Terms of Use</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');
+function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);
+if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+</body>
+</html>

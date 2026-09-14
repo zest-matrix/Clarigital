@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Web Vitals for SEO: The Complete Guide | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Core Web Vitals for SEO: The Complete Guide | Digital Codex">
+<meta property="og:description" content="LCP, INP, and CLS explained. What Core Web Vitals are, how they became a ranking signal, how to measure them in Google Search Console, and how to...">
+<meta property="og:url" content="https://www.clarigital.com/codex/seo/core-web-vitals/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="LCP, INP, and CLS explained. What Core Web Vitals are, how they became a ranking signal, how to measure them in Google Search Console, and how to...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/codex/seo/fundamentals/core-web-vitals/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Core Web Vitals for SEO: The Complete Guide","description":"LCP, INP, and CLS explained. What Core Web Vitals are, how they became a ranking signal, and how to improve each metric.","author":{"@type":"Organization","name":"Digital Codex"},"publisher":{"@type":"Organization","name":"Digital Codex","url":"https://www.clarigital.com"},"mainEntityOfPage":"https://www.clarigital.com/codex/seo/core-web-vitals/","articleSection":"SEO Foundation","datePublished":"2026-04-04"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--g300:#CBD5E1;--red-bg:#FEF2F2;--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500;transition:color var(--t)}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+table{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t),transform var(--t);white-space:nowrap;line-height:1}.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t),color var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:var(--g500);text-decoration:none;transition:color var(--t)}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g300)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:var(--g500);background:var(--g100);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t),color var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:40px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'✓';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.toc{border:1px solid var(--g200);border-radius:var(--r);padding:18px;background:var(--w);margin-bottom:24px}
+.toc-title{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500);margin-bottom:10px}
+.toc ul{list-style:none;margin:0;padding:0}.toc li{margin-bottom:2px}
+.toc a{display:block;font-size:.8rem;font-weight:500;color:var(--g700);padding:5px 8px;border-radius:4px;text-decoration:none;border-left:2px solid transparent;transition:all var(--t)}
+.toc a:hover{background:var(--g50);color:var(--navy)}.toc a.on{color:var(--navy);border-left-color:var(--navy);background:var(--blue-bg);font-weight:600}
+.metric-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:20px 0}
+.mc-head{padding:20px 22px;display:flex;align-items:flex-start;gap:16px;border-bottom:1px solid var(--g100)}
+.mc-badge{font-size:1.6rem;font-weight:800;line-height:1;flex-shrink:0;min-width:60px}
+.mc-info h3{font-size:1rem;font-weight:700;color:var(--g900);margin:0 0 4px}
+.mc-info p{font-size:.83rem;color:var(--g500);margin:0;line-height:1.55}
+.mc-thresholds{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--g100)}
+.mc-th{padding:12px 16px;text-align:center;border-right:1px solid var(--g100)}
+.mc-th:last-child{border-right:none}
+.mc-th-label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.mc-th-val{font-size:.96rem;font-weight:700}
+.th-good{background:var(--green-bg)}.th-good .mc-th-label{color:var(--green)}.th-good .mc-th-val{color:var(--green)}
+.th-needs{background:var(--amber-bg)}.th-needs .mc-th-label{color:var(--amber)}.th-needs .mc-th-val{color:var(--amber)}
+.th-poor{background:var(--red-bg)}.th-poor .mc-th-label{color:var(--red)}.th-poor .mc-th-val{color:var(--red)}
+.mc-body{padding:18px 22px}
+.mc-body h4{font-size:.88rem;font-weight:700;color:var(--g900);margin:0 0 8px}
+.mc-body ul{margin:0 0 14px 18px}
+.mc-body li{font-size:.84rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.tool-card{border:1px solid var(--g200);border-radius:var(--r);padding:16px 18px;background:var(--w)}
+.tool-card strong{display:block;font-size:.88rem;font-weight:700;color:var(--g900);margin-bottom:4px}
+.tool-card p{font-size:.8rem;color:var(--g500);margin:0}
+.tool-tag{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.tt-free{background:var(--green-bg);color:var(--green)}.tt-paid{background:var(--amber-bg);color:var(--amber)}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--orange-bg);color:var(--orange-dk)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:600px){.g2,.tools-grid,.mc-thresholds{grid-template-columns:1fr}}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t);font-weight:400}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Core Web Vitals for SEO: The Complete Guide | Digital Codex">
+<meta name="twitter:description" content="LCP, INP, and CLS explained. What Core Web Vitals are, how they became a ranking signal, how to measure them in Google Search Console, and how to...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Seo", "item": "https://www.clarigital.com/codex/seo/"}, {"@type": "ListItem", "position": 4, "name": "Core Web Vitals for SEO: The Complete Guide", "item": "https://www.clarigital.com/codex/seo/core-web-vitals/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links" role="list"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/" class="cur">SEO</a></li><li><a href="/codex/sem/">SEM</a></li><li><a href="/codex/social-media/">Social</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A–Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">✕</button></div>
+    <a href="/codex/" class="di">Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/sem/" class="di">SEM</a><a href="/codex/social-media/" class="di">Social</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/all-guides/" class="di">All Guides</a><a href="/codex/glossary/" class="di">Glossary</a>
+</div></div>
+</header>
+
+<nav class="chap-nav"><div class="chap-nav-in">
+  <a class="cnl on" href="#what-are-cwv">What Are CWV</a>
+  <a class="cnl" href="#lcp">LCP</a>
+  <a class="cnl" href="#inp">INP</a>
+  <a class="cnl" href="#cls">CLS</a>
+  <a class="cnl" href="#ranking-signal">Ranking Signal</a>
+  <a class="cnl" href="#measuring">Measuring CWV</a>
+  <a class="cnl" href="#improving">Improving Scores</a>
+  <a class="cnl" href="#sources">Sources</a>
+</div></nav>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/seo/">SEO</a><span class="sep">/</span><span class="cur" aria-current="page">Core Web Vitals</span></nav>
+    <span class="label-tag">SEO Foundation · Guide 7 of 8</span>
+    <h1>Core Web Vitals for SEO · The Complete Guide</h1>
+    <p class="hero-lead">What Core Web Vitals are, how LCP, INP, and CLS are measured, why Google made them a ranking factor, how to measure your scores using free tools, and how to systematically improve each metric — with official threshold values and technical fixes.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-seo">SEO</span><span class="meta-tag mt-gray">3,200 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+      <button class="share-btn" id="shareBtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>Share</button>
+    </div>
+  </div>
+</section>
+
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You'll Learn</h3></div><div class="lb-body"><ul>
+  <li>What Core Web Vitals are and why Google introduced them as ranking signals</li>
+  <li>LCP (Largest Contentful Paint) — what it measures, thresholds, and top causes of poor scores</li>
+  <li>INP (Interaction to Next Paint) — what replaced FID, how it is measured, and how to improve it</li>
+  <li>CLS (Cumulative Layout Shift) — what visual stability means, what causes it, and how to fix it</li>
+  <li>The difference between lab data and field data and why it matters for ranking</li>
+  <li>How to measure Core Web Vitals using Google Search Console and PageSpeed Insights</li>
+  <li>A systematic technical approach to improving each metric</li>
+</ul></div></div>
+
+<nav class="toc" id="tocMobile" style="display:none"><p class="toc-title">Contents</p><ul>
+  <li><a href="#what-are-cwv">What Are Core Web Vitals</a></li>
+  <li><a href="#lcp">LCP — Largest Contentful Paint</a></li>
+  <li><a href="#inp">INP — Interaction to Next Paint</a></li>
+  <li><a href="#cls">CLS — Cumulative Layout Shift</a></li>
+  <li><a href="#ranking-signal">CWV as a Ranking Signal</a></li>
+  <li><a href="#measuring">How to Measure CWV</a></li>
+  <li><a href="#improving">Improving Your Scores</a></li>
+  <li><a href="#sources">Sources</a></li>
+</ul></nav>
+
+<!-- Ch 1 -->
+<div class="chapter" id="what-are-cwv">
+  <div class="chap-hdr"><h2>What Are Core Web Vitals</h2><button class="share-btn" onclick="copyLink('what-are-cwv')">Share</button></div>
+  <p>Core Web Vitals are a set of specific performance metrics that Google uses to quantify real-world user experience on web pages. Introduced in May 2020, they represent Google's attempt to make page experience measurable and actionable for web developers and SEOs — translating abstract concepts like "loading", "interactivity", and "visual stability" into specific, numeric metrics with defined good/needs improvement/poor thresholds.</p>
+  <p>The three current Core Web Vitals metrics are:</p>
+  <ul>
+    <li><strong>LCP (Largest Contentful Paint)</strong> — measures loading performance</li>
+    <li><strong>INP (Interaction to Next Paint)</strong> — measures responsiveness to user interactions (replaced FID in March 2024)</li>
+    <li><strong>CLS (Cumulative Layout Shift)</strong> — measures visual stability</li>
+  </ul>
+  <p>Core Web Vitals are measured from real user data collected through Chrome's usage statistics — not from synthetic lab tests. This is an important distinction. Google's ranking signals use field data (Chrome User Experience Report, or CrUX data), which reflects how actual users experience pages on real devices and network conditions.</p>
+
+  <div class="callout orange">
+    <strong>Core Web Vitals are page-level, not site-level</strong>
+    <p>Google evaluates Core Web Vitals at the individual page level, not as a single site-wide score. A site can have some pages with "Good" scores and others with "Poor" scores. Google Search Console's Core Web Vitals report groups pages by URL pattern and shows the distribution across your site — focus improvement efforts on the most important pages first.</p>
+  </div>
+</div>
+
+<!-- Ch 2 LCP -->
+<div class="chapter" id="lcp">
+  <div class="chap-hdr"><h2>LCP — Largest Contentful Paint</h2><button class="share-btn" onclick="copyLink('lcp')">Share</button></div>
+
+  <div class="metric-card">
+    <div class="mc-head">
+      <div class="mc-badge" style="color:var(--navy)">LCP</div>
+      <div class="mc-info">
+        <h3>Largest Contentful Paint</h3>
+        <p>Measures the time from when a page begins loading until the largest image or text block in the viewport is rendered. This is the primary measure of perceived loading speed from the user's perspective.</p>
+      </div>
+    </div>
+    <div class="mc-thresholds">
+      <div class="mc-th th-good"><div class="mc-th-label">Good</div><div class="mc-th-val">≤ 2.5s</div></div>
+      <div class="mc-th th-needs"><div class="mc-th-label">Needs Improvement</div><div class="mc-th-val">2.5s – 4.0s</div></div>
+      <div class="mc-th th-poor"><div class="mc-th-label">Poor</div><div class="mc-th-val">&gt; 4.0s</div></div>
+    </div>
+    <div class="mc-body">
+      <h4>What qualifies as the LCP element?</h4>
+      <p style="font-size:.85rem;margin-bottom:12px">The browser considers these elements when determining the LCP element: <code>&lt;img&gt;</code> elements, <code>&lt;image&gt;</code> inside SVG, <code>&lt;video&gt;</code> poster images, background images loaded via CSS <code>url()</code>, and block-level elements containing text nodes. The LCP element is determined dynamically as the page loads — it can change as larger content appears.</p>
+      <h4>Most common causes of poor LCP</h4>
+      <ul>
+        <li><strong>Slow server response times (TTFB).</strong> Everything on the page is blocked until the server sends the first byte of HTML. A TTFB above 800ms is one of the most common causes of poor LCP.</li>
+        <li><strong>Render-blocking resources.</strong> CSS stylesheets and JavaScript files that block rendering delay when the browser can start painting content.</li>
+        <li><strong>Unoptimised hero images.</strong> Large, uncompressed hero images are frequently the LCP element. Images not sized correctly, missing <code>fetchpriority="high"</code>, or not using modern formats (WebP, AVIF) are a major LCP issue.</li>
+        <li><strong>Client-side rendering.</strong> Pages that require JavaScript to render content have their LCP delayed until JavaScript executes — often significantly.</li>
+        <li><strong>No preloading of LCP resource.</strong> If the LCP element is a background image or late-discovered resource, adding a <code>&lt;link rel="preload"&gt;</code> hint can significantly reduce LCP.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Ch 3 INP -->
+<div class="chapter" id="inp">
+  <div class="chap-hdr"><h2>INP — Interaction to Next Paint</h2><button class="share-btn" onclick="copyLink('inp')">Share</button></div>
+
+  <div class="metric-card">
+    <div class="mc-head">
+      <div class="mc-badge" style="color:var(--orange)">INP</div>
+      <div class="mc-info">
+        <h3>Interaction to Next Paint</h3>
+        <p>Measures the latency of all user interactions (clicks, taps, keyboard presses) throughout a page visit and reports the worst-case interaction — or near-worst for pages with many interactions. Replaced FID (First Input Delay) in March 2024 as a Core Web Vital.</p>
+      </div>
+    </div>
+    <div class="mc-thresholds">
+      <div class="mc-th th-good"><div class="mc-th-label">Good</div><div class="mc-th-val">≤ 200ms</div></div>
+      <div class="mc-th th-needs"><div class="mc-th-label">Needs Improvement</div><div class="mc-th-val">200ms – 500ms</div></div>
+      <div class="mc-th th-poor"><div class="mc-th-label">Poor</div><div class="mc-th-val">&gt; 500ms</div></div>
+    </div>
+    <div class="mc-body">
+      <h4>Why INP replaced FID</h4>
+      <p style="font-size:.85rem;margin-bottom:12px">FID (First Input Delay) only measured the delay on the very first user interaction on a page. INP is a comprehensive improvement — it measures all interactions throughout a page visit and captures the worst-case responsiveness, giving a much more accurate picture of whether a page feels responsive or sluggish during use. Google announced the transition in May 2023 and completed it in March 2024.</p>
+      <h4>Most common causes of poor INP</h4>
+      <ul>
+        <li><strong>Long tasks on the main thread.</strong> JavaScript tasks that run for more than 50ms block the browser from responding to user input. Any heavy computation, complex DOM manipulation, or unoptimised event handlers can block the main thread.</li>
+        <li><strong>Excessive JavaScript execution.</strong> Large JavaScript bundles that parse and execute on page load occupy the main thread, preventing timely responses to interactions. Reducing JavaScript payload, code-splitting, and deferring non-critical scripts all help.</li>
+        <li><strong>Unoptimised event handlers.</strong> Event listeners that perform heavy synchronous work directly in response to clicks or taps delay the browser's ability to repaint.</li>
+        <li><strong>Third-party scripts.</strong> Analytics scripts, ad platforms, chatbots, and other third-party scripts running on the main thread are among the most common sources of poor INP on real-world sites.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Ch 4 CLS -->
+<div class="chapter" id="cls">
+  <div class="chap-hdr"><h2>CLS — Cumulative Layout Shift</h2><button class="share-btn" onclick="copyLink('cls')">Share</button></div>
+
+  <div class="metric-card">
+    <div class="mc-head">
+      <div class="mc-badge" style="color:var(--purple)">CLS</div>
+      <div class="mc-info">
+        <h3>Cumulative Layout Shift</h3>
+        <p>Measures the cumulative score of all unexpected layout shifts that occur throughout the lifespan of a page. Each layout shift scores impact fraction × distance fraction. CLS is dimensionless — it is a score, not a time value.</p>
+      </div>
+    </div>
+    <div class="mc-thresholds">
+      <div class="mc-th th-good"><div class="mc-th-label">Good</div><div class="mc-th-val">≤ 0.1</div></div>
+      <div class="mc-th th-needs"><div class="mc-th-label">Needs Improvement</div><div class="mc-th-val">0.1 – 0.25</div></div>
+      <div class="mc-th th-poor"><div class="mc-th-label">Poor</div><div class="mc-th-val">&gt; 0.25</div></div>
+    </div>
+    <div class="mc-body">
+      <h4>What causes layout shifts</h4>
+      <ul>
+        <li><strong>Images without dimensions.</strong> When <code>&lt;img&gt;</code> elements do not have explicit <code>width</code> and <code>height</code> attributes (or equivalent CSS), the browser cannot reserve space for the image before it loads. When the image loads, it pushes surrounding content down — causing a significant layout shift.</li>
+        <li><strong>Ads, embeds, and iframes without reserved space.</strong> Ad slots that load asynchronously and inject content into the DOM after initial paint are one of the largest sources of CLS on commercial sites.</li>
+        <li><strong>Web fonts causing FOUT/FOIT.</strong> Custom fonts loading after text is initially rendered can cause text to shift as the font metrics change. Using <code>font-display: optional</code> or preloading critical fonts reduces this.</li>
+        <li><strong>Content dynamically injected above the fold.</strong> Any content inserted above existing content after the page loads — banners, cookie consent bars, notification popups — causes layout shifts for content below.</li>
+        <li><strong>CSS animations that affect layout properties.</strong> Animations that change <code>width</code>, <code>height</code>, <code>top</code>, or <code>left</code> properties trigger layout — use <code>transform</code> instead.</li>
+      </ul>
+      <h4>Primary fix: always size your media</h4>
+      <p style="font-size:.84rem;margin:0">Add explicit <code>width</code> and <code>height</code> attributes to all <code>&lt;img&gt;</code> and <code>&lt;video&gt;</code> elements. This alone resolves the most common source of high CLS scores. For responsive images, use the CSS <code>aspect-ratio</code> property as an alternative to maintain layout reservations.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Ch 5 -->
+<div class="chapter" id="ranking-signal">
+  <div class="chap-hdr"><h2>Core Web Vitals as a Ranking Signal</h2><button class="share-btn" onclick="copyLink('ranking-signal')">Share</button></div>
+  <p>Google officially announced Core Web Vitals as a ranking signal in May 2020, with rollout beginning in June 2021 under the Page Experience update. The ranking signal uses field data from the Chrome User Experience Report (CrUX) — only pages with sufficient real-user data are evaluated. Pages without enough CrUX data fall back to domain-level aggregates.</p>
+
+  <div class="callout">
+    <strong>Google has described CWV as a "tiebreaker" signal</strong>
+    <p>Google's official communications have consistently described the Page Experience signal (which includes Core Web Vitals) as a relatively lightweight ranking factor that acts as a tiebreaker when content quality is equivalent. A page with excellent content but poor Core Web Vitals will typically outrank a page with mediocre content but perfect Core Web Vitals. Content quality remains the primary ranking factor. However, for competitive informational queries where many pages have similar content quality, CWV can be a meaningful differentiator.</p>
+  </div>
+
+  <p>The 75th percentile threshold is key to understanding how Google uses CWV for ranking. Google evaluates whether at least 75% of real page visits achieve "Good" scores on all three metrics. A page passes the Page Experience signal if 75% of visits are in the "Good" threshold for LCP, INP, and CLS. Pages that fail one or more metrics receive a lower page experience score.</p>
+</div>
+
+<!-- Ch 6 -->
+<div class="chapter" id="measuring">
+  <div class="chap-hdr"><h2>How to Measure Core Web Vitals</h2><button class="share-btn" onclick="copyLink('measuring')">Share</button></div>
+  <p>Core Web Vitals can be measured using two data types: <strong>field data</strong> (real user measurements from the CrUX dataset) and <strong>lab data</strong> (synthetic measurements from controlled test environments). For SEO ranking purposes, only field data matters. Lab data is valuable for diagnosing problems and testing fixes before they reach real users.</p>
+
+  <div class="tools-grid">
+    <div class="tool-card"><span class="tool-tag tt-free">Free · Field Data</span><strong>Google Search Console</strong><p>Core Web Vitals report under Experience. Shows real CrUX data for your site's pages, grouped by status (Good/Needs Improvement/Poor) and URL pattern. The most important tool for understanding your ranking signal.</p></div>
+    <div class="tool-card"><span class="tool-tag tt-free">Free · Lab + Field</span><strong>PageSpeed Insights</strong><p>Combines CrUX field data (when available for the URL) with a Lighthouse lab test. Available at pagespeed.web.dev. Run individual URLs to see both real-world performance and diagnostic opportunities.</p></div>
+    <div class="tool-card"><span class="tool-tag tt-free">Free · Lab Data</span><strong>Chrome DevTools</strong><p>Performance panel in Chrome DevTools provides detailed waterfall charts, main thread activity analysis, and layout shift identification. Essential for diagnosing the root cause of poor LCP, INP, and CLS.</p></div>
+    <div class="tool-card"><span class="tool-tag tt-free">Free · Lab Data</span><strong>Lighthouse (CLI or DevTools)</strong><p>Google's open-source automated auditing tool. Provides scores and specific recommendations for each Core Web Vital. Useful for CI/CD integration to catch regressions before deployment.</p></div>
+  </div>
+
+  <div class="insight"><p class="insight-lbl">Lab data vs field data discrepancy</p><p>Lab data (PageSpeed Insights, Lighthouse) and field data (CrUX, Search Console) frequently show different scores for the same page. Lab data uses a simulated network and CPU; field data reflects the diversity of real users' devices and connections. Prioritise field data for understanding your ranking signal; use lab data to diagnose specific technical issues. A page can score well in lab tests and poorly in field data if the real user base is predominantly on slow mobile connections.</p></div>
+</div>
+
+<!-- Ch 7 -->
+<div class="chapter" id="improving">
+  <div class="chap-hdr"><h2>A Systematic Approach to Improving Core Web Vitals</h2><button class="share-btn" onclick="copyLink('improving')">Share</button></div>
+  <p>Improving Core Web Vitals requires a methodical approach: diagnose which metric is failing and on which pages, identify the root cause using lab tools, implement the fix, and then monitor field data to confirm improvement (field data typically takes 28 days to reflect changes in Google Search Console).</p>
+
+  <h3>Priority actions by metric</h3>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Metric</th><th>Highest Impact Actions</th></tr></thead>
+    <tbody>
+      <tr><td><strong>LCP</strong></td><td>Reduce TTFB (server-side caching, CDN, hosting upgrade). Preload the LCP image with <code>&lt;link rel="preload"&gt;</code>. Compress and convert hero images to WebP/AVIF. Remove render-blocking CSS and JS above the fold. Use <code>fetchpriority="high"</code> on the LCP image element.</td></tr>
+      <tr><td><strong>INP</strong></td><td>Audit and reduce third-party scripts — remove or defer any not critical to initial page function. Break up long JavaScript tasks using <code>setTimeout</code> or <code>scheduler.yield()</code>. Reduce JavaScript bundle size through code splitting. Minimise DOM size (large DOMs increase interaction latency).</td></tr>
+      <tr><td><strong>CLS</strong></td><td>Add explicit width/height to all images and videos. Reserve space for ad slots with min-height CSS. Preload critical fonts and use <code>font-display: optional</code>. Avoid inserting content above existing DOM elements after page load. Use CSS <code>transform</code> for animations instead of layout properties.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout green">
+    <strong>Field data changes take 28 days to reflect in Search Console</strong>
+    <p>Google Search Console's Core Web Vitals report uses a 28-day rolling window of CrUX data. After deploying a fix, you need to wait up to 28 days to see the impact in Search Console. Use PageSpeed Insights immediately after deployment to verify the fix in lab data, then monitor Search Console weekly for the field data trend.</p>
+  </div>
+</div>
+
+<!-- Sources -->
+<div class="chapter" id="sources">
+  <h2>Authentic Sources Used in This Guide</h2>
+  <div class="g2">
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/vitals" target="_blank" rel="noopener">Google web.dev — Core Web Vitals</a></strong><p>Official definition, metrics, and thresholds for all three Core Web Vitals with measurement guidance.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/blog/2020/05/evaluating-page-experience" target="_blank" rel="noopener">Google Search Central — Page Experience Update</a></strong><p>Official announcement of Core Web Vitals as ranking signals and Page Experience update timeline.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/lcp" target="_blank" rel="noopener">Google web.dev — Largest Contentful Paint</a></strong><p>Official LCP documentation with threshold values, element eligibility, and optimisation guidance.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/inp" target="_blank" rel="noopener">Google web.dev — Interaction to Next Paint</a></strong><p>Official INP documentation including why it replaced FID and how interaction latency is measured.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/cls" target="_blank" rel="noopener">Google web.dev — Cumulative Layout Shift</a></strong><p>Official CLS documentation with the layout shift calculation formula and common causes.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developer.chrome.com/docs/crux/" target="_blank" rel="noopener">Chrome UX Report (CrUX) Documentation</a></strong><p>Official documentation on the CrUX dataset that powers Google's field data measurements for ranking.</p></div>
+  </div>
+</div>
+
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">GA4 Setup & Configuration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/content-marketing/content-seo-integration/" class="related-card"><span class="rc-tag">Content Marketing</span><span class="rc-title">Content & SEO Integration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/tools-resources/google-search-console-guide/" class="related-card"><span class="rc-tag">Tools</span><span class="rc-title">Google Search Console Guide</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 4 April 2026 &nbsp;·&nbsp; <strong>Words:</strong> 3,200 &nbsp;·&nbsp; <strong>Category:</strong> SEO Foundation &nbsp;·&nbsp; <strong>Sources:</strong> Official only</p></div>
+</article>
+
+<aside>
+  <nav class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="tocSidebar">
+    <a href="#what-are-cwv" class="sb-link on">What Are CWV</a>
+    <a href="#lcp" class="sb-link">LCP</a>
+    <a href="#inp" class="sb-link">INP</a>
+    <a href="#cls" class="sb-link">CLS</a>
+    <a href="#ranking-signal" class="sb-link">Ranking Signal</a>
+    <a href="#measuring" class="sb-link">How to Measure</a>
+    <a href="#improving" class="sb-link">Improving Scores</a>
+    <a href="#sources" class="sb-link">Sources</a>
+  </div></nav>
+  <div class="sb-box"><div class="sb-head">Related Guides</div><div class="sb-body">
+    <a href="/codex/seo/fundamentals/ranking-factors/" class="sb-link">Ranking Factors</a>
+    <a href="/codex/seo/fundamentals/mobile-first-indexing/" class="sb-link">Mobile-First Indexing</a>
+    <a href="/codex/seo/fundamentals/crawlability-indexation/" class="sb-link">Crawlability &amp; Indexation</a>
+    <a href="/codex/seo/fundamentals/serp-features/" class="sb-link">SERP Features</a>
+    <a href="/codex/seo/fundamentals/how-google-search-works/" class="sb-link">How Google Search Works</a>
+  </div></div>
+  <div class="sb-box"><div class="sb-head">SEO Foundation Series</div><div class="sb-body">
+    <a href="/codex/seo/fundamentals/how-google-search-works/" class="sb-link">1. How Google Search Works</a>
+    <a href="/codex/seo/fundamentals/pagerank-explained/" class="sb-link">2. PageRank Explained</a>
+    <a href="/codex/seo/fundamentals/crawlability-indexation/" class="sb-link">3. Crawlability &amp; Indexation</a>
+    <a href="/codex/seo/fundamentals/ranking-factors/" class="sb-link">4. Ranking Factors</a>
+    <a href="/codex/seo/fundamentals/search-intent/" class="sb-link">5. Search Intent</a>
+    <a href="/codex/seo/fundamentals/serp-features/" class="sb-link">6. SERP Features</a>
+    <a href="/codex/seo/fundamentals/core-web-vitals/" class="sb-link sb-cur">7. Core Web Vitals</a>
+    <a href="/codex/seo/fundamentals/mobile-first-indexing/" class="sb-link">8. Mobile-First Indexing</a>
+  </div></div>
+</aside>
+</div></div></section>
+</main>
+
+<section class="cta-strip"><div class="wrap"><div class="cta-in"><div><h2>600 guides on digital marketing. All authentic sources.</h2><p>Official documentation, academic research, and government data only. No blogger opinions.</p></div><div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A–Z Glossary</a></div></div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid"><div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides built on official documentation and academic research. No affiliate links.</p></div><div class="ft-col"><h5>SEO</h5><ul><li><a href="/codex/seo/fundamentals/how-google-search-works/">How Google Works</a></li><li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability</a></li></ul></div><div class="ft-col"><h5>SEM</h5><ul><li><a href="/codex/sem/google-ads/overview/">Google Ads</a></li><li><a href="/codex/sem/google-ads/quality-score-deep-dive/">Quality Score</a></li></ul></div><div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A–Z Glossary</a></li></ul></div></div><div class="ft-bot"><span>© 2026 Digital Codex.</span><span>Authentic sources only · No affiliate links</span></div></div></footer>
+
+<script>
+(function(){var ham=document.getElementById('navHam'),dr=document.getElementById('navDrawer'),cl=document.getElementById('navClose');function open(){dr.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function shut(){dr.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(ham)ham.addEventListener('click',open);if(cl)cl.addEventListener('click',shut);if(dr)dr.addEventListener('click',function(e){if(e.target===dr)shut();});})();
+(function(){var t=document.getElementById('tocMobile');function c(){if(t)t.style.display=window.innerWidth<=860?'block':'none';}c();window.addEventListener('resize',c);})();
+(function(){if(!('IntersectionObserver' in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#tocSidebar .sb-link'),tl=document.querySelectorAll('#tocMobile .toc a');function set(id){[nl,sl,tl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){obs.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+document.getElementById('shareBtn').addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+</body>
+</html>

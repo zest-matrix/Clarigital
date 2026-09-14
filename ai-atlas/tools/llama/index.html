@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Llama — The Complete Guide | Clarigital AI Atlas</title>
+<meta name="description" content="The complete Llama guide — Meta's open-source AI. Full history from leak to Llama 4, what open-source means, 20 prompts, fine-tuning with LoRA/QLoRA,...">
+<link rel="canonical" href="/ai-atlas/tools/llama">
+<meta property="og:title" content="Llama — The Complete Guide">
+<meta property="og:description" content="The complete Llama guide — Meta's open-source AI. Full history from leak to Llama 4, what open-source means, 20 prompts, fine-tuning with LoRA/QLoRA, architecture deep-dive. Official sources.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/tools/llama">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Llama \u2014 The Complete Guide", "description": "The complete Llama guide \u2014 Meta's open-source AI. Full history from leak to Llama 4, what open-source means, 20 prompts, fine-tuning with LoRA/QLoRA,...", "url": "https://www.clarigital.com/ai-atlas/tools/llama", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Tools", "item": "https://www.clarigital.com/ai-atlas/tools/"}, {"@type": "ListItem", "position": 4, "name": "Llama \u2014 The Complete Guide", "item": "https://www.clarigital.com/ai-atlas/tools/llama/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/tools/">Tools</a><span class="sep">/</span><span>Llama</span></nav>
+    <span class="label-tag">AI Tool Guide</span>
+    <h1>Llama — The Complete Guide</h1>
+    <p class="hero-lead">Meta&#8217;s open-source AI — the model anyone can download, run, modify, and build on. The foundation of hundreds of AI products. The most important open-source AI story in the world. What open-source means, the full history, how to use it, why it matters, and complete technical depth. Three reading levels. Official sources only.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Llama</span>
+      <span class="meta-tag mt-gray">Meta AI</span>
+      <span class="meta-tag mt-gray">~9,700 words</span>
+      <span class="meta-tag mt-gray">Updated April 2026</span>
+    
+  </div>
+  <div style="margin-top:16px"><a href="https://ai.meta.com/llama/" target="_blank" rel="noopener" class="btn-official" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;font-size:.85rem;font-weight:600;padding:10px 20px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Visit Llama ↗</a><span style="font-size:.75rem;color:var(--muted);margin-left:10px">ai.meta.com</span></div>
+
+  </div>
+</section>
+
+
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<!-- ══════════════════════════════════════════════════════════════
+     SIMPLE LANE
+══════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+<h2 id="s-green-0">What is Llama — and why is it different?</h2>
+<p>Almost every AI you have heard of — ChatGPT, Claude, Gemini, Copilot — is a service. You visit a website, you use the AI, the company controls it, you pay them or use their free tier, and you trust them with whatever you type.</p>
+<p>Llama is different. It is an AI model made by Meta — the company that owns Facebook and Instagram — and Meta gives it away for free. Not just free to use — free to <em>download</em>. The actual model itself. You can put it on your own computer and run it. No internet connection needed. No company watching what you type. No usage limits. Just the AI, running on your hardware, entirely under your control.</p>
+<p>This is what &#8220;open-source&#8221; means in AI: the model&#8217;s weights — the billions of numerical values that make the AI work — are published openly for anyone to use.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">The best analogy I can give you</div>
+  <p style="color:var(--fg);margin:0">Imagine recipes. Most restaurants keep their recipes secret — you can eat there, but you can&#8217;t take the recipe home. ChatGPT and Claude are like restaurants. Llama is like a restaurant that posts its recipes online for free. You can make the food yourself, in your own kitchen, for your own family, change the recipe, improve it, make it spicier, give your version to friends.<br><br>
+  The vast majority of people will still go to restaurants (use ChatGPT or Claude). But for cooks — developers, researchers, companies with specific needs — having the recipe changes everything.</p>
+</div>
+
+<h2 id="s-green-1">Who made Llama?</h2>
+<p>Llama was made by <strong>Meta AI</strong> — the artificial intelligence research division of Meta, the company founded by Mark Zuckerberg. Meta AI is headquartered in Menlo Park, California, with major research offices in Paris and New York.</p>
+<p>The person most associated with Meta&#8217;s AI philosophy is <strong>Yann LeCun</strong>, Meta&#8217;s Chief AI Scientist. LeCun is one of the most respected figures in AI research — he co-won the 2018 Turing Award (the Nobel Prize of computing) alongside Geoffrey Hinton and Yoshua Bengio for their foundational work on deep learning. Unlike many AI leaders, LeCun has been consistently outspoken in support of open-source AI development and sceptical of what he sees as exaggerated concerns about near-term AI risk.</p>
+<p>LeCun&#8217;s view — which underpins Meta&#8217;s Llama strategy — is that open AI is safer AI: more researchers can study it, identify problems, and improve it. Closed AI concentrates power in the hands of a few companies.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">Why does a company like Meta give this away?</div>
+  <p style="color:var(--fg);margin:0">It seems counterintuitive. Why would Meta spend hundreds of millions of dollars building an AI and then give it away for free?<br><br>
+  Two reasons. First, Meta&#8217;s business is social media, not selling AI services — they do not have a competing product to protect. Second, by releasing Llama openly, Meta accelerates the entire field, builds enormous goodwill with developers, and ensures that AI development is not monopolised by OpenAI and Google. A world with Llama is a world where Meta has influence even without a major AI product. Strategic generosity.</p>
+</div>
+
+<h2 id="s-green-2">The history of Llama — from a research paper to a revolution</h2>
+
+<h3>The context: closed models dominating (2022)</h3>
+<p>By late 2022, the frontier of AI was firmly behind closed doors. OpenAI had GPT-3 and GPT-4 locked behind a paid API. Google had LaMDA but was not releasing it. The open-source AI community had models, but nothing close to the capability of the frontier. If you wanted cutting-edge AI, you paid OpenAI.</p>
+<p>The researchers at Meta AI — many of them veterans of Google Brain, DeepMind, and top universities — believed this was wrong. Not just strategically for Meta, but philosophically: AI this powerful and this broadly applicable should not be controlled exclusively by one or two companies.</p>
+
+<h3>February 2023: Llama 1 — the first crack in the wall</h3>
+<p>On 24 February 2023, Meta released Llama 1 — a family of models ranging from 7 billion to 65 billion parameters. The release was initially restricted to researchers who applied for access through a form. Meta wanted to control the rollout carefully.</p>
+<p>The models were immediately impressive. Not quite frontier (GPT-4 was released the same month and was significantly more capable), but far better than anything previously available openly. For a 65B parameter model running on research hardware, the performance was remarkable.</p>
+<p>Then something happened that Meta had not planned for.</p>
+
+<h3>The leak — and what it meant</h3>
+<p>Within days of Llama 1&#8217;s restricted release, someone posted the model weights to a public forum. The leak spread instantly. Within a week, Llama 1&#8217;s weights were permanently, irrevocably available to anyone on the internet who wanted them.</p>
+<p>The reaction divided observers. Some saw this as a disaster — dangerous AI capabilities unleashed without proper safety review. Others saw it as the inevitable consequence of any restricted-release strategy for AI. If you tell researchers they can have access but not share it, someone will share it.</p>
+<p>What happened next was extraordinary. Developers around the world began building on Llama 1 at a pace that no closed model could match. Within weeks:</p>
+<ul>
+  <li>Alpaca (Stanford) showed that fine-tuning Llama 1 on 52,000 instruction examples could produce a surprisingly capable assistant model</li>
+  <li>Vicuna demonstrated that fine-tuning on ChatGPT conversation data could get surprisingly close to GPT-4 performance</li>
+  <li>Dozens of specialised variants emerged for coding, medicine, law, and other domains</li>
+  <li>Ollama made running Llama models on consumer hardware trivially easy</li>
+</ul>
+<p>The open-source AI ecosystem, which had been starved of capable foundation models, exploded.</p>
+
+<h3>July 2023: Llama 2 — Meta embraces openness</h3>
+<p>Meta drew the obvious conclusion. On 18 July 2023, Meta released Llama 2 — not restricted to researchers, but openly available for research and commercial use. Anyone could download and use it. Companies could build products on it. The only restriction: organisations with more than 700 million monthly active users needed a special licence (effectively targeting only other tech giants like Google).</p>
+<p>Llama 2 was a significant improvement over Llama 1. Four sizes: 7B, 13B, 34B, and 70B parameters. The 70B model was competitive with GPT-3.5 on many benchmarks. Separately, Meta released Llama 2 Chat — versions fine-tuned for conversational use.</p>
+<p>The reaction was enormous. Llama 2 was downloaded millions of times in the first days. Hugging Face — the platform that hosts AI models — saw its servers strained. Every major cloud provider added Llama 2 to their model catalogues. Hundreds of companies began building Llama 2-based products.</p>
+
+<h3>April 2024: Llama 3 — closing the gap with frontier models</h3>
+<p>Llama 3 launched on 18 April 2024. Two sizes initially: 8B and 70B. The 70B model&#8217;s benchmark performance was striking — it matched or exceeded GPT-3.5 and was competitive with Claude 3 Sonnet on many tasks. For a freely available, open-weight model, this was unprecedented.</p>
+<p>Key improvements in Llama 3: a new tokeniser with a vocabulary of 128,000 tokens (vs 32,000 in Llama 2), better instruction following, significantly improved coding ability, and stronger performance on multilingual tasks. The model was trained on over 15 trillion tokens — more than seven times the training data of Llama 2.</p>
+
+<h3>July 2024: Llama 3.1 405B — a historic moment</h3>
+<p>On 23 July 2024, Meta released Llama 3.1 — including a 405-billion parameter model. This was the largest open-weight model ever released. Its performance matched GPT-4o on several benchmarks. The implications were significant: for the first time, frontier-level AI capability was available as open weights, to anyone, for free.</p>
+<p>Mark Zuckerberg published a letter arguing that open-source AI was the future — safer, more accessible, and ultimately better for society than closed models. This was a direct challenge to OpenAI and Anthropic&#8217;s closed model approach.</p>
+<p>The 8B and 70B variants also received significant improvements, including a context window extended to 128,000 tokens — enough to hold over 100 pages of text in a single conversation.</p>
+
+<h3>2025: Llama 4 — multimodal and mixture-of-experts</h3>
+<p>Llama 4 launched in early 2025 as a significant architectural shift. Three variants:</p>
+<ul>
+  <li><strong>Llama 4 Scout</strong> — 17B active parameters (109B total), 10M token context window, efficient for deployment</li>
+  <li><strong>Llama 4 Maverick</strong> — 17B active parameters (400B total via MoE), multimodal (text + image), competitive with GPT-4o</li>
+  <li><strong>Llama 4 Behemoth</strong> — 288B active parameters, used primarily as a teacher model for distillation, not a deployment model</li>
+</ul>
+<p>Llama 4 was natively multimodal — trained on text, images, and video from the ground up. This brought it level with commercial multimodal models on visual understanding tasks.</p>
+
+<h2 id="s-green-3">Who actually uses Llama and how?</h2>
+<p>Most people who &#8220;use Llama&#8221; do not know they are using Llama. It underpins a large and growing number of consumer and enterprise applications. But there are several ways to interact with it directly:</p>
+
+<h3>1. Meta AI — the consumer interface</h3>
+<p>Meta&#8217;s own AI assistant, available at <strong>meta.ai</strong> and built into WhatsApp, Instagram, and Facebook Messenger. This is the easiest way for most people to experience Llama — it is the familiar chat interface that runs on Meta&#8217;s servers. Free to use.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Try Meta AI first</div>
+  <div class="prompt-text">Hello! I want to understand what you are and how you work. Can you: tell me your name and who made you, explain in simple language what kind of AI you are, and give me three practical examples of how you could help me today?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>2. Ollama — run Llama on your own computer</h3>
+<p>Ollama is a free tool that makes running Llama on your Mac, Windows, or Linux computer as simple as a single command. Your data never leaves your machine. No API key needed. No usage limits. Completely private.</p>
+<p>Minimum hardware for the 8B model: 8GB RAM (runs on most modern laptops). For 70B: 48GB RAM (high-end workstation or Mac with M-series chip and 64GB RAM).</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">When running locally makes sense</div>
+  <p style="color:var(--fg);margin:0">You are a doctor and you want AI help with patient notes — but you cannot send patient data to OpenAI&#8217;s servers. Run Llama locally. All patient information stays on your computer.<br><br>
+  You are a lawyer reviewing confidential contracts. Run Llama locally. The contracts never leave your office.<br><br>
+  You are a developer building an app and you need AI that works offline. Llama locally means your app works without internet.</p>
+</div>
+
+<h3>3. Products built on Llama</h3>
+<p>Hundreds of products use Llama as their foundation. When you use a customer service chatbot, a coding assistant, a writing tool, or a business AI — there is a reasonable chance it is powered by a fine-tuned Llama model. You may never know, because the company has taken Llama and customised it for their specific use case.</p>
+
+<h3>4. Cloud APIs — try without hardware requirements</h3>
+<p>If you want to try Llama models without downloading them, several cloud providers offer API access at low cost:</p>
+<ul>
+  <li><strong>Groq</strong> (groq.com) — Extremely fast Llama inference, free tier available</li>
+  <li><strong>Together AI</strong> (together.ai) — Multiple Llama variants, pay per token</li>
+  <li><strong>Replicate</strong> (replicate.com) — Easy API access, pay per use</li>
+  <li><strong>AWS Bedrock, Azure, Google Cloud</strong> — Enterprise-grade hosting</li>
+</ul>
+
+<h2 id="s-green-4">What makes Llama special — the open-source advantage</h2>
+
+<h3>Privacy</h3>
+<p>When you send text to ChatGPT or Claude, that text goes to OpenAI&#8217;s or Anthropic&#8217;s servers. Their privacy policies say they do not use it to train models (unless you opt in), but your data does leave your device. For sensitive information — medical records, legal documents, financial data, personal matters — this may be unacceptable.</p>
+<p>Running Llama locally means your data never leaves your computer. Full stop.</p>
+
+<h3>Customisation — fine-tuning</h3>
+<p>One of the most powerful things you can do with an open-weight model is fine-tune it — train it further on your own data to become a specialist. A hospital can fine-tune Llama on medical literature and clinical notes to create an AI that understands medical language far better than a general model. A law firm can fine-tune on legal documents. An e-commerce company on product catalogue and customer service interactions.</p>
+<p>Fine-tuning a closed model (like GPT-4) is limited to what the API provider allows. Fine-tuning Llama has no restrictions — you are working with the weights directly.</p>
+
+<h3>Cost at scale</h3>
+<p>Paying OpenAI or Anthropic per API call adds up at scale. A product making millions of AI requests per day pays substantial API fees. Running your own Llama instance — on your own servers or cloud infrastructure — can be significantly cheaper once you reach sufficient volume. Many companies reach the crossover point where self-hosting is cheaper than API usage.</p>
+
+<h3>Independence</h3>
+<p>If OpenAI changes its pricing, its terms of service, its model behaviour, or if it goes out of business — every product built on the OpenAI API is affected. Products built on Llama are not. The weights they downloaded do not change. Their model continues working regardless of what happens to Meta.</p>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     WORKING LANE
+══════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+<h2 id="s-indigo-0">Using Llama in practice</h2>
+<p>For most working users, the choice is between Meta AI (simple, no setup), a cloud API (flexible, scalable), or a local installation (private, unlimited). Here is a practical guide for each.</p>
+
+<h3>Option 1: Meta AI — zero setup</h3>
+<p>Go to meta.ai. Create or sign in with a Meta account. Start chatting. This is Llama 4 running on Meta&#8217;s infrastructure — the same underlying model, with Meta&#8217;s fine-tuning and safety layers on top. Free. No technical setup.</p>
+
+<h3>Option 2: Ollama — local in 10 minutes</h3>
+
+<div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:1.25rem;margin:1.2rem 0;overflow-x:auto">
+  <div style="font-size:.68rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem">Set up Ollama (Mac/Linux/Windows)</div>
+  <pre style="font-family:monospace;font-size:.82rem;color:var(--fg);line-height:1.6;margin:0;white-space:pre-wrap"># Step 1: Install Ollama from ollama.com
+# (One-click installer for Mac/Windows, curl for Linux)
+
+# Step 2: Pull a model and start chatting
+ollama run llama3.2          # 3B — fast, works on most computers
+ollama run llama3.1:8b       # 8B — better quality, needs 8GB RAM
+ollama run llama3.1:70b      # 70B — best quality, needs 48GB RAM
+
+# Step 3: Ollama also runs as a local API
+curl http://localhost:11434/api/generate -d '{
+  "model": "llama3.1:8b",
+  "prompt": "Explain quantum computing simply",
+  "stream": false
+}'</pre>
+</div>
+
+<h3>Option 3: Groq API — fastest inference available</h3>
+
+<div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:1.25rem;margin:1.2rem 0;overflow-x:auto">
+  <div style="font-size:.68rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem">Groq API — Python (free tier available)</div>
+  <pre style="font-family:monospace;font-size:.82rem;color:var(--fg);line-height:1.6;margin:0;white-space:pre-wrap">from groq import Groq
+
+client = Groq(api_key="your-groq-api-key")
+
+response = client.chat.completions.create(
+    model="llama-3.1-70b-versatile",
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Summarise this document: [paste content]"}
+    ],
+    temperature=0.7,
+    max_tokens=1024
+)
+
+print(response.choices[0].message.content)</pre>
+</div>
+
+<h2 id="s-indigo-1">20 high-value prompts for Llama / Meta AI</h2>
+
+<div class="prompt-box">
+  <div class="prompt-label">1. Private document analysis</div>
+  <div class="prompt-text">I am sharing this document with you on my local/private AI. It contains sensitive information. Please: summarise the key points, identify any risks or concerns, extract all action items and deadlines, and flag anything that requires urgent attention. Here is the document: [paste content]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">2. Local coding assistant</div>
+  <div class="prompt-text">Act as a senior software engineer. Review this code: [paste code]. Identify: bugs, security vulnerabilities, performance issues, code smells, and anything that does not follow best practices for [language]. For each issue: explain the problem, explain why it matters, and show the corrected code.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">3. Fine-tuning data generation</div>
+  <div class="prompt-text">I am building a fine-tuning dataset for a [domain] AI assistant. Generate [number] high-quality instruction-response pairs in the following format: each pair should cover [topic area], responses should be [style/tone], and each should demonstrate [specific capability]. Format as JSON with "instruction" and "response" fields.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">4. Medical note summarisation (local/private)</div>
+  <div class="prompt-text">Summarise the following clinical/medical notes for [purpose — patient handover / referral letter / discharge summary]. Keep all medically relevant information. Use appropriate clinical terminology. Format: chief complaint, history, examination findings, assessment, plan. Notes: [paste notes]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">5. Legal document review (local/private)</div>
+  <div class="prompt-text">Review this legal document: [paste content]. Identify: the key obligations on each party, any unusual or potentially unfavourable clauses, defined terms that could be interpreted broadly, conditions that could trigger liability, and anything I should seek legal advice about before signing.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">6. Domain-specific Q&A system</div>
+  <div class="prompt-text">You are an expert assistant for [specific domain]. Your knowledge base includes the following information: [paste domain documents or facts]. Answer questions about this domain using only the provided information. If the answer is not in the provided information, say so clearly rather than guessing. Question: [question]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">7. Build a RAG system prompt</div>
+  <div class="prompt-text">You are an AI assistant for [company/organisation]. Answer questions using only the following retrieved context. If the context does not contain enough information to answer the question, say &#8220;I don&#8217;t have that information in the provided documents&#8221; — do not guess or use your training knowledge. Retrieved context: [context]. Question: [question]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">8. Offline research assistant</div>
+  <div class="prompt-text">Based on your training knowledge (no internet access needed), give me a comprehensive overview of [topic]. Cover: background and history, current state of knowledge, key debates or open questions, practical implications, and the most important things someone new to this topic should know. Flag anything where your knowledge may be dated.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">9. Multi-language processing</div>
+  <div class="prompt-text">Process the following text which is in [language]: [paste text]. Please: translate it to English, summarise the key points, identify the tone and intended audience, and note any culturally-specific references that a non-[nationality] reader should understand to fully appreciate the content.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">10. Structured data extraction</div>
+  <div class="prompt-text">Extract structured data from the following unstructured text: [paste text]. Output as JSON with the following fields: [list fields]. If a field is not present in the text, use null. Extract every instance if there are multiple records in the text. Return only valid JSON with no explanation.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">11. System prompt for a custom assistant</div>
+  <div class="prompt-text">Write a system prompt for an AI assistant with the following specifications: Role: [describe the role]. Knowledge domain: [describe the domain]. Personality: [describe tone and style]. What it should always do: [list]. What it should never do: [list]. How it should handle questions outside its domain: [describe]. Format the system prompt ready to use.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">12. Batch content processing</div>
+  <div class="prompt-text">Process each of the following items and for each one [describe the task — e.g. classify by category / extract key information / translate / summarise / score by quality]. Format the output as a table with columns: [list columns]. Items: [list items]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">13. Evaluation and scoring</div>
+  <div class="prompt-text">Evaluate the following [content type — essay / code / business plan / design brief / argument] against these criteria: [list criteria]. For each criterion: give a score out of 10, explain the score with specific examples from the content, and suggest one specific improvement. Finally, give an overall assessment.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">14. Generate test cases for code</div>
+  <div class="prompt-text">Generate comprehensive test cases for the following function/code: [paste code]. Include: happy path tests, edge cases, boundary conditions, error cases, and any inputs that might cause unexpected behaviour. Format as [testing framework — pytest/jest/etc] with clear test names that describe what each test is checking.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">15. Content moderation classifier</div>
+  <div class="prompt-text">Classify the following piece of user-generated content against these moderation policies: [list policies — e.g. no hate speech, no personal attacks, no misinformation]. For each policy: state whether it is violated (yes/no/borderline), explain your reasoning with a quote from the content, and suggest the appropriate action (approve/remove/flag for review). Content: [paste content]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">16. Customer feedback analysis</div>
+  <div class="prompt-text">Analyse these customer reviews/feedback comments: [paste reviews]. Identify: the top 5 positive themes with supporting examples, the top 5 negative themes with supporting examples, any urgent issues mentioned that need immediate attention, and the overall sentiment score. Present findings in a format suitable for sharing with a product team.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">17. Local writing assistant without cloud</div>
+  <div class="prompt-text">Help me improve this piece of writing: [paste text]. I need this to stay entirely local — I am using a private AI. Improve it for: clarity, flow, strength of argument, and appropriate tone for [audience]. Show me the improved version alongside specific notes on what you changed and why.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">18. Generate synthetic training data</div>
+  <div class="prompt-text">Generate [number] synthetic [data type — customer support conversations / product reviews / medical case summaries / legal briefs] for training a specialist AI. Each example should: be realistic and varied, represent different scenarios within [domain], avoid any real personally identifiable information, and match this style/format: [describe]. Output as JSONL.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">19. Agentic task decomposition</div>
+  <div class="prompt-text">I need to accomplish the following goal: [describe goal]. Break this down into a sequence of specific, executable steps. For each step: describe exactly what needs to be done, what information or tools are required, what the expected output is, and what could go wrong. Format as a numbered task list I can use to guide an AI agent or a team.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">20. Privacy-conscious personal assistant</div>
+  <div class="prompt-text">I want you to act as my personal assistant for [type of task — health tracking / financial planning / personal journaling / relationship management]. I am using a local AI specifically because I want these conversations to stay private. Help me [specific task] while keeping everything confidential. Here is the relevant information: [share details]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DEEP LANE
+══════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+<h2 id="s-red-0">Llama architecture: technical evolution across versions</h2>
+<p>The Llama series uses a decoder-only transformer architecture — the same fundamental design as GPT-3 and subsequent OpenAI models — with a set of architectural improvements that have been influential across the open-source community.</p>
+
+<h3>Key architectural choices in Llama 1 and 2</h3>
+
+<p><strong>Pre-normalisation with RMSNorm:</strong> Llama applies layer normalisation before the attention and feed-forward sub-layers (pre-norm) rather than after (post-norm as in the original transformer). This improves training stability. Specifically, Llama uses RMSNorm (Root Mean Square Layer Normalisation) rather than the standard LayerNorm — computationally cheaper and empirically comparable in performance. Source: Zhang and Sennrich (2019), &#8220;Root Mean Square Layer Normalization.&#8221;</p>
+
+<p><strong>SwiGLU activation function:</strong> The feed-forward sub-layers use SwiGLU activations (a Swish-gated linear unit variant), following Shazeer (2020) and the PaLM architecture, rather than the ReLU or GELU activations used in GPT-style models. SwiGLU empirically improves model performance at equivalent compute.</p>
+
+<p><strong>Rotary Positional Embeddings (RoPE):</strong> Llama uses RoPE (Su et al., 2022) rather than absolute or learnt positional embeddings. RoPE encodes position information directly into the attention computation, and crucially enables better generalisation to sequence lengths beyond those seen during training — a significant advantage for long-context applications.</p>
+
+<p><strong>Grouped Query Attention (GQA) — introduced in Llama 2:</strong> Standard multi-head attention (MHA) uses separate key and value projections for each attention head. GQA groups multiple heads to share a single key-value projection, significantly reducing the KV cache memory requirements during inference — enabling longer contexts and faster generation — with minimal quality degradation. This became standard practice across many subsequent models.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary sources — Llama architecture</div>
+  <p style="color:var(--fg);margin:0">Touvron, H., et al. (2023). &#8220;LLaMA: Open and Efficient Foundation Language Models.&#8221; Meta AI. <a href="https://arxiv.org/abs/2302.13971" target="_blank" style="color:#EF4444">arxiv.org/abs/2302.13971</a><br><br>
+  Touvron, H., et al. (2023). &#8220;Llama 2: Open Foundation and Fine-Tuned Chat Models.&#8221; Meta AI. <a href="https://arxiv.org/abs/2307.09288" target="_blank" style="color:#EF4444">arxiv.org/abs/2307.09288</a></p>
+</div>
+
+<h3>Llama 3: Scaling and improved data curation</h3>
+<p>The Llama 3 technical report documents the most significant training data improvement: a new dataset of over 15 trillion tokens, curated with more aggressive quality filtering, deduplication, and domain balancing than Llama 2&#8217;s 2 trillion token dataset. The improved tokeniser uses a vocabulary of 128,256 tokens (vs 32,000 for Llama 2), enabling more efficient representation of code, mathematics, and non-English text.</p>
+<p>Llama 3&#8217;s instruction-following improvements were achieved through a multi-stage post-training pipeline: supervised fine-tuning, rejection sampling fine-tuning, direct preference optimisation (DPO), and proximal policy optimisation (PPO) — a combination more sophisticated than the RLHF approach used in Llama 2.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source — Llama 3</div>
+  <p style="color:var(--fg);margin:0">Meta AI (2024). &#8220;The Llama 3 Herd of Models.&#8221; <a href="https://arxiv.org/abs/2407.21783" target="_blank" style="color:#EF4444">arxiv.org/abs/2407.21783</a></p>
+</div>
+
+<h3>Llama 4: Mixture-of-Experts and native multimodality</h3>
+<p>Llama 4 introduces two architectural paradigm shifts relative to previous Llama versions:</p>
+
+<p><strong>Mixture-of-Experts (MoE):</strong> Rather than activating the full parameter set for every token, Llama 4 Maverick and Behemoth use a learned routing mechanism that dispatches each token to a subset of &#8220;expert&#8221; feed-forward networks. Maverick has 128 experts with 1 of 128 active per token, totalling 400B parameters but only 17B active — enabling high model capacity at a fraction of the inference cost of an equivalent dense model.</p>
+
+<p><strong>Native multimodality:</strong> Llama 4 is trained on text, images, and video from the beginning of pre-training, rather than adding vision as a post-hoc module. The vision encoder uses a modified ViT (Vision Transformer) architecture. Cross-modal attention enables the language decoder to attend to visual representations at any layer, not just at the input.</p>
+
+<p><strong>Mixture of Depths:</strong> Llama 4 also incorporates Mixture of Depths — an adaptive computation technique where different tokens are routed to different numbers of transformer layers based on a learned difficulty estimate. Simple tokens use fewer layers; complex tokens use more. This further improves efficiency.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source — Llama 4</div>
+  <p style="color:var(--fg);margin:0">Meta AI (2025). &#8220;Llama 4 Model Card and Technical Summary.&#8221; <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama4/MODEL_CARD.md" target="_blank" style="color:#EF4444">github.com/meta-llama/llama-models</a><br><br>
+  Meta AI (2025). &#8220;Introducing Llama 4.&#8221; <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" style="color:#EF4444">ai.meta.com/blog/llama-4</a></p>
+</div>
+
+<h3>Fine-tuning Llama: LoRA and QLoRA</h3>
+<p>Full fine-tuning of a 70B parameter model requires approximately 140GB of GPU VRAM — out of reach for most organisations. Two parameter-efficient fine-tuning (PEFT) techniques have made fine-tuning accessible:</p>
+
+<p><strong>LoRA (Low-Rank Adaptation, Hu et al. 2021):</strong> Rather than updating all model weights, LoRA adds small low-rank matrices to the weight matrices of attention layers. Only these small matrices are trained — reducing trainable parameters by orders of magnitude. The base model weights are frozen. At inference, the LoRA adapters are merged back into the base weights with no inference overhead.</p>
+
+<p><strong>QLoRA (Dettmers et al. 2023):</strong> Extends LoRA by quantising the base model to 4-bit precision before fine-tuning (reducing memory requirements by ~4x), while maintaining LoRA adapters in full 16-bit precision. QLoRA enabled fine-tuning Llama 65B on a single 48GB GPU — making specialist AI accessible to individuals and small organisations.</p>
+
+<div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:1.25rem;margin:1.2rem 0;overflow-x:auto">
+  <div style="font-size:.68rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem">Fine-tuning Llama with QLoRA (Python — Hugging Face)</div>
+  <pre style="font-family:monospace;font-size:.82rem;color:var(--fg);line-height:1.6;margin:0;white-space:pre-wrap">from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+import torch
+
+# Load model in 4-bit (QLoRA)
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_compute_dtype=torch.bfloat16
+)
+
+model = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Meta-Llama-3.1-8B",
+    quantization_config=bnb_config,
+    device_map="auto"
+)
+
+# Configure LoRA
+lora_config = LoraConfig(
+    r=16,           # Rank — higher = more capacity, more memory
+    lora_alpha=32,  # Scaling factor
+    target_modules=["q_proj", "v_proj"],  # Which layers to adapt
+    lora_dropout=0.05,
+    bias="none",
+    task_type="CAUSAL_LM"
+)
+
+model = prepare_model_for_kbit_training(model)
+model = get_peft_model(model, lora_config)
+model.print_trainable_parameters()
+# Output: trainable params: 2,097,152 || all params: 8,030,261,248
+# Only 0.026% of parameters trained!</pre>
+</div>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary sources — fine-tuning</div>
+  <p style="color:var(--fg);margin:0">Hu, E.J., et al. (2021). &#8220;LoRA: Low-Rank Adaptation of Large Language Models.&#8221; <a href="https://arxiv.org/abs/2106.09685" target="_blank" style="color:#EF4444">arxiv.org/abs/2106.09685</a><br><br>
+  Dettmers, T., et al. (2023). &#8220;QLoRA: Efficient Finetuning of Quantized LLMs.&#8221; <a href="https://arxiv.org/abs/2305.14314" target="_blank" style="color:#EF4444">arxiv.org/abs/2305.14314</a></p>
+</div>
+
+<h3>Llama licence — what you can and cannot do</h3>
+<p>Understanding the licence is essential before commercial use:</p>
+<ul>
+  <li><strong>Llama 3 Community Licence:</strong> Broadly permissive. You can use, copy, modify, and distribute for research and commercial purposes. You must include attribution. You must comply with Llama&#8217;s usage policy (which prohibits certain harmful applications). The licence restriction for very large organisations (>700M MAU) applies — they need a separate commercial agreement with Meta.</li>
+  <li><strong>Llama 4 Licence:</strong> Similar structure, updated terms. Always check the specific licence file in the model repository before commercial deployment.</li>
+  <li><strong>What is NOT allowed under any Llama licence:</strong> Using Llama outputs to train competing foundation models, facilitating illegal activities, and certain other prohibited uses detailed in the acceptable use policy.</li>
+</ul>
+<p>Full licence text: <a href="https://github.com/meta-llama/llama-models/blob/main/LICENSE" target="_blank" style="color:#6366F1">github.com/meta-llama/llama-models — LICENSE</a></p>
+
+</div>
+
+</div>
+
+<!-- SIDEBAR -->
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Llama — and why is it different?</a><a href="#s-green-1">Who made Llama?</a><a href="#s-green-2">The history of Llama — from a research paper to a revoluti</a><a href="#s-green-3">Who actually uses Llama and how?</a><a href="#s-green-4">What makes Llama special — the open-source advantage</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Using Llama in practice</a><a href="#s-indigo-1">20 high-value prompts for Llama / Meta AI</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Llama architecture: technical evolution across versions</a></div></div>
+  <div class="sidebar-card">
+    <h4>Llama guide</h4>
+    <a href="#" class="sidebar-link active">Overview &amp; history</a>
+    <a href="/ai-atlas/tools/mistral/" class="sidebar-link">Compare: Mistral</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="sidebar-link">Compare: ChatGPT</a>
+    <a href="/ai-atlas/which-ai/" class="sidebar-link">Which AI to use?</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Quick facts</h4>
+    <div style="font-size:.82rem;color:var(--muted);line-height:1.7">
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">Meta AI</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Type</span><span style="color:#10B981;font-weight:500">Open-source</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Llama 1</span><span style="color:var(--fg);font-weight:500">Feb 2023</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Llama 4</span><span style="color:var(--fg);font-weight:500">2025</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Largest model</span><span style="color:var(--fg);font-weight:500">405B (3.1)</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Cost</span><span style="color:#10B981;font-weight:500">Free (open weights)</span></div>
+    </div>
+  </div>
+  <div class="sidebar-card">
+    <h4>Official sources</h4>
+    <a href="https://ai.meta.com/llama/" class="sidebar-link" target="_blank">ai.meta.com/llama</a>
+    <a href="https://arxiv.org/abs/2302.13971" class="sidebar-link" target="_blank">Llama 1 paper</a>
+    <a href="https://arxiv.org/abs/2307.09288" class="sidebar-link" target="_blank">Llama 2 paper</a>
+    <a href="https://arxiv.org/abs/2407.21783" class="sidebar-link" target="_blank">Llama 3 paper</a>
+    <a href="https://github.com/meta-llama/llama-models" class="sidebar-link" target="_blank">GitHub — model cards</a>
+    <a href="https://ollama.com" class="sidebar-link" target="_blank">Ollama (run locally)</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Fine-tuning tools</h4>
+    <a href="https://arxiv.org/abs/2106.09685" class="sidebar-link" target="_blank">LoRA paper</a>
+    <a href="https://arxiv.org/abs/2305.14314" class="sidebar-link" target="_blank">QLoRA paper</a>
+    <a href="https://huggingface.co/docs/peft" class="sidebar-link" target="_blank">Hugging Face PEFT</a>
+  </div>
+</div>
+
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  // Lane tabs
+  var tabs=[];
+  var sections=[];
+  function showLane(color){
+    tabs.forEach(function(t){t.classList.toggle('active',t.id==='tab-'+color);});
+    sections.forEach(function(s){s.classList.toggle('active',s.id==='lane-'+color);});
+  }
+  window.showLane=showLane;
+  // Default active tab
+  var first=document.querySelector('.lane-tab');
+  if(first){var m=first.id.match(/tab-(\w+)/);if(m)showLane(m[1]);}
+  // Prompt copy
+  window.copyPrompt=function(btn){
+    var text=btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+      setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},1800);
+    });
+  };
+})();
+</script>
+</body>
+</html>

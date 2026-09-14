@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Evals and Benchmarks | Clarigital AI Atlas</title>
+<meta name="description" content="Why public benchmarks mislead, how to build evaluations for your own use case, and what to measure when choosing between models.">
+<link rel="canonical" href="/ai-atlas/concepts/ai-evals-benchmarks/">
+<meta property="og:type" content="article"><meta property="og:title" content="AI Evals and Benchmarks">
+<meta property="og:description" content="Why public benchmarks mislead, how to build evaluations for your own use case, and what to measure when choosing between models."><meta property="og:url" content="https://www.clarigital.com/ai-atlas/concepts/ai-evals-benchmarks/">
+<meta property="og:site_name" content="Clarigital">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI Evals and Benchmarks">
+<meta name="twitter:description" content="Why public benchmarks mislead, how to build evaluations for your own use case, and what to measure when choosing between models.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI Evals and Benchmarks", "description": "Why public benchmarks mislead, how to build evaluations for your own use case, and what to measure when choosing between models.", "url": "https://www.clarigital.com/ai-atlas/concepts/ai-evals-benchmarks/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Evals and Benchmarks", "item": "https://www.clarigital.com/ai-atlas/concepts/ai-evals-benchmarks/"}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js .lane-section{display:none}html.js .lane-section.active{display:block;animation:fi .25s ease}.lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative}
+.prompt-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.88rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.callout-red{border-left-color:var(--red)}
+.agent-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:8px 0}
+.agent-card .ac-role{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:5px}
+.agent-card h4{font-size:.9rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.agent-card p{font-size:.83rem;margin:0}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+</style>
+
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">&rsaquo;</span><span>AI Evals and Benchmarks</span></nav>
+    <div class="label-tag">AI Concept</div>
+    <h1>AI Evals and Benchmarks</h1>
+    <p class="hero-lead">Benchmarks tell you how models compare on someone else's problem. Evals tell you how they perform on yours. Only the second should drive a decision.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">AI Concept</span><span class="meta-tag"><time datetime="2026-05-22">Last verified: May 2026</time></span></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="art-layout">
+    <main style="min-width:0">
+<h2>The Limits of Public Benchmarks</h2>
+<p>Public benchmarks are useful for tracking the field and poor for choosing a model for a specific job.</p><p>Three problems. <strong>Contamination</strong> — benchmark questions leak into training data, inflating scores without reflecting capability. <strong>Optimisation pressure</strong> — labs know which benchmarks matter commercially and optimise toward them. <strong>Relevance</strong> — a score on graduate-level physics reasoning says little about how a model will handle your customer support tickets.</p><p>Read benchmarks as a rough capability tier, not as a ranking to select from.</p>
+<h2>Building Your Own Eval Set</h2>
+<p>The single highest-value thing most teams can do is assemble 50 to 200 real examples from their actual use case, with known-good outputs.</p><p>Sources: real user queries from logs, edge cases that previously failed, examples covering the range of inputs you expect, and deliberately difficult cases.</p><p>This set becomes the thing you run against every model, every prompt change and every version upgrade. Without it, model selection and prompt iteration are guesswork dressed as judgement.</p>
+<h2>Ways to Score Outputs</h2>
+<p><strong>Exact match</strong> — where there is one correct answer. Cheap, objective, limited.</p><p><strong>Human review</strong> — most accurate and least scalable. Use on a sample.</p><p><strong>LLM-as-judge</strong> — a model scores outputs against a rubric. Scales well, correlates reasonably with human judgement when the rubric is specific, and carries known biases including preferring longer answers and favouring outputs from the same model family.</p><p><strong>Assertion checks</strong> — programmatic rules on the output: is it valid JSON, does it cite a source, does it stay under length, does it avoid forbidden content. Underused and very effective.</p>
+<h2>What to Measure Beyond Accuracy</h2>
+<p>Latency, because a better answer that arrives too late is not better. Cost per request at realistic volume. Consistency — run the same input several times and see how much the answer varies. Failure mode — when the model is wrong, is it obviously wrong or plausibly wrong? Plausible wrongness is far more dangerous.</p>
+<h2>Running Evals Continuously</h2>
+<p>Model providers update models. A prompt tuned six months ago may behave differently today, silently.</p><p>Run the eval set on a schedule and on every change to prompts, models or retrieval. Treat a drop in eval score the way you would treat a failing test, because that is what it is.</p>
+
+    </main>
+    <aside class="art-sidebar">
+      <div class="sidebar-card">
+        <h4 class="sidebar-heading" style="font-size:.78rem;font-weight:700;color:rgba(241,245,249,.6);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Related</h4>
+        <a href="/ai-atlas/concepts/reasoning-models/" class="sidebar-link">Reasoning Models</a><a href="/ai-atlas/which-ai/" class="sidebar-link">Which AI Should I Use?</a><a href="/ai-atlas/concepts/token-economics/" class="sidebar-link">Token Economics</a>
+      </div>
+    </aside>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>Frameworks</h5><ul>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script>
+function copyPrompt(btn){var t=btn.previousElementSibling.textContent;navigator.clipboard.writeText(t).then(function(){var o=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent=o;btn.classList.remove('copied');},2000);});}
+</script>
+</body>
+</html>

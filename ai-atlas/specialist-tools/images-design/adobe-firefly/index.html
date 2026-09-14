@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Adobe Firefly — The Complete AI Image Guide | Clarigital</title>
+<meta name="description" content="The complete guide to Adobe Firefly — commercially safe AI image generation inside Creative Cloud. Generative Fill, text effects, Content Credentials,...">
+<link rel="canonical" href="/ai-atlas/specialist-tools/images-design/adobe-firefly/">
+<meta property="og:title" content="Adobe Firefly — The Complete AI Image Guide">
+<meta property="og:description" content="The complete guide to Adobe Firefly — commercially safe AI image generation inside Creative Cloud. Generative Fill, text effects, Content Credentials, pricing and 14 prompts. April 2026.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/specialist-tools/images-design/adobe-firefly/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+[data-theme="dark"]{
+  --bg:#0A0F1E;--bg2:#111827;--bg3:#1E293B;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(10,15,30,.93);
+  --input-bg:#1E293B;
+  --shadow:none;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+/* Hub tool grid */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:20px}
+@media(max-width:500px){.tool-grid{grid-template-columns:repeat(2,1fr)}}
+.tool-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:14px 16px;transition:border-color .18s,box-shadow .18s;box-shadow:var(--shadow)}
+.tool-card:hover{border-color:var(--indigo);box-shadow:0 2px 12px rgba(99,102,241,.12)}
+.tc-name{font-size:.9rem;font-weight:700;color:var(--fg);margin-bottom:2px}
+.tc-by{font-size:.72rem;color:var(--faint);margin-bottom:6px}
+.tc-desc{font-size:.78rem;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.tc-tag{display:inline-block;font-size:.65rem;font-weight:600;padding:2px 7px;border-radius:100px;margin-right:4px;margin-bottom:2px}
+.tc-tag-text{background:rgba(37,99,235,.1);color:var(--blue)}
+.tc-tag-image{background:rgba(99,102,241,.1);color:var(--indigo)}
+.tc-tag-video{background:rgba(239,68,68,.08);color:var(--red)}
+.tc-tag-code{background:rgba(16,185,129,.08);color:var(--green)}
+.tc-tag-prod{background:rgba(245,158,11,.08);color:#D97706}
+.hub-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}
+.hub-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:18px;box-shadow:var(--shadow)}
+.hc-icon{font-size:1.4rem;margin-bottom:8px}
+.hc-title{font-size:.92rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.hc-desc{font-size:.8rem;color:var(--muted);line-height:1.55}
+.hc-count{font-size:.72rem;color:var(--faint);margin-top:6px}
+.btn-lg{font-size:.95rem;padding:12px 24px;border-radius:9px}
+.btn-outline{background:var(--card-bg);color:var(--fg);border:1px solid var(--border);font-size:.88rem;font-weight:500;padding:9px 18px;border-radius:8px;display:inline-block;transition:background .18s}
+.btn-outline:hover{background:var(--bg2)}
+.art-body{min-width:0;overflow-wrap:break-word}
+
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Adobe Firefly — The Complete AI Image Guide">
+<meta name="twitter:description" content="The complete guide to Adobe Firefly — commercially safe AI image generation inside Creative Cloud. Generative Fill, text effects, Content Credentials,...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Adobe Firefly \u2014 The Complete AI Image Guide", "description": "The complete guide to Adobe Firefly \u2014 commercially safe AI image generation inside Creative Cloud. Generative Fill, text effects, Content Credentials,...", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/images-design/adobe-firefly/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Specialist Tools", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/"}, {"@type": "ListItem", "position": 4, "name": "Images Design", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/images-design/"}, {"@type": "ListItem", "position": 5, "name": "Adobe Firefly \u2014 The Complete AI Image Guide", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/images-design/adobe-firefly/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/ai-atlas/specialist-tools/" class="di">&#128295; Specialist Tools</a>
+    <a href="/ai-atlas/specialist-tools/coding/" class="di" style="padding-left:24px">&#8627; AI for Coding</a>
+    <a href="/ai-atlas/specialist-tools/automation/" class="di" style="padding-left:24px">&#8627; AI for Automation</a>
+    <a href="/ai-atlas/specialist-tools/research-knowledge/" class="di" style="padding-left:24px">&#8627; AI for Research</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    <div style="padding:14px 12px 4px;border-top:1px solid var(--border);margin-top:8px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:.8rem;color:var(--muted)">Theme</span>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</div>
+</header>
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/specialist-tools/">Specialist Tools</a><span class="sep">/</span><a href="/ai-atlas/specialist-tools/images-design/">AI for Images & Design</a><span class="sep">/</span><span>Adobe Firefly</span></nav>
+    <span class="label-tag">AI for Images & Design</span>
+    <h1>Adobe Firefly — The Complete Guide</h1>
+    <p class="hero-lead">Adobe Firefly is the AI image generation system built into Creative Cloud — trained exclusively on licensed Adobe Stock images and public domain content to make every output commercially safe. Generate images, fill and expand photos in Photoshop, create text effects, recolour vectors in Illustrator, and generate video. Free tier available. Standalone from $9.99/month.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">AI Image Generation</span><span class="meta-tag mt-gray">Commercially safe</span><span class="meta-tag mt-gray">Creative Cloud integrated</span><span class="meta-tag mt-gray">Free tier available</span><span class="meta-tag mt-gray">Last reviewed: April 2026</span>
+  </div>
+  <div style="margin-top:16px"><a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener" class="btn-official" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;font-size:.85rem;font-weight:600;padding:10px 20px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Visit Adobe Firefly ↗</a><span style="font-size:.75rem;color:var(--muted);margin-left:10px">adobe.com</span></div>
+
+  </div>
+</section>
+<div class="wrap">
+  <div class="art-layout">
+    <div class="art-body">
+      
+
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+        <h2 id="s-green-0">What is Adobe Firefly?</h2>
+        <p>Adobe Firefly is the generative AI system inside Adobe Creative Cloud. It powers AI features across Photoshop (Generative Fill, Generative Expand), Illustrator (Generative Recolour, text effects), Premiere Pro (video generation), and the standalone Firefly web and mobile app. You can use Firefly to generate images from text, fill in or extend existing photos, recolour designs, apply text effects, and generate video — all within tools you may already use.</p>
+        <p>The defining feature of Firefly is commercial safety. Adobe trained Firefly exclusively on Adobe Stock images, openly licensed content and public domain works where copyright has expired — not on scraped web images. This matters for professional and enterprise use: images generated by Firefly come with Adobe's IP indemnification, meaning Adobe takes legal responsibility if your generated image is found to infringe on someone else's copyright. No other AI image tool provides this level of legal protection.</p>
+        <p>In 2026, Firefly expanded significantly. The standalone Firefly app now integrates partner models including Google, OpenAI, ElevenLabs and others alongside Adobe's own models, giving access to a range of generation capabilities in one interface. The average Firefly prompt length doubled in 2025 according to Adobe's own data — users have moved from simple descriptions to detailed creative direction.</p>
+
+        <h2 id="s-green-1">What Firefly can generate</h2>
+        <p><strong>Text to image</strong> — Describe what you want and Firefly generates it. The Image 4 model (current as of 2026) produces high-quality photorealistic and illustrative images with strong prompt adherence. Particularly good for product photography, people in settings, and conceptual imagery.</p>
+        <p><strong>Generative Fill (Photoshop)</strong> — Select any area of an existing photo and describe what to replace it with. Remove an object and fill naturally. Add a person to an empty scene. Extend the sky. The fill uses context from the surrounding image to produce seamless results.</p>
+        <p><strong>Generative Expand (Photoshop)</strong> — Extend an image beyond its original borders in any direction. Useful when a photo needs more space for a headline or when the crop is too tight for a format.</p>
+        <p><strong>Text effects (Firefly app and Illustrator)</strong> — Apply AI-generated textures, materials and styles to the letterforms of any text. Type "SPRING" and apply a style like "made of flowers" or "ice sculpture". The text retains its shape but fills with the described material.</p>
+        <p><strong>Generative Recolour (Illustrator)</strong> — Describe a colour palette in natural language ("tropical sunset", "muted earth tones") and Illustrator recolours your vector illustration accordingly.</p>
+        <p><strong>Content Credentials</strong> — Every Firefly-generated image is automatically tagged with a digital "nutrition label" showing that it was AI generated, when, and how. This transparency feature is unique among AI image tools and increasingly required by publishers and advertisers.</p>
+
+        <h2 id="s-green-2">Who Adobe Firefly is for</h2>
+        <p>Firefly is the natural choice for existing Creative Cloud subscribers — if you already pay for Photoshop, Illustrator or the full CC suite, Firefly features are available inside the tools you already use. For professional designers, marketing teams and agencies where commercial safety is non-negotiable, Firefly is the safest AI image tool available.</p>
+        <p>It is also well-suited for teams that produce volume AI content for commercial use — advertising, branded content, editorial — where IP indemnification is a meaningful protection.</p>
+
+        <h2 id="s-green-3">Why not just use Midjourney or DALL-E?</h2>
+        <p>Midjourney produces the highest artistic quality of any AI image tool. DALL-E 3 has excellent prompt accuracy. Neither provides IP indemnification. If a client or lawyer asks "can we use this AI image commercially without legal risk?" — Firefly is the only tool where the answer is clearly yes. For creative exploration and personal projects, Midjourney or DALL-E are excellent. For commercial deliverables where legal protection matters, Firefly is the professional answer.</p>
+
+        <h2 id="s-green-4">Is Firefly free?</h2>
+        <p>Yes. The free tier includes 25 generative credits per month — enough to try the platform. Standard generation features (text-to-image, Generative Fill using Adobe models) use 1 credit per generation. Premium features (video generation, partner model outputs) use more credits. Firefly Standard is $9.99/month for 2,000 credits. Firefly Pro is $19.99/month for 4,000 credits and includes Adobe Express and Photoshop web/mobile. Creative Cloud All Apps ($60/month) includes Firefly alongside all Adobe applications.</p>
+      </div>
+
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+        <h2 id="s-indigo-0">Getting started with Firefly</h2>
+        <h3>Option A — Firefly web app</h3>
+        <p>Go to firefly.adobe.com. Sign in with or create a free Adobe account. The web app has all core Firefly features including text-to-image, text effects and the partner model gallery. This is the fastest way to start — no software download required.</p>
+        <h3>Option B — Inside Photoshop</h3>
+        <p>If you have Photoshop (any current CC subscription), Generative Fill and Generative Expand are built in. Open any photo, make a selection with any selection tool, and click Generative Fill in the Properties panel. This is the most powerful use of Firefly — combining AI generation with professional photo editing.</p>
+        <h3>Option C — Inside Illustrator</h3>
+        <p>Generative Recolour and text effects are available in Illustrator. Select a vector path, go to Edit → Generative Recolour. Select text, go to Object → Text Effects → Generate.</p>
+
+        <h2 id="s-indigo-1">14 Firefly prompts and use cases</h2>
+        <h3>Text-to-image generation</h3>
+        <div class="prompt-box"><div class="prompt-label">Product lifestyle photography</div><div class="prompt-text">A [product name] on a [surface — marble, wooden, concrete]. [Describe setting — modern kitchen, outdoor cafe, minimalist studio]. Soft natural light from the left. Shallow depth of field, background softly blurred. Commercial photography style, high resolution. No people. [Brand colour] as an accent in the background.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Person in a setting</div><div class="prompt-text">A [describe person — professional woman, 30s, business attire / casual young man, etc.] in [describe setting — modern open-plan office, outdoor urban setting, coffee shop]. Natural light. Looking [toward camera / slightly away]. Warm, approachable expression. Photorealistic, editorial quality. No text.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Conceptual illustration</div><div class="prompt-text">A conceptual illustration representing [abstract concept — innovation, growth, security, connection]. Visual metaphor: [describe the metaphor — a seedling growing through concrete, a bridge made of people, hands holding a glowing orb]. Style: [clean vector / watercolour / photorealistic]. Colour palette: [describe colours]. No text.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Abstract background</div><div class="prompt-text">Abstract [describe mood — warm and energetic / cool and professional / dark and dramatic] background. [Describe visual elements — flowing lines, geometric shapes, particles, gradients]. Colours: [list 2-3 hex codes or colour descriptions]. High resolution, suitable for use behind text overlays on a website or social media post. No objects, no people, no text.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <h3>Generative Fill in Photoshop</h3>
+        <div class="prompt-box"><div class="prompt-label">Remove and replace an object</div><div class="prompt-text">Select the object to remove. In Generative Fill, leave the prompt empty. Photoshop fills the area with context-aware background, effectively removing the object. For replacing with something specific: type a description of what should be there instead — 'a wooden chair' or 'a window with trees outside'.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Extend a background</div><div class="prompt-text">Use Generative Expand to add 30% more canvas above a landscape photo. Prompt: 'Dramatic clouds and blue sky, matching the existing sky colour and lighting in the photo.' The expanded area blends naturally with the original photograph.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Swap season or time of day</div><div class="prompt-text">Select the sky in a photo using Select Sky. Generative Fill prompt: 'Overcast winter sky, grey and dramatic, matching the colour temperature of the photo.' Or 'Sunset sky, orange and pink, golden hour lighting.' Firefly replaces just the sky while leaving the foreground unchanged.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Add a branded environment</div><div class="prompt-text">For a product shot that needs more context: select the background behind the product. Prompt: '[Brand name]-style minimalist studio, [brand colour] wall, soft directional lighting from upper right, wooden floor.' The product stays unchanged; the background becomes branded.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <h3>Text effects</h3>
+        <div class="prompt-box"><div class="prompt-label">Material text effect</div><div class="prompt-text">Select text in Firefly web app. Prompt: 'Made entirely of [material — polished chrome, rough concrete, green moss and small flowers, melting chocolate, crumpled gold foil]. Photorealistic, dramatic side lighting, dark background for contrast.'</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Seasonal typography</div><div class="prompt-text">Prompt for text filled with a seasonal theme: 'Letters filled with [autumn leaves in orange and red / fresh spring flowers in pink and white / glowing embers and fire / frost and ice crystals]. Photorealistic detail, high contrast against a dark background.'</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <h3>Generative Recolour in Illustrator</h3>
+        <div class="prompt-box"><div class="prompt-label">Brand palette recolour</div><div class="prompt-text">Select entire illustration. Open Generative Recolour. Prompt: 'Apply a palette using only [brand colour 1 — e.g. deep navy #1B2B5E], [brand colour 2 — e.g. warm gold #D4A84B], and [brand colour 3 — e.g. clean white #FFFFFF]. Maintain contrast ratios for accessibility.'</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Seasonal campaign recolour</div><div class="prompt-text">For the same illustration used across seasonal campaigns: 'Winter — cold blues, silver and white.' 'Spring — soft pastels, mint and blush.' 'Summer — vibrant coral, yellow and teal.' 'Autumn — rust, burnt orange and deep brown.' Generate each variant and export as separate assets.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+        <h2 id="s-indigo-2">Tips for Adobe Firefly</h2>
+        <p><strong>Use Generative Fill for retouching, not just replacement.</strong> The most underused Firefly feature is using Generative Fill with an empty prompt to remove objects. Select an unwanted element, leave the prompt blank, click Generate. Firefly fills it with context-aware background. This replaces 80% of basic retouching tasks.</p>
+        <p><strong>Use the Style Reference feature.</strong> In the Firefly web app, upload a reference image and Firefly will match its visual style in your generations — colour grading, lighting, composition. This is faster than describing a style in text and produces more consistent results when you have an existing visual identity to match.</p>
+        <p><strong>Save prompt presets for brand consistency.</strong> Firefly lets you save prompts and style settings. Create a brand preset that captures your typical image style (lighting, colour temperature, composition preferences) and use it for every new generation. This saves time and keeps outputs consistent across a campaign.</p>
+      </div>
+
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+        <h2 id="s-red-0">Technical background</h2>
+        <p>Adobe Firefly Image Model 4 is Adobe's current foundational image generation model, per Adobe's official product documentation. It was trained exclusively on Adobe Stock images, openly licensed content and public domain material where copyright has expired — per Adobe's official statement on training data. Adobe does not train on Creative Cloud subscribers' personal content unless users explicitly opt into the "Improve Adobe Products" program.</p>
+        <h3>IP indemnification</h3>
+        <p>Adobe provides IP indemnification for outputs from Firefly's commercially licensed models, per Adobe's official product pages. This means Adobe takes legal responsibility if a generated image is found to infringe copyright. This protection applies to standard Firefly model outputs. Partner model outputs (from Google, OpenAI, etc.) may have different licensing terms — verify with Adobe enterprise before using partner model outputs in commercial work.</p>
+        <h3>Content Credentials</h3>
+        <p>Adobe automatically attaches Content Credentials to every Firefly-generated image, per Adobe's official Firefly documentation. Content Credentials are a digital provenance standard developed by the Content Authenticity Initiative (CAI), co-founded by Adobe in 2019. The standard is now supported by over 3,300 organisations including major technology companies and news organisations, per the CAI's official membership list.</p>
+        <h3>Generative credits</h3>
+        <p>Most standard AI features in Creative Cloud (Generative Fill, text effects, Generative Recolour) use 1 generative credit per generation, per Adobe's official Creative Cloud generative AI features documentation (last updated March 30 2026). Premium features — video generation, audio generation, partner model outputs — consume more credits. Users on Firefly or Creative Cloud Pro plans have unlimited access to standard generations; premium features draw from the monthly credit pool.</p>
+        <h3>Pricing (verified April 2026)</h3>
+        <ul>
+          <li><strong>Free:</strong> 25 generative credits/month</li>
+          <li><strong>Firefly Standard:</strong> $9.99/month — 2,000 premium credits, Firefly web and mobile app</li>
+          <li><strong>Firefly Pro:</strong> $19.99/month — 4,000 credits, Adobe Express Premium, Photoshop web/mobile</li>
+          <li><strong>Creative Cloud Photography:</strong> $23/month — includes Photoshop + Lightroom + generative credits</li>
+          <li><strong>Creative Cloud All Apps:</strong> $60/month — all Adobe apps + generative credits</li>
+        </ul>
+        <div class="callout callout-deep">
+          <div class="callout-head">Primary sources cited in this guide</div>
+          <ul>
+            <li><a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener" style="color:var(--indigo)">adobe.com/products/firefly</a> — Official Firefly product page including training data and indemnification information</li>
+            <li><a href="https://www.adobe.com/products/firefly/plans.html" target="_blank" rel="noopener" style="color:var(--indigo)">adobe.com/products/firefly/plans</a> — Official Firefly pricing page</li>
+            <li><a href="https://helpx.adobe.com/creative-cloud/apps/generative-ai/creative-cloud-generative-ai-features.html" target="_blank" rel="noopener" style="color:var(--indigo)">Adobe Help — Creative Cloud generative AI features</a> — Official credit usage documentation (updated March 30 2026)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Adobe Firefly?</a><a href="#s-green-1">What Firefly can generate</a><a href="#s-green-2">Who Adobe Firefly is for</a><a href="#s-green-3">Why not just use Midjourney or DALL-E?</a><a href="#s-green-4">Is Firefly free?</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Getting started with Firefly</a><a href="#s-indigo-1">14 Firefly prompts and use cases</a><a href="#s-indigo-2">Tips for Adobe Firefly</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Technical background</a></div></div><div class="sidebar-card"><h4>In this guide</h4><a href="#" class="sidebar-link active" onclick="showLane('green');return false;">What it is — Simple</a><a href="#" class="sidebar-link" onclick="showLane('indigo');return false;">How to use it — Working</a><a href="#" class="sidebar-link" onclick="showLane('red');return false;">Technical detail — Deep</a></div><div class="sidebar-card"><h4>Pricing</h4><a href="https://www.adobe.com/products/firefly/plans.html" target="_blank" rel="noopener" class="sidebar-link">Free — 25 credits/month</a><a href="https://www.adobe.com/products/firefly/plans.html" target="_blank" rel="noopener" class="sidebar-link">Firefly Standard — $9.99/month</a><a href="https://www.adobe.com/products/firefly/plans.html" target="_blank" rel="noopener" class="sidebar-link">Firefly Pro — $19.99/month</a><a href="https://www.adobe.com/products/firefly/plans.html" target="_blank" rel="noopener" class="sidebar-link">Creative Cloud — $60/month</a></div><div class="sidebar-card"><h4>Related tools</h4><a href="/ai-atlas/specialist-tools/images-design/ideogram/" class="sidebar-link">Ideogram</a><a href="/ai-atlas/specialist-tools/images-design/leonardo/" class="sidebar-link">Leonardo.ai</a><a href="/ai-atlas/specialist-tools/images-design/canva-ai/" class="sidebar-link">Canva AI</a><a href="/ai-atlas/specialist-tools/images-design/stable-diffusion/" class="sidebar-link">Stable Diffusion</a></div><div class="sidebar-card"><h4 style="color:var(--indigo);font-size:.8rem">🔗 Official links</h4><a href="https://www.adobe.com/products/firefly.html" target="_blank" rel="noopener" class="sidebar-link">adobe.com/firefly ↗</a><a href="https://www.adobe.com/products/firefly/plans.html" target="_blank" rel="noopener" class="sidebar-link">Pricing ↗</a><a href="https://helpx.adobe.com/creative-cloud.html" target="_blank" rel="noopener" class="sidebar-link">Help ↗</a></div><div class="sidebar-card"><a href="/ai-atlas/specialist-tools/images-design/" style="display:block;font-size:.82rem;font-weight:600;color:var(--indigo)">← All AI for Images & Design tools</a></div></div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+function showLane(l){document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});var sec=document.getElementById('lane-'+l);var tab=document.getElementById('tab-'+l);if(sec)sec.classList.add('active');if(tab)tab.classList.add('active');}
+function copyPrompt(btn){var t=btn.previousElementSibling.textContent;navigator.clipboard.writeText(t).then(function(){var o=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent=o;btn.classList.remove('copied');},2000);});}
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.lane-tab');if(f)f.click();});
+</script>
+</body>
+</html>

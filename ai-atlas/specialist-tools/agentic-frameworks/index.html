@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Agentic AI Frameworks | Clarigital</title>
+<meta name="description" content="The four major agentic AI frameworks compared — LangChain/LangGraph, CrewAI, AutoGen, and LlamaIndex. What each does, who it's for, and full guides for...">
+<link rel="canonical" href="/ai-atlas/specialist-tools/agentic-frameworks/">
+<meta property="og:title" content="Agentic AI Frameworks — LangChain, CrewAI, AutoGen, LlamaIndex">
+<meta property="og:description" content="Complete guides to the four major frameworks for building AI agents. Understand the differences, choose the right one, and build with confidence.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+/* HUB HERO */
+.hub-hero{padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.hub-hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px}
+.hub-lead{font-size:clamp(.9rem,2vw,1.05rem);color:var(--muted);max-width:640px;line-height:1.75;margin-bottom:24px}
+.hub-stats{display:flex;gap:28px;flex-wrap:wrap}
+.hub-stat{text-align:left}
+.hub-stat strong{display:block;font-size:1.4rem;font-weight:800;color:var(--fg);letter-spacing:-.02em}
+.hub-stat span{font-size:.75rem;color:var(--muted)}
+/* FRAMEWORK CARDS */
+.section-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:40px 0 16px}
+.fw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:48px}
+.fw-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:22px;transition:border-color .18s,transform .18s;position:relative;overflow:hidden}
+.fw-card:hover{border-color:var(--indigo);transform:translateY(-2px)}
+.fw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--indigo);opacity:0;transition:opacity .18s}
+.fw-card:hover::before{opacity:1}
+.fw-badge{display:inline-block;font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:2px 8px;border-radius:100px;margin-bottom:10px}
+.badge-green{background:rgba(16,185,129,.15);color:var(--green)}
+.badge-indigo{background:var(--indigo-dim);color:var(--indigo)}
+.badge-blue{background:var(--blue-dim);color:var(--blue)}
+.badge-amber{background:rgba(245,158,11,.12);color:#F59E0B}
+.badge-warning{background:rgba(239,68,68,.1);color:var(--red);font-size:.65rem}
+.fw-card h3{font-size:1.05rem;font-weight:800;color:var(--fg);margin-bottom:6px;letter-spacing:-.02em}
+.fw-card .fw-desc{font-size:.87rem;color:var(--muted);line-height:1.6;margin-bottom:14px}
+.fw-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.fw-tag{font-size:.72rem;font-weight:500;padding:2px 8px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.fw-link{font-size:.82rem;font-weight:600;color:var(--indigo);display:flex;align-items:center;gap:4px}
+/* COMPARE TABLE */
+.compare-table{width:100%;border-collapse:collapse;margin:20px 0 48px;font-size:.86rem}
+.compare-table th{background:var(--bg2);color:var(--fg);font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid var(--border)}
+.compare-table td{padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--muted);vertical-align:top}
+.compare-table tr:hover td{background:var(--bg2)}
+.td-label{color:var(--fg);font-weight:600;white-space:nowrap}
+.td-yes{color:var(--green)}
+.td-no{color:var(--red)}
+.td-partial{color:#F59E0B}
+/* CONCEPT LINKS */
+.concept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:48px}
+.concept-card{display:block;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;transition:border-color .18s}
+.concept-card:hover{border-color:var(--indigo)}
+.concept-card .cc-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:5px}
+.concept-card h4{font-size:.9rem;font-weight:700;color:var(--fg)}
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+@media(max-width:640px){table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;white-space:nowrap}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Agentic AI Frameworks \u2014 LangChain, CrewAI, AutoGen, LlamaIndex", "description": "The four major agentic AI frameworks compared \u2014 LangChain/LangGraph, CrewAI, AutoGen, and LlamaIndex. What each does, who it's for, and full guides for...", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Agentic AI Frameworks \u2014 LangChain, CrewAI, AutoGen, LlamaIndex", "description": "The four major agentic AI frameworks compared \u2014 LangChain/LangGraph, CrewAI, AutoGen, and LlamaIndex. What each does, who it's for, and full guides for...", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agentic AI Frameworks — LangChain, CrewAI, AutoGen, LlamaIndex">
+<meta name="twitter:description" content="The four major agentic AI frameworks compared — LangChain/LangGraph, CrewAI, AutoGen, and LlamaIndex. What each does, who it's for, and full guides for...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="hub-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ai-atlas/">AI Atlas</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/">Specialist Tools</a>
+      <span class="sep">›</span>
+      <span>Agentic Frameworks</span>
+    </nav>
+    <div class="label-tag">Specialist Tools</div>
+    <h1>Agentic AI Frameworks</h1>
+    <p class="hub-lead">The four open-source frameworks that make building AI agents practical. Each takes a different approach — different architecture, different complexity, different strengths. This hub covers all four with complete guides.</p>
+    <div class="hub-stats">
+      <div class="hub-stat"><strong>4</strong><span>frameworks covered</span></div>
+      <div class="hub-stat"><strong>All free</strong><span>open source (MIT)</span></div>
+      <div class="hub-stat"><strong>12+</strong><span>prompts per guide</span></div>
+      <div class="hub-stat"><strong>April 2026</strong><span>last verified</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-top:8px">
+
+  <p class="section-title">The four frameworks</p>
+
+  <div class="fw-grid">
+
+    <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="fw-card">
+      <span class="fw-badge badge-indigo">Most widely used</span>
+      <h3>LangChain / LangGraph</h3>
+      <p class="fw-desc">LangChain is the largest ecosystem for building with LLMs — 1,000+ integrations, massive documentation, broad community. LangGraph (LangChain's own recommendation for agents) adds a graph-based state machine on top, making complex multi-step and multi-agent workflows reliable and inspectable.</p>
+      <div class="fw-meta">
+        <span class="fw-tag">Python &amp; JS</span>
+        <span class="fw-tag">Graph-based</span>
+        <span class="fw-tag">Multi-agent</span>
+        <span class="fw-tag">Free / Open source</span>
+      </div>
+      <span class="fw-link">Full guide →</span>
+    </a>
+
+    <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" class="fw-card">
+      <span class="fw-badge badge-green">Easiest to start</span>
+      <h3>CrewAI</h3>
+      <p class="fw-desc">Role-based multi-agent framework where agents are defined with a role, goal, and backstory — just like hiring a team. The most intuitive way to build multi-agent systems. Agents collaborate on tasks sequentially or in parallel, with an orchestrator managing the crew.</p>
+      <div class="fw-meta">
+        <span class="fw-tag">Python</span>
+        <span class="fw-tag">Role-based</span>
+        <span class="fw-tag">Multi-agent</span>
+        <span class="fw-tag">Free / Open source</span>
+      </div>
+      <span class="fw-link">Full guide →</span>
+    </a>
+
+    <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" class="fw-card">
+      <span class="fw-badge badge-amber">Maintenance mode</span>
+      <h3>Microsoft AutoGen</h3>
+      <p class="fw-desc">Conversation-based multi-agent framework from Microsoft Research. Agents communicate by sending messages to each other. Pioneered many patterns now standard across frameworks. Important caveat: AutoGen is being merged into Microsoft's Agent Framework — no new features, bug fixes only.</p>
+      <div class="fw-meta">
+        <span class="fw-tag">Python</span>
+        <span class="fw-tag">Conversation-based</span>
+        <span class="fw-tag">Microsoft</span>
+        <span class="fw-tag fw-tag" style="border-color:rgba(239,68,68,.3);color:var(--red)">Maintenance only</span>
+      </div>
+      <span class="fw-link">Full guide →</span>
+    </a>
+
+    <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="fw-card">
+      <span class="fw-badge badge-blue">Best for data</span>
+      <h3>LlamaIndex</h3>
+      <p class="fw-desc">Specialises in data-augmented agents — AI agents that reason over large document sets, knowledge bases, and structured data using RAG (Retrieval-Augmented Generation). The go-to choice when your agent needs to work with proprietary documents, internal data, or large knowledge bases.</p>
+      <div class="fw-meta">
+        <span class="fw-tag">Python &amp; TS</span>
+        <span class="fw-tag">RAG-native</span>
+        <span class="fw-tag">Data-augmented</span>
+        <span class="fw-tag">Free / Open source</span>
+      </div>
+      <span class="fw-link">Full guide →</span>
+    </a>
+
+  </div>
+
+  <p class="section-title">Side-by-side comparison</p>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>LangChain/LangGraph</th>
+        <th>CrewAI</th>
+        <th>AutoGen</th>
+        <th>LlamaIndex</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="td-label">Language</td>
+        <td>Python + JS/TS</td>
+        <td>Python</td>
+        <td>Python</td>
+        <td>Python + TS</td>
+      </tr>
+      <tr>
+        <td class="td-label">Primary pattern</td>
+        <td>Graph state machine</td>
+        <td>Role-based crew</td>
+        <td>Conversational</td>
+        <td>RAG + agents</td>
+      </tr>
+      <tr>
+        <td class="td-label">Multi-agent</td>
+        <td class="td-yes">Yes</td>
+        <td class="td-yes">Yes (core feature)</td>
+        <td class="td-yes">Yes</td>
+        <td class="td-yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="td-label">Learning curve</td>
+        <td>Steep</td>
+        <td>Gentle</td>
+        <td>Moderate</td>
+        <td>Moderate</td>
+      </tr>
+      <tr>
+        <td class="td-label">Best for</td>
+        <td>Complex pipelines</td>
+        <td>Getting started fast</td>
+        <td>Research / legacy</td>
+        <td>Document-heavy tasks</td>
+      </tr>
+      <tr>
+        <td class="td-label">Active development</td>
+        <td class="td-yes">Yes</td>
+        <td class="td-yes">Yes</td>
+        <td class="td-no">No — maintenance only</td>
+        <td class="td-yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="td-label">MCP support</td>
+        <td class="td-yes">Yes (LangGraph)</td>
+        <td class="td-yes">Yes</td>
+        <td class="td-partial">Partial</td>
+        <td class="td-yes">Yes</td>
+      </tr>
+      <tr>
+        <td class="td-label">Licence</td>
+        <td>MIT</td>
+        <td>MIT</td>
+        <td>MIT (CC-BY-NC for some)</td>
+        <td>MIT</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="section-title">Understand agentic AI first</p>
+
+  <div class="concept-grid">
+    <a href="/ai-atlas/agentic-ai/" class="concept-card">
+      <div class="cc-label">Foundation</div>
+      <h4>What is Agentic AI?</h4>
+    </a>
+    <a href="/ai-atlas/agentic-ai/how-agents-work/" class="concept-card">
+      <div class="cc-label">Mechanics</div>
+      <h4>How AI Agents Work</h4>
+    </a>
+    <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="concept-card">
+      <div class="cc-label">Architecture</div>
+      <h4>Multi-Agent Systems</h4>
+    </a>
+    <a href="/ai-atlas/specialist-tools/automation/" class="concept-card">
+      <div class="cc-label">Related</div>
+      <h4>Automation Tools</h4>
+    </a>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Frameworks</h5><ul>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

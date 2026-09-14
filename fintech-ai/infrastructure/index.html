@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Infrastructure | Clarigital</title>
+<meta name="description" content="Core banking, ledgers and data architecture — build versus buy with real numbers, the thin ledger pattern, vendor exit readiness and India data localisation.">
+<link rel="canonical" href="/fintech-ai/infrastructure/">
+<meta property="og:type" content="article"><meta property="og:title" content="Infrastructure">
+<meta property="og:description" content="Core banking, ledgers and data architecture — build versus buy with real numbers, the thin ledger pattern, vendor exit readiness and India data localisation."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/infrastructure/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Infrastructure">
+<meta name="twitter:description" content="Core banking, ledgers and data architecture — build versus buy with real numbers, the thin ledger pattern, vendor exit readiness and India data localisation."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Infrastructure", "description": "Core banking, ledgers and data architecture \u2014 build versus buy with real numbers, the thin ledger pattern, vendor exit readiness and India data localisation.", "url": "https://www.clarigital.com/fintech-ai/infrastructure/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Infrastructure", "item": "https://www.clarigital.com/fintech-ai/infrastructure/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h4{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2,#243044)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;align-items:center;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green,#10B981);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo,#6366F1);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber,#F59E0B);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint,#64748b)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><span class="sep">&rsaquo;</span><span>Infrastructure</span></nav>
+  <div class="label-tag">Module 08</div>
+  <div class="ft-tag">Fintech AI</div><h1>Infrastructure</h1>
+  <p class="hero-lead">The ledger underneath everything, and how to choose it. This module covers build versus buy with published cost figures, the thin ledger pattern that keeps migration possible, three-plane data architecture, the India stack, vendor concentration as an architecture problem, and the correctness properties a ledger must actually have.</p>
+  <div class="art-meta"><span class="meta-tag">Verified May 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>What "infrastructure" means in a fintech</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>The three ways to get a ledger</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>What AI can and cannot do here</a><a href="#s-green-3"><span class="tdot" style="background:var(--green)"></span>The structural fact: your licence decides your architecture</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>The build, buy or rent decision</a><a class="sub" href="#s-indigo-tiers"><span class="tdot" style="background:var(--indigo)"></span>Where each option actually fits</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>The thin ledger pattern</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Data architecture</a><a class="sub" href="#s-indigo-features"><span class="tdot" style="background:var(--indigo)"></span>The feature store point, restated</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>The India stack</a><a class="sub" href="#s-indigo-losms"><span class="tdot" style="background:var(--indigo)"></span>LOS, LMS and BRE</a><a class="sub" href="#s-indigo-localisation"><span class="tdot" style="background:var(--indigo)"></span>Data localisation</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>The registry</a><a href="#s-indigo-5"><span class="tdot" style="background:var(--indigo)"></span>A prompt for the architecture decision</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Vendor concentration is an architecture problem</a><a class="sub" href="#s-amber-blast"><span class="tdot" style="background:var(--amber)"></span>Blast radius thinking</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>Cost, honestly</a><a class="sub" href="#s-amber-reversible"><span class="tdot" style="background:var(--amber)"></span>Optimise for reversibility first</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Correctness properties a ledger must have</a><a href="#s-amber-3"><span class="tdot" style="background:var(--amber)"></span>Resilience and the incident you will have</a><a class="sub" href="#s-amber-modes"><span class="tdot" style="background:var(--amber)"></span>The failure modes worth designing for</a><a class="sub" href="#s-amber-contain"><span class="tdot" style="background:var(--amber)"></span>Containing without spreading</a><a href="#s-amber-4"><span class="tdot" style="background:var(--amber)"></span>The architecture record, and where this module ends</a><a class="sub" href="#s-amber-handoff4"><span class="tdot" style="background:var(--amber)"></span>Where this module ends</a></div></div>
+    
+    
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<div class="note"><span class="note-lbl">Build sheet</span><p>Every tool for this module, how to use each one, what it costs, the best combinations and three recommended builds: <a href="/fintech-ai/infrastructure/build-sheet/"><strong>Infrastructure Build Sheet &rarr;</strong></a></p></div><h2 id="s-green-0">What "infrastructure" means in a fintech</h2>
+<p>Underneath every fintech product sits a ledger that answers one question: <strong>what is the balance right now, and is this transaction allowed?</strong></p><p>Everything else — the app, the cards, the lending journey, the analytics — sits on top of that ledger and trusts it to be correct. Get the ledger wrong and no amount of product quality above it matters.</p><p>The stack, from the bottom up:</p><table><tr><th>Layer</th><th>What it does</th><th>Can you skip it?</th></tr><tr><td><strong>Licence / sponsor</strong></td><td>The legal right to hold money or lend</td><td>No. You hold it or you rent it.</td></tr><tr><td><strong>Core ledger</strong></td><td>Accounts, balances, postings, interest, fees</td><td>No. Buy, rent or build.</td></tr><tr><td><strong>Product logic</strong></td><td>What this specific product does</td><td>No — this is your actual business.</td></tr><tr><td><strong>Rails</strong></td><td>Payments, cards, transfers</td><td>No. Always via a licensed provider.</td></tr><tr><td><strong>Risk stack</strong></td><td>KYC, fraud, AML, credit</td><td>No. Modules 01–05.</td></tr><tr><td><strong>Data</strong></td><td>Analytics, reporting, model features</td><td>Deferrable, and deferring it is expensive.</td></tr><tr><td><strong>Channels</strong></td><td>App, web, agent tooling</td><td>No, but this is the easy part.</td></tr></table>
+<h2 id="s-green-1">The three ways to get a ledger</h2>
+<p><strong>Buy a core banking platform.</strong> A vendor supplies the ledger and product engine; you configure it. Cloud-native options exist that were built after 2010 and behave like software rather than like a mainframe.</p><p><strong>Rent through BaaS.</strong> A provider bundles the sponsor bank relationship, the compliance stack and the core ledger. Fastest route to market, least control, and you inherit the provider&rsquo;s regulatory standing.</p><p><strong>Build your own.</strong> Full control, full cost, full responsibility for correctness.</p><div class="warn"><span class="note-lbl">Watch out</span><p>Published estimates put building in-house at roughly 3–5x the cost of buying — on the order of $15–25M — and 24–36 months minimum to reach basic functionality. That is the number before the first customer. Teams routinely underestimate it because the happy path is genuinely simple; the cost is in reconciliation, edge cases, interest accrual, statement generation, and being correct on the worst day of the year.</p></div>
+<h2 id="s-green-2">What AI can and cannot do here</h2>
+<table><tr><th>Task</th><th>How well AI does it</th></tr><tr><td>Write the integration and glue code</td><td><strong>Very well.</strong> Most of a core integration is boilerplate.</td></tr><tr><td>Generate test cases and edge-case scenarios</td><td><strong>Very well,</strong> and underused. This is where ledger bugs hide.</td></tr><tr><td>Explain a legacy system nobody understands</td><td><strong>Well.</strong> Reading undocumented code is a genuine strength.</td></tr><tr><td>Assist a data migration</td><td><strong>Partially.</strong> Mapping yes; reconciling balances no.</td></tr><tr><td>Operate the ledger</td><td><strong>It must not.</strong> Money movement is deterministic code, not inference.</td></tr><tr><td>Decide the architecture</td><td><strong>No.</strong> It will confidently recommend the median answer from its training data, which is a bank you are not.</td></tr></table><div class="note"><span class="note-lbl">Note</span><p>Notice that none of the high-value uses are in the transaction path. AI belongs in building and understanding the infrastructure, not in running it. A ledger that produces a different answer on a retry is not a ledger.</p></div>
+<h2 id="s-green-3">The structural fact: your licence decides your architecture</h2>
+<p>Most technology choices are reversible. This one largely is not, because it is downstream of a regulatory position rather than a technical preference.</p><table><tr><th>Your position</th><th>What that forces</th></tr><tr><td><strong>No licence, partnering with an NBFC or bank</strong></td><td>Their core is the system of record. Yours is a control layer. You cannot own the ledger even if you want to.</td></tr><tr><td><strong>Own NBFC licence</strong></td><td>You own the book. You need a real core, real reporting, real audit.</td></tr><tr><td><strong>Payment aggregator authorisation</strong></td><td>Escrow mechanics and settlement obligations shape the ledger design.</td></tr><tr><td><strong>Bank</strong></td><td>Core banking in the full sense, with regulatory reporting to match.</td></tr></table><p>Decide the licence path before the architecture. Teams that build first and license later discover that the regulator expects a system of record they do not control, or controls they did not build.</p>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">The build, buy or rent decision</h2>
+<p>This is the decision teams spend the most time on and frame worst, because they start with a vendor comparison instead of with their own constraints.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Build / buy / rent — the decision, honestly</span><button class="cb-copy" type="button">Copy</button></div><pre><code>ANSWER THESE FIRST. They decide more than any feature comparison.
+
+1. Do you hold a licence, or rent one?
+   Renting -&gt; you get a control layer, not a core. Stop here.
+
+2. What is your go-live target?
+   &lt; 6 months   -&gt; BaaS. Nothing else lands.
+   6-18 months  -&gt; SaaS core or BaaS. Enterprise cores will not.
+   18+ months   -&gt; the full range opens up.
+
+3. How many engineers can you dedicate to infrastructure, not product?
+   &lt; 5   -&gt; BaaS
+   5-15  -&gt; SaaS core, and expect it to consume most of them
+   15+   -&gt; enterprise core becomes operable
+   50+   -&gt; building becomes arguable, not obviously right
+
+4. Is your product logic genuinely unusual?
+   If your lending or deposit product fits standard patterns, buying
+   is correct. &quot;We are different&quot; is usually pricing and journey
+   differences, which live ABOVE the ledger.
+
+5. What volume, and what is the per-account economics?
+   Cloud-native cores report roughly $4-15 per account per year
+   versus $40-80 on legacy. At low volume this is noise. At millions
+   of accounts it is the whole argument.
+
+6. Can you afford to be wrong?
+   A core migration mid-life is one of the most expensive projects in
+   financial services. Optimise for reversibility early, efficiency later.
+
+THE PATTERN THAT WORKS FOR MOST
+  Start on BaaS or a SaaS core. Keep a shadow ledger from day one.
+  Move deeper only when volume economics or product constraints
+  actually force it - not when the engineering team gets bored.</code></pre></div><h3 id="s-indigo-tiers">Where each option actually fits</h3><table><tr><th>Option</th><th>Fits</th><th>Does not fit</th></tr><tr><td><strong>BaaS</strong> — bundled sponsor, compliance and ledger</td><td>Vertical SaaS adding accounts or cards; seed to Series A; sub-18-month go-live with a small team</td><td>Anyone needing deep product control or owning their own licence</td></tr><tr><td><strong>SaaS core</strong> — cloud-native, API-first</td><td>Neobanks and lenders with real engineering capacity; faster than enterprise, still substantial</td><td>Teams expecting it to be turnkey. It is a core, not a product.</td></tr><tr><td><strong>Enterprise core</strong> — programmable, tier-one scale</td><td>Banks and large institutions where core modernisation is the strategic programme</td><td>A Series A fintech. Multi-year timelines and contract minimums sized for tier-one and tier-two banks.</td></tr><tr><td><strong>Build</strong></td><td>Large, well-funded, proven product-market fit, genuinely unusual product logic</td><td>Almost everyone else, almost always</td></tr></table><div class="warn"><span class="note-lbl">Watch out</span><p>Pricing in this market is almost entirely undisclosed and sales-negotiated. A vendor that gives you a number before understanding your volume should prompt scepticism rather than relief — it usually means the number excludes implementation, professional services, or the integration work that dominates the real cost.</p></div>
+<h2 id="s-indigo-1">The thin ledger pattern</h2>
+<p>The most useful architectural idea in this module, and the one that keeps your options open.</p><div class="cb"><div class="cb-head"><span class="cb-lang">The thin ledger pattern — partial ownership</span><button class="cb-copy" type="button">Copy</button></div><pre><code>YOUR SYSTEM                          PROVIDER / PARTNER
+-----------                          -----------------
+customer identity          &lt;------&gt;  KYC records
+product logic &amp; pricing
+eligibility rules
+YOUR SHADOW LEDGER         &lt;====&gt;    SYSTEM OF RECORD LEDGER
+  every posting mirrored               authoritative balances
+  reconciled continuously              regulatory reporting
+customer experience
+analytics &amp; features       &lt;------&gt;  transaction feed
+
+WHY MIRROR A LEDGER YOU DO NOT OWN
+
+  1. You can answer questions the provider&#x27;s API cannot
+     (&quot;what did this customer&#x27;s balance look like at 14:02 on Tuesday&quot;)
+  2. You detect provider errors, because you have an independent view
+  3. You can migrate. Without your own history you are captive.
+  4. Your analytics and model features do not depend on a rate-limited
+     vendor API
+
+THE RULE THAT MAKES IT SAFE
+  Your shadow ledger is NEVER authoritative. On any disagreement the
+  provider&#x27;s ledger wins and yours raises an exception.
+  A shadow ledger that silently &quot;corrects&quot; itself to match is not a
+  control - it is a way to hide breaks.</code></pre></div><p>The shadow ledger costs real engineering effort and buys three things that are hard to acquire later: an independent view for detecting provider errors, a complete history that makes migration possible, and analytics that do not depend on a vendor API.</p><div class="note"><span class="note-lbl">Note</span><p>Many fintechs adopt this early to move fast and shift toward deeper control over time. That progression only works if the shadow ledger existed from the start. Retrofitting history you never captured is not possible.</p></div>
+<h2 id="s-indigo-2">Data architecture</h2>
+<p>Three planes with different guarantees, kept genuinely separate.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Data architecture — three planes, kept separate</span><button class="cb-copy" type="button">Copy</button></div><pre><code>TRANSACTIONAL PLANE        strict consistency, low latency
+  core ledger                money movement, balances
+  -&gt; Postgres-class, ACID, boring, no clever caching of balances
+
+OPERATIONAL PLANE          near-real-time, eventually consistent
+  event stream               every state change published once
+  -&gt; Kafka / Pulsar. The integration backbone.
+  -&gt; Consumers: fraud scoring, notifications, shadow ledger,
+     feature computation
+
+ANALYTICAL PLANE           batch + interactive, no SLA to production
+  warehouse / lakehouse      history, reporting, model training
+  -&gt; The regulatory reporting substrate as well as the BI one
+
+THE RULE
+  Analytics NEVER reads the transactional database directly.
+  Not &quot;should not&quot; - never. One badly-written query against the
+  ledger during a settlement window is an outage.
+
+EVENT DESIGN THAT SAVES YOU LATER
+  - every event immutable, append-only, with a sequence number
+  - business time AND system time on every event
+  - idempotency key so replay is safe
+  - schema registry, with backward compatibility enforced in CI
+  - publish FACTS (&quot;payment_settled&quot;), not commands (&quot;update_balance&quot;)
+
+WHY THIS MATTERS MORE IN FINTECH
+  You will be asked to reconstruct a point in time. Not &quot;what is the
+  balance&quot; but &quot;what did we believe the balance was on 14 March, and
+  what did we know when we made that decision&quot;. Only an immutable
+  event log answers that.</code></pre></div><h3 id="s-indigo-features">The feature store point, restated</h3><p>Modules 02 and 03 both depend on features computed consistently between training and serving. That consistency is a data architecture property, not a model property. If the operational plane is the single source of events for both paths, training-serving skew largely disappears. If analytics recomputes features from a warehouse using different logic, it does not.</p>
+<h2 id="s-indigo-3">The India stack</h2>
+<p>Indian fintech infrastructure has consolidated into a recognisable set of layers, and the right choice depends more on what you are building than on vendor quality.</p><table><tr><th>Need</th><th>Typical route</th></tr><tr><td>Simple payment acceptance</td><td>Payment aggregator — Razorpay, Cashfree, PayU. Do not over-engineer this.</td></tr><tr><td>Banking APIs without card ambitions</td><td>Setu, Decentro — plug-and-play KYC, credit and payment APIs</td></tr><tr><td>Card issuance, lending OS, core replacement</td><td>M2P and comparable platforms — deeper RBI compliance coverage, NBFC references, heavier engagement</td></tr><tr><td>Lending lifecycle</td><td>LOS for origination, LMS for servicing, BRE for rules, plus collections and co-lending engines</td></tr><tr><td>Money movement and holding</td><td>Sponsor bank or your own licence. Not optional.</td></tr></table><h3 id="s-indigo-losms">LOS, LMS and BRE</h3><p>Worth separating because they are frequently bought as one thing and have different lifespans.</p><ul><li><strong>LOS</strong> — origination: journey, eligibility, document collection, decisioning integration</li><li><strong>LMS</strong> — servicing: disbursal, EMI scheduling, part-payments, restructuring, moratoria, write-offs, re-amortisation</li><li><strong>BRE</strong> — the rule engine, ideally no-code with maker-checker and version control so policy changes take hours rather than a release cycle</li><li><strong>Co-lending engine</strong> — if you co-lend, the RBI framework requires specific schedule generation, blended rates and escrow handling. Retrofitting this is painful.</li></ul><h3 id="s-indigo-localisation">Data localisation</h3><p>RBI, IRDAI and SEBI each impose data residency expectations, and they are not identical. The practical consequences run deeper than choosing an Indian cloud region:</p><ul><li>Which AI APIs you may call, since inference is processing</li><li>Where backups and disaster recovery copies live</li><li>Whether a vendor&rsquo;s support team can access production data from outside India</li><li>What your logging and observability pipeline ships offshore by default</li></ul><div class="warn"><span class="note-lbl">Watch out</span><p>Observability is the one that catches teams out. Shipping application logs to a foreign-hosted monitoring service moves transaction data offshore continuously, and nobody notices because it was a platform decision rather than a data decision.</p></div>
+<h2 id="s-indigo-4">The registry</h2>
+<div class="reg"><div class="reg-head"><h4>Core banking and ledger platforms</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">Mambu<span class="pill p-direct">direct</span></div><div class="d">Cloud-native composable SaaS core. Strong in consumer and SME lending. API-first; you still need a digital layer above it.</div></div><div class="reg-row"><div class="n">Thought Machine<span class="pill p-direct">direct</span></div><div class="d">Vault Core and Vault Payments; product logic as smart contracts. Enterprise programmes, multi-year timelines.</div></div><div class="reg-row"><div class="n">10x Banking<span class="pill p-direct">direct</span></div><div class="d">SuperCore, engineered for tier-one banks.</div></div><div class="reg-row"><div class="n">Tuum<span class="pill p-direct">direct</span></div><div class="d">Modular API core for banks and fintechs, Europe-centric.</div></div><div class="reg-row"><div class="n">Finxact (Fiserv)<span class="pill p-direct">direct</span></div><div class="d">US-first real-time core.</div></div><div class="reg-row"><div class="n">Pismo (Visa)<span class="pill p-direct">direct</span></div><div class="d">Cloud core for cards and accounts, strong in Latin America.</div></div><div class="reg-row"><div class="n">Temenos / Finacle / Oracle FLEXCUBE / TCS BaNCS<span class="pill p-direct">direct</span></div><div class="d">Incumbent cores with cloud paths. Broad functional coverage, long implementations.</div></div><div class="reg-row"><div class="n">Formance / Tigerbeetle<span class="pill p-oss">oss</span></div><div class="d">Purpose-built ledger engines. Worth evaluating if you are building the ledger layer yourself.</div></div></div><div class="reg"><div class="reg-head"><h4>India — BaaS and lending infrastructure</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">M2P Fintech<span class="pill p-direct">direct</span></div><div class="d">BaaS, card issuance and lending OS. Deep RBI compliance coverage and extensive NBFC references. Overkill for simple payment acceptance.</div></div><div class="reg-row"><div class="n">Setu (Pine Labs)<span class="pill p-direct">direct</span></div><div class="d">Banking, KYC, credit and AA APIs. Good fit for banking-API needs without card issuance ambitions.</div></div><div class="reg-row"><div class="n">Decentro<span class="pill p-direct">direct</span></div><div class="d">Plug-and-play APIs across KYC, payments and accounts.</div></div><div class="reg-row"><div class="n">Razorpay / Cashfree / PayU<span class="pill p-direct">direct</span></div><div class="d">Payment aggregation and payouts. The correct answer for acceptance-only needs.</div></div><div class="reg-row"><div class="n">Zeta<span class="pill p-direct">direct</span></div><div class="d">Modern card processing and banking stack.</div></div><div class="reg-row"><div class="n">Perfios / FinBox / Lentra / Finflux<span class="pill p-direct">direct</span></div><div class="d">LOS, LMS and decisioning — see Module 02.</div></div><div class="reg-row"><div class="n">Sponsor bank / NBFC partner<span class="pill p-indirect">indirect</span></div><div class="d">The licence layer. Everything else is downstream of this relationship.</div></div></div><div class="reg"><div class="reg-head"><h4>Data and platform</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">PostgreSQL<span class="pill p-oss">oss</span></div><div class="d">The default transactional store. Boring is correct for a ledger.</div></div><div class="reg-row"><div class="n">Apache Kafka / Redpanda<span class="pill p-oss">oss</span></div><div class="d">Event backbone for the operational plane.</div></div><div class="reg-row"><div class="n">Debezium<span class="pill p-oss">oss</span></div><div class="d">Change data capture — publish events from the database without dual writes.</div></div><div class="reg-row"><div class="n">ClickHouse / DuckDB<span class="pill p-oss">oss</span></div><div class="d">Analytical query engines. ClickHouse for scale, DuckDB for everything smaller than people assume.</div></div><div class="reg-row"><div class="n">Feast<span class="pill p-oss">oss</span></div><div class="d">Feature store — addresses training-serving skew explicitly.</div></div><div class="reg-row"><div class="n">OpenTelemetry<span class="pill p-oss">oss</span></div><div class="d">Vendor-neutral observability. Matters for the data residency point above.</div></div><div class="reg-row"><div class="n">Temporal<span class="pill p-oss">oss</span></div><div class="d">Durable workflow execution — useful for multi-step money movement that must survive restarts.</div></div></div><div class="warn"><span class="note-lbl">Watch out</span><p>Registry reflects what was publicly visible in May 2026. Vendor ownership in this space changes frequently through acquisition, which affects roadmaps and contracts — verify the current corporate position before signing.</p></div>
+<h2 id="s-indigo-5">A prompt for the architecture decision</h2>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Prompt — paste into any AI</span><button class="cb-copy" type="button">Copy</button></div><pre><code>You are a fintech CTO who has built and migrated core infrastructure
+in India, and has been through an RBI inspection.
+
+My situation:
+- Product: [describe]
+- Licence position: [own NBFC / partnering with an NBFC or bank /
+  payment aggregator / none yet]
+- Go-live target: [months]
+- Engineering team size, and how many can work on infrastructure
+  rather than product: [numbers]
+- Expected accounts and transactions in year 1 and year 3: [numbers]
+- Data residency constraints: [describe]
+
+Give me:
+
+1. A build / buy / rent recommendation with the reasoning tied to MY
+   constraints, not to general best practice.
+2. The specific layers I should own versus rent, and why each.
+3. Whether I should run a shadow ledger, and what it must capture
+   from day one.
+4. My event schema for the operational plane - the core events and
+   the fields each must carry.
+5. What data localisation means concretely for my stack, including
+   observability, backups and vendor support access.
+6. A realistic cost picture for year 1 and year 3 - build cost,
+   run cost, and the cost of the migration I will eventually face.
+7. The three decisions here that are hardest to reverse, and what
+   I should do now to keep them reversible.
+
+Be concrete and sceptical. Where vendor pricing is undisclosed, say
+so rather than estimating.</code></pre></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Vendor concentration is an architecture problem</h2>
+<p>Procurement treats vendor choice as a commercial question. In regulated infrastructure it is a resilience question with a regulatory dimension.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Vendor exit readiness — test it, do not assume it</span><button class="cb-copy" type="button">Copy</button></div><pre><code>QUESTIONS TO ANSWER BEFORE SIGNING, NOT AFTER
+
+DATA
+  Can you export the full transaction history, not just balances?
+  In what format, how often, at what cost?
+  Does the contract guarantee export on termination, and within
+  how many days?
+  Have you actually RUN a full export? (most teams have not)
+
+BLAST RADIUS
+  If this vendor has a four-hour outage, what stops?
+  If they have a four-DAY outage, what stops?
+  If they exit the market or lose their own licence, what happens
+  to your customers&#x27; money?
+
+PORTABILITY
+  What is genuinely vendor-specific in your code?
+  Product logic expressed in their DSL is the usual trap.
+  Could you stand up a second provider in parallel for one product?
+
+CONCENTRATION
+  How many critical functions sit with this one vendor?
+  KYC + ledger + cards + payments with one provider is efficient
+  procurement and a single point of failure with regulatory
+  consequences.
+
+THE TEST THAT MATTERS
+  Run a full data export quarterly and restore it into a scratch
+  environment. If you cannot reconstruct balances from the export,
+  you do not have an exit - you have a clause.</code></pre></div><h3 id="s-amber-blast">Blast radius thinking</h3><p>The useful exercise is not "is this vendor reliable". It is "what specifically stops working, for how long, and what do we tell customers and the regulator".</p><p>Write that down per vendor. The answers are usually worse than assumed, and the exercise tends to reveal that one provider sits underneath four functions nobody realised were connected.</p><div class="warn"><span class="note-lbl">Watch out</span><p>Cloud exit strategy is now a standing expectation in Indian BFSI architecture discussions, not a theoretical exercise. If you cannot describe how you would leave a critical provider, you have accepted a dependency you have not assessed.</p></div>
+<h2 id="s-amber-1">Cost, honestly</h2>
+<p>The published figures are useful as shape. The line items teams forget are more useful still.</p><div class="cb"><div class="cb-head"><span class="cb-lang">What infrastructure actually costs</span><button class="cb-copy" type="button">Copy</button></div><pre><code>YEAR ONE - the numbers teams forget
+
+  Platform licence / BaaS fees          usually negotiated, often minimums
+  Implementation &amp; professional services  frequently comparable to year-one licence
+  Systems integrator (if enterprise core)  often the largest single line
+  Your own engineering time on integration  6-18 engineer-months is typical
+  Sponsor bank / partner setup and minimums
+  Audit, penetration testing, compliance review
+  Cloud, observability, security tooling
+
+RUN COST
+
+  Cloud-native cores report roughly $4-15 per account per year
+  versus $40-80 on legacy platforms. At 10,000 accounts that spread
+  is noise against your salary bill. At 5 million accounts it is
+  the entire argument for modernisation.
+
+THE COST NOBODY MODELS
+
+  The migration you will eventually do.
+  Core migration mid-life is among the most expensive projects in
+  financial services - dual running, balance reconciliation to the
+  paisa, customer communication, regulatory notification, and a
+  period where two systems must agree exactly.
+
+  Budget for it conceptually at the START, because the decisions
+  that make it cheap or ruinous are made on day one:
+    - did you keep your own history?           (shadow ledger)
+    - is product logic in your code or theirs?  (portability)
+    - are your events vendor-neutral?           (integration)
+
+BUILD, FOR COMPLETENESS
+  Published estimates: 3-5x the cost of buying, on the order of
+  $15-25M, 24-36 months to basic functionality. Before the first
+  customer. The happy path is easy; correctness on the worst day
+  is where the money goes.</code></pre></div><h3 id="s-amber-reversible">Optimise for reversibility first</h3><p>Early-stage infrastructure decisions should be judged on how cheaply they can be undone, not on how efficient they are. Efficiency matters at scale; at low volume the per-account spread is dwarfed by salaries.</p><p>Three decisions determine whether your eventual migration is a project or a crisis: whether you kept your own transaction history, whether product logic lives in your code or the vendor&rsquo;s, and whether your internal events are vendor-neutral. All three are cheap on day one and impossible to retrofit.</p>
+<h2 id="s-amber-2">Correctness properties a ledger must have</h2>
+<p>Whatever you buy or build, these are the properties to verify rather than assume. Vendors will assert all of them; test the ones you can.</p><table><tr><th>Property</th><th>What it means</th><th>How to test it</th></tr><tr><td><strong>Idempotency</strong></td><td>A retried instruction produces one posting, not two</td><td>Send the same request twice with the same key. Check the balance.</td></tr><tr><td><strong>Atomicity across legs</strong></td><td>A transfer either moves both sides or neither</td><td>Kill the process mid-transfer in a test environment.</td></tr><tr><td><strong>Ordering</strong></td><td>Postings apply in a defined order under concurrency</td><td>Fire concurrent debits against a balance that can only fund one.</td></tr><tr><td><strong>Point-in-time reconstruction</strong></td><td>You can state the balance as at any past moment</td><td>Ask for a balance as at a timestamp three months ago.</td></tr><tr><td><strong>Immutability</strong></td><td>Corrections are new entries, never edits</td><td>Attempt to amend a posting. It should be impossible.</td></tr><tr><td><strong>Precision</strong></td><td>Integer minor units end to end</td><td>Push a value that rounds badly in float and check for drift.</td></tr><tr><td><strong>Determinism under replay</strong></td><td>Replaying the event log reproduces the same state</td><td>Replay into a scratch environment and diff.</td></tr></table><div class="note"><span class="note-lbl">Note</span><p>The concurrency test is the one that finds real bugs. Two simultaneous debits against a balance that can fund only one is the simplest possible race, and systems that pass every other test fail this one more often than you would expect — usually by allowing a negative balance that the product does not permit.</p></div>
+<h2 id="s-amber-3">Resilience and the incident you will have</h2>
+<p>Financial infrastructure fails differently from consumer software: the failure is often silent, and the damage accumulates before anyone notices.</p><h3 id="s-amber-modes">The failure modes worth designing for</h3><ul><li><strong>Partial provider degradation</strong> — the API responds but slowly, or returns stale balances. Worse than an outage because nothing alerts.</li><li><strong>Duplicate processing</strong> — a retry storm or a reprocessed file. Idempotency is the defence; test it under load, not in isolation.</li><li><strong>Split brain</strong> — your view and the provider&rsquo;s diverge and both keep operating. This is what continuous reconciliation exists to catch.</li><li><strong>Silent data loss</strong> — a consumer falls behind, a topic is retained too briefly, events vanish. Monitor consumer lag as a first-class alert.</li><li><strong>Certificate and credential expiry</strong> — unglamorous and a recurring cause of outages at exactly the wrong moment.</li></ul><h3 id="s-amber-contain">Containing without spreading</h3><p>The hard part of a core incident is stopping it without taking everything else down. Practical measures: circuit breakers per downstream dependency, a documented read-only degraded mode, queued rather than dropped writes where the ledger is unavailable, and a kill switch per product rather than per system.</p><div class="warn"><span class="note-lbl">Watch out</span><p>Decide in advance what you do when the ledger is unreachable: reject transactions, or accept and queue them. Both are defensible and they have very different consequences. Deciding during the incident guarantees an inconsistent answer across your services.</p></div>
+<h2 id="s-amber-4">The architecture record, and where this module ends</h2>
+<div class="cb"><div class="cb-head"><span class="cb-lang">YAML — architecture decision record worth keeping</span><button class="cb-copy" type="button">Copy</button></div><pre><code># One of these per significant infrastructure decision.
+# Written at the time, never reconstructed afterwards.
+
+id: ADR-014
+title: Core ledger - buy SaaS core rather than build
+date: 2026-05-23
+status: accepted
+supersedes: null
+
+context:
+  licence_position: partnering_with_nbfc
+  go_live_target_months: 9
+  infra_engineers_available: 4
+  year1_accounts: 40000
+  year3_accounts: 900000
+  data_residency: india_only
+
+decision: &gt;
+  Adopt a cloud-native SaaS core with a shadow ledger in our own
+  Postgres. Product logic stays in our services, not in the vendor DSL.
+
+alternatives_considered:
+  - build_in_house:
+      rejected_because: &quot;3-5x cost, 24-36 months to basic function.
+                         Team is 4 engineers. Not survivable.&quot;
+  - baas_bundled:
+      rejected_because: &quot;Partner NBFC already holds the licence; the
+                         bundled sponsor layer is redundant and adds a
+                         dependency we cannot exit.&quot;
+  - enterprise_core:
+      rejected_because: &quot;Multi-year implementation and contract minimums
+                         sized for tier-1/2 banks.&quot;
+
+consequences:
+  accepted:
+    - vendor dependency on ledger correctness
+    - per-account run cost above self-hosted at very high volume
+  mitigated_by:
+    - shadow ledger from day one (independent history + migration path)
+    - product logic kept in our code (portability)
+    - vendor-neutral internal event schema
+  revisit_when:
+    - accounts exceed 2,000,000
+    - or per-account cost exceeds X
+    - or we obtain our own licence
+
+exit_readiness:
+  full_export_tested: false        # &lt;- DO THIS BEFORE GO-LIVE
+  export_frequency_target: quarterly
+  restore_test_owner: platform_lead</code></pre></div><p>The <code>revisit_when</code> block is the part that earns its keep. Decisions made sensibly at 40,000 accounts become wrong at two million, and without a written trigger nobody revisits them until something breaks.</p><h3 id="s-amber-handoff4">Where this module ends</h3><ul><li><strong>Ledger schema and reconciliation</strong> detail is Module 05 — this module chooses the ledger, that one operates it.</li><li><strong>The risk stack</strong> that sits on this infrastructure is Modules 01 to 04.</li><li><strong>Model infrastructure</strong> — feature stores, training pipelines, serving — is touched here and governed in Governance.</li><li><strong>Licence and partnership questions</strong> are in the India and global regulatory spine pages.</li><li><strong>The sequencing of all of this</strong> for a new company is the Build Playbook.</li></ul><div class="warn"><span class="note-lbl">Watch out</span><p>Illustrative throughout. Core infrastructure decisions in a regulated entity need architecture review, security assessment, and sign-off from whoever is accountable for operational resilience — and in India, an understanding of what your regulator expects of outsourced arrangements.</p></div>
+<h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI payment data storage direction</strong> &mdash; the India-only storage requirement and the offshore return-and-delete window. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI guidance on outsourcing of IT services</strong> &mdash; cloud adoption, concentration risk and exit obligations for regulated entities. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>DPDP Act, 2023</strong> &mdash; personal data obligations that sit on top of payment localisation. <a href="https://www.meity.gov.in" target="_blank" rel="noopener">www.meity.gov.in</a></li><li><span class="src-k src-official">official</span><strong>IndiaAI Mission</strong> &mdash; the sovereign compute programme referenced in the cost discussion. <a href="https://indiaai.gov.in" target="_blank" rel="noopener">indiaai.gov.in</a></li></ol><p style="font-size:.8rem;color:var(--muted);margin-top:12px">Tooling, pricing and cost sources for this module are on its build sheet: <a href="/fintech-ai/infrastructure/build-sheet/#sources"><strong>sources &rarr;</strong></a></p><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Regulation in this area is actively developing; the date is part of the claim.</p></div></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=[], secs=[];
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  
+  
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>How AI Agents Work — The Agent Loop Explained | Clarigital</title>
+<meta name="description" content="How AI agents actually work — the perception-memory-planning-action loop, tool calling mechanics, how agents self-correct, and where they fail. Updated April 2026.">
+<link rel="canonical" href="/ai-atlas/agentic-ai/how-agents-work/">
+<meta property="og:title" content="How AI Agents Work — The Agent Loop Explained">
+<meta property="og:description" content="The complete technical explanation of how AI agents operate — from receiving a goal to completing a task. The loop, the tools, the memory, and the failure modes.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/agentic-ai/how-agents-work/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.callout-red{border-left-color:var(--red)}
+.step-flow{display:flex;flex-direction:column;gap:0;margin:20px 0}
+.step-item{display:flex;gap:16px;position:relative}
+.step-item:not(:last-child)::after{content:'';position:absolute;left:19px;top:40px;bottom:-4px;width:2px;background:var(--border)}
+.step-num{width:38px;height:38px;border-radius:50%;background:var(--indigo-dim);border:2px solid var(--indigo);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:800;color:var(--indigo);flex-shrink:0;margin-top:2px}
+.step-body{padding-bottom:20px;flex:1}
+.step-body h4{font-size:.92rem;font-weight:700;color:var(--fg);margin-bottom:5px}
+.step-body p{font-size:.87rem;margin:0}
+.failure-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:20px 0}
+.failure-card{background:var(--card-bg);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:14px}
+.failure-card h4{font-size:.84rem;font-weight:700;color:var(--red);margin-bottom:6px}
+.failure-card p{font-size:.82rem;margin:0}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How AI Agents Work \u2014 The Agent Loop Explained", "description": "How AI agents actually work \u2014 the perception-memory-planning-action loop, tool calling mechanics, how agents self-correct, and where they fail. Updated April 2026.", "url": "https://www.clarigital.com/ai-atlas/agentic-ai/how-agents-work/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "How AI Agents Work \u2014 The Agent Loop Explained", "description": "How AI agents actually work \u2014 the perception-memory-planning-action loop, tool calling mechanics, how agents self-correct, and where they fail. Updated April 2026.", "url": "https://www.clarigital.com/ai-atlas/agentic-ai/how-agents-work/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How AI Agents Work — The Agent Loop Explained">
+<meta name="twitter:description" content="How AI agents actually work — the perception-memory-planning-action loop, tool calling mechanics, how agents self-correct, and where they fail. Updated April 2026.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ai-atlas/">AI Atlas</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/agentic-ai/">Agentic AI</a>
+      <span class="sep">›</span>
+      <span>How Agents Work</span>
+    </nav>
+    <div class="label-tag">Agentic AI</div>
+    <h1>How AI Agents Work</h1>
+    <p class="hero-lead">An agent receives a goal and runs a continuous loop — perceiving, planning, acting, observing — until the task is done. This is the complete guide to what that loop actually does at each step.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Concept Guide</span>
+      <span class="meta-tag">AI Atlas</span>
+      <span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="art-layout">
+    <div>
+      
+
+      <!-- SIMPLE LANE -->
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+        <h2 id="s-green-0">The simplest way to understand it</h2>
+        <p>Imagine you ask a very capable assistant to book you the cheapest available flight to London next month. A standard AI would tell you how to find cheap flights — useful advice, but you still do all the work. An AI agent would open flight search engines, check dates, compare prices, find the cheapest option, and come back with: "Here it is. Should I book it?"</p>
+        <p>The agent is not answering a question. It is completing a task. The difference seems small at first. It is not.</p>
+
+        <h2 id="s-green-1">The loop in plain language</h2>
+        <p>An agent works by running the same four steps repeatedly until the task is finished:</p>
+
+        <div class="step-flow">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Look at what is in front of it</h4>
+              <p>The agent reads the current situation — the original goal, any results from previous steps, any new information it has gathered. This is its view of the world at this moment.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Decide what to do next</h4>
+              <p>Based on what it sees, it decides its next action. Should it search the web? Run some code? Read a file? Ask for clarification? It picks the most logical next step toward the goal.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Do it</h4>
+              <p>It takes the action — runs the search, executes the code, reads the file. Something in the world changes as a result. There is now a result to look at.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Look at what happened and go back to step 1</h4>
+              <p>The result is now part of the situation. The agent evaluates: is the goal achieved? If yes, it stops and delivers the output. If not, it goes back to step 1 with new information and decides the next action.</p>
+            </div>
+          </div>
+        </div>
+
+        <p>This loop — look, decide, act, observe — is the engine of every AI agent. The intelligence is in the deciding step. The capability is in the acting step. The quality of the output depends on how well the model reasons and how many tools it has available.</p>
+
+        <h2 id="s-green-2">What "tools" means</h2>
+        <p>Tools are the hands of an AI agent. Without tools, an agent can only produce text — the same as a standard AI. Tools are what let it actually do things:</p>
+        <ul>
+          <li><strong>Search the web</strong> — find current information</li>
+          <li><strong>Run code</strong> — calculate, transform data, automate operations</li>
+          <li><strong>Read and write files</strong> — work with documents, spreadsheets, images</li>
+          <li><strong>Call APIs</strong> — interact with external apps (calendar, email, CRM, maps)</li>
+          <li><strong>Browse specific websites</strong> — read the full content of a page</li>
+        </ul>
+        <p>The agent decides which tool to use at each step. It does not use them blindly — it reasons about which tool is appropriate for the current situation.</p>
+
+        <h2 id="s-green-3">Where the agent can go wrong</h2>
+        <p>The loop is powerful, but it has three common failure points that are worth knowing:</p>
+        <ul>
+          <li><strong>Wrong reasoning at the decide step</strong> — the agent misunderstands what is needed and takes a plausible but incorrect action. It confidently proceeds down the wrong path.</li>
+          <li><strong>Bad tools or bad tool results</strong> — the agent reasons correctly but the tool gives it wrong or outdated information. Garbage in, garbage out — the agent's output is only as good as what its tools return.</li>
+          <li><strong>Getting stuck in a loop</strong> — the agent takes an action, observes the result, decides the same action is needed again, takes it, gets the same result, and repeats indefinitely. Good agent frameworks have loop detection built in.</li>
+        </ul>
+
+        <div class="callout callout-blue">
+          <p><strong>The key insight:</strong> An agent's quality comes from two things — how well the underlying model reasons, and how good its tools are. A brilliant reasoner with bad tools produces bad results. A great tool set given to a poor reasoner also produces bad results. Both matter equally.</p>
+        </div>
+
+      </div>
+
+      <!-- WORKING LANE -->
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+        <h2 id="s-indigo-0">The agent loop in full technical detail</h2>
+        <p>The loop described above — observe, plan, act, observe — is formally called the <strong>ReAct pattern</strong> (Reasoning + Acting). In practice, most production agent frameworks implement a variant of this with additional structure around memory, error handling, and stopping conditions.</p>
+
+        <h3>Step 1 — Goal intake and decomposition</h3>
+        <p>The agent receives a goal. For simple agents, this is the user's message. For more sophisticated systems, goals arrive as structured task objects from an orchestrator agent. The first internal action is decomposition: the model breaks the goal into a sequence of sub-tasks it can address one at a time.</p>
+        <p>Quality of decomposition is highly dependent on the underlying model's capability. Stronger models (GPT-4o, Claude 3.5 Sonnet and above, Gemini 1.5 Pro and above) produce better decompositions — they anticipate dependencies between sub-tasks and order them correctly. Weaker models produce flat lists that miss dependencies and lead to wasted steps.</p>
+
+        <h3>Step 2 — Tool selection</h3>
+        <p>The agent is given a list of available tools, each described in natural language with a schema. The model reads the descriptions and the current state of the task, then decides which tool to call. This decision is probabilistic — the model does not "know" which tool is right in a deterministic sense. It generates a tool call based on the most likely correct action given the context.</p>
+        <p>This is why tool descriptions matter enormously. A tool named "get_data" with a vague description will be called inappropriately. A tool named "search_web_for_current_information" with a clear description of when to use it will be called at the right moments.</p>
+
+        <h3>Step 3 — Tool execution</h3>
+        <p>The model does not execute the tool itself. It outputs a structured tool call — a JSON object specifying the tool name and parameters. The calling application — the framework code running around the model — intercepts this, executes the actual function, and returns the result.</p>
+        <p>This separation is critical to understand. The model is a reasoning engine. The framework is the execution engine. The model never directly accesses the internet, runs code, or modifies files. The framework does, on its behalf, based on the model's instructions.</p>
+
+        <h3>Step 4 — Result integration</h3>
+        <p>The tool result is injected back into the conversation context as a structured message. The model now has the result in its working memory. It generates its next action — another tool call, a text response to the user, or a stopping signal — based on all the context accumulated so far.</p>
+        <p>This is where context management becomes critical. Each tool result adds to the context. Long tasks accumulate large contexts. If the context exceeds the model's window limit, earlier information is lost or must be summarised. Most production frameworks handle this with automatic summarisation, external memory (vector databases), or both.</p>
+
+        <h2 id="s-indigo-1">Memory types in agent systems</h2>
+        <p>Agents can have access to multiple types of memory, each with different properties:</p>
+        <ul>
+          <li><strong>In-context memory (working memory)</strong> — everything in the current conversation window. Fast to access. Limited in size. Lost when the session ends.</li>
+          <li><strong>External storage (episodic memory)</strong> — a database outside the model, queried via a tool call. Unlimited size. Requires a retrieval step. Persists across sessions. Most commonly implemented with vector databases (Pinecone, Chroma, Weaviate).</li>
+          <li><strong>Knowledge base (semantic memory)</strong> — a structured collection of facts, documents, or data the agent can query. The RAG (Retrieval-Augmented Generation) pattern. The agent retrieves relevant chunks before reasoning, rather than keeping the whole knowledge base in context.</li>
+          <li><strong>Procedural memory</strong> — instructions and workflows stored as system prompts or accessible files. Tells the agent how to behave in general, not just for the current task.</li>
+        </ul>
+
+        <h2 id="s-indigo-2">How agents self-correct</h2>
+        <p>Self-correction is one of the most distinctive capabilities of a well-designed agent. It operates at two levels:</p>
+
+        <h3>Within-step correction</h3>
+        <p>When a tool call fails or returns an unexpected result, the agent observes the error, reasons about what went wrong, and tries a different approach. If a web search returns no results, the agent might reformulate the query. If code fails to execute, the agent reads the error message and tries to fix it. This is not magic — it is the same reasoning loop applied to the problem of its own failure.</p>
+
+        <h3>Goal-level correction</h3>
+        <p>More capable agents can evaluate whether their intermediate outputs are actually moving toward the goal, not just completing steps. If the results of the first three steps suggest the initial approach was wrong, the agent can revise the plan. This requires the model to maintain an accurate model of the goal throughout the process — something weaker models struggle with over long tasks.</p>
+
+        <h2 id="s-indigo-3">Stopping conditions</h2>
+        <p>An agent without proper stopping conditions will continue indefinitely — and incur API costs with every step. Production agent systems use several types of stopping conditions:</p>
+        <ul>
+          <li><strong>Goal completion detection</strong> — the model assesses whether the original goal has been met and signals completion</li>
+          <li><strong>Maximum steps</strong> — a hard limit on the number of loop iterations (commonly 10–30 for simple tasks, up to 100+ for complex research tasks)</li>
+          <li><strong>Maximum cost</strong> — a spending limit that halts the agent if API costs exceed a threshold</li>
+          <li><strong>Timeout</strong> — a wall-clock time limit</li>
+          <li><strong>Human-in-the-loop checkpoints</strong> — the agent pauses at defined points and asks the user to confirm before proceeding</li>
+        </ul>
+
+        <div class="callout callout-red">
+          <p><strong>Important:</strong> Maximum steps and cost limits are not optional in production. An agent that enters an unexpected loop can exhaust an API budget in minutes. Always set explicit limits before deploying any agent system.</p>
+        </div>
+
+        <h2 id="s-indigo-4">Common failure modes</h2>
+        <div class="failure-grid">
+          <div class="failure-card">
+            <h4>Hallucinated tool calls</h4>
+            <p>Agent invents a tool that does not exist in its available set, or calls a real tool with invented parameters. Result: error or silent wrong output.</p>
+          </div>
+          <div class="failure-card">
+            <h4>Prompt injection</h4>
+            <p>Malicious content in the environment (a web page, a document the agent reads) contains instructions that override the agent's goal. The agent follows the injected instructions instead.</p>
+          </div>
+          <div class="failure-card">
+            <h4>Goal drift</h4>
+            <p>Over many steps, the agent loses track of the original goal and optimises for an easier or more obvious sub-goal. Common in very long tasks.</p>
+          </div>
+          <div class="failure-card">
+            <h4>Infinite retry loops</h4>
+            <p>A step fails repeatedly. Without a maximum retry limit, the agent loops on the same failing action indefinitely.</p>
+          </div>
+          <div class="failure-card">
+            <h4>Context overflow</h4>
+            <p>The accumulated context from many tool results exceeds the model's window. Earlier instructions are lost, causing the agent to "forget" constraints or goals set at the start.</p>
+          </div>
+          <div class="failure-card">
+            <h4>Over-confident stopping</h4>
+            <p>The agent decides the goal is complete when it is not — a partial result is presented as a final output without flagging the gaps.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DEEP LANE -->
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+        <h2 id="s-red-0">The ReAct architecture — formal specification</h2>
+        <p>The ReAct framework (Yao et al., 2022, arXiv:2210.03629) defines agent behaviour as an interleaved sequence of Thought, Action, and Observation triplets. Formally:</p>
+        <ul>
+          <li><strong>Thought (T)</strong> — the model generates a natural language reasoning trace: "I need to find current pricing for this product. I will search the web."</li>
+          <li><strong>Action (A)</strong> — the model generates a structured action: <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">search("product pricing 2026")</code></li>
+          <li><strong>Observation (O)</strong> — the result of the action is returned and appended: "Search results: [list of URLs and snippets]"</li>
+        </ul>
+        <p>The sequence T→A→O repeats until a terminal action (producing the final answer) is generated. The key finding of the original paper was that making reasoning explicit — forcing the model to state its thinking before acting — substantially improved accuracy on knowledge-intensive tasks compared to either chain-of-thought reasoning alone or action-only approaches.</p>
+
+        <h2 id="s-red-1">Tool calling at the API level</h2>
+        <p>All major LLM APIs implement tool calling with broadly consistent mechanics, following a pattern established by OpenAI's function calling feature (June 2023) and adopted by Anthropic (tool use, November 2023) and Google (function calling, Gemini API).</p>
+
+        <p>A tool is defined as a JSON object with three required fields:</p>
+        <ul>
+          <li><code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">name</code> — the function identifier, used in the model's output when calling the tool</li>
+          <li><code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">description</code> — natural language explanation of what the tool does and when to use it. This is what the model reads to decide whether to call the tool.</li>
+          <li><code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">input_schema</code> — JSON Schema object specifying the parameters the tool accepts, their types, and which are required</li>
+        </ul>
+
+        <p>When the model decides to call a tool, the API response contains a content block of type <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">tool_use</code> (Anthropic terminology) or <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">function_call</code> (OpenAI terminology) rather than or alongside a text block. The calling application is responsible for detecting this, executing the referenced function, and returning the result as a <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">tool_result</code> content block in the next API request.</p>
+
+        <p>The model never executes code, accesses network resources, or modifies files directly. All actions are mediated by the calling application. This is both a security property and a capability boundary — the agent can only do what the calling application has implemented as a tool.</p>
+
+        <h2 id="s-red-2">Model Context Protocol (MCP)</h2>
+        <p>MCP (Model Context Protocol), published by Anthropic in November 2024, defines a standardised interface for connecting tools to AI agents. Prior to MCP, every tool integration was bespoke — a tool built for LangChain did not work with AutoGen, and vice versa. MCP addresses this by defining a universal protocol.</p>
+
+        <p>An MCP server exposes tools via a JSON-RPC interface over stdio or HTTP with SSE transport. An MCP client (an agent framework or model interface) connects to the server, lists the available tools, and calls them using a standardised schema. The separation means any tool built to the MCP specification works with any agent built to the MCP specification.</p>
+
+        <p>As of April 2026, MCP has been adopted by LangGraph, AutoGen, Claude (natively), and a growing ecosystem of third-party tool providers. Official specification: <a href="https://modelcontextprotocol.io/specification" target="_blank" rel="noopener" style="color:var(--indigo)">modelcontextprotocol.io/specification</a>.</p>
+
+        <h2 id="s-red-3">Planning strategies — a taxonomy</h2>
+        <p>How an agent plans affects both its capability and its cost. Three main planning strategies appear in current systems:</p>
+
+        <h3>Reactive planning (ReAct)</h3>
+        <p>No upfront plan. The agent decides the next action at each step based on the current context. Efficient for short tasks. Prone to losing direction on long tasks. Used by default in most tool-calling implementations.</p>
+
+        <h3>Plan-and-execute</h3>
+        <p>The agent generates a complete plan at the start, then executes it step by step. If execution deviates from the plan (a step fails, a result is unexpected), the agent revises the plan. More reliable on structured tasks. Requires a capable model to generate a good initial plan. Implemented in LangChain's Plan-and-Execute agent and similar patterns.</p>
+
+        <h3>Tree of Thought (ToT)</h3>
+        <p>The agent generates multiple candidate next steps, evaluates each, and pursues the most promising branch. More expensive (multiple model calls per step) but substantially more reliable on tasks with many possible approaches. Introduced in "Tree of Thoughts: Deliberate Problem Solving with Large Language Models" (Yao et al., 2023, arXiv:2305.10601).</p>
+
+        <h2 id="s-red-4">Memory — vector databases and RAG</h2>
+        <p>External memory in agent systems is most commonly implemented using vector databases. The process: text is chunked into segments, each chunk is converted to an embedding vector using an embedding model (OpenAI text-embedding-3-small, Cohere embed, or similar), and the vector is stored alongside the original text in a vector database (Pinecone, Chroma, Weaviate, Qdrant).</p>
+
+        <p>When the agent needs to retrieve relevant past information, it converts the current query to a vector and performs a nearest-neighbour search in the database, returning the most semantically similar chunks. This allows the agent to efficiently query large knowledge bases (millions of documents) without holding everything in the context window.</p>
+
+        <p>The quality of retrieval depends on the quality of the embedding model, the chunking strategy, and the retrieval parameters. LlamaIndex provides the most comprehensive tooling for tuning RAG pipelines in agentic contexts. <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" style="color:var(--indigo)">Full LlamaIndex guide →</a></p>
+
+        <h2 id="s-red-5">Key references</h2>
+        <ul>
+          <li>Yao et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. arXiv:2210.03629</li>
+          <li>Yao et al. (2023). Tree of Thoughts: Deliberate Problem Solving with Large Language Models. arXiv:2305.10601</li>
+          <li>Anthropic (2024). Model Context Protocol Specification. modelcontextprotocol.io</li>
+          <li>OpenAI (2023). Function Calling Documentation. platform.openai.com/docs/guides/function-calling</li>
+          <li>OWASP (2026). Top 10 for Agentic AI Applications. owasp.org</li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Source note:</strong> Technical specifications in this guide are drawn from the cited research papers and official API documentation. All claims are traceable to primary sources listed above.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">The simplest way to understand it</a><a href="#s-green-1">The loop in plain language</a><a href="#s-green-2">What &quot;tools&quot; means</a><a href="#s-green-3">Where the agent can go wrong</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">The agent loop in full technical detail</a><a href="#s-indigo-1">Memory types in agent systems</a><a href="#s-indigo-2">How agents self-correct</a><a href="#s-indigo-3">Stopping conditions</a><a href="#s-indigo-4">Common failure modes</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">The ReAct architecture — formal specification</a><a href="#s-red-1">Tool calling at the API level</a><a href="#s-red-2">Model Context Protocol (MCP)</a><a href="#s-red-3">Planning strategies — a taxonomy</a><a href="#s-red-4">Memory — vector databases and RAG</a><a href="#s-red-5">Key references</a></div></div>
+      <div class="sidebar-card">
+        <h4>In this section</h4>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link">What is Agentic AI</a>
+        <a href="/ai-atlas/agentic-ai/how-agents-work/" class="sidebar-link" style="color:var(--fg);font-weight:600">How AI Agents Work</a>
+        <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="sidebar-link">Multi-Agent Systems</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Agentic Frameworks</h4>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="sidebar-link">LangChain / LangGraph</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" class="sidebar-link">CrewAI</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" class="sidebar-link">Microsoft AutoGen</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="sidebar-link">LlamaIndex</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Related guides</h4>
+        <a href="/ai-atlas/start-here/" class="sidebar-link">What is AI?</a>
+        <a href="/ai-atlas/specialist-tools/automation/" class="sidebar-link">Automation Tools</a>
+        <a href="/ai-atlas/specialist-tools/coding/" class="sidebar-link">AI Coding Tools</a>
+        <a href="/ai-atlas/prompt-library/" class="sidebar-link">Prompt Library</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Official sources</h4>
+        <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener" class="sidebar-link">Model Context Protocol</a>
+        <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener" class="sidebar-link">ReAct Paper (arXiv)</a>
+        <a href="https://arxiv.org/abs/2305.10601" target="_blank" rel="noopener" class="sidebar-link">Tree of Thoughts (arXiv)</a>
+        <a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener" class="sidebar-link">OWASP Top 10 Agentic</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

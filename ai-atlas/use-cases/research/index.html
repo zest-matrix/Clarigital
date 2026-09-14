@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI for Research | AI Atlas — Clarigital</title>
+<meta name="description" content="Complete guide to AI-assisted research. Perplexity, NotebookLM, Gemini Deep Research. 20 prompts from literature reviews to fact-checking. The...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/ai-atlas/use-cases/research/">
+<meta property="og:title" content="AI for Research — Find, Verify, Synthesise | AI Atlas">
+<meta property="og:description" content="Complete guide to AI-assisted research. Perplexity, NotebookLM, Gemini Deep Research. 20 prompts from literature reviews to fact-checking. The definitive guide to AI hallucination.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/use-cases/research/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzRGNDZFNSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD48L3N2Zz4="><meta name="theme-color" content="#0A0F1E">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI for Research \u2014 Find, Verify, Synthesise | AI Atlas", "description": "Complete guide to AI-assisted research. Perplexity, NotebookLM, Gemini Deep Research. 20 prompts from literature reviews to fact-checking. The...", "url": "https://www.clarigital.com/ai-atlas/use-cases/research/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Use Cases", "item": "https://www.clarigital.com/ai-atlas/use-cases/"}, {"@type": "ListItem", "position": 4, "name": "AI for Research \u2014 Find, Verify, Synthesise | AI Atlas", "item": "https://www.clarigital.com/ai-atlas/use-cases/research/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/use-cases/">Use Cases</a><span class="sep">/</span><span>Research</span></nav>
+    <span class="label-tag">Use Case</span>
+    <h1>AI for Research — Find, Verify, Synthesise</h1>
+    <p class="hero-lead">Research used to take days. Finding sources, reading papers, synthesising arguments, identifying gaps. AI compresses that timeline dramatically — but only if you use it right. The key principle: AI accelerates research, it does not replace it. Here is the complete guide to AI-powered research that you can actually trust.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">Research</span><span class="meta-tag mt-gray">~8,600 words</span><span class="meta-tag mt-gray">Casual to academic</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+<h2 id="s-green-0">The honest picture of AI and research</h2>
+<p>AI is genuinely transformative for research — but not in the way most people expect. It is not primarily useful for finding new facts. It is most useful for making sense of facts you already have, exploring the landscape of a topic quickly, identifying what questions to ask, and synthesising large amounts of material into coherent understanding.</p>
+<p>Where AI is weakest in research: precise factual accuracy, especially for specific numbers, names, dates, and citations. A language model that has memorised patterns from billions of documents will sometimes produce confident-sounding citations that do not exist. This is the most important thing to know about AI research — and the thing that trips up most new users.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">The golden rule: use AI to understand, not to cite</div>
+  <p style="color:var(--fg);margin:0">Use AI to understand a topic, identify what to look for, and make sense of sources you have read. Use primary sources — original papers, official reports, verified databases — for the facts you actually cite. Treat any specific fact, statistic, or citation from a language model as a lead to verify, not a fact to use.</p>
+</div>
+
+<h2 id="s-green-1">Which AI tool for which research task</h2>
+<div style="display:grid;grid-template-columns:1fr;gap:10px;margin:16px 0 24px">
+  <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">Perplexity — perplexity.ai</div>
+    <p style="font-size:.85rem">Best for: factual research with cited sources. Every answer includes links to the web pages it drew from — so you can verify immediately. Free Academic mode can search scholarly papers. Use this as your primary research AI.</p>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">NotebookLM — notebooklm.google.com</div>
+    <p style="font-size:.85rem">Best for: synthesising documents you have already gathered. Upload your PDFs, papers, and notes — then have conversations with your own research library. Grounded entirely in your uploaded sources.</p>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">Gemini — gemini.google.com</div>
+    <p style="font-size:.85rem">Best for: research that combines web sources with analysis. Deep Research feature in Gemini Advanced can conduct multi-step research and produce detailed reports with citations.</p>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">Claude — claude.ai</div>
+    <p style="font-size:.85rem">Best for: analysing documents you upload, synthesising complex arguments, and making sense of research you have gathered. Strong at nuanced analysis of long texts.</p>
+  </div>
+</div>
+
+<h2 id="s-green-2">The AI research workflow</h2>
+<ol style="margin:1rem 0 1.4rem 1.4rem;color:var(--muted)">
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem"><strong style="color:#F1F5F9">Orient:</strong> Use AI (Perplexity or ChatGPT) to get a rapid overview of the topic — key concepts, main debates, important figures and sources.</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem"><strong style="color:#F1F5F9">Identify:</strong> Ask AI what primary sources you should find and read — the seminal papers, official reports, key books in this field.</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem"><strong style="color:#F1F5F9">Gather:</strong> Find and read those primary sources yourself. Upload PDFs to NotebookLM or Claude.</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem"><strong style="color:#F1F5F9">Synthesise:</strong> Use AI to help you make sense of what you have read — identify themes, contradictions, and gaps.</li>
+  <li style="line-height:1.7;font-size:.97rem"><strong style="color:#F1F5F9">Write:</strong> Use AI to help structure and draft your findings, with your verified sources as the foundation.</li>
+</ol>
+
+<div class="prompt-box">
+  <div class="prompt-label">Rapid orientation on any topic</div>
+  <div class="prompt-text">Give me a research orientation on [topic]. I need: a brief overview of the field and why it matters, the main schools of thought or key debates, the 5-10 most important thinkers, researchers, or organisations in this space, the seminal works I should read, and the most important questions that are currently unresolved. I will use this to guide my own reading — please include sources where possible.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+</div>
+
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+<h2 id="s-indigo-0">20 research prompts across every context</h2>
+
+<div class="prompt-box">
+  <div class="prompt-label">1. Understand a research paper</div>
+  <div class="prompt-text">Here is an academic paper I am trying to understand: [paste abstract or full paper]. Explain it clearly: what question the researchers were trying to answer, what methodology they used, what they found, what they concluded, what the limitations of the study are, and how this fits into the broader field. Use plain language — I want to genuinely understand it, not just summarise it.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">2. Find the right search terms</div>
+  <div class="prompt-text">I am researching [topic] and I am struggling to find relevant sources. Give me: academic search terms I should use in Google Scholar / PubMed / JSTOR, related fields or disciplines that might have relevant research, alternative ways the same concept is described by different communities, and Boolean search strings that would find the most specific and relevant results.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">3. Literature review overview</div>
+  <div class="prompt-text">I am writing a literature review on [topic] for [academic level / purpose]. Give me an overview of: the main bodies of literature I should engage with, how the field has developed over time, the major theoretical frameworks used in this area, the key debates and where scholars disagree, and the gaps in the current literature that my research might address. Note any sources I should prioritise reading.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">4. Synthesise multiple sources</div>
+  <div class="prompt-text">I have read these sources on [topic]: [list the sources, or paste key quotes and findings from each]. Help me synthesise them: identify themes that appear across multiple sources, note where they agree and where they contradict each other, identify any arguments that are well-supported vs those that are based on limited evidence, and suggest how I might organise this material into a coherent argument.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">5. Identify counterarguments to your thesis</div>
+  <div class="prompt-text">My research argument is: [state your thesis or position]. I want to stress-test it. Give me: the strongest academic counterarguments to this position, the scholars or schools of thought most likely to challenge it, the evidence that would most undermine my argument, and how I should acknowledge and respond to each in my writing to make my argument more rigorous.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">6. Industry research report</div>
+  <div class="prompt-text">Research [industry / sector] for me. I need a detailed overview covering: market size and key growth trends, major players and competitive landscape, recent developments and disruptions, regulatory environment, key challenges and opportunities over the next 3-5 years, and the most credible data sources for this industry. Use web sources and cite them. This is for [business / investment / strategic planning] purposes.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">7. Competitive intelligence</div>
+  <div class="prompt-text">Research [company or competitor] for me. I need: their business model and revenue streams, recent news, strategic moves, and announcements (last 12 months), their stated positioning and messaging, what customers say about them (reviews, forums, social media), their apparent strengths and weaknesses, and what they seem to be doing next. Use web sources and cite them.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">8. Policy or regulatory research</div>
+  <div class="prompt-text">Research the current policy / regulatory situation for [topic] in [country / jurisdiction]. I need: a summary of the key laws, regulations, or guidelines that apply, recent changes or pending changes I should know about, the main regulatory bodies involved, how [country] compares to other jurisdictions on this topic, and where to find the official primary sources. Use official government and regulatory sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">9. Research question sharpening</div>
+  <div class="prompt-text">I am developing a research question for [project / dissertation / paper]. My current question is: [state it]. Help me evaluate it: is it focused enough to be answerable? Is it broad enough to be interesting? Is it asking something that actually needs research (not already well-answered)? Suggest 3 refined versions of my question, ranging from more narrow to more broad, and explain the implications of each for my methodology and scope.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">10. Statistical data interpretation</div>
+  <div class="prompt-text">Here is statistical data I am trying to make sense of: [paste data or describe what the figures are]. Help me: understand what each statistic or figure actually means in plain terms, identify the most significant patterns or findings, note any limitations in the data (sample size, methodology, potential biases), and suggest what questions I should ask about the data that are not answered by these numbers alone.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">11. Primary vs secondary source guidance</div>
+  <div class="prompt-text">I am researching [topic] and need to identify the best primary sources. What are: the most authoritative primary sources in this field (official reports / original research / historical documents / datasets), the best databases or repositories to find them, any freely accessible archives or open-access sources, and how I should evaluate the credibility and reliability of sources I find? This is for [academic / professional / journalistic] research.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">12. Expert interview preparation</div>
+  <div class="prompt-text">I am interviewing [expert type — academic / practitioner / executive] who specialises in [topic] for my research on [subject]. Help me prepare: 10 substantive questions that go beyond surface knowledge, follow-up probes for the most important questions, questions that might reveal disagreement or complexity in the field, how to use their expertise to access primary sources or data I might not otherwise find, and anything I should know about their work before the interview.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">13. Fact-check a claim</div>
+  <div class="prompt-text">I have encountered this claim: &#8220;[state the claim]&#8221; and I want to verify it. Help me: identify what type of claim this is (empirical / interpretive / predictive), what evidence would confirm or deny it, what the most authoritative sources on this specific claim would be, and any context I need to understand whether this is an established fact, a contested interpretation, or a misleading framing. Do not just tell me if it is true — help me verify it myself.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">14. Survey design for research</div>
+  <div class="prompt-text">I am designing a survey / questionnaire to research [topic]. My research question: [state it]. Target respondents: [describe]. Help me: identify the key variables I need to measure, suggest specific question types and wording for each (avoid leading questions and bias), recommend the optimal order and flow, suggest an appropriate sample size for [type of research], and identify any ethical considerations for this survey.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">15. Write a research summary / abstract</div>
+  <div class="prompt-text">Help me write an abstract / executive summary for my research on [topic]. Here are my key findings and argument: [describe]. The abstract should: state the research question, briefly describe the methodology, summarise the key findings, state the main conclusion, and note the significance or contribution of the research. Length: [100-250 words]. Academic register. Passive or active voice: [specify].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">16. Cross-disciplinary connections</div>
+  <div class="prompt-text">I am researching [topic] in the field of [discipline]. Help me identify insights from other disciplines that might shed new light on my research. What have [psychology / economics / sociology / engineering / history / biology — choose relevant ones] discovered about related phenomena? Are there methods, frameworks, or findings from other fields that I should consider importing into my analysis? This is for [type of research].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">17. Annotated bibliography entry</div>
+  <div class="prompt-text">Help me write an annotated bibliography entry for: [source — full citation]. Based on my reading, the key points of this source are: [describe what you understood from it]. Write an annotation that: summarises the source&#8217;s argument and methodology, evaluates its credibility and contribution to the field, notes any significant limitations, and explains how it relates to my research topic of [topic]. Approximately [100-200 words].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">18. Identify gaps in existing research</div>
+  <div class="prompt-text">Based on this overview of the existing literature on [topic]: [paste or describe what you have read]. Help me identify: areas where current research is limited or inconclusive, questions that have not been well-studied, methodological weaknesses in existing studies, populations or contexts that have been underrepresented, and how I might frame my own research contribution in terms of addressing one of these gaps.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">19. Organise research notes</div>
+  <div class="prompt-text">I have accumulated a large set of research notes on [topic]. Here they are: [paste your notes]. Help me organise this into a coherent structure: identify the main themes that appear across my notes, suggest a logical grouping of ideas, flag any contradictions or tensions I should address, identify what seems well-supported vs what needs more evidence, and suggest an order that would work for a [paper / report / presentation].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">20. Critical analysis of a source</div>
+  <div class="prompt-text">Help me critically analyse this source: [citation or paste excerpt]. I need to evaluate: who produced it and what their interests or perspective might be, how the methodology shapes what the source can and cannot tell us, what assumptions underlie the argument, whether the evidence genuinely supports the conclusion, and how this source compares to others in the field. This is for [academic / professional / journalistic] use.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+</div>
+
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+<h2 id="s-red-0">AI hallucination in research — the definitive guide</h2>
+<p>Hallucination is the most important concept for anyone using AI for research. Language models generate text by predicting what word is most likely to follow the previous words, based on patterns learned from training data. This process can produce specific-sounding, authoritative-sounding facts — including citations, statistics, and quotes — that simply do not exist.</p>
+<p>The output looks exactly like a real citation. The journal name is real. The author&#8217;s name is real. The year is plausible. The title sounds relevant. But the paper does not exist — or if a paper with that title exists, the findings described may be wrong.</p>
+
+<h3>Why this happens</h3>
+<p>The model has learned that research paragraphs typically include citations, that citations have a specific format, that papers about [topic] are typically authored by certain types of researchers, and so on. When asked to produce research content, it generates output that matches those patterns — including plausible-seeming citations — even when no specific citation was in its training data.</p>
+
+<h3>How to protect your research</h3>
+<ul>
+  <li><strong>Never cite a source that came from an AI without verifying it exists.</strong> Search Google Scholar or the journal&#8217;s website for the exact title and author.</li>
+  <li><strong>Use Perplexity for facts that require sources</strong> — it grounds answers in real web pages you can check</li>
+  <li><strong>Use NotebookLM for analysis of documents you have already verified</strong> — it is grounded in your uploaded sources and will not invent citations</li>
+  <li><strong>Ask AI to explain reasoning, not state facts</strong> — AI is more reliable when helping you understand than when asked to recall specific data</li>
+  <li><strong>Treat any specific statistic from AI as a hypothesis to verify</strong>, not a fact to use</li>
+</ul>
+
+<div class="callout callout-deep">
+  <div class="callout-head">The verification workflow</div>
+  <p style="color:var(--fg);margin:0">For any factual claim from AI: 1) Note the claim. 2) Search for the original source directly (Google Scholar, official report, original dataset). 3) Read the primary source. 4) If you cannot find the primary source, do not use the claim. This takes more time than accepting AI output at face value. It is the only way to do credible research with AI assistance.</p>
+</div>
+
+<h3>When AI research is most and least reliable</h3>
+<p>Most reliable: explaining concepts, describing the landscape of a field, suggesting what to look for, analysing documents you provide, helping structure an argument, synthesising material you have already verified.</p>
+<p>Least reliable: specific statistics and numbers, precise dates, exact quotes, specific citations, highly recent events (within the last year or two), niche topics underrepresented in training data.</p>
+</div>
+
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">The honest picture of AI and research</a><a href="#s-green-1">Which AI tool for which research task</a><a href="#s-green-2">The AI research workflow</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">20 research prompts across every context</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">AI hallucination in research — the definitive guide</a></div></div>
+  <div class="sidebar-card"><h4>Best AI for research</h4>
+    <a href="/ai-atlas/tools/perplexity/" class="sidebar-link">Perplexity — facts with sources</a>
+    <a href="/ai-atlas/tools/gemini-workspace/" class="sidebar-link">NotebookLM — your documents</a>
+    <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude — long document analysis</a>
+    <a href="/ai-atlas/tools/gemini/" class="sidebar-link">Gemini Deep Research</a>
+  </div>
+  <div class="sidebar-card"><h4>Other use cases</h4>
+    <a href="/ai-atlas/use-cases/writing/" class="sidebar-link">AI for Writing</a>
+    <a href="/ai-atlas/use-cases/presentations/" class="sidebar-link">AI for Presentations</a>
+    <a href="/ai-atlas/use-cases/images/" class="sidebar-link">AI for Images</a>
+  </div>
+</div>
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),
+      drawer=document.getElementById('navDrawer'),
+      close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+// Lane switcher
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+
+}
+// Copy prompt
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent=orig;},2000);
+  });
+}
+// Init first lane on page load
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

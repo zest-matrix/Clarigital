@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The AI Family Tree | AI Atlas — Clarigital</title>
+<meta name="description" content="The complete AI family tree — where every major AI came from, who built it, when, and how they relate. ChatGPT, Claude, Gemini, Llama, Mistral and...">
+<link rel="canonical" href="/ai-atlas/family-tree/">
+<meta property="og:title" content="The AI Family Tree — Every Major AI, Explained">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/family-tree/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The AI Family Tree — Every Major AI Model, Explained","url":"https://www.clarigital.com/ai-atlas/family-tree/","dateModified":"2026-04-24","author":{"@type":"Organization","name":"Clarigital"},"publisher":{"@type":"Organization","name":"Clarigital"}}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js .lane-section{display:none}html.js .lane-section.active{display:block;animation:fi .25s ease}.lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative}
+.prompt-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.88rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.callout-red{border-left-color:var(--red)}
+.agent-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:8px 0}
+.agent-card .ac-role{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:5px}
+.agent-card h4{font-size:.9rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.agent-card p{font-size:.83rem;margin:0}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The AI Family Tree — Every Major AI Model, Explained | AI Atlas">
+<meta name="twitter:description" content="The complete AI family tree — where every major AI came from, who built it, when, and how they relate. ChatGPT, Claude, Gemini, Llama, Mistral and...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "The AI Family Tree \u2014 Every Major AI Model, Explained | AI Atlas", "item": "https://www.clarigital.com/ai-atlas/family-tree/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">›</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">›</span><span>AI Family Tree</span></nav>
+    <div class="label-tag">Visual Guide</div>
+    <h1>The AI Family Tree</h1>
+    <p class="hero-lead">Where did each AI come from, who built it, and how does it relate to everything else? The complete map of the AI landscape — from the foundational 2017 research to the products people use today.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">AI Atlas</span>
+      <span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding:36px 0 60px">
+
+  <!-- ROOT: The Transformer -->
+  <div style="text-align:center;margin-bottom:40px">
+    <div style="display:inline-block;background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(99,102,241,.05));border:2px solid var(--indigo);border-radius:14px;padding:20px 32px;max-width:480px">
+      <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--indigo);margin-bottom:8px">Foundation — 2017</div>
+      <div style="font-size:1.3rem;font-weight:800;color:var(--fg);letter-spacing:-.02em;margin-bottom:6px">The Transformer</div>
+      <div style="font-size:.85rem;color:var(--muted);line-height:1.6">Vaswani et al., Google Brain — "Attention Is All You Need"<br>arXiv:1706.03762 · June 2017</div>
+      <div style="font-size:.78rem;color:var(--faint);margin-top:8px">Every major AI language model today is built on this architecture.</div>
+    </div>
+  </div>
+
+  <!-- COMPANY BRANCHES -->
+  <div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);text-align:center;margin-bottom:20px">The major AI labs and their lineage</div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:48px">
+
+    <!-- OpenAI -->
+    <div style="background:var(--card-bg);border:1px solid rgba(96,165,250,.2);border-radius:14px;padding:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:38px;height:38px;background:rgba(96,165,250,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🤖</div>
+        <div><div style="font-size:1rem;font-weight:700;color:var(--fg)">OpenAI</div><div style="font-size:.73rem;color:var(--faint)">San Francisco · Founded 2015</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2018–2020</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">GPT-1 / GPT-2 / GPT-3</div>
+          <div style="font-size:.78rem;color:var(--muted)">The original GPT series. GPT-3 (175B params) demonstrated emergent capabilities that surprised researchers.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">Nov 2022</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">ChatGPT</div>
+          <div style="font-size:.78rem;color:var(--muted)">GPT-3.5 + RLHF fine-tuning. Reached 1M users in 5 days. The product that made AI mainstream.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2023–2024</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">GPT-4 / GPT-4o</div>
+          <div style="font-size:.78rem;color:var(--muted)">Multimodal (text + image input). GPT-4o adds voice, vision, and real-time capabilities.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2025</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">o1 / o3 (reasoning models)</div>
+          <div style="font-size:.78rem;color:var(--muted)">Extended "thinking" before responding. Significantly better on maths, science, and logical reasoning.</div>
+        </div>
+        <div style="background:rgba(96,165,250,.06);border:0.5px solid rgba(96,165,250,.15);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--blue);margin-bottom:2px">Also: DALL-E · Sora · Whisper · Codex</div>
+          <a href="/ai-atlas/tools/chatgpt/" style="font-size:.78rem;font-weight:600;color:var(--blue)">ChatGPT full guide →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Anthropic -->
+    <div style="background:var(--card-bg);border:1px solid rgba(129,140,248,.2);border-radius:14px;padding:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:38px;height:38px;background:rgba(129,140,248,.12);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🧠</div>
+        <div><div style="font-size:1rem;font-weight:700;color:var(--fg)">Anthropic</div><div style="font-size:.73rem;color:var(--faint)">San Francisco · Founded 2021 (ex-OpenAI)</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2022</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Constitutional AI (CAI)</div>
+          <div style="font-size:.78rem;color:var(--muted)">Training method where the model critiques its own outputs against a set of principles. Key Anthropic innovation.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2023</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Claude 1 / Claude 2</div>
+          <div style="font-size:.78rem;color:var(--muted)">First consumer releases. Claude 2 introduced 100k context window — far larger than competitors at the time.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2024</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Claude 3 (Haiku / Sonnet / Opus)</div>
+          <div style="font-size:.78rem;color:var(--muted)">Three-tier model family. Claude 3 Opus was the best-performing model on most benchmarks at launch.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2024–2025</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Claude 3.5 / Claude 4</div>
+          <div style="font-size:.78rem;color:var(--muted)">Claude 3.5 Sonnet became the default model. Claude 4 released 2025 with extended thinking and deeper reasoning.</div>
+        </div>
+        <div style="background:rgba(129,140,248,.06);border:0.5px solid rgba(129,140,248,.15);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--indigo);margin-bottom:2px">Also: MCP (Model Context Protocol)</div>
+          <a href="/ai-atlas/tools/claude-ai/" style="font-size:.78rem;font-weight:600;color:var(--indigo)">Claude full guide →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google DeepMind -->
+    <div style="background:var(--card-bg);border:1px solid rgba(16,185,129,.18);border-radius:14px;padding:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:38px;height:38px;background:rgba(16,185,129,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🌐</div>
+        <div><div style="font-size:1rem;font-weight:700;color:var(--fg)">Google DeepMind</div><div style="font-size:.73rem;color:var(--faint)">London / Mountain View · Founded 2010 (merged 2023)</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2018–2020</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">BERT / T5 / PaLM</div>
+          <div style="font-size:.78rem;color:var(--muted)">BERT (2018) transformed NLP. PaLM (2022) demonstrated few-shot learning at scale. Foundational research.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">Dec 2023</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Gemini 1.0</div>
+          <div style="font-size:.78rem;color:var(--muted)">Google's first natively multimodal model. Trained on text, images, audio, and video simultaneously.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2024</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Gemini 1.5 / 2.0</div>
+          <div style="font-size:.78rem;color:var(--muted)">Gemini 1.5 Pro introduced 1M token context. Gemini 2.0 added agentic capabilities and multimodal live API.</div>
+        </div>
+        <div style="background:rgba(16,185,129,.06);border:0.5px solid rgba(16,185,129,.15);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--green);margin-bottom:2px">Also: Gemini Advanced · Gemini in Workspace · Imagen · Veo</div>
+          <a href="/ai-atlas/tools/gemini-advanced/" style="font-size:.78rem;font-weight:600;color:var(--green)">Gemini Advanced guide →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meta AI -->
+    <div style="background:var(--card-bg);border:1px solid rgba(96,165,250,.15);border-radius:14px;padding:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:38px;height:38px;background:rgba(96,165,250,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">📱</div>
+        <div><div style="font-size:1rem;font-weight:700;color:var(--fg)">Meta AI</div><div style="font-size:.73rem;color:var(--faint)">Menlo Park · FAIR founded 2013</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2023</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">LLaMA / Llama 2</div>
+          <div style="font-size:.78rem;color:var(--muted)">Released as open weights — downloadable model files. Triggered the open-source AI ecosystem. 7B–70B parameters.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">April 2024</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Llama 3</div>
+          <div style="font-size:.78rem;color:var(--muted)">Significant quality jump. 8B and 70B open weights. 405B version competitive with GPT-4.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2024–2025</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Meta AI (consumer product)</div>
+          <div style="font-size:.78rem;color:var(--muted)">Built into WhatsApp, Instagram, Facebook, Messenger. 3B+ potential users. Free.</div>
+        </div>
+        <div style="background:rgba(96,165,250,.06);border:0.5px solid rgba(96,165,250,.15);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--blue);margin-bottom:2px">Also: Emu (image gen) · SeamlessM4T (translation)</div>
+          <a href="/ai-atlas/tools/meta-ai/" style="font-size:.78rem;font-weight:600;color:var(--blue)">Meta AI full guide →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mistral AI -->
+    <div style="background:var(--card-bg);border:1px solid rgba(245,158,11,.18);border-radius:14px;padding:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:38px;height:38px;background:rgba(245,158,11,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🇪🇺</div>
+        <div><div style="font-size:1rem;font-weight:700;color:var(--fg)">Mistral AI</div><div style="font-size:.73rem;color:var(--faint)">Paris · Founded June 2023 (ex-DeepMind, ex-Meta)</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">Sept 2023</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Mistral 7B</div>
+          <div style="font-size:.78rem;color:var(--muted)">Outperformed Llama 2 13B at 7B parameters using sliding window attention. Raised €105M before shipping a product.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2024–2025</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Mixtral / Mistral Large / Le Chat</div>
+          <div style="font-size:.78rem;color:var(--muted)">Mixture-of-Experts architecture (Mixtral 8x7B). Le Chat = consumer product. Mistral Large for enterprise API.</div>
+        </div>
+        <div style="background:rgba(245,158,11,.06);border:0.5px solid rgba(245,158,11,.15);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:#F59E0B;margin-bottom:2px">European open-source AI. Apache 2.0 weights.</div>
+          <a href="/ai-atlas/tools/mistral/" style="font-size:.78rem;font-weight:600;color:#F59E0B">Mistral guide →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- xAI / Grok -->
+    <div style="background:var(--card-bg);border:1px solid rgba(241,245,249,.1);border-radius:14px;padding:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:38px;height:38px;background:rgba(241,245,249,.06);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">𝕏</div>
+        <div><div style="font-size:1rem;font-weight:700;color:var(--fg)">xAI / Grok</div><div style="font-size:.73rem;color:var(--faint)">San Francisco · Founded 2023 (Elon Musk)</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">Nov 2023</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Grok-1</div>
+          <div style="font-size:.78rem;color:var(--muted)">Built into X (Twitter). Distinguishing feature: real-time access to X posts and current news. Trained on internet + X data.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2024–2025</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Grok-2 / Grok-3</div>
+          <div style="font-size:.78rem;color:var(--muted)">Grok-2 added image generation (Aurora). Grok-3 released 2025 — xAI claimed leading performance on reasoning benchmarks.</div>
+        </div>
+        <div style="background:rgba(241,245,249,.04);border:0.5px solid rgba(241,245,249,.1);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">Available on X Premium / standalone app</div>
+          <a href="/ai-atlas/tools/grok/" style="font-size:.78rem;font-weight:600;color:var(--muted)">Grok guide →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Black Forest Labs / Flux -->
+    <div style="background:var(--card-bg);border:1px solid rgba(167,139,250,.18);border-radius:14px;padding:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:38px;height:38px;background:rgba(167,139,250,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🎨</div>
+        <div><div style="font-size:1rem;font-weight:700;color:var(--fg)">Black Forest Labs</div><div style="font-size:.73rem;color:var(--faint)">Founded Aug 2024 (ex-Stability AI)</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">2022 (prior work)</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Stable Diffusion (at CompVis/Stability AI)</div>
+          <div style="font-size:.78rem;color:var(--muted)">The team that created Stable Diffusion — the foundational open-source image generation model (Rombach et al., arXiv:2112.10752).</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">Aug 2024</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Flux.1 (Pro / Dev / Schnell)</div>
+          <div style="font-size:.78rem;color:var(--muted)">12B parameter flow-matching model. Best prompt adherence of any image model. Schnell is Apache 2.0 open source.</div>
+        </div>
+        <div style="background:rgba(167,139,250,.06);border:0.5px solid rgba(167,139,250,.15);border-radius:8px;padding:10px 12px">
+          <a href="/ai-atlas/specialist-tools/images-design/flux/" style="font-size:.78rem;font-weight:600;color:#A78BFA">Flux full guide →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perplexity -->
+    <div style="background:var(--card-bg);border:1px solid rgba(96,165,250,.15);border-radius:14px;padding:22px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="width:38px;height:38px;background:rgba(96,165,250,.1);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.2rem">🔍</div>
+        <div><div style="font-size:1rem;font-weight:700;color:var(--fg)">Perplexity AI</div><div style="font-size:.73rem;color:var(--faint)">San Francisco · Founded 2022</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">Model approach</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Not a model company — a product company</div>
+          <div style="font-size:.78rem;color:var(--muted)">Perplexity uses third-party models (GPT-4, Claude, Sonar) and adds real-time web search with source attribution. The product is the interface and retrieval layer.</div>
+        </div>
+        <div style="background:var(--bg2);border-radius:8px;padding:10px 12px">
+          <div style="font-size:.7rem;color:var(--faint);margin-bottom:2px">Own model work</div>
+          <div style="font-size:.85rem;font-weight:600;color:var(--fg)">Sonar models</div>
+          <div style="font-size:.78rem;color:var(--muted)">Perplexity's own models fine-tuned for search and citation tasks. Available via the Perplexity API.</div>
+        </div>
+        <div style="background:rgba(96,165,250,.06);border:0.5px solid rgba(96,165,250,.15);border-radius:8px;padding:10px 12px">
+          <a href="/ai-atlas/tools/perplexity/" style="font-size:.78rem;font-weight:600;color:var(--blue)">Perplexity full guide →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- KEY CONCEPTS -->
+  <div style="border-top:1px solid var(--border);padding-top:40px;margin-top:8px">
+    <h2 style="font-size:1.2rem;font-weight:700;color:var(--fg);margin-bottom:20px;letter-spacing:-.02em">Key concepts in the AI family tree</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">
+      <div style="background:var(--bg2);border-radius:10px;padding:16px">
+        <div style="font-size:.85rem;font-weight:700;color:var(--fg);margin-bottom:6px">Transformer architecture</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.6">The neural network design introduced by Google in 2017 that all major LLMs are built on. The "attention mechanism" allows the model to weigh the relevance of every word to every other word in the input.</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:10px;padding:16px">
+        <div style="font-size:.85rem;font-weight:700;color:var(--fg);margin-bottom:6px">RLHF — Reinforcement Learning from Human Feedback</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.6">Training method where human raters rank model outputs, teaching the model to produce responses humans prefer. Used by OpenAI (ChatGPT), Anthropic (Claude), and most consumer AI products.</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:10px;padding:16px">
+        <div style="font-size:.85rem;font-weight:700;color:var(--fg);margin-bottom:6px">Open weights vs open source</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.6">Open weights = model parameters are publicly downloadable (Llama, Flux Dev). Open source = code and weights released under permissive licence (Flux Schnell, Mistral). Closed = no access to model internals (GPT-4, Claude).</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:10px;padding:16px">
+        <div style="font-size:.85rem;font-weight:700;color:var(--fg);margin-bottom:6px">Mixture of Experts (MoE)</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.6">Architecture where multiple "expert" sub-networks exist, but only a subset activates for any given input. Allows much larger effective model capacity at lower inference cost. Used by Mixtral (Mistral) and GPT-4 (reportedly).</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:10px;padding:16px">
+        <div style="font-size:.85rem;font-weight:700;color:var(--fg);margin-bottom:6px">Context window</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.6">The maximum amount of text a model can process in one conversation — measured in tokens (roughly 3/4 of a word). GPT-4: 128k. Claude: 200k. Gemini Advanced: 1M. Larger = can handle longer documents.</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:10px;padding:16px">
+        <div style="font-size:.85rem;font-weight:700;color:var(--fg);margin-bottom:6px">Multimodal AI</div>
+        <div style="font-size:.8rem;color:var(--muted);line-height:1.6">Models that understand multiple types of input — text, images, audio, video. GPT-4o, Gemini, and Claude 3+ are multimodal. Earlier LLMs were text-only.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div style="border-top:1px solid var(--border);padding-top:40px;margin-top:40px">
+    <h2 style="font-size:1.2rem;font-weight:700;color:var(--fg);margin-bottom:20px;letter-spacing:-.02em">The timeline — key moments</h2>
+    <div style="position:relative;padding-left:20px;border-left:2px solid rgba(99,102,241,.3)">
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--green);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">2017</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Transformer architecture published</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Vaswani et al., Google Brain. "Attention Is All You Need". The foundation of every major AI model that follows.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">2018</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">BERT released by Google</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Bidirectional transformer for language understanding. Transformed NLP benchmarks. The precursor to modern search and language AI.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">2020</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">GPT-3 released by OpenAI</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">175 billion parameters. Demonstrated emergent capabilities — the model could do tasks it wasn't explicitly trained on. Sent shockwaves through AI research.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--indigo);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">2021</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Anthropic founded</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Dario Amodei, Daniela Amodei, and colleagues leave OpenAI to found Anthropic, focused on AI safety research.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--indigo);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">2022</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Stable Diffusion released</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Rombach et al. release open-source image generation. The first high-quality image model freely available to run on consumer hardware.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--green);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">Nov 2022</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">ChatGPT launches</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">GPT-3.5 with RLHF. Reaches 1 million users in 5 days, 100 million in 2 months. AI goes mainstream.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">2023</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Llama released by Meta as open weights</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Meta releases model weights publicly — anyone can download and run a capable LLM. Triggers the open-source AI ecosystem.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">Mar 2023</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">GPT-4 released</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Multimodal, significantly more capable than GPT-3.5. Passes bar exam, medical licensing exam. Sets new benchmark standard.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--green);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">Jun 2023</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Mistral AI founded</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Ex-DeepMind and Meta researchers raise €105M before shipping a model. European AI research powerhouse.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--green);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">Sept 2023</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Mistral 7B released</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Outperforms Llama 2 13B at 7B parameters. Open source. Signals that parameter count isn't everything.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--indigo);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">Dec 2023</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Gemini 1.0 and Grok-1</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Google releases first natively multimodal model. Elon Musk's xAI releases Grok inside X (Twitter).</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--blue);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">2024</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Claude 3, Llama 3, Gemini 1.5</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Major capability improvements across all labs. Gemini 1.5 introduces 1M token context. Arms race accelerates.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--indigo);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">Aug 2024</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Flux.1 released</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Black Forest Labs (ex-Stability AI team) releases Flux.1 — new standard for image generation quality and prompt adherence.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--green);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">2025</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">Reasoning models, agentic AI</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">OpenAI o1/o3, Claude 4. Extended thinking becomes standard. Agentic AI frameworks (LangChain, CrewAI) reach mainstream adoption.</div>
+        </div>
+        <div style="position:relative;padding:0 0 20px 24px">
+          <div style="position:absolute;left:-9px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--green);border:2px solid var(--bg)"></div>
+          <div style="font-size:.72rem;color:var(--faint);margin-bottom:2px">April 2026</div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);margin-bottom:3px">AI embedded everywhere</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:1.55">Meta AI in 3B+ WhatsApp/Instagram users. Copilot in all Windows/Office. Gemini in all Google Workspace. AI is infrastructure.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED PAGES -->
+  <div style="border-top:1px solid var(--border);padding-top:32px;margin-top:8px">
+    <h2 style="font-size:1rem;font-weight:700;color:var(--fg);margin-bottom:14px">Explore the AI Atlas</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <a href="/ai-atlas/" style="font-size:.8rem;font-weight:600;color:var(--indigo);background:var(--indigo-dim);padding:5px 12px;border-radius:100px;text-decoration:none">AI Atlas Hub</a>
+      <a href="/ai-atlas/which-ai/" style="font-size:.8rem;font-weight:600;color:var(--muted);background:var(--bg2);padding:5px 12px;border-radius:100px;text-decoration:none">Which AI Should I Use?</a>
+      <a href="/ai-atlas/agentic-ai/" style="font-size:.8rem;font-weight:600;color:var(--muted);background:var(--bg2);padding:5px 12px;border-radius:100px;text-decoration:none">What is Agentic AI?</a>
+      <a href="/ai-atlas/history/" style="font-size:.8rem;font-weight:600;color:var(--muted);background:var(--bg2);padding:5px 12px;border-radius:100px;text-decoration:none">History of AI</a>
+      <a href="/ai-atlas/glossary/" style="font-size:.8rem;font-weight:600;color:var(--muted);background:var(--bg2);padding:5px 12px;border-radius:100px;text-decoration:none">AI Glossary</a>
+      <a href="/what-is-ai/" style="font-size:.8rem;font-weight:600;color:var(--muted);background:var(--bg2);padding:5px 12px;border-radius:100px;text-decoration:none">What is AI?</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>Frameworks</h5><ul>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+</body>
+</html>

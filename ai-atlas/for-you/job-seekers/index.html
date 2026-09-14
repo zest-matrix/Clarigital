@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI for Job Seekers — Land Your Next Role | AI Atlas — Clarigital</title>
+<meta name="description" content="How to use AI throughout your job search — CVs, cover letters, interview prep, salary negotiation. 20 prompts for every stage. Honest guide to what's acceptable.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/ai-atlas/for-you/job-seekers/">
+<meta property="og:title" content="AI for Job Seekers — Land Your Next Role | AI Atlas">
+<meta property="og:description" content="How to use AI throughout your job search — CVs, cover letters, interview prep, salary negotiation. 20 prompts for every stage. Honest guide to what's acceptable.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/for-you/job-seekers/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzRGNDZFNSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD48L3N2Zz4="><meta name="theme-color" content="#0A0F1E">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI for Job Seekers \u2014 Land Your Next Role | AI Atlas", "description": "How to use AI throughout your job search \u2014 CVs, cover letters, interview prep, salary negotiation. 20 prompts for every stage. Honest guide to what's acceptable.", "url": "https://www.clarigital.com/ai-atlas/for-you/job-seekers/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "For You", "item": "https://www.clarigital.com/ai-atlas/for-you/"}, {"@type": "ListItem", "position": 4, "name": "AI for Job Seekers \u2014 Land Your Next Role | AI Atlas", "item": "https://www.clarigital.com/ai-atlas/for-you/job-seekers/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/for-you/">For You</a><span class="sep">/</span><span>Job Seekers</span></nav>
+    <span class="label-tag">AI For You</span>
+    <h1>AI for Job Seekers — Land Your Next Role</h1>
+    <p class="hero-lead">Finding a job is one of the highest-stakes activities in anyone&#8217;s working life — and one where AI gives you a genuine, practical advantage. From tailoring your CV to preparing for interviews to negotiating your offer, here is exactly how to use AI throughout your job search. 20 ready-to-use prompts.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">For Job Seekers</span><span class="meta-tag mt-gray">~8,400 words</span><span class="meta-tag mt-gray">Graduate to Senior level</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+<h2 id="s-green-0">Where AI genuinely helps in a job search</h2>
+<p>Job hunting is exhausting. You tailor a CV, write a cover letter, research the company, prepare for interviews, send follow-ups — and multiply that by every application. AI makes each step faster and better. Not by doing the work for you, but by handling the drafting so you focus on the judgment.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">The fundamental principle</div>
+  <p style="color:var(--fg);margin:0">AI should make your genuine qualifications and personality shine more clearly — not fabricate ones you do not have. A brilliantly written cover letter describing skills you cannot demonstrate in an interview will not help you. AI helps you present yourself at your best; it cannot substitute for the substance an interviewer will probe.</p>
+</div>
+
+<h2 id="s-green-1">The five highest-impact uses of AI in your job search</h2>
+
+<h3>1. Tailoring your CV to a specific role</h3>
+<p>Give AI your current CV and the job description, and ask it to suggest how to adjust your CV to better match the requirements. It identifies which experiences to foreground, which keywords to include, and what to remove.</p>
+<div class="prompt-box"><div class="prompt-label">Tailoring your CV</div><div class="prompt-text">Here is my current CV: [paste CV]. Here is the job description I am applying for: [paste JD]. Identify the key requirements the employer is looking for. Suggest which parts of my CV best match, what to adjust or remove to make it more relevant, and flag any gaps between what they want and what I have demonstrated.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>2. Writing a strong cover letter</h3>
+<p>AI knows how to structure a cover letter that goes beyond your CV — connecting your experience to their specific needs, demonstrating genuine knowledge of the company, and showing motivation clearly.</p>
+<div class="prompt-box"><div class="prompt-label">Cover letter that stands out</div><div class="prompt-text">Write a cover letter for this job: [paste JD]. My relevant experience: [brief summary]. My genuine motivation for this role and company: [explain why you actually want this job]. What makes me different from other candidates: [what is distinctive about you]. Do not start with &#8220;I am writing to apply.&#8221; Sound like a real person, not a template. Maximum 350 words.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>3. Researching a company before an interview</h3>
+<p>Walking in knowing genuinely interesting things about the company — not just the homepage — impresses interviewers. Use Perplexity to research recent news, strategy, and culture.</p>
+<div class="prompt-box"><div class="prompt-label">Pre-interview company research (use Perplexity)</div><div class="prompt-text">Research [company name] for me — I have an interview there for [role]. Give me: their core business and recent performance, significant news in the last 6 months, their stated strategic priorities, any challenges or controversies I should know, what they are known for in their industry, and 3 insightful questions I could ask that demonstrate I have done my research.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>4. Preparing for interview questions</h3>
+<p>Most interview questions are predictable. AI generates the specific questions most likely for your role and level, helps you structure strong STAR answers, and gives feedback when you practise.</p>
+<div class="prompt-box"><div class="prompt-label">Interview preparation</div><div class="prompt-text">I am preparing for an interview for [role] at [type of company]. Give me: the 10 most likely interview questions for this role and level, a suggested STAR-method structure for each competency question, what the interviewer is really looking for, and questions I should ask at the end. Then ask me one question at a time so I can practise — give feedback on my answers.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<h3>5. Negotiating your offer</h3>
+<p>Most people do not negotiate — and most hiring managers expect them to. AI helps you research market rates, frame your negotiation professionally, and prepare for the conversation.</p>
+<div class="prompt-box"><div class="prompt-label">Salary negotiation</div><div class="prompt-text">I have received a job offer for [role] at [company type / industry] in [location]. They offered [salary]. I was hoping for [target]. Research the current market rate and tell me whether my target is reasonable. Then help me frame a professional counter-offer, anticipate how they might respond, and prepare what to say if they push back. I want to negotiate without risking the offer.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+</div>
+
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+<h2 id="s-indigo-0">20 prompts for every stage of your job search</h2>
+
+<div class="prompt-box"><div class="prompt-label">1. CV audit and honest improvement</div><div class="prompt-text">Here is my CV: [paste]. Audit it honestly. Tell me: what is working well, what is weak, any formatting or structural issues, achievements described too vaguely (and how to make them specific with numbers and impact), and the overall impression a hiring manager gets in the first 30 seconds.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">2. Rewrite CV bullet points for impact</div><div class="prompt-text">Rewrite these CV bullet points to be more impactful: [paste]. I want them to: start with strong action verbs, quantify achievements where possible, focus on impact and outcomes not just tasks, and be concise. Context and numbers I can add: [add any metrics, percentages, team sizes you remember].</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">3. Career change cover letter</div><div class="prompt-text">I am making a career change from [current field] to [target field]. My CV does not look directly relevant. Write a cover letter that: addresses the career change directly and positively, draws transferable skills from my background, demonstrates genuine knowledge and motivation for the new field, and preempts &#8220;why should we take a risk on you?&#8221; My background: [describe].</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">4. LinkedIn profile optimisation</div><div class="prompt-text">Review my LinkedIn profile: Headline: [paste]. About: [paste]. I am targeting [type of roles]. Help me: write a headline that is specific and searchable, rewrite my About to be compelling and clear about what I offer, suggest keywords to include, and give me the overall impression my profile creates for a recruiter spending 30 seconds on it.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">5. Practise difficult interview questions</div><div class="prompt-text">I find these types of interview questions difficult: [list — e.g. &#8220;tell me about a failure&#8221; / &#8220;why are you leaving?&#8221; / &#8220;what is your biggest weakness?&#8221;]. For each one: explain what the interviewer is really looking for, give me a framework for answering well, and give me feedback when I write out my answer.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">6. Explaining a CV gap</div><div class="prompt-text">I have a [length] gap in my CV during [period]. The reason was [honest explanation — redundancy / illness / caring / travel / personal]. Help me frame this positively and honestly in a cover letter or interview, identify any skills from that period worth mentioning, and prepare a concise, confident answer for &#8220;what were you doing during this period?&#8221;</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">7. Technical interview preparation</div><div class="prompt-text">I have a technical interview for [role] at [company type]. The job involves: [describe key technical requirements]. Generate [number] technical questions likely to come up at [junior/mid/senior] level. Ask me one at a time. Evaluate my response, identify gaps, and explain what a complete answer would include.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">8. Post-interview thank you email</div><div class="prompt-text">Write a thank you email after my interview for [role] at [company]. The interview involved: [who I met, topics discussed, anything notable]. The email should: genuinely thank them, reference something specific from the conversation, briefly reinforce my interest, and leave a positive impression. Under 150 words. Not sycophantic.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">9. Researching salary benchmarks</div><div class="prompt-text">What is the current market rate for a [role] with [years of experience] at [level] in [city / region] in [industry]? Give me: a salary range with source if available, key factors that determine where in the range someone falls, what benefits are standard in this type of role, and whether the market currently favours candidates or employers for this role.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">10. Asking for a reference</div><div class="prompt-text">Help me write an email asking [former manager / colleague / professor] to be a reference for me. I worked with them at [company] from [dates] doing [role]. I am now applying for [type of role]. The email should: be warm and personal, briefly remind them of context if it has been a while, explain the role and what qualities I hope they can speak to, and make it easy to say yes or no.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">11. LinkedIn message to a contact</div><div class="prompt-text">Help me write a LinkedIn message to [connection type — someone I met briefly / second-degree connection / someone I admire] to request an informational interview. I want to be genuine and not transactional, explain who I am and why I am reaching out to them specifically, ask for 20-30 minutes, and make it easy to say yes. I am not asking for a job — I want to learn about [topic / their career / their company].</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">12. Portfolio / work samples brief</div><div class="prompt-text">I need to prepare a portfolio for a [role type — designer / writer / marketer / developer] application. Help me: decide what to include from my work history [describe what you have done], how to present it for maximum impact, what context to provide for each piece, and how to frame projects where I cannot share the full work due to confidentiality.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">13. Evaluating a job offer properly</div><div class="prompt-text">I have received a job offer. Help me evaluate it. The offer: [describe salary, benefits, role, company, location, hours, career opportunity]. I am currently [describe your situation]. My priorities are: [list what matters most]. Help me think through: what is good and what is concerning, questions I should ask before accepting, and what I would be giving up or gaining.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">14. Graduate CV with limited experience</div><div class="prompt-text">I am a recent graduate with limited work experience. Help me build a strong CV. Education: [degree, key modules, dissertation]. Experience: [any internships, part-time, volunteering]. Skills and activities: [societies, sport, projects, awards]. Target roles: [describe]. Help me: structure my CV for a graduate, present education and activities to show relevant competencies, and write a professional summary that frames limited experience positively.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">15. Declining a job offer professionally</div><div class="prompt-text">I need to decline a job offer from [company] for [role]. My reason: [honest reason — accepted another offer / salary too low / role not right]. Write a brief, professional, warm response that: declines clearly without ambiguity, gives a brief honest reason, thanks them for their time and the offer, and leaves a positive impression for the future. Under 150 words.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">16. Assessment centre group exercise</div><div class="prompt-text">I have an assessment centre that includes a group exercise for [role type]. Help me prepare: what assessors are looking for, how to contribute without dominating, how to handle disagreement constructively, what to do if I disagree with the group direction, and common mistakes that lose marks. Give me a practice scenario if possible.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">17. Best questions to ask at interview end</div><div class="prompt-text">I am interviewing for [role] at [company]. I want to ask questions that: show I have done my research, help me genuinely evaluate whether this is right for me, demonstrate the right level of ambition, and leave a strong impression. Generate 8 questions I could ask, varying across the role, team, company direction, and what success looks like. Flag which work best for different interviewer types.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">18. Handling rejection constructively</div><div class="prompt-text">I have been rejected from [role] at [company] after [interview stage]. Help me: write a professional response that keeps the door open, decide whether and how to ask for feedback, identify what I can learn from this application for next time, and reframe the experience constructively so I can move forward motivated.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">19. Industry research for a career change</div><div class="prompt-text">I am considering moving from [current industry] into [target industry]. Give me: an overview of how the industry works, types of roles available at [level], typical career paths and how people enter from other industries, skills and qualifications valued, current challenges and opportunities, and the most useful things I should do in the next 3 months to make this transition credible.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+<div class="prompt-box"><div class="prompt-label">20. Sixty-second personal pitch</div><div class="prompt-text">Help me write a compelling 60-second verbal introduction about myself and what I am looking for. I am a [current level] professional with [years] experience in [field]. I am targeting [type of role]. Key strengths: [list 3]. What I am looking for: [describe]. Make it: memorable, specific, natural to say aloud, not a CV recitation, ending with a clear statement of what I am seeking.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+</div>
+
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+<h2 id="s-red-0">Using AI honestly in your job search</h2>
+
+<h3>What is acceptable and what is not</h3>
+<p>The line is clear if you think about it from first principles. A hiring manager is trying to assess whether you can do the job and fit the team. Anything that helps you communicate your genuine capabilities more clearly is fair. Anything that misrepresents those capabilities is not.</p>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 24px">
+  <div style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:16px">
+    <div style="font-size:.72rem;font-weight:700;color:#10B981;margin-bottom:10px;text-transform:uppercase">Acceptable</div>
+    <ul style="list-style:none;font-size:.84rem;color:var(--muted)">
+      <li style="margin-bottom:6px;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span>AI drafts your cover letter from your real experience</li>
+      <li style="margin-bottom:6px;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span>AI improves your CV bullet points to be clearer</li>
+      <li style="margin-bottom:6px;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span>AI helps you practise for interviews</li>
+      <li style="margin-bottom:6px;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span>AI researches the company so you are prepared</li>
+      <li style="padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span>AI helps you negotiate based on real market data</li>
+    </ul>
+  </div>
+  <div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:10px;padding:16px">
+    <div style="font-size:.72rem;font-weight:700;color:#EF4444;margin-bottom:10px;text-transform:uppercase">Not acceptable</div>
+    <ul style="list-style:none;font-size:.84rem;color:var(--muted)">
+      <li style="margin-bottom:6px;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#EF4444">&#10007;</span>Claiming experience or skills you do not have</li>
+      <li style="margin-bottom:6px;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#EF4444">&#10007;</span>Fabricating achievements or roles on your CV</li>
+      <li style="margin-bottom:6px;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#EF4444">&#10007;</span>Using AI during an online assessment meant to test you</li>
+      <li style="margin-bottom:6px;padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#EF4444">&#10007;</span>Having AI conduct a phone interview for you</li>
+      <li style="padding-left:16px;position:relative"><span style="position:absolute;left:0;color:#EF4444">&#10007;</span>Submitting AI work samples as your own for a skills test</li>
+    </ul>
+  </div>
+</div>
+
+<h3>AI detection in hiring</h3>
+<p>Some employers use AI detection on cover letters and written assessments. Detection tools are not reliable enough to be used as sole evidence. But beyond detection: AI-generated cover letters often sound generic. A hiring manager reading hundreds of applications can spot them. The most effective use of AI is to produce a first draft that you significantly personalise — not to submit AI output verbatim.</p>
+
+<h3>The skills that remain entirely human</h3>
+<p>In an AI-assisted hiring world, the things that cannot be AI-assisted become more valuable: genuine enthusiasm for the role and company, authentic interpersonal presence in interviews, creative thinking under pressure, and adapting to unexpected questions. These cannot be outsourced. Prepare them like any other skill.</p>
+</div>
+
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">Where AI genuinely helps in a job search</a><a href="#s-green-1">The five highest-impact uses of AI in your job search</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">20 prompts for every stage of your job search</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Using AI honestly in your job search</a></div></div>
+  <div class="sidebar-card"><h4>Best AI for job seekers</h4>
+    <a href="/ai-atlas/tools/chatgpt/" class="sidebar-link">ChatGPT — CVs and cover letters</a>
+    <a href="/ai-atlas/tools/perplexity/" class="sidebar-link">Perplexity — company research</a>
+    <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude — longer documents</a>
+  </div>
+  <div class="sidebar-card"><h4>Other For You guides</h4>
+    <a href="/ai-atlas/for-you/small-business/" class="sidebar-link">AI for Small Business</a>
+    <a href="/ai-atlas/for-you/students/" class="sidebar-link">AI for Students</a>
+    <a href="/ai-atlas/for-you/parents/" class="sidebar-link">AI for Parents</a>
+    <a href="/ai-atlas/for-you/teachers/" class="sidebar-link">AI for Teachers</a>
+  </div>
+</div>
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),
+      drawer=document.getElementById('navDrawer'),
+      close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+// Lane switcher
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+
+}
+// Copy prompt
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent=orig;},2000);
+  });
+}
+// Init first lane on page load
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

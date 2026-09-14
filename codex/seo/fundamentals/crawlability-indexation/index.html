@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crawlability &amp; Indexation: The Complete Guide | Digital Codex</title>
+<meta name="description" content="How Google crawls and indexes your website. Crawl budget, robots.txt, XML sitemaps, canonicalisation, noindex, and fixing coverage issues. Official...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/codex/seo/fundamentals/crawlability-indexation/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crawlability &amp; Indexation: The Complete Guide | Digital Codex">
+<meta property="og:description" content="How Google crawls and indexes your site. Crawl budget, robots.txt, sitemaps, canonicalisation, and fixing coverage issues.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Crawlability & Indexation: The Complete Guide","description":"How Google crawls and indexes your website — crawl budget, robots.txt, XML sitemaps, canonicalisation, noindex, and fixing coverage issues.","author":{"@type":"Organization","name":"Digital Codex"},"publisher":{"@type":"Organization","name":"Digital Codex","url":"https://www.clarigital.com"},"mainEntityOfPage":"https://www.clarigital.com/codex/seo/crawlability-indexation/","articleSection":"SEO Foundation","datePublished":"2026-04-04"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--g300:#CBD5E1;--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+h4{font-size:.88rem;font-weight:700;color:var(--g900);margin:16px 0 6px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}
+p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500;transition:color var(--t)}
+a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}
+li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:16px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.65}
+pre code{background:none;padding:0;color:inherit;font-size:inherit}
+table{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+thead{background:var(--g50)}
+th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}
+tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t),transform var(--t);white-space:nowrap;line-height:1}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}
+.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}
+.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t),color var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}
+.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}
+.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}
+.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:var(--g500);text-decoration:none;font-weight:400;transition:color var(--t)}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g300)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:var(--g500);background:var(--g100);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t),color var(--t);margin-left:auto;font-family:var(--font)}
+.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}
+.chapter{margin-bottom:40px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}
+.lb-head h3{font-size:.86rem;margin:0;font-weight:700;color:var(--g900)}
+.lb-body{padding:14px 18px}
+.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}
+.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'✓';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.toc{border:1px solid var(--g200);border-radius:var(--r);padding:18px;background:var(--w);margin-bottom:24px}
+.toc-title{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500);margin-bottom:10px}
+.toc ul{list-style:none;margin:0;padding:0}.toc li{margin-bottom:2px}
+.toc a{display:block;font-size:.8rem;font-weight:500;color:var(--g700);padding:5px 8px;border-radius:4px;text-decoration:none;border-left:2px solid transparent;transition:all var(--t)}
+.toc a:hover{background:var(--g50);color:var(--navy)}.toc a.on{color:var(--navy);border-left-color:var(--navy);background:var(--blue-bg);font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}.callout.red{border-left-color:#DC2626}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}
+.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.steps{list-style:none;margin:14px 0;padding:0}
+.steps li{display:flex;gap:13px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--g100)}
+.steps li:last-child{border-bottom:none}
+.step-n{width:25px;height:25px;border-radius:50%;background:var(--navy);color:#fff;font-size:.71rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.step-c strong{display:block;font-size:.86rem;margin-bottom:3px}
+.step-c p{font-size:.82rem;margin:0;color:var(--g500)}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--orange-bg);color:var(--orange-dk)}.st-govt{background:var(--g100);color:var(--g700)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}
+.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}
+.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}
+.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}
+.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}
+.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}
+.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}
+.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t);font-weight:400}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Crawlability &amp; Indexation: The Complete Guide | Digital Codex">
+<meta name="twitter:description" content="How Google crawls and indexes your website. Crawl budget, robots.txt, XML sitemaps, canonicalisation, noindex, and fixing coverage issues. Official...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<meta property="og:site_name" content="Clarigital">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Seo", "item": "https://www.clarigital.com/codex/seo/"}, {"@type": "ListItem", "position": 4, "name": "Crawlability &amp; Indexation: The Complete Guide", "item": "https://www.clarigital.com/codex/seo/crawlability-indexation/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+    <ul class="nav-links" role="list"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li>
+      <li><a href="/codex/seo/" class="cur">SEO</a></li>
+      <li><a href="/codex/sem/">SEM</a></li>
+      <li><a href="/codex/social-media/">Social</a></li>
+      <li><a href="/codex/analytics-cro/">Analytics</a></li>
+      <li><a href="/codex/all-guides/">All Guides</a></li>
+    </ul>
+    <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A–Z Glossary</a></div>
+    <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Navigation">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose" aria-label="Close">✕</button>
+    </div>
+    <a href="/codex/" class="di">Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/seo/" class="di">SEO</a><a href="/codex/sem/" class="di">SEM &amp; Google Ads</a>
+    <a href="/codex/social-media/" class="di">Social Media</a><a href="/codex/analytics-cro/" class="di">Analytics</a>
+    <a href="/codex/all-guides/" class="di">All Guides</a><a href="/codex/glossary/" class="di">A–Z Glossary</a>
+  </div>
+</div>
+</header>
+
+<nav class="chap-nav" aria-label="Jump to section">
+  <div class="chap-nav-in">
+    <a class="cnl on" href="#crawl-budget">Crawl Budget</a>
+    <a class="cnl" href="#robots-txt">robots.txt</a>
+    <a class="cnl" href="#sitemaps">XML Sitemaps</a>
+    <a class="cnl" href="#canonicalisation">Canonicalisation</a>
+    <a class="cnl" href="#noindex">Noindex &amp; Blocking</a>
+    <a class="cnl" href="#coverage-issues">Coverage Issues</a>
+    <a class="cnl" href="#audit">Crawl Audit</a>
+    <a class="cnl" href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main id="main">
+<section class="page-hero" aria-labelledby="guide-h1">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/codex/">Home</a><span class="sep">/</span>
+      <a href="/codex/seo/">SEO</a><span class="sep">/</span>
+      <span class="cur" aria-current="page">Crawlability &amp; Indexation</span>
+    </nav>
+    <span class="label-tag">SEO Foundation · Guide 3 of 8</span>
+    <h1 id="guide-h1">Crawlability &amp; Indexation · The Complete Guide</h1>
+    <p class="hero-lead">How Google decides which pages to crawl, how often to crawl them, and whether to add them to the index — crawl budget, robots.txt, XML sitemaps, canonicalisation, noindex directives, and how to diagnose and fix indexing problems using Google Search Console.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-seo">SEO</span>
+      <span class="meta-tag mt-gray">2,700 words</span>
+      <span class="meta-tag mt-gray">Updated Apr 2026</span>
+      <button class="share-btn" id="shareBtn" aria-label="Copy link">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Share
+      </button>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Article content">
+  <div class="wrap">
+    <div class="art-layout">
+      <article>
+
+        <div class="learn-box">
+          <div class="lb-head"><h3>What You'll Learn</h3></div>
+          <div class="lb-body"><ul>
+            <li>What crawl budget is and when it actually matters for your site</li>
+            <li>How to write and audit a robots.txt file correctly</li>
+            <li>How to create and submit XML sitemaps that help Google prioritise crawling</li>
+            <li>How canonicalisation works and how to avoid self-inflicted duplicate content problems</li>
+            <li>When to use noindex and how it differs from blocking crawling</li>
+            <li>How to find and fix crawl coverage issues in Google Search Console</li>
+          </ul></div>
+        </div>
+
+        <nav class="toc" id="tocMobile" aria-label="Table of contents" style="display:none">
+          <p class="toc-title">Contents</p>
+          <ul>
+            <li><a href="#crawl-budget">Crawl Budget</a></li>
+            <li><a href="#robots-txt">robots.txt</a></li>
+            <li><a href="#sitemaps">XML Sitemaps</a></li>
+            <li><a href="#canonicalisation">Canonicalisation</a></li>
+            <li><a href="#noindex">Noindex &amp; Blocking</a></li>
+            <li><a href="#coverage-issues">Coverage Issues</a></li>
+            <li><a href="#audit">Running a Crawl Audit</a></li>
+            <li><a href="#sources">Sources</a></li>
+          </ul>
+        </nav>
+
+        <!-- Chapter 1: Crawl Budget -->
+        <div class="chapter" id="crawl-budget">
+          <div class="chap-hdr">
+            <h2>Crawl Budget: What It Is and When It Matters</h2>
+            <button class="share-btn" onclick="copyLink('crawl-budget')">Share</button>
+          </div>
+          <p>Crawl budget is the number of URLs on your site that Googlebot will crawl and process within a given time frame. Google's official documentation defines it as the product of two factors: <strong>crawl rate limit</strong> (how fast Googlebot can crawl without overloading your server) and <strong>crawl demand</strong> (how much Google wants to crawl your pages based on their perceived value and freshness).</p>
+          <p>The term "crawl budget" is frequently misunderstood in the SEO industry. Google has been explicit that for the vast majority of websites, crawl budget is not a concern. According to Google's official Search Central blog, crawl budget only becomes a meaningful factor for sites with more than one million unique URLs, sites where large portions of the site are updated on a rapid basis, or sites with significant numbers of low-quality, duplicate, or redirected pages consuming crawl resources without adding index value.</p>
+
+          <div class="g3">
+            <div class="stat-card"><p class="stat-h">When budget matters</p><div class="stat-n">1M<span class="u">+</span></div><p class="stat-l">URLs before crawl budget is a real concern</p></div>
+            <div class="stat-card"><p class="stat-h">Crawl rate limit</p><div class="stat-n">≈2<span class="u">s</span></div><p class="stat-l">Typical pause between Googlebot requests</p></div>
+            <div class="stat-card"><p class="stat-h">Re-crawl frequency</p><div class="stat-n">3–7<span class="u">d</span></div><p class="stat-l">Average interval for established pages</p></div>
+          </div>
+
+          <h3>What Consumes Crawl Budget Inefficiently</h3>
+          <p>Google identifies several categories of URLs that waste crawl budget without contributing to indexing or ranking:</p>
+          <ul>
+            <li><strong>Faceted navigation URLs.</strong> E-commerce sites often generate thousands of filter combination URLs (e.g. <code>/shoes?colour=red&amp;size=42&amp;brand=nike</code>). Most of these pages are near-duplicates and provide little unique value.</li>
+            <li><strong>Session IDs in URLs.</strong> If your site appends session tokens to URLs, Googlebot sees each session as a unique URL even though the content is identical.</li>
+            <li><strong>Soft 404 pages.</strong> Pages that return a 200 HTTP status but display "no results found" or similar messages trick Googlebot into treating empty pages as crawlable content.</li>
+            <li><strong>Redirect chains.</strong> Long chains of redirects consume crawl budget at each hop. Google recommends keeping redirects to a single hop where possible.</li>
+            <li><strong>Low-quality or thin content pages.</strong> Pages with very little unique content that Google is unlikely to index consume budget without return.</li>
+          </ul>
+
+          <div class="callout orange">
+            <strong>Google's confirmed guidance on crawl budget</strong>
+            <p>Google's Gary Illyes stated in 2017: "If you're a small or medium site (say, a few thousand URLs), you likely don't need to worry about crawl budget." The concern is primarily for large-scale sites. Source: Google Search Central Blog.</p>
+          </div>
+
+          <h3>How to Improve Crawl Efficiency</h3>
+          <p>Even if crawl budget is not a crisis for your site, improving crawl efficiency is good practice. The most effective actions are: consolidating duplicate content through canonicalisation and redirects, blocking URL parameters that don't produce unique content via Google Search Console's URL parameters tool, reducing redirect chains to single hops, and ensuring your server responds quickly (slow server response rates cause Googlebot to crawl less aggressively to avoid overloading it).</p>
+        </div>
+
+        <!-- Chapter 2: robots.txt -->
+        <div class="chapter" id="robots-txt">
+          <div class="chap-hdr">
+            <h2>robots.txt: Controlling Crawl Access</h2>
+            <button class="share-btn" onclick="copyLink('robots-txt')">Share</button>
+          </div>
+          <p>The robots.txt file is a plain text file placed at the root of a domain (e.g. <code>https://example.com/robots.txt</code>) that tells crawlers which parts of the site they should not access. It is governed by the Robots Exclusion Protocol, first introduced in 1994 and formalised as an IETF proposed standard (RFC 9309) in 2022.</p>
+          <p>It is critical to understand what robots.txt does and does not do. It <strong>controls crawling</strong>, not indexing. If you block a URL in robots.txt, Googlebot will not crawl it — but if that URL is linked to from other pages, Google may still index it (as a URL without content). This distinction is important: blocking a page in robots.txt does not guarantee it will not appear in search results. To prevent a page from appearing in search results, you need a noindex directive.</p>
+
+          <h3>robots.txt Syntax</h3>
+          <p>A robots.txt file consists of one or more groups, each starting with a <code>User-agent</code> line followed by <code>Disallow</code> or <code>Allow</code> directives. Google supports these directives:</p>
+
+          <pre><code># Block all crawlers from the /admin/ directory
+User-agent: *
+Disallow: /admin/
+
+# Block Googlebot specifically from staging content
+User-agent: Googlebot
+Disallow: /staging/
+
+# Allow all crawlers access to everything
+User-agent: *
+Disallow:
+
+# Point to the XML sitemap location
+Sitemap: https://example.com/sitemap.xml</code></pre>
+
+          <div class="callout red">
+            <strong>Never block CSS or JavaScript in robots.txt</strong>
+            <p>A common historical mistake was blocking CSS and JavaScript directories to save crawl budget. Google now renders pages with Chromium and needs access to these resources to properly evaluate and render your pages. Blocking them causes Google to see a broken version of your page, which can negatively impact rankings. Source: Google Search Central documentation.</p>
+          </div>
+
+          <h3>Common robots.txt Mistakes</h3>
+          <ul>
+            <li><strong>Blocking the entire site.</strong> A <code>Disallow: /</code> directive blocks all crawling. This is sometimes accidentally left in place from development environments.</li>
+            <li><strong>Case sensitivity.</strong> robots.txt path matching is case-sensitive on case-sensitive server systems. <code>Disallow: /Admin/</code> does not block <code>/admin/</code>.</li>
+            <li><strong>Using robots.txt for confidential pages.</strong> robots.txt is publicly readable. Do not list confidential URLs there hoping to hide them — this is counterproductive. Use server authentication instead.</li>
+            <li><strong>Blocking pages you want ranked.</strong> Any page you want to appear in Google search results must be crawlable. Verify your robots.txt does not accidentally block important content.</li>
+          </ul>
+
+          <div class="insight">
+            <p class="insight-lbl">Testing your robots.txt</p>
+            <p>Google Search Console includes a robots.txt Tester tool that allows you to check how Googlebot interprets your robots.txt file and test individual URLs against your current rules. Use it after any change to your robots.txt.</p>
+          </div>
+        </div>
+
+        <!-- Chapter 3: XML Sitemaps -->
+        <div class="chapter" id="sitemaps">
+          <div class="chap-hdr">
+            <h2>XML Sitemaps: Helping Google Discover and Prioritise</h2>
+            <button class="share-btn" onclick="copyLink('sitemaps')">Share</button>
+          </div>
+          <p>An XML sitemap is a file that lists the URLs on your site you want search engines to crawl and index. It serves as a direct communication channel to Google — telling it which pages exist, when they were last updated, and optionally how frequently they change. The XML sitemap format is standardised at sitemaps.org and is supported by Google, Bing, and other search engines.</p>
+          <p>Sitemaps are particularly valuable for large sites with deep URL structures, new sites with few external inbound links (which would otherwise limit Google's ability to discover pages through crawling), and sites with pages that are not easily discovered through internal linking (such as pages accessible only via search forms or heavy use of JavaScript).</p>
+
+          <h3>XML Sitemap Structure</h3>
+          <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://example.com/seo/how-google-works/&lt;/loc&gt;
+    &lt;lastmod&gt;2026-04-04&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.8&lt;/priority&gt;
+  &lt;/url&gt;
+&lt;/urlset&gt;</code></pre>
+
+          <h3>What to Include and Exclude</h3>
+          <p>Your sitemap should only include URLs you want indexed. This means:</p>
+          <ul>
+            <li><strong>Include:</strong> Canonical versions of your important pages, paginated pages (the first page at minimum), and alternate language versions using hreflang.</li>
+            <li><strong>Exclude:</strong> Pages blocked by robots.txt (a contradiction Google flags as an error), pages with a noindex meta tag, redirect URLs (list the final destination only), URLs with parameters that produce duplicate content, and pages you do not want indexed.</li>
+          </ul>
+
+          <h3>Sitemap Index Files</h3>
+          <p>Sites with more than 50,000 URLs in a single sitemap, or sitemaps exceeding 50MB uncompressed, should use a sitemap index file — a sitemap of sitemaps. This allows you to split your sitemap into logical groups (e.g. one for blog posts, one for product pages) and submit a single index file to Google Search Console.</p>
+
+          <h3>Submitting Your Sitemap</h3>
+          <p>Submit your sitemap via Google Search Console under Indexing → Sitemaps. You should also include a <code>Sitemap:</code> directive in your robots.txt file pointing to the sitemap location — this allows any crawler, not just Google, to discover it automatically.</p>
+
+          <div class="callout green">
+            <strong>Sitemaps are a hint, not a command</strong>
+            <p>Google treats sitemaps as a signal about what you want crawled, not as a guaranteed crawl list. Including a URL in your sitemap does not guarantee it will be crawled or indexed. Exclusion signals (noindex, robots.txt disallow, low-quality content) can still prevent indexing even for sitemapped pages.</p>
+          </div>
+        </div>
+
+        <!-- Chapter 4: Canonicalisation -->
+        <div class="chapter" id="canonicalisation">
+          <div class="chap-hdr">
+            <h2>Canonicalisation: Solving Duplicate Content</h2>
+            <button class="share-btn" onclick="copyLink('canonicalisation')">Share</button>
+          </div>
+          <p>Canonicalisation is the process of selecting the preferred version of a URL when multiple URLs serve the same or very similar content. Google uses the canonical URL to consolidate ranking signals — links, PageRank, indexing — to a single preferred version. Without canonicalisation, sites with duplicate content dilute their own link equity and send confusing signals to Google about which page should rank.</p>
+
+          <h3>Common Sources of Duplicate Content</h3>
+          <ul>
+            <li>HTTP vs HTTPS versions of the same page</li>
+            <li>www vs non-www versions (e.g. <code>www.example.com</code> vs <code>example.com</code>)</li>
+            <li>Trailing slash vs no trailing slash (<code>/page/</code> vs <code>/page</code>)</li>
+            <li>URL parameters that don't change content (e.g. tracking parameters like <code>?utm_source=email</code>)</li>
+            <li>Printer-friendly or AMP versions of pages</li>
+            <li>Paginated content where page 1 and the /page/1/ URL are both accessible</li>
+            <li>Product pages accessible under multiple category paths</li>
+          </ul>
+
+          <h3>Canonicalisation Signals Google Uses</h3>
+          <p>Google uses multiple signals to determine the canonical URL. In order of typical influence:</p>
+          <ol class="steps">
+            <li><span class="step-n">1</span><div class="step-c"><strong>301/308 redirects</strong><p>The strongest signal. If you permanently redirect one URL to another, Google will treat the destination as canonical.</p></div></li>
+            <li><span class="step-n">2</span><div class="step-c"><strong>rel="canonical" link element</strong><p>A <code>&lt;link rel="canonical" href="..."&gt;</code> tag in the <code>&lt;head&gt;</code> of a page. Google treats this as a strong hint but not an absolute directive.</p></div></li>
+            <li><span class="step-n">3</span><div class="step-c"><strong>Sitemap inclusion</strong><p>URLs listed in your sitemap are treated as preferred versions. Including only canonical URLs in your sitemap reinforces the signal.</p></div></li>
+            <li><span class="step-n">4</span><div class="step-c"><strong>Internal link consistency</strong><p>The URL you most frequently link to internally is treated as a signal that it is the preferred version.</p></div></li>
+          </ol>
+
+          <div class="callout orange">
+            <strong>rel="canonical" is a hint, not a directive</strong>
+            <p>Google has explicitly stated that the canonical tag is treated as a "hint" rather than a strict instruction. Google may choose a different canonical if other signals (such as internal linking patterns or external link profiles) contradict the stated canonical. If you need to enforce canonicalisation, use 301 redirects.</p>
+          </div>
+
+          <h3>Self-Referential Canonicals</h3>
+          <p>Best practice is to include a self-referential canonical tag on every page — a page pointing to itself as the canonical. This prevents Googlebot from treating URL parameter variants as separate pages if your server accidentally serves them. A self-referential canonical also makes your canonical declarations consistent and easier to audit.</p>
+        </div>
+
+        <!-- Chapter 5: Noindex -->
+        <div class="chapter" id="noindex">
+          <div class="chap-hdr">
+            <h2>Noindex and Blocking: Keeping Pages Out of the Index</h2>
+            <button class="share-btn" onclick="copyLink('noindex')">Share</button>
+          </div>
+          <p>Noindex is a directive that tells Google not to include a page in its search index. Unlike robots.txt, which controls crawling, a noindex directive requires Google to crawl the page — it reads the directive and then removes or declines to add the page to the index. This is an important distinction: if you both block a page in robots.txt and add a noindex meta tag, Google cannot read the noindex tag because it cannot crawl the page.</p>
+
+          <h3>Methods for Implementing Noindex</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Method</th><th>Where Added</th><th>Use Case</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;meta name="robots" content="noindex"&gt;</code></td><td>HTML <code>&lt;head&gt;</code></td><td>Most common. Prevents indexing of an individual page.</td></tr>
+              <tr><td><code>X-Robots-Tag: noindex</code></td><td>HTTP response header</td><td>For non-HTML files (PDFs, images) or when you can't edit the HTML.</td></tr>
+              <tr><td>Google Search Console removal tool</td><td>GSC interface</td><td>Temporary removal of URLs already in the index (lasts 6 months).</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3>When to Use Noindex</h3>
+          <p>Noindex is appropriate for pages that should exist on your site but should not appear in search results:</p>
+          <ul>
+            <li>Thank-you pages after form submissions</li>
+            <li>Internal search results pages</li>
+            <li>Login and account management pages</li>
+            <li>Staging or preview pages accessible publicly but not intended for search</li>
+            <li>Low-value tag or archive pages on blog platforms</li>
+            <li>Paginated pages beyond page 2 (optional — depends on content value)</li>
+          </ul>
+
+          <div class="callout">
+            <strong>Noindex removes pages from the index over time</strong>
+            <p>Adding noindex to a page that is already indexed does not immediately remove it. Googlebot must re-crawl the page, read the directive, and process the removal. For large sites this can take weeks. For urgent removal, use the URL Removal tool in Google Search Console alongside a noindex tag.</p>
+          </div>
+        </div>
+
+        <!-- Chapter 6: Coverage Issues -->
+        <div class="chapter" id="coverage-issues">
+          <div class="chap-hdr">
+            <h2>Index Coverage Issues: What They Mean and How to Fix Them</h2>
+            <button class="share-btn" onclick="copyLink('coverage-issues')">Share</button>
+          </div>
+          <p>Google Search Console's Index Coverage report (now called the Pages report under Indexing) shows how Google has classified all discovered URLs on your site. Understanding these status categories is essential for diagnosing crawlability and indexation problems.</p>
+
+          <div class="table-wrap"><table>
+            <thead><tr><th>GSC Status</th><th>Meaning</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>Indexed</td><td>Page is in Google's index and eligible to appear in search results</td><td>No action needed</td></tr>
+              <tr><td>Crawled – currently not indexed</td><td>Google crawled the page but chose not to index it (quality signal)</td><td>Improve page quality or consolidate with canonical</td></tr>
+              <tr><td>Discovered – currently not indexed</td><td>Google knows the URL exists but hasn't crawled it yet</td><td>Improve internal linking; check crawl budget</td></tr>
+              <tr><td>Duplicate, Google chose different canonical</td><td>Google selected a different URL as the canonical than what you declared</td><td>Audit canonical signals; check redirect chains and internal linking</td></tr>
+              <tr><td>Excluded by noindex</td><td>Page was not indexed because of a noindex directive</td><td>Intentional — verify it is correct; remove noindex if page should be indexed</td></tr>
+              <tr><td>Blocked by robots.txt</td><td>Googlebot was prevented from crawling by robots.txt</td><td>Verify intentional; if not, update robots.txt</td></tr>
+              <tr><td>Not found (404)</td><td>Page returned a 404 error</td><td>Redirect to relevant page if content has moved; leave as 404 if genuinely deleted</td></tr>
+              <tr><td>Soft 404</td><td>Page returns 200 but displays no useful content</td><td>Return proper 404/410, or add meaningful content</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3>The "Crawled — Currently Not Indexed" Problem</h3>
+          <p>This is one of the most common and misunderstood GSC statuses. When Google crawls a page but declines to index it, the most common reasons are: the content is too thin or provides little value beyond other indexed pages, the page is near-duplicate of another already-indexed page, the page has very few or no inbound internal links, or Google's quality systems have flagged the page as low-quality.</p>
+          <p>The fix depends on the cause. For thin content pages, either substantially improve the content quality or consolidate multiple thin pages into one comprehensive page. For near-duplicates, implement canonical tags pointing to the preferred version. For pages with poor internal linking, add contextually relevant internal links from high-authority pages on your site.</p>
+        </div>
+
+        <!-- Chapter 7: Running a Crawl Audit -->
+        <div class="chapter" id="audit">
+          <div class="chap-hdr">
+            <h2>Running a Crawl and Indexation Audit</h2>
+            <button class="share-btn" onclick="copyLink('audit')">Share</button>
+          </div>
+          <p>A crawl and indexation audit gives you a complete picture of how Google sees your site's structure. Here is a systematic approach using free tools — primarily Google Search Console.</p>
+
+          <ol class="steps">
+            <li><span class="step-n">1</span><div class="step-c"><strong>Check your robots.txt</strong><p>Visit <code>yourdomain.com/robots.txt</code> directly. Use GSC's robots.txt tester to verify no critical pages or resources are accidentally blocked.</p></div></li>
+            <li><span class="step-n">2</span><div class="step-c"><strong>Review the GSC Pages report</strong><p>Under Indexing → Pages, review the breakdown of indexed vs non-indexed URLs. Export the full list and categorise the reasons for non-indexing.</p></div></li>
+            <li><span class="step-n">3</span><div class="step-c"><strong>Audit your sitemap</strong><p>Submit your sitemap in GSC and check the "Submitted" vs "Indexed" count. A significant gap signals either quality issues or canonicalisation problems.</p></div></li>
+            <li><span class="step-n">4</span><div class="step-c"><strong>Check for canonical conflicts</strong><p>Look for pages where GSC shows "Duplicate, Google chose different canonical than user." These indicate a mismatch between your declared canonicals and the signals Google is reading.</p></div></li>
+            <li><span class="step-n">5</span><div class="step-c"><strong>Crawl your site with a crawler</strong><p>Tools like Screaming Frog (free up to 500 URLs) or Sitebulb allow you to crawl your site and identify redirect chains, broken internal links, missing canonical tags, and pages returning incorrect status codes.</p></div></li>
+            <li><span class="step-n">6</span><div class="step-c"><strong>Check server response time</strong><p>Slow server responses reduce crawl rate. Use GSC's Crawl Stats report (Settings → Crawl Stats) to see Google's average response time for your server over the past 90 days.</p></div></li>
+          </ol>
+
+          <div class="insight">
+            <p class="insight-lbl">GSC crawl stats report</p>
+            <p>Google Search Console's Crawl Stats report (under Settings) shows exactly how many pages Googlebot crawled per day over the last 90 days, the average response time, and the breakdown of crawl requests by file type. This is the most direct way to observe your actual crawl budget in use.</p>
+          </div>
+        </div>
+
+        <!-- Sources -->
+        <div class="chapter" id="sources">
+          <h2>Authentic Sources Used in This Guide</h2>
+          <p style="font-size:.875rem;color:var(--g500);margin-bottom:18px">Official documentation, academic standards, and verified technical sources only.</p>
+          <div class="g2">
+            <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers" target="_blank" rel="noopener">Google Search Central — Crawlers Overview</a></strong><p>Official documentation on Googlebot, crawl rate, and crawl budget.</p></div>
+            <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro" target="_blank" rel="noopener">Google Search Central — robots.txt Introduction</a></strong><p>Official guidance on robots.txt syntax and best practices.</p></div>
+            <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview" target="_blank" rel="noopener">Google Search Central — Sitemaps Overview</a></strong><p>Official sitemap documentation including format and submission guidance.</p></div>
+            <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/canonicalization" target="_blank" rel="noopener">Google Search Central — Canonicalisation</a></strong><p>Official guidance on duplicate content and canonical URL selection.</p></div>
+            <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/block-indexing" target="_blank" rel="noopener">Google Search Central — Block Indexing</a></strong><p>Official noindex directive documentation.</p></div>
+            <div class="source-card"><span class="src-tag st-govt">Standard</span><strong><a href="https://www.rfc-editor.org/rfc/rfc9309" target="_blank" rel="noopener">RFC 9309 — Robots Exclusion Protocol</a></strong><p>IETF proposed standard formalising the robots.txt specification (2022).</p></div>
+          </div>
+        </div>
+
+        <div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">GA4 Setup & Configuration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/content-marketing/content-seo-integration/" class="related-card"><span class="rc-tag">Content Marketing</span><span class="rc-title">Content & SEO Integration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/tools-resources/google-search-console-guide/" class="related-card"><span class="rc-tag">Tools</span><span class="rc-title">Google Search Console Guide</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 4 April 2026 &nbsp;·&nbsp; <strong>Words:</strong> 2,700 &nbsp;·&nbsp; <strong>Category:</strong> SEO Foundation &nbsp;·&nbsp; <strong>Sources:</strong> Official &amp; Standards only</p></div>
+
+      </article>
+
+      <aside aria-label="On this page and related guides">
+        <nav class="sb-box" aria-label="On this page">
+          <div class="sb-head">On This Page</div>
+          <div class="sb-body" id="tocSidebar">
+            <a href="#crawl-budget" class="sb-link on">Crawl Budget</a>
+            <a href="#robots-txt" class="sb-link">robots.txt</a>
+            <a href="#sitemaps" class="sb-link">XML Sitemaps</a>
+            <a href="#canonicalisation" class="sb-link">Canonicalisation</a>
+            <a href="#noindex" class="sb-link">Noindex &amp; Blocking</a>
+            <a href="#coverage-issues" class="sb-link">Coverage Issues</a>
+            <a href="#audit" class="sb-link">Crawl Audit</a>
+            <a href="#sources" class="sb-link">Sources</a>
+          </div>
+        </nav>
+        <div class="sb-box">
+          <div class="sb-head">Related Guides</div>
+          <div class="sb-body">
+            <a href="/codex/seo/fundamentals/how-google-search-works/" class="sb-link">How Google Search Works</a>
+            <a href="/codex/seo/fundamentals/ranking-factors/" class="sb-link">Ranking Factors Complete</a>
+            <a href="/codex/seo/fundamentals/core-web-vitals/" class="sb-link">Core Web Vitals</a>
+            <a href="/codex/seo/fundamentals/mobile-first-indexing/" class="sb-link">Mobile-First Indexing</a>
+            <a href="/codex/seo/fundamentals/search-intent/" class="sb-link">Search Intent vs Keywords</a>
+          </div>
+        </div>
+        <div class="sb-box">
+          <div class="sb-head">SEO Foundation Series</div>
+          <div class="sb-body">
+            <a href="/codex/seo/fundamentals/how-google-search-works/" class="sb-link">1. How Google Search Works</a>
+            <a href="/codex/seo/fundamentals/pagerank-explained/" class="sb-link">2. PageRank Explained</a>
+            <a href="/codex/seo/fundamentals/crawlability-indexation/" class="sb-link sb-cur">3. Crawlability &amp; Indexation</a>
+            <a href="/codex/seo/fundamentals/ranking-factors/" class="sb-link">4. Ranking Factors</a>
+            <a href="/codex/seo/fundamentals/search-intent/" class="sb-link">5. Search Intent</a>
+            <a href="/codex/seo/fundamentals/serp-features/" class="sb-link">6. SERP Features</a>
+            <a href="/codex/seo/fundamentals/core-web-vitals/" class="sb-link">7. Core Web Vitals</a>
+            <a href="/codex/seo/fundamentals/mobile-first-indexing/" class="sb-link">8. Mobile-First Indexing</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<section class="cta-strip" aria-labelledby="cta-h">
+  <div class="wrap">
+    <div class="cta-in">
+      <div><h2 id="cta-h">600 guides on digital marketing. All authentic sources.</h2><p>Official documentation, academic research, and government data only. No blogger opinions. No affiliate links.</p></div>
+      <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A–Z Glossary</a></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>The digital marketing authority. 600 guides built on official documentation, academic research, and government data. No opinions. No affiliate links.</p></div>
+      <div class="ft-col"><h5>SEO</h5><ul><li><a href="/codex/seo/fundamentals/how-google-search-works/">How Google Works</a></li><li><a href="/codex/seo/fundamentals/pagerank-explained/">PageRank</a></li><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability</a></li><li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li><li><a href="/codex/seo/fundamentals/core-web-vitals/">Core Web Vitals</a></li></ul></div>
+      <div class="ft-col"><h5>SEM &amp; Ads</h5><ul><li><a href="/codex/sem/google-ads/overview/">Google Ads Overview</a></li><li><a href="/codex/sem/google-ads/bidding-strategies/">Bidding Strategies</a></li><li><a href="/codex/sem/google-ads/quality-score-deep-dive/">Quality Score</a></li></ul></div>
+      <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A–Z Glossary</a></li><li><a href="/about/">About Digital Codex</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>© 2026 Digital Codex. All rights reserved.</span><span>Authentic sources only · No affiliate links · No sponsored content</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),dr=document.getElementById('navDrawer'),cl=document.getElementById('navClose');
+  function open(){dr.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){dr.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);if(cl)cl.addEventListener('click',shut);
+  if(dr)dr.addEventListener('click',function(e){if(e.target===dr)shut();});
+})();
+(function(){var t=document.getElementById('tocMobile');function c(){if(t)t.style.display=window.innerWidth<=860?'block':'none';}c();window.addEventListener('resize',c);})();
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#tocSidebar .sb-link'),tl=document.querySelectorAll('#tocMobile .toc a');
+  function set(id){[nl,sl,tl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}
+  var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});
+  ch.forEach(function(c){obs.observe(c);});
+})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+document.getElementById('shareBtn').addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+</body>
+</html>

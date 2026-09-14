@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The History of Artificial Intelligence — 1950 to Today | AI Atlas</title>
+<meta name="description" content="The complete history of AI from Alan Turing in 1950 to ChatGPT and beyond. Told as a story, as a timeline, and with full academic sources. Updated April 2026.">
+<link rel="canonical" href="/ai-atlas/history">
+<meta property="og:title" content="The History of Artificial Intelligence — 1950 to Today">
+<meta property="og:description" content="The complete history of AI from Alan Turing in 1950 to ChatGPT and beyond. Told as a story, as a timeline, and with full academic sources. Updated April 2026.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/history">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The History of Artificial Intelligence \u2014 1950 to Today", "description": "The complete history of AI from Alan Turing in 1950 to ChatGPT and beyond. Told as a story, as a timeline, and with full academic sources. Updated April 2026.", "url": "https://www.clarigital.com/ai-atlas/history", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "The History of Artificial Intelligence \u2014 1950 to Today", "item": "https://www.clarigital.com/ai-atlas/history/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><span>History of AI</span></nav>
+    <span class="label-tag">The Full Story</span>
+    <h1>The History of Artificial Intelligence — From 1950 to Today</h1>
+    <p class="hero-lead">The story of AI is one of the most dramatic in human history — decades of wild ambition, crushing failure, quiet progress, and then a sudden explosion that changed everything. This is the complete story, told as it actually happened.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">History</span>
+      <span class="meta-tag mt-gray">Updated April 2026</span>
+      <span class="meta-tag mt-gray">Primary sources only</span>
+    </div>
+  </div>
+</section>
+
+
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<!-- ── STORY LANE ── -->
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+<h2 id="s-green-0">It started with one question</h2>
+<p>In 1950, a British mathematician named Alan Turing published a paper called &#8220;Computing Machinery and Intelligence.&#8221; It opened with a deceptively simple question: <em>&#8220;Can machines think?&#8221;</em></p>
+<p>Turing was 38 years old. He had already helped crack the Nazi Enigma code during World War II — work that is credited with shortening the war by two years. Now he was asking something that would obsess scientists, philosophers, writers, and eventually almost every human being on earth for the next 75 years.</p>
+<p>He didn&#8217;t try to define &#8220;thinking.&#8221; Instead, he proposed a test: put a human and a machine in separate rooms. Have a judge ask both questions through a text terminal. If the judge cannot reliably tell which is human and which is machine — the machine passes the test. He called it the Imitation Game. We now call it the Turing Test.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">Why this moment matters</div>
+  <p style="color:var(--fg);margin:0">Turing didn&#8217;t build the first AI. He asked the first serious question about whether machines could ever be intelligent — and gave us a way to measure the answer. Every AI researcher since has been, in some sense, working on his question.</p>
+</div>
+
+<h2 id="s-green-1">The birth of a field: 1956</h2>
+<p>Six years after Turing&#8217;s paper, a young mathematician named John McCarthy organised a summer workshop at Dartmouth College in New Hampshire. The proposal he wrote to get funding included a bold claim: that &#8220;every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it.&#8221;</p>
+<p>The summer workshop was modest — ten researchers, eight weeks, one farmhouse. But McCarthy gave their work a name that stuck: Artificial Intelligence.</p>
+<p>For the next decade, optimism was extraordinary. Researchers genuinely believed that human-level AI was ten years away. Herbert Simon, one of the pioneers, predicted in 1965 that &#8220;machines will be capable, within twenty years, of doing any work a man can do.&#8221;</p>
+<p>He was wrong. But not forever.</p>
+
+<h2 id="s-green-2">The first AI Winter: 1974–1980</h2>
+<p>The promises outran the results. The computers of the 1960s were laughably underpowered by today&#8217;s standards. The problems AI researchers were trying to solve — natural language, vision, reasoning — turned out to be far harder than anyone imagined.</p>
+<p>Funding dried up. The field entered what became known as the &#8220;AI Winter&#8221; — a cold period where the hype collapsed and serious money disappeared. Many AI researchers quietly shifted to other fields.</p>
+<p>It would not be the last winter.</p>
+
+<h2 id="s-green-3">Expert systems: the 1980s comeback</h2>
+<p>AI returned in the 1980s, but in a more modest form. Instead of general intelligence, researchers focused on narrow expertise. Expert systems encoded the knowledge of human specialists — doctors, engineers, lawyers — into rules that computers could follow.</p>
+<p>MYCIN, developed at Stanford, could diagnose blood infections as accurately as specialist physicians. R1 at Digital Equipment Corporation configured computer systems, saving the company an estimated $40 million per year. Companies invested billions. Japan announced a national &#8220;Fifth Generation&#8221; computing programme to build AI machines.</p>
+<p>Then the second winter arrived. The expert systems were brittle — they could only do the one thing they were built for, and they required armies of specialists to maintain. By the late 1980s, the market for AI hardware collapsed. More billions evaporated.</p>
+
+<h2 id="s-green-4">The quiet revolution: the 1990s and neural networks</h2>
+<p>While the headlines wrote off AI again, something important was happening in the background. A technique called neural networks — inspired by the structure of the human brain — was being quietly developed and improved.</p>
+<p>The key breakthrough was backpropagation: an algorithm that allowed neural networks to learn from their mistakes, adjusting their internal weights to improve accuracy. Yann LeCun demonstrated that this technique could teach a computer to recognise handwritten digits with remarkable accuracy — work that would eventually form the foundation of modern computer vision.</p>
+<p>In 1997, IBM&#8217;s Deep Blue defeated world chess champion Garry Kasparov — not through human-style understanding of chess, but through brute-force calculation and clever search algorithms. It was a milestone, but it was specialised. Deep Blue could not do anything else.</p>
+
+<h2 id="s-green-5">The deep learning revolution: 2012</h2>
+<p>The moment that changed everything arrived at a computer vision competition in 2012. The ImageNet Large Scale Visual Recognition Challenge asked competing teams to correctly identify objects in photographs. The best previous result had an error rate of around 26%. A team from the University of Toronto — Geoffrey Hinton and his students Alex Krizhevsky and Ilya Sutskever — entered a deep neural network called AlexNet. Their error rate: 15.3%. Nothing close had ever been achieved before.</p>
+<p>The deep learning era had begun. Neural networks, given enough data and enough computing power, could learn to see, hear, translate, and eventually converse — not because humans programmed them with rules, but because they discovered patterns themselves.</p>
+<p>The researchers who had been quietly working on neural networks during the second winter — Hinton, LeCun, Yoshua Bengio — would later share the Turing Award (the Nobel Prize of computing) for their foundational work.</p>
+
+<h2 id="s-green-6">The transformer changes everything: 2017</h2>
+<p>The next revolution came from Google Brain. In June 2017, eight researchers published a paper with an understated title: &#8220;Attention Is All You Need.&#8221; It described a new neural network architecture called the transformer — one that handled sequences of text in a fundamentally different way from everything before.</p>
+<p>Previous approaches processed text word by word, in order. The transformer could consider all words simultaneously, weighing how each word related to every other word in the sequence. This &#8220;self-attention&#8221; mechanism made transformers dramatically more efficient to train and dramatically better at understanding language.</p>
+<p>Within five years, transformer-based models would underlie essentially all of the major AI products the world would come to know.</p>
+
+<h2 id="s-green-7">GPT-3 and the pre-ChatGPT moment: 2020</h2>
+<p>In May 2020, OpenAI released GPT-3 — a language model with 175 billion parameters, trained on a dataset of 570 gigabytes of text. Access was initially restricted to researchers and developers via an API. The responses it produced were startling. It could write coherent essays, answer questions, translate, summarise, and generate code — often indistinguishably from human writing.</p>
+<p>But the general public barely noticed. GPT-3 was accessible only through a technical interface. It required knowing how to use an API. The extraordinary capability sat behind a wall that most people couldn&#8217;t see.</p>
+
+<h2 id="s-green-8">The night that changed the world: 30 November 2022</h2>
+<p>On 30 November 2022, OpenAI released ChatGPT. It was free. It was simple. It was a chat interface — you typed, it replied. No technical knowledge required.</p>
+<p>One million users signed up in five days. One hundred million in two months — the fastest consumer application to reach that milestone in history, according to a UBS analysis. For comparison, Instagram took 2.5 years to reach 100 million users. TikTok took nine months.</p>
+<p>The world noticed.</p>
+<p>Within weeks, every major technology company was in emergency meetings. Google declared a &#8220;code red.&#8221; Microsoft invested $10 billion in OpenAI and integrated ChatGPT into Bing, Office, and Windows. Google rushed Bard (later Gemini) to market. Meta open-sourced its Llama models. A French startup called Mistral AI raised funding at extraordinary speed. Anthropic — founded by former OpenAI researchers including Dario Amodei and his sister Daniela — had been working on their AI assistant Claude since 2021 and accelerated its release.</p>
+<p>The AI race was on in a way no previous moment had achieved.</p>
+
+<h2 id="s-green-9">Where we are now: April 2026</h2>
+<p>Three and a half years after ChatGPT&#8217;s launch, the landscape looks like this:</p>
+<ul>
+  <li>AI assistants are used by hundreds of millions of people daily</li>
+  <li>Models can now process not just text but images, audio, video, and code simultaneously</li>
+  <li>Context windows — the amount of text a model can hold in &#8220;memory&#8221; at once — have expanded from 4,000 tokens to over one million</li>
+  <li>Open-source models from Meta and Mistral run on consumer hardware</li>
+  <li>AI is embedded in search engines, office suites, smartphones, cars, and medical diagnostic tools</li>
+  <li>Questions about AI safety, regulation, labour displacement, and the long-term future of the technology are being debated at every level of government and society</li>
+</ul>
+<p>Turing&#8217;s question — &#8220;can machines think?&#8221; — has not been definitively answered. But the machines have become genuinely useful in ways that would have seemed extraordinary even ten years ago.</p>
+<p>The story is not finished. It has barely started.</p>
+
+</div>
+
+<!-- ── TIMELINE LANE ── -->
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+<div style="position:relative;padding-left:32px">
+  <div style="position:absolute;left:10px;top:0;bottom:0;width:2px;background:rgba(99,102,241,.25)"></div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#6366F1;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#6366F1;margin-bottom:4px">1950</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">Turing Test proposed</div>
+    <p style="font-size:.85rem;margin:0">Alan Turing publishes &#8220;Computing Machinery and Intelligence.&#8221; Proposes the Imitation Game as a test of machine intelligence. Source: <a href="https://academic.oup.com/mind/article/LIX/236/433/986238" target="_blank">Mind, Vol. LIX, No. 236</a></p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#6366F1;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#6366F1;margin-bottom:4px">1956</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">Dartmouth Conference — AI is named</div>
+    <p style="font-size:.85rem;margin:0">John McCarthy coins the term &#8220;Artificial Intelligence&#8221; at the Dartmouth Workshop. The field is formally founded.</p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#60A5FA;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#60A5FA;margin-bottom:4px">1966–1974</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">First AI Winter</div>
+    <p style="font-size:.85rem;margin:0">Overpromising leads to underfunding. The Lighthill Report (1973) is critical of AI progress. UK and US cut AI research funding significantly.</p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#6366F1;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#6366F1;margin-bottom:4px">1980s</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">Expert systems boom</div>
+    <p style="font-size:.85rem;margin:0">Rule-based AI systems (MYCIN, R1, XCON) generate commercial value. AI market reaches $1 billion. Japan launches Fifth Generation Computing programme (1982).</p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#60A5FA;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#60A5FA;margin-bottom:4px">1987–1993</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">Second AI Winter</div>
+    <p style="font-size:.85rem;margin:0">LISP machine market collapses. Expert systems prove brittle. Strategic Computing Initiative cancelled. $500M AI industry nearly disappears.</p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#6366F1;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#6366F1;margin-bottom:4px">1997</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">Deep Blue defeats Kasparov</div>
+    <p style="font-size:.85rem;margin:0">IBM&#8217;s Deep Blue defeats world chess champion Garry Kasparov in a six-game match. First time a computer defeats a reigning world chess champion under standard tournament conditions.</p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#10B981;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#10B981;margin-bottom:4px">2012</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">AlexNet — the deep learning moment</div>
+    <p style="font-size:.85rem;margin:0">AlexNet wins ImageNet with 15.3% error rate vs 26% for previous best. Deep learning becomes the dominant paradigm. Source: Krizhevsky et al., NIPS 2012.</p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#10B981;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#10B981;margin-bottom:4px">2017</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">&#8220;Attention Is All You Need&#8221; — transformer architecture</div>
+    <p style="font-size:.85rem;margin:0">Vaswani et al. at Google Brain publish the transformer paper. Foundational architecture for GPT, BERT, Claude, Gemini, and all modern LLMs. Source: <a href="https://arxiv.org/abs/1706.03762" target="_blank">arxiv.org/abs/1706.03762</a></p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#10B981;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#10B981;margin-bottom:4px">2020</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">GPT-3 — 175 billion parameters</div>
+    <p style="font-size:.85rem;margin:0">OpenAI releases GPT-3. 175B parameters, 570GB training data. Demonstrates few-shot learning across a wide range of tasks. Source: Brown et al., <a href="https://arxiv.org/abs/2005.14165" target="_blank">arxiv.org/abs/2005.14165</a></p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#F97316;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#F97316;margin-bottom:4px">30 Nov 2022</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">ChatGPT launches</div>
+    <p style="font-size:.85rem;margin:0">OpenAI launches ChatGPT. 1 million users in 5 days. 100 million users in 2 months — fastest consumer application to that milestone in history (UBS analysis, Feb 2023).</p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#F97316;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#F97316;margin-bottom:4px">2023</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">The AI race begins</div>
+    <p style="font-size:.85rem;margin:0">GPT-4 (OpenAI, March), Claude (Anthropic, March), Bard/Gemini (Google, March), Llama (Meta, February). Microsoft invests $10B in OpenAI. Every major tech company announces AI products.</p>
+  </div>
+
+  <div style="position:relative;margin-bottom:32px">
+    <div style="position:absolute;left:-26px;top:4px;width:12px;height:12px;border-radius:50%;background:#F97316;border:2px solid var(--bg)"></div>
+    <div style="font-size:.75rem;font-weight:700;color:#F97316;margin-bottom:4px">2024–2026</div>
+    <div style="font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px">Multimodal, agentic, and integrated AI</div>
+    <p style="font-size:.85rem;margin:0">GPT-4o (multimodal), Gemini 1.5/2.0 (1M+ token context), Claude 3.5/4 series (extended reasoning), Llama 3 open weights, AI embedded in operating systems, browsers, and professional tools.</p>
+  </div>
+
+</div>
+</div>
+
+<!-- ── DEEP LANE ── -->
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+<h2 id="s-red-0">Primary sources — the papers that built AI</h2>
+
+<div class="callout callout-deep">
+  <div class="callout-head">1950 — The Turing Test</div>
+  <p style="color:var(--fg);margin:0">Turing, A.M. (1950). &#8220;Computing Machinery and Intelligence.&#8221; <em>Mind</em>, 59(236), 433–460. <a href="https://academic.oup.com/mind/article/LIX/236/433/986238" target="_blank" style="color:#EF4444">academic.oup.com/mind</a><br><br>Introduced the Imitation Game as an operational definition of machine intelligence. Anticipated objections including the mathematical, theological, consciousness, and novel-behaviour arguments — most of which remain active debates today.</p>
+</div>
+
+<div class="callout callout-deep">
+  <div class="callout-head">1986 — Backpropagation</div>
+  <p style="color:var(--fg);margin:0">Rumelhart, D.E., Hinton, G.E., &amp; Williams, R.J. (1986). &#8220;Learning representations by back-propagating errors.&#8221; <em>Nature</em>, 323, 533–536. <a href="https://www.nature.com/articles/323533a0" target="_blank" style="color:#EF4444">nature.com</a><br><br>Demonstrated that the backpropagation algorithm could train multi-layer neural networks effectively, overcoming the limitations of single-layer perceptrons identified by Minsky and Papert (1969). This paper enabled deep neural networks as a practical approach.</p>
+</div>
+
+<div class="callout callout-deep">
+  <div class="callout-head">2012 — AlexNet and deep learning</div>
+  <p style="color:var(--fg);margin:0">Krizhevsky, A., Sutskever, I., &amp; Hinton, G.E. (2012). &#8220;ImageNet Classification with Deep Convolutional Neural Networks.&#8221; <em>NIPS 2012</em>. <a href="https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf" target="_blank" style="color:#EF4444">NeurIPS proceedings</a><br><br>AlexNet achieved 15.3% top-5 error rate on ImageNet, vs 26.2% for the second-place entry. Demonstrated that GPUs could train deep CNNs at scale. The paper that triggered the current deep learning era.</p>
+</div>
+
+<div class="callout callout-deep">
+  <div class="callout-head">2017 — Transformer architecture</div>
+  <p style="color:var(--fg);margin:0">Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, &#321;., &amp; Polosukhin, I. (2017). &#8220;Attention Is All You Need.&#8221; <em>NIPS 2017</em>. <a href="https://arxiv.org/abs/1706.03762" target="_blank" style="color:#EF4444">arxiv.org/abs/1706.03762</a><br><br>Introduced the transformer architecture, replacing recurrent and convolutional architectures for sequence modelling tasks. The self-attention mechanism computes relationships between all positions simultaneously, enabling parallelisation during training. All major LLMs (GPT, BERT, T5, Claude, Gemini) are based on this architecture.</p>
+</div>
+
+<div class="callout callout-deep">
+  <div class="callout-head">2018 — BERT (Google)</div>
+  <p style="color:var(--fg);margin:0">Devlin, J., Chang, M.W., Lee, K., &amp; Toutanova, K. (2018). &#8220;BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.&#8221; <a href="https://arxiv.org/abs/1810.04805" target="_blank" style="color:#EF4444">arxiv.org/abs/1810.04805</a><br><br>BERT demonstrated bidirectional pre-training for language understanding — considering context from both left and right simultaneously. Achieved state-of-the-art on 11 NLP benchmarks. Foundation for Google Search improvements and subsequent encoder-based models.</p>
+</div>
+
+<div class="callout callout-deep">
+  <div class="callout-head">2020 — GPT-3 and few-shot learning</div>
+  <p style="color:var(--fg);margin:0">Brown, T., Mann, B., Ryder, N., et al. (2020). &#8220;Language Models are Few-Shot Learners.&#8221; OpenAI. <a href="https://arxiv.org/abs/2005.14165" target="_blank" style="color:#EF4444">arxiv.org/abs/2005.14165</a><br><br>GPT-3 demonstrated that large language models could perform new tasks from just a few examples in the prompt (few-shot learning) — without task-specific fine-tuning. This in-context learning capability was emergent at scale and not explicitly trained for.</p>
+</div>
+
+<div class="callout callout-deep">
+  <div class="callout-head">2022 — InstructGPT and RLHF</div>
+  <p style="color:var(--fg);margin:0">Ouyang, L., Wu, J., Jiang, X., et al. (2022). &#8220;Training language models to follow instructions with human feedback.&#8221; OpenAI. <a href="https://arxiv.org/abs/2203.02155" target="_blank" style="color:#EF4444">arxiv.org/abs/2203.02155</a><br><br>Introduced RLHF as the alignment technique that turned GPT-3 into a useful assistant. Human labellers ranked model outputs; a reward model was trained on these rankings; the LLM was fine-tuned with PPO to maximise the reward. InstructGPT was the direct precursor to ChatGPT.</p>
+</div>
+
+</div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">It started with one question</a><a href="#s-green-1">The birth of a field: 1956</a><a href="#s-green-2">The first AI Winter: 1974–1980</a><a href="#s-green-3">Expert systems: the 1980s comeback</a><a href="#s-green-4">The quiet revolution: the 1990s and neural networks</a><a href="#s-green-5">The deep learning revolution: 2012</a><a href="#s-green-6">The transformer changes everything: 2017</a><a href="#s-green-7">GPT-3 and the pre-ChatGPT moment: 2020</a><a href="#s-green-8">The night that changed the world: 30 November 2022</a><a href="#s-green-9">Where we are now: April 2026</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Primary sources — the papers that built AI</a></div></div>
+  <div class="sidebar-card">
+    <h4>AI History</h4>
+    <a href="#" class="sidebar-link active">Full history</a>
+    <a href="/ai-atlas/start-here/" class="sidebar-link">What is AI?</a>
+    <a href="/ai-atlas/family-tree/" class="sidebar-link">AI family tree</a>
+    <a href="/ai-atlas/which-ai/" class="sidebar-link">Which AI to use?</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Key papers</h4>
+    <a href="https://arxiv.org/abs/1706.03762" class="sidebar-link" target="_blank">Transformer (2017)</a>
+    <a href="https://arxiv.org/abs/2005.14165" class="sidebar-link" target="_blank">GPT-3 (2020)</a>
+    <a href="https://arxiv.org/abs/2203.02155" class="sidebar-link" target="_blank">InstructGPT (2022)</a>
+    <a href="https://arxiv.org/abs/1810.04805" class="sidebar-link" target="_blank">BERT (2018)</a>
+  </div>
+</div>
+
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  // Lane tabs
+  var tabs=[];
+  var sections=[];
+  function showLane(color){
+    tabs.forEach(function(t){t.classList.toggle('active',t.id==='tab-'+color);});
+    sections.forEach(function(s){s.classList.toggle('active',s.id==='lane-'+color);});
+  }
+  window.showLane=showLane;
+  // Default active tab
+  var first=document.querySelector('.lane-tab');
+  if(first){var m=first.id.match(/tab-(\w+)/);if(m)showLane(m[1]);}
+  // Prompt copy
+  window.copyPrompt=function(btn){
+    var text=btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+      setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},1800);
+    });
+  };
+})();
+</script>
+</body>
+</html>

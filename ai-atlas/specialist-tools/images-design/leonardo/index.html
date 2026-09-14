@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Leonardo.ai — The Complete AI Image Guide | Clarigital</title>
+<meta name="description" content="The complete guide to Leonardo.ai — AI image generation for game assets, concept art and consistent characters. Fine-tuning, custom models, 150 free...">
+<link rel="canonical" href="/ai-atlas/specialist-tools/images-design/leonardo/">
+<meta property="og:title" content="Leonardo.ai — The Complete AI Image Guide">
+<meta property="og:description" content="The complete guide to Leonardo.ai — AI image generation for game assets, concept art and consistent characters. Fine-tuning, custom models, 150 free images/day, pricing. April 2026.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/specialist-tools/images-design/leonardo/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+[data-theme="dark"]{
+  --bg:#0A0F1E;--bg2:#111827;--bg3:#1E293B;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(10,15,30,.93);
+  --input-bg:#1E293B;
+  --shadow:none;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+/* Hub tool grid */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:20px}
+@media(max-width:500px){.tool-grid{grid-template-columns:repeat(2,1fr)}}
+.tool-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:14px 16px;transition:border-color .18s,box-shadow .18s;box-shadow:var(--shadow)}
+.tool-card:hover{border-color:var(--indigo);box-shadow:0 2px 12px rgba(99,102,241,.12)}
+.tc-name{font-size:.9rem;font-weight:700;color:var(--fg);margin-bottom:2px}
+.tc-by{font-size:.72rem;color:var(--faint);margin-bottom:6px}
+.tc-desc{font-size:.78rem;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.tc-tag{display:inline-block;font-size:.65rem;font-weight:600;padding:2px 7px;border-radius:100px;margin-right:4px;margin-bottom:2px}
+.tc-tag-text{background:rgba(37,99,235,.1);color:var(--blue)}
+.tc-tag-image{background:rgba(99,102,241,.1);color:var(--indigo)}
+.tc-tag-video{background:rgba(239,68,68,.08);color:var(--red)}
+.tc-tag-code{background:rgba(16,185,129,.08);color:var(--green)}
+.tc-tag-prod{background:rgba(245,158,11,.08);color:#D97706}
+.hub-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}
+.hub-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:18px;box-shadow:var(--shadow)}
+.hc-icon{font-size:1.4rem;margin-bottom:8px}
+.hc-title{font-size:.92rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.hc-desc{font-size:.8rem;color:var(--muted);line-height:1.55}
+.hc-count{font-size:.72rem;color:var(--faint);margin-top:6px}
+.btn-lg{font-size:.95rem;padding:12px 24px;border-radius:9px}
+.btn-outline{background:var(--card-bg);color:var(--fg);border:1px solid var(--border);font-size:.88rem;font-weight:500;padding:9px 18px;border-radius:8px;display:inline-block;transition:background .18s}
+.btn-outline:hover{background:var(--bg2)}
+.art-body{min-width:0;overflow-wrap:break-word}
+
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leonardo.ai — The Complete AI Image Guide">
+<meta name="twitter:description" content="The complete guide to Leonardo.ai — AI image generation for game assets, concept art and consistent characters. Fine-tuning, custom models, 150 free...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Leonardo.ai \u2014 The Complete AI Image Guide", "description": "The complete guide to Leonardo.ai \u2014 AI image generation for game assets, concept art and consistent characters. Fine-tuning, custom models, 150 free...", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/images-design/leonardo/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Specialist Tools", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/"}, {"@type": "ListItem", "position": 4, "name": "Images Design", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/images-design/"}, {"@type": "ListItem", "position": 5, "name": "Leonardo.ai \u2014 The Complete AI Image Guide", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/images-design/leonardo/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/ai-atlas/specialist-tools/" class="di">&#128295; Specialist Tools</a>
+    <a href="/ai-atlas/specialist-tools/coding/" class="di" style="padding-left:24px">&#8627; AI for Coding</a>
+    <a href="/ai-atlas/specialist-tools/automation/" class="di" style="padding-left:24px">&#8627; AI for Automation</a>
+    <a href="/ai-atlas/specialist-tools/research-knowledge/" class="di" style="padding-left:24px">&#8627; AI for Research</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    <div style="padding:14px 12px 4px;border-top:1px solid var(--border);margin-top:8px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:.8rem;color:var(--muted)">Theme</span>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</div>
+</header>
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/specialist-tools/">Specialist Tools</a><span class="sep">/</span><a href="/ai-atlas/specialist-tools/images-design/">AI for Images & Design</a><span class="sep">/</span><span>Leonardo.ai</span></nav>
+    <span class="label-tag">AI for Images & Design</span>
+    <h1>Leonardo.ai — The Complete Guide</h1>
+    <p class="hero-lead">Leonardo.ai is an AI image platform built for creative professionals who need more control than a simple text box. Custom model fine-tuning, a library of community-trained style models, character consistency tools, AI Canvas for editing, and one of the most generous free tiers available — 150 images per day. Acquired by Canva in 2024. Used by over 30 million creators.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">AI Image Generation</span><span class="meta-tag mt-gray">Custom model training</span><span class="meta-tag mt-gray">Free: 150 images/day</span><span class="meta-tag mt-gray">Artisan: $24/month (annual)</span><span class="meta-tag mt-gray">Last reviewed: April 2026</span>
+  </div>
+  <div style="margin-top:16px"><a href="https://leonardo.ai" target="_blank" rel="noopener" class="btn-official" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;font-size:.85rem;font-weight:600;padding:10px 20px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Visit Leonardo.ai ↗</a><span style="font-size:.75rem;color:var(--muted);margin-left:10px">leonardo.ai</span></div>
+
+  </div>
+</section>
+<div class="wrap">
+  <div class="art-layout">
+    <div class="art-body">
+      
+
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+        <h2 id="s-green-0">What is Leonardo.ai?</h2>
+        <p>Leonardo.ai is an AI image generation platform particularly strong for game development, concept art, product visualisation and any workflow requiring consistent visual output across many images. Where tools like Midjourney excel at single striking images, Leonardo's strengths are volume, consistency, and control — producing large numbers of images in a consistent style with precise control over settings.</p>
+        <p>The platform launched in 2022 with a focus on game asset creation. It built a model library where the community trains and shares specialised models for different styles — from photorealism to anime to concept art to 3D renders. You choose the model that fits your aesthetic, set your parameters, and generate. This model selection is what makes Leonardo different from single-model tools: you are not fighting a general-purpose model to produce a specific style, you are using a model already trained for that style.</p>
+        <p>Canva acquired Leonardo AI in July 2024, bringing additional resources and the integration of Leonardo's capabilities into Canva's design platform. The standalone Leonardo platform continues to operate independently with its own features and community.</p>
+        <p>The free tier stands out: 150 images per day is substantially more than most competitors offer. For users testing the platform or doing light creative work, this free tier is a genuine production tool.</p>
+
+        <h2 id="s-green-1">What Leonardo does</h2>
+        <p><strong>Text-to-image with model selection</strong> — Choose from dozens of community-trained models optimised for specific styles (Phoenix for photorealism, Anime Pastel Dream for illustration, Absolute Reality for photographic output, DreamShaper for artistic work). Each produces different aesthetic results. Model selection is the primary way to control output style.</p>
+        <p><strong>Custom model training</strong> — Upload 15–20 reference images to train a custom model that generates images in your specific visual style, character or product design. Useful for brand consistency, game character sheets, or replicating a specific artistic look.</p>
+        <p><strong>AI Canvas</strong> — An editing tool for refining generated images: inpainting (edit specific areas), outpainting (extend the image), sketch-to-image (draw a rough sketch and have AI refine it into a polished image).</p>
+        <p><strong>Image guidance</strong> — Use an existing image as style or composition reference. Describe what you want while pointing to a reference image for the overall aesthetic or layout. Useful for producing variations on an existing design direction.</p>
+        <p><strong>Character consistency</strong> — Generate the same character across multiple images and scenarios while maintaining consistent appearance. Particularly valuable for game development, webcomics and brand mascots.</p>
+
+        <h2 id="s-green-2">Who Leonardo.ai is for</h2>
+        <p>Game developers generating assets — characters, environments, weapons, UI elements — at volume. Concept artists producing multiple variations of characters or scenes for client review. Digital illustrators building a large portfolio or working on a sustained creative project. Marketing teams producing high-volume branded image content. Anyone who needs consistent visual style across many images rather than a single striking output.</p>
+
+        <h2 id="s-green-3">Is Leonardo.ai free?</h2>
+        <p>Yes — generously so. The free tier includes 150 images per day using the free model tier. Some premium models consume tokens from a monthly allocation. The token system means very heavy use of premium models requires a paid plan, but for standard usage the free tier is substantial. Artisan is $24 per month billed annually for 8,500 monthly tokens and access to all models including premium ones.</p>
+      </div>
+
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+        <h2 id="s-indigo-0">Getting started with Leonardo.ai</h2>
+        <h3>Step 1 — Sign up at leonardo.ai</h3>
+        <p>Create a free account at leonardo.ai. The free tier is active immediately with 150 daily images. The dashboard shows your generation history, model library and training tools.</p>
+        <h3>Step 2 — Choose a model</h3>
+        <p>This is Leonardo's most important starting step. The Platform Models section lists Leonardo's own models. The Community Models section lists user-trained models. Browse the featured models and look at the example outputs. For photorealistic images, choose Phoenix or Absolute Reality. For game assets and concept art, try Leonardo Diffusion or DreamShaper. For anime/illustration, browse the anime-focused models. The model determines 70% of your output aesthetic.</p>
+        <h3>Step 3 — Write your prompt</h3>
+        <p>Leonardo uses standard Stable Diffusion-style prompting. Describe what you want in detail. Add style descriptors: "hyperrealistic", "cinematic lighting", "4K", "detailed". Use negative prompts to exclude unwanted elements: type in the Negative Prompt field "blurry, low quality, watermark, text, deformed".</p>
+        <h3>Step 4 — Adjust settings</h3>
+        <p>Leonardo gives you more parameter control than most consumer tools. Key settings: Guidance Scale (how closely the AI follows your prompt — higher = more literal), Steps (number of refinement iterations — more steps = more detail but slower), Image Size (various presets and custom), Number of Images (generate 1–8 at once). Start with defaults and adjust based on results.</p>
+        <h3>Step 5 — Refine with AI Canvas</h3>
+        <p>For any generated image that needs adjustment: click Edit in AI Canvas. Use the inpainting brush to select areas to regenerate. Describe what should replace that area. This is faster than regenerating the whole image when only one element needs changing.</p>
+
+        <h2 id="s-indigo-1">14 Leonardo.ai use cases</h2>
+        <h3>Game development assets</h3>
+        <div class="prompt-box"><div class="prompt-label">Character concept sheet</div><div class="prompt-text">A character concept sheet for a [genre — fantasy / sci-fi / modern] game character. Character description: [detailed description — male / female / age / build / clothing / weapons / distinctive features]. Show the character from front, side and back. Same character, consistent design across all three views. Art style: [describe — hand-painted RPG / cel-shaded / realistic]. Clean white background.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Environment concept art</div><div class="prompt-text">[Interior/exterior] environment concept art for a [genre] game. Setting: [describe in detail — ancient ruins in a jungle / futuristic city at night / cosy tavern interior]. Mood: [atmospheric lighting description]. Style: [painterly / photorealistic / stylised]. Wide shot establishing the full environment. Rich detail for use as an art direction reference.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Item and equipment assets</div><div class="prompt-text">A collection of [weapon type / armour pieces / usable items] icons for a game inventory UI. Style: [detailed painted / pixel art / flat icon]. Background: [transparent / dark panel / light panel]. All items at consistent scale and style. Generate [number] variations of [item type].</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <h3>Concept art and illustration</h3>
+        <div class="prompt-box"><div class="prompt-label">Product concept visualisation</div><div class="prompt-text">A product concept visualisation for a [product type] with [describe key design features — curved edges / industrial materials / minimalist form / ergonomic grip]. Show the product in [3/4 view]. Materials: [describe — brushed aluminium / matte plastic / wood grain / glass]. Studio lighting, hero angle. Suitable for client presentation.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Architectural visualisation</div><div class="prompt-text">An architectural concept visualisation of a [building type — residential home / office building / retail space]. Style: [contemporary minimalist / industrial / biophilic]. Key features: [describe — floor-to-ceiling windows / rooftop garden / exposed concrete / green walls]. [Day / night] exterior view. Photorealistic rendering quality.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Character for brand mascot</div><div class="prompt-text">A [friendly / authoritative / playful / professional] mascot character for a [industry] brand called '[Brand name]'. Character type: [animal — fox / owl / bear / robot / abstract shape]. Distinctive features: [describe]. Brand colours: [colour 1] and [colour 2]. Style: [flat vector-friendly / 3D rendered / hand-illustrated]. Show the character in a neutral standing pose.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <h3>Marketing and product imagery</h3>
+        <div class="prompt-box"><div class="prompt-label">Product in a scene</div><div class="prompt-text">A [product] displayed in [describe scene]. Target demographic: [describe]. Style: [lifestyle photography / editorial / commercial clean]. Lighting: [describe]. The product should be the clear subject of the image. [Include / exclude] people. [Describe any specific background or context].</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Social media graphic set</div><div class="prompt-text">Generate [number] social media images on the theme of '[topic or campaign name]'. Consistent style across all: [describe shared visual style — same colour palette, same illustration style, same photographic aesthetic]. Each image should work as a standalone post but look cohesive as a set. Square format 1:1.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+        <div class="prompt-box"><div class="prompt-label">Portrait for avatar or profile</div><div class="prompt-text">A professional portrait for a [describe character or brand representative] to use as a social media avatar. Style: [photorealistic / illustrated / painterly]. Expression: [friendly and approachable / authoritative / creative]. Background: [solid colour / blurred setting / simple gradient]. Circular composition appropriate for avatar cropping.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+
+        <h2 id="s-indigo-2">Tips for Leonardo.ai</h2>
+        <p><strong>Spend time in the model library first.</strong> The single biggest improvement to your outputs is choosing the right model for your style. Browse the featured community models, look at their example outputs, and test the same prompt in 2-3 different models. You will find the model that matches your aesthetic significantly improves results over the default.</p>
+        <p><strong>Use Image Guidance for style consistency.</strong> Upload a reference image of the visual style you want and use it as Image Guidance alongside your text prompt. This is more reliable than trying to describe a style in words, especially for complex artistic aesthetics you want to replicate across multiple generations.</p>
+        <p><strong>Train a custom model for brand or character work.</strong> For any project requiring consistent visual output across many images — a character who appears throughout a game, a product that needs to look the same from every angle, a brand mascot that needs to be usable across all content — train a custom model on 15–20 reference images. The resulting model produces consistent output far more reliably than prompt engineering alone.</p>
+      </div>
+
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+        <h2 id="s-red-0">Technical background</h2>
+        <p>Leonardo.ai was founded in 2022 and acquired by Canva in July 2024. As of 2026, the platform serves over 30 million users according to multiple industry reports. Leonardo builds on Stable Diffusion architecture with additional fine-tuning and custom model infrastructure. The platform's community model library contains thousands of user-trained models covering a wide range of visual styles.</p>
+        <h3>Token system</h3>
+        <p>Leonardo uses a token system where different generation operations consume different amounts of tokens. Free users receive a daily token allocation. Paid plans receive larger monthly allocations. Premium models, higher resolution generations and certain AI Canvas operations consume more tokens than standard generations. Specific credit consumption rates vary by model and settings — check the Leonardo documentation for current rates.</p>
+        <h3>Custom model training</h3>
+        <p>Leonardo's custom model training (called "Dataset Training") lets users fine-tune a model on their own images. The training requires 15–20 reference images, takes approximately 20 minutes, and produces a model that generates new images in the learned style. Per Leonardo's official documentation, trained models can be kept private or shared with the community.</p>
+        <h3>Pricing (verified April 2026)</h3>
+        <ul>
+          <li><strong>Free:</strong> Daily token allocation (~150 standard images), limited premium model access</li>
+          <li><strong>Artisan:</strong> $24/month (annual) — 8,500 monthly tokens, all models, private generations</li>
+          <li><strong>Maestro:</strong> $60/month (annual) — 25,000 tokens, priority generation</li>
+          <li><strong>Enterprise:</strong> Custom — unlimited tokens, dedicated support</li>
+        </ul>
+        <div class="callout callout-deep">
+          <div class="callout-head">Primary sources cited in this guide</div>
+          <ul>
+            <li><a href="https://leonardo.ai" target="_blank" rel="noopener" style="color:var(--indigo)">leonardo.ai</a> — Official platform</li>
+            <li><a href="https://leonardo.ai/pricing" target="_blank" rel="noopener" style="color:var(--indigo)">leonardo.ai/pricing</a> — Official pricing page</li>
+            <li><a href="https://docs.leonardo.ai" target="_blank" rel="noopener" style="color:var(--indigo)">docs.leonardo.ai</a> — Official documentation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Leonardo.ai?</a><a href="#s-green-1">What Leonardo does</a><a href="#s-green-2">Who Leonardo.ai is for</a><a href="#s-green-3">Is Leonardo.ai free?</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Getting started with Leonardo.ai</a><a href="#s-indigo-1">14 Leonardo.ai use cases</a><a href="#s-indigo-2">Tips for Leonardo.ai</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Technical background</a></div></div><div class="sidebar-card"><h4>In this guide</h4><a href="#" class="sidebar-link active" onclick="showLane('green');return false;">What it is — Simple</a><a href="#" class="sidebar-link" onclick="showLane('indigo');return false;">How to use it — Working</a><a href="#" class="sidebar-link" onclick="showLane('red');return false;">Technical detail — Deep</a></div><div class="sidebar-card"><h4>Pricing</h4><a href="https://leonardo.ai/pricing" target="_blank" rel="noopener" class="sidebar-link">Free — 150 images/day</a><a href="https://leonardo.ai/pricing" target="_blank" rel="noopener" class="sidebar-link">Artisan — $24/month (annual)</a><a href="https://leonardo.ai/pricing" target="_blank" rel="noopener" class="sidebar-link">Maestro — $60/month (annual)</a><a href="https://leonardo.ai/pricing" target="_blank" rel="noopener" class="sidebar-link">Enterprise — custom</a></div><div class="sidebar-card"><h4>Related tools</h4><a href="/ai-atlas/specialist-tools/images-design/adobe-firefly/" class="sidebar-link">Adobe Firefly</a><a href="/ai-atlas/specialist-tools/images-design/ideogram/" class="sidebar-link">Ideogram</a><a href="/ai-atlas/specialist-tools/images-design/canva-ai/" class="sidebar-link">Canva AI</a><a href="/ai-atlas/specialist-tools/images-design/stable-diffusion/" class="sidebar-link">Stable Diffusion</a></div><div class="sidebar-card"><h4 style="color:var(--indigo);font-size:.8rem">🔗 Official links</h4><a href="https://leonardo.ai" target="_blank" rel="noopener" class="sidebar-link">leonardo.ai ↗</a><a href="https://leonardo.ai/pricing" target="_blank" rel="noopener" class="sidebar-link">Pricing ↗</a><a href="https://docs.leonardo.ai" target="_blank" rel="noopener" class="sidebar-link">Docs ↗</a></div><div class="sidebar-card"><a href="/ai-atlas/specialist-tools/images-design/" style="display:block;font-size:.82rem;font-weight:600;color:var(--indigo)">← All AI for Images & Design tools</a></div></div>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+function showLane(l){document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});var sec=document.getElementById('lane-'+l);var tab=document.getElementById('tab-'+l);if(sec)sec.classList.add('active');if(tab)tab.classList.add('active');}
+function copyPrompt(btn){var t=btn.previousElementSibling.textContent;navigator.clipboard.writeText(t).then(function(){var o=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent=o;btn.classList.remove('copied');},2000);});}
+document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.lane-tab');if(f)f.click();});
+</script>
+</body>
+</html>

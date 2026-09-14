@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>JavaScript SEO: How Google Crawls and Indexes JS | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript SEO: How Google Crawls and Indexes JS | Digital Codex">
+<meta property="og:description" content="How Googlebot crawls and renders JavaScript, the two-wave indexing delay, dynamic rendering, fixing crawlability issues in React/Vue/Angular, and how...">
+<meta property="og:url" content="https://www.clarigital.com/codex/seo/technical/javascript-seo/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="How Googlebot crawls and renders JavaScript, the two-wave indexing delay, dynamic rendering, fixing crawlability issues in React/Vue/Angular, and how...">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/codex/seo/technical/javascript-seo/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JavaScript SEO: How Google Crawls and Indexes JS","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-04","articleSection":"Technical SEO"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JavaScript SEO: How Google Crawls and Indexes JS | Digital Codex">
+<meta name="twitter:description" content="How Googlebot crawls and renders JavaScript, the two-wave indexing delay, dynamic rendering, fixing crawlability issues in React/Vue/Angular, and how...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Seo", "item": "https://www.clarigital.com/codex/seo/"}, {"@type": "ListItem", "position": 4, "name": "Technical", "item": "https://www.clarigital.com/codex/seo/technical/"}, {"@type": "ListItem", "position": 5, "name": "JavaScript SEO: How Google Crawls and Indexes JS", "item": "https://www.clarigital.com/codex/seo/technical/javascript-seo/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/" class="cur">SEO</a></li><li><a href="/codex/sem/">SEM</a></li><li><a href="/codex/social-media/">Social</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/sem/" class="di">SEM</a><a href="/codex/social-media/" class="di">Social</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/all-guides/" class="di">All Guides</a><a href="/codex/glossary/" class="di">Glossary</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#how-googlebot">How Googlebot Renders JS</a><a class="cnl" href="#two-wave">The Two-Wave Problem</a><a class="cnl" href="#spa-issues">SPA Crawl Issues</a><a class="cnl" href="#dynamic-rendering">Dynamic Rendering</a><a class="cnl" href="#ssr">Server-Side Rendering</a><a class="cnl" href="#testing">Testing JS SEO</a><a class="cnl" href="#common-fixes">Common Fixes</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/seo/">SEO</a><span class="sep">/</span><a href="/codex/seo/">Technical SEO</a><span class="sep">/</span><span class="cur">JavaScript SEO</span></nav>
+  <span class="label-tag">Technical SEO &#183; Session 2, Guide 7</span>
+  <h1>JavaScript SEO &#183; How Google Crawls and Indexes JavaScript</h1>
+  <p class="hero-lead">JavaScript-heavy sites present unique crawling and indexing challenges. Googlebot renders JavaScript but does so in a second wave that can delay indexing by days or weeks. This guide explains Googlebot's rendering pipeline, common JavaScript SEO problems, dynamic rendering as a solution, and how to diagnose JS crawlability with Search Console and Chrome DevTools.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Technical SEO</span><span class="meta-tag mt-gray">2,900 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+  <li>Googlebot's two-wave rendering pipeline and why it causes indexing delays</li>
+  <li>Why client-side rendered SPAs (React, Vue, Angular) are particularly problematic for SEO</li>
+  <li>How dynamic rendering works and when Google recommends it</li>
+  <li>Server-side rendering as the permanent solution for JS SEO problems</li>
+  <li>How to test what Googlebot actually sees using URL Inspection in Search Console</li>
+  <li>Common JavaScript patterns that block crawling and how to fix them</li>
+  <li>How to verify structured data in JavaScript-rendered pages is being indexed</li>
+</ul></div></div>
+
+<div class="chapter" id="how-googlebot">
+<div class="chap-hdr"><h2>How Googlebot Renders JavaScript</h2><button class="share-btn" onclick="copyLink('how-googlebot')">Share</button></div>
+<p>Googlebot crawls web pages using a headless Chromium browser. It can execute JavaScript, fetch resources, and render the DOM — much like a regular user's browser. However, Googlebot's rendering pipeline differs from a real browser in several important ways that affect which content gets indexed.</p>
+<p>Googlebot's Chromium version trails the current stable release. As of 2026, Google uses a version that supports the majority of modern JavaScript syntax (ES2020+) and most Web APIs, but some newer browser APIs are not available. JavaScript that relies on very recent features may fail silently in Googlebot's renderer.</p>
+<div class="callout"><strong>Googlebot does not execute JavaScript that requires user interaction</strong><p>Content that is only revealed after a user click, hover, scroll, or form submission will not be indexed. Googlebot simulates a page load but does not simulate user interactions. Any content behind a JavaScript event handler that requires user action is invisible to Googlebot unless that content also exists in the initial HTML or in an accessible URL.</p></div>
+</div>
+
+<div class="chapter" id="two-wave">
+<div class="chap-hdr"><h2>The Two-Wave Indexing Problem</h2><button class="share-btn" onclick="copyLink('two-wave')">Share</button></div>
+<p>Google's rendering pipeline for JavaScript operates in two phases, known as the two-wave approach. Wave 1 is fast — Googlebot fetches the HTML and indexes the static content immediately. Wave 2 is deferred — the page is added to a rendering queue where JavaScript is executed and the DOM is evaluated. The content discovered in Wave 2 is only indexed after rendering completes.</p>
+<p>The delay between Wave 1 and Wave 2 rendering is variable and unpredictable. Google has disclosed that this delay can range from seconds to days or even weeks during periods of high rendering queue load. This means:</p>
+<ul>
+  <li>New content on a JavaScript-rendered page may take days to appear in Google's index after publication</li>
+  <li>Updates to JS-rendered content (product descriptions, prices, page titles) take longer to propagate to search results</li>
+  <li>Critical SEO elements — title tags, meta descriptions, canonical URLs, hreflang attributes, and structured data — generated by JavaScript may be absent from the index for extended periods</li>
+</ul>
+<div class="insight"><p class="insight-lbl">The two-wave problem applies even if Googlebot can render JS</p><p>A common misconception is that "Googlebot can execute JavaScript, so JS SEO is not a problem." The two-wave delay exists regardless of whether Googlebot can successfully render your JavaScript — it is a function of rendering queue capacity, not rendering capability. Server-rendered HTML bypasses the queue entirely.</p></div>
+</div>
+
+<div class="chapter" id="spa-issues">
+<div class="chap-hdr"><h2>Single-Page Application SEO Problems</h2><button class="share-btn" onclick="copyLink('spa-issues')">Share</button></div>
+<p>Single-page applications (React, Vue, Angular, Svelte with CSR) route page navigation through JavaScript rather than server-side URL changes. Each "page" in a SPA is rendered by JavaScript manipulating the DOM and updating the browser URL via the History API. This architecture creates several specific SEO problems:</p>
+<ul>
+  <li><strong>Blank initial HTML.</strong> A typical create-react-app or Vue CLI SPA delivers HTML containing only a <code>&lt;div id="app"&gt;&lt;/div&gt;</code> placeholder. All content is generated by JavaScript. If Wave 2 rendering fails or is delayed, there is no content to index.</li>
+  <li><strong>Soft navigation title and meta issues.</strong> When a user navigates between SPA routes, the URL changes but no full page reload occurs. If the JavaScript router does not update <code>document.title</code> and meta tags correctly on each route change, all "pages" in the SPA may share the same title and description in Google's index.</li>
+  <li><strong>Infinite scroll and paginated content.</strong> Content loaded by JavaScript on scroll (infinite scroll pagination) is typically not crawled — Googlebot does not simulate scrolling. Use classic pagination with distinct URLs for paginated content that needs to be indexed.</li>
+  <li><strong>JavaScript-generated canonical and hreflang tags.</strong> These must be present in the initial HTML to be reliably indexed. If they are injected by JavaScript after load, they may be missed during Wave 1 and subject to Wave 2 delays.</li>
+</ul>
+</div>
+
+<div class="chapter" id="dynamic-rendering">
+<div class="chap-hdr"><h2>Dynamic Rendering</h2><button class="share-btn" onclick="copyLink('dynamic-rendering')">Share</button></div>
+<p>Dynamic rendering is a server-side workaround: detect when the incoming request is from a crawler (based on the User-Agent header) and serve pre-rendered static HTML; serve the normal JavaScript SPA to regular users. Crawlers receive fast, fully-rendered HTML with no JavaScript dependency. Users receive the full interactive SPA experience.</p>
+<div class="callout orange"><strong>Google considers dynamic rendering a temporary workaround</strong><p>Google's official documentation describes dynamic rendering as an interim solution for sites where implementing server-side rendering is not immediately feasible. Google recommends SSR as the permanent approach. Dynamic rendering is acceptable and effective — but it adds infrastructure complexity (a pre-rendering service like Rendertron or Puppeteer) and requires maintenance as your content changes.</p></div>
+<h3>How to implement dynamic rendering</h3>
+<ol>
+  <li>Deploy a headless browser service (Rendertron, Puppeteer-based, or Prerender.io) that pre-renders your SPA URLs on demand and caches the rendered HTML</li>
+  <li>Configure your reverse proxy (Nginx, CDN edge function) to detect crawler User-Agents and route those requests to the pre-rendering service</li>
+  <li>Configure cache invalidation so the pre-rendered HTML is refreshed when content changes</li>
+  <li>Verify the correct HTML is being served to Googlebot using the URL Inspection tool in Search Console</li>
+</ol>
+</div>
+
+<div class="chapter" id="ssr">
+<div class="chap-hdr"><h2>Server-Side Rendering — The Permanent Solution</h2><button class="share-btn" onclick="copyLink('ssr')">Share</button></div>
+<p>Server-side rendering (SSR) generates the full HTML of each page on the server before sending it to the browser. The browser receives complete, indexable HTML — eliminating the two-wave problem entirely. JavaScript then "hydrates" the HTML to add interactivity. From Google's perspective, SSR pages are indistinguishable from traditional server-rendered HTML pages.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Framework</th><th>SSR Solution</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>React</td><td>Next.js (App Router or Pages Router)</td><td>Industry standard; supports SSR, SSG, ISR, and streaming</td></tr>
+    <tr><td>Vue</td><td>Nuxt.js</td><td>Full-featured SSR framework for Vue; supports static generation</td></tr>
+    <tr><td>Angular</td><td>Angular Universal</td><td>Official Angular SSR solution; integrated into Angular CLI</td></tr>
+    <tr><td>Svelte</td><td>SvelteKit</td><td>Default is SSR; highly performant with minimal JS payload</td></tr>
+    <tr><td>Any framework</td><td>Astro</td><td>Islands architecture; ships zero JS by default; excellent for content sites</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="testing">
+<div class="chap-hdr"><h2>Testing JavaScript SEO</h2><button class="share-btn" onclick="copyLink('testing')">Share</button></div>
+<h3>URL Inspection Tool (Search Console)</h3>
+<p>The URL Inspection tool shows exactly what Googlebot sees when it renders a specific URL — including the rendered HTML after JavaScript execution. Enter a URL, click "Test Live URL", then "View Tested Page" and switch to the "HTML" tab to see the rendered source. This is the single most reliable way to verify what content Googlebot is actually indexing on a JavaScript-rendered page.</p>
+<h3>Chrome DevTools — Disable JavaScript</h3>
+<p>Open DevTools → Settings (F1) → Preferences → Debugger → enable "Disable JavaScript". Reload the page. What you see is approximately what Googlebot's Wave 1 indexes (before JavaScript rendering). If the page is blank or missing key content, those elements depend entirely on JavaScript rendering for indexing.</p>
+<h3>Crawl tools with JavaScript rendering</h3>
+<p>Screaming Frog and Sitebulb support JavaScript rendering in their crawlers. Compare a crawl with JavaScript rendering disabled vs enabled to identify URLs where content differs significantly — these are your highest-priority JavaScript SEO issues.</p>
+</div>
+
+<div class="chapter" id="common-fixes">
+<div class="chap-hdr"><h2>Common JavaScript SEO Fixes</h2><button class="share-btn" onclick="copyLink('common-fixes')">Share</button></div>
+<ul>
+  <li><strong>Move critical meta tags to the initial HTML.</strong> Title, meta description, canonical, hreflang, and Open Graph tags must be in the server-rendered HTML — not injected by JavaScript.</li>
+  <li><strong>Ensure structured data is in the initial HTML.</strong> JSON-LD schema can be generated server-side and included in the <code>&lt;head&gt;</code> of the initial HTML response. Do not rely on JavaScript to inject it after load.</li>
+  <li><strong>Avoid hash-based routing.</strong> URLs like <code>example.com/page#section</code> are treated as the same URL by Google (the fragment is ignored). Use the HTML5 History API (<code>pushState</code>) for clean URLs instead.</li>
+  <li><strong>Return correct HTTP status codes.</strong> A 404 page rendered by JavaScript but served with a 200 HTTP status code is a "soft 404" — Google may index it as valid content. Server-side routing must return the correct status code for each URL.</li>
+  <li><strong>Implement XML sitemap for all JS-rendered URLs.</strong> Help Googlebot discover all indexable URLs rather than relying solely on link discovery through the JavaScript application.</li>
+</ul>
+</div>
+
+<div class="chapter" id="sources"><h2>Authentic Sources</h2><div class="g2"><div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics" target="_blank" rel="noopener">Google Search Central — JavaScript SEO Basics</a></strong><p>How Googlebot handles JavaScript, rendering, and indexing JS-rendered content.</p></div><div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/javascript/dynamic-rendering" target="_blank" rel="noopener">Google Search Central — Dynamic Rendering</a></strong><p>When and how to implement dynamic rendering for JavaScript-heavy sites.</p></div><div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/rendering-on-the-web" target="_blank" rel="noopener">Google web.dev — Rendering on the Web</a></strong><p>SSR, CSR, SSG, hydration — the full rendering pattern taxonomy.</p></div></div></div>
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">GA4 Setup & Configuration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/content-marketing/content-seo-integration/" class="related-card"><span class="rc-tag">Content Marketing</span><span class="rc-title">Content & SEO Integration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/tools-resources/google-search-console-guide/" class="related-card"><span class="rc-tag">Tools</span><span class="rc-title">Google Search Console Guide</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 4 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 2,900 &nbsp;&#183;&nbsp; <strong>Session:</strong> 2 of 16 &nbsp;&#183;&nbsp; <strong>Sources:</strong> Official only</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#how-googlebot" class="sb-link on">How Googlebot Renders JS</a><a href="#two-wave" class="sb-link">Two-Wave Indexing Delay</a><a href="#spa-issues" class="sb-link">SPA Crawl Issues</a><a href="#dynamic-rendering" class="sb-link">Dynamic Rendering</a><a href="#ssr" class="sb-link">Server-Side Rendering</a><a href="#testing" class="sb-link">Testing JS SEO</a><a href="#common-fixes" class="sb-link">Common Fixes</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box"><div class="sb-head">Technical SEO Series</div><div class="sb-body"><a href="/codex/seo/technical/lcp-optimisation/" class="sb-link">1. LCP Optimisation</a><a href="/codex/seo/technical/inp-optimisation/" class="sb-link">2. INP Optimisation</a><a href="/codex/seo/technical/cls-optimisation/" class="sb-link">3. CLS Optimisation</a><a href="/codex/seo/technical/ttfb/" class="sb-link">4. TTFB</a><a href="/codex/seo/technical/page-speed/" class="sb-link">5. Page Speed</a><a href="/codex/seo/technical/schema-markup/" class="sb-link">6. Schema Markup</a><a href="/codex/seo/technical/javascript-seo/" class="sb-link sb-cur">7. JavaScript SEO</a><a href="/codex/seo/technical/ssr-vs-csr/" class="sb-link">8. SSR vs CSR</a><a href="/codex/seo/technical/hreflang/" class="sb-link">9. Hreflang</a><a href="/codex/seo/technical/log-file-analysis/" class="sb-link">10. Log File Analysis</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>600 guides. All authentic sources.</h2><p>Official documentation and academic research only.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A&#8211;Z Glossary</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides on digital marketing. Official sources only.</p></div>
+  <div class="ft-col"><h5>Technical SEO</h5><ul><li><a href="/codex/seo/technical/lcp-optimisation/">LCP</a></li><li><a href="/codex/seo/technical/inp-optimisation/">INP</a></li><li><a href="/codex/seo/technical/cls-optimisation/">CLS</a></li><li><a href="/codex/seo/technical/schema-markup/">Schema</a></li><li><a href="/codex/seo/technical/hreflang/">Hreflang</a></li></ul></div>
+  <div class="ft-col"><h5>SEO</h5><ul><li><a href="/codex/seo/fundamentals/core-web-vitals/">Core Web Vitals</a></li><li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Authentic sources only &#183; No affiliate links</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+</body>
+</html>

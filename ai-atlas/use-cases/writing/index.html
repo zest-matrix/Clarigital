@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI for Writing — Every Type, Every Level | AI Atlas — Clarigital</title>
+<meta name="description" content="Complete guide to AI writing assistance. Business writing, blog posts, emails, creative writing, speeches, technical docs. Prompts for every type,...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/ai-atlas/use-cases/writing/">
+<meta property="og:title" content="AI for Writing — Every Type, Every Level | AI Atlas">
+<meta property="og:description" content="Complete guide to AI writing assistance. Business writing, blog posts, emails, creative writing, speeches, technical docs. Prompts for every type, voice guidance, editing technique.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/use-cases/writing/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzRGNDZFNSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD48L3N2Zz4="><meta name="theme-color" content="#0A0F1E">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI for Writing \u2014 Every Type, Every Level | AI Atlas", "description": "Complete guide to AI writing assistance. Business writing, blog posts, emails, creative writing, speeches, technical docs. Prompts for every type,...", "url": "https://www.clarigital.com/ai-atlas/use-cases/writing/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Use Cases", "item": "https://www.clarigital.com/ai-atlas/use-cases/"}, {"@type": "ListItem", "position": 4, "name": "AI for Writing \u2014 Every Type, Every Level | AI Atlas", "item": "https://www.clarigital.com/ai-atlas/use-cases/writing/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/use-cases/">Use Cases</a><span class="sep">/</span><span>Writing</span></nav>
+    <span class="label-tag">Use Case</span>
+    <h1>AI for Writing — Every Type, Every Level</h1>
+    <p class="hero-lead">AI writing assistance covers everything from a two-line email to a 50,000-word book. The question is not whether AI can help — it is how to use it so the writing stays yours. This guide covers every writing type with specific prompts, the craft of directing AI well, and what genuinely good AI-assisted writing looks like.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">Writing</span><span class="meta-tag mt-gray">~9,400 words</span><span class="meta-tag mt-gray">All levels</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+<h2 id="s-green-0">What AI writing actually is — and is not</h2>
+<p>AI writing tools are not autocomplete. They are not a thesaurus. They do not just suggest the next word. They generate complete, coherent, contextually appropriate text based on your instructions — and they can do it for almost any style, register, or purpose you describe.</p>
+<p>The right mental model: think of AI as a very fast, very well-read first-draft machine. It produces raw material quickly. You bring the judgment, the specific knowledge, the authentic voice, and the editing eye that turns a draft into something genuinely good.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">The most common mistake with AI writing</div>
+  <p style="color:var(--fg);margin:0">Accepting the first output as final. AI writing is almost always usable — but rarely great without a human pass. The best AI-assisted writing is produced by people who treat the AI output as a starting point, not a finished product. Read it. Cut what is generic. Add what is specific to you. Change what sounds wrong. The editing is where the quality comes from.</p>
+</div>
+
+<h2 id="s-green-1">The best AI tools for writing tasks</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 24px">
+  <div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">Claude — claude.ai</div>
+    <p style="font-size:.82rem">Best for: long-form content, careful prose, nuanced editing. Particularly strong at matching a specific voice and maintaining tone across long documents.</p>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">ChatGPT — chat.openai.com</div>
+    <p style="font-size:.82rem">Best for: varied content types, iterative brainstorming, web-connected writing (current references with GPT-4o search).</p>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">Gemini — gemini.google.com</div>
+    <p style="font-size:.82rem">Best for: writing that needs current information, Google Docs integration, research-backed content.</p>
+  </div>
+  <div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">Perplexity — perplexity.ai</div>
+    <p style="font-size:.82rem">Best for: writing that requires factual grounding — journalism, research-backed articles, white papers.</p>
+  </div>
+</div>
+
+<h2 id="s-green-2">The anatomy of a good writing prompt</h2>
+<p>The quality of AI writing output is directly proportional to the quality of your instructions. A good writing prompt gives the AI:</p>
+<ul>
+  <li><strong>Type</strong> — What are you writing? Blog post, email, speech, product description?</li>
+  <li><strong>Audience</strong> — Who is reading it? Age, knowledge level, relationship to you?</li>
+  <li><strong>Purpose</strong> — What should the reader feel, think, or do after reading?</li>
+  <li><strong>Tone</strong> — Formal, casual, authoritative, warm, humorous, urgent?</li>
+  <li><strong>Specifics</strong> — Key points to include, words or phrases to use or avoid, examples to reference</li>
+  <li><strong>Length</strong> — Approximate word count or number of paragraphs</li>
+  <li><strong>Constraints</strong> — SEO keywords, word limits, brand guidelines, style requirements</li>
+</ul>
+
+<div class="prompt-box">
+  <div class="prompt-label">The full-context writing prompt template</div>
+  <div class="prompt-text">Write a [type of content] for [audience]. Purpose: [what you want readers to do / feel / think]. Tone: [describe]. Key points to include: [list]. Do not include: [anything to exclude]. Length: approximately [word count]. Style reference: [any example of writing you want to echo — &#8220;clear and direct like a Financial Times editorial&#8221; / &#8220;warm and personal like a letter from a friend&#8221;].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+</div>
+
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+<h2 id="s-indigo-0">Prompts for every writing type</h2>
+
+<h3>Professional and business writing</h3>
+<div class="prompt-box">
+  <div class="prompt-label">Professional email — any situation</div>
+  <div class="prompt-text">Write a professional email to [recipient / role] about [topic]. Context: [describe the situation and relationship]. My goal: [what I want to achieve — inform / request / persuade / apologise / confirm]. Tone: [formal/professional/warm]. Key points: [list]. The email should be [brief under 150 words / medium / detailed]. Include a clear subject line.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Executive summary</div>
+  <div class="prompt-text">Write an executive summary of [topic / document / project]. The audience is [senior leadership / board / non-specialist]. They have [2-3 minutes to read it]. The summary should: state the situation clearly, identify the key insight or recommendation, support with the 2-3 most important facts, and end with a clear call to action or next step. Maximum [word count]. No jargon.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Business proposal or pitch document</div>
+  <div class="prompt-text">Write a proposal for [what you are proposing] to [audience]. Structure: executive summary, problem statement, our solution, why us, investment / cost, next steps. Key facts: [describe your offering, differentiators, and pricing]. Tone: confident and professional. Length: approximately [word count]. The reader should feel: [what you want them to feel — reassured / excited / clear on the value].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">LinkedIn article or thought leadership post</div>
+  <div class="prompt-text">Write a LinkedIn [article / post] about [topic] for [industry / audience]. My perspective: [your specific angle or opinion on this topic]. Key argument: [describe your main point]. Supporting evidence or examples: [list]. Tone: [authoritative but accessible / conversational and direct]. Length: [post 150-300 words / article 800-1200 words]. The reader should leave thinking [what you want them to think].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>Marketing and content writing</h3>
+<div class="prompt-box">
+  <div class="prompt-label">Blog post — full article</div>
+  <div class="prompt-text">Write a [word count] blog post titled &#8220;[working title]&#8221; for [target audience]. The post should: open with a hook that makes the reader want to continue, cover these key points in order: [list], include [number] practical examples or tips, use subheadings to make it scannable, and end with a strong conclusion plus a call to action to [desired action]. Tone: [conversational / expert / inspiring]. SEO keywords to include naturally: [list].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Email marketing sequence</div>
+  <div class="prompt-text">Write a [number]-email welcome sequence for new subscribers to [brand / product]. Each email should have a purpose: Email 1: warm welcome + key promise. Email 2: deliver immediate value (a tip, resource, or insight). Email 3: share the story behind [brand]. Email 4: social proof and testimonials. Email 5: soft offer / call to action. Tone: [describe brand voice]. Each email: under 250 words, personal, not salesy.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Website homepage copy</div>
+  <div class="prompt-text">Write homepage copy for [brand / product]. What we do: [describe]. Who we serve: [describe target customer]. Our key differentiator: [what makes us different]. Tone: [describe]. Structure: compelling headline, subheadline, 3 key benefit statements, social proof snippet, and primary call to action. Every word should earn its place. No generic marketing language.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Ad copy — multiple variants</div>
+  <div class="prompt-text">Write 5 variants of [ad type — Google / Meta / display] copy for [product / service]. Target audience: [describe]. Key benefit to emphasise: [primary benefit]. Each variant should try a different angle: one on [outcome], one on [pain point], one on [social proof], one on [urgency or scarcity], one on [value or price]. Keep each within [character / word limit] characters.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>Creative writing</h3>
+<div class="prompt-box">
+  <div class="prompt-label">Short story — complete draft</div>
+  <div class="prompt-text">Write a [genre] short story of approximately [word count] words. Protagonist: [describe]. Setting: [describe time and place]. Central conflict: [what is at stake]. The story should: open in the middle of the action, reveal character through dialogue and action rather than description, build to a turning point at the [two-thirds] mark, and end with [a resolution / an ambiguous ending / a twist]. Themes: [describe].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Speech — wedding, eulogy, or event</div>
+  <div class="prompt-text">Write a [wedding speech / eulogy / event speech] for [occasion]. Speaker: [relationship to subject]. Subject: [describe the person or occasion]. Key memories or moments to include: [list specific details — the more specific, the better]. Tone: [warm and humorous / deeply personal / celebratory]. Length: approximately [minutes] to deliver. Should feel like it was written by [relationship], not a professional speechwriter.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Personal essay or memoir excerpt</div>
+  <div class="prompt-text">Help me write a personal essay about [specific experience or memory]. Here are my raw notes and details: [describe the experience in your own words — the more specific the better]. Write it in [first person], with a [reflective / direct / conversational] voice. Start in the middle of the action, not at the beginning of the story. Draw out the meaning without stating it directly. Approximately [word count].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>Technical and specialist writing</h3>
+<div class="prompt-box">
+  <div class="prompt-label">White paper or research report</div>
+  <div class="prompt-text">Write a white paper on [topic] for [audience — industry professionals / general business / technical specialists]. Structure: executive summary, introduction and context, [3-4 main sections on key aspects], implications and recommendations, conclusion. Length: approximately [word count]. Tone: authoritative and evidence-based. Key sources or data to reference: [list what you know]. Please flag where I should insert specific statistics or citations.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Technical documentation</div>
+  <div class="prompt-text">Write technical documentation for [product / system / process]. Audience: [describe — developers / end users / administrators]. Cover: overview and purpose, prerequisites or requirements, step-by-step instructions for [main tasks], troubleshooting common issues, and a reference section. Tone: clear and direct — no unnecessary preamble. Format with numbered steps and code blocks where appropriate.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Report that simplifies complex data</div>
+  <div class="prompt-text">I have this data / findings: [paste or describe]. Write a report that explains it clearly to [non-specialist audience]. Structure: what we measured and why it matters, what the data shows (plain language), what it means practically, and what we recommend doing next. Do not use jargon. Every technical term should be explained when first used. Approximately [word count].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>Editing and improving existing writing</h3>
+<div class="prompt-box">
+  <div class="prompt-label">Comprehensive editorial review</div>
+  <div class="prompt-text">Review and improve this piece of writing: [paste text]. I want feedback and revised version covering: clarity (is every sentence clear?), structure (does it flow logically?), concision (what can be cut?), tone (is it consistent and appropriate for [audience]?), and impact (does the opening hook and the ending land?). Show me the improved version alongside your key editorial notes.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Adjust reading level</div>
+  <div class="prompt-text">Rewrite this text so it is accessible to [a 12-year-old / someone without specialist knowledge / a non-native English speaker]. Keep all the key information. Replace jargon with plain language. Break long sentences into shorter ones. Aim for a [simple and friendly / clear and direct] reading experience. [Paste original text]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">Tighten and cut</div>
+  <div class="prompt-text">This piece is [word count] words and needs to be [target word count] words. Cut it without losing any essential meaning or important information. Prioritise: removing redundant phrases, cutting throat-clearing at the start, combining short sentences, and removing examples that are illustrative but not essential. Show me the cut version and note the total reduction. [Paste text]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+</div>
+
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+<h2 id="s-red-0">The craft of AI-assisted writing</h2>
+
+<h3>Voice — the hardest thing to get right</h3>
+<p>Generic AI writing has a recognisable quality: competent but characterless. It uses certain stock phrases (&#8220;dive into,&#8221; &#8220;in conclusion,&#8221; &#8220;it is worth noting&#8221;), builds arguments in predictable structures, and lacks the specific detail and perspective that make writing distinctive. The gap between adequate AI writing and genuinely good AI-assisted writing is almost entirely about voice and specificity.</p>
+<p>The most effective technique: give AI examples of writing you want to emulate. Not just a description — actual examples. Paste in 2-3 paragraphs from a writer whose voice you admire and ask the AI to study the style before producing its output. The difference is significant.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Teaching AI your voice</div>
+  <div class="prompt-text">Here are three examples of writing I want you to emulate: [paste 3 paragraphs of writing in your target voice]. Study the sentence length, the rhythm, the vocabulary level, the use of specific detail vs abstraction, and the overall personality. Now write [task] in this style. Tell me what stylistic choices you are making before you start.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>Specificity is everything</h3>
+<p>Generic prompts produce generic writing. The more specific your instructions — specific audience, specific point of view, specific examples to include, specific things to avoid — the more specific and therefore better the output. The question to ask about every prompt you write: what specific detail am I not giving the AI that would make this better?</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Maximum specificity rewrite prompt</div>
+  <div class="prompt-text">I am going to give you a lot of specific context before you write anything. Read it all first. The piece I want: [type]. Audience: [specific description — not &#8220;general audience&#8221; but a specific person]. Purpose: [specific outcome]. Voice: [specific description or example]. Facts and details to include: [list everything specific]. Things to avoid: [list]. Structure: [describe exactly]. Once you have read all of this, ask me any clarifying questions before you start writing.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>The iterative approach</h3>
+<p>The best AI-assisted writing is rarely produced in a single prompt. It is produced through iteration: a first draft, feedback, revision, more feedback, polish. Treating AI as a one-shot machine produces one-shot quality. Treating it as a collaborator you direct through multiple rounds produces genuinely good work.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Directed iteration</div>
+  <div class="prompt-text">That draft is [percentage]% there. Specific issues: 1) The opening paragraph does not hook — try a different approach. 2) The third section feels rushed — expand it with a concrete example. 3) The conclusion states the obvious — find a less expected ending. 4) The tone shifts in paragraph 4 — make it consistent throughout. Revise with these specific changes only. Do not change what is working.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>When to use AI vs when to write yourself</h3>
+<p>A useful framework: use AI most heavily for content where structure and information matter more than voice (business documents, technical writing, standard communications). Use AI as a collaborator for content where voice matters (personal essays, thought leadership, creative work). Write yourself first, then use AI for feedback and editing, when the writing is deeply personal or requires your specific knowledge (memoir, expert analysis, personal statements).</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">The honest note on AI detection</div>
+  <p style="color:var(--fg);margin:0">AI writing detection tools are unreliable — they produce false positives and false negatives. More importantly, heavily edited AI output is effectively impossible to detect. The ethical question is not &#8220;will this be detected&#8221; but &#8220;does this represent something I genuinely produced?&#8221; In professional contexts, the answer to that question matters for your reputation and your actual development as a writer.</p>
+</div>
+</div>
+
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What AI writing actually is — and is not</a><a href="#s-green-1">The best AI tools for writing tasks</a><a href="#s-green-2">The anatomy of a good writing prompt</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Prompts for every writing type</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">The craft of AI-assisted writing</a></div></div>
+  <div class="sidebar-card"><h4>Best AI for writing</h4>
+    <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude — long-form and voice</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="sidebar-link">ChatGPT — varied content</a>
+    <a href="/ai-atlas/tools/gemini/" class="sidebar-link">Gemini — research-backed</a>
+    <a href="/ai-atlas/tools/perplexity/" class="sidebar-link">Perplexity — factual writing</a>
+  </div>
+  <div class="sidebar-card"><h4>Other use cases</h4>
+    <a href="/ai-atlas/use-cases/presentations/" class="sidebar-link">AI for Presentations</a>
+    <a href="/ai-atlas/use-cases/research/" class="sidebar-link">AI for Research</a>
+    <a href="/ai-atlas/use-cases/images/" class="sidebar-link">AI for Images</a>
+    <a href="/ai-atlas/use-cases/video/" class="sidebar-link">AI for Video</a>
+  </div>
+</div>
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),
+      drawer=document.getElementById('navDrawer'),
+      close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+// Lane switcher
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+
+}
+// Copy prompt
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent=orig;},2000);
+  });
+}
+// Init first lane on page load
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

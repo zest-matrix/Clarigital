@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Notion AI — The Complete Guide | Clarigital AI Atlas</title>
+<meta name="description" content="The complete Notion AI guide — AI built into your knowledge workspace. History, Q&A over workspace, 20 prompts, RAG architecture, and privacy details....">
+<link rel="canonical" href="/ai-atlas/tools/notion-ai">
+<meta property="og:title" content="Notion AI — The Complete Guide">
+<meta property="og:description" content="The complete Notion AI guide — AI built into your knowledge workspace. History, Q&A over workspace, 20 prompts, RAG architecture, and privacy details. Official sources.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/tools/notion-ai">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Notion AI \u2014 The Complete Guide", "description": "The complete Notion AI guide \u2014 AI built into your knowledge workspace. History, Q&A over workspace, 20 prompts, RAG architecture, and privacy details....", "url": "https://www.clarigital.com/ai-atlas/tools/notion-ai", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Tools", "item": "https://www.clarigital.com/ai-atlas/tools/"}, {"@type": "ListItem", "position": 4, "name": "Notion AI \u2014 The Complete Guide", "item": "https://www.clarigital.com/ai-atlas/tools/notion-ai/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/tools/">Tools</a><span class="sep">/</span><span>Notion AI</span></nav>
+    <span class="label-tag">AI Productivity Tool</span>
+    <h1>Notion AI — The Complete Guide</h1>
+    <p class="hero-lead">AI built into the world's most popular knowledge management tool. Write, summarise, brainstorm, and organise — all without leaving your workspace. History, what it does, how to use it effectively, 20 prompts, and technical context. Three reading levels. Official sources only.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Notion AI</span>
+      <span class="meta-tag mt-gray">~8,400 words</span>
+      <span class="meta-tag mt-gray">Updated April 2026</span>
+    
+  </div>
+  <div style="margin-top:16px"><a href="https://www.notion.so" target="_blank" rel="noopener" class="btn-official" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;font-size:.85rem;font-weight:600;padding:10px 20px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Visit Notion AI ↗</a><span style="font-size:.75rem;color:var(--muted);margin-left:10px">notion.so</span></div>
+
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<!-- SIMPLE -->
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+<h2 id="s-green-0">What is Notion AI?</h2>
+<p>Notion is a popular app for taking notes, managing projects, building wikis, and organising information. Millions of people — students, teams, freelancers, companies — use it as their central &#8220;second brain.&#8221; Notion AI is the AI assistant built directly into Notion.</p>
+<p>Instead of switching to ChatGPT, copying and pasting, then switching back — Notion AI lives inside your documents. You are writing a meeting note and need to summarise it? Press space, ask AI. Writing a project plan and stuck on the risks section? Ask AI in the same document. Everything stays in one place.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">A student using Notion AI for the first time</div>
+  <p style="color:var(--fg);margin:0">She takes rough lecture notes in Notion — incomplete sentences, bullet points, things she didn&#8217;t fully understand. After class, she selects all her notes, presses the AI button, and asks: &#8220;Summarise these notes into clear study points. Identify any concepts I seem uncertain about and explain them.&#8221;<br><br>
+  Two minutes later, her messy lecture notes are a clean, organised study guide — still in Notion, ready to revise from. She didn&#8217;t have to copy anything anywhere. The notes, the summary, and the explanations are all in the same page.</p>
+</div>
+
+<h2 id="s-green-1">Who made Notion and Notion AI?</h2>
+<p>Notion was founded in 2013 by <strong>Ivan Zhao</strong> and <strong>Simon Last</strong>. The company is based in San Francisco. By 2024, Notion had over 35 million users across individuals and businesses. It has raised over $330 million in funding and was valued at $10 billion at its 2021 fundraise.</p>
+<p>Notion AI launched in alpha in November 2022 — the same week as ChatGPT. It became generally available in February 2023. Notion AI is powered by models from OpenAI and Anthropic — Notion is a customer of both APIs, using them as the underlying AI engines while building the Notion-specific interface and features on top.</p>
+
+<h2 id="s-green-2">The history of Notion and Notion AI</h2>
+
+<h3>2013–2018: Building the foundation</h3>
+<p>Ivan Zhao and Simon Last had a specific vision: a single tool that replaced the chaotic collection of Google Docs, spreadsheets, task managers, wikis, and note-taking apps that most teams and individuals juggle. Notion&#8217;s &#8220;block&#8221; architecture — where every piece of content (text, table, image, checklist, embed) is a block that can be placed anywhere — made it extraordinarily flexible.</p>
+<p>Growth was slow at first. The product was complex and had a steep learning curve. But a passionate community developed — people who found that Notion solved their organisational problems in ways nothing else could.</p>
+
+<h3>2019–2021: Explosive growth</h3>
+<p>Notion grew from startup curiosity to mainstream productivity tool. Teams adopted it as a company wiki and project manager. Students used it for university notes. Freelancers built client portals in it. The Notion template community — thousands of pre-built page templates shared freely — dramatically lowered the barrier to getting started. By 2021, Notion had millions of users and a $10 billion valuation.</p>
+
+<h3>November 2022: Notion AI alpha</h3>
+<p>Notion launched an AI alpha in November 2022, just as ChatGPT arrived. The timing was fortunate: interest in AI writing tools was at a peak, and Notion AI&#8217;s integration directly into the workspace made it a compelling proposition compared to using a separate AI tool.</p>
+<p>Early features: writing assistance, summarisation, translation, and simple Q&A over page content. Users immediately found it useful for the tasks they were already doing in Notion.</p>
+
+<h3>February 2023: General availability</h3>
+<p>Notion AI became available to all Notion users as an add-on for $10 per person per month. The backlash from some users was immediate — adding AI to an already-paid productivity tool felt like double-charging. Notion eventually included AI in the Notion Plus plan, making it more accessible.</p>
+
+<h3>2023–2024: Notion AI Q&A and deeper integration</h3>
+<p>The most significant Notion AI feature came with Q&A — the ability to ask questions about your entire Notion workspace. Not just the current page. All your notes, documents, projects, databases — searchable and queryable in natural language. &#8220;What did we decide about the logo at the last design review?&#8221; Notion AI searches your workspace and answers from your actual content, with references to the specific pages it drew from.</p>
+<p>This transformed Notion AI from a writing assistant into a genuine knowledge retrieval system — something no standalone AI tool could offer without access to your specific documents.</p>
+
+<h3>2025–2026: Notion AI as a full-stack knowledge tool</h3>
+<p>Notion AI expanded to include meeting notes (auto-generate structured notes from transcripts), action item extraction, automated database filling, and integration with external tools. Notion became increasingly positioned as an &#8220;AI-native&#8221; workspace — one where AI was a first-class participant in how knowledge was captured, organised, and retrieved.</p>
+
+<h2 id="s-green-3">What Notion AI can do — practical examples</h2>
+
+<h3>1. In-document writing assistance</h3>
+<p>While writing any Notion page, press the spacebar on an empty line to invoke AI. Describe what you want: &#8220;Write the introduction to a project proposal about [topic]&#8221; or &#8220;Continue this paragraph&#8221; or &#8220;Make this more concise.&#8221;</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Writing in Notion</div>
+  <div class="prompt-text">Write a [document type — project brief / meeting agenda / proposal / report section] about [topic]. Audience: [describe]. The key points to cover are: [list them]. Tone: [professional/casual/persuasive]. Keep it concise and well-structured.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>2. Summarise any page</h3>
+<p>Select text on any page (or the whole page), click the AI button, and choose &#8220;Summarise.&#8221; Instantly get a condensed version. Useful for long meeting notes, dense research pages, or any document you want to quickly understand.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Summarise and extract actions</div>
+  <div class="prompt-text">Summarise this content in 3-5 bullet points. Then list all action items with the person responsible and deadline. Then identify any decisions that were made. Finally, flag anything that needs follow-up but was left unresolved.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>3. Ask questions about your workspace</h3>
+<p>The Q&A feature searches your entire Notion workspace. Ask: &#8220;What is our refund policy?&#8221; — Notion AI finds the relevant page in your company wiki and answers. Ask: &#8220;What were the key decisions from last quarter&#8217;s strategy meetings?&#8221; — it searches your meeting notes and reports back.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">Why Q&A is genuinely different</div>
+  <p style="color:var(--fg);margin:0">Every team has documents nobody reads. Policies buried in a wiki. Decisions made in meetings that get forgotten. Meeting notes with action items that get lost. Notion AI Q&A makes all of that findable and queryable again. It is like having a colleague who has read every single document in your shared drive and can tell you what any of them say.</p>
+</div>
+
+<h3>4. Translate content</h3>
+<p>Select any text in Notion and ask AI to translate it. Supports most major languages. Useful for teams with international members or for content that needs to reach multiple language audiences.</p>
+
+<h3>5. Fix writing</h3>
+<p>Select any text and ask AI to &#8220;Improve writing,&#8221; &#8220;Fix spelling and grammar,&#8221; &#8220;Make it shorter,&#8221; or &#8220;Make it more professional.&#8221; The AI revises in place — no copy-pasting required.</p>
+
+<h2 id="s-green-4">Getting started with Notion AI</h2>
+<ol style="margin:1rem 0 1.4rem 1.4rem;color:var(--muted)">
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Go to <strong style="color:#F1F5F9">notion.so</strong> and create a free account</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Create a new page and start typing some notes</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Press <strong style="color:#F1F5F9">Space</strong> on a new line to invoke Notion AI</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Or select existing text and click the AI icon that appears</li>
+  <li style="line-height:1.7;font-size:.97rem">Notion AI is included in the Plus plan ($16/month) or available as an add-on ($10/month on the free plan)</li>
+</ol>
+
+<h2 id="s-green-5">Pricing</h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 24px">
+  <div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">Free + AI add-on</div>
+    <p style="font-size:.82rem;color:var(--muted)">Free Notion plan + $10/month for AI. Good for individuals.</p>
+  </div>
+  <div style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#10B981;margin-bottom:6px;text-transform:uppercase">Plus — $16/month</div>
+    <p style="font-size:.82rem;color:var(--muted)">Notion Plus includes AI. Best for individuals who use Notion regularly.</p>
+  </div>
+  <div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:14px">
+    <div style="font-size:.7rem;font-weight:700;color:#6366F1;margin-bottom:6px;text-transform:uppercase">Business — $15/user/mo</div>
+    <p style="font-size:.82rem;color:var(--muted)">Per-user team pricing. AI included. Collaboration and admin features.</p>
+  </div>
+</div>
+<p><em>Source: <a href="https://www.notion.so/pricing" target="_blank" style="color:#6366F1">notion.so/pricing</a> — April 2026</em></p>
+</div>
+
+<!-- WORKING -->
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+<h2 id="s-indigo-0">Building a Notion AI workflow</h2>
+<p>The highest-value Notion AI users integrate it into every stage of their information workflow — capturing, processing, and retrieving knowledge without friction. Here is how that looks in practice.</p>
+
+<div class="callout callout-tip">
+  <div class="callout-head">The knowledge workflow Notion AI enables</div>
+  <p style="color:var(--fg);margin:0"><strong>Capture</strong> — Take rough notes during meetings, paste in articles, dump ideas quickly<br>
+  <strong>Process</strong> — Ask AI to summarise, structure, extract actions, and improve<br>
+  <strong>Store</strong> — Organised content lives in your Notion database<br>
+  <strong>Retrieve</strong> — Use Q&A to find anything you have stored, in natural language<br><br>
+  This loop means you spend less time organising and more time thinking.</p>
+</div>
+
+<h2 id="s-indigo-1">20 high-value prompts for Notion AI</h2>
+
+<div class="prompt-box">
+  <div class="prompt-label">1. Turn rough notes into a structured document</div>
+  <div class="prompt-text">I have rough notes below. Please organise them into a clear, structured document with: a brief summary at the top, key points organised under logical headings, any action items pulled out into a separate list, and any unanswered questions highlighted. Here are the notes: [paste notes]</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">2. Create a project brief</div>
+  <div class="prompt-text">Write a project brief for [project name]. Include: project overview (2-3 sentences), objectives (what success looks like), scope (what is and is not included), key stakeholders, timeline overview, resources required, risks to flag, and next steps. The project is: [describe it].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">3. Weekly planning template</div>
+  <div class="prompt-text">Create a weekly planning template for a [role/type of work]. Include sections for: weekly priorities (top 3), daily task planning (Mon–Fri), meetings and key commitments, things to follow up on, end-of-week reflection prompts, and carryovers to next week. Make it practical and fast to fill in.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">4. Meeting notes → action items</div>
+  <div class="prompt-text">These are my meeting notes: [paste notes]. Extract: every action item (what needs to be done), who is responsible for each one, the deadline if mentioned, and any decisions made during the meeting. Format as a clean table: Action | Owner | Deadline | Status.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">5. OKR / goal framework</div>
+  <div class="prompt-text">Help me write OKRs for [team/individual/quarter]. The main focus area is [describe]. Draft 3 Objectives, each with 3-4 Key Results. Key Results should be measurable and specific — not vague aspirations. Base them on: [describe your context and goals].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">6. Brainstorm and organise ideas</div>
+  <div class="prompt-text">I need to brainstorm ideas for [topic/challenge/opportunity]. Generate 15 ideas ranging from obvious and safe to creative and ambitious. Then organise them into 3 clusters based on their type or approach. For each cluster, identify the most promising idea and explain why.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">7. Company wiki page</div>
+  <div class="prompt-text">Write a wiki page explaining [process, policy, or concept] for new team members. Assume they are smart but know nothing about our specific context. Include: what this is, why it matters, how it works step by step, common questions, who to contact for more information, and related pages [list any]. Tone: clear and welcoming.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">8. Improve existing writing</div>
+  <div class="prompt-text">Improve the following text: [paste text]. Make it: clearer, more direct, better structured, and free of jargon. Keep the same meaning and all the key information. Show me the improved version and briefly note the main changes you made.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">9. Decision log</div>
+  <div class="prompt-text">Help me write a decision log entry for the following decision: [describe the decision]. Include: the decision made, the context and background, the options considered, the reasons for choosing this option, risks or downsides acknowledged, who made the decision and when, and how to revisit if needed.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">10. Study guide from content</div>
+  <div class="prompt-text">Turn the following content into a study guide: [paste notes or article]. Include: a clear summary of the main concept, key terms and their definitions, the most important points to remember, common misconceptions to avoid, and 5 self-test questions at the end.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">11. Job posting draft</div>
+  <div class="prompt-text">Write a job posting for [role] at [type of company]. The role involves: [key responsibilities]. We are looking for someone who: [key qualities and experience]. What we offer: [benefits, culture, opportunity]. Tone: [professional/startup-casual/welcoming]. Make it appealing to strong candidates without sounding desperate or using corporate clichés.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">12. Retrospective / post-mortem template</div>
+  <div class="prompt-text">Create a retrospective document template for [type of project or sprint]. Include sections for: what went well (with space for examples), what could be improved, what we will do differently next time, action items with owners, and a rating or NPS section for the team to score how the project went overall.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">13. Competitive analysis page</div>
+  <div class="prompt-text">Create a competitive analysis template comparing [our product/service] to [list competitors]. For each competitor include: their core offering, target audience, pricing model, key strengths, key weaknesses, and how they differentiate. Add a summary section at the top ranking them by threat level and noting our key advantages.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">14. Personal development plan</div>
+  <div class="prompt-text">Help me build a personal development plan for the next 6 months. My current role: [describe]. My goals: [describe]. Skills I want to develop: [list]. Create a structured plan with: quarterly milestones, specific actions for each skill area, recommended resources (books, courses, experiences), and how to measure progress.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">15. SOP (Standard Operating Procedure)</div>
+  <div class="prompt-text">Write a Standard Operating Procedure for [process]. Include: purpose of this SOP, when to use it, step-by-step instructions (numbered, precise), what to do if something goes wrong, who is responsible for each step, how often to review this SOP, and any tools or resources needed. Audience: new team members.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">16. Q&A over workspace — finding past decisions</div>
+  <div class="prompt-text">[Use Notion AI Q&A] What did we decide about [specific topic] and when? Which pages contain information about [project or policy]? What are all the open action items assigned to [person] across our workspace?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">17. Research brief</div>
+  <div class="prompt-text">Write a research brief for [research topic]. Include: the research question we are trying to answer, why this matters for [context], what we already know (I will fill this in), what we need to find out, proposed research methods, timeline, and how we will use the findings. Leave placeholders where I need to add specific information.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">18. User persona</div>
+  <div class="prompt-text">Create a user persona for [product/service]. The persona should represent [target user type]. Include: name and demographic overview, their primary goals, the challenges they face that our product helps with, how they currently solve this problem (before using us), what success looks like for them, and a quote that captures their mindset.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">19. Newsletter content plan</div>
+  <div class="prompt-text">Plan a month of newsletter content for [audience and topic]. Each issue should have: a main theme, a primary article idea with angle, a secondary item (tip, tool, resource, or question), and a call to action. Create 4 issues for the month, each with a distinct angle that provides genuine value to [describe audience].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">20. End-of-day reflection</div>
+  <div class="prompt-text">Based on these notes from my day: [paste daily notes]. Help me write a brief end-of-day reflection covering: what I accomplished today, what I didn&#8217;t finish and why, the most important thing I learned, one thing I&#8217;d do differently, and my top priority for tomorrow. Keep it concise — this is for my own reference.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+</div>
+
+<!-- DEEP -->
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+<h2 id="s-red-0">Technical architecture: Notion AI and RAG over your workspace</h2>
+<p>Notion AI&#8217;s architecture combines two distinct capabilities: direct in-context AI assistance (for writing, editing, and transforming content on the current page) and retrieval-augmented generation over the user&#8217;s workspace (for Q&A).</p>
+
+<h3>In-context generation</h3>
+<p>For writing assistance tasks — generating content, improving text, summarising the current page — Notion passes the relevant page content and user instructions to a language model (powered by OpenAI and Anthropic APIs). The model generates responses which are inserted directly into the Notion document. Notion&#8217;s system prompt instructs the model on how to handle Notion-specific content types (blocks, databases, properties) and maintain appropriate formatting.</p>
+
+<h3>Workspace Q&A: RAG over Notion content</h3>
+<p>The Q&A feature implements retrieval-augmented generation over the user&#8217;s entire Notion workspace. Notion maintains a vector index of the user&#8217;s workspace content — each block, page, and database entry is embedded into a vector representation. When a Q&A query is submitted, Notion&#8217;s retrieval system finds the most semantically relevant content chunks, passes them as context to the language model, and generates an answer grounded in the user&#8217;s actual documents with references to the source pages.</p>
+<p>This is architecturally similar to enterprise RAG systems (like Microsoft&#8217;s Copilot over SharePoint) but scoped to the individual user&#8217;s Notion workspace. The key challenge is maintaining index freshness — ensuring the vector index stays current as users continuously add and edit content.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Official source</div>
+  <p style="color:var(--fg);margin:0">Notion (2023). &#8220;Introducing Notion AI.&#8221; Notion Blog. <a href="https://www.notion.so/blog/notion-ai" target="_blank" style="color:#EF4444">notion.so/blog/notion-ai</a><br><br>
+  Notion AI Q&A technical overview: <a href="https://www.notion.so/help/notion-ai" target="_blank" style="color:#EF4444">notion.so/help/notion-ai</a></p>
+</div>
+
+<h3>Model selection</h3>
+<p>Notion uses both OpenAI and Anthropic models depending on the task — writing assistance tasks may use GPT-4o; analysis tasks may use Claude. Notion does not publicly specify which model handles which task, and this may change over time as models improve and pricing evolves.</p>
+
+<h3>Privacy and data</h3>
+<p>Notion&#8217;s AI data processing agreement specifies that workspace content processed through Notion AI is not used to train AI models, consistent with enterprise data handling expectations. For enterprise customers, Notion offers additional data residency and security controls. Full privacy details: <a href="https://www.notion.so/notion/Notion-s-Privacy-and-Security-Overview-for-Notion-AI-1a0ed44c2ab7803ca0dfd9e7c3db4e96" target="_blank" style="color:#6366F1">notion.so privacy overview</a></p>
+</div>
+
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Notion AI?</a><a href="#s-green-1">Who made Notion and Notion AI?</a><a href="#s-green-2">The history of Notion and Notion AI</a><a href="#s-green-3">What Notion AI can do — practical examples</a><a href="#s-green-4">Getting started with Notion AI</a><a href="#s-green-5">Pricing</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Building a Notion AI workflow</a><a href="#s-indigo-1">20 high-value prompts for Notion AI</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Technical architecture: Notion AI and RAG over your worksp</a></div></div>
+  <div class="sidebar-card">
+    <h4>Quick facts</h4>
+    <div style="font-size:.82rem;color:var(--muted);line-height:1.7">
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">Notion Labs</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>AI launched</span><span style="color:var(--fg);font-weight:500">Feb 2023</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>AI engine</span><span style="color:var(--fg);font-weight:500">OpenAI + Anthropic</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Free tier</span><span style="color:#10B981;font-weight:500">Yes (Notion)</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Plus (incl. AI)</span><span style="color:var(--fg);font-weight:500">$16/month</span></div>
+    </div>
+  </div>
+  <div class="sidebar-card">
+    <h4>Official sources</h4>
+    <a href="https://www.notion.so" class="sidebar-link" target="_blank">notion.so</a>
+    <a href="https://www.notion.so/help/notion-ai" class="sidebar-link" target="_blank">Notion AI help</a>
+    <a href="https://www.notion.so/pricing" class="sidebar-link" target="_blank">Pricing</a>
+    <a href="https://www.notion.so/blog/notion-ai" class="sidebar-link" target="_blank">AI launch blog</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Compare productivity AI</h4>
+    <a href="/ai-atlas/tools/copilot-365/" class="sidebar-link">Copilot in Microsoft 365</a>
+    <a href="/ai-atlas/tools/gemini-workspace/" class="sidebar-link">Gemini in Google Workspace</a>
+    <a href="/ai-atlas/tools/copilot/" class="sidebar-link">Microsoft Copilot</a>
+  </div>
+</div>
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  // Lane tabs
+  var tabs=[];
+  var sections=[];
+  function showLane(color){
+    tabs.forEach(function(t){t.classList.toggle('active',t.id==='tab-'+color);});
+    sections.forEach(function(s){s.classList.toggle('active',s.id==='lane-'+color);});
+  }
+  window.showLane=showLane;
+  // Default active tab
+  var first=document.querySelector('.lane-tab');
+  if(first){var m=first.id.match(/tab-(\w+)/);if(m)showLane(m[1]);}
+  // Prompt copy
+  window.copyPrompt=function(btn){
+    var text=btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+      setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},1800);
+    });
+  };
+})();
+</script>
+</body>
+</html>

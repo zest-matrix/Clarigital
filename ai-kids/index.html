@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Explorer for Kids | Clarigital</title>
+<meta name="description" content="Practical AI sessions for children aged 7–13 — done with a parent. No theory. Real activities, real thinking, real confidence. Free. Answer 4 questions...">
+<link rel="canonical" href="/ai-kids/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iI0ZGNkIzNSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+QUk8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+:root{--bg:#FFFBF5;--card:#FFFFFF;--coral:#FF6B35;--blue:#0EA5E9;--purple:#7C3AED;--green:#10B981;--amber:#F59E0B;--red:#EF4444;--text:#1E293B;--muted:#64748B;--faint:#94A3B8;--border:#E2E8F0;--shadow:0 2px 12px rgba(0,0,0,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.72;font-size:15.5px;font-weight:400;-webkit-font-smoothing:antialiased}
+a{color:var(--coral);text-decoration:none}
+a:hover{text-decoration:underline}
+.kids-nav{background:#fff;border-bottom:3px solid var(--coral);padding:0 20px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.kids-nav-inner{max-width:960px;margin:0 auto;height:56px;display:flex;align-items:center;justify-content:space-between}
+.kids-logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:1.05rem;color:var(--text);text-decoration:none}
+.kids-logo-mark{width:34px;height:34px;background:linear-gradient(135deg,var(--coral),var(--purple));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.kids-nav-links{display:flex;gap:4px;flex-wrap:wrap}
+.kids-nav-links a{font-size:.78rem;font-weight:500;color:var(--muted);padding:5px 11px;border-radius:100px;transition:background .15s,color .15s}
+.kids-nav-links a:hover,.kids-nav-links a.active{background:var(--coral);color:#fff;text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* ── HERO ── */
+.hero{padding:56px 20px 20px;text-align:center;max-width:960px;margin:0 auto}
+.hero-eyebrow{display:inline-block;background:linear-gradient(135deg,#FFF0EB,#FFF8F5);border:1.5px solid rgba(255,107,53,.3);border-radius:100px;padding:6px 18px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--coral);margin-bottom:20px}
+.hero h1{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;line-height:1.18;letter-spacing:-.03em;color:var(--text);margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:560px;margin:0 auto 28px;line-height:1.72}
+.hero-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.btn-primary{display:inline-flex;align-items:center;gap:6px;background:var(--coral);color:#fff;font-weight:600;font-size:.92rem;padding:13px 28px;border-radius:100px;text-decoration:none;transition:filter .15s,transform .15s}
+.btn-primary:hover{filter:brightness(1.08);transform:translateY(-1px);text-decoration:none;color:#fff}
+.btn-secondary{display:inline-flex;align-items:center;gap:6px;background:#F1F5F9;color:var(--text);font-weight:600;font-size:.92rem;padding:13px 24px;border-radius:100px;text-decoration:none;transition:background .15s}
+.btn-secondary:hover{background:#E2E8F0;text-decoration:none;color:var(--text)}
+.hero-trust{font-size:.78rem;color:var(--faint);margin-top:8px}
+.hero-trust strong{color:var(--muted)}
+
+/* ── PROOF STRIP ── */
+.proof-strip{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:16px 20px}
+.proof-inner{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
+.proof-item{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--muted)}
+.proof-item strong{color:var(--text);font-weight:600}
+
+/* ── SECTION HEADINGS ── */
+.section{padding:52px 0}
+.section-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);margin-bottom:8px}
+.section h2{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;color:var(--text);margin-bottom:10px;line-height:1.25}
+.section-sub{font-size:.95rem;color:var(--muted);max-width:540px;line-height:1.7;margin-bottom:32px}
+
+/* ── SESSION WALKTHROUGH ── */
+.steps{display:grid;gap:0}
+.step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-num{flex-shrink:0;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#fff}
+.step-body h4{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:4px}
+.step-body p{font-size:.85rem;color:var(--muted);line-height:1.65}
+.step-time{font-size:.72rem;font-weight:600;color:var(--faint);margin-top:3px}
+
+/* ── SAMPLE SESSION CARD ── */
+.sample-card{background:#1E293B;border-radius:16px;padding:24px;color:#E2E8F0;margin:24px 0}
+.sample-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#64748B;margin-bottom:10px}
+.sample-title{font-size:1.1rem;font-weight:700;color:#F1F5F9;margin-bottom:4px}
+.sample-desc{font-size:.85rem;color:#94A3B8;margin-bottom:16px;line-height:1.6}
+.prompt-preview{background:#0F172A;border-radius:10px;padding:13px 16px;font-size:.82rem;color:#94A3B8;font-family:'Courier New',monospace;line-height:1.6;border-left:3px solid var(--coral)}
+
+/* ── TRUST GRID ── */
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.trust-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px}
+.trust-icon{font-size:1.5rem;margin-bottom:10px}
+.trust-card h4{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:5px}
+.trust-card p{font-size:.82rem;color:var(--muted);line-height:1.6}
+
+/* ── WHY NOT YOUTUBE ── */
+.compare-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.compare-table th{padding:10px 14px;background:#F8FAFC;text-align:left;font-weight:600;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+.compare-table td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.compare-table tr:last-child td{border-bottom:none}
+.yes{color:var(--green);font-weight:600}
+.no{color:var(--red);font-weight:600}
+.compare-table tr:hover td{background:#FAFAFA}
+
+/* ── PROGRAMME CARDS ── */
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:14px}
+.prog-card{background:var(--card);border:2px solid var(--border);border-radius:18px;padding:22px 18px;text-align:center;transition:transform .2s,border-color .2s,box-shadow .2s;text-decoration:none;display:block}
+.prog-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);text-decoration:none}
+.prog-card.coral{border-top:5px solid var(--coral)}
+.prog-card.blue{border-top:5px solid var(--blue)}
+.prog-card.purple{border-top:5px solid var(--purple)}
+.prog-card.green{border-top:5px solid var(--green)}
+.prog-icon{font-size:2rem;margin-bottom:10px}
+.prog-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:5px}
+.prog-sub{font-size:.76rem;color:var(--muted);margin-bottom:10px;line-height:1.55;font-weight:400}
+.prog-tag{display:inline-block;font-size:.68rem;font-weight:600;padding:3px 10px;border-radius:100px;background:#F1F5F9;color:var(--muted)}
+
+/* ── QUIZ ── */
+.quiz-container{background:var(--card);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;margin:32px 0}
+.quiz-intro{padding:22px 26px 14px;background:linear-gradient(135deg,#FFF0EB,#FFF8F5);border-bottom:1px solid rgba(255,107,53,.15)}
+.quiz-step{padding:18px 26px;border-top:1px solid var(--border);display:none;animation:fadeIn .3s ease}
+.quiz-step.visible{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.quiz-step.answered{background:#FAFAFA}
+.step-q{font-size:.93rem;font-weight:600;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.q-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:8px}
+.q-opt{background:#F8FAFC;border:2px solid var(--border);border-radius:12px;padding:11px 13px;cursor:pointer;transition:all .18s;text-align:left;user-select:none}
+.q-opt:hover{border-color:var(--coral);background:#FFF5F0}
+.q-opt.selected{border-color:var(--coral);background:#FFF0EB}
+.q-opt-label{font-size:.86rem;font-weight:600;color:var(--text);display:block;margin-bottom:2px}
+.q-opt-desc{font-size:.72rem;color:var(--muted)}
+.result-card{border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.1);margin:20px 0}
+.result-header{padding:22px 26px}
+.result-body{padding:20px 26px}
+.result-note{font-size:.87rem;color:var(--text);line-height:1.7;background:#F8FAFC;border-radius:10px;padding:13px 15px;margin-bottom:12px}
+.weeks-label{font-size:.84rem;color:var(--muted);margin-bottom:14px}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.btn-start{display:inline-flex;align-items:center;padding:10px 22px;border-radius:100px;color:#fff;font-weight:600;font-size:.87rem;text-decoration:none}
+.btn-start:hover{filter:brightness(1.1);text-decoration:none;color:#fff}
+.btn-safety-sm{display:inline-flex;align-items:center;padding:10px 16px;border-radius:100px;background:#F1F5F9;color:var(--muted);font-weight:600;font-size:.83rem;text-decoration:none}
+.btn-safety-sm:hover{background:#E2E8F0;text-decoration:none}
+.btn-redo{background:none;border:none;color:var(--faint);font-size:.78rem;cursor:pointer;font-family:inherit;padding:6px 0;margin-top:14px;display:block}
+.btn-reset{background:none;border:1px solid var(--border);border-radius:100px;padding:4px 11px;font-size:.72rem;color:var(--faint);cursor:pointer;font-family:inherit}
+.checklist-wrap{margin-top:6px}
+.checklist-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+.checklist-header h3{font-size:.9rem;font-weight:600;color:var(--text)}
+.checklist-section{margin-bottom:6px}
+.section-header{padding:7px 11px;background:#F8FAFC;border-radius:8px;margin-bottom:5px}
+.session-row{display:flex;align-items:flex-start;gap:9px;padding:8px 9px;border-radius:10px;transition:background .15s;flex-wrap:wrap}
+.session-row:hover{background:#F8FAFC}
+.session-row.done .session-title{text-decoration:line-through;color:var(--faint)}
+.session-row.skipped{opacity:.55}
+.session-check{flex-shrink:0;margin-top:2px;cursor:pointer}
+.session-check input{display:none}
+.check-box{display:inline-block;width:17px;height:17px;border:2px solid var(--border);border-radius:4px;transition:all .15s;position:relative}
+.check-box::after{content:'✓';position:absolute;top:-1px;left:2px;font-size:11px;color:#fff;opacity:0;transition:opacity .15s}
+.session-row.done .check-box::after{opacity:1}
+.session-link{display:flex;align-items:center;gap:7px;text-decoration:none;flex:1;min-width:0}
+.session-link:hover .session-title{color:var(--coral)}
+.session-num{font-size:.67rem;font-weight:700;padding:2px 7px;border-radius:100px;flex-shrink:0}
+.session-title{font-size:.83rem;font-weight:500;color:var(--text);line-height:1.4}
+.skip-tag{font-size:.63rem;background:#F1F5F9;color:var(--faint);padding:2px 6px;border-radius:100px}
+.safety-pill{font-size:.69rem;color:var(--red);background:#FFF5F5;padding:2px 8px;border-radius:100px;white-space:nowrap;flex-shrink:0;margin-left:auto}
+
+/* ── SAFETY RULES ── */
+.rule-row{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.rule-row:last-child{border-bottom:none}
+.rule-icon{font-size:1.5rem;flex-shrink:0;width:36px;text-align:center}
+.rule-text h4{font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.rule-text p{font-size:.81rem;color:var(--muted);line-height:1.55}
+
+/* ── FOOTER ── */
+.kids-footer{background:#1E293B;color:#64748B;text-align:center;padding:26px 20px;margin-top:60px;font-size:.8rem}
+.kids-footer a{color:#64748B}
+
+/* ── UTILS ── */
+.info-box{background:linear-gradient(135deg,#EEF6FF,#F0F9FF);border:1.5px solid #BAE6FD;border-radius:12px;padding:15px 18px;margin:12px 0;font-size:.86rem;color:var(--text);line-height:1.65}
+.warning-box{background:#FFFBEB;border:1.5px solid var(--amber);border-radius:12px;padding:15px 18px;margin:12px 0;font-size:.86rem;color:var(--text);line-height:1.65}
+.stat-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:18px 0}
+.stat-pill{background:var(--card);border:1.5px solid var(--border);border-radius:100px;padding:6px 14px;font-size:.8rem;font-weight:500;color:var(--muted)}
+.stat-pill strong{color:var(--text);font-weight:600}
+
+/* ── HP CHIP (for quiz prompt chips) ── */
+.hp-chip{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(241,245,249,.1);border-radius:100px;font-size:.78rem;color:rgba(241,245,249,.7);text-decoration:none;transition:background .15s,border-color .15s,color .15s;white-space:nowrap}
+
+@media(max-width:580px){.prog-grid{grid-template-columns:1fr 1fr}.hero h1{font-size:1.75rem}.q-opts{grid-template-columns:1fr 1fr}.kids-nav-links{display:none}.compare-table{font-size:.78rem}}
+.kids-out{opacity:.55;font-weight:500}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Explorer for Kids — Give Your Child a Healthy Relationship with AI">
+<meta property="og:description" content="Practical AI sessions for children aged 7–13 — done with a parent. No theory. Real activities, real thinking, real confidence. Free. Answer 4 questions...">
+<meta property="og:url" content="https://www.clarigital.com/ai-kids/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-kids.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Explorer for Kids — Give Your Child a Healthy Relationship with AI">
+<meta name="twitter:description" content="Practical AI sessions for children aged 7–13 — done with a parent. No theory. Real activities, real thinking, real confidence. Free. Answer 4 questions...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-kids.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI Explorer for Kids \u2014 Give Your Child a Healthy Relationship with AI", "description": "Practical AI sessions for children aged 7\u201313 \u2014 done with a parent. No theory. Real activities, real thinking, real confidence. Free. Answer 4 questions...", "url": "https://www.clarigital.com/ai-kids/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Explorer for Kids \u2014 Give Your Child a Healthy Relationship with AI", "item": "https://www.clarigital.com/ai-kids/"}]}</script>
+</head>
+<body>
+<nav class="kids-nav"><div class="kids-nav-inner"><a href="/ai-kids/" class="kids-logo"><div class="kids-logo-mark">🤖</div><span>AI Explorer</span></a><div class="kids-nav-links"><a href="/ai-kids/" class="active">Home</a><a href="/ai-kids/safety/">Safety</a><a href="/ai-kids/starter/">Starter</a><a href="/ai-kids/explorer/">Explorer</a><a href="/ai-kids/builder/">Builder</a><a href="/ai-kids/monthly/">Monthly</a><a href="/ai-kids/money/">Money</a><a href="/ai-kids/parents/">Parents</a><a href="/" class="kids-out">Clarigital</a></div></div></nav>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- HERO — new positioning                                          -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-eyebrow">AI Explorer — by Clarigital</div>
+  <h1>Your child will grow up<br>using AI.<br><em>Make sure they grow up<br>understanding it.</em></h1>
+  <p class="hero-sub">96 practical sessions for children aged 7–13 — done with a parent or teacher. No theory. No homework. Real activities that build critical thinking, creativity, and a healthy relationship with AI before someone else builds an unhealthy one.</p>
+  <div class="hero-cta-row">
+    <a href="#find-programme" class="btn-primary">Find the right programme →</a>
+    <a href="/ai-kids/starter/session-1/" class="btn-secondary">See Session 1 first</a>
+  </div>
+  <p class="hero-trust"><strong>Free forever</strong> &nbsp;·&nbsp; <strong>No accounts</strong> &nbsp;·&nbsp; <strong>No data collected from your child</strong> &nbsp;·&nbsp; Parent always present</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- PROOF STRIP                                                     -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="proof-strip">
+  <div class="proof-inner">
+    <div class="proof-item"><span style="font-size:1.1rem">🚀</span><span><strong>96 sessions</strong> — Starter, Explorer, Builder + 12 monthly themes</span></div>
+    <div class="proof-item"><span style="font-size:1.1rem">⏱</span><span><strong>25–30 min</strong> per session — fits after school</span></div>
+    <div class="proof-item"><span style="font-size:1.1rem">👧</span><span>For ages <strong>7–13</strong> — three age-appropriate programmes</span></div>
+    <div class="proof-item"><span style="font-size:1.1rem">🛡</span><span>Safety built in to <strong>every single session</strong></span></div>
+    <div class="proof-item"><span style="font-size:1.1rem">💰</span><span><strong>Free forever</strong> — same model as all of Clarigital</span></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- WHAT YOUR CHILD ACTUALLY WALKS AWAY WITH                       -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="wrap">
+<div class="section">
+  <div class="section-label">What this builds</div>
+  <h2>Not AI skills.<br>Thinking skills.</h2>
+  <p class="section-sub">The sessions use AI as the subject matter. The actual skills are something else entirely.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">
+    <div style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:1.6rem;margin-bottom:10px">🧠</div>
+      <h4 style="font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:5px">Critical thinking</h4>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.6">The habit of asking "how do I check this?" before believing what AI — or anyone — tells them.</p>
+    </div><div style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:1.6rem;margin-bottom:10px">🎯</div>
+      <h4 style="font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:5px">Scepticism without cynicism</h4>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.6">Knowing AI makes mistakes without dismissing everything. Understanding what it is good at and bad at.</p>
+    </div><div style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:1.6rem;margin-bottom:10px">✍️</div>
+      <h4 style="font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:5px">Precise communication</h4>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.6">Learning that clearer questions get better answers — a skill that transfers to every conversation.</p>
+    </div><div style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:1.6rem;margin-bottom:10px">🔍</div>
+      <h4 style="font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:5px">Research rigour</h4>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.6">Verifying facts, tracing claims to sources, understanding why "AI said so" is never enough.</p>
+    </div><div style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:1.6rem;margin-bottom:10px">💡</div>
+      <h4 style="font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:5px">Creative confidence</h4>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.6">Using AI as a collaborator without letting it replace their own thinking and voice.</p>
+    </div><div style="background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:20px">
+      <div style="font-size:1.6rem;margin-bottom:10px">🛡</div>
+      <h4 style="font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:5px">Safe independence</h4>
+      <p style="font-size:.82rem;color:var(--muted);line-height:1.6">The instincts and habits to use AI tools throughout their life without being manipulated by them.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- WHAT A SESSION ACTUALLY LOOKS LIKE                             -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="section" style="border-top:1px solid var(--border)">
+  <div class="section-label">How it works</div>
+  <h2>What a session<br>actually looks like.</h2>
+  <p class="section-sub">Every session is 25 minutes. Every session follows the same structure. No preparation needed by the parent — just show up and follow the page.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#F59E0B">1</div>
+        <div class="step-body">
+          <h4>Warm Up</h4>
+          <p>Your child answers a question without AI first — then compares their answer to AI's.</p>
+          <div class="step-time">2 minutes</div>
+        </div>
+      </div><div class="step">
+        <div class="step-num" style="background:#0EA5E9">2</div>
+        <div class="step-body">
+          <h4>The Activity</h4>
+          <p>Follow exact prompts we provide. Copy, paste, read together, discuss.</p>
+          <div class="step-time">15 minutes</div>
+        </div>
+      </div><div class="step">
+        <div class="step-num" style="background:#7C3AED">3</div>
+        <div class="step-body">
+          <h4>The Twist</h4>
+          <p>Deliberately find something AI got wrong. Every session has one.</p>
+          <div class="step-time">5 minutes</div>
+        </div>
+      </div><div class="step">
+        <div class="step-num" style="background:#EF4444">4</div>
+        <div class="step-body">
+          <h4>Safety Moment</h4>
+          <p>One safety rule, read aloud by the parent. Child repeats it back.</p>
+          <div class="step-time">2 minutes</div>
+        </div>
+      </div><div class="step">
+        <div class="step-num" style="background:#10B981">5</div>
+        <div class="step-body">
+          <h4>Badge Earned</h4>
+          <p>Your child earns the session badge. Parent marks it complete.</p>
+          <div class="step-time">1 minute</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sample-card">
+        <div class="sample-label">Example — Session 5: Catch AI Lying</div>
+        <div class="sample-title">🔍 Today your child becomes a fact-checker.</div>
+        <div class="sample-desc">The goal: find 3 things AI gets wrong. It is a competition — parent and child race to spot errors first.</div>
+        <div class="sample-label" style="margin-top:14px">One of the prompts they use</div>
+        <div class="prompt-preview">Count exactly how many times the letter 'r' appears in the word 'strawberry'.</div>
+        <div style="font-size:.76rem;color:#64748B;margin-top:10px;line-height:1.5">AI often miscounts letters. When your child catches it, they see — firsthand — that AI sounds confident even when it is completely wrong. That is the lesson that sticks.</div>
+      </div>
+      <a href="/ai-kids/starter/session-5/" style="display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.83rem;font-weight:600;color:var(--coral)">See the full session 5 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- TRUST SIGNALS                                                   -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="section" style="border-top:1px solid var(--border)">
+  <div class="section-label">Before you ask</div>
+  <h2>The things parents<br>want to know.</h2>
+
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="trust-icon">💰</div>
+      <h4>Why is this free?</h4>
+      <p>Clarigital is an education platform. Everything on it — 534 marketing guides, 80 AI tool guides, this curriculum — is free. No ad model. No subscription. No catch. We believe this information should be accessible.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">🔒</div>
+      <h4>What data is collected?</h4>
+      <p>Nothing from your child. Sessions run entirely in your browser. There are no child accounts, no logins, no forms. Progress is saved locally on your device. We never see it.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">👨‍👩‍👧</div>
+      <h4>Do I need to know about AI?</h4>
+      <p>No. You learn alongside your child. The Parent Notes on each session page tell you exactly what concept is being taught, what questions to ask, and what to watch for. You are not a teacher — you are a co-learner.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">📱</div>
+      <h4>What device do we need?</h4>
+      <p>Any device with a browser — laptop, tablet, or phone. A laptop or tablet is easiest so you can sit side by side. Your child should never use the device alone during sessions.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">🤖</div>
+      <h4>Which AI tool do we use?</h4>
+      <p>ChatGPT (free, no login needed for basic use) or Claude.ai. You use your own account — never create one in your child's name. The sessions work with either tool.</p>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">⏸️</div>
+      <h4>What if we miss sessions?</h4>
+      <p>Nothing happens. There are no deadlines, no cohorts, no expiry. Come back whenever you are ready. Your progress is saved. The content will be here.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- WHY NOT JUST YOUTUBE                                            -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="section" style="border-top:1px solid var(--border)">
+  <div class="section-label">Honest comparison</div>
+  <h2>Why not just let them<br>watch YouTube?</h2>
+  <p class="section-sub">Fair question. Here is an honest answer.</p>
+
+  <div style="background:var(--card);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)">
+    <table class="compare-table">
+      <tr>
+        <th style="width:36%">What matters</th>
+        <th style="width:32%">YouTube / self-learning</th>
+        <th style="width:32%">AI Explorer</th>
+      </tr>
+      <tr>
+        <td><strong>Safety habits</strong><br><span style="font-size:.78rem;color:var(--muted)">Privacy, not trusting blindly, recognising manipulation</span></td>
+        <td><span class="no">Not covered.</span> Most AI tutorials skip safety entirely or treat it as a disclaimer.</td>
+        <td><span class="yes">Built in.</span> One specific safety rule in every single session, reinforced until it is habit.</td>
+      </tr>
+      <tr>
+        <td><strong>Critical thinking</strong><br><span style="font-size:.78rem;color:var(--muted)">Questioning what AI says, verifying facts</span></td>
+        <td><span class="no">Mostly absent.</span> Tutorials show capabilities, not limitations. Children see the impressive outputs.</td>
+        <td><span class="yes">The whole point.</span> Every session includes deliberately finding something AI gets wrong.</td>
+      </tr>
+      <tr>
+        <td><strong>Parent involvement</strong><br><span style="font-size:.78rem;color:var(--muted)">You know what your child is learning</span></td>
+        <td><span class="no">Zero.</span> Your child watches alone. You have no visibility into what they are absorbing.</td>
+        <td><span class="yes">You are there.</span> Sessions are designed for parent and child together. You see everything.</td>
+      </tr>
+      <tr>
+        <td><strong>Age-appropriate depth</strong><br><span style="font-size:.78rem;color:var(--muted)">Complexity matched to developmental stage</span></td>
+        <td><span class="no">Hit or miss.</span> Most content is made for adults or teenagers and adapted informally.</td>
+        <td><span class="yes">Purpose-built.</span> Three programmes (Starter, Explorer, Builder) matched to ages 7–10, 8–11, 10–13.</td>
+      </tr>
+      <tr>
+        <td><strong>Something they make</strong><br><span style="font-size:.78rem;color:var(--muted)">Tangible output from every session</span></td>
+        <td><span class="no">Rarely.</span> Passive consumption. Watching someone else use AI is not the same as using it.</td>
+        <td><span class="yes">Every session.</span> A story, a quiz, a plan, a project. Something they created and can show someone.</td>
+      </tr>
+      <tr>
+        <td><strong>Cost</strong></td>
+        <td><span class="yes">Free</span></td>
+        <td><span class="yes">Free</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FIND YOUR PROGRAMME (QUIZ)                                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div style="text-align:center;margin:8px 0 32px">
+  <a href="/ai-kids/learning-path/" style="display:inline-flex;align-items:center;gap:6px;background:#F1F5F9;color:var(--text);font-weight:600;font-size:.85rem;padding:10px 20px;border-radius:100px;text-decoration:none">🗺 See the full learning path →</a>
+</div>
+<div class="section" style="border-top:1px solid var(--border)" id="find-programme">
+  <div class="section-label">Start here</div>
+  <h2>Answer 4 questions.<br>Get your roadmap.</h2>
+  <p class="section-sub">Your personalised programme and complete session checklist appear instantly — no signup, no email, no waiting.</p>
+
+  <div class="quiz-container" id="quiz-container">
+    <div class="quiz-intro">
+      <div style="display:inline-block;background:var(--coral);color:#fff;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:4px 12px;border-radius:100px;margin-bottom:8px">Start here</div>
+      <h3 style="font-size:1rem;font-weight:600;color:var(--text);margin-bottom:4px">🗺 Find the right programme</h3>
+      <p style="font-size:.84rem;color:var(--muted)">4 questions — takes under a minute. Your checklist appears below.</p>
+    </div>
+    <div class="quiz-step visible" id="step-age"><div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);margin-bottom:8px">Question 1 of 4</div><div class="step-q"><span class="step-emoji">👧</span> How old is your child?</div><div class="q-opts"><div class="q-opt" data-q="age" data-val="u7" onclick="selectAnswer('age','u7')"><span class="q-opt-label">Under 7</span><span class="q-opt-desc">Not quite ready yet</span></div><div class="q-opt" data-q="age" data-val="79" onclick="selectAnswer('age','79')"><span class="q-opt-label">7 – 9 years</span><span class="q-opt-desc">Perfect starting age</span></div><div class="q-opt" data-q="age" data-val="1011" onclick="selectAnswer('age','1011')"><span class="q-opt-label">10 – 11 years</span><span class="q-opt-desc">Good for all programmes</span></div><div class="q-opt" data-q="age" data-val="1213" onclick="selectAnswer('age','1213')"><span class="q-opt-label">12 – 13 years</span><span class="q-opt-desc">Explorer or Builder</span></div><div class="q-opt" data-q="age" data-val="13p" onclick="selectAnswer('age','13p')"><span class="q-opt-label">13 and above</span><span class="q-opt-desc">AI Builder level</span></div></div></div><div class="quiz-step" id="step-experience"><div class="step-q"><span class="step-emoji">🤖</span> How much has your child used AI?</div><div class="q-opts"><div class="q-opt" data-q="experience" data-val="none" onclick="selectAnswer('experience','none')"><span class="q-opt-label">Never used AI</span><span class="q-opt-desc">Complete beginner</span></div><div class="q-opt" data-q="experience" data-val="some" onclick="selectAnswer('experience','some')"><span class="q-opt-label">Used it a few times</span><span class="q-opt-desc">No structured learning</span></div><div class="q-opt" data-q="experience" data-val="comfy" onclick="selectAnswer('experience','comfy')"><span class="q-opt-label">Fairly comfortable</span><span class="q-opt-desc">Uses AI regularly</span></div></div></div><div class="quiz-step" id="step-role"><div class="step-q"><span class="step-emoji">👨‍👩‍👧</span> Who will be running the sessions?</div><div class="q-opts"><div class="q-opt" data-q="role" data-val="parent" onclick="selectAnswer('role','parent')"><span class="q-opt-label">Parent at home</span><span class="q-opt-desc">One-to-one with child</span></div><div class="q-opt" data-q="role" data-val="teacher" onclick="selectAnswer('role','teacher')"><span class="q-opt-label">Teacher in class</span><span class="q-opt-desc">Classroom setting</span></div><div class="q-opt" data-q="role" data-val="both" onclick="selectAnswer('role','both')"><span class="q-opt-label">Both / mixed</span><span class="q-opt-desc">Home and school</span></div></div></div><div class="quiz-step" id="step-time"><div class="step-q"><span class="step-emoji">⏱️</span> How many sessions per week?</div><div class="q-opts"><div class="q-opt" data-q="time" data-val="once" onclick="selectAnswer('time','once')"><span class="q-opt-label">Once a week</span><span class="q-opt-desc">25–30 min</span></div><div class="q-opt" data-q="time" data-val="twice" onclick="selectAnswer('time','twice')"><span class="q-opt-label">Twice a week</span><span class="q-opt-desc">Recommended pace</span></div><div class="q-opt" data-q="time" data-val="flex" onclick="selectAnswer('time','flex')"><span class="q-opt-label">Flexible</span><span class="q-opt-desc">Our own pace</span></div></div></div>
+  </div>
+
+  <div id="quiz-result" style="display:none"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- BROWSE ALL PROGRAMMES                                           -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="section" style="border-top:1px solid var(--border)">
+  <div class="section-label">Or browse directly</div>
+  <h2>All programmes —<br>open any session now.</h2>
+
+  <div class="prog-grid" style="margin-bottom:20px">
+    <a href="/ai-kids/starter/" class="prog-card coral">
+      <div class="prog-icon">🚀</div>
+      <div class="prog-title">AI Starter</div>
+      <div class="prog-sub">8 sessions · 1 month · Ages 7–10. First-time AI learners. Parent-led throughout. Practical from Session 1.</div>
+      <div class="prog-tag">2 sessions/week · 25 min</div>
+    </a>
+    <a href="/ai-kids/explorer/" class="prog-card blue">
+      <div class="prog-icon">🔭</div>
+      <div class="prog-title">AI Explorer</div>
+      <div class="prog-sub">16 sessions · 2 months · Ages 8–11. Goes deeper. Bias, research, languages, ethics. Builds on Starter.</div>
+      <div class="prog-tag">2 sessions/week · 25 min</div>
+    </a>
+    <a href="/ai-kids/builder/" class="prog-card purple">
+      <div class="prog-icon">🏗️</div>
+      <div class="prog-title">AI Builder</div>
+      <div class="prog-sub">24 sessions · 3 months · Ages 10–13. How AI works, data, bias, capstone project. The full picture.</div>
+      <div class="prog-tag">2 sessions/week · 30 min</div>
+    </a>
+      <a href="/ai-kids/money/" class="prog-card green"><div class="prog-icon">💰</div><div class="prog-title">Money Explorer</div><div class="prog-sub">12 sessions &middot; Ages 9&ndash;13. What money really is, how AI reads it, and how to spot a scam. No real money, ever.</div><div class="prog-tag">Parent present &middot; 25 min</div></a>
+    <a href="/ai-kids/monthly/" class="prog-card green">
+      <div class="prog-icon">📅</div>
+      <div class="prog-title">AI Monthly</div>
+      <div class="prog-sub">12 themes · 48 sessions total. Animals, Space, Cooking, Art, History, Money and more. All live. Any order.</div>
+      <div class="prog-tag">Evergreen · Any pace</div>
+    </a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SAFETY RULES                                                    -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="section" style="border-top:1px solid var(--border)">
+  <div class="section-label">Safety</div>
+  <h2>The 5 rules —<br>reinforced in every session.</h2>
+  <p class="section-sub">One rule per session. Repeated until it is automatic. <a href="/ai-kids/safety/">Read the full Safety Guide →</a></p>
+
+  <div style="background:var(--card);border-radius:16px;padding:20px 24px;box-shadow:var(--shadow)">
+    <div class="rule-row"><div class="rule-icon">🔴</div><div class="rule-text"><h4>Never share personal information</h4><p>No real name, school, age, city, address, phone number, or photos — ever. Not even when AI asks.</p></div></div><div class="rule-row"><div class="rule-icon">🟠</div><div class="rule-text"><h4>AI makes mistakes — always check</h4><p>It sounds confident either way. The habit of asking "how would I check this?" is a life skill.</p></div></div><div class="rule-row"><div class="rule-icon">🟡</div><div class="rule-text"><h4>AI is a tool, not a friend</h4><p>It has no feelings, no knowledge of your child, and no care for them. Real relationships are with people.</p></div></div><div class="rule-row"><div class="rule-icon">🔵</div><div class="rule-text"><h4>Don't use AI to do your homework</h4><p>Use it to understand your homework. The difference is between learning and copying.</p></div></div><div class="rule-row"><div class="rule-icon">🟣</div><div class="rule-text"><h4>If it feels wrong, close the tab and tell a grown-up</h4><p>No explanation needed. No questions asked. Just close it. Always.</p></div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- FINAL CTA                                                       -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div style="background:linear-gradient(135deg,#FFF0EB,#FFF8F5);border-radius:20px;padding:40px 32px;text-align:center;margin:40px 0;border:1.5px solid rgba(255,107,53,.2)">
+  <div style="font-size:2rem;margin-bottom:12px">👨‍👩‍👧</div>
+  <h2 style="font-size:1.4rem;margin-bottom:8px">Ready to start?</h2>
+  <p style="font-size:.92rem;color:var(--muted);margin-bottom:20px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.7">Read the 5-minute safety guide. Then open Session 1. The whole programme is free, requires no signup, and you can start right now.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+    <a href="/ai-kids/safety/" class="btn-primary" style="background:#EF4444">🛡 Read Safety Guide first</a>
+    <a href="/ai-kids/starter/session-1/" class="btn-secondary">Open Session 1 →</a>
+  </div>
+  <p style="font-size:.75rem;color:var(--faint);margin-top:14px">No account. No card. No commitment. Just open the page and start.</p>
+</div>
+
+</div><!-- /wrap -->
+
+<footer class="kids-footer"><p>AI Explorer — by <a href="/">Clarigital</a> &nbsp;·&nbsp; Free forever &nbsp;·&nbsp; No accounts &nbsp;·&nbsp; No data collected &nbsp;·&nbsp; Always supervised</p><p style="margin-top:6px"><a href="/ai-kids/safety/">Safety Guide</a> &nbsp;·&nbsp; <a href="/ai-kids/parents/">For Parents</a> &nbsp;·&nbsp; <a href="/">Clarigital.com</a></p></footer>
+
+<script>
+
+const ROADMAPS = {
+  u7: { title:"Not quite yet — but soon!", subtitle:"We recommend starting at age 7", colour:"#94A3B8", icon:"🌱", note:"AI Explorer is designed for children aged 7 and above. The activities need reading ability and a reasonable attention span. Come back when your child turns 7 — everything will still be here. In the meantime, read the <a href='/ai-kids/safety/' style='color:var(--coral)'>Safety Guide</a> so you are fully prepared.", programme:null, sessions:[] },
+  "79_none": { title:"Start with AI Starter", subtitle:"8 sessions · 1 month · Ages 7–10", colour:"#FF6B35", icon:"🚀", note:"Perfect starting point. AI Starter is built for first-timers — practical, hands-on, 25 minutes per session. No prior knowledge needed. You and your child learn together.", programme:"AI Starter", programme_url:"/ai-kids/starter/", sessions:[{n:1,title:"What is AI?",url:"/ai-kids/starter/session-1/",safety:"Never share your real name with AI"},{n:2,title:"Give AI a Job",url:"/ai-kids/starter/session-2/",safety:"AI makes mistakes — always check"},{n:3,title:"AI Tells Stories",url:"/ai-kids/starter/session-3/",safety:"AI is a tool, not a friend"},{n:4,title:"Make a Quiz",url:"/ai-kids/starter/session-4/",safety:"Don't use AI to do your homework"},{n:5,title:"Catch AI Lying",url:"/ai-kids/starter/session-5/",safety:"AI makes mistakes — always check"},{n:6,title:"Plan Something Fun",url:"/ai-kids/starter/session-6/",safety:"If it feels wrong, close the tab"},{n:7,title:"Better Questions = Better Answers",url:"/ai-kids/starter/session-7/",safety:"AI is a tool, not a friend"},{n:8,title:"Your Graduation Project",url:"/ai-kids/starter/session-8/",safety:"All five rules — final review"}] },
+  "79_some": { title:"Jump into AI Starter — mid-way", subtitle:"Start at Session 4 · Already know the basics", colour:"#FF6B35", icon:"🚀", note:"Since you have used AI before, skip the very first sessions and start from Session 4 — where things get more interesting. You can always go back to Sessions 1–3 if anything feels unfamiliar.", programme:"AI Starter", programme_url:"/ai-kids/starter/", start_note:"Start at Session 4 — Sessions 1–3 are optional refreshers", sessions:[{n:1,title:"What is AI?",url:"/ai-kids/starter/session-1/",safety:"Never share your real name",skip:true},{n:2,title:"Give AI a Job",url:"/ai-kids/starter/session-2/",safety:"AI makes mistakes — always check",skip:true},{n:3,title:"AI Tells Stories",url:"/ai-kids/starter/session-3/",safety:"AI is a tool, not a friend",skip:true},{n:4,title:"Make a Quiz",url:"/ai-kids/starter/session-4/",safety:"Don't use AI to do your homework"},{n:5,title:"Catch AI Lying",url:"/ai-kids/starter/session-5/",safety:"AI makes mistakes — always check"},{n:6,title:"Plan Something Fun",url:"/ai-kids/starter/session-6/",safety:"If it feels wrong, close the tab"},{n:7,title:"Better Questions = Better Answers",url:"/ai-kids/starter/session-7/",safety:"AI is a tool, not a friend"},{n:8,title:"Your Graduation Project",url:"/ai-kids/starter/session-8/",safety:"All five rules — final review"}] },
+  "79_comfy": { title:"AI Starter — move at your pace", subtitle:"8 sessions · Can go faster if comfortable", colour:"#FF6B35", icon:"🚀", note:"Even with AI experience, AI Starter builds the safety habits and structured thinking that everything else builds on. You can move through it faster — 2–3 sessions in one sitting if your child is engaged.", programme:"AI Starter", programme_url:"/ai-kids/starter/", sessions:[{n:1,title:"What is AI?",url:"/ai-kids/starter/session-1/",safety:"Never share your real name"},{n:2,title:"Give AI a Job",url:"/ai-kids/starter/session-2/",safety:"AI makes mistakes — always check"},{n:3,title:"AI Tells Stories",url:"/ai-kids/starter/session-3/",safety:"AI is a tool, not a friend"},{n:4,title:"Make a Quiz",url:"/ai-kids/starter/session-4/",safety:"Don't use AI to do your homework"},{n:5,title:"Catch AI Lying",url:"/ai-kids/starter/session-5/",safety:"AI makes mistakes — always check"},{n:6,title:"Plan Something Fun",url:"/ai-kids/starter/session-6/",safety:"If it feels wrong, close the tab"},{n:7,title:"Better Questions = Better Answers",url:"/ai-kids/starter/session-7/",safety:"AI is a tool, not a friend"},{n:8,title:"Your Graduation Project",url:"/ai-kids/starter/session-8/",safety:"All five rules — final review"}] },
+  "1011_none": { title:"AI Starter → then AI Explorer", subtitle:"24 sessions total · 3 months · Ages 10–11", colour:"#0EA5E9", icon:"🔭", note:"Start with AI Starter (8 sessions) to build the foundation and safety habits. Then move straight to AI Explorer (16 sessions) — where the deeper learning happens.", programme:"AI Starter + AI Explorer", programme_url:"/ai-kids/starter/", sections:[{label:"Phase 1 — AI Starter (8 sessions)",colour:"#FF6B35",sessions:[{n:1,title:"What is AI?",url:"/ai-kids/starter/session-1/"},{n:2,title:"Give AI a Job",url:"/ai-kids/starter/session-2/"},{n:3,title:"AI Tells Stories",url:"/ai-kids/starter/session-3/"},{n:4,title:"Make a Quiz",url:"/ai-kids/starter/session-4/"},{n:5,title:"Catch AI Lying",url:"/ai-kids/starter/session-5/"},{n:6,title:"Plan Something Fun",url:"/ai-kids/starter/session-6/"},{n:7,title:"Better Questions",url:"/ai-kids/starter/session-7/"},{n:8,title:"Graduation Project",url:"/ai-kids/starter/session-8/"}]},{label:"Phase 2 — AI Explorer (16 sessions)",colour:"#0EA5E9",sessions:[{n:1,title:"Your AI Toolkit",url:"/ai-kids/explorer/session-1/"},{n:2,title:"AI and Your Hobbies",url:"/ai-kids/explorer/session-2/"},{n:3,title:"AI Explains Homework",url:"/ai-kids/explorer/session-3/"},{n:4,title:"AI as Debate Partner",url:"/ai-kids/explorer/session-4/"},{n:5,title:"Research with AI",url:"/ai-kids/explorer/session-5/"},{n:6,title:"Prompt Engineering",url:"/ai-kids/explorer/session-6/"},{n:7,title:"AI in Real World",url:"/ai-kids/explorer/session-7/"},{n:8,title:"AI and Feelings",url:"/ai-kids/explorer/session-8/"},{n:9,title:"Creative Writing 2",url:"/ai-kids/explorer/session-9/"},{n:10,title:"AI and Maths",url:"/ai-kids/explorer/session-10/"},{n:11,title:"AI and Languages",url:"/ai-kids/explorer/session-11/"},{n:12,title:"Teaching AI to Fail",url:"/ai-kids/explorer/session-12/"},{n:13,title:"AI Ethics",url:"/ai-kids/explorer/session-13/"},{n:14,title:"AI and Images",url:"/ai-kids/explorer/session-14/"},{n:15,title:"Your AI Project",url:"/ai-kids/explorer/session-15/"},{n:16,title:"Explorer Graduation",url:"/ai-kids/explorer/session-16/"}]}] },
+  "1011_comfy": { title:"Start with AI Explorer", subtitle:"16 sessions · 2 months · Ages 8–11", colour:"#0EA5E9", icon:"🔭", note:"Your child has AI experience — go straight to Explorer. Starter sessions are always there as a reference if anything in Explorer feels unclear.", programme:"AI Explorer", programme_url:"/ai-kids/explorer/", sessions:[{n:1,title:"Your AI Toolkit",url:"/ai-kids/explorer/session-1/"},{n:2,title:"AI and Your Hobbies",url:"/ai-kids/explorer/session-2/"},{n:3,title:"AI Explains Homework",url:"/ai-kids/explorer/session-3/"},{n:4,title:"AI as Debate Partner",url:"/ai-kids/explorer/session-4/"},{n:5,title:"Research with AI",url:"/ai-kids/explorer/session-5/"},{n:6,title:"Prompt Engineering",url:"/ai-kids/explorer/session-6/"},{n:7,title:"AI in Real World",url:"/ai-kids/explorer/session-7/"},{n:8,title:"AI and Feelings",url:"/ai-kids/explorer/session-8/"},{n:9,title:"Creative Writing 2",url:"/ai-kids/explorer/session-9/"},{n:10,title:"AI and Maths",url:"/ai-kids/explorer/session-10/"},{n:11,title:"AI and Languages",url:"/ai-kids/explorer/session-11/"},{n:12,title:"Teaching AI to Fail",url:"/ai-kids/explorer/session-12/"},{n:13,title:"AI Ethics",url:"/ai-kids/explorer/session-13/"},{n:14,title:"AI and Images",url:"/ai-kids/explorer/session-14/"},{n:15,title:"Your AI Project",url:"/ai-kids/explorer/session-15/"},{n:16,title:"Explorer Graduation",url:"/ai-kids/explorer/session-16/"}] },
+  "1213_none": { title:"Start with AI Explorer", subtitle:"16 sessions · 2 months · Moves fast at 12–13", colour:"#0EA5E9", icon:"🔭", note:"At 12–13, children move through Explorer faster than younger ones. You can do 2–3 sessions in one sitting if the pace feels slow.", programme:"AI Explorer", programme_url:"/ai-kids/explorer/", sessions:[{n:1,title:"Your AI Toolkit",url:"/ai-kids/explorer/session-1/"},{n:2,title:"AI and Your Hobbies",url:"/ai-kids/explorer/session-2/"},{n:3,title:"AI Explains Homework",url:"/ai-kids/explorer/session-3/"},{n:4,title:"AI as Debate Partner",url:"/ai-kids/explorer/session-4/"},{n:5,title:"Research with AI",url:"/ai-kids/explorer/session-5/"},{n:6,title:"Prompt Engineering",url:"/ai-kids/explorer/session-6/"},{n:7,title:"AI in Real World",url:"/ai-kids/explorer/session-7/"},{n:8,title:"AI and Feelings",url:"/ai-kids/explorer/session-8/"},{n:9,title:"Creative Writing 2",url:"/ai-kids/explorer/session-9/"},{n:10,title:"AI and Maths",url:"/ai-kids/explorer/session-10/"},{n:11,title:"AI and Languages",url:"/ai-kids/explorer/session-11/"},{n:12,title:"Teaching AI to Fail",url:"/ai-kids/explorer/session-12/"},{n:13,title:"AI Ethics",url:"/ai-kids/explorer/session-13/"},{n:14,title:"AI and Images",url:"/ai-kids/explorer/session-14/"},{n:15,title:"Your AI Project",url:"/ai-kids/explorer/session-15/"},{n:16,title:"Explorer Graduation",url:"/ai-kids/explorer/session-16/"}] },
+  "1213_comfy": { title:"Start with AI Builder", subtitle:"24 sessions · 3 months · Ages 10–13", colour:"#7C3AED", icon:"🏗️", note:"AI Builder is the most advanced programme — it goes deep on how AI works, bias, ethics, data, and ends with a capstone project. Best for children who are already comfortable with AI and ready to think seriously about it.", programme:"AI Builder", programme_url:"/ai-kids/builder/", sections:[{label:"Month 1 — Foundations",colour:"#7C3AED",sessions:[{n:1,title:"How AI Actually Works",url:"/ai-kids/builder/session-1/"},{n:2,title:"System Prompts",url:"/ai-kids/builder/session-2/"},{n:3,title:"Structured Outputs",url:"/ai-kids/builder/session-3/"},{n:4,title:"AI Bias",url:"/ai-kids/builder/session-4/"},{n:5,title:"AI Safety and Society",url:"/ai-kids/builder/session-5/"},{n:6,title:"AI for Data",url:"/ai-kids/builder/session-6/"},{n:7,title:"AI for Communication",url:"/ai-kids/builder/session-7/"},{n:8,title:"Month 1 Review",url:"/ai-kids/builder/session-8/"}]},{label:"Month 2 — Building Things",colour:"#0EA5E9",sessions:[{n:9,title:"AI and News",url:"/ai-kids/builder/session-9/"},{n:10,title:"Chain Prompting",url:"/ai-kids/builder/session-10/"},{n:11,title:"AI for Problem Solving",url:"/ai-kids/builder/session-11/"},{n:12,title:"Building a Character",url:"/ai-kids/builder/session-12/"},{n:13,title:"AI and the Environment",url:"/ai-kids/builder/session-13/"},{n:14,title:"AI and the Future",url:"/ai-kids/builder/session-14/"},{n:15,title:"AI and Storytelling",url:"/ai-kids/builder/session-15/"},{n:16,title:"Month 2 Review",url:"/ai-kids/builder/session-16/"}]},{label:"Month 3 — The Capstone",colour:"#10B981",sessions:[{n:17,title:"Advanced Prompting",url:"/ai-kids/builder/session-17/"},{n:18,title:"AI in Real Workflows",url:"/ai-kids/builder/session-18/"},{n:19,title:"Your Voice with AI",url:"/ai-kids/builder/session-19/"},{n:20,title:"AI for Good",url:"/ai-kids/builder/session-20/"},{n:21,title:"Capstone Part 1",url:"/ai-kids/builder/session-21/"},{n:22,title:"Capstone Part 2",url:"/ai-kids/builder/session-22/"},{n:23,title:"Capstone Part 3",url:"/ai-kids/builder/session-23/"},{n:24,title:"Builder Graduation",url:"/ai-kids/builder/session-24/"}]}] },
+  "13p_any": { title:"Start with AI Builder", subtitle:"24 sessions · 3 months · Mature learners", colour:"#7C3AED", icon:"🏗️", note:"AI Builder is designed for older children and teens. Substantive sessions on AI bias, society-level risks, professional workflows, and a 3-session capstone project.", programme:"AI Builder", programme_url:"/ai-kids/builder/", sections:[{label:"Month 1 — Foundations",colour:"#7C3AED",sessions:[{n:1,title:"How AI Actually Works",url:"/ai-kids/builder/session-1/"},{n:2,title:"System Prompts",url:"/ai-kids/builder/session-2/"},{n:3,title:"Structured Outputs",url:"/ai-kids/builder/session-3/"},{n:4,title:"AI Bias",url:"/ai-kids/builder/session-4/"},{n:5,title:"AI Safety and Society",url:"/ai-kids/builder/session-5/"},{n:6,title:"AI for Data",url:"/ai-kids/builder/session-6/"},{n:7,title:"AI for Communication",url:"/ai-kids/builder/session-7/"},{n:8,title:"Month 1 Review",url:"/ai-kids/builder/session-8/"}]},{label:"Month 2 — Building Things",colour:"#0EA5E9",sessions:[{n:9,title:"AI and News",url:"/ai-kids/builder/session-9/"},{n:10,title:"Chain Prompting",url:"/ai-kids/builder/session-10/"},{n:11,title:"AI for Problem Solving",url:"/ai-kids/builder/session-11/"},{n:12,title:"Building a Character",url:"/ai-kids/builder/session-12/"},{n:13,title:"AI and the Environment",url:"/ai-kids/builder/session-13/"},{n:14,title:"AI and the Future",url:"/ai-kids/builder/session-14/"},{n:15,title:"AI and Storytelling",url:"/ai-kids/builder/session-15/"},{n:16,title:"Month 2 Review",url:"/ai-kids/builder/session-16/"}]},{label:"Month 3 — The Capstone",colour:"#10B981",sessions:[{n:17,title:"Advanced Prompting",url:"/ai-kids/builder/session-17/"},{n:18,title:"AI in Real Workflows",url:"/ai-kids/builder/session-18/"},{n:19,title:"Your Voice with AI",url:"/ai-kids/builder/session-19/"},{n:20,title:"AI for Good",url:"/ai-kids/builder/session-20/"},{n:21,title:"Capstone Part 1",url:"/ai-kids/builder/session-21/"},{n:22,title:"Capstone Part 2",url:"/ai-kids/builder/session-22/"},{n:23,title:"Capstone Part 3",url:"/ai-kids/builder/session-23/"},{n:24,title:"Builder Graduation",url:"/ai-kids/builder/session-24/"}]}] }
+};
+const SCHEDULES = {
+  once: { label:"once a week", starter:8, explorer:16, builder:24 },
+  twice: { label:"twice a week", starter:4, explorer:8, builder:12 },
+  flex: { label:"at your own pace", starter:null, explorer:null, builder:null }
+};
+
+
+let answers = { age:null, experience:null, role:null, time:null };
+const QUESTIONS = [
+  {id:'age',q:'How old is your child?',emoji:'👧',options:[{value:'u7',label:'Under 7',desc:'Not quite ready yet'},{value:'79',label:'7 – 9 years',desc:'Perfect starting age'},{value:'1011',label:'10 – 11 years',desc:'Good for all programmes'},{value:'1213',label:'12 – 13 years',desc:'Explorer or Builder'},{value:'13p',label:'13 and above',desc:'AI Builder level'}]},
+  {id:'experience',q:'How much has your child used AI?',emoji:'🤖',options:[{value:'none',label:'Never used AI',desc:'Complete beginner'},{value:'some',label:'Used it a few times',desc:'No structured learning'},{value:'comfy',label:'Fairly comfortable',desc:'Uses AI regularly'}]},
+  {id:'role',q:'Who will be running the sessions?',emoji:'👨‍👩‍👧',options:[{value:'parent',label:'Parent at home',desc:'One-to-one with child'},{value:'teacher',label:'Teacher in class',desc:'Classroom setting'},{value:'both',label:'Both / mixed',desc:'Home and school'}]},
+  {id:'time',q:'How many sessions per week?',emoji:'⏱️',options:[{value:'once',label:'Once a week',desc:'25–30 min'},{value:'twice',label:'Twice a week',desc:'Recommended pace'},{value:'flex',label:'Flexible',desc:'Our own pace'}]}
+];
+
+function selectAnswer(qId,value){
+  answers[qId]=value;
+  document.querySelectorAll(`.q-opt[data-q="${qId}"]`).forEach(el=>el.classList.toggle('selected',el.dataset.val===value));
+  if(qId==='age'&&value==='u7'){setTimeout(()=>showResult(),400);return;}
+  const stepEl=document.getElementById(`step-${qId}`);
+  setTimeout(()=>{
+    if(stepEl)stepEl.classList.add('answered');
+    const allQ=QUESTIONS.filter(q=>answers.age==='u7'||q.id!=='age');
+    const allDone=QUESTIONS.every(q=>answers.age==='u7'||answers[q.id]!==null);
+    if(allDone||(answers.age!=='u7'&&qId==='time')){showResult();}
+    else{
+      const next=stepEl?stepEl.nextElementSibling:null;
+      if(next&&next.classList.contains('quiz-step')){
+        const ids=['step-age','step-experience','step-role','step-time'];
+        const labels=['Question 1 of 4','Question 2 of 4','Question 3 of 4','Question 4 of 4'];
+        const idx=ids.indexOf(next.id);
+        if(idx>0&&!next.querySelector('.q-num-label')){
+          const lbl=document.createElement('div');lbl.className='q-num-label';
+          lbl.style.cssText='font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--coral);margin-bottom:8px';
+          lbl.textContent=labels[idx];next.insertBefore(lbl,next.firstChild);
+        }
+        next.classList.add('visible');
+        next.scrollIntoView({behavior:'smooth',block:'nearest'});
+      }
+    }
+  },350);
+}
+
+function getRoadmapKey(){
+  const a=answers.age,e=answers.experience;
+  if(a==='u7')return'u7';
+  if(a==='79')return`79_${e==='comfy'?'comfy':(e==='some'?'some':'none')}`;
+  if(a==='1011')return`1011_${e==='comfy'?'comfy':'none'}`;
+  if(a==='1213')return`1213_${e==='comfy'?'comfy':'none'}`;
+  return'13p_any';
+}
+
+function getWeeksLabel(roadmap){
+  if(!answers.time||answers.time==='flex')return'';
+  const s=SCHEDULES[answers.time];
+  let w=null;
+  if(roadmap.programme==='AI Starter')w=s.starter;
+  else if(roadmap.programme==='AI Explorer')w=s.explorer;
+  else if(roadmap.programme==='AI Builder')w=s.builder;
+  else if(roadmap.programme==='AI Starter + AI Explorer')w=s.starter+s.explorer;
+  if(!w)return'';
+  return`At ${s.label}, you finish in about <strong>${w} weeks</strong>.`;
+}
+
+const STORAGE_KEY='clarigital_kids_progress';
+function loadProgress(){try{const s=localStorage.getItem(STORAGE_KEY);return s?JSON.parse(s):{}}catch(e){return{}}}
+function saveProgress(url,done){try{const p=loadProgress();p[url]=done;localStorage.setItem(STORAGE_KEY,JSON.stringify(p));}catch(e){}}
+
+function toggleSession(url,done){
+  saveProgress(url,done);
+  const row=document.getElementById(`row-${url.replace(/\//g,'-')}`);
+  if(row)row.classList.toggle('done',done);
+  updateProgressBar();
+}
+
+function updateProgressBar(){
+  const all=document.querySelectorAll('.session-row:not(.skipped)');
+  const done=document.querySelectorAll('.session-row.done:not(.skipped)');
+  const pct=all.length?Math.round(done.length/all.length*100):0;
+  const bar=document.getElementById('progress-fill');
+  const lbl=document.getElementById('progress-label');
+  if(bar)bar.style.width=pct+'%';
+  if(lbl)lbl.textContent=`${done.length} of ${all.length} sessions complete`;
+}
+
+function renderSessionRow(s,prog,col){
+  const done=prog[s.url]===true,skip=s.skip===true;
+  return`<div class="session-row ${done?'done':''} ${skip?'skipped':''}" id="row-${s.url.replace(/\//g,'-')}"><label class="session-check"><input type="checkbox" ${done?'checked':''} onchange="toggleSession('${s.url}',this.checked)"><span class="check-box" style="${done?`background:${col};border-color:${col}`:''}"></span></label><a href="${s.url}" class="session-link ${skip?'muted':''}"><span class="session-num" style="background:${col}20;color:${col}">${s.n}</span><span class="session-title">${s.title}</span>${skip?'<span class="skip-tag">optional</span>':''}</a>${s.safety?`<span class="safety-pill">🛡 ${s.safety}</span>`:''}</div>`;
+}
+
+function renderChecklist(roadmap,prog){
+  if(roadmap.sessions)return roadmap.sessions.map(s=>renderSessionRow(s,prog,roadmap.colour)).join('');
+  return roadmap.sections.map(sec=>`<div class="checklist-section"><div class="section-header" style="border-left:4px solid ${sec.colour}"><span style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:${sec.colour}">${sec.label}</span></div>${sec.sessions.map(s=>renderSessionRow(s,prog,sec.colour)).join('')}</div>`).join('');
+}
+
+function showResult(){
+  const key=getRoadmapKey();
+  const roadmap=ROADMAPS[key];
+  if(!roadmap)return;
+  const prog=loadProgress();
+  const weeksLabel=getWeeksLabel(roadmap);
+  const sessionCount=roadmap.sessions?roadmap.sessions.length:(roadmap.sections?roadmap.sections.reduce((t,s)=>t+s.sessions.length,0):0);
+  const roleNote=answers.role==='teacher'?'<div class="info-box" style="margin-bottom:12px">🏫 <strong>Teacher mode:</strong> These sessions work well as 25-min classroom demonstrations with students following along, or in pairs sharing a device.</div>':'';
+  document.getElementById('quiz-result').innerHTML=`
+    <div class="result-card" id="result-card">
+      <div class="result-header" style="background:${roadmap.colour}">
+        <div style="font-size:1.8rem;margin-bottom:6px">${roadmap.icon}</div>
+        <h2 style="color:#fff;font-size:1.2rem;font-weight:700;margin-bottom:4px">${roadmap.title}</h2>
+        <p style="color:rgba(255,255,255,.85);font-size:.87rem">${roadmap.subtitle}</p>
+      </div>
+      <div class="result-body">
+        ${roleNote}
+        <div class="result-note">${roadmap.note}</div>
+        ${weeksLabel?`<div class="weeks-label">📅 ${weeksLabel}</div>`:''}
+        ${roadmap.programme?`<div class="result-actions"><a href="${roadmap.programme_url||'#'}" class="btn-start" style="background:${roadmap.colour}">Start ${roadmap.programme} →</a><a href="/ai-kids/safety/" class="btn-safety-sm">🛡 Read Safety Guide first</a></div>`:`<div class="result-actions"><a href="/ai-kids/parents/" class="btn-safety-sm">Read the Parent Guide →</a></div>`}
+        ${sessionCount>0?`<div class="checklist-wrap"><div class="checklist-header"><div><h3>Your complete session checklist</h3><p style="font-size:.78rem;color:var(--muted);margin-top:2px">Tick each session as you complete it — saves in your browser automatically</p></div><button onclick="resetProgress()" class="btn-reset">Reset</button></div><div style="background:#F1F5F9;border-radius:8px;padding:9px 13px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between"><span id="progress-label" style="font-size:.78rem;color:var(--muted)">0 of ${sessionCount} sessions complete</span><div style="width:120px;background:#E2E8F0;height:5px;border-radius:100px;overflow:hidden"><div id="progress-fill" style="height:100%;background:${roadmap.colour};border-radius:100px;width:0%;transition:width .4s"></div></div></div><div class="checklist">${renderChecklist(roadmap,prog)}</div></div>`:''}
+        <button onclick="resetQuiz()" class="btn-redo">← Change answers</button>
+      </div>
+    </div>`;
+  document.getElementById('quiz-result').style.display='block';
+  setTimeout(()=>{document.getElementById('result-card').scrollIntoView({behavior:'smooth',block:'start'});updateProgressBar();},100);
+}
+
+function resetProgress(){if(!confirm('Reset your session progress?'))return;try{localStorage.removeItem(STORAGE_KEY);}catch(e){}document.querySelectorAll('.session-row').forEach(r=>r.classList.remove('done'));document.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);document.querySelectorAll('.check-box').forEach(b=>b.removeAttribute('style'));updateProgressBar();}
+function resetQuiz(){answers={age:null,experience:null,role:null,time:null};document.getElementById('quiz-result').style.display='none';document.getElementById('quiz-result').innerHTML='';document.querySelectorAll('.quiz-step').forEach((el,i)=>{el.classList.remove('answered','visible');if(i===0)el.classList.add('visible');});document.querySelectorAll('.q-opt').forEach(el=>el.classList.remove('selected'));document.getElementById('quiz-container').scrollIntoView({behavior:'smooth'});}
+
+</script>
+
+</body>
+</html>

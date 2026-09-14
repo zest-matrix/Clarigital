@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Understanding Analytics: How to Read Your | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Understanding Analytics: How to Read Your | Digital Codex">
+<meta property="og:description" content="A beginner's guide to Google Analytics 4 — what the key metrics mean, how to read reports, what questions your data can answer, and what to ignore.">
+<meta property="og:url" content="https://www.clarigital.com/codex/learn/beginner/understanding-analytics/">
+<meta property="og:site_name" content="Digital Codex">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Understanding Analytics: How to Read Your", "description": "A beginner's guide to Google Analytics 4 \u2014 what the key metrics mean, how to read reports, what questions your data can answer, and what to ignore.", "url": "https://www.clarigital.com/codex/learn/beginner/understanding-analytics/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Understanding Analytics: How to Read Your", "description": "A beginner's guide to Google Analytics 4 \u2014 what the key metrics mean, how to read reports, what questions your data can answer, and what to ignore.", "url": "https://www.clarigital.com/codex/learn/beginner/understanding-analytics/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<meta name="description" content="A beginner's guide to Google Analytics 4 — what the key metrics mean, how to read reports, what questions your data can answer, and what to ignore.">
+<link rel="canonical" href="/codex/learn/beginner/understanding-analytics/">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.track-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;background:#d1fae5;color:#065f46}
+.step-box{counter-reset:steps}
+.step{display:flex;gap:1rem;margin-bottom:1.4rem;align-items:flex-start}
+.step-num{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+.step-body{flex:1}
+.step-body strong{display:block;font-size:.95rem;color:var(--navy);margin-bottom:.2rem}
+.analogy-box{background:#fff8f0;border:2px solid var(--orange);border-radius:10px;padding:1.2rem 1.4rem;margin:1.4rem 0}
+.analogy-box .ab-head{font-weight:700;color:var(--orange);font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem}
+.next-steps{background:var(--blue-bg);border:1.5px solid var(--navy);border-radius:10px;padding:1.4rem;margin:2rem 0}
+.ns-head{font-weight:700;color:var(--navy);margin-bottom:.8rem}
+.ns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.6rem}
+.ns-card{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.7rem .9rem;text-decoration:none;transition:border-color .15s}
+.ns-card:hover{border-color:var(--navy)}
+.ns-tag{font-size:.68rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.25rem}
+.ns-title{font-size:.83rem;font-weight:600;color:var(--navy);line-height:1.35}
+</style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Understanding Analytics: How to Read Your | Digital Codex">
+<meta name="twitter:description" content="A beginner's guide to Google Analytics 4 — what the key metrics mean, how to read reports, what questions your data can answer, and what to ignore.">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/learn/beginner/" class="cur">Beginner Track</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/learn/expert/" class="btn btn-outline btn-sm">Expert Track</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/learn/beginner/" class="di cur">Beginner Track</a><a href="/codex/learn/expert/" class="di">Expert Track</a><a href="/codex/seo/" class="di">SEO</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#why-analytics">Why Analytics Matters</a><a class="cnl" href="#ga4-setup">Getting Started with Google Analytics 4</a><a class="cnl" href="#key-metrics">The Key Metrics and What They Mean</a><a class="cnl" href="#acquisition-report">Where Your Visitors Come From</a><a class="cnl" href="#behaviour-report">What Visitors Do on Your Site</a><a class="cnl" href="#conversion-tracking">Tracking Goals and Conversions</a><a class="cnl" href="#reading-reports">Reading Reports Without Getting Overwhelmed</a><a class="cnl" href="#common-mistakes">Common Analytics Mistakes Beginners Make</a><a class="cnl" href="#questions-to-ask">5 Questions Analytics Can Answer for Your Business</a><a class="cnl" href="#next">What to Read Next</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/learn/">Learn</a><span class="sep">/</span><a href="/codex/learn/beginner/">Beginner Track</a><span class="sep">/</span><span>Understanding Analytics</span></nav>
+  <div class="track-pill">&#9312; Beginner Track &nbsp;&#183;&nbsp; Guide 9 of 10</div>
+  <h1>Understanding Analytics &#183; Read Your Data Without Getting Lost</h1>
+  <p class="hero-lead">Your website is generating data every day. This guide shows you how to read it — what the numbers actually mean, which ones matter, and how to use them to make better marketing decisions.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo" style="background:#d1fae5;color:#065f46">Beginner</span>
+    <span class="meta-tag mt-gray">No prior experience needed</span>
+    <span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="chapter" id="why-analytics">
+<div class="chap-hdr"><h2>Why Analytics Matters</h2><button class="share-btn" onclick="copyLink('why-analytics')">Share</button></div>
+<p>Without analytics, marketing is guesswork. You are spending time and money on activities without knowing which ones are working. Analytics transforms marketing from opinion-based to evidence-based — you can see what is bringing visitors to your site, what they do once they arrive, and whether any of them are doing the thing you want them to do (buy, enquire, subscribe).</p>
+<p>Analytics is also how you catch problems early. A drop in organic traffic means something has changed with your SEO. A sudden increase in bounce rate on a specific page suggests something is broken or confusing. Without data, you would not notice these signals until they had a significant impact.</p>
+</div>
+
+<div class="chapter" id="ga4-setup">
+<div class="chap-hdr"><h2>Getting Started with Google Analytics 4</h2><button class="share-btn" onclick="copyLink('ga4-setup')">Share</button></div>
+<p>Google Analytics 4 (GA4) is Google's free website analytics platform. It is the industry standard for website measurement and is free for most websites. To start using it:</p>
+<div class="step-box">
+<div class="step"><div class="step-num">1</div><div class="step-body"><strong>Create a Google account</strong> if you don't already have one (you may already have one via Gmail).</div></div>
+<div class="step"><div class="step-num">2</div><div class="step-body"><strong>Go to analytics.google.com</strong> and click "Start measuring." Follow the setup wizard to create a GA4 property for your website.</div></div>
+<div class="step"><div class="step-num">3</div><div class="step-body"><strong>Add the tracking code</strong> to your website. GA4 works by placing a small JavaScript tag on every page. If you use WordPress, the Google Site Kit plugin does this automatically. Squarespace, Wix, and Shopify have built-in Google Analytics integration under their settings.</div></div>
+<div class="step"><div class="step-num">4</div><div class="step-body"><strong>Wait 24 hours</strong> and then check that data is appearing in your GA4 account. Also set up Google Search Console (free, separate tool) and link it to GA4 for search-specific data.</div></div>
+</div>
+</div>
+
+<div class="chapter" id="key-metrics">
+<div class="chap-hdr"><h2>The Key Metrics and What They Mean</h2><button class="share-btn" onclick="copyLink('key-metrics')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Metric</th><th>What It Means</th><th>Why It Matters</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Users</strong></td><td>The number of individual people who visited your site in the period</td><td>Measures your overall reach and audience size</td></tr>
+    <tr><td><strong>Sessions</strong></td><td>The number of visits (one person visiting twice = 2 sessions)</td><td>Total website activity volume</td></tr>
+    <tr><td><strong>Engaged Sessions</strong></td><td>Sessions lasting 10+ seconds, with a conversion, or with 2+ page views</td><td>Measures meaningful visits, not just accidental clicks</td></tr>
+    <tr><td><strong>Engagement Rate</strong></td><td>% of sessions that were engaged sessions</td><td>High rate (50%+) means visitors are genuinely interested</td></tr>
+    <tr><td><strong>Average Engagement Time</strong></td><td>Average time users actively spent on your site</td><td>Higher = more genuinely useful content</td></tr>
+    <tr><td><strong>Events</strong></td><td>Actions users take: page views, clicks, form submissions, purchases</td><td>The building blocks of all GA4 measurement</td></tr>
+    <tr><td><strong>Conversions</strong></td><td>Events you have marked as important goals (contact form, purchase)</td><td>The metric most directly connected to business outcomes</td></tr>
+    <tr><td><strong>New Users</strong></td><td>First-time visitors in the period</td><td>Measures your ability to attract new audiences</td></tr>
+  </tbody>
+</table></div>
+<p><strong>A note on "bounce rate" in GA4:</strong> The old Google Analytics had a "bounce rate" (single-page visits). GA4 replaced this with "engagement rate" — the inverse concept. A high engagement rate is good; the old high bounce rate was bad. Do not compare GA4 engagement rate to old Universal Analytics bounce rate directly.</p>
+</div>
+
+<div class="chapter" id="acquisition-report">
+<div class="chap-hdr"><h2>Where Your Visitors Come From</h2><button class="share-btn" onclick="copyLink('acquisition-report')">Share</button></div>
+<p>The Acquisition reports in GA4 show where your visitors came from — which channel, which source, which campaign drove each visit. This is one of the most important reports for marketing decisions because it shows you which activities are actually bringing people to your site.</p>
+<p>Traffic sources in GA4 are grouped into channels:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Channel</th><th>What It Means</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Organic Search</strong></td><td>Visitors who found you by searching on Google or another search engine (SEO traffic)</td></tr>
+    <tr><td><strong>Direct</strong></td><td>Visitors who typed your URL directly, used a bookmark, or came from an untracked source</td></tr>
+    <tr><td><strong>Referral</strong></td><td>Visitors who clicked a link to your site from another website</td></tr>
+    <tr><td><strong>Organic Social</strong></td><td>Visitors from unpaid social media posts (Instagram, Facebook, LinkedIn etc.)</td></tr>
+    <tr><td><strong>Paid Search</strong></td><td>Visitors from Google Ads or other paid search campaigns</td></tr>
+    <tr><td><strong>Paid Social</strong></td><td>Visitors from paid social media advertising</td></tr>
+    <tr><td><strong>Email</strong></td><td>Visitors from links in your email campaigns</td></tr>
+  </tbody>
+</table></div>
+<p>Look at which channels bring the most visitors AND which channels bring visitors who convert. A channel that sends 1,000 visitors but zero conversions is less valuable than a channel that sends 100 visitors with a 5% conversion rate.</p>
+</div>
+
+<div class="chapter" id="behaviour-report">
+<div class="chap-hdr"><h2>What Visitors Do on Your Site</h2><button class="share-btn" onclick="copyLink('behaviour-report')">Share</button></div>
+<p>The Engagement reports in GA4 show what visitors do once they arrive: which pages they view, how long they spend, which pages they leave from (exit pages), and what events (clicks, form interactions) they trigger.</p>
+<p>The most useful behaviour reports for beginners: the <strong>Pages and Screens</strong> report shows which pages get the most traffic and which have the highest engagement. The <strong>Landing Pages</strong> report shows which pages visitors first arrive on — these are your first impressions. High-traffic landing pages with low engagement time may be poorly designed or misleading the visitor's expectations.</p>
+<p>What to look for: pages with high traffic but low conversions (potential for CRO improvement); pages with high engagement time but low traffic (good content that needs better promotion); and landing pages with very low engagement time (either the page is not relevant to the traffic it receives, or something is wrong with it).</p>
+</div>
+
+<div class="chapter" id="conversion-tracking">
+<div class="chap-hdr"><h2>Tracking Goals and Conversions</h2><button class="share-btn" onclick="copyLink('conversion-tracking')">Share</button></div>
+<p>A conversion in GA4 is any important action you mark as a goal: a purchase, a form submission, a phone click, a download, a newsletter sign-up. Without conversions set up, you can see who visits your site but not whether any of them are doing what you want them to do.</p>
+<p>Setting up conversion tracking is one of the most important things to do early in your analytics journey. In GA4, any event can be marked as a conversion by toggling it in the Events list. The most important conversions to track for most businesses: contact form submissions (using a "thank you" page view as the trigger); e-commerce purchases (GA4 has built-in e-commerce tracking for most platforms); and phone number clicks (GA4 can track when users click a tel: link on mobile).</p>
+<p>Once you have conversions tracked, you can see in every report which channels, pages, and campaigns are contributing to those conversions — and make marketing budget decisions based on real evidence.</p>
+</div>
+
+<div class="chapter" id="reading-reports">
+<div class="chap-hdr"><h2>Reading Reports Without Getting Overwhelmed</h2><button class="share-btn" onclick="copyLink('reading-reports')">Share</button></div>
+<p>GA4 has a lot of data, and beginners often feel overwhelmed trying to look at everything. The key is to start with a small set of core reports and check them on a regular schedule rather than trying to explore everything at once.</p>
+<p>A simple weekly analytics routine for beginners: check the overview report (users, sessions, conversions for the week vs previous week); check the acquisition report (which channels brought the most traffic this week?); check if any conversions occurred and which channels drove them. That is it for a weekly check — 10 minutes.</p>
+<p>A monthly review: compare key metrics month-over-month; identify the top 5 landing pages by traffic; check which pages have the highest and lowest engagement rates; review channel performance trends over the past 3 months.</p>
+</div>
+
+<div class="chapter" id="common-mistakes">
+<div class="chap-hdr"><h2>Common Analytics Mistakes Beginners Make</h2><button class="share-btn" onclick="copyLink('common-mistakes')">Share</button></div>
+<p><strong>1. Not setting up conversions.</strong> Looking at traffic without tracking what visitors do is only half the picture. Set up conversion events before evaluating any marketing channel's performance.</p>
+<p><strong>2. Obsessing over total traffic numbers.</strong> 10,000 visitors who never convert are less valuable than 500 visitors with a 10% conversion rate. Focus on quality metrics alongside volume.</p>
+<p><strong>3. Drawing conclusions from too little data.</strong> If your site gets 50 visitors a week, you cannot reliably conclude anything from a single week's data. Look at 4–8 week trends at minimum before making decisions.</p>
+<p><strong>4. Not filtering out your own visits.</strong> If you regularly visit your own website, you are inflating your traffic numbers. GA4 allows you to exclude your IP address from tracking. Do this early.</p>
+<p><strong>5. Comparing GA4 data to old Universal Analytics data.</strong> GA4 measures differently from the old Universal Analytics. Direct comparisons between the two are misleading. Use GA4 data as your baseline going forward.</p>
+</div>
+
+<div class="chapter" id="questions-to-ask">
+<div class="chap-hdr"><h2>5 Questions Analytics Can Answer for Your Business</h2><button class="share-btn" onclick="copyLink('questions-to-ask')">Share</button></div>
+<p><strong>1. Which marketing channel is sending the most valuable traffic?</strong> Compare channels not just by volume but by conversion rate and conversions. A small channel that converts well may deserve more investment than a large channel that does not convert.</p>
+<p><strong>2. Which pages are most popular — and least visited?</strong> Popular pages with high engagement confirm you are creating content people want. Unvisited pages may need better internal linking or promotion, or may not be worth maintaining.</p>
+<p><strong>3. Where are people leaving?</strong> High exit rates on key pages (product page, checkout, contact page) signal something is not working. These are the pages most worth improving.</p>
+<p><strong>4. Is my SEO working?</strong> Organic search traffic growth over 3–6 months tells you whether your SEO efforts are compounding. Stagnant or declining organic traffic indicates a problem.</p>
+<p><strong>5. Which content brings the most conversions?</strong> Identifying the pages or blog articles that drive the most goal completions tells you what topics and formats your audience responds to — and what to create more of.</p>
+</div>
+
+<div class="chapter" id="next">
+<h2>What to Read Next</h2>
+<p>You have finished this guide. Here are the best places to go deeper — all written for beginners, all from the Digital Codex reference library.</p>
+<div class="next-steps"><div class="ns-head">Continue Learning</div><div class="ns-grid"><a href="/codex/learn/beginner/building-your-first-marketing-plan/" class="ns-card"><span class="ns-tag">Beginner Track</span><span class="ns-title">Your First Marketing Plan</span></a><a href="/codex/analytics-cro/ga4-setup-configuration/" class="ns-card"><span class="ns-tag">Analytics Reference</span><span class="ns-title">GA4 Deep Dive</span></a><a href="/codex/analytics-cro/cro-framework/" class="ns-card"><span class="ns-tag">Analytics Reference</span><span class="ns-title">CRO Fundamentals</span></a><a href="/codex/analytics-cro/attribution-modelling/" class="ns-card"><span class="ns-tag">Analytics Reference</span><span class="ns-title">Attribution Modelling</span></a></div></div>
+</div>
+<div class="chapter" id="sources">
+<h2>Sources &#38; Further Reading</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>Every fact, statistic, and framework in this guide draws from official documentation, peer-reviewed research, or verified practitioner sources.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/9304153" target="_blank" rel="noopener">Google — GA4 Setup Guide</a></strong><p>Google's official GA4 setup documentation for adding analytics to your website.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://analytics.google.com/analytics/academy/" target="_blank" rel="noopener">Google Analytics Academy</a></strong><p>Google's free official training for learning Google Analytics 4 from scratch.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/9267568" target="_blank" rel="noopener">Google — GA4 E-Commerce Reporting</a></strong><p>Official GA4 documentation on e-commerce and conversion tracking setup.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://search.google.com/search-console/about" target="_blank" rel="noopener">Google Search Console</a></strong><p>Google's free tool for monitoring organic search performance — links with GA4 for complete picture.</p></div></div>
+</div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Track:</strong> Beginner &nbsp;&#183;&nbsp; <strong>Guide:</strong> 9/10</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#why-analytics" class="sb-link on">Why Analytics Matters</a><a href="#ga4-setup" class="sb-link">Getting Started with Google Analytics 4</a><a href="#key-metrics" class="sb-link">The Key Metrics and What They Mean</a><a href="#acquisition-report" class="sb-link">Where Your Visitors Come From</a><a href="#behaviour-report" class="sb-link">What Visitors Do on Your Site</a><a href="#conversion-tracking" class="sb-link">Tracking Goals and Conversions</a><a href="#reading-reports" class="sb-link">Reading Reports Without Getting Overwhelmed</a><a href="#common-mistakes" class="sb-link">Common Analytics Mistakes Beginners Make</a><a href="#questions-to-ask" class="sb-link">5 Questions Analytics Can Answer for Your Business</a><a href="#next" class="sb-link">What to Read Next</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box" style="margin-top:1rem;background:var(--blue-bg)">
+    <div class="sb-head">Beginner Track</div>
+    <div class="sb-body">
+      <a href="/codex/learn/beginner/what-is-digital-marketing/" class="sb-link">1. What Is Digital Marketing?</a>
+      <a href="/codex/learn/beginner/how-search-engines-work/" class="sb-link">2. How Search Engines Work</a>
+      <a href="/codex/learn/beginner/seo-for-beginners/" class="sb-link">3. SEO for Beginners</a>
+      <a href="/codex/learn/beginner/your-first-google-ads-campaign/" class="sb-link">4. Your First Google Ads Campaign</a>
+      <a href="/codex/learn/beginner/paid-ads-explained/" class="sb-link">5. Paid Ads Explained</a>
+      <a href="/codex/learn/beginner/social-media-basics/" class="sb-link">6. Social Media Basics</a>
+      <a href="/codex/learn/beginner/email-marketing-for-beginners/" class="sb-link">7. Email Marketing for Beginners</a>
+      <a href="/codex/learn/beginner/content-marketing-basics/" class="sb-link">8. Content Marketing Basics</a>
+      <a href="/codex/learn/beginner/understanding-analytics/" class="sb-link  on">9. Understanding Analytics</a>
+      <a href="/codex/learn/beginner/building-your-first-marketing-plan/" class="sb-link">10. Your First Marketing Plan</a>
+    </div>
+  </div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>Ready to go deeper?</h2><p>218 comprehensive reference guides — every claim cites official sources.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/learn/expert/" class="btn btn-outline-w btn-lg">Expert Track &#8594;</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>Official sources only &#183; No affiliate links</p></div>
+  <div class="ft-col"><h5>Learn</h5><ul><li><a href="/codex/learn/beginner/">Beginner Track</a></li><li><a href="/codex/learn/expert/">Expert Track</a></li></ul></div>
+  <div class="ft-col"><h5>Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li></ul></div>
+  <div class="ft-col"><h5>Legal</h5><ul><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-of-use/">Terms of Use</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');
+function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);
+if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+</body>
+</html>

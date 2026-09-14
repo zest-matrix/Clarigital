@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>What is Fine-Tuning? AI Model Customisation | Clarigital</title>
+<meta name="description" content="Fine-tuning explained clearly — what it is, when to use it vs RAG vs prompting, how it works, tools, costs, and 8 prompts. No ML background needed. April 2026.">
+<link rel="canonical" href="/ai-atlas/fine-tuning/">
+<meta property="og:title" content="What is Fine-Tuning? AI Model Customisation Explained">
+<meta property="og:description" content="Fine-tuning explained clearly — what it is, when to use it vs RAG vs prompting, how it works, tools, costs, and 8 prompts. No ML background needed. April 2026.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/fine-tuning/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What is Fine-Tuning? AI Model Customisation Explained", "url": "https://www.clarigital.com/ai-atlas/fine-tuning/", "dateModified": "2026-04-24", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Clarigital", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "What is Fine-Tuning?", "item": "https://www.clarigital.com/ai-atlas/fine-tuning/"}]}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js .lane-section{display:none}html.js .lane-section.active{display:block;animation:fi .25s ease}.lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative}
+.prompt-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.88rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.callout-red{border-left-color:var(--red)}
+.agent-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin:8px 0}
+.agent-card .ac-role{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:5px}
+.agent-card h4{font-size:.9rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.agent-card p{font-size:.83rem;margin:0}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What is Fine-Tuning? AI Model Customisation Explained">
+<meta name="twitter:description" content="Fine-tuning explained clearly — what it is, when to use it vs RAG vs prompting, how it works, tools, costs, and 8 prompts. No ML background needed. April 2026.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">›</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">›</span><span>What is Fine-Tuning?</span></nav>
+    <div class="label-tag">AI Concept</div>
+    <h1>What is Fine-Tuning?</h1>
+    <p class="hero-lead">Fine-tuning takes a general AI model and trains it further on your specific data — turning a general-purpose AI into one that specialises in your domain, speaks in your brand voice, or handles your exact use case. One of the four core AI concepts every professional needs to understand in 2026.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">AI Concept</span><span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="art-layout">
+    <main style="min-width:0">
+      <h2>The one-sentence definition</h2>
+<p>Fine-tuning is the process of taking a pre-trained AI model and continuing to train it on a smaller, domain-specific dataset — so the model learns the patterns, vocabulary, format, and knowledge specific to your use case, while retaining everything it learned during its original large-scale training.</p>
+
+<div class="callout" style="border-left-color:var(--blue)"><p><strong>The analogy that works:</strong> A general-practice doctor knows a little about everything in medicine. A cardiac surgeon knows one thing extremely well. Fine-tuning turns a general AI into the cardiac surgeon AI for your specific problem.</p></div>
+
+<h2>When is fine-tuning the right approach?</h2>
+<p>Fine-tuning is not always the answer. Before fine-tuning, consider three alternatives that are faster and cheaper:</p>
+<ul>
+  <li><strong>Prompting</strong> — a better system prompt or few-shot examples often solves the problem without any training. Try this first. Most "I need fine-tuning" problems are actually prompting problems.</li>
+  <li><strong>RAG (Retrieval-Augmented Generation)</strong> — if the goal is giving the model access to specific knowledge (your documents, your product data, your policies), RAG retrieves relevant content at query time. No training required, and the knowledge stays current automatically.</li>
+  <li><strong>Fine-tuning</strong> — the right choice when: you need a specific output format or style consistently, the task requires knowledge that cannot be retrieved (e.g. an implicit writing style), you need faster/cheaper inference and can train a smaller model, or you are running thousands of similar requests where a specialised model is more efficient.</li>
+</ul>
+
+<h2>What fine-tuning actually changes</h2>
+<p>A pre-trained model like GPT-4 has billions of numerical parameters — weights — that encode everything it learned from its training data. Fine-tuning updates a subset of these weights using your new training examples. The model learns which patterns in your data are important and adjusts its behaviour accordingly.</p>
+<p>What fine-tuning can do:</p>
+<ul>
+  <li>Teach the model a specific writing style (your brand voice, a character's voice, a document format)</li>
+  <li>Teach it domain-specific vocabulary and concepts (medical terminology, legal language, your company's internal jargon)</li>
+  <li>Teach it to follow a specific output format consistently (JSON with particular fields, structured reports, specific templates)</li>
+  <li>Teach it to refuse or redirect specific types of requests</li>
+  <li>Improve accuracy on a narrow task with a smaller, faster model</li>
+</ul>
+<p>What fine-tuning cannot do:</p>
+<ul>
+  <li>Add information after the training cutoff reliably — for current information, use RAG</li>
+  <li>Make a fundamentally incapable model capable — fine-tuning improves what is already there, does not add new reasoning abilities</li>
+  <li>Guarantee factual accuracy — fine-tuned models still hallucinate</li>
+</ul>
+
+<h2>How to fine-tune — practical options</h2>
+<h3>OpenAI fine-tuning API</h3>
+<p>The simplest starting point. Upload a JSONL training file (each line is a prompt-completion pair), trigger the training job, and receive a fine-tuned model ID you can use in API calls. Supports GPT-4o mini and GPT-3.5-turbo. Pricing: training cost (per 1k tokens) + inference cost (per 1k tokens, slightly higher than base models). Minimum recommended training examples: 50-100 good examples, though 500-1,000 produce significantly better results. Documentation at <a href="https://platform.openai.com/docs/guides/fine-tuning" target="_blank" rel="noopener" style="color:var(--indigo)">platform.openai.com/docs/guides/fine-tuning</a>.</p>
+<h3>LoRA / QLoRA on open models</h3>
+<p>LoRA (Low-Rank Adaptation) is a technique for fine-tuning large models by training only a small set of additional parameters rather than updating all model weights. This reduces the memory and compute required by 10-100x. QLoRA extends LoRA with quantisation for even lower memory requirements. Using LoRA/QLoRA, a consumer GPU (24GB VRAM) can fine-tune models up to 13B parameters. Popular tools: Hugging Face PEFT library, Unsloth (optimised for speed), Axolotl (flexible training framework). Open-source models that can be fine-tuned this way: Llama 3, Mistral, Phi-3, Gemma.</p>
+<h3>Vertex AI / Azure fine-tuning</h3>
+<p>Google Cloud Vertex AI and Azure OpenAI both offer managed fine-tuning services for their respective models. Higher cost than doing it yourself, but handles the infrastructure, monitoring, and model serving. Appropriate for enterprise teams that need SLAs and support rather than infrastructure management.</p>
+
+<h2>Training data quality — the only thing that matters</h2>
+<p>Fine-tuning quality is determined almost entirely by training data quality. A small dataset of excellent examples outperforms a large dataset of mediocre examples every time. Principles for training data:</p>
+<ul>
+  <li><strong>Consistency</strong> — every example should demonstrate exactly the behaviour you want. Contradictory examples confuse the model.</li>
+  <li><strong>Coverage</strong> — examples should cover the range of inputs the model will receive in production, not just the easy cases.</li>
+  <li><strong>Quality over quantity</strong> — 100 carefully crafted examples outperform 1,000 automatically generated ones in most cases.</li>
+  <li><strong>Correct format</strong> — training examples must be in the exact format the model will be queried in production.</li>
+</ul>
+
+<div class="prompt-box"><div class="prompt-label">Decide whether to fine-tune or use RAG</div><div class="prompt-text">My use case is [describe — what the AI should do, what data it needs access to, how often the data changes, the expected volume of requests]. Should I use fine-tuning, RAG, or just better prompting? For each option: explain if it fits my use case, estimate the implementation complexity, and give me the main reason it would or would not work. Make a recommendation.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box"><div class="prompt-label">Create a training dataset</div><div class="prompt-text">I want to fine-tune [model — e.g. GPT-4o mini / Llama 3 8B] for [task — e.g. classifying customer support emails / writing in our brand voice / extracting data from invoices]. Generate 10 high-quality training examples in the JSONL format required by the OpenAI fine-tuning API. Each example should: [describe the characteristics of a good example for my task]. After the examples, explain what makes each one effective.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box"><div class="prompt-label">Write a system prompt for a fine-tuned model</div><div class="prompt-text">I am fine-tuning a model for [task]. Write a system prompt that will be included in every training example. The system prompt should: establish the model's role and context, specify the output format precisely, handle edge cases, and be consistent across all training examples. Also write 3 example user messages with ideal responses that I can use as training data.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box"><div class="prompt-label">Evaluate fine-tuning results</div><div class="prompt-text">I have fine-tuned a model for [task] using [number] training examples. I want to evaluate whether the fine-tuning worked. Design an evaluation framework: (1) the specific metrics I should measure, (2) a test set of [number] examples that would reveal whether the model has learned correctly, (3) how to compare the fine-tuned model against the base model, (4) the threshold that would tell me the fine-tuning was successful.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box"><div class="prompt-label">Prepare data for LoRA fine-tuning</div><div class="prompt-text">I want to fine-tune [Llama 3 8B / Mistral 7B / another open model] using LoRA on my local machine / a cloud GPU. My use case: [describe]. Walk me through: (1) the data format required, (2) the recommended LoRA hyperparameters for my use case (rank, alpha, target modules), (3) which tool to use (Unsloth / Hugging Face PEFT / Axolotl) and why, (4) how much GPU memory I need and how to reduce it with QLoRA if needed.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box"><div class="prompt-label">Calculate fine-tuning costs</div><div class="prompt-text">I want to fine-tune [GPT-4o mini / GPT-3.5-turbo] using the OpenAI API. I have approximately [number] training examples, each with an average of [X] tokens in the prompt and [Y] tokens in the completion. Calculate: (1) the cost to train one epoch, (2) the recommended number of epochs, (3) the total training cost, (4) the inference cost if I run [Z] requests per day at an average of [W] tokens each, (5) whether fine-tuning is cost-effective vs using the base model with a longer system prompt.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box"><div class="prompt-label">Compare fine-tuning to alternatives for my case</div><div class="prompt-text">I have [describe the problem — task, data, constraints]. I am considering three approaches: (1) a detailed system prompt with few-shot examples, (2) RAG with a vector database of my documents, (3) fine-tuning the model. For my specific case, rank these approaches by: likely quality of output, cost to implement, time to implement, ongoing maintenance burden, and ability to update when my data changes.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+<div class="prompt-box"><div class="prompt-label">Fine-tune for brand voice</div><div class="prompt-text">I want to fine-tune a model to write content in [brand name]'s voice. Here are 5 examples of excellent [brand name] content: [paste examples]. Analyse: (1) the distinctive characteristics of this writing style — vocabulary, sentence structure, tone, what it avoids, (2) how to create training examples that capture these characteristics, (3) how many examples I need, (4) how to test whether the fine-tuned model has learned the voice correctly.</div><button class="prompt-copy" onclick="copyPrompt(this)">Copy</button></div>
+    </main>
+    <aside class="art-sidebar">
+      <div class="sidebar-card">
+        <h4 class="sidebar-heading" style="font-size:.78rem;font-weight:700;color:rgba(241,245,249,.6);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Related</h4>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link">What is RAG?</a><a href="/ai-atlas/prompt-library/" class="sidebar-link">What is a System Prompt?</a><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="sidebar-link">LlamaIndex (RAG framework)</a><a href="/what-is-ai/" class="sidebar-link">What is AI?</a><a href="/ai-atlas/glossary/" class="sidebar-link">AI Glossary</a>
+      </div>
+      <div class="sidebar-card">
+        <h4 class="sidebar-heading" style="font-size:.78rem;font-weight:700;color:rgba(241,245,249,.6);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">AI Atlas</h4>
+        <a href="/ai-atlas/" class="sidebar-link">AI Atlas Hub</a>
+        <a href="/ai-atlas/which-ai/" class="sidebar-link">Which AI Should I Use?</a>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link">What is Agentic AI?</a>
+        <a href="/what-is-ai/" class="sidebar-link">What is AI?</a>
+        <a href="/ai-atlas/glossary/" class="sidebar-link">AI Glossary</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>Frameworks</h5><ul>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script>
+function copyPrompt(btn){var t=btn.previousElementSibling.textContent;navigator.clipboard.writeText(t).then(function(){var o=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent=o;btn.classList.remove('copied');},2000);});}
+</script>
+</body>
+</html>

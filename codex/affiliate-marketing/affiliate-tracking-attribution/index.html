@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Affiliate Tracking & Attribution: How | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Affiliate Tracking & Attribution: How | Digital Codex">
+<meta property="og:description" content="How affiliate tracking works technically, the attribution models in use, the impact of privacy changes, and how to handle tracking disputes.">
+<meta property="og:url" content="https://www.clarigital.com/codex/affiliate-marketing/affiliate-tracking-attribution/">
+<meta property="og:site_name" content="Digital Codex">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Affiliate Tracking & Attribution: How", "description": "How affiliate tracking works technically, the attribution models in use, the impact of privacy changes, and how to handle tracking disputes.", "url": "https://www.clarigital.com/codex/affiliate-marketing/affiliate-tracking-attribution/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Affiliate Tracking & Attribution: How", "description": "How affiliate tracking works technically, the attribution models in use, the impact of privacy changes, and how to handle tracking disputes.", "url": "https://www.clarigital.com/codex/affiliate-marketing/affiliate-tracking-attribution/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<meta name="description" content="How affiliate tracking works technically, the attribution models in use, the impact of privacy changes, and how to handle tracking disputes.">
+<link rel="canonical" href="/codex/affiliate-marketing/affiliate-tracking-attribution/">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+</style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Affiliate Tracking & Attribution: How | Digital Codex">
+<meta name="twitter:description" content="How affiliate tracking works technically, the attribution models in use, the impact of privacy changes, and how to handle tracking disputes.">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/case-studies/">Cases</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/business-strategy/" class="di">Business</a><a href="/codex/affiliate-marketing/" class="di cur">Affiliate Marketing</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#tracking-fundamentals">How Affiliate Tracking Works</a><a class="cnl" href="#cookie-mechanics">Cookie-Based Tracking: The Technical Mechanics</a><a class="cnl" href="#attribution-models">Attribution Models in Affiliate Marketing</a><a class="cnl" href="#cookie-window">Cookie Windows and Last-Click Dominance</a><a class="cnl" href="#ios-impact">iOS Privacy Changes and Their Impact</a><a class="cnl" href="#cookieless-solutions">Cookieless Tracking Solutions</a><a class="cnl" href="#server-side">Server-Side Tracking</a><a class="cnl" href="#tracking-disputes">Handling Tracking Disputes</a><a class="cnl" href="#cross-device">Cross-Device Attribution Challenges</a><a class="cnl" href="#future-tracking">The Future of Affiliate Tracking</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/affiliate-marketing/">Affiliate Marketing</a><span class="sep">/</span><span>Affiliate Tracking & Attribution</span></nav>
+  <span class="label-tag">Affiliate Marketing &#183; Guide 5</span>
+  <h1>Affiliate Tracking &#38; Attribution &#183; Cookies, Privacy &#38; Disputes</h1>
+  <p class="hero-lead">Affiliate marketing depends entirely on accurate tracking — if a publisher drives a sale that the tracking system does not attribute to them, they are not paid and trust in the programme breaks down. Understanding how affiliate tracking works technically, what affects its accuracy, and how privacy changes are disrupting it is essential for both programme managers and publishers who depend on commission income.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Affiliate Marketing</span>
+    <span class="meta-tag mt-gray">5,000 words</span>
+    <span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="chapter" id="tracking-fundamentals">
+<div class="chap-hdr"><h2>How Affiliate Tracking Works</h2><button class="share-btn" onclick="copyLink('tracking-fundamentals')">Share</button></div>
+<p>Affiliate tracking records the complete journey from a user clicking an affiliate link to completing a conversion — attributing the conversion to the publisher and calculating the commission owed. The core mechanism is a unique publisher identifier embedded in the affiliate link that persists across the user's browser session until they convert or the attribution window expires.</p>
+<p>The full tracking sequence: (1) Publisher embeds their unique affiliate link (containing their publisher ID and optional sub-tracking IDs) in their content. (2) User clicks the link. (3) The click is recorded by the network's tracking server — capturing timestamp, publisher ID, user IP, device, and browser. (4) The tracking server sets a first-party or third-party cookie in the user's browser, recording the publisher attribution. (5) User is redirected to the advertiser's website. (6) User browses and eventually completes a purchase. (7) The advertiser's conversion tracking pixel or server-to-server postback fires, sending the transaction data (order ID, order value) to the network. (8) The network matches the conversion to the publisher attribution cookie and records the commission.</p>
+<p>Any break in this chain results in an unattributed conversion — the sale happens but no commission is recorded for any publisher. Tracking gaps are one of the most contentious issues in affiliate marketing and the subject of most publisher disputes.</p>
+</div>
+
+<div class="chapter" id="cookie-mechanics">
+<div class="chap-hdr"><h2>Cookie-Based Tracking: The Technical Mechanics</h2><button class="share-btn" onclick="copyLink('cookie-mechanics')">Share</button></div>
+<p>Traditional affiliate tracking relies on cookies — small files stored in the user's browser that persist the publisher attribution across browsing sessions. Two types of cookies are used in affiliate tracking:</p>
+<p><strong>Third-party cookies</strong> are set by the affiliate network's domain (not the advertiser's domain) when the click is recorded. Because they are set by a third-party domain, they are subject to browser restrictions that have significantly reduced their effectiveness: Safari has blocked third-party cookies since 2017; Firefox has blocked them since 2019; Chrome is phasing them out. Third-party cookies that persist for longer than 7 days are also blocked in Safari's Intelligent Tracking Prevention (ITP).</p>
+<p><strong>First-party cookies</strong> are set by the advertiser's domain rather than the network's domain, making them more durable against browser privacy restrictions. They require technical integration between the advertiser and the network — the advertiser's website must be set up to set first-party cookies on behalf of the network. Networks like Impact and Awin have documented first-party cookie implementations that significantly improve tracking accuracy compared to third-party cookie-reliant setups.</p>
+<p>Server-side cookie setting — where the cookie is set by a server-side redirect through the advertiser's domain rather than by JavaScript — further improves cookie persistence because it is not subject to JavaScript-blocking browser extensions or Intelligent Tracking Prevention rules.</p>
+</div>
+
+<div class="chapter" id="attribution-models">
+<div class="chap-hdr"><h2>Attribution Models in Affiliate Marketing</h2><button class="share-btn" onclick="copyLink('attribution-models')">Share</button></div>
+<p>Attribution models determine which publisher gets credit — and commission — when multiple affiliate touchpoints exist in the same purchase journey. A user might read a review on a content blog (click 1), then see a comparison on a second site (click 2), then use a voucher code from a cashback site (click 3), then complete the purchase. Standard last-click attribution credits click 3 entirely — the cashback site earns 100% of the commission despite the content blog initiating the purchase journey.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Model</th><th>Logic</th><th>Publisher Incentive</th><th>Advertiser Risk</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Last-click</strong></td><td>100% credit to the last affiliate touchpoint before conversion</td><td>Publishers optimise for bottom-funnel proximity — cashback, voucher code sites benefit most</td><td>Over-pays for conversions that would have happened anyway; under-pays content publishers who initiate journeys</td></tr>
+    <tr><td><strong>First-click</strong></td><td>100% credit to the first affiliate touchpoint</td><td>Publishers optimise for early-funnel discovery content</td><td>May under-credit conversion-focused publishers who close purchases</td></tr>
+    <tr><td><strong>Linear</strong></td><td>Equal credit distributed across all touchpoints</td><td>Rewards all participation in the journey</td><td>Operationally complex; rewards low-value touchpoints equally with high-value ones</td></tr>
+    <tr><td><strong>Position-based (40/20/40)</strong></td><td>40% to first-click, 20% distributed across middle, 40% to last-click</td><td>Rewards both discovery and conversion</td><td>More complex; requires network support for multi-touch models</td></tr>
+  </tbody>
+</table></div>
+<p>Most affiliate networks still default to last-click attribution, despite its documented limitations for rewarding content publishers fairly. Programmes that want to attract and retain high-quality content affiliates should evaluate multi-touch attribution models — the technology is available in modern platforms like Impact and Partnerize, though it requires buy-in from publishers accustomed to last-click.</p>
+</div>
+
+<div class="chapter" id="cookie-window">
+<div class="chap-hdr"><h2>Cookie Windows and Last-Click Dominance</h2><button class="share-btn" onclick="copyLink('cookie-window')">Share</button></div>
+<p>The cookie window (also called the attribution window or cookie duration) is the period during which a publisher's attribution persists. If a user clicks an affiliate link and then converts within the window, the publisher is credited. If the user converts after the window expires, no commission is paid to any publisher — the conversion is unattributed.</p>
+<p>Standard affiliate cookie windows:</p>
+<ul>
+  <li>30 days: The most common standard — represents a reasonable balance between giving publishers fair credit for initiating consideration and not paying commissions on purchases unrelated to the affiliate's promotion.</li>
+  <li>7 days: Used in categories with shorter consideration cycles (impulse purchases, low-value items). Also becoming more common as browser restrictions make longer cookie windows technically less reliable.</li>
+  <li>1 day: Used by Amazon Associates as the default window — one of the industry's most criticized attribution windows, particularly for high-consideration product categories where the purchase journey spans many days or weeks.</li>
+  <li>90+ days: Used in high-consideration categories (financial products, insurance, luxury goods) where the purchase journey is genuinely long and publishers reasonably expect credit for initiating consideration well before the final decision.</li>
+</ul>
+</div>
+
+<div class="chapter" id="ios-impact">
+<div class="chap-hdr"><h2>iOS Privacy Changes and Their Impact</h2><button class="share-btn" onclick="copyLink('ios-impact')">Share</button></div>
+<p>Apple's App Tracking Transparency (ATT) framework (iOS 14.5, released April 2021) and Intelligent Tracking Prevention (ITP) in Safari have significantly reduced tracking accuracy for affiliate programmes targeting iOS users. ITP limits third-party cookies to 24 hours from the last time a user directly visited the tracking domain — meaning a publisher who relies on 30-day cookie windows may find that iOS Safari conversions from users who did not directly visit the network's tracking domain are unattributed after 24 hours.</p>
+<p>The practical impact: iPhone users — a significant proportion of online shoppers in many categories — are underrepresented in affiliate conversion data because their conversions are less likely to be correctly attributed. Programmes that have not migrated to first-party cookie implementations are experiencing higher rates of unattributed conversions on iOS.</p>
+</div>
+
+<div class="chapter" id="cookieless-solutions">
+<div class="chap-hdr"><h2>Cookieless Tracking Solutions</h2><button class="share-btn" onclick="copyLink('cookieless-solutions')">Share</button></div>
+<p>The industry has developed several alternative tracking approaches that reduce or eliminate cookie dependency:</p>
+<p><strong>First-party cookie implementation.</strong> The most widely adopted solution — tracking cookies are set by the advertiser's domain rather than the network's domain, making them first-party cookies that are more durable against browser restrictions. Impact, Awin, and CJ all have documented first-party tracking implementations.</p>
+<p><strong>Click ID parameters.</strong> The affiliate link passes a unique click ID as a URL parameter. The advertiser's site stores this in a first-party cookie or passes it through the checkout flow so it can be included in the conversion postback. This creates a click-to-conversion link that does not depend on third-party cookies.</p>
+<p><strong>Email-based tracking.</strong> Where conversions happen through logged-in accounts or email-linked purchases, the user's email address can serve as a stable identifier for attribution — matching the publisher's click to the eventual conversion via the user's email address. This requires advertiser technical integration but provides highly accurate attribution for registered users.</p>
+<p><strong>Server-to-server (S2S) postback.</strong> The most robust conversion tracking method — instead of a browser-fired pixel, the advertiser's server sends a direct HTTP request to the network's server when a conversion occurs, including the click ID that was passed in the affiliate link. S2S postback does not depend on any browser environment and is completely cookie-independent.</p>
+</div>
+
+<div class="chapter" id="server-side">
+<div class="chap-hdr"><h2>Server-Side Tracking</h2><button class="share-btn" onclick="copyLink('server-side')">Share</button></div>
+<p>Server-to-server (S2S) or server-side tracking is the gold standard for affiliate conversion recording because it is independent of browser privacy settings, JavaScript blocking, and cookie restrictions. In an S2S setup, the affiliate link passes a unique click ID as a URL parameter; the advertiser's website stores this click ID (in a first-party cookie, a database, or both); when a conversion occurs, the advertiser's server — not a browser pixel — sends the conversion data and click ID directly to the network's tracking server.</p>
+<p>S2S tracking requires technical development work on the advertiser's side to implement the click ID capture and server-side postback. The investment is justified for programmes with significant mobile traffic (where browser-based tracking is least reliable) and for categories with long consideration cycles where cookie expiry is a significant tracking gap.</p>
+</div>
+
+<div class="chapter" id="tracking-disputes">
+<div class="chap-hdr"><h2>Handling Tracking Disputes</h2><button class="share-btn" onclick="copyLink('tracking-disputes')">Share</button></div>
+<p>Tracking disputes occur when a publisher believes they drove a conversion that was not attributed to them — or when an advertiser believes they paid commission on a conversion that the publisher did not legitimately influence. Both types of dispute are inevitable in affiliate programmes and should be managed through a documented dispute process.</p>
+<p>Publisher dispute investigation process: check whether the click was recorded in the network's click log (if no click is recorded, there is no tracking evidence to support the publisher's claim); check whether an attribution cookie was present at the time of conversion (if a cookie from a different publisher overwrote the original one under last-click rules, that should be explained); verify whether the advertiser's tracking pixel fired correctly on the confirmation page (a broken conversion pixel causes unattributed conversions across all publishers).</p>
+<p>Advertiser dispute investigation process for suspected fraud: check click-to-impression ratios for the publisher (a publisher with huge claimed reach and almost no clicks is suspicious); check order patterns for the flagged transactions (multiple orders from the same IP address, or orders placed in the first minutes after a click, may indicate fraudulent activity); review the publisher's declared promotion methods against what tracking data suggests they are actually doing.</p>
+</div>
+
+<div class="chapter" id="cross-device">
+<div class="chap-hdr"><h2>Cross-Device Attribution Challenges</h2><button class="share-btn" onclick="copyLink('cross-device')">Share</button></div>
+<p>A user who clicks an affiliate link on a mobile phone and then completes the purchase on their desktop computer will generate an unattributed conversion in standard cookie-based tracking — the click cookie is in the mobile browser but the conversion happens in a desktop browser, and the two cannot be connected without cross-device identity resolution.</p>
+<p>Cross-device attribution requires either: a logged-in user session (if the user is logged into the advertiser's site or the publisher's site on both devices, their identity can be bridged); email-based matching (if the user's email address is captured as part of the checkout, it can be matched to the email address collected at the click stage); or probabilistic identity matching (linking devices based on shared IP addresses, browser fingerprints, and timing patterns — less accurate but does not require a logged-in session).</p>
+</div>
+
+<div class="chapter" id="future-tracking">
+<div class="chap-hdr"><h2>The Future of Affiliate Tracking</h2><button class="share-btn" onclick="copyLink('future-tracking')">Share</button></div>
+<p>The trajectory of affiliate tracking is toward server-side, first-party, consent-based approaches that are resistant to browser privacy restrictions. Programmes that have not invested in S2S tracking and first-party cookie implementation will progressively see higher rates of unattributed conversions as browser restrictions increase. The transition is not optional — it is driven by regulatory requirements (GDPR consent requirements for cookie usage), platform requirements (Apple, Google, Mozilla), and user expectations.</p>
+<p>The silver lining of this transition: programmes that implement robust server-side tracking will see better attribution accuracy than they had with third-party cookies — because server-side postback does not depend on browser environments at all. The migration from cookie-dependent to server-side tracking, once completed, typically results in an increase in measured conversions, not a decrease, because it captures conversions that were previously lost in browser tracking gaps.</p>
+</div>
+
+<div class="chapter" id="sources">
+<h2>Sources &#38; Further Reading</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>All frameworks, data, and examples in this guide draw from official documentation, peer-reviewed research, and documented practitioner case studies. We learn from primary sources and explain them in our own words.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://help.impact.com/en/articles/3187015-what-is-server-to-server-tracking" target="_blank" rel="noopener">Impact.com — S2S Tracking Documentation</a></strong><p>Impact's official documentation on server-to-server affiliate tracking implementation.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.awin.com/hc/en-gb/articles/360020530098" target="_blank" rel="noopener">Awin — MasterTag Documentation</a></strong><p>Awin's official documentation on their cross-device and first-party tracking MasterTag solution.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://webkit.org/blog/7675/intelligent-tracking-prevention/" target="_blank" rel="noopener">WebKit — Intelligent Tracking Prevention</a></strong><p>Apple's official WebKit documentation on Safari Intelligent Tracking Prevention and its effects on cookies.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://www.ftc.gov/business-guidance/privacy-security/privacy/mobile-privacy-disclosures" target="_blank" rel="noopener">FTC — Mobile Privacy</a></strong><p>FTC's official documentation on mobile privacy requirements relevant to affiliate tracking and attribution.</p></div></div>
+</div>
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/seo/off-page/link-building-strategies/" class="related-card"><span class="rc-tag">SEO</span><span class="rc-title">Link Building Strategies</span><span class="rc-arr">&#8594;</span></a><a href="/codex/analytics-cro/attribution-modelling/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">Attribution Modelling</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/channel-mix-strategy/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Channel Mix Strategy</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 5,000</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#tracking-fundamentals" class="sb-link on">How Affiliate Tracking Works</a><a href="#cookie-mechanics" class="sb-link">Cookie-Based Tracking: The Technical Mechanics</a><a href="#attribution-models" class="sb-link">Attribution Models in Affiliate Marketing</a><a href="#cookie-window" class="sb-link">Cookie Windows and Last-Click Dominance</a><a href="#ios-impact" class="sb-link">iOS Privacy Changes and Their Impact</a><a href="#cookieless-solutions" class="sb-link">Cookieless Tracking Solutions</a><a href="#server-side" class="sb-link">Server-Side Tracking</a><a href="#tracking-disputes" class="sb-link">Handling Tracking Disputes</a><a href="#cross-device" class="sb-link">Cross-Device Attribution Challenges</a><a href="#future-tracking" class="sb-link">The Future of Affiliate Tracking</a><a href="#sources" class="sb-link">Sources</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>218 guides. Official sources only.</h2><p>The complete digital marketing knowledge base.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/affiliate-marketing/" class="btn btn-outline-w btn-lg">More Affiliate Marketing</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>Official sources only &#183; No affiliate links</p></div>
+  <div class="ft-col"><h5>Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/affiliate-marketing/">Affiliate Marketing</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 218 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+  <div class="ft-col"><h5>Legal</h5><ul><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-of-use/">Terms of Use</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');
+function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);
+if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+</body>
+</html>

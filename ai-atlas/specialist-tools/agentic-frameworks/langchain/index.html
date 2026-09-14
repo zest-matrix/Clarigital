@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LangChain &amp; LangGraph | Clarigital</title>
+<meta name="description" content="LangChain and LangGraph explained — what they are, how LangGraph's state machine works, 14 copy-paste prompts, pricing, and when to use them. April 2026.">
+<link rel="canonical" href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">
+<meta property="og:title" content="LangChain &amp; LangGraph — The Complete Guide to Building AI Agents">
+<meta property="og:description" content="The most widely used framework for building with LLMs. LangChain provides the ecosystem; LangGraph provides the agent architecture. Complete guide with 14 prompts.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/langchain/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative}
+.prompt-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.88rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.callout-red{border-left-color:var(--red)}
+.compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:.88rem}
+.compare-table th{background:var(--bg2);color:var(--fg);font-weight:700;padding:10px 14px;text-align:left;border-bottom:2px solid var(--border)}
+.compare-table td{padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--muted);vertical-align:top}
+.compare-table tr:hover td{background:var(--bg2)}
+.td-label{color:var(--fg);font-weight:600}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LangChain & LangGraph \u2014 The Complete Guide to Building AI Agents", "description": "LangChain and LangGraph explained \u2014 what they are, how LangGraph's state machine works, 14 copy-paste prompts, pricing, and when to use them. April 2026.", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/langchain/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "LangChain & LangGraph \u2014 The Complete Guide to Building AI Agents", "description": "LangChain and LangGraph explained \u2014 what they are, how LangGraph's state machine works, 14 copy-paste prompts, pricing, and when to use them. April 2026.", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/langchain/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LangChain &amp;amp; LangGraph — The Complete Guide to Building AI Agents">
+<meta name="twitter:description" content="LangChain and LangGraph explained — what they are, how LangGraph's state machine works, 14 copy-paste prompts, pricing, and when to use them. April 2026.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ai-atlas/">AI Atlas</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/">Specialist Tools</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/agentic-frameworks/">Agentic Frameworks</a>
+      <span class="sep">›</span>
+      <span>LangChain / LangGraph</span>
+    </nav>
+    <div class="label-tag">Agentic Frameworks</div>
+    <h1>LangChain &amp; LangGraph</h1>
+    <p class="hero-lead">LangChain is the most widely used framework for building with large language models — over 1,000 integrations, millions of developers, and the largest open-source ecosystem in the space. LangGraph is LangChain's own recommended approach for building agents: a graph-based state machine that makes complex, multi-step AI workflows reliable, inspectable, and controllable.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Agentic Framework</span>
+      <span class="meta-tag">Free · Open Source · MIT</span>
+      <span class="meta-tag">Python + JS/TS</span>
+      <span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="art-layout">
+    <div>
+      
+
+      <!-- SIMPLE LANE -->
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+        <h2 id="s-green-0">LangChain and LangGraph — what is the difference?</h2>
+        <p>They are related but distinct. LangChain is a toolkit — a large collection of pre-built components for working with AI models: connectors for different LLMs, tools for searching the web, reading documents, querying databases, and chaining operations together. Think of it as a parts catalogue for building AI applications.</p>
+        <p>LangGraph is a framework built on top of LangChain specifically for agents. Where LangChain gives you the parts, LangGraph gives you the architecture. It defines how those parts are assembled into a reliable, stateful workflow that can loop, branch, pause for human input, and recover from errors.</p>
+        <p>LangChain itself recommends using LangGraph for any agent system, rather than LangChain's older agent abstractions. The two work together: LangGraph provides the flow control, LangChain provides the tools and model connections.</p>
+
+        <h2 id="s-green-1">Why it became the most widely used option</h2>
+        <p>LangChain launched in October 2022 — just weeks before ChatGPT — and captured early adopters building the first wave of LLM applications. By the time others emerged, LangChain had the biggest ecosystem, the most documentation, and the most Stack Overflow answers. Being first mattered enormously in a new field.</p>
+        <p>The practical effect: if you search for how to do something with AI agents, there is a strong chance the answer involves LangChain. More integrations, more examples, more developers who know it.</p>
+
+        <h2 id="s-green-2">What LangGraph adds</h2>
+        <p>LangGraph represents agent workflows as a graph — a set of nodes (each node is a step, a model call, or a tool) connected by edges (transitions between steps). This is more powerful than a simple linear chain for three reasons:</p>
+        <ul>
+          <li><strong>Cycles are possible</strong> — the agent can loop back to an earlier step based on what it observes. Essential for self-correction and retry logic.</li>
+          <li><strong>State is explicit</strong> — the graph carries a state object through every node. Every step can read and update this state. Nothing is lost between steps.</li>
+          <li><strong>Human-in-the-loop is built in</strong> — the graph can be paused at any node, a human can review and modify the state, and execution can resume from the same point.</li>
+        </ul>
+
+        <div class="callout callout-blue">
+          <p><strong>Who should use LangChain/LangGraph:</strong> Developers building production AI applications who want the largest ecosystem, the most integrations, and the ability to find help when things break. It is not the simplest framework to learn, but it is the most capable and the most supported.</p>
+        </div>
+
+        <h2 id="s-green-3">What it costs</h2>
+        <p>LangChain and LangGraph are both free and open source under the MIT licence. You can download and use them with no cost. LangSmith — the observability and debugging platform built by the same team — has a free tier (up to 5,000 traces per month) and paid plans starting at $39/month per user for teams. LangSmith is optional but highly recommended for production use.</p>
+
+      </div>
+
+      <!-- WORKING LANE -->
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+        <h2 id="s-indigo-0">What LangChain provides</h2>
+        <p>LangChain's core value is breadth. The framework provides standardised interfaces for the components every AI application needs:</p>
+        <ul>
+          <li><strong>Model connectors</strong> — unified API for OpenAI, Anthropic, Google, Mistral, Cohere, Ollama (local), and 50+ other LLM providers. Switch models by changing one line.</li>
+          <li><strong>Document loaders</strong> — load content from PDFs, Word documents, web pages, Notion, Google Drive, databases, APIs, and dozens of other sources into a consistent format.</li>
+          <li><strong>Text splitters</strong> — divide long documents into chunks suitable for embedding and retrieval, with control over chunk size and overlap.</li>
+          <li><strong>Vector store connectors</strong> — connect to Pinecone, Chroma, Weaviate, Qdrant, FAISS, and other vector databases for semantic search and RAG.</li>
+          <li><strong>Tool integrations</strong> — pre-built tools for web search (Tavily, SerpAPI), code execution, calculator, weather, and hundreds of API integrations.</li>
+          <li><strong>Memory</strong> — conversation history, summary memory, entity tracking, and vector store-backed long-term memory.</li>
+        </ul>
+
+        <h2 id="s-indigo-1">What LangGraph provides</h2>
+        <p>LangGraph adds workflow architecture on top. A LangGraph application is defined as:</p>
+        <ul>
+          <li><strong>A state schema</strong> — a typed data structure that holds everything the agent needs to know at any point in its workflow</li>
+          <li><strong>Nodes</strong> — Python functions that receive the current state and return an updated state. Each node is one step: a model call, a tool call, a human review point.</li>
+          <li><strong>Edges</strong> — connections between nodes. Edges can be unconditional (always go to node B after node A) or conditional (go to node B or node C depending on what node A returned).</li>
+          <li><strong>A compiled graph</strong> — the assembled workflow, which LangGraph validates before running to catch structural errors early.</li>
+        </ul>
+
+        <h2 id="s-indigo-2">Prompts for building and working with LangChain/LangGraph</h2>
+        <p>Use these with Claude, ChatGPT, or any capable model when building with LangChain and LangGraph.</p>
+
+        <h3>Getting started and understanding</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Explain LangGraph to a developer</div>
+          <div class="prompt-text">I understand Python and I have used LLM APIs directly. Explain what LangGraph adds. What problem does the graph structure solve that a simple loop doesn't? Give me a concrete example of a workflow that is hard to build without it.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">LangChain vs LangGraph — which should I use?</div>
+          <div class="prompt-text">I want to build an agent that can search the web, read documents, and produce a structured report. Should I use LangChain's legacy agent abstractions, LangGraph, or something else entirely? Explain the tradeoffs and give me a recommendation with reasoning.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Understand a LangGraph workflow</div>
+          <div class="prompt-text">Here is a LangGraph workflow: [paste code]. Walk me through what it does step by step. What state does it carry? What does each node do? What are the conditional edges checking? What could go wrong and where?</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Building agents</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Build a research agent with LangGraph</div>
+          <div class="prompt-text">Write a LangGraph agent in Python that: (1) takes a research question as input, (2) searches the web using Tavily, (3) reads the top 3 results in full, (4) synthesises a structured summary with sources cited. Use a typed state object. Include error handling if a URL can't be fetched. Use Claude claude-sonnet-4-20250514 as the model.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Add a human review checkpoint</div>
+          <div class="prompt-text">I have a LangGraph workflow that produces a draft document. Before it proceeds to the publishing step, I want a human to be able to review and optionally edit the draft. Show me how to add an interrupt point in LangGraph that pauses execution, presents the current state, and allows the state to be updated before continuing.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Build a multi-agent system with LangGraph</div>
+          <div class="prompt-text">Build a LangGraph multi-agent system with three agents: a researcher, a writer, and a fact-checker. The researcher gathers information using web search. The writer produces a structured article from the research. The fact-checker identifies any claims that seem unsupported and flags them. The orchestrator decides whether the output is acceptable or should be revised. Show the full graph definition.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Add retry logic to a failing node</div>
+          <div class="prompt-text">One of my LangGraph nodes calls an external API that occasionally fails or times out. Show me how to add retry logic — maximum 3 attempts with exponential backoff — that retries the API call before routing to an error handler node. The rest of the workflow should continue normally if the retry succeeds.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>RAG and document workflows</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Build a RAG pipeline with LangChain</div>
+          <div class="prompt-text">I have a folder of PDF documents. Using LangChain, write Python code to: (1) load all PDFs, (2) split them into chunks of 1000 characters with 200 character overlap, (3) embed them using OpenAI's text-embedding-3-small model, (4) store them in a Chroma vector database, (5) create a retriever that finds the 5 most relevant chunks for any query. Include the query step.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Combine RAG with a LangGraph agent</div>
+          <div class="prompt-text">I have a Chroma vector store built with LangChain. Show me how to make this retriever available as a tool inside a LangGraph agent, so the agent can decide when to query the knowledge base versus when to search the web, based on the nature of the question.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Debugging and observability</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Debug a LangGraph workflow that's looping</div>
+          <div class="prompt-text">My LangGraph agent is looping — it keeps going back to the same node without making progress. Here is the graph definition: [paste code]. Help me identify why the loop condition is not being satisfied and what I need to change to ensure the agent eventually reaches a terminal state.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Add LangSmith tracing</div>
+          <div class="prompt-text">Show me how to add LangSmith tracing to my existing LangGraph application. I want every node execution, tool call, and model call to be logged with timing data. Show the environment variables needed and any code changes required. I'm using Python.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Write evaluation tests for a LangGraph agent</div>
+          <div class="prompt-text">I have a LangGraph research agent. I want to evaluate its performance across 20 test questions. For each question, I want to measure: whether the final answer addresses the question, whether sources are cited, and whether the answer contains any factual claims that contradict the source documents. Show me how to set up this evaluation using LangSmith's evaluation framework.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+      </div>
+
+      <!-- DEEP LANE -->
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+        <h2 id="s-red-0">LangGraph architecture — the state machine model</h2>
+        <p>LangGraph implements a stateful, cyclical computation graph where each node is a function and edges define control flow. This is architecturally similar to finite state machines but with typed state objects rather than discrete states, and conditional edges that compute the next state transition at runtime.</p>
+
+        <p>The central abstraction is the <strong>StateGraph</strong> — a graph that carries a typed state object (defined as a TypedDict or Pydantic model) through its nodes. Each node is a Python function with signature <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">def node_fn(state: StateType) -> StateType</code> — it receives the current state and returns an updated state. LangGraph merges the returned partial state into the full state using a configurable reducer (defaulting to last-write-wins).</p>
+
+        <p>Edges are added with <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">add_edge(source, target)</code> for unconditional transitions and <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">add_conditional_edges(source, condition_fn, mapping)</code> for branches. The condition function receives the state and returns a string key that maps to a target node name. This enables routing logic: "if the agent decided to use a tool, go to the tool execution node; if it produced a final answer, go to the end node."</p>
+
+        <h2 id="s-red-1">Persistence and checkpointing</h2>
+        <p>LangGraph's checkpointing system saves the full state at every node execution. Checkpointers are pluggable backends: in-memory (for development), SQLite (for single-process persistence), and PostgreSQL (for production multi-process deployments). The checkpoint system enables:</p>
+        <ul>
+          <li><strong>Resumable workflows</strong> — a workflow interrupted by an error or timeout can be resumed from the last checkpoint</li>
+          <li><strong>Human-in-the-loop</strong> — the graph can be paused (<code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">interrupt_before</code> or <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">interrupt_after</code> on any node), the state can be inspected and modified externally, and execution resumes from the modified state</li>
+          <li><strong>Time travel</strong> — LangSmith can replay a workflow from any historical checkpoint, enabling debugging of exact failure conditions</li>
+        </ul>
+
+        <h2 id="s-red-2">Multi-agent patterns in LangGraph</h2>
+        <p>LangGraph supports two primary multi-agent patterns:</p>
+
+        <h3>Supervisor pattern</h3>
+        <p>A supervisor node (backed by an LLM) receives the overall goal and routes to specialist sub-graphs. Each specialist is itself a compiled LangGraph graph, called as a tool. The supervisor observes the specialist's output, decides whether it is satisfactory, and either routes to the next specialist or asks the same specialist to revise. This is the most controllable multi-agent pattern.</p>
+
+        <h3>Hierarchical graph pattern</h3>
+        <p>LangGraph supports <strong>subgraphs</strong> — compiled graphs used as nodes within a parent graph. The parent graph manages the overall workflow; each subgraph manages a self-contained sub-workflow. State can be passed between parent and subgraph via an input/output mapping. This allows genuinely modular agent systems where each sub-workflow is independently testable.</p>
+
+        <h2 id="s-red-3">Streaming</h2>
+        <p>LangGraph supports token-level streaming from model calls via <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">graph.astream()</code>. Both node outputs and intermediate model tokens can be streamed to the client, enabling responsive UIs that show progress as the agent works. This is significant for production applications where multi-step agent workflows may run for 30–120 seconds.</p>
+
+        <h2 id="s-red-4">MCP integration</h2>
+        <p>LangGraph supports MCP (Model Context Protocol) tool servers via the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">langchain-mcp-adapters</code> package. Any MCP-compliant tool server can be loaded as a LangChain tool and used inside a LangGraph node. This means the full ecosystem of MCP tool providers (Claude Desktop integrations, third-party MCP servers) is available to LangGraph agents. Official documentation at <a href="https://python.langchain.com/docs/integrations/tools/mcp/" target="_blank" rel="noopener" style="color:var(--indigo)">python.langchain.com</a>.</p>
+
+        <h2 id="s-red-5">LangSmith — observability in production</h2>
+        <p>LangSmith provides distributed tracing for LangChain and LangGraph applications. Each run generates a trace tree showing every node execution, model call, token count, latency, and cost. Traces are queryable and filterable. The evaluation framework allows automated testing against datasets with custom evaluators. LangSmith is the primary tool for identifying failure modes, measuring quality, and tracking costs in production LangGraph deployments. Pricing: free tier (5,000 traces/month), Developer ($39/user/month), Plus ($299/user/month). Official documentation at <a href="https://docs.smith.langchain.com" target="_blank" rel="noopener" style="color:var(--indigo)">docs.smith.langchain.com</a>.</p>
+
+        <h2 id="s-red-6">Official documentation</h2>
+        <ul>
+          <li>LangChain Python docs: <a href="https://python.langchain.com" target="_blank" rel="noopener" style="color:var(--indigo)">python.langchain.com</a></li>
+          <li>LangGraph docs: <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener" style="color:var(--indigo)">langchain-ai.github.io/langgraph</a></li>
+          <li>LangSmith docs: <a href="https://docs.smith.langchain.com" target="_blank" rel="noopener" style="color:var(--indigo)">docs.smith.langchain.com</a></li>
+          <li>GitHub: <a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener" style="color:var(--indigo)">github.com/langchain-ai/langgraph</a></li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Source note:</strong> All technical specifications in this guide are drawn from official LangChain and LangGraph documentation, LangSmith documentation, and the LangChain GitHub repository. Pricing figures are from the official LangSmith pricing page, verified April 2026.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">LangChain and LangGraph — what is the difference?</a><a href="#s-green-1">Why it became the most widely used option</a><a href="#s-green-2">What LangGraph adds</a><a href="#s-green-3">What it costs</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">What LangChain provides</a><a href="#s-indigo-1">What LangGraph provides</a><a href="#s-indigo-2">Prompts for building and working with LangChain/LangGraph</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">LangGraph architecture — the state machine model</a><a href="#s-red-1">Persistence and checkpointing</a><a href="#s-red-2">Multi-agent patterns in LangGraph</a><a href="#s-red-3">Streaming</a><a href="#s-red-4">MCP integration</a><a href="#s-red-5">LangSmith — observability in production</a><a href="#s-red-6">Official documentation</a></div></div>
+      <div class="sidebar-card">
+        <h4>Pricing</h4>
+        <p class="sidebar-text" style="margin-bottom:8px"><strong style="color:var(--green)">LangChain</strong> — Free, open source (MIT)</p>
+        <p class="sidebar-text" style="margin-bottom:8px"><strong style="color:var(--green)">LangGraph</strong> — Free, open source (MIT)</p>
+        <p class="sidebar-text" style="margin-bottom:8px"><strong style="color:var(--fg)">LangSmith</strong> (optional)</p>
+        <p class="sidebar-text" style="margin-bottom:4px">Free — 5,000 traces/month</p>
+        <p class="sidebar-text" style="margin-bottom:4px">Developer — $39/user/month</p>
+        <p class="sidebar-text">Plus — $299/user/month</p>
+      </div>
+      <div class="sidebar-card">
+        <h4>Other frameworks</h4>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" class="sidebar-link">CrewAI</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" class="sidebar-link">Microsoft AutoGen</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="sidebar-link">LlamaIndex</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/" class="sidebar-link">Compare all four →</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Concept guides</h4>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link">What is Agentic AI</a>
+        <a href="/ai-atlas/agentic-ai/how-agents-work/" class="sidebar-link">How Agents Work</a>
+        <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="sidebar-link">Multi-Agent Systems</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Official docs</h4>
+        <a href="https://python.langchain.com" target="_blank" rel="noopener" class="sidebar-link">LangChain Python ↗</a>
+        <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener" class="sidebar-link">LangGraph ↗</a>
+        <a href="https://docs.smith.langchain.com" target="_blank" rel="noopener" class="sidebar-link">LangSmith ↗</a>
+        <a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener" class="sidebar-link">GitHub ↗</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>Frameworks</h5><ul>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},2000);
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

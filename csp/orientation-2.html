@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orientation Day 2 — Your Roadmap | CSP · Clarigital</title>
+<meta name="description" content="Orientation Day 2 for the Clarigital Student Program. Your complete 14-day roadmap, the Clarigital reference library, and how to use the site as your textbook.">
+<link rel="canonical" href="/csp/orientation-2.html">
+<link rel="icon" type="image/png" href="../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--g900:#065f46;--g800:#047857;--g700:#059669;--g600:#10b981;--g50:#ecfdf5;--sand:#f7f3ee;--sand2:#efe9e0;--sand3:#e4dbd0;--ink:#1c1917;--ink2:#3d3530;--ink3:#6b6259;--ink4:#9e968f;--white:#fff;--mint:#d1fae5;--mint2:#6ee7b7;--sky:#f0f9ff;--sky2:#7dd3fc;--lemon:#fef9c3;--lemon2:#fde047;--peach:#fff1ee;--peach2:#fdba74;--serif:'Lora',Georgia,serif;--sans:'Nunito',system-ui,sans-serif;--mono:'DM Mono',monospace;--r-sm:8px;--r-md:14px;--r-lg:22px;--sh:0 2px 12px rgba(28,25,23,.08),0 8px 32px rgba(28,25,23,.06)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--sand);color:var(--ink2);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+#prog-bar{position:fixed;top:0;left:0;height:3px;background:var(--g600);width:0%;z-index:999;transition:width .1s}
+.nav{background:var(--g900);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;margin-top:3px}
+.nav-left{display:flex;align-items:center;gap:16px}
+.nav-logo{font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff}
+.nav-logo span{color:var(--g600)}
+.nav-pill{display:inline-block;font-size:.7rem;font-weight:700;background:rgba(255,255,255,.15);color:#fff;padding:3px 10px;border-radius:99px;letter-spacing:.05em}
+.nav-back{font-size:.78rem;color:rgba(255,255,255,.6)}
+.nav-back:hover{color:#fff}
+.nav-strip{background:var(--g800);padding:10px 24px;display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:none}
+.nav-strip::-webkit-scrollbar{display:none}
+.strip-item{white-space:nowrap;font-size:.75rem;font-weight:600;padding:5px 12px;border-radius:99px;flex-shrink:0;transition:background .2s}
+.strip-item.active{background:var(--g600);color:#fff}
+.strip-item.open{color:rgba(255,255,255,.8)}
+.strip-item.open:hover{background:rgba(255,255,255,.1)}
+.hero{background:linear-gradient(135deg,var(--g900),#1a3a2a);padding:52px 24px 56px;text-align:center}
+.orient-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);font-size:.78rem;font-weight:700;padding:6px 16px;border-radius:99px;margin-bottom:16px;border:1px solid rgba(255,255,255,.15)}
+.hero h1{font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.6rem);color:#fff;font-weight:700;margin-bottom:12px;line-height:1.25}
+.hero-sub{font-size:.95rem;color:rgba(255,255,255,.65);max-width:500px;margin:0 auto 28px}
+.hero-chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.hchip{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:.78rem;font-weight:600;padding:5px 14px;border-radius:99px}
+.content{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+h2{font-family:var(--serif);font-size:1.45rem;font-weight:700;color:var(--ink);margin:36px 0 14px}
+h2:first-child{margin-top:0}
+p{font-size:.93rem;color:var(--ink2);margin-bottom:14px;line-height:1.75}
+.roadmap{display:flex;flex-direction:column;gap:12px;margin:20px 0}
+.rday{background:var(--white);border-radius:var(--r-md);border:1px solid var(--sand2);padding:16px 20px;display:grid;grid-template-columns:80px 1fr;gap:16px;align-items:center}
+.rday.orient{border-color:var(--mint2);background:var(--g50)}
+.rday-tag{font-family:var(--mono);font-size:.78rem;font-weight:500;color:var(--ink4)}
+.rday-tag strong{display:block;font-size:.85rem;font-weight:700;color:var(--g700)}
+.rday-title{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:2px}
+.rday-sub{font-size:.8rem;color:var(--ink3)}
+.week-label{font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--g700);margin:20px 0 8px;padding-left:4px}
+.site-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:20px 0}
+.site-card{background:var(--white);border-radius:var(--r-md);padding:20px;border:1px solid var(--sand2)}
+.site-card .sc-icon{font-size:1.4rem;margin-bottom:8px}
+.site-card h4{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:5px}
+.site-card p{font-size:.82rem;color:var(--ink3);margin:0 0 10px}
+.site-card a{font-size:.82rem;font-weight:700;color:var(--g800);border-bottom:1.5px solid var(--g600)}
+.tip{background:var(--mint);border:1.5px solid var(--mint2);border-radius:var(--r-md);padding:14px 18px;font-weight:700;color:#065f46;font-size:.9rem;margin:20px 0;display:flex;gap:10px;align-items:flex-start}
+.warn{background:var(--lemon);border:1.5px solid var(--lemon2);border-radius:var(--r-md);padding:14px 18px;font-size:.9rem;margin:20px 0;color:#713f12;display:flex;gap:10px;align-items:flex-start}
+.next-btn{display:block;background:var(--g900);color:#fff;text-align:center;padding:15px;border-radius:var(--r-md);font-weight:800;font-size:.95rem;margin-top:32px;transition:background .2s}
+.next-btn:hover{background:var(--g800)}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Orientation Day 2 — Your Roadmap | CSP · Clarigital">
+<meta property="og:description" content="Orientation Day 2 for the Clarigital Student Program. Your complete 14-day roadmap, the Clarigital reference library, and how to use the site as your textbook.">
+<meta property="og:url" content="https://www.clarigital.com/wsp/orientation-2">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Orientation Day 2 — Your Roadmap | CSP · Clarigital">
+<meta name="twitter:description" content="Orientation Day 2 for the Clarigital Student Program. Your complete 14-day roadmap, the Clarigital reference library, and how to use the site as your textbook.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-image.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Orientation Day 2 \u2014 Your Roadmap | CSP \u00b7 Clarigital", "description": "Orientation Day 2 for the Clarigital Student Program. Your complete 14-day roadmap, the Clarigital reference library, and how to use the site as your textbook.", "url": "https://www.clarigital.com/wsp/orientation-2", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Wsp", "item": "https://www.clarigital.com/wsp/"}, {"@type": "ListItem", "position": 3, "name": "Orientation Day 2 \u2014 Your Roadmap | CSP \u00b7 Clarigital", "item": "https://www.clarigital.com/wsp/orientation-2/"}]}</script>
+</head>
+<body>
+<div id="prog-bar"></div>
+
+<nav class="nav">
+  <a href="/" class="nav-back">&larr; Clarigital</a>
+  <div class="nav-left">
+    <a href="index.html" class="nav-back">← CSP</a>
+    <div class="nav-logo"><span>Clarigital</span> CSP</div>
+    <span class="nav-pill">🔓 Always Open</span>
+  </div>
+</nav>
+
+<div class="nav-strip">
+  <a href="orientation-1.html" class="strip-item open">📖 Orientation 1</a>
+  <span class="strip-item active">🗺 Orientation 2</span>
+  <span class="strip-item open" style="color:rgba(255,255,255,.4)">Day 1 — Monday →</span>
+</div>
+
+<section class="hero">
+  <div class="orient-tag">🗺 Orientation · Day 2 of 2 · Sunday</div>
+  <h1>Your complete roadmap.</h1>
+  <p class="hero-sub">14 days. What's coming. How to use Clarigital as your textbook. Everything you need before Monday.</p>
+  <div class="hero-chips">
+    <span class="hchip">⏱ 15–20 mins to read</span>
+    <span class="hchip">🔓 Always open</span>
+    <span class="hchip">📖 No submission needed</span>
+  </div>
+</section>
+
+<div class="content">
+
+  <h2>📅 Your Complete 14-Day Roadmap</h2>
+  <p>Here's exactly what's coming — every day, every topic, every weekday it opens.</p>
+
+  <div class="week-label">Orientation Weekend</div>
+  <div class="roadmap">
+    <div class="rday orient"><div class="rday-tag"><strong>Saturday</strong>Orientation 1</div><div><div class="rday-title">Welcome &amp; How It Works</div><div class="rday-sub">You just read this. No submission.</div></div></div>
+    <div class="rday orient"><div class="rday-tag"><strong>Sunday</strong>Orientation 2</div><div><div class="rday-title">Your Roadmap &amp; the Clarigital Library</div><div class="rday-sub">You're reading this now. No submission.</div></div></div>
+  </div>
+
+  <div class="week-label">Week 1 — Core Concepts (Days 1–6)</div>
+  <div class="roadmap">
+    <div class="rday"><div class="rday-tag"><strong>Monday</strong>Day 1</div><div><div class="rday-title">What is Digital Marketing?</div><div class="rday-sub">The big picture — channels, why it exists, how it replaced traditional advertising</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Tuesday</strong>Day 2</div><div><div class="rday-title">How the Internet Made Marketing Measurable</div><div class="rday-sub">From billboards to clicks — data, tracking, attribution basics</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Wednesday</strong>Day 3</div><div><div class="rday-title">The Digital Marketing Channels — A Complete Tour</div><div class="rday-sub">SEO, Paid, Social, Email, Content, Programmatic — what each channel does</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Thursday</strong>Day 4</div><div><div class="rday-title">How Search Engines Work</div><div class="rday-sub">Google crawls, indexes, ranks — why this matters to every marketer</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Friday</strong>Day 5</div><div><div class="rday-title">What is Paid Advertising Online?</div><div class="rday-sub">Google Ads vs Meta Ads — how auctions work, what you're actually buying</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Saturday</strong>Day 6</div><div><div class="rday-title">The Marketing Funnel — Awareness to Purchase</div><div class="rday-sub">AIDA, the customer journey, how channels map to each funnel stage</div></div></div>
+  </div>
+
+  <div class="week-label">Week 2 — Applied Knowledge (Days 7–12)</div>
+  <div class="roadmap">
+    <div class="rday"><div class="rday-tag"><strong>Monday</strong>Day 7</div><div><div class="rday-title">Digital Marketing for E-Commerce &amp; D2C Brands</div><div class="rday-sub">How online stores use SEO + Ads + Email together</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Tuesday</strong>Day 8</div><div><div class="rday-title">Digital Marketing for Real Estate &amp; Education</div><div class="rday-sub">Lead gen, trust building, long sales cycles</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Wednesday</strong>Day 9</div><div><div class="rday-title">Digital Marketing for Healthcare, F&amp;B &amp; Professional Services</div><div class="rday-sub">Reputation, local search, compliance</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Thursday</strong>Day 10</div><div><div class="rday-title">The Most Common Digital Marketing Mistakes</div><div class="rday-sub">What beginners get wrong — and why</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Friday</strong>Day 11</div><div><div class="rday-title">The Digital Marketing Ecosystem — Tools &amp; Platforms</div><div class="rday-sub">Google, Meta, Mailchimp, GA4, Canva — the full landscape</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Saturday</strong>Day 12</div><div><div class="rday-title">How Much Does Digital Marketing Cost?</div><div class="rday-sub">Budgets, pricing models, agency vs in-house vs freelance</div></div></div>
+  </div>
+
+  <div class="week-label">Final Days — Synthesis (Days 13–14)</div>
+  <div class="roadmap">
+    <div class="rday"><div class="rday-tag"><strong>Monday</strong>Day 13</div><div><div class="rday-title">Putting It All Together — A Complete Digital Marketing Plan</div><div class="rday-sub">How all channels work as a system, not in isolation</div></div></div>
+    <div class="rday"><div class="rday-tag"><strong>Tuesday</strong>Day 14</div><div><div class="rday-title">Final Task — Explain Digital Marketing to a Real Business</div><div class="rday-sub">Synthesis of all 14 days — your plain-language digital marketing brief</div></div></div>
+  </div>
+
+  <h2>📚 Your Textbook — Clarigital</h2>
+  <p>Every day links to a specific guide on Clarigital. These are your required readings — not optional extras. The quiz questions test whether you actually read them.</p>
+  <p>Here are the main sections you'll be using:</p>
+
+  <div class="site-grid">
+    <div class="site-card"><div class="sc-icon">📖</div><h4>Digital Marketing Codex</h4><p>220 guides across 14 disciplines. SEO, Google Ads, Meta Ads, Email, Analytics and more.</p><a href="/codex/" target="_blank">Explore the Codex →</a></div>
+    <div class="site-card"><div class="sc-icon">🤖</div><h4>AI Atlas</h4><p>33 guides on AI tools — ChatGPT, Claude, Gemini, Midjourney and more.</p><a href="/ai-atlas/" target="_blank">Explore AI Atlas →</a></div>
+    <div class="site-card"><div class="sc-icon">📈</div><h4>History of DM</h4><p>How digital marketing evolved from 1994 to today. Great context for Day 1.</p><a href="/codex/history/" target="_blank">Read the History →</a></div>
+    <div class="site-card"><div class="sc-icon">🎓</div><h4>Curriculum</h4><p>The full school and college curriculum — structured learning if you want more depth.</p><a href="/curriculum/" target="_blank">See Curriculum →</a></div>
+  </div>
+
+  <div class="tip"><span>💡</span><span><strong>Bookmark clarigital.com right now.</strong> You will use it every single day of this program. It's your reference library, your textbook, and your study companion rolled into one.</span></div>
+
+  <h2>⚠️ The Rules (Read These)</h2>
+  <div class="warn"><span>⚠️</span><div>
+    <p style="margin:0 0 8px"><strong>Each task page is locked to its assigned day.</strong> Day 1 only opens on your assigned Monday. Day 2 only opens on your assigned Tuesday. You cannot do two days at once.</p>
+    <p style="margin:0 0 8px"><strong>Late submissions still count</strong> — the page stays readable after its day — but we track whether you submitted on time. Try to submit on the correct day.</p>
+    <p style="margin:0"><strong>Sunday is always off.</strong> No tasks open on Sundays. Use it to catch up, re-read something, or rest.</p>
+  </div></div>
+
+  <h2>🚀 You're Ready</h2>
+  <p>That's everything. Day 1 opens Monday morning. Set a reminder now — 20 minutes is all it takes.</p>
+  <p>If you haven't registered yet, do it now before you forget.</p>
+
+  <a href="s/task-1.html" class="next-btn">Day 1 opens Monday → Task 1: What is Digital Marketing?</a>
+</div>
+
+<script>
+window.addEventListener('scroll', () => {
+  const el = document.getElementById('prog-bar');
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  el.style.width = Math.min(pct, 100) + '%';
+});
+</script>
+</body>
+</html>

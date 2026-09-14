@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2ME Final Assessment | Clarigital</title>
+<meta name="description" content="The 2ME final assessment — 20 questions across all 56 days. Unlock with your 2ME ID. Pass 15/20 to earn Expert Practitioner certification.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/csp/e/assessment.html">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--g900:#065f46;--g600:#10b981;--g50:#ecfdf5;--sand:#f7f3ee;--sand2:#efe9e0;--sand3:#e4dbd0;--ink:#1c1917;--ink2:#3d3530;--ink3:#6b6259;--ink4:#9e968f;--white:#fff;--pur:#ddd6fe;--pur2:#a78bfa;--pur-text:#6d28d9;--mint:#d1fae5;--mint2:#6ee7b7;--peach:#fff1ee;--peach2:#fdba74;--serif:'Lora',Georgia,serif;--sans:'Nunito',system-ui,sans-serif;--mono:'DM Mono',monospace;--r-sm:8px;--r-md:14px;--r-lg:22px;--r-xl:32px;--sh:0 2px 12px rgba(28,25,23,.08),0 8px 32px rgba(28,25,23,.06)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--sand);color:var(--ink2);line-height:1.6}
+a{text-decoration:none;color:inherit}
+#rp{position:fixed;top:0;left:0;height:3px;background:var(--pur-text);width:0%;z-index:999}
+.nav{background:#3b0764;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:3px;z-index:100}
+.nav-logo{font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff}
+.nav-logo span{color:var(--pur2)}
+.nav-back{font-size:.78rem;color:rgba(255,255,255,.6)}
+.hero{background:linear-gradient(135deg,#4c1d95,#6d28d9);padding:52px 24px 56px;text-align:center}
+.hero-badge{display:inline-block;background:var(--pur);color:var(--pur-text);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.4rem);color:#fff;font-weight:700;margin-bottom:12px}
+.hero p{font-size:.93rem;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 24px}
+.hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.hstat{text-align:center}
+.hstat-n{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:#fff}
+.hstat-l{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em}
+.page{max-width:760px;margin:0 auto;padding:40px 24px 100px}
+.id-gate{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh);padding:36px;text-align:center;margin-bottom:24px}
+.id-gate h2{font-family:var(--serif);font-size:1.35rem;color:var(--ink);margin-bottom:8px}
+.id-gate p{font-size:.88rem;color:var(--ink3);margin-bottom:20px}
+.id-input{width:100%;max-width:280px;border:2px solid var(--sand3);border-radius:var(--r-md);padding:12px 16px;font-family:var(--mono);font-size:1rem;color:var(--ink);text-align:center;outline:none;letter-spacing:.1em;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto}
+.id-input:focus{border-color:var(--pur-text)}
+.btn-unlock{background:var(--pur-text);color:#fff;border:none;border-radius:var(--r-md);padding:12px 32px;font-family:var(--sans);font-weight:800;font-size:.92rem;cursor:pointer;transition:background .2s}
+.btn-unlock:hover{background:#5b21b6}
+.timer-bar{background:var(--white);border-radius:var(--r-md);padding:16px 20px;margin-bottom:20px;display:none;align-items:center;justify-content:space-between;border:1.5px solid var(--sand2)}
+.timer-bar.on{display:flex}
+.timer-val{font-family:var(--mono);font-size:1.2rem;font-weight:500;color:var(--pur-text)}
+.timer-val.warn{color:#dc2626}
+.progress-wrap{flex:1;margin:0 16px;background:var(--sand2);height:6px;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:var(--pur-text);transition:width .5s;border-radius:99px}
+.assessment-body{display:none}
+.assessment-body.on{display:block}
+.section-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--sand3)}
+.q-card{background:var(--white);border-radius:var(--r-md);padding:22px;margin-bottom:12px;border:1px solid var(--sand2)}
+.q-num{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink4);margin-bottom:6px}
+.q-text{font-size:.93rem;font-weight:800;color:var(--ink);margin-bottom:12px;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid var(--sand3);border-radius:var(--r-sm);cursor:pointer;font-size:.86rem;font-weight:700;color:var(--ink3);transition:all .15s;user-select:none}
+.opt:hover{border-color:var(--pur2);background:var(--pur);color:var(--pur-text)}
+.opt.sel{border-color:var(--pur-text);background:#ede9fe;color:var(--pur-text)}
+.opt.ok{border-color:#10b981;background:#ecfdf5;color:#065f46;pointer-events:none}
+.opt.no{border-color:#f87171;background:#fef2f2;color:#991b1b;pointer-events:none}
+.opt.dis{pointer-events:none;opacity:.5}
+.opt-l{width:20px;height:20px;border-radius:50%;background:var(--sand);font-size:.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.opt.sel .opt-l{background:var(--pur-text);color:#fff}
+.opt.ok .opt-l{background:#10b981;color:#fff}
+.opt.no .opt-l{background:#f87171;color:#fff}
+.submit-section{background:var(--white);border-radius:var(--r-lg);padding:28px;margin-top:24px;box-shadow:var(--sh)}
+.btn-submit-a{width:100%;padding:15px;background:var(--pur-text);color:#fff;border:none;border-radius:var(--r-md);font-family:var(--sans);font-weight:800;font-size:1rem;cursor:pointer;transition:background .2s}
+.btn-submit-a:hover:not(:disabled){background:#5b21b6}
+.btn-submit-a:disabled{opacity:.4;cursor:not-allowed}
+.result-card{display:none;background:var(--g50);border:2px solid var(--mint2);border-radius:var(--r-xl);padding:40px;text-align:center;margin-top:24px}
+.result-card.on{display:block}
+.result-card.fail{background:var(--peach);border-color:var(--peach2)}
+.result-score{font-family:var(--serif);font-size:4rem;font-weight:700;color:var(--g900);margin:12px 0}
+.result-card.fail .result-score{color:#9a3412}
+.result-id{font-family:var(--mono);font-size:1.1rem;background:var(--white);border:2px dashed var(--pur2);border-radius:var(--r-md);padding:10px 20px;display:inline-block;margin:12px 0;letter-spacing:.08em;color:var(--pur-text)}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="2ME Final Assessment — Expert Practitioner Certification">
+<meta property="og:description" content="The 2ME final assessment — 20 questions across all 56 days. Unlock with your 2ME ID. Pass 15/20 to earn Expert Practitioner certification.">
+<meta property="og:url" content="https://www.clarigital.com/wsp/e/assessment">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="2ME Final Assessment — Expert Practitioner Certification">
+<meta name="twitter:description" content="The 2ME final assessment — 20 questions across all 56 days. Unlock with your 2ME ID. Pass 15/20 to earn Expert Practitioner certification.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-image.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "2ME Final Assessment \u2014 Expert Practitioner Certification", "description": "The 2ME final assessment \u2014 20 questions across all 56 days. Unlock with your 2ME ID. Pass 15/20 to earn Expert Practitioner certification.", "url": "https://www.clarigital.com/wsp/e/assessment", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Wsp", "item": "https://www.clarigital.com/wsp/"}, {"@type": "ListItem", "position": 3, "name": "E", "item": "https://www.clarigital.com/wsp/e/"}, {"@type": "ListItem", "position": 4, "name": "2ME Final Assessment \u2014 Expert Practitioner Certification", "item": "https://www.clarigital.com/wsp/e/assessment/"}]}</script>
+</head>
+<body>
+<div id="rp"></div>
+<nav class="nav">
+  <a href="/" class="nav-back">&larr; Clarigital</a>
+  <a href="../index.html" class="nav-back">← CSP Hub</a>
+  <div class="nav-logo"><span>Clarigital</span> · 2ME Final Assessment</div>
+</nav>
+<section class="hero">
+  <div class="hero-badge">2-Month Expert Program · Final Assessment</div>
+  <h1>Digital Marketing Expert<br>Practitioner Assessment</h1>
+  <p>20 questions across all 56 days. Unlock with your 2ME ID. Score 15/20 or higher to earn Expert Practitioner certification.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">20</div><div class="hstat-l">Questions</div></div>
+    <div class="hstat"><div class="hstat-n">35</div><div class="hstat-l">Minutes</div></div>
+    <div class="hstat"><div class="hstat-n">15/20</div><div class="hstat-l">Pass Mark</div></div>
+  </div>
+</section>
+<div class="page">
+  <div class="id-gate" id="idGate">
+    <h2>Enter your 2ME ID to begin</h2>
+    <p>This assessment is only for students who have completed all 56 days of the 2-Month Expert Internship.</p>
+    <input type="text" class="id-input" id="idInput" placeholder="2ME-2026-XXXX">
+    <br>
+    <button class="btn-unlock" onclick="unlockAssessment()">Begin Final Assessment →</button>
+  </div>
+  <div class="timer-bar" id="timerBar">
+    <span style="font-size:.8rem;font-weight:700;color:var(--ink3)">Time remaining</span>
+    <div class="progress-wrap"><div class="progress-fill" id="progFill" style="width:100%"></div></div>
+    <span class="timer-val" id="timerVal">35:00</span>
+  </div>
+  <div class="assessment-body" id="assessmentBody">
+    <div class="section-label">Section 1 — Technical Foundations (Month 1) · Q1–8</div>
+    <div class="q-card"><div class="q-num">Q1</div><div class="q-text">What are the four layers of a complete digital marketing stack?</div><div class="opts"><div class="opt" data-q="0" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>SEO, PPC, Social, Email</div><div class="opt" data-q="0" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Acquisition, Conversion, Retention, Measurement</div><div class="opt" data-q="0" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Awareness, Consideration, Decision, Loyalty</div><div class="opt" data-q="0" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Research, Planning, Execution, Reporting</div></div></div>
+    <div class="q-card"><div class="q-num">Q2</div><div class="q-text">What is the correct priority order for technical SEO work on a site with multiple issues?</div><div class="opts"><div class="opt" data-q="1" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Content creation first, then technical fixes, then link building</div><div class="opt" data-q="1" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Technical fixes first, then on-page improvements, then new content, then link building</div><div class="opt" data-q="1" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Link building first, then content, then technical</div><div class="opt" data-q="1" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>All should be done simultaneously for maximum impact</div></div></div>
+    <div class="q-card"><div class="q-num">Q3</div><div class="q-text">Why should cold, warm, and hot audiences be in separate Meta Ads campaigns or ad sets?</div><div class="opts"><div class="opt" data-q="2" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Meta charges different rates for each audience temperature</div><div class="opt" data-q="2" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Each temperature requires different creative messages and objectives - mixing prevents the algorithm from optimising correctly</div><div class="opt" data-q="2" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>It is required by Meta advertising policy</div><div class="opt" data-q="2" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Separate campaigns always perform better than combined ones</div></div></div>
+    <div class="q-card"><div class="q-num">Q4</div><div class="q-text">What are the three core elements of any email automation workflow?</div><div class="opts"><div class="opt" data-q="3" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Subject line, body copy, and CTA</div><div class="opt" data-q="3" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Triggers, Conditions, and Actions</div><div class="opt" data-q="3" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Open rate, click rate, and conversion rate</div><div class="opt" data-q="3" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>List, segment, and campaign</div></div></div>
+    <div class="q-card"><div class="q-num">Q5</div><div class="q-text">How does the Conversions API (CAPI) solve Meta Pixel's iOS 14 tracking problem?</div><div class="opts"><div class="opt" data-q="4" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>It forces iOS users to accept tracking cookies</div><div class="opt" data-q="4" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>It sends conversion events directly from the web server to Meta, bypassing browser-based tracking restrictions entirely</div><div class="opt" data-q="4" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>It replaces the Meta Pixel with a newer version</div><div class="opt" data-q="4" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>It uses a different type of cookie that iOS 14 permits</div></div></div>
+    <div class="q-card"><div class="q-num">Q6</div><div class="q-text">What is 'search intent' and why does it matter more than keyword volume for SEO?</div><div class="opts"><div class="opt" data-q="5" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>The number of times a keyword appears on a page</div><div class="opt" data-q="5" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>The underlying goal a user has when typing a query - informational, commercial, or transactional - which determines what type of content Google rewards</div><div class="opt" data-q="5" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>The geographic location of the searcher</div><div class="opt" data-q="5" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>The device type used to perform the search</div></div></div>
+    <div class="q-card"><div class="q-num">Q7</div><div class="q-text">What does 'message match' mean in landing page optimisation and why is it the highest-impact single improvement?</div><div class="opts"><div class="opt" data-q="6" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>The visual design matches across ad and landing page</div><div class="opt" data-q="6" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>The specific claim in the ad headline is reflected in the landing page headline - when missing, the visitor experiences a disconnect that immediately increases bounce rate</div><div class="opt" data-q="6" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>The brand colours match across all campaign assets</div><div class="opt" data-q="6" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>The ad and page load at the same speed</div></div></div>
+    <div class="q-card"><div class="q-num">Q8</div><div class="q-text">Why does last-click attribution systematically undervalue SEO and awareness campaigns?</div><div class="opts"><div class="opt" data-q="7" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>These channels are technically harder to track</div><div class="opt" data-q="7" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>It credits only the final touchpoint before conversion, giving zero credit to channels that introduced customers earlier in the journey</div><div class="opt" data-q="7" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>SEO and awareness campaigns don't drive conversions</div><div class="opt" data-q="7" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Google Analytics doesn't track these channels accurately</div></div></div>
+    <div class="section-label">Section 2 — Industry Implementations (Days 13–18) · Q9–11</div>
+    <div class="q-card"><div class="q-num">Q9</div><div class="q-text">What is the primary conversion goal that all real estate digital marketing should optimise for?</div><div class="opts"><div class="opt" data-q="8" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Lead form submissions - more leads is always better</div><div class="opt" data-q="8" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Qualified site visits - prospects with genuine purchase intent who visit the property</div><div class="opt" data-q="8" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Social media followers to build brand awareness</div><div class="opt" data-q="8" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Website page views for maximum visibility</div></div></div>
+    <div class="q-card"><div class="q-num">Q10</div><div class="q-text">Why is running Instagram Reels ads generally NOT the right primary approach for pitching a CA firm?</div><div class="opts"><div class="opt" data-q="9" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>CA firms don't have Instagram accounts</div><div class="opt" data-q="9" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>The channel and format don't match the audience or credibility positioning of a professional services firm</div><div class="opt" data-q="9" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>ICAI prohibits advertising on Instagram</div><div class="opt" data-q="9" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Instagram Reels are too expensive for most professional services budgets</div></div></div>
+    <div class="q-card"><div class="q-num">Q11</div><div class="q-text">What is the EdTech 'cohort conversion analysis' and why does it reveal insights that standard conversion rates miss?</div><div class="opts"><div class="opt" data-q="10" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Analysing which students score highest on assessments</div><div class="opt" data-q="10" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Tracking conversion rates for leads acquired in specific time periods to understand which campaigns produce leads that eventually convert after a long consideration period</div><div class="opt" data-q="10" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Grouping students by age for targeting purposes</div><div class="opt" data-q="10" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Measuring how many students complete the full course</div></div></div>
+    <div class="section-label">Section 3 — Advanced Channels (Month 2) · Q12–17</div>
+    <div class="q-card"><div class="q-num">Q12</div><div class="q-text">Why does giving Performance Max more creative assets and audience signals produce better results?</div><div class="opts"><div class="opt" data-q="11" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Google charges less for campaigns with more assets</div><div class="opt" data-q="11" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>The AI has more materials to test and more data signals to optimise toward the right users - better inputs produce better algorithm outputs</div><div class="opt" data-q="11" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>More assets reduce campaign loading time</div><div class="opt" data-q="11" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Google's algorithm requires a minimum number of assets to activate</div></div></div>
+    <div class="q-card"><div class="q-num">Q13</div><div class="q-text">What is the 'cookie-less future' primary alternative to third-party cookie-based programmatic targeting?</div><div class="opts"><div class="opt" data-q="12" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Using only social media platforms that don't use cookies</div><div class="opt" data-q="12" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>First-party data activation through CDP/DMP plus contextual targeting (based on page content rather than user identity)</div><div class="opt" data-q="12" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Running only Google Ads which doesn't use cookies</div><div class="opt" data-q="12" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Buying more third-party data from data brokers</div></div></div>
+    <div class="q-card"><div class="q-num">Q14</div><div class="q-text">Why should unresponsive email subscribers be 'sunset' (removed from active lists)?</div><div class="opts"><div class="opt" data-q="13" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Email platforms charge more for larger lists</div><div class="opt" data-q="13" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Sending to unresponsive subscribers harms sender reputation and deliverability, causing even good emails to go to spam for active subscribers</div><div class="opt" data-q="13" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>GDPR requires removing inactive subscribers after 90 days</div><div class="opt" data-q="13" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Inactive subscribers automatically unsubscribe themselves</div></div></div>
+    <div class="q-card"><div class="q-num">Q15</div><div class="q-text">What are the three signs of creative fatigue in a Meta Ads campaign?</div><div class="opts"><div class="opt" data-q="14" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Low impressions, high reach, low frequency</div><div class="opt" data-q="14" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>CPM rising, CTR falling, frequency above 3x</div><div class="opt" data-q="14" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>High click-through rate, low conversion rate, high spend</div><div class="opt" data-q="14" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Low video views, high link clicks, low purchases</div></div></div>
+    <div class="q-card"><div class="q-num">Q16</div><div class="q-text">What is the AARRR framework used for in growth hacking?</div><div class="opts"><div class="opt" data-q="15" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Advertising, Acquisition, Revenue, Reach, Retention</div><div class="opt" data-q="15" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Acquisition, Activation, Retention, Revenue, Referral - identifying which funnel stage is the current growth bottleneck</div><div class="opt" data-q="15" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Analytics, Attribution, Reporting, Revenue, Return</div><div class="opt" data-q="15" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Awareness, Action, Reach, Results, Revenue</div></div></div>
+    <div class="q-card"><div class="q-num">Q17</div><div class="q-text">What is the 'WhatsApp Business API' vs 'WhatsApp Business App' key difference?</div><div class="opts"><div class="opt" data-q="16" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>The API is free, the Business App costs money</div><div class="opt" data-q="16" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>The Business App is for small-scale manual management; the API enables automation, bulk messaging, multiple agents, and CRM integration at enterprise scale</div><div class="opt" data-q="16" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>The API only works for e-commerce businesses</div><div class="opt" data-q="16" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>The Business App allows more messages than the API</div></div></div>
+    <div class="section-label">Section 4 — Expert Capabilities (Days 43–56) · Q18–20</div>
+    <div class="q-card"><div class="q-num">Q18</div><div class="q-text">What distinguishes an expert-level proposal from a junior-level one?</div><div class="opts"><div class="opt" data-q="17" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Expert proposals are longer and include more services</div><div class="opt" data-q="17" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Expert proposals open with specific diagnostic findings about the client's actual situation rather than generic service descriptions</div><div class="opt" data-q="17" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Expert proposals always have better visual design</div><div class="opt" data-q="17" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Expert proposals require a client signature before work begins</div></div></div>
+    <div class="q-card"><div class="q-num">Q19</div><div class="q-text">What does the '70-20-10 learning model' imply about where most professional development should come from?</div><div class="opts"><div class="opt" data-q="18" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>70% formal courses, 20% books, 10% practice</div><div class="opt" data-q="18" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>70% real work experience, 20% social learning from peers and community, 10% formal training</div><div class="opt" data-q="18" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>70% digital channels, 20% traditional, 10% emerging</div><div class="opt" data-q="18" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>70% technical skills, 20% soft skills, 10% business strategy</div></div></div>
+    <div class="q-card"><div class="q-num">Q20</div><div class="q-text">In the complete integrated expert framework, what is the correct order of operations for any new client engagement?</div><div class="opts"><div class="opt" data-q="19" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Launch campaigns, then fix tracking, then optimise</div><div class="opt" data-q="19" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Design strategy first, then build measurement, then launch</div><div class="opt" data-q="19" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>Audit > Stack Design > Implementation > Measurement > Optimisation > Scale</div><div class="opt" data-q="19" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Scale quickly first, then audit what worked, then optimise</div></div></div>
+    <div class="submit-section" id="submitSection">
+      <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:8px">Submit your final assessment</h3>
+      <p style="font-size:.87rem;color:var(--ink3);margin-bottom:16px">Answer all 20 questions before submitting. Pass mark: 15/20.</p>
+      <div style="font-size:.85rem;font-weight:700;color:var(--ink3);margin-bottom:16px">Questions answered: <span id="answeredCount">0</span> / 20</div>
+      <button class="btn-submit-a" id="btnSubmit" onclick="submitAssessment()" disabled>Submit Final Assessment →</button>
+    </div>
+  </div>
+  <div class="result-card" id="resultCard">
+    <div style="font-size:2.5rem;margin-bottom:8px" id="resultEmoji">🎓</div>
+    <div class="result-score" id="resultScore">0/20</div>
+    <div style="font-size:1.1rem;font-weight:700;color:var(--g800);margin-bottom:12px" id="resultLabel">Expert Practitioner Certified</div>
+    <div class="result-id" id="resultId">2ME-2026-XXXX</div>
+    <p style="font-size:.88rem;color:var(--ink3);margin-top:12px;line-height:1.7" id="resultMsg"></p>
+  </div>
+</div>
+<script>
+const WEBHOOK='https://webhooks.wa.expert/webhook/69d8d24102e28c7ee405a462';
+let studentId='',timerInterval=null,timeLeft=2100;
+const answers=new Array(20).fill(null);
+function istStr(){const n=new Date(),i=new Date(n.getTime()+5.5*3600000),p=x=>String(x).padStart(2,'0');return`${i.getUTCFullYear()}-${p(i.getUTCMonth()+1)}-${p(i.getUTCDate())} ${p(i.getUTCHours())}:${p(i.getUTCMinutes())}:${p(i.getUTCSeconds())} IST`;}
+function unlockAssessment(){const v=document.getElementById('idInput').value.trim().toUpperCase();if(!v.startsWith('2ME-')){alert('Please enter a valid 2ME ID');return;}studentId=v;document.getElementById('idGate').style.display='none';document.getElementById('timerBar').classList.add('on');document.getElementById('assessmentBody').classList.add('on');startTimer();}
+function startTimer(){timerInterval=setInterval(()=>{timeLeft--;const m=Math.floor(timeLeft/60),s=timeLeft%60;const el=document.getElementById('timerVal');el.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;document.getElementById('progFill').style.width=(timeLeft/2100*100)+'%';if(timeLeft<=300)el.classList.add('warn');if(timeLeft<=0){clearInterval(timerInterval);submitAssessment();}},1000);}
+function pick(el){const q=parseInt(el.getAttribute('data-q'));el.closest('.opts').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));el.classList.add('sel');answers[q]=el.getAttribute('data-c')==='true';document.getElementById('answeredCount').textContent=answers.filter(a=>a!==null).length;document.getElementById('btnSubmit').disabled=answers.some(a=>a===null);}
+function submitAssessment(){clearInterval(timerInterval);document.querySelectorAll('.opt').forEach(o=>{o.classList.add('dis');if(o.getAttribute('data-c')==='true')o.classList.add('ok');else if(o.classList.contains('sel'))o.classList.add('no');});const score=answers.filter(a=>a===true).length;const passed=score>=15;const rc=document.getElementById('resultCard');document.getElementById('resultScore').textContent=score+'/20';document.getElementById('resultEmoji').textContent=passed?'🎓':'📚';document.getElementById('resultLabel').textContent=passed?'Expert Practitioner Certified':'Not yet certified - 15/20 required';document.getElementById('resultId').textContent=studentId;document.getElementById('resultMsg').textContent=passed?`Score: ${score}/20. Your 2ME Expert Practitioner certification is confirmed against ${studentId}. Share your achievement on LinkedIn with pride.`:`Score: ${score}/20. You need 15/20. Review the relevant days and retake when ready.`;if(!passed)rc.classList.add('fail');rc.classList.add('on');rc.scrollIntoView({behavior:'smooth'});fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({program:'Digital Marketing Expert Internship',program_code:'2MONTH',wsp_id:studentId,task_number:99,task_title:'2ME Final Assessment',week:8,quiz_score:score,quiz_passed:passed,task_answer:`Final assessment score: ${score}/20`,submitted_at_ist:istStr(),submitted_at_utc:new Date().toISOString(),day_of_week:'Assessment'})}).catch(()=>{});}
+window.addEventListener('scroll',()=>{const e=document.documentElement;document.getElementById('rp').style.width=Math.min((e.scrollTop/(e.scrollHeight-e.clientHeight))*100,100)+'%';});
+</script>
+</body>
+</html>

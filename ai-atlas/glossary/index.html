@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Glossary | AI Atlas — Clarigital</title>
+<meta name="description" content="The complete AI glossary — 40+ terms from everyday basics to technical depth. LLM, hallucination, RAG, transformer, attention, diffusion model,...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/ai-atlas/glossary/">
+<meta property="og:title" content="AI Glossary — Every Term, Clearly Explained | AI Atlas">
+<meta property="og:description" content="The complete AI glossary — 40+ terms from everyday basics to technical depth. LLM, hallucination, RAG, transformer, attention, diffusion model, alignment. Plain English first.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/glossary/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzRGNDZFNSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD48L3N2Zz4="><meta name="theme-color" content="#0A0F1E">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI Glossary \u2014 Every Term, Clearly Explained | AI Atlas", "description": "The complete AI glossary \u2014 40+ terms from everyday basics to technical depth. LLM, hallucination, RAG, transformer, attention, diffusion model,...", "url": "https://www.clarigital.com/ai-atlas/glossary/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Glossary \u2014 Every Term, Clearly Explained | AI Atlas", "item": "https://www.clarigital.com/ai-atlas/glossary/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><span>AI Glossary</span></nav>
+    <span class="label-tag">Reference</span>
+    <h1>AI Glossary — Every Term, Clearly Explained</h1>
+    <p class="hero-lead">AI comes with a vocabulary that can feel deliberately impenetrable. This glossary explains every significant AI term in plain English — from the basics that everyone encounters to the technical concepts that power the systems we use. Three levels: plain English, working definition, and precise technical meaning.</p>
+    <div class="art-meta"><span class="meta-tag mt-indigo">Reference</span><span class="meta-tag mt-gray">120+ terms</span><span class="meta-tag mt-gray">Plain English first</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+<h2 id="s-green-0">Terms you will encounter immediately</h2>
+
+<div style="display:flex;flex-direction:column;gap:0">
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-ai">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Artificial Intelligence (AI)</div>
+  <p style="margin:0;font-size:.9rem">Computer systems that can perform tasks that normally require human intelligence — things like understanding language, recognising images, making decisions, and generating text or art. The field covers everything from the simple AI that recommends your next Netflix show to the large language models powering ChatGPT.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-llm">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Large Language Model (LLM)</div>
+  <p style="margin:0;font-size:.9rem">The type of AI that powers ChatGPT, Claude, Gemini, and most of the AI assistants you interact with. Trained on enormous amounts of text from the internet, books, and other sources — learning to predict and generate human language. &#8220;Large&#8221; refers to the number of parameters (weights) in the model, often in the billions or trillions. The training process teaches the model patterns in language so deep that it develops apparent understanding of concepts, not just words.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-prompt">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Prompt</div>
+  <p style="margin:0;font-size:.9rem">The input you give to an AI — your question, instruction, or request. Writing effective prompts is a genuine skill: the same underlying AI model can produce dramatically different outputs depending on how it is prompted. A well-crafted prompt gives the AI enough context, constraints, and direction to produce useful output. A vague prompt tends to produce a generic response.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-hallucination">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Hallucination</div>
+  <p style="margin:0;font-size:.9rem">When an AI produces confident-sounding information that is factually incorrect or entirely fabricated. The name captures the phenomenon: the AI presents its invention as reality, with the same tone and apparent confidence as something true. Hallucinations are a known limitation of all current language models — particularly for specific facts, statistics, citations, and recent events. The most important thing to understand about AI for research: always verify specific facts independently.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-chatbot">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Chatbot</div>
+  <p style="margin:0;font-size:.9rem">Software that converses with users through text or voice. Early chatbots (like those on customer service websites) operated on rigid scripts — they could only respond to specific inputs within a fixed flow. Modern AI chatbots (ChatGPT, Claude, Gemini) use language models and can hold genuinely open-ended conversations, answer questions about anything, and generate new content. The term is sometimes used loosely to refer to any AI assistant.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-generative-ai">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Generative AI</div>
+  <p style="margin:0;font-size:.9rem">AI that creates new content — text, images, audio, video, or code — rather than just analysing or classifying existing content. ChatGPT generating an essay is generative AI. Midjourney generating an image is generative AI. A spam filter classifying emails is not — that is discriminative AI. The current wave of AI tools that has captured public attention (since late 2022) is almost entirely composed of generative AI systems.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-context-window">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Context Window</div>
+  <p style="margin:0;font-size:.9rem">How much text an AI can &#8220;see&#8221; at once — the limit of what it can take into account when generating a response. Early models had small context windows (a few thousand words). Current frontier models have enormous ones — Gemini 1.5 Pro can process over a million tokens, roughly equivalent to several full-length novels simultaneously. A larger context window means you can give the AI more information, upload longer documents, or have longer conversations before the model loses track of earlier content.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-token">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Token</div>
+  <p style="margin:0;font-size:.9rem">The unit that language models process text in. A token is roughly a word or part of a word — &#8220;unbelievable&#8221; might be 3-4 tokens; &#8220;AI&#8221; might be 1. Models have limits on tokens (the context window) and API pricing is typically per token. 1,000 tokens is approximately 750 words of English text. This matters in practice when you have very long documents or conversations — the model cannot process more text than its token limit allows at once.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-training">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Training</div>
+  <p style="margin:0;font-size:.9rem">The process by which an AI model learns from data. For a language model, training involves exposing the model to vast quantities of text and adjusting the model&#8217;s internal parameters (billions of numerical weights) to better predict patterns in that text. Training large models requires enormous computing resources — weeks or months on thousands of specialised chips, costing tens or hundreds of millions of dollars. This is why only a handful of companies (OpenAI, Anthropic, Google, Meta) train frontier models.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-knowledge-cutoff">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Knowledge Cutoff</div>
+  <p style="margin:0;font-size:.9rem">The point in time after which a model has no knowledge of world events — because its training data was collected before that date. If you ask a model with a 2024 knowledge cutoff about something that happened in 2025, it will not know. Models with web search (like Perplexity, or ChatGPT with search enabled) can access current information beyond their cutoff. Pure language models without search cannot.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-multimodal">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Multimodal</div>
+  <p style="margin:0;font-size:.9rem">An AI model that can understand and generate more than one type of data — text, images, audio, or video. GPT-4o is multimodal: it can accept an image as input and respond in text. Gemini is multimodal. Early language models were text-only (unimodal). Multimodal capability is increasingly standard in frontier models and is why you can now upload a photo and ask an AI what is in it.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-fine-tuning">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Fine-tuning</div>
+  <p style="margin:0;font-size:.9rem">Taking a pre-trained model and continuing to train it on a more specific dataset to specialise its behaviour. If you fine-tune GPT-4 on thousands of legal documents, you get a model that is better at legal language and tasks. Fine-tuning is how companies build specialised AI tools on top of general-purpose foundation models — a medical AI might be a fine-tuned version of a general model, trained further on medical literature and case notes.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0" id="term-rag">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">RAG (Retrieval-Augmented Generation)</div>
+  <p style="margin:0;font-size:.9rem">A technique that improves AI accuracy by letting the model search a database of documents before generating a response. Instead of relying entirely on knowledge encoded in its weights (which may be outdated or missing specific information), a RAG system retrieves relevant documents and feeds them into the context window as part of the prompt. Notion AI Q&A, Microsoft 365 Copilot, and Perplexity all use RAG. It dramatically reduces hallucination for factual queries by grounding responses in specific source documents.</p>
+</div>
+
+<div style="padding:18px 0" id="term-agi">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">AGI (Artificial General Intelligence)</div>
+  <p style="margin:0;font-size:.9rem">A hypothetical AI system that can perform any intellectual task that a human can — learning new skills on its own, reasoning flexibly across domains, applying knowledge in novel situations. Current AI systems are narrow specialists by comparison — extremely good at tasks related to language and perception, but without the flexible, general-purpose intelligence the term describes. Whether and when AGI might be achieved is one of the most debated questions in the field. Some researchers believe it is decades away; others believe current trajectories suggest it may arrive sooner.</p>
+</div>
+
+</div>
+</div>
+
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+<h2 id="s-indigo-0">Working vocabulary — terms you will encounter regularly</h2>
+
+<div style="display:flex;flex-direction:column;gap:0">
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Foundation Model</div>
+  <p style="margin:0;font-size:.9rem">A large AI model trained on broad data at scale, designed to be adapted to a wide range of downstream tasks. GPT-4, Claude 3, and Gemini 1.5 are foundation models. The concept was formalised in a 2021 Stanford paper that noted these models&#8217; ability to serve as a general-purpose foundation for many specialised applications — through fine-tuning, prompting, or RAG. The term is sometimes used interchangeably with &#8220;base model.&#8221;</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">RLHF (Reinforcement Learning from Human Feedback)</div>
+  <p style="margin:0;font-size:.9rem">A training technique that uses human preferences to make AI models more helpful, harmless, and honest. Human raters compare pairs of AI responses and indicate which is better. This preference data trains a &#8220;reward model&#8221; that scores outputs. The main model is then trained with reinforcement learning to produce outputs that score highly. RLHF is the primary reason that modern AI assistants are so much more useful and less dangerous than raw language models trained only on internet text. OpenAI&#8217;s InstructGPT paper (2022) introduced the approach that led to ChatGPT.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Constitutional AI</div>
+  <p style="margin:0;font-size:.9rem">Anthropic&#8217;s approach to training Claude to be helpful, harmless, and honest. Rather than relying purely on human raters, Constitutional AI uses a set of principles (a &#8220;constitution&#8221;) to guide the model&#8217;s self-critique and revision of its own outputs. The model is trained to evaluate its responses against the constitution and improve them — reducing dependence on human labelling at scale. Described in Anthropic&#8217;s paper: <a href="https://arxiv.org/abs/2212.08073" target="_blank" style="color:#6366F1">arxiv.org/abs/2212.08073</a>.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">System Prompt</div>
+  <p style="margin:0;font-size:.9rem">Instructions given to an AI model before the user&#8217;s conversation begins — typically by the developer or business deploying the model, not visible to end users. System prompts define the model&#8217;s persona, capabilities, restrictions, and context for a particular deployment. When you use a customer service chatbot powered by Claude, Anthropic&#8217;s system prompt has been supplemented by the company&#8217;s own instructions telling the model how to behave for their specific use case.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Temperature</div>
+  <p style="margin:0;font-size:.9rem">A parameter that controls how random or deterministic an AI&#8217;s outputs are. At temperature 0, the model always picks the highest-probability next token — producing consistent, predictable outputs. At higher temperatures (0.7, 1.0), the model samples more randomly, producing more varied and sometimes more creative outputs. For factual tasks (coding, data extraction), low temperature is better. For creative writing, higher temperature often produces more interesting results.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Prompt Engineering</div>
+  <p style="margin:0;font-size:.9rem">The skill and practice of crafting prompts that get the best possible output from AI models. Techniques include: adding context and role definitions, using few-shot examples (showing the model examples of desired output), chain-of-thought prompting (asking the model to think through a problem step by step), and output formatting instructions. As models improve, prompt engineering becomes less critical for simple tasks — but remains important for complex or precise requirements.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Few-Shot / Zero-Shot Learning</div>
+  <p style="margin:0;font-size:.9rem">Zero-shot means giving the model a task with no examples — just instructions. Few-shot means including a small number of examples (&#8220;few shots&#8221;) of the desired input-output format before your actual request. Few-shot prompting often significantly improves output quality for specific structured tasks, because the examples clarify exactly what format or type of response is expected.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Reasoning Model</div>
+  <p style="margin:0;font-size:.9rem">A language model specifically trained or prompted to work through problems step by step before producing a final answer — sometimes described as &#8220;thinking before speaking.&#8221; OpenAI&#8217;s o1 and o3 series are reasoning models. They produce intermediate reasoning steps (which may or may not be shown to users) and perform significantly better than standard models on complex maths, coding, and logical reasoning tasks. The tradeoff: they are slower and more expensive per query than standard models.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Agentic AI / AI Agent</div>
+  <p style="margin:0;font-size:.9rem">An AI system that can take sequences of actions autonomously to complete a goal — not just generating a single response, but using tools, searching the web, writing and running code, and performing multi-step tasks. Claude Code is an agentic AI for software development. The shift from &#8220;AI that answers questions&#8221; to &#8220;AI that completes tasks&#8221; is one of the most significant developments underway. Agentic AI introduces new challenges around safety and oversight that are active areas of research.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Open Source vs Closed Source</div>
+  <p style="margin:0;font-size:.9rem">Open source AI means the model weights (and often training code) are publicly available — anyone can download and run the model. Llama (Meta), Mistral, and Falcon are open-source models. Closed source means the weights are proprietary — you can only access the model through an API or product. GPT-4 (OpenAI), Claude (Anthropic), and Gemini (Google) are closed source. The debate between open and closed AI is active and significant: open models offer transparency and accessibility; closed models allow tighter safety controls and ongoing improvement without publishing weights that could be misused.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">MCP (Model Context Protocol)</div>
+  <p style="margin:0;font-size:.9rem">An open protocol created by Anthropic that standardises how AI models connect to external tools, data sources, and services. Think of it as a universal connector: instead of each AI tool requiring custom integration with each data source, MCP provides a standard interface. This allows Claude (and other AI systems adopting the protocol) to connect to Google Drive, Slack, databases, APIs, and other tools through a consistent method. Announced in November 2024, MCP has been widely adopted in the developer community.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">AI Safety</div>
+  <p style="margin:0;font-size:.9rem">The field of research and practice focused on ensuring AI systems behave as intended, do not cause unintended harm, and remain under meaningful human control as they become more capable. AI safety encompasses: alignment research (ensuring AI goals match human intentions), interpretability research (understanding what is happening inside AI models), robustness (ensuring AI performs safely even in unusual situations), and policy work. Anthropic, DeepMind, and OpenAI all have substantial safety research teams.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Alignment</div>
+  <p style="margin:0;font-size:.9rem">The challenge of ensuring AI systems pursue goals that are beneficial to humans — that they do what we intend, not just what we literally specify. The alignment problem becomes more significant as AI systems become more capable: a highly capable AI optimising for a slightly misspecified goal could cause serious harm. Current alignment approaches include RLHF, Constitutional AI, and interpretability research. Alignment is considered by many AI researchers to be the most important unsolved problem in AI development.</p>
+</div>
+
+<div style="padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Diffusion Model</div>
+  <p style="margin:0;font-size:.9rem">The architecture behind most AI image and video generators — including Stable Diffusion, Midjourney, and DALL-E. Diffusion models learn to generate images by learning to reverse a noise-adding process: during training, real images are progressively corrupted with noise; the model learns to denoise. During generation, starting from random noise, the model iteratively removes noise, guided by the text prompt, until a coherent image emerges. The technical elegance of this approach — and its ability to generate extraordinarily high-quality images — made it the dominant architecture for image generation from 2022 onwards.</p>
+</div>
+
+</div>
+</div>
+
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+<h2 id="s-red-0">Technical vocabulary</h2>
+
+<div style="display:flex;flex-direction:column;gap:0">
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Transformer Architecture</div>
+  <p style="margin:0;font-size:.9rem">The neural network architecture that underlies virtually all modern language models. Introduced in &#8220;Attention Is All You Need&#8221; (Vaswani et al., 2017 — <a href="https://arxiv.org/abs/1706.03762" target="_blank" style="color:#6366F1">arxiv.org/abs/1706.03762</a>). The key innovation: the attention mechanism, which allows the model to weigh the relevance of every part of the input when processing each element — capturing long-range dependencies that previous recurrent architectures struggled with. GPT, BERT, Claude, Gemini, and virtually every other frontier model is a transformer or transformer-variant.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Attention Mechanism</div>
+  <p style="margin:0;font-size:.9rem">The core innovation of the transformer architecture. Attention allows the model to dynamically weight the importance of different parts of the input when generating each output token. When processing the word &#8220;bank&#8221; in a sentence, attention allows the model to attend more strongly to &#8220;river&#8221; or &#8220;money&#8221; depending on context, disambiguating meaning. Self-attention means the model attends to different parts of the same sequence. Multi-head attention runs multiple attention operations in parallel, each learning to focus on different types of relationships.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Parameters / Weights</div>
+  <p style="margin:0;font-size:.9rem">The numerical values inside a neural network that are adjusted during training. A model with 70 billion parameters has 70 billion individual numbers, each of which encodes some aspect of the patterns the model has learned. Larger parameter counts generally (though not always) correlate with more capable models. GPT-4&#8217;s parameter count has not been officially disclosed; estimates range from 200 billion to over a trillion. Llama 3 comes in variants from 8B to 70B parameters. The relationship between parameter count and capability is complex — architecture, training data quality, and training techniques all matter.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Embedding / Vector</div>
+  <p style="margin:0;font-size:.9rem">A way of representing words, sentences, images, or other data as lists of numbers (vectors) in a high-dimensional space — where semantically similar items are geometrically close together. &#8220;King&#8221; and &#8220;queen&#8221; have similar embeddings; &#8220;cat&#8221; and &#8220;dog&#8221; are closer to each other than either is to &#8220;algorithm.&#8221; Embeddings are the foundation of modern AI: they allow the model to perform mathematical operations on meaning. Semantic search (search by meaning rather than keyword) works by finding documents whose embeddings are closest to the query&#8217;s embedding.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Scaling Laws</div>
+  <p style="margin:0;font-size:.9rem">Empirical relationships showing how model performance improves predictably as compute, data, and parameter count increase. The landmark scaling laws paper (Hoffmann et al., 2022 — the &#8220;Chinchilla&#8221; paper — <a href="https://arxiv.org/abs/2203.15556" target="_blank" style="color:#6366F1">arxiv.org/abs/2203.15556</a>) showed that prior models were undertrained relative to their size — that a smaller model trained on more data could outperform a larger model trained on less. Scaling laws have driven the strategy of building ever-larger models on ever-larger datasets, and remain central to how AI companies plan their research roadmaps.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Latent Space</div>
+  <p style="margin:0;font-size:.9rem">The high-dimensional internal representation space of a neural network — where the model&#8217;s learned concepts exist as geometric relationships between vectors. When a diffusion model generates an image, it works in latent space (a compressed representation) rather than pixel space, which is computationally more efficient. Concepts that are related occupy nearby regions of latent space. Interpolating between two points in latent space produces outputs that blend characteristics of both endpoints — a technique used in creative AI applications.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">CLIP (Contrastive Language-Image Pre-Training)</div>
+  <p style="margin:0;font-size:.9rem">A model trained by OpenAI that learns to connect images and text — understanding which captions describe which images by training on 400 million image-text pairs. CLIP representations are used in most AI image generation systems: the text prompt is encoded by a CLIP text encoder into an embedding, which guides the image generation process. CLIP&#8217;s ability to map language and images into a shared embedding space was foundational to making text-to-image generation practical. Original paper: <a href="https://arxiv.org/abs/2103.00020" target="_blank" style="color:#6366F1">arxiv.org/abs/2103.00020</a>.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Mixture of Experts (MoE)</div>
+  <p style="margin:0;font-size:.9rem">A model architecture that uses multiple specialised sub-networks (&#8220;experts&#8221;), with a routing mechanism that selects which experts to activate for each input. Rather than all parameters being active for every query, only a subset are used — making inference more efficient without sacrificing capability. GPT-4 is believed to use MoE architecture. Mixtral (Mistral AI) explicitly uses MoE. The advantage: a model can have a large total parameter count (suggesting broad knowledge) while only activating a fraction of those parameters per inference (reducing computational cost).</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Quantisation</div>
+  <p style="margin:0;font-size:.9rem">A technique for reducing the memory and compute requirements of a model by representing its weights in lower precision — from 32-bit or 16-bit floating point numbers to 8-bit, 4-bit, or even 2-bit integers. A model quantised to 4-bit requires roughly one-eighth the memory of its 32-bit version, at some cost to output quality. Quantisation is what allows large models to run on consumer hardware — a 70B parameter model at 4-bit quantisation can run on a high-end consumer GPU. Used extensively in the open-source model community (Llama, Mistral) for local deployment.</p>
+</div>
+
+<div style="border-bottom:1px solid var(--border2);padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Interpretability</div>
+  <p style="margin:0;font-size:.9rem">The research field focused on understanding what is happening inside neural networks — what concepts individual neurons or circuits represent, how information flows through the network, and why the model produces particular outputs. Current frontier models are largely black boxes: we can observe inputs and outputs but not the internal reasoning process. Interpretability research (Anthropic has published extensively in this area through Mechanistic Interpretability work) aims to open that black box — both for safety reasons and to improve model capabilities.</p>
+</div>
+
+<div style="padding:18px 0">
+  <div style="font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:6px">Inference vs Training</div>
+  <p style="margin:0;font-size:.9rem">Training is the process of building a model — adjusting billions of parameters over weeks or months on massive datasets. Inference is using a trained model to generate outputs — what happens every time you send a message to ChatGPT. Training is far more computationally expensive than inference, but inference at the scale of millions of daily users also requires enormous infrastructure. The economics of AI products are heavily influenced by inference costs — which is why model efficiency (producing high-quality outputs at lower inference cost) is a major competitive dimension alongside raw capability.</p>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">Terms you will encounter immediately</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Working vocabulary — terms you will encounter regularly</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Technical vocabulary</a></div></div>
+  <div class="sidebar-card"><h4>Key reference pages</h4>
+    <a href="/ai-atlas/history/" class="sidebar-link">AI History</a>
+    <a href="/ai-atlas/family-tree/" class="sidebar-link">AI Family Tree</a>
+    <a href="/ai-atlas/start-here/" class="sidebar-link">Start Here</a>
+    <a href="/ai-atlas/which-ai/" class="sidebar-link">Which AI?</a>
+  </div>
+  <div class="sidebar-card"><h4>Quick term lookup</h4>
+    <a href="#term-llm" class="sidebar-link">LLM</a>
+    <a href="#term-hallucination" class="sidebar-link">Hallucination</a>
+    <a href="#term-rag" class="sidebar-link">RAG</a>
+    <a href="#term-context-window" class="sidebar-link">Context Window</a>
+    <a href="#term-agi" class="sidebar-link">AGI</a>
+    <a href="#term-prompt" class="sidebar-link">Prompt</a>
+  </div>
+</div>
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),
+      drawer=document.getElementById('navDrawer'),
+      close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+// Lane switcher
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+
+}
+// Copy prompt
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent=orig;},2000);
+  });
+}
+// Init first lane on page load
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

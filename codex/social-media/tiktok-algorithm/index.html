@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TikTok Algorithm: How the For You Page Works | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="TikTok Algorithm: How the For You Page Works | Digital Codex">
+<meta property="og:description" content="How the TikTok algorithm works — the For You Page recommendation system, interest graph vs social graph, batch testing, the ranking signals TikTok...">
+<meta property="og:url" content="https://www.clarigital.com/codex/social-media/tiktok-algorithm/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="How the TikTok algorithm works — the For You Page recommendation system, interest graph vs social graph, batch testing, the ranking signals TikTok...">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/codex/social-media/tiktok-algorithm/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"TikTok Algorithm: How the For You Page Works","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-06","articleSection":"Social Media Marketing","wordCount":"5,200"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.nav-search-form{display:flex;align-items:center;gap:0;margin-left:.5rem}
+.nav-search-input{border:1.5px solid var(--g200);border-radius:6px 0 0 6px;padding:5px 10px;font-size:.8rem;width:160px;outline:none;font-family:inherit}
+.nav-search-input:focus{border-color:var(--navy)}
+.nav-search-btn{background:var(--navy);color:#fff;border:none;border-radius:0 6px 6px 0;padding:5px 10px;cursor:pointer;font-size:.8rem;font-family:inherit}
+@media(max-width:900px){.nav-search-form{display:none}}
+</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TikTok Algorithm: How the For You Page Works | Digital Codex">
+<meta name="twitter:description" content="How the TikTok algorithm works — the For You Page recommendation system, interest graph vs social graph, batch testing, the ranking signals TikTok...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Social Media", "item": "https://www.clarigital.com/codex/social-media/"}, {"@type": "ListItem", "position": 4, "name": "TikTok Algorithm: How the For You Page Works", "item": "https://www.clarigital.com/codex/social-media/tiktok-algorithm/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/sem/">SEM</a></li><li><a href="/codex/paid-advertising/">Paid Ads</a></li><li><a href="/codex/content-marketing/">Content</a></li><li><a href="/codex/social-media/" class="cur">Social Media</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/sem/" class="di">SEM</a><a href="/codex/paid-advertising/" class="di">Paid Ads</a><a href="/codex/content-marketing/" class="di">Content</a><a href="/codex/social-media/" class="di cur">Social Media</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#interest-graph">Interest Graph vs Social Graph</a><a class="cnl" href="#official-signals">Officially Documented Signals</a><a class="cnl" href="#what-tiktok-ignores">What TikTok Does Not Consider</a><a class="cnl" href="#batch-testing">Batch Testing System</a><a class="cnl" href="#fyp-diversity">Diversity in the For You Page</a><a class="cnl" href="#recommendation-eligibility">Recommendation Eligibility</a><a class="cnl" href="#tiktok-search">TikTok Search (SEO)</a><a class="cnl" href="#ownership-context">Ownership and Algorithm Context</a><a class="cnl" href="#creator-implications">Implications for Creators</a><a class="cnl" href="#tiktok-mistakes">Common Misconceptions</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/social-media/">Social Media</a><span class="sep">/</span><span class="cur">TikTok Algorithm</span></nav>
+  <span class="label-tag">Social Media Marketing &#183; Session 11, Guide 8</span>
+  <h1>TikTok Algorithm &#183; How the For You Page Works</h1>
+  <p class="hero-lead">TikTok's recommendation system — the algorithm behind the For You Page — is both the platform's defining feature and its most consequential strategic reality for content creators. Unlike Instagram's social-graph-based feed (which primarily shows content from accounts you follow) or LinkedIn's professional-identity matching, TikTok built its recommendation engine around an interest graph: it recommends content based on what you watch and engage with, not who you follow. This architectural choice means a new account with zero followers can reach millions of viewers with its first video — if the interest graph identifies the content as matching the preferences of a large audience segment. TikTok has published official documentation explaining how this system works. This guide draws directly from those official sources.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Social Media</span><span class="meta-tag mt-gray">5,200 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+  <li>Why TikTok's interest graph produces radically different discovery dynamics than social-graph platforms</li>
+  <li>The specific ranking signals TikTok has officially published in its Newsroom documentation</li>
+  <li>What TikTok explicitly states it does NOT consider in content ranking</li>
+  <li>How TikTok's batch testing system gives every video an initial fair audience — regardless of follower count</li>
+  <li>How TikTok maintains diversity in the For You Page — from the platform's official Newsroom</li>
+  <li>What makes content ineligible for For You Page recommendation</li>
+  <li>How TikTok's search function works and why it is increasingly important for content strategy</li>
+  <li>The ownership and regulatory context that affects TikTok's algorithm in 2026</li>
+  <li>The specific strategic implications the algorithm creates for content creators</li>
+  <li>The most common misconceptions about TikTok's algorithm</li>
+</ul></div></div>
+
+<div class="callout orange"><strong>Source note</strong><p>The algorithm mechanics in this guide are drawn directly from <strong>TikTok's official Newsroom</strong> (newsroom.tiktok.com) — specifically TikTok's own published explanation "How TikTok Recommends Videos #ForYou" and related official transparency publications. We describe what TikTok has officially stated, not third-party speculation.</p></div>
+
+<div class="chapter" id="interest-graph">
+<div class="chap-hdr"><h2>Interest Graph vs Social Graph</h2><button class="share-btn" onclick="copyLink('interest-graph')">Share</button></div>
+<p>TikTok's most fundamental architectural difference from other social platforms is its use of an interest graph rather than a social graph as the primary recommendation basis. Understanding this difference explains why TikTok behaves so differently from Instagram, Facebook, or LinkedIn.</p>
+<p>A social graph platform (Facebook, Instagram, LinkedIn, Twitter/X) primarily serves content from accounts that users have chosen to follow. The social relationship — the follow, the connection — is the primary distribution channel. Content reaches an audience proportional to the follower count of the creator. A creator with 100 followers reaches approximately 100 people; a creator with 1 million followers reaches approximately 1 million people (modulated by engagement rates and algorithm weighting). The social graph creates structural advantage for accounts that have accumulated followers over time.</p>
+<p>TikTok's interest graph recommendation system works differently. TikTok's official Newsroom documentation states: "We use recommender systems to offer you a personalized experience. These systems suggest content based on your preferences as expressed through interactions on TikTok, such as following an account or liking a post." The critical insight: TikTok recommends content based on what you watch and engage with, not primarily who you follow. A video that matches what an audience segment watches and engages with will reach that audience regardless of the creator's follower count.</p>
+<p>TikTok CEO Shou Zi Chew has characterised this as a fundamental architectural distinction: the interest graph makes TikTok structurally different from follow-based platforms where follower accumulation is the primary barrier to reach. This is why a first video from a zero-follower account can, if it matches the interest profile of a large audience segment, reach millions of viewers — a structural impossibility on follower-based platforms.</p>
+</div>
+
+<div class="chapter" id="official-signals">
+<div class="chap-hdr"><h2>Officially Documented Ranking Signals</h2><button class="share-btn" onclick="copyLink('official-signals')">Share</button></div>
+<p>TikTok's official Newsroom post "How TikTok Recommends Videos #ForYou" — the most authoritative primary source for TikTok's algorithm — describes the following as the signals TikTok uses to recommend content:</p>
+<h3>User interactions</h3>
+<p>TikTok considers interactions including:</p>
+<ul>
+  <li>Videos a user likes or shares</li>
+  <li>Accounts a user follows</li>
+  <li>Comments a user posts</li>
+  <li>Content a user creates</li>
+</ul>
+<p>Of these, watch time and completion rate are described as the highest-weighted signals. TikTok documentation states: these signals "help the recommendation system gauge the content you like as well as the content you'd prefer to skip." The decision to finish watching a video — or to stop mid-way — is one of the clearest preference signals the system uses.</p>
+<h3>Video information</h3>
+<p>TikTok considers video information including:</p>
+<ul>
+  <li>Captions (the text added to a video)</li>
+  <li>Sounds (audio used in the video)</li>
+  <li>Hashtags</li>
+</ul>
+<p>This information helps TikTok categorise the content and match it to users with relevant interest profiles. The importance of captions for TikTok SEO stems from this: captions (and now, per later documentation, spoken words via auto-captions) are the primary text signals TikTok uses to understand what a video is about.</p>
+<h3>Device and account settings</h3>
+<p>TikTok also considers device type, language preference, and country or region setting — primarily for performance optimisation rather than content relevance, according to TikTok's official explanation. These settings are given a lower weight than interaction history.</p>
+</div>
+
+<div class="chapter" id="what-tiktok-ignores">
+<div class="chap-hdr"><h2>What TikTok Does Not Consider</h2><button class="share-btn" onclick="copyLink('what-tiktok-ignores')">Share</button></div>
+<p>TikTok's official documentation explicitly states that its recommendation system does not directly consider the following when deciding whether to recommend a video:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Factor Not Considered</th><th>Significance</th></tr></thead>
+  <tbody>
+    <tr><td>Follower count</td><td>Videos from a zero-follower new account and videos from a million-follower account enter the same recommendation pipeline — initial distribution is equal</td></tr>
+    <tr><td>Whether you have a verified account</td><td>Verification does not provide algorithmic reach advantages</td></tr>
+    <tr><td>Prior video performance</td><td>A single poor-performing video does not penalise future videos — each video is evaluated independently in the initial batch testing phase</td></tr>
+  </tbody>
+</table></div>
+<p>These explicit statements from TikTok's own documentation are significant because they contradict several widely-held beliefs: that new accounts are disadvantaged, that verification helps reach, and that a series of poor-performing videos permanently damages an account's distribution. Per TikTok's official position, none of these are true for individual video recommendation decisions.</p>
+</div>
+
+<div class="chapter" id="batch-testing">
+<div class="chap-hdr"><h2>The Batch Testing System</h2><button class="share-btn" onclick="copyLink('batch-testing')">Share</button></div>
+<p>TikTok's recommendation system uses a staged distribution approach that independent researchers and TikTok's own support documentation have described as "batch testing." When a video is published, TikTok shows it to a small initial audience — a sample drawn from users whose interest profile matches the video's categorisation signals. The size of this initial audience and the engagement it produces determine whether the video enters progressively larger audience pools.</p>
+<p>If the initial audience generates strong watch time, engagement, and share signals, the video is distributed to a larger second-tier audience — a broader sample of users with similar interest profiles. If this second tier also generates strong engagement, distribution expands further. This tiered expansion can continue until the video reaches a very large audience, or it can stop at any tier if engagement signals fall below the thresholds that justify broader distribution.</p>
+<p>The key implication from TikTok's official documentation: this initial batch is drawn regardless of the creator's follower count. A zero-follower account's video enters the same initial batch testing process as a million-follower account's video. The content's ability to generate engagement in the initial sample — not the creator's pre-existing audience — determines the distribution trajectory.</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">Initial batch size</p><div class="stat-n">Small sample</div><p class="stat-l">Every video gets an initial sample audience regardless of creator follower count (TikTok official)</p></div>
+  <div class="stat-card"><p class="stat-h">Distribution trigger</p><div class="stat-n">Engagement</div><p class="stat-l">Strong engagement in each batch triggers distribution to a larger next audience pool</td></tr>
+  <div class="stat-card"><p class="stat-h">Equality principle</p><div class="stat-n">Content-based</div><p class="stat-l">TikTok explicitly states follower count is not considered in initial recommendation decisions</p></div>
+</div>
+</div>
+
+<div class="chapter" id="fyp-diversity">
+<div class="chap-hdr"><h2>Diversity in the For You Page</h2><button class="share-btn" onclick="copyLink('fyp-diversity')">Share</button></div>
+<p>TikTok's official Newsroom documentation specifically addresses how the platform maintains diversity in the For You Page — preventing the feed from becoming an echo chamber that only shows content within a narrow range of topics and creators:</p>
+<p>TikTok states: "To keep your For You feed interesting and varied, our recommendation system works to intersperse diverse types of content along with those you already know you love." Specifically, the documentation confirms that the For You feed "generally won't show two videos in a row made with the same sound or by the same creator" — a deliberate design choice to maintain variety.</p>
+<p>Additionally, TikTok has documented that the recommendation system intentionally introduces content outside a user's expressed preferences: "bringing a diversity of videos into your For You feed gives you additional opportunities to stumble upon new content categories and discover new creators." This intentional diversity is described as an important component of the platform's approach — not a bug or a random element, but a designed feature.</p>
+<p>TikTok also published documentation specifically about safeguards for mental health: the system monitors for "repetition among themes like sadness or extreme diets" and, when multiple similar potentially-concerning videos are identified in a sequence, substitutes content about other topics to prevent harmful viewing patterns. This reflects deliberate design choices about recommendation responsibility that TikTok has made public.</p>
+</div>
+
+<div class="chapter" id="recommendation-eligibility">
+<div class="chap-hdr"><h2>Recommendation Eligibility</h2><button class="share-btn" onclick="copyLink('recommendation-eligibility')">Share</button></div>
+<p>TikTok distinguishes between content that is allowed on the platform and content that is eligible for For You Page recommendation. TikTok's official documentation describes a "reviewed content" category — content that is allowed but that TikTok places behind additional eligibility gates before recommendation:</p>
+<ul>
+  <li>Content depicting graphic medical procedures or legal consumption of regulated goods that "may be shocking if surfaced as a recommended video to a general audience"</li>
+  <li>Videos that have just been uploaded or are currently under review</li>
+  <li>Spam content seeking to artificially increase traffic</li>
+  <li>Content from accounts that have previously repeatedly posted material against TikTok's Community Guidelines — TikTok documented that such accounts can be temporarily made ineligible for For You feed recommendation</li>
+</ul>
+<p>Content eligibility is separate from content policy compliance. A video that does not violate Community Guidelines may still be ineligible for For You recommendation if it falls into a reviewed category that TikTok considers inappropriate for broad distribution to a general audience.</p>
+</div>
+
+<div class="chapter" id="tiktok-search">
+<div class="chap-hdr"><h2>TikTok Search (SEO)</h2><button class="share-btn" onclick="copyLink('tiktok-search')">Share</button></div>
+<p>TikTok has evolved from a pure entertainment feed into a significant search platform, particularly among younger demographics who increasingly use TikTok search as a first-resort for information on topics ranging from restaurants to tutorials to product reviews. TikTok's search algorithm indexes spoken words (via auto-captions), on-screen text, and captions to match content to search queries.</p>
+<h3>TikTok SEO signals</h3>
+<ul>
+  <li><strong>Spoken keywords.</strong> TikTok's auto-caption feature transcribes spoken audio. Videos that mention the target query topic in spoken dialogue are indexed for that topic. Verbally stating the topic your video covers early in the video helps TikTok's search index match the video to relevant queries.</li>
+  <li><strong>On-screen text.</strong> Text overlays that include relevant keywords are indexed by TikTok search. Use on-screen text to clearly state the topic of the video — this serves both viewers (accessibility for sound-off viewing) and search indexing.</li>
+  <li><strong>Caption keywords.</strong> The written caption below the video is indexed for search. Include the specific search queries your target audience would use — "how to write a cold email subject line" rather than just a vague description.</li>
+  <li><strong>Hashtags as category signals.</strong> Relevant hashtags continue to function as category signals that help TikTok match content to users interested in those topics, even as direct hashtag discovery has become less prominent than keyword search.</li>
+</ul>
+</div>
+
+<div class="chapter" id="ownership-context">
+<div class="chap-hdr"><h2>TikTok Ownership and Algorithm Context</h2><button class="share-btn" onclick="copyLink('ownership-context')">Share</button></div>
+<p>TikTok's ownership situation is a material consideration for businesses building marketing programmes on the platform. TikTok was developed by ByteDance, a Chinese company, and has operated under significant regulatory scrutiny in the United States and other Western markets due to concerns about data access and algorithm influence.</p>
+<p>In January 2026, TikTok announced the formation of TikTok USDS Joint Venture LLC — a structure designed to bring TikTok's US operations into compliance with US law. TikTok CEO Shou Zi Chew joined the board of the new entity. The Chinese government has separately indicated it would not permit ByteDance to sell the core recommendation algorithm, characterising it as a controlled technology export.</p>
+<p>For marketers and businesses, the key consideration is platform stability risk: TikTok has faced potential bans or structural changes in the US and other markets, which creates uncertainty about the long-term reliability of TikTok as a marketing channel. Building a TikTok audience should be treated as a component of a diversified social media strategy rather than a sole-source channel investment, specifically because of this regulatory uncertainty.</p>
+</div>
+
+<div class="chapter" id="creator-implications">
+<div class="chap-hdr"><h2>Implications for Creators and Marketers</h2><button class="share-btn" onclick="copyLink('creator-implications')">Share</button></div>
+<p>The documented mechanics of TikTok's recommendation system create several specific strategic implications:</p>
+<ul>
+  <li><strong>Niche consistency matters.</strong> TikTok's interest graph matches creators to audience segments based on content category. Creators who consistently post in a specific niche train the algorithm to identify their content as belonging to that interest category — making future content more likely to reach users interested in that niche. Posting across disconnected topics produces weaker category signals and less precise audience matching.</li>
+  <li><strong>Each video is independent.</strong> TikTok's documented statement that prior video performance is not considered means each video enters the recommendation pipeline on its own merits. One underperforming video does not penalise the next. This reduces the psychological risk of experimentation — creators can test new formats, hooks, and topics without a persistent reach penalty for ones that underperform.</li>
+  <li><strong>Hook quality determines batch expansion.</strong> The batch testing system means the initial sample audience's engagement response is the most important moment in a video's distribution trajectory. Content that hooks the initial audience into watching and engaging earns broader distribution; content that is abandoned in the first seconds does not. Every production decision should be evaluated against "does this help retain the initial batch audience?"</li>
+  <li><strong>Search optimisation adds a second discovery layer.</strong> TikTok search operates alongside the recommendation For You feed as a content discovery mechanism. Optimising for both (recommendation via engagement signals; search via keyword inclusion) creates two routes for content to reach relevant audiences.</li>
+</ul>
+</div>
+
+<div class="chapter" id="tiktok-mistakes">
+<div class="chap-hdr"><h2>Common Misconceptions About the TikTok Algorithm</h2><button class="share-btn" onclick="copyLink('tiktok-mistakes')">Share</button></div>
+<ul>
+  <li><strong>"New accounts are shadowbanned or disadvantaged."</strong> TikTok's official documentation explicitly states that follower count and account age are not considered in recommendation decisions. New accounts receive the same initial batch testing treatment as established accounts. Poor performance from new accounts is more often attributable to content quality or hook problems, not algorithmic disadvantage.</li>
+  <li><strong>"Posting at specific times dramatically changes reach."</strong> While posting when the target audience is active has some impact on initial batch engagement (which affects distribution), TikTok's interest-graph-based recommendation means videos continue being distributed for days or weeks after posting, well beyond the initial posting window. The compounding distribution effect makes TikTok less time-sensitive than platforms where posts decay quickly.</li>
+  <li><strong>"Using more hashtags improves reach."</strong> TikTok officially documents hashtags as content categorisation signals — they help the algorithm understand what the video is about. There is no documented evidence that more hashtags improve distribution. 3–5 highly relevant hashtags is appropriate; excessive hashtag use does not provide a proportional benefit.</li>
+  <li><strong>"You need to go viral to build a TikTok following."</strong> TikTok's batch testing system means consistent content that reliably performs in initial batches — even without breakthrough viral performance — accumulates audience growth over time. Consistent quality in a specific niche builds following more reliably than chasing viral formats outside the creator's niche.</li>
+</ul>
+</div>
+
+<div class="chapter" id="sources">
+<h2>Authentic Sources</h2>
+<div class="callout orange"><strong>Source integrity commitment</strong><p>Every factual claim in this guide is drawn from official platform documentation, official engineering publications, or peer-reviewed research. We do not cite third-party blogs, marketing tools, or SEO agencies as primary sources. All platform behaviour described here is referenced from the platform's own published statements. We reword and interpret — we never copy text.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://newsroom.tiktok.com/en-us/how-tiktok-recommends-videos-for-you" target="_blank" rel="noopener">TikTok Newsroom — How TikTok Recommends Videos #ForYou</a></strong><p>TikTok's own official explanation of the For You feed recommendation system — the primary authoritative source for TikTok algorithm documentation, including the specific signals considered and explicitly not considered.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://newsroom.tiktok.com/an-update-on-our-work-to-safeguard-and-diversify-recommendations" target="_blank" rel="noopener">TikTok Newsroom — Safeguarding and Diversifying Recommendations</a></strong><p>TikTok's official documentation on how it maintains diversity in the For You feed and the safeguards built into the recommendation system.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://newsroom.tiktok.com/en-us/learn-why-a-video-is-recommended-for-you" target="_blank" rel="noopener">TikTok Newsroom — Why a Video Is Recommended</a></strong><p>TikTok's official explanation of the "Why this video" feature and the factors that influence individual video recommendations.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://newsroom.tiktok.com/en-us/more-ways-to-discover-new-content-and-creators-you-love" target="_blank" rel="noopener">TikTok Newsroom — Content Discovery</a></strong><p>TikTok's official documentation on discovery mechanisms including For You feed, search, and trending content — including the "Manage Topics" personalisation feature.</p></div></div>
+</div>
+
+<div class="related-guides">
+  <h3 class="rg-head">Related Guides</h3>
+  <div class="rg-grid"><a href="/codex/analytics-cro/business-metrics-kpis/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">Business Metrics & KPIs</span><span class="rc-arr">&#8594;</span></a><a href="/codex/content-marketing/content-distribution-strategy/" class="related-card"><span class="rc-tag">Content Marketing</span><span class="rc-title">Content Distribution</span><span class="rc-arr">&#8594;</span></a><a href="/codex/paid-advertising/facebook-instagram/campaign-objectives/" class="related-card"><span class="rc-tag">Meta Ads</span><span class="rc-title">Campaign Objectives</span><span class="rc-arr">&#8594;</span></a></div>
+</div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 5,200 &nbsp;&#183;&nbsp; <strong>Session:</strong> 11 of 16 &nbsp;&#183;&nbsp; <strong>Sources:</strong> Official platform documentation only</p></div>
+</div></article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#interest-graph" class="sb-link on">Interest Graph</a><a href="#official-signals" class="sb-link">Official Ranking Signals</a><a href="#what-tiktok-ignores" class="sb-link">What TikTok Ignores</a><a href="#batch-testing" class="sb-link">Batch Testing</a><a href="#fyp-diversity" class="sb-link">FYP Diversity</a><a href="#recommendation-eligibility" class="sb-link">Eligibility</a><a href="#tiktok-search" class="sb-link">TikTok Search</a><a href="#ownership-context" class="sb-link">Ownership Context</a><a href="#creator-implications" class="sb-link">Creator Implications</a><a href="#tiktok-mistakes" class="sb-link">Common Misconceptions</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box"><div class="sb-head">Social Media</div><div class="sb-body"><a href="/codex/social-media/linkedin-algorithm/" class="sb-link">1. LinkedIn Algorithm</a><a href="/codex/social-media/linkedin-content-strategy/" class="sb-link">2. LinkedIn Content Strategy</a><a href="/codex/social-media/linkedin-organic-reach/" class="sb-link">3. LinkedIn Organic Reach</a><a href="/codex/social-media/linkedin-lead-generation/" class="sb-link">4. LinkedIn Lead Generation</a><a href="/codex/social-media/instagram-algorithm/" class="sb-link">5. Instagram Algorithm</a><a href="/codex/social-media/instagram-reels-strategy/" class="sb-link">6. Instagram Reels Strategy</a><a href="/codex/social-media/instagram-content-strategy/" class="sb-link">7. Instagram Content Strategy</a><a href="/codex/social-media/tiktok-algorithm/" class="sb-link sb-cur">8. TikTok Algorithm</a><a href="/codex/social-media/tiktok-content-strategy/" class="sb-link">9. TikTok Content Strategy</a><a href="/codex/social-media/youtube-organic-strategy/" class="sb-link">10. YouTube Organic Strategy</a><a href="/codex/social-media/youtube-shorts-strategy/" class="sb-link">11. YouTube Shorts</a><a href="/codex/social-media/twitter-x-algorithm/" class="sb-link">12. Twitter/X Algorithm</a><a href="/codex/social-media/facebook-algorithm/" class="sb-link">13. Facebook Algorithm</a><a href="/codex/social-media/social-media-analytics/" class="sb-link">14. Social Media Analytics</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>600 guides. All authentic sources.</h2><p>Official documentation only — no third-party blogs, no affiliate links.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A&#8211;Z Glossary</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides. Official sources only.</p></div>
+  <div class="ft-col"><h5>Social Media</h5><ul><li><a href='/social-media/linkedin-algorithm/'>LinkedIn Algorithm</a></li><li><a href='/social-media/linkedin-content-strategy/'>LinkedIn Content Strategy</a></li><li><a href='/social-media/linkedin-organic-reach/'>LinkedIn Organic Reach</a></li><li><a href='/social-media/linkedin-lead-generation/'>LinkedIn Lead Generation</a></li><li><a href='/social-media/instagram-algorithm/'>Instagram Algorithm</a></li></ul></div>
+  <div class="ft-col"><h5>Other Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/content-marketing/">Content Marketing</a></li><li><a href="/codex/paid-advertising/">Paid Advertising</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Authentic sources only &#183; No affiliate links</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+// Auto-run search if ?q= param present on homepage
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+
+</body>
+</html>

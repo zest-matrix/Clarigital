@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Stack Selection | Clarigital</title>
+<meta name="description" content="Choosing the fintech stack in dependency order — what is reversible, what is not, and what to deliberately defer.">
+<link rel="canonical" href="/fintech-ai/build-playbook/stack-selection/">
+<meta property="og:type" content="article"><meta property="og:title" content="Stack Selection">
+<meta property="og:description" content="Choosing the fintech stack in dependency order — what is reversible, what is not, and what to deliberately defer."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/build-playbook/stack-selection/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Stack Selection">
+<meta name="twitter:description" content="Choosing the fintech stack in dependency order — what is reversible, what is not, and what to deliberately defer."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Stack Selection", "description": "Choosing the fintech stack in dependency order \u2014 what is reversible, what is not, and what to deliberately defer.", "url": "https://www.clarigital.com/fintech-ai/build-playbook/stack-selection/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Build Playbook", "item": "https://www.clarigital.com/fintech-ai/build-playbook/"}, {"@type": "ListItem", "position": 4, "name": "Stack Selection", "item": "https://www.clarigital.com/fintech-ai/build-playbook/stack-selection/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h4{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2,#243044)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;align-items:center;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green,#10B981);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo,#6366F1);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber,#F59E0B);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint,#64748b)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/build-playbook/">Build Playbook</a><span class="sep">&rsaquo;</span><span>Stack Selection</span></nav>
+  <div class="label-tag">Playbook — Step 2</div>
+  <div class="ft-tag">Fintech AI</div><h1>Stack Selection</h1>
+  <p class="hero-lead">Which decisions constrain which, how hard each is to undo, and the things teams consistently build too early. The goal early on is not the best stack — it is the stack that leaves the most doors open.</p>
+  <div class="art-meta"><span class="meta-tag">Verified May 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>Decide in dependency order</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>The three questions that settle most of it</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>Data residency comes earlier than you think</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>What to buy, build and defer</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>The integration contract</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>The deferral discipline</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>Testing reversibility before you commit</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>A prompt for your stack decision</a></div></div>
+    
+    
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">Decide in dependency order</h2>
+<p>Stack decisions are not independent. Each one narrows the next, and taking them out of order means revisiting earlier ones.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Stack decisions, in dependency order</span><button class="cb-copy" type="button">Copy</button></div><pre><code>DECIDE IN THIS ORDER. Each one constrains the next.
+
+1. LICENCE POSITION            -&gt; decides whether you can own a ledger
+2. LEDGER                      -&gt; buy / rent / build (Module 08)
+3. DATA RESIDENCY              -&gt; decides which AI APIs and clouds are usable
+4. EVENT BACKBONE              -&gt; the integration contract everything speaks
+5. IDENTITY PROVIDER           -&gt; indirect anyway; pick on liveness quality
+6. RISK STACK                  -&gt; credit / fraud / AML per your product
+7. CUSTOMER OPS PLATFORM       -&gt; last, because escalation design matters
+                                  more than the platform
+
+REVERSIBILITY, honestly assessed
+
+  Easy to change      support platform, fraud vendor, analytics tooling
+  Painful             KYC provider (re-verification), decisioning platform
+  Very hard           ledger / core, event schema, data model
+  Effectively never   licence structure, entity structure
+
+  Spend your thinking time in inverse proportion to reversibility.
+
+THE DEFERRAL LIST - things teams build too early
+  - a data warehouse, before there is data worth warehousing
+  - a feature store, before two models share features
+  - microservices, before there is a team per service
+  - a custom rules engine, before the rules stabilise
+  - multi-region, before one region is reliable</code></pre></div><div class="note"><span class="note-lbl">Note</span><p>Optimise for reversibility first and efficiency later. At low volume, the per-unit differences between platforms are dwarfed by your salary bill. The decisions that matter early are the ones you cannot unwind.</p></div>
+<h2 id="s-green-1">The three questions that settle most of it</h2>
+<p><strong>1. Do you hold a licence?</strong> If not, the partner&rsquo;s core is the system of record and you are building a control layer. That removes most of the ledger debate.</p><p><strong>2. What is your go-live date?</strong> Under six months means BaaS. Six to eighteen means a SaaS core or BaaS. Enterprise cores do not land inside eighteen months regardless of budget.</p><p><strong>3. How many engineers can work on infrastructure rather than product?</strong> Under five means BaaS. Five to fifteen means a SaaS core will consume most of them. Fifteen or more makes an enterprise core operable.</p><p>Answer those three honestly and the shortlist is usually one or two options.</p>
+<h2 id="s-green-2">Data residency comes earlier than you think</h2>
+<p>Most teams treat residency as a deployment detail. It is a constraint on the whole stack.</p><p>It determines which AI APIs you may call, where backups and disaster recovery copies live, whether a vendor&rsquo;s support team can access production from outside India, and what your observability pipeline ships offshore by default.</p><div class="warn"><span class="note-lbl">Watch out</span><p>Observability is the one that gets missed. Shipping application logs to a foreign-hosted monitoring service moves transaction data offshore continuously, and nobody notices because it was chosen as a platform tool rather than as a data decision.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">What to buy, build and defer</h2>
+<table><tr><th>Component</th><th>Decision</th><th>Why</th></tr><tr><td>Ledger / core</td><td><strong>Buy or rent</strong></td><td>Build is ~3–5x cost and 24–36 months to basic function</td></tr><tr><td>Shadow ledger</td><td><strong>Build, from day one</strong></td><td>Cannot be retrofitted. History you did not capture does not exist.</td></tr><tr><td>KYC / identity</td><td><strong>Buy</strong></td><td>Aadhaar is indirect regardless; buy on liveness quality for your device mix</td></tr><tr><td>Document extraction</td><td><strong>Buy initially</strong></td><td>Engine choice matters less than the quality gate and validation around it</td></tr><tr><td>Sanctions data</td><td><strong>Buy enriched</strong></td><td>The Bank of Scotland case turned on list enrichment, not algorithm</td></tr><tr><td>Screening logic</td><td><strong>Build or configure yourself</strong></td><td>Thresholds are your risk appetite, documented</td></tr><tr><td>Fraud rules</td><td><strong>Build first, buy later</strong></td><td>Velocity counters in week one beat any vendor integration</td></tr><tr><td>Credit model</td><td><strong>Build on bought data</strong></td><td>Your repayment history is the moat</td></tr><tr><td>Reconciliation</td><td><strong>Build the matching, buy at volume</strong></td><td>Start with exact-reference matching; most volume clears there</td></tr><tr><td>Support platform</td><td><strong>Buy</strong></td><td>Escalation design is yours; the helpdesk is not differentiating</td></tr><tr><td>Model registry</td><td><strong>Adopt an open tool</strong></td><td>An inventory that stays current beats a bespoke one that does not</td></tr></table>
+<h2 id="s-indigo-1">The integration contract</h2>
+<p>The one thing worth designing carefully before writing much code: what your internal events look like.</p><p>Vendor-neutral events are what make every other decision reversible. If your services publish and consume your own event schema rather than a provider&rsquo;s payloads, swapping the provider is an adapter rather than a rewrite.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Event design rules worth fixing early</span><button class="cb-copy" type="button">Copy</button></div><pre><code>PUBLISH FACTS, NOT COMMANDS
+  customer.onboarded          not  create_customer
+  payment.settled             not  update_balance
+  loan.disbursed              not  mark_disbursed
+
+EVERY EVENT CARRIES
+  event_id            unique, stable
+  sequence            monotonic per aggregate
+  occurred_at         business time  &lt;- when it happened
+  recorded_at         system time    &lt;- when we learned
+  idempotency_key     replay-safe
+  schema_version      with backward compatibility enforced in CI
+  actor               who or what caused it
+
+NEVER
+  - vendor payloads passed through unchanged
+  - events that assume a specific provider&#x27;s field names
+  - mutable events (corrections are NEW events)
+
+WHY THIS IS THE HIGHEST-LEVERAGE EARLY DECISION
+  Your ledger vendor, KYC provider, fraud vendor and support platform
+  will all change within five years. Your event schema should not.</code></pre></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">The deferral discipline</h2>
+<p>Building too early is as expensive as building too late, and less visible because it feels like progress.</p><table><tr><th>Defer until</th><th>Thing</th></tr><tr><td>Two models share a feature</td><td>Feature store</td></tr><tr><td>Analytics queries are hurting production</td><td>Warehouse</td></tr><tr><td>You have a team per service</td><td>Microservices</td></tr><tr><td>Rules change weekly and a deploy is the bottleneck</td><td>Rules engine</td></tr><tr><td>One region is reliably reliable</td><td>Multi-region</td></tr><tr><td>Manual review cost exceeds the build cost</td><td>Automated matching at volume</td></tr><tr><td>Vendor API limits actually bind</td><td>Caching layer</td></tr></table><p>The counter-list — things to build early even though they feel premature — is short and worth taking seriously: shadow ledger, decision logging with model and policy versions, outcome capture, and the model inventory.</p>
+<h2 id="s-amber-1">Testing reversibility before you commit</h2>
+<p>Before signing anything material, answer these. Most teams cannot, which is itself the finding.</p><ul><li>Can you export full transaction history, not just balances? In what format, how often, at what cost?</li><li>Does the contract guarantee export on termination, within how many days?</li><li>Have you actually run a full export and restored it? Not read the docs — run it.</li><li>What is vendor-specific in your code? Product logic in a vendor DSL is the usual trap.</li><li>If this vendor had a four-day outage, what stops?</li><li>How many critical functions sit with this one provider?</li></ul><div class="warn"><span class="note-lbl">Watch out</span><p>Run a full export quarterly and restore it into a scratch environment. If you cannot reconstruct balances from the export, you do not have an exit — you have a clause.</p></div>
+<h2 id="s-amber-2">A prompt for your stack decision</h2>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Prompt — paste into any AI</span><button class="cb-copy" type="button">Copy</button></div><pre><code>You are a fintech CTO who has built and later migrated core
+infrastructure in India.
+
+My situation:
+- Product: [describe]
+- Licence position: [describe]
+- Go-live target: [months]
+- Total engineers, and how many can work on infrastructure rather
+  than product: [numbers]
+- Year 1 and year 3 volumes: [accounts, transactions]
+- Data residency constraints: [describe]
+- Funding runway: [months]
+
+Give me:
+
+1. A specific stack recommendation, component by component, tied to
+   MY constraints rather than general best practice.
+2. For each component: buy, build, or defer - and if defer, the
+   trigger that says build it now.
+3. My internal event schema - the core events and required fields.
+4. Which three decisions here are hardest to reverse, and what to do
+   now to keep them reversible.
+5. What I am likely to build too early, given my team.
+6. A realistic year 1 cost picture including implementation and my
+   own engineering time, not just licence fees.
+
+Be sceptical of anything that sounds like the industry default.
+Where vendor pricing is undisclosed, say so rather than estimating.</code></pre></div>
+<h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI outsourcing and IT governance directions</strong> &mdash; the constraints on vendor choice for regulated entities. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-industry">industry</span><strong>Vendor documentation</strong> &mdash; the capability comparisons. See the build sheets for priced, dated figures.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Regulation in this area is actively developing; the date is part of the claim.</p></div></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=[], secs=[];
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  
+  
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

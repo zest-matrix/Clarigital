@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSP Final Assessment | Clarigital Student Program</title>
+<meta name="description" content="The CSP final assessment — 20 questions covering all 14 days of the Clarigital Student Program. Unlock with your CSP ID. Pass 14/20 to earn placement-ready status.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/csp/s/assessment.html">
+<link rel="icon" type="image/png" href="../../favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Nunito:wght@400;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--g900:#065f46;--g800:#047857;--g700:#059669;--g600:#10b981;--g50:#ecfdf5;--sand:#f7f3ee;--sand2:#efe9e0;--sand3:#e4dbd0;--ink:#1c1917;--ink2:#3d3530;--ink3:#6b6259;--ink4:#9e968f;--white:#fff;--lemon:#fef08a;--lemon2:#fde047;--lemon-t:#713f12;--mint:#d1fae5;--mint2:#6ee7b7;--peach:#fff1ee;--peach2:#fdba74;--serif:'Lora',Georgia,serif;--sans:'Nunito',system-ui,sans-serif;--mono:'DM Mono',monospace;--r-sm:8px;--r-md:14px;--r-lg:22px;--r-xl:32px;--sh:0 2px 12px rgba(28,25,23,.08),0 8px 32px rgba(28,25,23,.06)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--sand);color:var(--ink2);line-height:1.6}
+a{text-decoration:none;color:inherit}
+#rp{position:fixed;top:0;left:0;height:3px;background:var(--g600);width:0%;z-index:999}
+.nav{background:var(--g900);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:3px;z-index:100}
+.nav-logo{font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff}
+.nav-logo span{color:var(--g600)}
+.nav-back{font-size:.78rem;color:rgba(255,255,255,.6)}
+.nav-back:hover{color:#fff}
+.hero{background:linear-gradient(135deg,var(--g900),#1a3a2a);padding:52px 24px 56px;text-align:center}
+.hero-badge{display:inline-block;background:var(--lemon);color:var(--lemon-t);font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:99px;margin-bottom:16px}
+.hero h1{font-family:var(--serif);font-size:clamp(1.7rem,4vw,2.4rem);color:#fff;font-weight:700;margin-bottom:12px}
+.hero p{font-size:.93rem;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 24px}
+.hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.hstat{text-align:center}
+.hstat-n{font-family:var(--serif);font-size:1.8rem;font-weight:700;color:#fff}
+.hstat-l{font-size:.72rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.05em}
+.page{max-width:760px;margin:0 auto;padding:40px 24px 100px}
+/* ID GATE */
+.id-gate{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh);padding:36px;text-align:center;margin-bottom:24px}
+.id-gate h2{font-family:var(--serif);font-size:1.35rem;color:var(--ink);margin-bottom:8px}
+.id-gate p{font-size:.88rem;color:var(--ink3);margin-bottom:20px}
+.id-input{width:100%;max-width:280px;border:2px solid var(--sand3);border-radius:var(--r-md);padding:12px 16px;font-family:var(--mono);font-size:1rem;color:var(--ink);text-align:center;outline:none;letter-spacing:.1em;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto}
+.id-input:focus{border-color:var(--g600)}
+.btn-unlock{background:var(--g900);color:#fff;border:none;border-radius:var(--r-md);padding:12px 32px;font-family:var(--sans);font-weight:800;font-size:.92rem;cursor:pointer;transition:background .2s}
+.btn-unlock:hover{background:var(--g800)}
+/* TIMER */
+.timer-bar{background:var(--white);border-radius:var(--r-md);padding:16px 20px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;border:1.5px solid var(--sand2);display:none}
+.timer-bar.on{display:flex}
+.timer-label{font-size:.8rem;font-weight:700;color:var(--ink3)}
+.timer-val{font-family:var(--mono);font-size:1.2rem;font-weight:500;color:var(--g700)}
+.timer-val.warn{color:#dc2626}
+.progress-wrap{flex:1;margin:0 16px;background:var(--sand2);height:6px;border-radius:99px;overflow:hidden}
+.progress-fill{height:100%;background:var(--g600);transition:width .5s;border-radius:99px}
+/* QUESTIONS */
+.assessment-body{display:none}
+.assessment-body.on{display:block}
+.section-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--ink4);margin:28px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--sand3)}
+.q-card{background:var(--white);border-radius:var(--r-md);padding:22px;margin-bottom:12px;border:1px solid var(--sand2)}
+.q-num{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink4);margin-bottom:6px}
+.q-text{font-size:.93rem;font-weight:800;color:var(--ink);margin-bottom:12px;line-height:1.5}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1.5px solid var(--sand3);border-radius:var(--r-sm);cursor:pointer;font-size:.86rem;font-weight:700;color:var(--ink3);transition:all .15s;user-select:none}
+.opt:hover{border-color:var(--mint2);background:var(--mint);color:var(--g800)}
+.opt.sel{border-color:var(--g600);background:var(--g50);color:var(--g800)}
+.opt.ok{border-color:#10b981;background:#ecfdf5;color:#065f46;pointer-events:none}
+.opt.no{border-color:#f87171;background:#fef2f2;color:#991b1b;pointer-events:none}
+.opt.dis{pointer-events:none;opacity:.5}
+.opt-l{width:20px;height:20px;border-radius:50%;background:var(--sand);font-size:.65rem;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.opt.sel .opt-l{background:var(--g600);color:#fff}
+.opt.ok .opt-l{background:#10b981;color:#fff}
+.opt.no .opt-l{background:#f87171;color:#fff}
+/* SUBMIT */
+.submit-section{background:var(--white);border-radius:var(--r-lg);padding:28px;margin-top:24px;box-shadow:var(--sh);display:none}
+.submit-section.on{display:block}
+.btn-submit-assessment{width:100%;padding:15px;background:var(--g900);color:#fff;border:none;border-radius:var(--r-md);font-family:var(--sans);font-weight:800;font-size:1rem;cursor:pointer;transition:background .2s}
+.btn-submit-assessment:hover:not(:disabled){background:var(--g800)}
+.btn-submit-assessment:disabled{opacity:.4;cursor:not-allowed}
+/* RESULT */
+.result-card{display:none;background:var(--g50);border:2px solid var(--mint2);border-radius:var(--r-xl);padding:40px;text-align:center;margin-top:24px}
+.result-card.on{display:block}
+.result-card.fail{background:var(--peach);border-color:var(--peach2)}
+.result-score{font-family:var(--serif);font-size:4rem;font-weight:700;color:var(--g900);margin:12px 0}
+.result-card.fail .result-score{color:#9a3412}
+.result-label{font-size:1.1rem;font-weight:700;color:var(--g800);margin-bottom:12px}
+.result-card.fail .result-label{color:#9a3412}
+.result-id{font-family:var(--mono);font-size:1.1rem;background:var(--white);border:2px dashed var(--mint2);border-radius:var(--r-md);padding:10px 20px;display:inline-block;margin:12px 0;letter-spacing:.08em;color:var(--g800)}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSP Final Assessment — Digital Marketing">
+<meta property="og:description" content="The CSP final assessment — 20 questions covering all 14 days of the Clarigital Student Program. Unlock with your CSP ID. Pass 14/20 to earn placement-ready status.">
+<meta property="og:url" content="https://www.clarigital.com/wsp/s/assessment">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-image.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CSP Final Assessment — Digital Marketing">
+<meta name="twitter:description" content="The CSP final assessment — 20 questions covering all 14 days of the Clarigital Student Program. Unlock with your CSP ID. Pass 14/20 to earn placement-ready status.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-image.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CSP Final Assessment \u2014 Digital Marketing", "description": "The CSP final assessment \u2014 20 questions covering all 14 days of the Clarigital Student Program. Unlock with your CSP ID. Pass 14/20 to earn placement-ready status.", "url": "https://www.clarigital.com/wsp/s/assessment", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Wsp", "item": "https://www.clarigital.com/wsp/"}, {"@type": "ListItem", "position": 3, "name": "S", "item": "https://www.clarigital.com/wsp/s/"}, {"@type": "ListItem", "position": 4, "name": "CSP Final Assessment \u2014 Digital Marketing", "item": "https://www.clarigital.com/wsp/s/assessment/"}]}</script>
+</head>
+<body>
+<div id="rp"></div>
+<nav class="nav">
+  <a href="/" class="nav-back">&larr; Clarigital</a>
+  <a href="../index.html" class="nav-back">← CSP Hub</a>
+  <div class="nav-logo"><span>Clarigital</span> · CSP Assessment</div>
+</nav>
+<section class="hero">
+  <div class="hero-badge">CSP — 2-Week Program · Final Assessment</div>
+  <h1>Digital Marketing<br>Final Assessment</h1>
+  <p>20 questions covering all 14 days. Unlock with your CSP ID. Score 14/20 or higher to earn Assessment Passed status.</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hstat-n">20</div><div class="hstat-l">Questions</div></div>
+    <div class="hstat"><div class="hstat-n">30</div><div class="hstat-l">Minutes</div></div>
+    <div class="hstat"><div class="hstat-n">14/20</div><div class="hstat-l">Pass Mark</div></div>
+  </div>
+</section>
+<div class="page">
+  <div class="id-gate" id="idGate">
+    <h2>Enter your CSP ID to begin</h2>
+    <p>This assessment is only for students who have completed all 14 days of the CSP program.</p>
+    <input type="text" class="id-input" id="cspIdInput" placeholder="CSP-2026-XXXX">
+    <br>
+    <button class="btn-unlock" onclick="unlockAssessment()">Begin Assessment →</button>
+  </div>
+
+  <div class="timer-bar" id="timerBar">
+    <span class="timer-label">⏱ Time remaining</span>
+    <div class="progress-wrap"><div class="progress-fill" id="progFill" style="width:100%"></div></div>
+    <span class="timer-val" id="timerVal">30:00</span>
+  </div>
+
+  <div class="assessment-body" id="assessmentBody">
+
+    <div class="section-label">Section 1 — Foundations (Days 1–4) · Questions 1–5</div>
+
+    <div class="q-card"><div class="q-num">Question 1 of 20</div><div class="q-text">Which three qualities BEST describe what makes digital marketing fundamentally different from traditional advertising?</div><div class="opts"><div class="opt" data-q="0" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Cheaper, faster, and more colourful</div><div class="opt" data-q="0" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Measurable, targetable, and affordable for any business size</div><div class="opt" data-q="0" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Social, mobile, and visual</div><div class="opt" data-q="0" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Automated, global, and free</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 2 of 20</div><div class="q-text">What is 'attribution' in digital marketing?</div><div class="opts"><div class="opt" data-q="1" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>The creative style used in an ad campaign</div><div class="opt" data-q="1" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Crediting a specific marketing touchpoint for causing a customer to take an action</div><div class="opt" data-q="1" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>The total budget allocated to a campaign</div><div class="opt" data-q="1" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>The process of targeting ads to specific demographics</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 3 of 20</div><div class="q-text">A business spends ₹25,000 on ads and generates ₹1,00,000 in sales. What is their ROAS?</div><div class="opts"><div class="opt" data-q="2" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>2x</div><div class="opt" data-q="2" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>3x</div><div class="opt" data-q="2" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>4x</div><div class="opt" data-q="2" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>5x</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 4 of 20</div><div class="q-text">What is the correct order of how Google processes web content?</div><div class="opts"><div class="opt" data-q="3" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Index → Crawl → Rank</div><div class="opt" data-q="3" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Rank → Index → Crawl</div><div class="opt" data-q="3" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>Crawl → Index → Rank</div><div class="opt" data-q="3" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Crawl → Rank → Index</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 5 of 20</div><div class="q-text">Which digital marketing channel typically takes the longest to show results but provides free ongoing traffic once established?</div><div class="opts"><div class="opt" data-q="4" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Paid Search Ads</div><div class="opt" data-q="4" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Email Marketing</div><div class="opt" data-q="4" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>SEO (Organic Search)</div><div class="opt" data-q="4" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Programmatic Advertising</div></div></div>
+
+    <div class="section-label">Section 2 — Channels & Funnel (Days 5–6) · Questions 6–9</div>
+
+    <div class="q-card"><div class="q-num">Question 6 of 20</div><div class="q-text">What is the fundamental difference between Google Ads and Meta Ads?</div><div class="opts"><div class="opt" data-q="5" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Google Ads are more expensive</div><div class="opt" data-q="5" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Google Ads targets active searchers (intent); Meta Ads targets based on interests and behaviour</div><div class="opt" data-q="5" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Meta Ads are only for video content</div><div class="opt" data-q="5" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Google Ads only works for e-commerce</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 7 of 20</div><div class="q-text">What does AIDA stand for?</div><div class="opts"><div class="opt" data-q="6" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Advertising, Influence, Data, Analytics</div><div class="opt" data-q="6" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Awareness, Interest, Desire, Action</div><div class="opt" data-q="6" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Audience, Intent, Demographic, Acquisition</div><div class="opt" data-q="6" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Attention, Interaction, Demand, Acquisition</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 8 of 20</div><div class="q-text">Which channel has the highest average ROI benchmark — approximately ₹42 returned per ₹1 spent?</div><div class="opts"><div class="opt" data-q="7" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Programmatic Display</div><div class="opt" data-q="7" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Email Marketing</div><div class="opt" data-q="7" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Paid Social Ads</div><div class="opt" data-q="7" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>SEO</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 9 of 20</div><div class="q-text">A business only runs Google Search Ads. What is the main part of the customer journey they are missing?</div><div class="opts"><div class="opt" data-q="8" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>The action stage — people don't buy from search ads</div><div class="opt" data-q="8" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Nothing — search ads cover all stages</div><div class="opt" data-q="8" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>The awareness and interest stages — people who don't yet know the brand exist</div><div class="opt" data-q="8" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>The retention stage — search ads can't retain customers</div></div></div>
+
+    <div class="section-label">Section 3 — Industries & Applications (Days 7–9) · Questions 10–13</div>
+
+    <div class="q-card"><div class="q-num">Question 10 of 20</div><div class="q-text">What does D2C stand for, and what makes it different from traditional retail?</div><div class="opts"><div class="opt" data-q="9" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Digital to Consumer — selling only through digital ads</div><div class="opt" data-q="9" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Direct to Consumer — selling directly to end customers without retailers or middlemen</div><div class="opt" data-q="9" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Discount to Customer — a pricing strategy</div><div class="opt" data-q="9" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Data to Consumer — using data to personalise products</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 11 of 20</div><div class="q-text">Why do real estate and education businesses have longer sales cycles than e-commerce?</div><div class="opts"><div class="opt" data-q="10" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Their websites are harder to navigate</div><div class="opt" data-q="10" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>They spend less on digital advertising</div><div class="opt" data-q="10" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>The purchase involves high financial commitment and risk, requiring extensive consideration</div><div class="opt" data-q="10" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Their audience is less comfortable with online buying</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 12 of 20</div><div class="q-text">What is Google Business Profile and why is it important for local businesses?</div><div class="opts"><div class="opt" data-q="11" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>A paid advertising platform for local businesses</div><div class="opt" data-q="11" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>A free tool controlling how a business appears on Google Maps — hours, photos, reviews, contact info</div><div class="opt" data-q="11" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>A website builder for small businesses</div><div class="opt" data-q="11" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>A social media platform for local communities</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 13 of 20</div><div class="q-text">A customer adds a product to their cart but leaves without buying. The next day they see an Instagram ad for that exact product. This is called:</div><div class="opts"><div class="opt" data-q="12" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Search Engine Optimisation</div><div class="opt" data-q="12" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Content Marketing</div><div class="opt" data-q="12" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>Retargeting (remarketing)</div><div class="opt" data-q="12" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Email Marketing</div></div></div>
+
+    <div class="section-label">Section 4 — Mistakes, Tools & Costs (Days 10–12) · Questions 14–17</div>
+
+    <div class="q-card"><div class="q-num">Question 14 of 20</div><div class="q-text">A business spends ₹1,00,000/month on ads but their website takes 12 seconds to load on mobile. What is the most urgent fix?</div><div class="opts"><div class="opt" data-q="13" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Increase the ad budget</div><div class="opt" data-q="13" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Switch from Google to Meta Ads</div><div class="opt" data-q="13" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>Fix the website speed — slow load times kill conversions and waste all ad spend</div><div class="opt" data-q="13" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Change the ad copy</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 15 of 20</div><div class="q-text">Which tool shows you how your website pages perform in organic search — clicks, impressions, and average position?</div><div class="opts"><div class="opt" data-q="14" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Google Analytics 4</div><div class="opt" data-q="14" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Google Ads Manager</div><div class="opt" data-q="14" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>Google Search Console</div><div class="opt" data-q="14" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Google Tag Manager</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 16 of 20</div><div class="q-text">What are the three main categories of digital marketing costs?</div><div class="opts"><div class="opt" data-q="15" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Design, copywriting, and photography</div><div class="opt" data-q="15" data-c="true" onclick="pick(this)"><div class="opt-l">B</div>Ad spend (platform fees), agency/freelancer fees, and tools/software subscriptions</div><div class="opt" data-q="15" data-c="false" onclick="pick(this)"><div class="opt-l">C</div>Website hosting, domain, and SSL certificate</div><div class="opt" data-q="15" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Social media followers, email subscribers, and website visitors</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 17 of 20</div><div class="q-text">Why is Customer Lifetime Value (CLV) often more important than Cost Per Acquisition (CPA) for e-commerce?</div><div class="opts"><div class="opt" data-q="16" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>CLV is easier to calculate</div><div class="opt" data-q="16" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>CPA only measures free traffic</div><div class="opt" data-q="16" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>CLV accounts for repeat purchases — an acquisition can be profitable even if the first sale barely covers ad costs</div><div class="opt" data-q="16" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>CLV is required by law for financial reporting</div></div></div>
+
+    <div class="section-label">Section 5 — Strategy & Integration (Days 13–14) · Questions 18–20</div>
+
+    <div class="q-card"><div class="q-num">Question 18 of 20</div><div class="q-text">In an integrated digital marketing plan, which step should come FIRST?</div><div class="opts"><div class="opt" data-q="17" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Select the advertising channels</div><div class="opt" data-q="17" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Set the total budget</div><div class="opt" data-q="17" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>Define the audience — who exactly is the customer?</div><div class="opt" data-q="17" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Create the ad creative</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 19 of 20</div><div class="q-text">Which channel is best assigned to the 'retention' stage — bringing customers back after their first purchase?</div><div class="opts"><div class="opt" data-q="18" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Google Search Ads</div><div class="opt" data-q="18" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>SEO</div><div class="opt" data-q="18" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>Email Marketing</div><div class="opt" data-q="18" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Programmatic Display</div></div></div>
+
+    <div class="q-card"><div class="q-num">Question 20 of 20</div><div class="q-text">For an e-commerce business, which two metrics together BEST indicate whether the overall digital marketing system is working?</div><div class="opts"><div class="opt" data-q="19" data-c="false" onclick="pick(this)"><div class="opt-l">A</div>Social media followers and website page views</div><div class="opt" data-q="19" data-c="false" onclick="pick(this)"><div class="opt-l">B</div>Number of ad campaigns and email open rate</div><div class="opt" data-q="19" data-c="true" onclick="pick(this)"><div class="opt-l">C</div>Return on Ad Spend (ROAS) and Customer Lifetime Value (CLV)</div><div class="opt" data-q="19" data-c="false" onclick="pick(this)"><div class="opt-l">D</div>Number of emails sent and Instagram impressions</div></div></div>
+
+    <div class="submit-section on" id="submitSection">
+      <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:8px">Ready to submit?</h3>
+      <p style="font-size:.87rem;color:var(--ink3);margin-bottom:16px">Answer all 20 questions before submitting. You cannot change answers after submission.</p>
+      <div style="font-size:.85rem;font-weight:700;color:var(--ink3);margin-bottom:16px">Questions answered: <span id="answeredCount">0</span> / 20</div>
+      <button class="btn-submit-assessment" id="btnSubmit" onclick="submitAssessment()" disabled>Submit Assessment →</button>
+    </div>
+  </div>
+
+  <div class="result-card" id="resultCard">
+    <div style="font-size:2.5rem;margin-bottom:8px" id="resultEmoji">🏅</div>
+    <div class="result-score" id="resultScore">0/20</div>
+    <div class="result-label" id="resultLabel">Assessment Passed</div>
+    <div class="result-id" id="resultId">CSP-2026-XXXX</div>
+    <p style="font-size:.88rem;color:var(--ink3);margin-top:12px;line-height:1.7" id="resultMsg">Your score and pass status have been recorded.</p>
+  </div>
+</div>
+
+<script>
+const WEBHOOK = 'https://webhooks.wa.expert/webhook/69d8d24102e28c7ee405a462';
+let cspId = '';
+let timerInterval = null;
+let timeLeft = 30 * 60;
+const answers = new Array(20).fill(null);
+
+function istStr(){const n=new Date(),i=new Date(n.getTime()+5.5*3600000),p=x=>String(x).padStart(2,'0');return`${i.getUTCFullYear()}-${p(i.getUTCMonth()+1)}-${p(i.getUTCDate())} ${p(i.getUTCHours())}:${p(i.getUTCMinutes())}:${p(i.getUTCSeconds())} IST`;}
+
+function unlockAssessment(){
+  const val = document.getElementById('cspIdInput').value.trim().toUpperCase();
+  if(!val.startsWith('CSP-')){alert('Please enter a valid CSP ID (format: CSP-2026-XXXX)');return;}
+  cspId = val;
+  document.getElementById('idGate').style.display = 'none';
+  document.getElementById('timerBar').classList.add('on');
+  document.getElementById('assessmentBody').classList.add('on');
+  startTimer();
+}
+
+function startTimer(){
+  timerInterval = setInterval(()=>{
+    timeLeft--;
+    const m = Math.floor(timeLeft/60), s = timeLeft%60;
+    const el = document.getElementById('timerVal');
+    el.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    document.getElementById('progFill').style.width = (timeLeft/1800*100)+'%';
+    if(timeLeft<=300) el.classList.add('warn');
+    if(timeLeft<=0){clearInterval(timerInterval);submitAssessment();}
+  },1000);
+}
+
+function pick(el){
+  const q = parseInt(el.getAttribute('data-q'));
+  el.closest('.opts').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+  answers[q] = el.getAttribute('data-c') === 'true';
+  document.getElementById('answeredCount').textContent = answers.filter(a=>a!==null).length;
+  document.getElementById('btnSubmit').disabled = answers.some(a=>a===null);
+}
+
+function submitAssessment(){
+  clearInterval(timerInterval);
+  document.querySelectorAll('.opt').forEach(o=>{
+    o.classList.add('dis');
+    if(o.getAttribute('data-c')==='true') o.classList.add('ok');
+    else if(o.classList.contains('sel')&&o.getAttribute('data-c')==='false') o.classList.add('no');
+  });
+  const score = answers.filter(a=>a===true).length;
+  const passed = score >= 14;
+  const rc = document.getElementById('resultCard');
+  document.getElementById('resultScore').textContent = score+'/20';
+  document.getElementById('resultEmoji').textContent = passed ? '🏅' : '📚';
+  document.getElementById('resultLabel').textContent = passed ? '✅ Assessment Passed — Placement Ready' : '❌ Not passed this time — score 14/20 to pass';
+  document.getElementById('resultId').textContent = cspId;
+  document.getElementById('resultMsg').textContent = passed
+    ? `Score: ${score}/20. Your result has been recorded against ${cspId}. Certificate and placement-ready status confirmed.`
+    : `Score: ${score}/20. You need 14/20 to pass. Review the areas you found difficult in the Clarigital Codex, then attempt again.`;
+  if(!passed) rc.classList.add('fail');
+  rc.classList.add('on');
+  rc.scrollIntoView({behavior:'smooth'});
+  fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({program:'CSP — Clarigital Student Program',program_code:'CSP',wsp_id:cspId,task_number:99,task_title:'CSP Final Assessment',week:2,quiz_score:score,quiz_passed:passed,task_answer:`Assessment score: ${score}/20. Pass: ${passed}`,submitted_at_ist:istStr(),submitted_at_utc:new Date().toISOString(),day_of_week:'Assessment'})}).catch(()=>{});
+}
+
+window.addEventListener('scroll',()=>{
+  const e=document.documentElement;
+  document.getElementById('rp').style.width=Math.min((e.scrollTop/(e.scrollHeight-e.clientHeight))*100,100)+'%';
+});
+</script>
+</body>
+</html>

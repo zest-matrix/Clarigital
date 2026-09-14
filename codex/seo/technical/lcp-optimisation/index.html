@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LCP Optimisation: The Complete Technical Guide | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="LCP Optimisation: The Complete Technical Guide | Digital Codex">
+<meta property="og:description" content="How to diagnose and fix Largest Contentful Paint. Every LCP sub-part explained — TTFB, resource load delay, resource load duration, render delay — with...">
+<meta property="og:url" content="https://www.clarigital.com/codex/seo/technical/lcp-optimisation/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="How to diagnose and fix Largest Contentful Paint. Every LCP sub-part explained — TTFB, resource load delay, resource load duration, render delay — with...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/codex/seo/technical/lcp-optimisation/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"LCP Optimisation: The Complete Technical Guide","description":"How to diagnose and fix Largest Contentful Paint — every sub-part explained with specific technical fixes.","author":{"@type":"Organization","name":"Digital Codex"},"publisher":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-04","articleSection":"Technical SEO"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'✓';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.phase-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:20px 0;border-radius:var(--r);overflow:hidden;border:1px solid var(--g200)}
+@media(max-width:640px){.phase-flow{grid-template-columns:1fr}}
+.pf-item{padding:16px;background:var(--w);border-right:1px solid var(--g100)}
+.pf-item:last-child{border-right:none}
+.pf-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.pf-name{font-size:.88rem;font-weight:700;color:var(--g900);margin-bottom:4px}
+.pf-desc{font-size:.76rem;color:var(--g500);line-height:1.5}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}
+.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}
+.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--orange-bg);color:var(--orange-dk)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LCP Optimisation: The Complete Technical Guide | Digital Codex">
+<meta name="twitter:description" content="How to diagnose and fix Largest Contentful Paint. Every LCP sub-part explained — TTFB, resource load delay, resource load duration, render delay — with...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Seo", "item": "https://www.clarigital.com/codex/seo/"}, {"@type": "ListItem", "position": 4, "name": "Technical", "item": "https://www.clarigital.com/codex/seo/technical/"}, {"@type": "ListItem", "position": 5, "name": "LCP Optimisation: The Complete Technical Guide", "item": "https://www.clarigital.com/codex/seo/technical/lcp-optimisation/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links" role="list"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/" class="cur">SEO</a></li><li><a href="/codex/sem/">SEM</a></li><li><a href="/codex/social-media/">Social</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A–Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">✕</button></div>
+    <a href="/codex/" class="di">Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/sem/" class="di">SEM</a><a href="/codex/social-media/" class="di">Social</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/all-guides/" class="di">All Guides</a><a href="/codex/glossary/" class="di">Glossary</a>
+</div></div>
+</header>
+
+<nav class="chap-nav"><div class="chap-nav-in">
+  <a class="cnl on" href="#lcp-breakdown">LCP Breakdown</a>
+  <a class="cnl" href="#ttfb">Fix TTFB</a>
+  <a class="cnl" href="#resource-load">Resource Load</a>
+  <a class="cnl" href="#render-delay">Render Delay</a>
+  <a class="cnl" href="#images">Image Optimisation</a>
+  <a class="cnl" href="#fonts">Fonts</a>
+  <a class="cnl" href="#third-party">Third-Party Impact</a>
+  <a class="cnl" href="#measuring">Measuring LCP</a>
+  <a class="cnl" href="#sources">Sources</a>
+</div></nav>
+
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/seo/">SEO</a><span class="sep">/</span><a href="/codex/seo/">Technical SEO</a><span class="sep">/</span><span class="cur">LCP Optimisation</span></nav>
+    <span class="label-tag">Technical SEO · Session 2, Guide 1</span>
+    <h1>LCP Optimisation · The Complete Technical Guide</h1>
+    <p class="hero-lead">A systematic breakdown of Largest Contentful Paint into its four measurable sub-parts — TTFB, resource load delay, resource load duration, and render delay — with specific, actionable fixes for each phase and real measurement techniques using Chrome DevTools and Search Console.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-seo">Technical SEO</span><span class="meta-tag mt-gray">3,100 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+      <button class="share-btn" id="shareBtn">Share</button>
+    </div>
+  </div>
+</section>
+
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You'll Learn</h3></div><div class="lb-body"><ul>
+  <li>The four sub-parts of LCP and how to measure each one independently</li>
+  <li>How to reduce TTFB — the single biggest lever for LCP improvement</li>
+  <li>How to eliminate resource load delay using preload hints and fetchpriority</li>
+  <li>How to reduce resource load duration through image format, compression, and CDN</li>
+  <li>How to eliminate render delay caused by blocking JavaScript and CSS</li>
+  <li>Image-specific optimisation: WebP/AVIF, responsive images, lazy loading errors</li>
+  <li>Font loading strategies that prevent LCP delay</li>
+  <li>How to use Chrome DevTools to diagnose the exact cause of poor LCP</li>
+</ul></div></div>
+
+<!-- Ch 1 -->
+<div class="chapter" id="lcp-breakdown">
+  <div class="chap-hdr"><h2>LCP Broken Into Its Four Sub-Parts</h2><button class="share-btn" onclick="copyLink('lcp-breakdown')">Share</button></div>
+  <p>Most LCP guidance treats it as a single metric and offers generic advice. Google's official web.dev documentation breaks LCP into four sequential sub-parts, each of which can be independently measured and optimised. Understanding which sub-part is responsible for your poor LCP score is the difference between targeted optimisation and guesswork.</p>
+
+  <div class="phase-flow">
+    <div class="pf-item">
+      <p class="pf-label" style="color:var(--navy)">Phase 1</p>
+      <p class="pf-name">TTFB</p>
+      <p class="pf-desc">Time from navigation start until first byte of HTML received from server</p>
+    </div>
+    <div class="pf-item">
+      <p class="pf-label" style="color:var(--amber)">Phase 2</p>
+      <p class="pf-name">Resource Load Delay</p>
+      <p class="pf-desc">Time from TTFB until browser starts loading the LCP resource</p>
+    </div>
+    <div class="pf-item">
+      <p class="pf-label" style="color:var(--orange)">Phase 3</p>
+      <p class="pf-name">Resource Load Duration</p>
+      <p class="pf-desc">Time to fully download the LCP resource (image, font, etc.)</p>
+    </div>
+    <div class="pf-item">
+      <p class="pf-label" style="color:var(--green)">Phase 4</p>
+      <p class="pf-name">Render Delay</p>
+      <p class="pf-desc">Time from resource loaded until it is actually painted on screen</p>
+    </div>
+  </div>
+
+  <p>The total LCP time is the sum of all four phases. According to Google's analysis of real-world CrUX data, the distribution of LCP time is dominated by different sub-parts for different site types: TTFB is the largest component for server-rendered sites; resource load duration dominates for image-heavy sites with unoptimised assets; render delay is the primary issue for JavaScript-heavy single-page applications.</p>
+
+  <div class="insight"><p class="insight-lbl">Measuring sub-parts in Chrome DevTools</p><p>Chrome DevTools Performance panel (run a recording) shows all four LCP sub-parts when you click the LCP marker in the timeline. The "Timings" row shows TTFB, FCP, and LCP. Expanding the LCP entry in the "Main" thread shows the breakdown. Alternatively, the web-vitals JavaScript library (web.dev/articles/debug-performance-in-the-field) can report sub-part breakdowns from real user sessions.</p></div>
+
+  <div class="g3">
+    <div class="stat-card"><p class="stat-h">Good LCP threshold</p><div class="stat-n">2.5<span class="u">s</span></div><p class="stat-l">75th percentile of real page visits must meet this</p></div>
+    <div class="stat-card"><p class="stat-h">Largest sub-part (typical)</p><div class="stat-n">~40<span class="u">%</span></div><p class="stat-l">TTFB share of total LCP time on average pages</p></div>
+    <div class="stat-card"><p class="stat-h">Target TTFB</p><div class="stat-n">800<span class="u">ms</span></div><p class="stat-l">Google's recommended maximum TTFB for good LCP</p></div>
+  </div>
+</div>
+
+<!-- Ch 2 -->
+<div class="chapter" id="ttfb">
+  <div class="chap-hdr"><h2>Phase 1: Reducing TTFB</h2><button class="share-btn" onclick="copyLink('ttfb')">Share</button></div>
+  <p>Time to First Byte is the time between the browser's HTTP request for a page and the first byte of the HTML response being received. It is the foundation of LCP — nothing on the page can begin loading until the browser has the HTML. Google recommends a TTFB under 800ms for a good LCP score.</p>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--blue-bg);color:var(--navy)">1</div><div class="fc-title">Use a Content Delivery Network (CDN)</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body"><p>A CDN caches your pages and assets at edge servers geographically close to each user. For most sites, using a CDN is the single highest-impact TTFB improvement available. Without a CDN, every user's request travels to your origin server regardless of distance. With a CDN, cached responses are served from the nearest point of presence.</p><p><strong>Implementation:</strong> Use CDN providers like Cloudflare, Fastly, Akamai, or AWS CloudFront. Configure full-page caching for static or semi-static pages. Verify Cache-Control headers are set correctly so the CDN retains your pages.</p></div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--blue-bg);color:var(--navy)">2</div><div class="fc-title">Implement Server-Side Caching</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body"><p>If your server generates pages dynamically on every request (e.g. querying a database), caching the rendered HTML at the server level means subsequent requests are served from memory rather than re-generated. This can reduce TTFB from 500ms–2s to under 100ms.</p><p><strong>Implementation:</strong> Page caching plugins for CMS platforms (WP Super Cache, W3 Total Cache for WordPress); Redis or Memcached for application-level caching; full-page caching at the reverse proxy level (Nginx, Varnish).</p></div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--blue-bg);color:var(--navy)">3</div><div class="fc-title">Upgrade Server Resources or Hosting</div><span class="fc-impact impact-m">Medium Impact</span></div>
+    <div class="fc-body"><p>Shared hosting with insufficient CPU or memory allocation produces consistently high TTFB under load. Moving to a VPS, dedicated server, or managed cloud hosting is often necessary for sites with significant traffic. Database query optimisation (indexes, query caching) directly reduces dynamic page generation time.</p></div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--blue-bg);color:var(--navy)">4</div><div class="fc-title">Use Early Hints (103 Status Code)</div><span class="fc-impact impact-m">Medium Impact</span></div>
+    <div class="fc-body"><p>HTTP 103 Early Hints is a response status that allows the server to send <code>Link: rel=preload</code> headers before the full 200 response is ready. This enables the browser to begin fetching critical resources (fonts, CSS, the LCP image) while the server is still generating the main response — effectively running Phase 2 in parallel with Phase 1.</p><p>Chrome has supported Early Hints since version 103. Server support requires configuration at the CDN or web server level — Cloudflare, Apache, and Nginx all support Early Hints.</p></div>
+  </div>
+</div>
+
+<!-- Ch 3 -->
+<div class="chapter" id="resource-load">
+  <div class="chap-hdr"><h2>Phase 2: Eliminating Resource Load Delay</h2><button class="share-btn" onclick="copyLink('resource-load')">Share</button></div>
+  <p>Resource load delay is the time between the first byte of HTML being received and when the browser actually starts downloading the LCP resource. The ideal value is zero — the LCP resource should begin downloading as early as possible. Any delay here means the browser discovered the LCP resource later than necessary.</p>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--amber-bg);color:var(--amber)">1</div><div class="fc-title">Preload the LCP Resource</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body"><p>If the LCP element is an image (the most common case), add a <code>&lt;link rel="preload"&gt;</code> hint in the <code>&lt;head&gt;</code> of your HTML. This tells the browser to fetch the resource immediately during HTML parsing, before it has built the DOM or render tree.</p>
+    <pre><code>&lt;link rel="preload" 
+      href="/images/hero.webp" 
+      as="image" 
+      fetchpriority="high"&gt;</code></pre>
+    <p>For responsive images that vary by screen size, use the <code>imagesrcset</code> and <code>imagesizes</code> attributes on the preload link:</p>
+    <pre><code>&lt;link rel="preload" 
+      as="image"
+      href="/images/hero-1200.webp"
+      imagesrcset="/images/hero-640.webp 640w, /images/hero-1200.webp 1200w"
+      imagesizes="100vw"
+      fetchpriority="high"&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--amber-bg);color:var(--amber)">2</div><div class="fc-title">Add fetchpriority="high" to the LCP Image Element</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body"><p>The <code>fetchpriority</code> attribute on <code>&lt;img&gt;</code> elements signals to the browser that this resource should be fetched at highest priority. Without it, the browser may deprioritise hero images relative to scripts and stylesheets.</p>
+    <pre><code>&lt;img src="/images/hero.webp" 
+     alt="Hero image"
+     width="1200" 
+     height="600"
+     fetchpriority="high"&gt;</code></pre>
+    <p><strong>Critical:</strong> Only add <code>fetchpriority="high"</code> to the LCP image. Adding it to multiple images defeats the purpose — the browser can only prioritise one resource. Adding it to non-LCP images will actually hurt LCP by diverting bandwidth.</p></div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--amber-bg);color:var(--amber)">3</div><div class="fc-title">Avoid Lazy Loading the LCP Image</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body"><p><code>loading="lazy"</code> on the LCP image is one of the most common and impactful LCP mistakes. Lazy loading defers image loading until the user scrolls near the image — for the LCP element, which is above the fold, this delay is unnecessary and directly adds to LCP time.</p><p>Only use <code>loading="lazy"</code> on images that are below the fold. The LCP image, hero images, and any above-the-fold images should either have <code>loading="eager"</code> (the default) or no loading attribute at all.</p></div>
+  </div>
+</div>
+
+<!-- Ch 4 -->
+<div class="chapter" id="render-delay">
+  <div class="chap-hdr"><h2>Phase 4: Eliminating Render Delay</h2><button class="share-btn" onclick="copyLink('render-delay')">Share</button></div>
+  <p>Render delay is time lost between the LCP resource finishing its download and the browser actually painting it on screen. The ideal render delay is zero. Common causes include render-blocking CSS and JavaScript that prevent the browser from painting even after resources are available, and client-side rendering frameworks that require JavaScript execution before any content appears.</p>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--green-bg);color:var(--green)">1</div><div class="fc-title">Eliminate Render-Blocking Resources</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body">
+      <p>CSS stylesheets in the <code>&lt;head&gt;</code> are render-blocking by default — the browser pauses rendering until all CSS is downloaded and parsed. JavaScript files with no <code>async</code> or <code>defer</code> attribute in the <code>&lt;head&gt;</code> are also render-blocking.</p>
+      <p><strong>For CSS:</strong> Inline critical CSS (the styles needed to render above-the-fold content) directly in the <code>&lt;head&gt;</code>. Load the full stylesheet with <code>media="print"</code> and switch it back to <code>all</code> after load (a common pattern for non-critical CSS deferral):</p>
+      <pre><code>&lt;!-- Critical CSS inline --&gt;
+&lt;style&gt;/* above-fold styles here */&lt;/style&gt;
+
+&lt;!-- Non-critical CSS deferred --&gt;
+&lt;link rel="stylesheet" href="/styles.css" 
+      media="print" onload="this.media='all'"&gt;</code></pre>
+      <p><strong>For JavaScript:</strong> Add <code>defer</code> to all non-critical scripts. Use <code>async</code> only for truly independent scripts (analytics, ads). Move scripts to the end of <code>&lt;body&gt;</code> if refactoring is not possible.</p>
+    </div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--green-bg);color:var(--green)">2</div><div class="fc-title">Avoid Client-Side Rendering for Above-Fold Content</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body"><p>Single-page applications (React, Vue, Angular) that render content entirely on the client side have render delay as a structural problem — the LCP element cannot paint until JavaScript downloads, parses, and executes. This often adds 1–3 seconds of render delay.</p><p>Solutions: Server-side rendering (SSR) or static site generation (SSG) ensures the HTML delivered to the browser already contains the content. Streaming SSR (React 18+) sends HTML progressively, reducing TTFB and enabling earlier LCP. Partial hydration strategies can reduce JavaScript execution time for above-fold content.</p></div>
+  </div>
+</div>
+
+<!-- Ch 5 -->
+<div class="chapter" id="images">
+  <div class="chap-hdr"><h2>Phase 3: Image Optimisation for LCP</h2><button class="share-btn" onclick="copyLink('images')">Share</button></div>
+  <p>When the LCP element is an image (the most common case — hero images, featured images, product images), resource load duration is determined by the image file size and the user's available bandwidth. Reducing file size without visible quality loss is the primary lever.</p>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--g100);color:var(--g700)">1</div><div class="fc-title">Convert to WebP or AVIF Format</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body">
+      <p>WebP provides 25–35% smaller file sizes than JPEG at equivalent visual quality. AVIF (AV1 Image Format) provides 50%+ reduction compared to JPEG, though encoding is slower and browser support, while now broad, is slightly less universal than WebP. Use the <code>&lt;picture&gt;</code> element with a JPEG fallback for maximum compatibility:</p>
+      <pre><code>&lt;picture&gt;
+  &lt;source srcset="/hero.avif" type="image/avif"&gt;
+  &lt;source srcset="/hero.webp" type="image/webp"&gt;
+  &lt;img src="/hero.jpg" alt="Hero" 
+       width="1200" height="600" fetchpriority="high"&gt;
+&lt;/picture&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--g100);color:var(--g700)">2</div><div class="fc-title">Size Images Correctly for the Viewport</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body"><p>Serving a 3000×2000px image for a hero that displays at 800×533px on desktop (and smaller on mobile) wastes significant bandwidth. Use responsive images with <code>srcset</code> and <code>sizes</code> to serve appropriately sized images for each viewport:</p>
+    <pre><code>&lt;img 
+  srcset="/hero-640.webp 640w, /hero-1024.webp 1024w, /hero-1600.webp 1600w"
+  sizes="(max-width: 768px) 100vw, 1200px"
+  src="/hero-1600.webp"
+  alt="Hero"
+  width="1600" height="900"
+  fetchpriority="high"&gt;</code></pre>
+    <p>This ensures mobile users on 360px-wide screens download a ~360px image rather than a 1600px image — a 20x file size reduction.</p></div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--g100);color:var(--g700)">3</div><div class="fc-title">Set Explicit Width and Height Attributes</div><span class="fc-impact impact-m">Medium Impact</span></div>
+    <div class="fc-body"><p>Width and height attributes prevent layout shifts (CLS) and allow the browser to allocate space for the image before it loads — enabling painting to begin sooner. Always add explicit <code>width</code> and <code>height</code> matching the image's intrinsic dimensions. Use CSS to make the image responsive, not the HTML attributes:</p>
+    <pre><code>img { max-width: 100%; height: auto; }</code></pre>
+    </div>
+  </div>
+
+  <div class="callout orange">
+    <strong>Background images via CSS are late-discovered</strong>
+    <p>If your LCP element is a CSS background image (set via <code>background-image: url()</code>), the browser cannot discover and begin downloading it during initial HTML parsing — it must parse the CSS first. This adds significant resource load delay. Where possible, use an <code>&lt;img&gt;</code> element instead of a CSS background for the LCP image. If you must use a CSS background, add a <code>&lt;link rel="preload" as="image"&gt;</code> hint for it in the <code>&lt;head&gt;</code>.</p>
+  </div>
+</div>
+
+<!-- Ch 6 -->
+<div class="chapter" id="fonts">
+  <div class="chap-hdr"><h2>Font Loading and LCP</h2><button class="share-btn" onclick="copyLink('fonts')">Share</button></div>
+  <p>When the LCP element is a text block (the second most common case — large headings, hero text), web font loading becomes a critical LCP factor. If the LCP text renders using a web font that loads late, the text is invisible until the font arrives — directly adding to LCP time.</p>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--purple-bg,#FAF5FF);color:var(--purple,#7C3AED)">1</div><div class="fc-title">Preload Critical Web Fonts</div><span class="fc-impact impact-h">High Impact</span></div>
+    <div class="fc-body">
+      <p>Add a preload hint for the font used in the LCP text element. Specify <code>crossorigin</code> (required for fonts even from the same origin):</p>
+      <pre><code>&lt;link rel="preload" 
+      href="/fonts/Inter-Bold.woff2" 
+      as="font" 
+      type="font/woff2" 
+      crossorigin&gt;</code></pre>
+    </div>
+  </div>
+
+  <div class="fix-card">
+    <div class="fc-head"><div class="fc-num" style="background:var(--purple-bg,#FAF5FF);color:var(--purple,#7C3AED)">2</div><div class="fc-title">Use font-display: optional or swap</div><span class="fc-impact impact-m">Medium Impact</span></div>
+    <div class="fc-body"><p><code>font-display: optional</code> prevents any font-related render delay — if the font is not available in cache, the browser uses a fallback immediately without waiting. This eliminates font-related LCP delay but means some users see a fallback font on first visit. <code>font-display: swap</code> shows fallback text immediately and swaps to the web font when it loads — this can cause CLS if the font metrics differ significantly from the fallback.</p><p>For LCP text elements, <code>font-display: optional</code> combined with font preloading is the most LCP-friendly configuration: returning visitors (with the font cached) get the intended font with no delay; first visitors get immediate text rendering with a system font.</p></div>
+  </div>
+
+  <div class="callout green">
+    <strong>Self-hosting fonts beats Google Fonts for LCP</strong>
+    <p>Fonts loaded from Google Fonts (fonts.googleapis.com) require a cross-origin connection — an additional DNS lookup, TCP connection, and TLS handshake before the font download can begin. Self-hosting fonts on your own domain eliminates this cross-origin overhead. For LCP-critical fonts, self-hosting with a preload hint is consistently faster than Google Fonts.</p>
+  </div>
+</div>
+
+<!-- Ch 7 -->
+<div class="chapter" id="third-party">
+  <div class="chap-hdr"><h2>Third-Party Scripts and LCP</h2><button class="share-btn" onclick="copyLink('third-party')">Share</button></div>
+  <p>Third-party scripts — analytics platforms, chat widgets, ad networks, tag managers, social embeds — are among the most common causes of poor real-world LCP. They consume bandwidth and main thread time, directly competing with the LCP resource for loading and rendering priority.</p>
+
+  <h3>How third-party scripts harm LCP</h3>
+  <ul>
+    <li><strong>Bandwidth competition.</strong> HTTP/2 multiplexing allows parallel connections, but bandwidth is still finite. Multiple third-party scripts downloading simultaneously compete with the LCP resource.</li>
+    <li><strong>Main thread blocking.</strong> JavaScript execution is single-threaded. Any synchronous third-party script in <code>&lt;head&gt;</code> blocks parsing and rendering until it executes.</li>
+    <li><strong>Render-blocking.</strong> Third-party CSS loaded via <code>&lt;link rel="stylesheet"&gt;</code> blocks rendering in the same way as first-party CSS.</li>
+    <li><strong>DNS and connection latency.</strong> Each unique third-party domain requires a new DNS lookup and connection. Preconnecting to critical third-party origins helps: <code>&lt;link rel="preconnect" href="https://analytics.example.com"&gt;</code>.</li>
+  </ul>
+
+  <h3>Audit and reduce third-party impact</h3>
+  <p>Use Chrome DevTools Network panel with the "Third-party" filter. Sort by size and duration to identify the most expensive third-party requests. Consider: removing scripts that are not business-critical, loading non-critical scripts after the page becomes interactive (using a facade pattern for chat widgets, loading analytics after user interaction), and using Google Tag Manager's trigger configuration to fire tags only when needed rather than on every page view.</p>
+</div>
+
+<!-- Ch 8 -->
+<div class="chapter" id="measuring">
+  <div class="chap-hdr"><h2>Measuring and Debugging LCP</h2><button class="share-btn" onclick="copyLink('measuring')">Share</button></div>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tool</th><th>Data Type</th><th>Best For</th></tr></thead>
+    <tbody>
+      <tr><td>Google Search Console — Core Web Vitals</td><td>Field (CrUX)</td><td>Understanding real user LCP distribution; identifying worst-performing page groups</td></tr>
+      <tr><td>PageSpeed Insights</td><td>Field + Lab</td><td>Per-URL diagnosis; combines real data with diagnostic recommendations</td></tr>
+      <tr><td>Chrome DevTools — Performance</td><td>Lab</td><td>Identifying the exact LCP element and which sub-part is largest</td></tr>
+      <tr><td>WebPageTest</td><td>Lab</td><td>Waterfall analysis; testing from multiple locations; filmstrip view showing when LCP element paints</td></tr>
+      <tr><td>Lighthouse (CLI/DevTools)</td><td>Lab</td><td>Automated recommendations; CI/CD integration for regression prevention</td></tr>
+      <tr><td>web-vitals JS library</td><td>Field (custom)</td><td>Collecting LCP sub-part breakdowns from real users in your own analytics</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Diagnosing LCP in Chrome DevTools step-by-step</h3>
+  <ol>
+    <li>Open Chrome DevTools → Performance tab</li>
+    <li>Check "Screenshots" and optionally "Web Vitals"</li>
+    <li>Click the circular Record button, then reload the page</li>
+    <li>Stop recording after the page fully loads</li>
+    <li>In the Timings row, find the "LCP" marker — click it</li>
+    <li>The panel below shows which element was the LCP element and its timestamp</li>
+    <li>Examine the waterfall to find that element's resource request — identify when it was requested, when it started downloading, and when it finished</li>
+    <li>The gap between navigation start and the request start = TTFB + resource load delay</li>
+    <li>The download bar length = resource load duration</li>
+    <li>The gap between download end and the LCP timestamp = render delay</li>
+  </ol>
+</div>
+
+<!-- Sources -->
+<div class="chapter" id="sources">
+  <h2>Authentic Sources</h2>
+  <div class="g2">
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/optimize-lcp" target="_blank" rel="noopener">Google web.dev — Optimise LCP</a></strong><p>Official LCP optimisation guide including the four sub-part framework.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/lcp" target="_blank" rel="noopener">Google web.dev — Largest Contentful Paint</a></strong><p>Official LCP definition, eligible elements, and threshold values.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/fetch-priority" target="_blank" rel="noopener">Google web.dev — Optimise Resource Loading with fetchpriority</a></strong><p>Official documentation on the fetchpriority attribute and its impact on LCP.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/preload-responsive-images" target="_blank" rel="noopener">Google web.dev — Preload Responsive Images</a></strong><p>Official guidance on using preload with imagesrcset for responsive LCP images.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developer.chrome.com/docs/web-platform/early-hints" target="_blank" rel="noopener">Chrome Developers — Early Hints</a></strong><p>Official documentation on HTTP 103 Early Hints and its impact on TTFB and LCP.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://web.dev/articles/font-best-practices" target="_blank" rel="noopener">Google web.dev — Web Font Best Practices</a></strong><p>Official guidance on font loading strategies and their impact on LCP and CLS.</p></div>
+  </div>
+</div>
+
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">GA4 Setup & Configuration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/content-marketing/content-seo-integration/" class="related-card"><span class="rc-tag">Content Marketing</span><span class="rc-title">Content & SEO Integration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/tools-resources/google-search-console-guide/" class="related-card"><span class="rc-tag">Tools</span><span class="rc-title">Google Search Console Guide</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 4 April 2026 &nbsp;·&nbsp; <strong>Words:</strong> 3,100 &nbsp;·&nbsp; <strong>Session:</strong> 2 of 16 &nbsp;·&nbsp; <strong>Sources:</strong> Official only</p></div>
+</article>
+
+<aside>
+  <nav class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="tocSidebar">
+    <a href="#lcp-breakdown" class="sb-link on">LCP Sub-Parts</a>
+    <a href="#ttfb" class="sb-link">Fix TTFB</a>
+    <a href="#resource-load" class="sb-link">Resource Load Delay</a>
+    <a href="#render-delay" class="sb-link">Render Delay</a>
+    <a href="#images" class="sb-link">Image Optimisation</a>
+    <a href="#fonts" class="sb-link">Font Loading</a>
+    <a href="#third-party" class="sb-link">Third-Party Impact</a>
+    <a href="#measuring" class="sb-link">Measuring LCP</a>
+    <a href="#sources" class="sb-link">Sources</a>
+  </div></nav>
+  <div class="sb-box"><div class="sb-head">Technical SEO Series</div><div class="sb-body">
+    <a href="/codex/seo/technical/lcp-optimisation/" class="sb-link sb-cur">1. LCP Optimisation</a>
+    <a href="/codex/seo/technical/inp-optimisation/" class="sb-link">2. INP Optimisation</a>
+    <a href="/codex/seo/technical/cls-optimisation/" class="sb-link">3. CLS Optimisation</a>
+    <a href="/codex/seo/technical/ttfb/" class="sb-link">4. TTFB</a>
+    <a href="/codex/seo/technical/page-speed/" class="sb-link">5. Page Speed</a>
+    <a href="/codex/seo/technical/schema-markup/" class="sb-link">6. Schema Markup</a>
+    <a href="/codex/seo/technical/javascript-seo/" class="sb-link">7. JavaScript SEO</a>
+    <a href="/codex/seo/technical/ssr-vs-csr/" class="sb-link">8. SSR vs CSR</a>
+    <a href="/codex/seo/technical/hreflang/" class="sb-link">9. Hreflang</a>
+    <a href="/codex/seo/technical/log-file-analysis/" class="sb-link">10. Log File Analysis</a>
+  </div></div>
+  <div class="sb-box"><div class="sb-head">Related Guides</div><div class="sb-body">
+    <a href="/codex/seo/fundamentals/core-web-vitals/" class="sb-link">Core Web Vitals Overview</a>
+    <a href="/codex/seo/technical/ttfb/" class="sb-link">TTFB Deep Dive</a>
+    <a href="/codex/seo/fundamentals/mobile-first-indexing/" class="sb-link">Mobile-First Indexing</a>
+    <a href="/codex/seo/fundamentals/ranking-factors/" class="sb-link">Ranking Factors</a>
+  </div></div>
+</aside>
+</div></div></section>
+</main>
+
+<section class="cta-strip"><div class="wrap"><div class="cta-in"><div><h2>600 guides on digital marketing. All authentic sources.</h2><p>Official documentation, academic research, and government data only.</p></div><div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A–Z Glossary</a></div></div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides built on official documentation and academic research. No affiliate links.</p></div>
+  <div class="ft-col"><h5>SEO</h5><ul><li><a href="/codex/seo/fundamentals/core-web-vitals/">Core Web Vitals</a></li><li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li><li><a href="/codex/seo/fundamentals/mobile-first-indexing/">Mobile-First</a></li></ul></div>
+  <div class="ft-col"><h5>Technical SEO</h5><ul><li><a href="/codex/seo/technical/lcp-optimisation/">LCP</a></li><li><a href="/codex/seo/technical/inp-optimisation/">INP</a></li><li><a href="/codex/seo/technical/cls-optimisation/">CLS</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A–Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>© 2026 Digital Codex.</span><span>Authentic sources only · No affiliate links</span></div></div></footer>
+
+<script>
+(function(){var ham=document.getElementById('navHam'),dr=document.getElementById('navDrawer'),cl=document.getElementById('navClose');function open(){dr.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function shut(){dr.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(ham)ham.addEventListener('click',open);if(cl)cl.addEventListener('click',shut);if(dr)dr.addEventListener('click',function(e){if(e.target===dr)shut();});})();
+(function(){if(!('IntersectionObserver' in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#tocSidebar .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){obs.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+document.getElementById('shareBtn').addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+</body>
+</html>

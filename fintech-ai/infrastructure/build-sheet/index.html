@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Infrastructure Build Sheet | Clarigital</title>
+<meta name="description" content="Every serving, compute and data component for fintech AI: how to use each one, what it costs per unit, and three recommended builds.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/infrastructure/build-sheet/">
+<meta property="og:type" content="article"><meta property="og:title" content="Infrastructure Build Sheet">
+<meta property="og:description" content="Every serving, compute and data component for fintech AI: how to use each one, what it costs per unit, and three recommended builds."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/infrastructure/build-sheet/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Infrastructure Build Sheet">
+<meta name="twitter:description" content="Every serving, compute and data component for fintech AI: how to use each one, what it costs per unit, and three recommended builds."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Infrastructure Build Sheet", "description": "Every serving, compute and data component for fintech AI: how to use each one, what it costs per unit, and three recommended builds.", "url": "https://www.clarigital.com/fintech-ai/infrastructure/build-sheet/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-13"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Infrastructure", "item": "https://www.clarigital.com/fintech-ai/infrastructure/"}, {"@type": "ListItem", "position": 4, "name": "Infrastructure Build Sheet", "item": "https://www.clarigital.com/fintech-ai/infrastructure/build-sheet/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h4{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/infrastructure/">Infrastructure</a><span class="sep">&rsaquo;</span><span>Infrastructure Build Sheet</span></nav>
+  <div class="label-tag">Build Sheet 08</div>
+  <div class="ft-tag">Fintech AI</div><h1>Infrastructure Build Sheet</h1>
+  <p class="hero-lead">Every serving, compute, storage and observability component a fintech AI stack needs. What each one is for, the first working call, the gotcha nobody documents, real costs in INR and USD, and three recommended builds.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to read this build sheet</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>Optimise for reversibility first</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>Where your data is allowed to be</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Raw materials — serving, compute and data</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>How to use each one — model serving</a><a class="sub" href="#s-indigo-tier">The market has three price tiers, and they are an order of magnitude apart</a><a class="sub" href="#s-indigo-self">Self-hosting in India</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>How to use each one — residency and vectors</a><a class="sub" href="#s-indigo-route">Residency as code</a><a class="sub" href="#s-indigo-vector">Vector storage: use the database you already have</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>How to use each one — observability and cost</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>Cost per unit</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Best combinations</a><a class="sub" href="#s-amber-conflict">Combinations that conflict</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>Three recommended builds</a><a class="sub" href="#s-amber-exp">Strong and expensive</a><a class="sub" href="#s-amber-def">Strong and reasonable &mdash; the default</a><a class="sub" href="#s-amber-lean">Strong and lean</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>What next</a><a class="sub" href="#s-amber-next">What this feeds</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to read this build sheet</h2>
+
+<p>The <a href="/fintech-ai/infrastructure/">Infrastructure module</a> explains why your licence
+decides your architecture. This page is the parts list: what to run where, what each option costs per
+unit, and the three builds.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p>Prices carry a <strong>Verified September 2026</strong> stamp. Model pricing is the fastest-moving number anywhere in this section &mdash; one provider cut a model by 80% in a single day during 2026 and another cancelled a scheduled increase. Treat every figure as an anchor for shape, not a quote.</p></div>
+<p>Fintech infrastructure is three planes that fail differently and should be decided separately.</p>
+<table>
+<tr><th>Plane</th><th>What it holds</th><th>What happens when it breaks</th></tr>
+<tr><td><strong>Ledger</strong></td><td>Balances. The authoritative record of who has what.</td><td>You stop. There is no degraded mode for a ledger that is wrong.</td></tr>
+<tr><td><strong>Operational</strong></td><td>Events, queues, workflows, the things that move money between systems.</td><td>Things queue up. Painful, recoverable, usually invisible to the customer for a while.</td></tr>
+<tr><td><strong>AI serving</strong></td><td>Models, features, retrieval, inference.</td><td><strong>You fall back to rules and carry on.</strong> If you cannot, you designed it wrong.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>That third row is the whole design brief for AI infrastructure in a regulated firm. <strong>Every AI component must have a defined behaviour when it is unavailable</strong>, and that behaviour must be acceptable rather than merely survivable. A fraud model that is down means every transaction goes to the rules engine, not that payments stop. Build the fallback first and the model second. Teams that do it the other way round discover their fallback on the day they need it.</p></div>
+
+<h2 id="s-green-1">Optimise for reversibility first</h2>
+
+<p>The module's phrase is <em>optimise for reversibility first</em>. Here is what that means as an
+engineering rule, because it is the single decision that determines how much the next five years
+cost.</p>
+<p>Almost every infrastructure choice in a fintech is made once, under time pressure, on incomplete
+information. You will be wrong about some of them. The question is not how to be right &mdash; it is
+how much a wrong answer costs to undo.</p>
+<table>
+<tr><th>Decision</th><th>Cost to reverse</th><th>So decide it&hellip;</th></tr>
+<tr><td>Which model you call</td><td>Hours, if you put an adapter in front</td><td>Quickly. Change it often.</td></tr>
+<tr><td>Which cloud region you run in</td><td>Weeks</td><td>Carefully, once.</td></tr>
+<tr><td>Which observability vendor</td><td>Weeks, if you emit OpenTelemetry</td><td>Quickly. Months if you did not.</td></tr>
+<tr><td>Which core banking platform</td><td><strong>Years</strong></td><td>Slowly. This is the one to get right.</td></tr>
+<tr><td>Your data model for the ledger</td><td><strong>Effectively never</strong></td><td>Slowly, and write it down.</td></tr>
+</table>
+<p>The practical consequence is that <strong>the cheap reversals should be behind interfaces and the
+expensive ones should be boring</strong>. An adapter in front of your model provider costs a day and
+buys you the ability to switch when a price moves 80%. An adapter in front of your core banking
+platform is a fantasy &mdash; nobody has ever successfully abstracted a core.</p>
+
+<h2 id="s-green-2">Where your data is allowed to be</h2>
+
+<p>Before any tooling decision, settle where data is allowed to be. In India this is not a
+preference.</p>
+<p>The RBI's payment data storage direction requires the <strong>full end-to-end transaction
+details</strong> for payment systems to be stored <strong>only in India</strong>. Data may be
+processed abroad, but it must be brought back and the foreign copy deleted within the specified
+window. The DPDP Act adds consent, purpose limitation and breach notification on top, for personal
+data generally.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The line teams get wrong is what counts as &ldquo;processing abroad&rdquo;.</strong> Sending a transaction narration to a model API hosted outside India is a cross-border transfer of payment data. It does not stop being one because it is a single string, because it is transient, or because the provider says they do not train on it. If your prompt contains payment data, your prompt is in scope. <strong>Decide this per field, in code, before the call</strong> &mdash; not in a policy document that the inference path never reads.</p></div>
+<p>This has an architectural consequence that surprises people: <strong>the cheapest model is often
+not available to you</strong> for the workloads that matter most. That is not a reason to give up on
+cost. It is a reason to design a router that knows which data may leave and which may not, and to
+keep an in-country path for the second category.</p>
+
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Raw materials — serving, compute and data</h2>
+
+<table>
+<tr><th>Material</th><th>What it does</th><th>Verify at</th></tr>
+<tr><td><strong>Frontier APIs</strong></td><td>Best quality, highest cost, hosted outside India unless the provider offers a region you can use.</td><td>provider pricing pages</td></tr>
+<tr><td><strong>Mid-tier APIs</strong></td><td>The production default for most work. The most contested price point in the market.</td><td>provider pricing pages</td></tr>
+<tr><td><strong>Budget and open-weight APIs</strong></td><td>An order of magnitude cheaper. Correct for classification, extraction, routing and first-pass drafting.</td><td>provider pricing pages</td></tr>
+<tr><td><strong>vLLM / TGI / llama.cpp</strong> <span class="pill p-oss">oss</span></td><td>Self-hosted serving. vLLM is the default for throughput; llama.cpp for small models on modest hardware.</td><td>docs.vllm.ai</td></tr>
+<tr><td><strong>Indian GPU clouds</strong></td><td>E2E, Cyfuture, AceCloud, Jarvis Labs, Yotta, Tata. INR billing, India-resident data centres, DPDP documentation.</td><td>e2enetworks.com</td></tr>
+<tr><td><strong>IndiaAI Mission compute</strong></td><td>Government-subsidised GPU capacity. <strong>The cheapest legitimate GPU in India, and it is not on any commercial price list.</strong></td><td>indiaai.gov.in</td></tr>
+<tr><td><strong>pgvector / Qdrant</strong> <span class="pill p-oss">oss</span></td><td>Vector search. pgvector inside the Postgres you already run is right for most teams.</td><td>github.com/pgvector/pgvector</td></tr>
+<tr><td><strong>OpenTelemetry</strong> <span class="pill p-oss">oss</span></td><td>Vendor-neutral traces, metrics and logs. The thing that makes your observability decision reversible.</td><td>opentelemetry.io</td></tr>
+<tr><td><strong>Langfuse / Phoenix</strong> <span class="pill p-oss">oss</span></td><td>LLM-specific tracing: prompt, retrieved context, output, cost, latency, per call.</td><td>langfuse.com</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>The IndiaAI Mission line deserves a second look.</strong> A &#8377;10,300 crore government programme had empanelled more than 38,000 GPUs by mid-2026, with subsidised compute in the region of <strong>&#8377;67&ndash;92 per GPU-hour</strong> for eligible teams &mdash; roughly a third of the cheapest commercial Indian rate and around a tenth of a hyperscaler's Mumbai price. Eligibility and allocation are their own process with their own timelines, so it is not a drop-in answer. But a team that never checks is leaving the largest single cost lever on the table.</p></div>
+
+<h2 id="s-indigo-1">How to use each one — model serving</h2>
+
+<h3 id="s-indigo-tier">The market has three price tiers, and they are an order of magnitude apart</h3>
+<p>As of September 2026 the shape is stable even though individual numbers are not. Budget and
+open-weight models sit near <strong>$0.03&ndash;$0.45 per million input tokens</strong>. The
+production tier clusters hard at <strong>$2 input</strong> &mdash; several major models landed on
+exactly that figure, which is not a coincidence but the most contested price point in the market.
+Frontier models run <strong>$4&ndash;$10 input</strong> and up to <strong>$50 output</strong>.</p>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — the only two numbers that decide API versus self-host</span><button class="cb-copy" type="button">Copy</button></div><pre><code># NUMBER 1: your BLENDED rate. Comparing &quot;input price&quot; across providers is the
+# single most common costing error. Output is routinely 5-6x input, so the
+# ranking flips depending on your own input:output ratio.
+
+def blended(in_price, out_price, in_tokens, out_tokens):
+    &quot;&quot;&quot;$ per 1M tokens at YOUR mix, not at the vendor&#x27;s headline.&quot;&quot;&quot;
+    total = in_tokens + out_tokens
+    return (in_price * in_tokens + out_price * out_tokens) / total
+
+# A summarisation workload: long input, short output (90/10).
+print(blended(2.00, 10.00, 90, 10))     # mid-tier  -&gt; $2.80
+print(blended(0.14,  0.28, 90, 10))     # budget    -&gt; $0.154
+# A generation workload: short input, long output (20/80). Same models.
+print(blended(2.00, 10.00, 20, 80))     # mid-tier  -&gt; $8.40   &lt;- 3x the above
+print(blended(0.14,  0.28, 20, 80))     # budget    -&gt; $0.252
+
+# NUMBER 2: the self-host CROSSOVER. Below it, the API wins on cost and on
+# every operational dimension. Above it, self-hosting starts to pay.
+
+def crossover(cluster_inr_per_hour, tokens_per_sec, api_usd_per_1m, usd_inr=88.0):
+    &quot;&quot;&quot;Monthly token volume at which self-hosting becomes cheaper.&quot;&quot;&quot;
+    self_inr_per_1m = cluster_inr_per_hour / (tokens_per_sec * 3600 / 1_000_000)
+    api_inr_per_1m  = api_usd_per_1m * usd_inr
+    if self_inr_per_1m &gt;= api_inr_per_1m:
+        return None                      # self-hosting never wins at this rate
+    return {&quot;self_inr_per_1m&quot;: round(self_inr_per_1m, 2),
+            &quot;api_inr_per_1m&quot;:  round(api_inr_per_1m, 2),
+            &quot;saving_per_1m&quot;:   round(api_inr_per_1m - self_inr_per_1m, 2)}
+
+# One L40S at an Indian provider, serving a small open model.
+print(crossover(cluster_inr_per_hour=61, tokens_per_sec=900, api_usd_per_1m=0.20))
+
+# WHAT TO CHECK
+# [ ] compute the blended rate on YOUR OWN traffic sample, not on an assumed
+#     ratio. Pull a week of real prompts and count the tokens
+# [ ] tokens_per_sec must come from a benchmark on YOUR model at YOUR batch
+#     size and sequence length. Vendor throughput figures are peak, not typical
+# [ ] the GPU is billed 24x7; your traffic is not. Divide by REAL utilisation.
+#     A cluster busy 15% of the day costs ~6.7x its headline per token
+# [ ] add to the self-host side: an engineer, monitoring, model upgrades,
+#     capacity headroom for spikes, and a second node so a reboot is not an
+#     outage. None of it is on the GPU price list
+# [ ] add to the API side: egress, and the retry traffic from rate limits
+# [ ] re-run this quarterly. An 80% price cut on one side moves the crossover
+#     by 5x, and that has happened
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> benchmark parity is not price parity, and the gap is
+enormous. On one widely-cited coding benchmark, five models score within <strong>0.4 percentage
+points of each other</strong> &mdash; and their output prices run from <strong>$1.20 to $12 per
+million tokens</strong>. A tenfold spread for a rounding error in capability. Higher up, the
+best-scoring model costs roughly <strong>42 times</strong> the cheapest in that band.</p>
+<p>Which means the only question worth asking is whether <em>your</em> tasks live in the gap. Build
+an evaluation set of a hundred real examples from your own product, run the tiers against it, and
+look at where they actually differ. For classification, extraction, routing and first-pass drafting
+the answer is usually that they do not, and you should be on the cheap tier. For work where a weak
+answer creates cleanup downstream, pay.</p>
+
+<h3 id="s-indigo-self">Self-hosting in India</h3>
+<p>The economics are genuinely different here, and better than most teams assume.</p>
+<p>Indian GPU providers run roughly <strong>60&ndash;70% below hyperscaler Mumbai pricing</strong>.
+An H100 lists around <strong>&#8377;219&ndash;362 per hour</strong> domestically against
+<strong>&#8377;600&ndash;740</strong> on a hyperscaler's India-facing infrastructure. Reserved
+pricing brings the effective rate toward <strong>&#8377;130&ndash;150</strong>. Spot capacity runs
+as low as <strong>&#8377;70&ndash;88</strong> for interruptible work.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Do not buy an H100 to run inference.</strong> It is a training card. For serving, an <strong>L40S at roughly &#8377;61&ndash;102/hour</strong> or an <strong>L4 at around &#8377;49</strong> delivers production throughput at a fraction of the cost, and the H100 premium only earns its place on models above roughly 70B parameters or where you genuinely need ultra-low latency at high concurrency. Specifying H100s for an inference workload is the most common and most expensive mis-sizing in this section.</p></div>
+<p>Buying outright is almost never right for an AI-serving workload: an H100 lands at
+<strong>&#8377;27&ndash;34 lakh per unit</strong> with import duties, a server at
+<strong>&#8377;2&ndash;5 crore</strong>, weeks to procure and months to deploy, against the same
+compute available in sixty seconds on an hourly rate.</p>
+<p>Two India-specific mechanics worth knowing: GPU cloud spend abroad sits under the Liberalised
+Remittance Scheme and generally needs no RBI approval below <strong>$250,000 a year</strong>, and
+IGST on foreign cloud services applies via reverse charge but is <strong>claimable as input
+credit</strong> &mdash; so the headline dollar figure overstates the real cost to an Indian
+business.</p>
+
+<h2 id="s-indigo-2">How to use each one — residency and vectors</h2>
+
+<h3 id="s-indigo-route">Residency as code</h3>
+<p>Residency is usually written as a policy and enforced nowhere. The version that survives an
+inspection is a function on the inference path.</p>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — a residency-aware model router</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from enum import Enum
+
+class Residency(Enum):
+    INDIA_ONLY = &quot;india_only&quot;     # RBI payment data. Cannot leave. Full stop.
+    PERSONAL   = &quot;personal&quot;       # DPDP. May leave with consent + safeguards.
+    OPEN       = &quot;open&quot;           # Product docs, policy text, public content.
+
+# The classification is per FIELD, not per request. One request routinely
+# carries fields in all three categories, and the strictest one wins.
+FIELD_CLASS = {
+    &quot;txn_narration&quot;:   Residency.INDIA_ONLY,
+    &quot;beneficiary_vpa&quot;: Residency.INDIA_ONLY,
+    &quot;card_last4&quot;:      Residency.INDIA_ONLY,
+    &quot;customer_name&quot;:   Residency.PERSONAL,
+    &quot;customer_email&quot;:  Residency.PERSONAL,
+    &quot;policy_text&quot;:     Residency.OPEN,
+    &quot;product_faq&quot;:     Residency.OPEN,
+}
+
+ROUTES = {
+    Residency.INDIA_ONLY: {&quot;model&quot;: &quot;self-hosted-in-mumbai&quot;, &quot;egress&quot;: False},
+    Residency.PERSONAL:   {&quot;model&quot;: &quot;vendor-with-india-region&quot;, &quot;egress&quot;: False},
+    Residency.OPEN:       {&quot;model&quot;: &quot;cheapest-global-api&quot;, &quot;egress&quot;: True},
+}
+
+def route(payload: dict):
+    present = [FIELD_CLASS[k] for k in payload if k in FIELD_CLASS]
+    unknown = [k for k in payload if k not in FIELD_CLASS]
+    if unknown:
+        # An unclassified field is treated as the STRICTEST class, never the
+        # loosest. New fields appear constantly and the default must be safe.
+        present.append(Residency.INDIA_ONLY)
+    strictest = (Residency.INDIA_ONLY if Residency.INDIA_ONLY in present
+                 else Residency.PERSONAL if Residency.PERSONAL in present
+                 else Residency.OPEN)
+    r = dict(ROUTES[strictest])
+    r.update({&quot;residency&quot;: strictest.value, &quot;unclassified_fields&quot;: unknown})
+    return r
+
+# WHAT TO CHECK
+# [ ] the default for an UNKNOWN field is the strictest class. A field added by
+#     a product team next sprint must not silently start crossing a border
+# [ ] unclassified_fields is logged and alerted on. It is a backlog, not noise
+# [ ] redaction happens BEFORE the call, not by asking the model to ignore
+#     things. A prompt instruction is not a residency control
+# [ ] the route taken is recorded with each inference, alongside the model and
+#     version. &quot;Which model saw this customer&#x27;s data&quot; must be answerable
+# [ ] the in-country path is LOAD TESTED. It is the one you cannot fail over
+#     away from, so it needs the headroom
+# [ ] &quot;transient&quot; and &quot;not used for training&quot; do not change the analysis. If
+#     payment data left India, it left India
+# [ ] embeddings derived from restricted data inherit the restriction. A vector
+#     is not anonymisation
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> embeddings. Teams treat a vector as a safe derived
+artefact because it is not human-readable, and store it wherever is convenient. It is not
+anonymisation &mdash; embedding inversion is a real and demonstrated technique, and the vector is
+derived from the restricted data. If the source field was India-only, the embedding is too, and so is
+the vector store holding it. This catches teams who carefully route their inference and then ship
+their whole index to a hosted vector database in another region.</p>
+
+<h3 id="s-indigo-vector">Vector storage: use the database you already have</h3>
+<p>For almost every fintech workload, <code>pgvector</code> inside your existing Postgres is the
+right answer, and the reasons are mostly not about performance.</p>
+<ul>
+<li><strong>One fewer system to place, secure and localise.</strong> Under a residency regime that is
+a real saving, not an aesthetic one.</li>
+<li><strong>Transactional consistency with the rows the vectors describe.</strong> A separate vector
+store drifts from its source and nobody notices until retrieval starts returning deleted records.</li>
+<li><strong>Your existing backup, access control and audit already cover it.</strong></li>
+</ul>
+<p>Move to a dedicated store when you have a specific measured reason: index size beyond what your
+database can hold comfortably, or filtering requirements it cannot express. Not because a benchmark
+on a public dataset showed a latency difference that is invisible next to your model's own response
+time.</p>
+
+<h2 id="s-indigo-3">How to use each one — observability and cost</h2>
+
+<p>Everything above is a choice you make once. This is the part you live with.</p>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — per-call accounting, because the bill arrives monthly</span><button class="cb-copy" type="button">Copy</button></div><pre><code>import time, json
+
+# The AI cost failure mode is not a big number. It is a number nobody saw
+# growing. Record cost per call, at the call, with the thing that caused it.
+
+def traced_call(client, model, messages, *, purpose, customer_id, route_info,
+                prices):                       # prices: {&quot;in&quot;: usd/1M, &quot;out&quot;: usd/1M}
+    t0 = time.perf_counter()
+    resp = client.create(model=model, messages=messages)
+    ms = (time.perf_counter() - t0) * 1000
+
+    u = resp.usage
+    cost = (u.input_tokens * prices[&quot;in&quot;] + u.output_tokens * prices[&quot;out&quot;]) / 1_000_000
+
+    emit({
+        &quot;ts&quot;: time.time(),
+        &quot;purpose&quot;: purpose,              # &quot;fraud_explain&quot;, &quot;kyc_extract&quot;, ...
+        &quot;model&quot;: model,
+        &quot;model_version&quot;: resp.model,     # the RESOLVED version, not the alias
+        &quot;residency&quot;: route_info[&quot;residency&quot;],
+        &quot;input_tokens&quot;: u.input_tokens,
+        &quot;output_tokens&quot;: u.output_tokens,
+        &quot;cached_tokens&quot;: getattr(u, &quot;cached_input_tokens&quot;, 0),
+        &quot;usd&quot;: round(cost, 6),
+        &quot;latency_ms&quot;: round(ms, 1),
+        &quot;customer_id&quot;: customer_id,      # for per-customer unit economics
+    })
+    return resp
+
+# WHAT TO CHECK
+# [ ] &quot;purpose&quot; is mandatory and comes from a fixed enum. Cost per FEATURE is
+#     the number that lets you kill an expensive feature nobody uses. Cost per
+#     model tells you nothing actionable
+# [ ] log the RESOLVED model version, not the alias you requested. A provider
+#     moving an alias to a new version changes your quality and your bill with
+#     no deploy on your side, and this field is how you find out
+# [ ] track cached_tokens separately. Prompt caching can be a 10x+ discount on
+#     repeated context and it is invisible unless you measure it
+# [ ] alert on daily spend RATE, not monthly total. A monthly budget alert
+#     fires on the 28th, which is 27 days late
+# [ ] cost per customer, so unit economics are a fact rather than an estimate
+# [ ] emit through OpenTelemetry, not a vendor SDK. The observability vendor is
+#     a reversible decision only if you never coupled to them
+# [ ] sample traces, but NEVER sample the cost counter. Sampled cost is wrong
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> log the <em>resolved</em> model version, not the
+alias you asked for. Calling a provider's stable alias is convenient and it means the model
+underneath can change without a deploy on your side &mdash; different quality, different token
+consumption, different bill. Teams investigate a quality regression for a week before someone thinks
+to check whether the model changed. One field in your log makes that a five-minute question.</p>
+<div class="note"><span class="note-lbl">Note</span><p>The observability decision is the clearest example of the reversibility rule on this page. Emit <strong>OpenTelemetry</strong> and your vendor is a configuration change. Emit a vendor's proprietary SDK from a thousand call sites and you have made a months-long migration out of a decision that should cost an afternoon. The instrumentation is the asset; the dashboard is a commodity.</p></div>
+
+<h2 id="s-indigo-4">Cost per unit</h2>
+
+<div class="reg"><div class="reg-head"><h4>Infrastructure &mdash; cost per unit</h4><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Model API &mdash; budget / open-weight<span class="pill p-direct">direct</span></div><div class="d">&asymp; <strong>$0.03&ndash;$0.45 per 1M input</strong>, output roughly 2&ndash;4&times; that. The correct tier for classification, extraction, routing and first-pass drafting. An order of magnitude below the production tier.</div></div><div class="reg-row"><div class="n">Model API &mdash; production tier<span class="pill p-direct">direct</span></div><div class="d"><strong>&asymp; $2 per 1M input</strong> is where several major models have converged &mdash; the most contested price point in the market. Output typically <strong>$10&ndash;$12</strong>. <strong>Compute your blended rate</strong>; an output-heavy workload can cost 3&times; an input-heavy one on the same model.</div></div><div class="reg-row"><div class="n">Model API &mdash; frontier<span class="pill p-direct">direct</span></div><div class="d"><strong>$4&ndash;$10 input</strong>, <strong>$20&ndash;$50 output</strong> per 1M. Justified where a weak answer creates cleanup downstream, and rarely elsewhere.</div></div><div class="reg-row"><div class="n">GPU &mdash; Indian providers<span class="pill p-direct">direct</span></div><div class="d"><strong>H100 &#8377;219&ndash;362/hr</strong> on demand; reserved brings the effective rate to <strong>&#8377;130&ndash;150</strong>; spot from <strong>&#8377;70&ndash;88</strong>. <strong>Roughly 60&ndash;70% below hyperscaler Mumbai pricing.</strong></div></div><div class="reg-row"><div class="n">GPU &mdash; hyperscaler Mumbai<span class="pill p-direct">direct</span></div><div class="d"><strong>H100 &asymp; &#8377;600&ndash;740/hr</strong>. Worth it when the workload is glued to that cloud's other services and cross-cloud egress would eat the difference. Not otherwise.</div></div><div class="reg-row"><div class="n">GPU &mdash; the right card for inference<span class="pill p-direct">direct</span></div><div class="d"><strong>L40S &#8377;61&ndash;102/hr</strong>, <strong>L4 &asymp; &#8377;49/hr</strong>, <strong>A30 &asymp; &#8377;126/hr</strong>. <strong>Do not serve inference on H100s</strong> unless the model is 70B+ or latency at high concurrency genuinely demands it.</div></div><div class="reg-row"><div class="n">GPU &mdash; IndiaAI Mission<span class="pill p-direct">direct</span></div><div class="d"><strong>&asymp; &#8377;67&ndash;92 per GPU-hour</strong> subsidised, with 38,000+ GPUs empanelled by mid-2026 under a &#8377;10,300 crore programme. <strong>Roughly a third of the cheapest commercial Indian rate.</strong> Eligibility and allocation are their own process, but a team that never checks is leaving the largest cost lever untouched.</div></div><div class="reg-row"><div class="n">GPU &mdash; buying outright<span class="pill p-direct">direct</span></div><div class="d"><strong>&#8377;27&ndash;34 lakh per H100</strong> including import duties; a full server <strong>&#8377;2&ndash;5 crore</strong>. Weeks to procure, months to deploy, years to depreciate. Almost never right for AI serving.</div></div><div class="reg-row"><div class="n">Fintech cloud, all in (India)<span class="pill p-direct">direct</span></div><div class="d">Reported ranges: transaction infrastructure with redundancy <strong>&#8377;1&ndash;3 lakh/month</strong> for a small fintech, <strong>&#8377;10&ndash;30 lakh</strong> established. Fraud and risk model serving <strong>&#8377;50,000&ndash;3,00,000/month</strong>. Warehousing and analytics <strong>&#8377;80,000&ndash;5,00,000</strong>. DR and backup <strong>&#8377;30,000&ndash;1,50,000</strong>.</div></div><div class="reg-row"><div class="n">Data and observability stack<span class="pill p-oss">oss</span></div><div class="d"><strong>Free.</strong> Postgres, pgvector, Kafka or Redpanda, Debezium, DuckDB, ClickHouse, OpenTelemetry, Langfuse. The cost is operations, and it is smaller than the licence you avoided.</div></div><div class="reg-row"><div class="n">The thing nobody budgets<span class="pill p-direct">direct</span></div><div class="d"><strong>Egress, and retry traffic.</strong> Cross-cloud and cross-region data transfer is a real line on an inference bill, and rate-limit retries multiply request volume precisely when you are busiest. Both are invisible in a cost model built from unit prices.</div></div></div>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Divide every GPU rate by your real utilisation before comparing it to an API.</strong> The card bills 24 hours a day and your traffic does not. A cluster genuinely busy 15% of the time costs about <strong>6.7&times; its headline rate</strong> per token served. This single correction reverses most self-host business cases at small and mid volume, and it is almost never in the spreadsheet that justified the decision.</p></div>
+<p>Two more corrections worth making before anyone signs anything. Add an engineer, monitoring, model
+upgrades and a second node to the self-hosted side &mdash; a single-node deployment means a reboot is
+an outage. And re-run the comparison quarterly, because an 80% price cut on the API side moves the
+crossover point by a factor of five, and that has already happened once this year.</p>
+
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Best combinations</h2>
+
+<table>
+<tr><th>Combination</th><th>Works because</th></tr>
+<tr><td>Adapter in front of every model provider</td><td>Turns a months-long migration into a config change, on the decision most likely to need reversing.</td></tr>
+<tr><td>Residency router &rarr; tiered models</td><td>Restricted data goes in-country; open data goes to the cheapest capable tier. You get compliance and cost, not one or the other.</td></tr>
+<tr><td>pgvector inside the existing Postgres</td><td>One fewer system to localise, secure and back up, and the vectors stay consistent with the rows they describe.</td></tr>
+<tr><td>OpenTelemetry everywhere</td><td>The observability vendor becomes reversible. The instrumentation is the asset.</td></tr>
+<tr><td>Deterministic fallback behind every model</td><td>The AI plane can fail without the product failing. This is the design brief, not a nice-to-have.</td></tr>
+<tr><td>Cost tagged by <em>purpose</em>, not by model</td><td>Lets you kill an expensive feature nobody uses. Cost per model is not actionable.</td></tr>
+<tr><td>Indian GPU provider + spot for batch</td><td>60&ndash;70% below hyperscaler rates, with interruptible work at a fifth of that again.</td></tr>
+</table>
+<h3 id="s-amber-conflict">Combinations that conflict</h3>
+<ul>
+<li><strong>Payment data in a prompt to an offshore API.</strong> A cross-border transfer, regardless of transience or training assurances.</li>
+<li><strong>Embeddings of restricted data in a hosted vector store abroad.</strong> A vector is not anonymisation and inherits the restriction of its source.</li>
+<li><strong>H100s for inference serving.</strong> A training card doing a serving job, at three to five times the right price.</li>
+<li><strong>Self-hosting at low utilisation.</strong> The GPU bills continuously; your traffic does not.</li>
+<li><strong>A vendor observability SDK at a thousand call sites.</strong> An afternoon's decision turned into a quarter's migration.</li>
+<li><strong>Trying to abstract the core banking platform.</strong> Nobody has done it. Choose slowly instead.</li>
+<li><strong>Calling a model alias and not logging the resolved version.</strong> Your quality and your bill can change with no deploy on your side.</li>
+<li><strong>Monthly budget alerts.</strong> They fire on the 28th, which is 27 days late. Alert on daily rate.</li>
+</ul>
+
+<h2 id="s-amber-1">Three recommended builds</h2>
+
+<h3 id="s-amber-exp">Strong and expensive</h3>
+<p><strong>Build:</strong> commercial core banking platform &rarr; hyperscaler in an Indian region for
+the operational plane &rarr; reserved GPU capacity with a domestic provider for in-country inference
+&rarr; frontier API for open-data workloads &rarr; commercial observability on top of OpenTelemetry
+&rarr; a platform team.</p>
+<p><strong>Use when:</strong> you hold a licence with supervisory expectations, transaction volume is
+large, and an outage is a regulatory conversation rather than a bad afternoon.</p>
+<p><strong>Cost shape:</strong> core platform licence dominates everything else, by an order of
+magnitude.</p>
+<p><strong>Trade:</strong> the expensive decisions are also the slow ones. A threshold change can take
+a release cycle, and the core you picked is the core you have for years.</p>
+
+<h3 id="s-amber-def">Strong and reasonable &mdash; the default</h3>
+<p><strong>Build:</strong> Postgres as the ledger, modelled carefully and append-only &rarr; a BaaS or
+sponsor-bank relationship for the licence layer &rarr; Kafka or Redpanda for the operational plane
+&rarr; <strong>an adapter in front of every model provider</strong> &rarr; a residency router with
+an in-country path for restricted data and the cheap tier for everything else &rarr; pgvector in the
+same Postgres &rarr; OpenTelemetry and Langfuse &rarr; deterministic fallbacks behind every model.</p>
+<p><strong>Use when:</strong> you have engineers and you want to be able to change your mind about
+the things that are cheap to change.</p>
+<p><strong>Cost shape:</strong> model API spend on the cheap tier is small; the operational plane is
+modest; the ledger is Postgres. The dominant cost is the team.</p>
+<p><strong>Trade:</strong> you own the ledger correctness properties. That is the right trade, because
+they are also the thing you can never outsource responsibility for.</p>
+<div class="note"><span class="note-lbl">Note</span><p>Why the adapter is in the default build rather than the expensive one. Model pricing moved by 80% in a single day during 2026, and a scheduled increase on another model was cancelled weeks before it was due. An abstraction layer over a model API costs about a day to write and is the highest-return piece of code on this page. Nobody regrets it; plenty of teams regret its absence when a price moves and they cannot act for a quarter.</p></div>
+
+<h3 id="s-amber-lean">Strong and lean</h3>
+<p><strong>Build:</strong> one Postgres &rarr; one budget-tier model API behind an adapter &rarr; a
+single residency rule that keeps payment data out of prompts entirely &rarr; pgvector &rarr;
+structured logs with cost per call &rarr; rules-only fallback.</p>
+<p><strong>Use when:</strong> pre-launch or early, and every hour on infrastructure is an hour not on
+the product.</p>
+<p><strong>Cost shape:</strong> tens of dollars a month for inference, plus a small database.</p>
+<p><strong>Trade:</strong> no redundancy and manual scaling. Acceptable. <strong>What is not
+acceptable at any size is the ledger shortcut</strong> &mdash; floats for money, mutable rows, a
+single timestamp. Those cost nothing on day one and are effectively unfixable once a year of data
+sits on top of them.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p>Whichever grade you pick, write the <strong>architecture decision record</strong> as you go and keep it short: what we chose, what we rejected, why, and what would make us revisit. Six months later nobody remembers the constraint that made an odd choice sensible, and the record is the difference between a considered decision and an inherited mystery. It is also the first artefact a supervisor asks for.</p></div>
+
+<h2 id="s-amber-2">What next</h2>
+
+<p>One number to watch that is not on any dashboard by default: <strong>the share of AI calls that
+fell back to rules</strong>, and the trend. Zero means the fallback has never been exercised and you
+do not know whether it works. A rising line means something upstream is degrading and nobody has
+noticed. It is the single most informative metric about the AI plane, and almost nobody plots it.</p>
+<h3 id="s-amber-next">What this feeds</h3>
+<div class="mod-grid">
+<a href="/fintech-ai/governance/" class="mod-card"><div class="mod-num">MODULE 09</div><h3>Governance</h3><p>Model change control, the evidence pack, and who signed off on the threshold. The next build sheet.</p></a>
+<a href="/fintech-ai/customer-operations/build-sheet/" class="mod-card"><div class="mod-num">SHEET 06</div><h3>Customer Operations</h3><p>Where the model tiers get chosen in anger, and where per-resolution cost meets per-token cost.</p></a>
+<a href="/fintech-ai/payments-reconciliation/build-sheet/" class="mod-card"><div class="mod-num">SHEET 05</div><h3>Payments &amp; Reconciliation</h3><p>The ledger correctness properties, and why the two clocks belong in the data model.</p></a>
+<a href="/fintech-ai/regulation-india/" class="mod-card"><div class="mod-num">REFERENCE</div><h3>India regulation</h3><p>Payment data localisation and the DPDP Act, in more detail than this page allows.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>Everything on this page is illustrative. Data localisation, outsourcing and cloud adoption by regulated entities carry specific obligations under RBI direction, and getting residency wrong is a supervisory matter rather than a technical one. Nothing here is legal advice. Have your data-flow map and your cloud arrangements reviewed by qualified counsel before production traffic touches them.</p></div>
+
+<h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which numbers are primary-sourced and which are industry reporting &mdash; they are not equivalent, and treating them as if they were is how a confident wrong number gets repeated.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI payment data storage direction</strong> &mdash; the requirement that end-to-end payment data be stored only in India, and the return-and-delete window for offshore processing. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>Digital Personal Data Protection Act, 2023</strong> &mdash; consent, purpose limitation and breach obligations for personal data generally. <a href="https://www.meity.gov.in" target="_blank" rel="noopener">www.meity.gov.in</a></li><li><span class="src-k src-official">official</span><strong>IndiaAI Mission</strong> &mdash; the subsidised compute programme and empanelled GPU capacity. <a href="https://indiaai.gov.in" target="_blank" rel="noopener">indiaai.gov.in</a></li><li><span class="src-k src-vendor">vendor</span><strong>Model provider pricing pages</strong> &mdash; the three-tier structure and the specific per-million-token rates. <strong>These move faster than anything else on the site</strong> &mdash; one provider cut a model 80% in a day during 2026.</li><li><span class="src-k src-industry">industry</span><strong>Indian GPU cloud pricing</strong> &mdash; H100, L40S and L4 hourly rates, reserved and spot, and the hyperscaler comparison. Compiled from provider pages and third-party comparisons.</li><li><span class="src-k src-industry">industry</span><strong>Benchmark and price comparisons</strong> &mdash; the observation that five models sit within 0.4 points on one coding benchmark while output prices span tenfold.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Pricing and draft regulation move; the date is part of the claim.</p></div></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

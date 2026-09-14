@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Privacy-First Analytics: GDPR, Consent Mode & | Digital Codex</title>
+<meta name="description" content="How to maintain analytics quality while respecting privacy regulations — GDPR requirements for analytics, Consent Mode implementation, cookieless...">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/codex/analytics-cro/privacy-first-analytics/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Privacy-First Analytics: GDPR, Consent Mode & Cookieless Measurement","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-06","articleSection":"Analytics & CRO","wordCount":"5,200"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.nav-search-form{display:flex;align-items:center;gap:0;margin-left:.5rem}
+.nav-search-input{border:1.5px solid var(--g200);border-radius:6px 0 0 6px;padding:5px 10px;font-size:.8rem;width:160px;outline:none;font-family:inherit}
+.nav-search-input:focus{border-color:var(--navy)}
+.nav-search-btn{background:var(--navy);color:#fff;border:none;border-radius:0 6px 6px 0;padding:5px 10px;cursor:pointer;font-size:.8rem;font-family:inherit}
+@media(max-width:900px){.nav-search-form{display:none}}
+</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Privacy-First Analytics: GDPR, Consent Mode & | Digital Codex">
+<meta name="twitter:description" content="How to maintain analytics quality while respecting privacy regulations — GDPR requirements for analytics, Consent Mode implementation, cookieless...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Privacy-First Analytics: GDPR, Consent Mode &amp;">
+<meta property="og:description" content="How to maintain analytics quality while respecting privacy regulations — GDPR requirements for analytics, Consent Mode implementation, cookieless...">
+<meta property="og:url" content="https://www.clarigital.com/codex/analytics-cro/privacy-first-analytics/">
+<meta property="og:site_name" content="Clarigital">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Analytics Cro", "item": "https://www.clarigital.com/codex/analytics-cro/"}, {"@type": "ListItem", "position": 4, "name": "Privacy-First Analytics: GDPR, Consent Mode &", "item": "https://www.clarigital.com/codex/analytics-cro/privacy-first-analytics/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/content-marketing/">Content</a></li><li><a href="/codex/social-media/">Social</a></li><li><a href="/codex/analytics-cro/" class="cur">Analytics</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/content-marketing/" class="di">Content</a><a href="/codex/social-media/" class="di">Social</a><a href="/codex/analytics-cro/" class="di cur">Analytics</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#gdpr-analytics">GDPR and Analytics</a><a class="cnl" href="#consent-requirements">What Requires Consent</a><a class="cnl" href="#consent-management">Consent Management Platforms</a><a class="cnl" href="#ga4-consent-mode-deep">GA4 Consent Mode Deep Dive</a><a class="cnl" href="#cookieless-gaps">Measurement Gaps Without Cookies</a><a class="cnl" href="#server-side-tagging">Server-Side Tagging</a><a class="cnl" href="#first-party-data">First-Party Data Strategy</a><a class="cnl" href="#privacy-sandbox">Privacy Sandbox</a><a class="cnl" href="#ccpa-uk">CCPA and UK GDPR</a><a class="cnl" href="#measurement-framework">Privacy-Aware Measurement Framework</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/analytics-cro/">Analytics &amp; CRO</a><span class="sep">/</span><span class="cur">Privacy-First Analytics</span></nav>
+  <span class="label-tag">Analytics &amp; CRO &#183; Session 12, Guide 8</span>
+  <h1>Privacy-First Analytics &#183; GDPR, Consent Mode &#38; Cookieless</h1>
+  <p class="hero-lead">The analytics landscape has fundamentally changed since GDPR came into force in 2018. Third-party cookies — the foundation of cross-site tracking and multi-touch attribution — are being progressively deprecated. GDPR, CCPA, and equivalent regulations in dozens of countries impose consent requirements that reduce the proportion of users whose data can be collected. Browser-level tracking protection (Safari's ITP, Firefox's ETP) blocks analytics cookies for a growing proportion of users independent of consent choices. This guide covers how to maintain meaningful measurement quality within these constraints — using Consent Mode, server-side tagging, first-party data strategies, and the privacy-preserving measurement tools that Google and others have developed in response to the changing landscape.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Analytics &amp; CRO</span><span class="meta-tag mt-gray">5,200 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+  <li>What GDPR requires for analytics — the legal basis for processing and consent requirements</li>
+  <li>Which analytics activities require explicit consent vs which have a legitimate interest basis</li>
+  <li>What a Consent Management Platform does and how to select one that is GA4-compatible</li>
+  <li>How Google Consent Mode v2 works technically — and what it does with non-consenting users</li>
+  <li>The measurement gaps created by low consent rates and how large they can be</li>
+  <li>What server-side tagging is and how it helps with both privacy compliance and data quality</li>
+  <li>First-party data strategies that reduce dependence on third-party cookies</li>
+  <li>What Google's Privacy Sandbox is and which APIs replace specific tracking capabilities</li>
+  <li>How CCPA and UK GDPR differ from EU GDPR in their analytics implications</li>
+  <li>A practical privacy-aware measurement framework for maintaining data quality</li>
+</ul></div></div>
+
+<div class="chapter" id="gdpr-analytics">
+<div class="chap-hdr"><h2>GDPR and Analytics</h2><button class="share-btn" onclick="copyLink('gdpr-analytics')">Share</button></div>
+<p>The General Data Protection Regulation (GDPR), effective from May 2018 and enforced by data protection authorities across the EU, applies to any processing of personal data about EU residents — including the personal data processed by analytics tools. Analytics cookies set by GA4, identifiers used for cross-device tracking, and IP addresses processed for geographic reporting can all constitute personal data under GDPR's broad definition.</p>
+<p>GDPR requires a legal basis for processing personal data. For analytics, the two most commonly invoked bases are: Consent (Article 6(1)(a)) and Legitimate Interests (Article 6(1)(f)). The appropriate basis depends on the specific processing activity:</p>
+<ul>
+  <li><strong>Consent is required for:</strong> setting analytics cookies that persist across sessions; cross-site tracking; linking analytics data to personally identifiable user profiles; processing that enables re-identification of users from analytics data.</li>
+  <li><strong>Legitimate interests may be arguable for:</strong> aggregated, anonymous analytics that cannot re-identify individual users; short-lived session analytics that do not persist across sessions; analytics strictly necessary for the security and performance of the service. Note: legitimate interests for analytics is contested — several EU data protection authorities have concluded that consent is required for GA analytics. The ICO (UK) guidance recommends consent for analytics cookies.</li>
+</ul>
+<div class="callout orange"><strong>This is not legal advice</strong><p>This guide explains the analytics implications of privacy regulations as they are publicly documented by regulatory bodies. For specific legal advice on your analytics implementation's compliance with GDPR or other regulations, consult a qualified legal professional familiar with data protection law in your jurisdiction. The regulatory landscape is evolving — check the ICO (ico.org.uk), EDPB (edpb.europa.eu), and your national DPA for current guidance.</p></div>
+</div>
+
+<div class="chapter" id="consent-requirements">
+<div class="chap-hdr"><h2>What Requires Consent</h2><button class="share-btn" onclick="copyLink('consent-requirements')">Share</button></div>
+<p>Based on published regulatory guidance from the ICO (Information Commissioner's Office, UK) and EDPB (European Data Protection Board), the following analytics activities require explicit consent in most EU/UK contexts:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Analytics Activity</th><th>Consent Required?</th><th>Basis</th></tr></thead>
+  <tbody>
+    <tr><td>Setting persistent analytics cookies (GA4 _ga cookie)</td><td>Yes</td><td>ICO Cookie Guidance; ePrivacy Directive</td></tr>
+    <tr><td>Sending IP addresses to Google for geolocation</td><td>Yes (in most EU contexts)</td><td>IP address is personal data under GDPR</td></tr>
+    <tr><td>Google Signals (cross-device reporting)</td><td>Yes</td><td>Requires linking analytics to signed-in Google account data</td></tr>
+    <tr><td>Conversion Linker (cross-domain, cross-session)</td><td>Yes</td><td>Links sessions across domains — persistent identifier</td></tr>
+    <tr><td>Cookieless pings sent by Consent Mode</td><td>No</td><td>No cookies, no personal data — aggregate signal only</td></tr>
+    <tr><td>Server-side event streaming (no client cookies)</td><td>Context-dependent</td><td>Depends on whether server-side data includes personal data</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="consent-management">
+<div class="chap-hdr"><h2>Consent Management Platforms</h2><button class="share-btn" onclick="copyLink('consent-management')">Share</button></div>
+<p>A Consent Management Platform (CMP) is the software layer that presents the consent banner to users, records their consent choices, and communicates those choices to analytics and marketing tags so they can adjust their collection behaviour accordingly.</p>
+<p>For GA4 specifically, the CMP must support Google Consent Mode v2 — firing the four consent signals (<code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code>, <code>ad_personalization</code>) based on the user's consent choices. Google maintains a list of Certified CMPs that support Consent Mode v2 in the Consent Mode documentation. These include Cookiebot (by Usercentrics), OneTrust, Sirdata, and approximately 80 others as of 2024.</p>
+<h3>CMP selection considerations</h3>
+<ul>
+  <li>Google Consent Mode v2 certification — mandatory for GA4 + Google Ads</li>
+  <li>IAB TCF 2.2 compliance (for advertisers using the IAB Transparency and Consent Framework)</li>
+  <li>Geo-targeted banner display (shows consent banner only in jurisdictions that require it)</li>
+  <li>A/B testing capability (for consent rate optimisation — banner design affects consent rates significantly)</li>
+  <li>Integration with the tag management platform (GTM or direct)</li>
+</ul>
+</div>
+
+<div class="chapter" id="ga4-consent-mode-deep">
+<div class="chap-hdr"><h2>GA4 Consent Mode: Technical Deep Dive</h2><button class="share-btn" onclick="copyLink('ga4-consent-mode-deep')">Share</button></div>
+<p>When a user declines analytics consent with Consent Mode implemented, GA4 does not set the <code>_ga</code> cookie and does not send personal data to Google. Instead, it sends a "cookieless hit" — a small HTTP request containing no user identifier, no session data, and no detailed event parameters. This cookieless hit records that a conversion or interaction occurred, without identifying who performed it.</p>
+<p>Google's modelling system uses these cookieless signals (alongside patterns from consenting users in aggregate) to model the behaviour of non-consenting users. This produces "modelled conversions" — estimated conversion counts for the population of non-consenting users based on statistical inference from the consenting population's behaviour patterns. GA4 reports include both observed conversions (measured directly from consenting users) and modelled conversions, with the combined total displayed in conversion columns.</p>
+<p>The accuracy of modelled conversions depends on: the proportion of users who consent (lower consent rates mean more reliance on modelling, which introduces more uncertainty); the consistency of behaviour between consenting and non-consenting users (if consenting users behave differently from non-consenting users, modelling accuracy decreases); and the volume of consenting users (more data = better model).</p>
+</div>
+
+<div class="chapter" id="cookieless-gaps">
+<div class="chap-hdr"><h2>Measurement Gaps Without Cookies</h2><button class="share-btn" onclick="copyLink('cookieless-gaps')">Share</button></div>
+<p>Even with Consent Mode modelling, analytics data in high-GDPR-compliance environments is incomplete. The magnitude of the gap depends on the consent rate — the proportion of users who accept analytics cookies. Sites in heavily regulated categories (financial services, healthcare, public sector) or with particularly privacy-aware audiences may see consent rates as low as 30–50%. At 50% consent, at least half of all traffic and conversions are modelled rather than observed.</p>
+<p>Independent validation of GA4 data quality in consent-constrained environments is important. Methods for validation:</p>
+<ul>
+  <li>Compare GA4 session counts to server-side request logs — server logs record every request regardless of consent. If GA4 shows 40% fewer sessions than server logs, the gap is your measurement loss.</li>
+  <li>Compare GA4 conversion data to actual business transactions (order management system, CRM records). If GA4 reports 1,000 purchases but the OMS shows 1,400, the gap reveals the measurement shortfall.</li>
+  <li>Use Google's Consent Mode diagnostic report in GA4 to see the ratio of observed to modelled conversions — this directly shows the measurement gap you are working with.</li>
+</ul>
+</div>
+
+<div class="chapter" id="server-side-tagging">
+<div class="chap-hdr"><h2>Server-Side Tagging</h2><button class="share-btn" onclick="copyLink('server-side-tagging')">Share</button></div>
+<p>Server-side tagging moves tag execution from the user's browser (client-side) to a server controlled by the website owner. Instead of the user's browser loading tags from multiple third-party servers, the browser sends data to a first-party server endpoint, which then forwards the data to the appropriate destinations (GA4, Google Ads, Meta Pixel, etc.).</p>
+<h3>Benefits of server-side tagging</h3>
+<ul>
+  <li><strong>Improved data quality.</strong> Browser-based ad blockers and browser privacy features (Safari ITP) primarily block third-party cookies and third-party scripts. Server-side tagging avoids these blocks by using first-party domains — some data that would be blocked client-side can be collected server-side.</li>
+  <li><strong>Better page performance.</strong> Loading all tags from one first-party endpoint is faster than loading multiple third-party scripts — reducing page load time.</li>
+  <li><strong>Data control and governance.</strong> All data passes through a server you control before reaching third-party vendors — allowing PII scrubbing, data filtering, and consent enforcement before data leaves your environment.</li>
+</ul>
+<p>Google Tag Manager supports server-side tagging (GTM server container) — a separate container type that runs on a cloud server (Google Cloud Platform or any cloud provider). Implementation requires server infrastructure and is more complex than client-side tagging, typically requiring developer involvement.</p>
+</div>
+
+<div class="chapter" id="first-party-data">
+<div class="chap-hdr"><h2>First-Party Data Strategy</h2><button class="share-btn" onclick="copyLink('first-party-data')">Share</button></div>
+<p>First-party data — data collected directly from users through your own properties with their knowledge and consent — is the foundation of privacy-resilient measurement. Unlike third-party data (data collected by other parties and shared with you) or cookie-based tracking (which is constrained by consent and browser restrictions), first-party data collected with proper consent is not subject to the same limitations.</p>
+<h3>Building first-party data assets</h3>
+<ul>
+  <li><strong>User authentication (User ID).</strong> When users create accounts and log in, GA4 can receive a User ID that enables cross-device measurement (GA4's User ID feature, which requires user consent). Authenticated users can be measured across sessions and devices without relying on cookies.</li>
+  <li><strong>Email collection.</strong> Building an email list with proper consent creates an owned audience that can be used for marketing without third-party data dependencies.</li>
+  <li><strong>CRM data.</strong> Customer records in a CRM contain first-party purchase, engagement, and preference data that can be used for audience building (Customer Match in Google Ads) and analytics enrichment.</li>
+  <li><strong>Progressive profiling.</strong> Gradually collecting preference and behavioural data through consented interactions (surveys, preference centres, form completions) builds a first-party profile that improves personalisation and measurement over time.</li>
+</ul>
+</div>
+
+<div class="chapter" id="privacy-sandbox">
+<div class="chap-hdr"><h2>Google's Privacy Sandbox</h2><button class="share-btn" onclick="copyLink('privacy-sandbox')">Share</button></div>
+<p>Google's Privacy Sandbox (privacysandbox.com) is an initiative to replace third-party cookies in Chrome with privacy-preserving alternatives — APIs that enable advertising and measurement use cases without exposing individual browsing histories to third parties. Google delayed the deprecation of third-party cookies in Chrome multiple times through 2024, ultimately announcing in July 2024 that it would not fully deprecate third-party cookies in Chrome but instead provide user choice — allowing users to opt into maintaining existing cookie behaviour.</p>
+<p>The Privacy Sandbox APIs remain relevant for advertisers and analytics practitioners because they represent the longer-term direction of privacy-preserving measurement:</p>
+<ul>
+  <li><strong>Attribution Reporting API.</strong> Enables conversion attribution without sharing user-level data across sites — using a privacy budget and differential privacy to prevent individual identification.</li>
+  <li><strong>Topics API.</strong> Replaces interest-based advertising audiences with browser-calculated topic interests that are shared with advertisers without exposing browsing history.</li>
+  <li><strong>CHIPS (Cookies Having Independent Partitioned State).</strong> Allows third-party cookies that are partitioned by the top-level site — preventing cross-site tracking while allowing functional cookies (login, shopping cart persistence) on embedded iframes.</li>
+</ul>
+</div>
+
+<div class="chapter" id="ccpa-uk">
+<div class="chap-hdr"><h2>CCPA and UK GDPR</h2><button class="share-btn" onclick="copyLink('ccpa-uk')">Share</button></div>
+<p>The California Consumer Privacy Act (CCPA), effective January 2020 and amended by the California Privacy Rights Act (CPRA) effective January 2023, applies to businesses collecting personal information about California residents above certain size thresholds. For analytics, CCPA requires: a clear privacy notice explaining what data is collected and how it is used; a "Do Not Sell or Share My Personal Information" opt-out mechanism; and the ability to honour consumer data access and deletion requests.</p>
+<p>UK GDPR (UK's post-Brexit data protection framework, which closely mirrors EU GDPR) applies to data processing about UK residents. The ICO is the UK's data protection regulator and has published specific guidance on analytics cookies and the consent requirements. The UK GDPR consent standard is substantively the same as EU GDPR — freely given, specific, informed, and unambiguous consent — making UK GDPR analytics compliance requirements essentially equivalent to EU GDPR requirements for practical purposes.</p>
+</div>
+
+<div class="chapter" id="measurement-framework">
+<div class="chap-hdr"><h2>Privacy-Aware Measurement Framework</h2><button class="share-btn" onclick="copyLink('measurement-framework')">Share</button></div>
+<p>A practical privacy-aware measurement framework for 2026:</p>
+<ul>
+  <li><strong>Layer 1: Consent-gated direct measurement.</strong> GA4 with Consent Mode v2 — measures consenting users directly, models non-consenting users through Consent Mode. Provides the most granular data about consenting users.</li>
+  <li><strong>Layer 2: Server-side validation.</strong> Server-side request logs or a privacy-preserving server-side analytics tool provides consent-independent session volume data — useful as a sanity check and gap estimation tool.</li>
+  <li><strong>Layer 3: First-party data enrichment.</strong> User ID implementation for authenticated users; CRM data for customer journey completion beyond the website visit; email engagement data for customer retention measurement.</li>
+  <li><strong>Layer 4: Aggregated market measurement.</strong> Marketing Mix Modelling (MMM) for long-term channel budget allocation decisions that do not rely on individual-user-level attribution — using aggregate market data, spend data, and outcome data to estimate channel effectiveness at the portfolio level without user-level tracking.</li>
+</ul>
+
+<div class="chapter" id="sources">
+<h2>Authentic Sources</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>Every factual claim in this guide is drawn from official Google documentation, regulatory bodies, or platform-published technical specifications. No third-party blogs or marketing tools are used as primary sources. All content is written in our own words — we learn from official sources and explain them; we never copy.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://developers.google.com/tag-platform/security/guides/consent" target="_blank" rel="noopener">Google Developers — Consent Mode Implementation</a></strong><p>Official technical implementation guide for Google Consent Mode v2.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guide-to-pecr/cookies-and-similar-technologies/" target="_blank" rel="noopener">ICO — Cookies and Similar Technologies</a></strong><p>The UK Information Commissioner's Office official guidance on cookie consent requirements under PECR and UK GDPR.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://privacysandbox.com/" target="_blank" rel="noopener">Google Privacy Sandbox</a></strong><p>Google's official Privacy Sandbox initiative — the replacement for third-party cookies in Chrome.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://edpb.europa.eu/our-work-tools/documents/public-consultations/2020/guidelines-052020-consent-under-regulation_en" target="_blank" rel="noopener">EDPB — Guidelines on Consent</a></strong><p>European Data Protection Board's official guidelines on valid consent under GDPR — including analytics context.</p></div></div>
+</div>
+
+<div class="related-guides">
+  <h3 class="rg-head">Related Guides</h3>
+  <div class="rg-grid"><a href="/codex/seo/fundamentals/core-web-vitals/" class="related-card"><span class="rc-tag">SEO</span><span class="rc-title">Core Web Vitals</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/saas-metrics-kpis/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">SaaS Metrics & KPIs</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/marketing-funnel-frameworks/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Marketing Funnel Frameworks</span><span class="rc-arr">&#8594;</span></a></div>
+</div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 5,200 &nbsp;&#183;&nbsp; <strong>Session:</strong> 12 of 16</p></div>
+</div></article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#gdpr-analytics" class="sb-link on">GDPR & Analytics</a><a href="#consent-requirements" class="sb-link">Consent Requirements</a><a href="#consent-management" class="sb-link">CMPs</a><a href="#ga4-consent-mode-deep" class="sb-link">Consent Mode Deep Dive</a><a href="#cookieless-gaps" class="sb-link">Measurement Gaps</a><a href="#server-side-tagging" class="sb-link">Server-Side Tagging</a><a href="#first-party-data" class="sb-link">First-Party Data</a><a href="#privacy-sandbox" class="sb-link">Privacy Sandbox</a><a href="#ccpa-uk" class="sb-link">CCPA & UK GDPR</a><a href="#measurement-framework" class="sb-link">Measurement Framework</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box"><div class="sb-head">Analytics &amp; CRO</div><div class="sb-body"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="sb-link">1. GA4 Setup & Configuration</a><a href="/codex/analytics-cro/ga4-events-conversions/" class="sb-link">2. GA4 Events & Conversions</a><a href="/codex/analytics-cro/ga4-reports-exploration/" class="sb-link">3. GA4 Reports & Exploration</a><a href="/codex/analytics-cro/google-tag-manager/" class="sb-link">4. Google Tag Manager</a><a href="/codex/analytics-cro/attribution-modelling/" class="sb-link">5. Attribution Modelling</a><a href="/codex/analytics-cro/cohort-funnel-analysis/" class="sb-link">6. Cohort & Funnel Analysis</a><a href="/codex/analytics-cro/business-metrics-kpis/" class="sb-link">7. Business Metrics & KPIs</a><a href="/codex/analytics-cro/privacy-first-analytics/" class="sb-link sb-cur">8. Privacy-First Analytics</a><a href="/codex/analytics-cro/cro-framework/" class="sb-link">9. CRO Framework</a><a href="/codex/analytics-cro/ab-testing-methodology/" class="sb-link">10. A/B Testing Methodology</a><a href="/codex/analytics-cro/heatmaps-session-recording/" class="sb-link">11. Heatmaps & Session Recording</a><a href="/codex/analytics-cro/landing-page-optimisation/" class="sb-link">12. Landing Page Optimisation</a><a href="/codex/analytics-cro/form-optimisation/" class="sb-link">13. Form Optimisation</a><a href="/codex/analytics-cro/trust-signals-social-proof/" class="sb-link">14. Trust Signals & Social Proof</a><a href="/codex/analytics-cro/cro-metrics-measurement/" class="sb-link">15. CRO Metrics & Measurement</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>600 guides. All authentic sources.</h2><p>Official documentation only.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A&#8211;Z Glossary</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides. Official sources only.</p></div>
+  <div class="ft-col"><h5>Analytics &amp; CRO</h5><ul><li><a href='/analytics-cro/ga4-setup-configuration/'>GA4 Setup & Configuration</a></li><li><a href='/analytics-cro/ga4-events-conversions/'>GA4 Events & Conversions</a></li><li><a href='/analytics-cro/ga4-reports-exploration/'>GA4 Reports & Exploration</a></li><li><a href='/analytics-cro/google-tag-manager/'>Google Tag Manager</a></li><li><a href='/analytics-cro/attribution-modelling/'>Attribution Modelling</a></li></ul></div>
+  <div class="ft-col"><h5>Other Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/content-marketing/">Content</a></li><li><a href="/codex/social-media/">Social Media</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Official sources only &#183; No affiliate links</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+// Auto-run search if ?q= param present on homepage
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+
+</body>
+</html>

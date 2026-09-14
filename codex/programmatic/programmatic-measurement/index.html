@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Programmatic Measurement: Viewability, | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Programmatic Measurement: Viewability, | Digital Codex">
+<meta property="og:description" content="How to measure programmatic campaigns rigorously — viewability standards, attribution models, invalid traffic detection, brand lift, and incrementality testing.">
+<meta property="og:url" content="https://www.clarigital.com/codex/programmatic/programmatic-measurement/">
+<meta property="og:site_name" content="Digital Codex">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Programmatic Measurement: Viewability,", "description": "How to measure programmatic campaigns rigorously \u2014 viewability standards, attribution models, invalid traffic detection, brand lift, and incrementality testing.", "url": "https://www.clarigital.com/codex/programmatic/programmatic-measurement/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Programmatic Measurement: Viewability,", "description": "How to measure programmatic campaigns rigorously \u2014 viewability standards, attribution models, invalid traffic detection, brand lift, and incrementality testing.", "url": "https://www.clarigital.com/codex/programmatic/programmatic-measurement/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<meta name="description" content="How to measure programmatic campaigns rigorously — viewability standards, attribution models, invalid traffic detection, brand lift, and incrementality testing.">
+<link rel="canonical" href="/codex/programmatic/programmatic-measurement/">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+</style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Programmatic Measurement: Viewability, | Digital Codex">
+<meta name="twitter:description" content="How to measure programmatic campaigns rigorously — viewability standards, attribution models, invalid traffic detection, brand lift, and incrementality tes">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/case-studies/">Cases</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/business-strategy/" class="di">Business</a><a href="/codex/programmatic/" class="di cur">Programmatic Advertising</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#measurement-framework">The Programmatic Measurement Framework</a><a class="cnl" href="#viewability">Viewability: The IAB Standard</a><a class="cnl" href="#ivt-fraud">Invalid Traffic and Ad Fraud</a><a class="cnl" href="#attribution-display">Attribution for Display Advertising</a><a class="cnl" href="#post-view-caution">Post-View Attribution: The Inflation Problem</a><a class="cnl" href="#incrementality">Incrementality and Holdout Testing</a><a class="cnl" href="#brand-lift-measurement">Brand Lift Measurement</a><a class="cnl" href="#reporting-metrics">Programmatic Reporting Metrics</a><a class="cnl" href="#measurement-challenges">The Core Measurement Challenges</a><a class="cnl" href="#building-measurement">Building a Measurement Framework</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/programmatic/">Programmatic Advertising</a><span class="sep">/</span><span>Programmatic Measurement</span></nav>
+  <span class="label-tag">Programmatic Advertising &#183; Guide 8</span>
+  <h1>Programmatic Measurement &#183; Viewability, Attribution &#38; Fraud</h1>
+  <p class="hero-lead">Measuring programmatic advertising is fundamentally different from measuring search or social. There is no click-through rate worth optimising for display. Impressions served does not equal impressions seen. Conversions attributed to programmatic may not have been caused by programmatic. This guide covers the complete programmatic measurement framework — the metrics that matter, the ones that mislead, and the methodologies that actually tell you whether your programmatic investment is delivering business outcomes.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Programmatic Advertising</span>
+    <span class="meta-tag mt-gray">5,200 words</span>
+    <span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="chapter" id="measurement-framework">
+<div class="chap-hdr"><h2>The Programmatic Measurement Framework</h2><button class="share-btn" onclick="copyLink('measurement-framework')">Share</button></div>
+<p>Programmatic measurement answers three questions: Was the ad delivered? Was the ad seen? Did the ad contribute to a measurable outcome? Each question requires different measurement methodology and different data sources.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Question</th><th>Metric</th><th>Data Source</th><th>Limitation</th></tr></thead>
+  <tbody>
+    <tr><td>Was the ad delivered?</td><td>Impressions served, win rate, budget pacing</td><td>DSP and ad server data</td><td>Served ≠ seen; delivery data is self-reported by DSP</td></tr>
+    <tr><td>Was the ad seen?</td><td>Viewability rate, video completion rate</td><td>Independent verification vendor (IAS, DoubleVerify)</td><td>Viewability measures pixels visible, not actual human attention</td></tr>
+    <tr><td>Did the ad contribute to outcomes?</td><td>Conversions, ROAS, brand lift, incremental reach</td><td>Attribution, brand lift studies, holdout tests</td><td>Attribution overstates impact; brand lift requires panel research</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="viewability">
+<div class="chap-hdr"><h2>Viewability: The IAB Standard</h2><button class="share-btn" onclick="copyLink('viewability')">Share</button></div>
+<p>Viewability measures whether an ad had the opportunity to be seen by a real human. The IAB's official viewability standard, defined in the IAB Viewability Guidelines, is: for display ads, at least 50% of the ad's pixels must be visible on screen for at least 1 continuous second; for video ads, at least 50% of the player must be visible for at least 2 continuous seconds.</p>
+<p>The 50% threshold means that a half-visible ad below the fold counts as "viewable" even if a large portion of it is hidden. This is a measurement standard, not an attention standard — an ad can be technically viewable while being completely ignored by the user. The Moving Advertising Quality Initiative (MRC) accredits viewability measurement vendors; MRC accreditation means the measurement methodology meets defined accuracy standards.</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">Average display viewability</p><div class="stat-n">~60%</div><p class="stat-l">Industry average display viewability rate — approximately 40% of display impressions are never actually seen</p></div>
+  <div class="stat-card"><p class="stat-h">Video viewability</p><div class="stat-n">~70%</div><p class="stat-l">Video ads have higher average viewability than display, but significant portion still goes unseen</p></div>
+  <div class="stat-card"><p class="stat-h">CTV viewability</p><div class="stat-n">95%+</div><p class="stat-l">CTV viewability rates are near-perfect due to the full-screen, TV-delivered format</p></div>
+</div>
+<p>Viewability benchmarks vary by format and placement position: above-the-fold display placements typically achieve 60–75% viewability; below-the-fold placements may achieve 40–50%; native ads achieve higher viewability (70–80%) due to their integration into content flow. Paying a viewable CPM (vCPM) premium is generally justified for brand awareness campaigns where impression quality is the primary goal.</p>
+</div>
+
+<div class="chapter" id="ivt-fraud">
+<div class="chap-hdr"><h2>Invalid Traffic and Ad Fraud</h2><button class="share-btn" onclick="copyLink('ivt-fraud')">Share</button></div>
+<p>Invalid traffic (IVT) is any ad impression that was not generated by a real human with genuine interest in the content. The IAB and MRC classify IVT into two categories: General Invalid Traffic (GIVT) — traffic from known data centres, bots, crawlers, and other identified non-human sources that can be filtered automatically; and Sophisticated Invalid Traffic (SIVT) — more complex fraud involving human-like bot behaviour, hijacked devices, or malicious ad stacking that requires more sophisticated detection.</p>
+<p>The ANA's documented programmatic fraud research estimates that ad fraud costs the global advertising industry billions of dollars annually. Bot networks generate fake impressions at scale by automating browser interactions on programmatic inventory — inflating impression counts and CPM revenue for fraudulent publishers while delivering zero value to advertisers.</p>
+<p>Ad fraud types relevant to programmatic buyers:</p>
+<ul>
+  <li><strong>Bot traffic:</strong> Automated script-generated impressions on fraudulent or hijacked inventory.</li>
+  <li><strong>Domain spoofing:</strong> Fraudulent inventory fraudulently declared as premium publisher inventory in the bid request. An impression served on a fraudulent site declares itself as being on a premium news site to attract higher CPMs. Ads.txt and sellers.json verification prevents this by requiring publishers to declare authorised sellers.</li>
+  <li><strong>Ad stacking:</strong> Multiple ads stacked on top of each other in a single placement — only the top ad is visible but all generate impression counts.</li>
+  <li><strong>Click fraud:</strong> Automated clicking on ads to generate false click signals — more prevalent in CPC-billed campaigns than impression-billed programmatic.</li>
+</ul>
+</div>
+
+<div class="chapter" id="attribution-display">
+<div class="chap-hdr"><h2>Attribution for Display Advertising</h2><button class="share-btn" onclick="copyLink('attribution-display')">Share</button></div>
+<p>Display advertising attribution in programmatic works differently from search attribution because display ads rarely generate direct clicks. Display attribution uses post-view (view-through) attribution: if a user is served a display impression and then converts within a defined window (typically 1–7 days), the conversion is attributed to the display campaign.</p>
+<p>This model is problematic without a control group. If a user was going to convert naturally regardless of seeing the display ad, attributing that conversion to the display campaign overstates its impact. A user who visits a retailer's website, leaves without purchasing, sees a display retargeting ad later, and then purchases through a direct site visit may attribute the conversion to the display ad — even if they would have converted anyway.</p>
+<p>For proper display attribution, see the <a href="/codex/analytics-cro/attribution-modelling/">attribution modelling guide</a> — particularly the discussion of data-driven attribution and incrementality testing.</p>
+</div>
+
+<div class="chapter" id="post-view-caution">
+<div class="chap-hdr"><h2>Post-View Attribution: The Inflation Problem</h2><button class="share-btn" onclick="copyLink('post-view-caution')">Share</button></div>
+<p>Post-view attribution is the standard programmatic measurement approach — and the one most prone to inflating programmatic's measured performance. The inflation problem arises because high-reach programmatic campaigns reach a large percentage of the population, meaning that many people who convert naturally (without any causal influence from the ads) will have been exposed to an impression and will therefore be credited as programmatic conversions in a post-view attribution model.</p>
+<p>A thought experiment: if a programmatic campaign reaches 80% of a city's population, and 3% of that city's population makes a relevant purchase that week, then approximately 80% of all those purchases will be attributed to the programmatic campaign — even if the campaign had zero causal impact on any of them. This is why post-view conversion numbers in DSP reporting often look impressive while holdout tests of the same campaign show much lower (or zero) incremental impact.</p>
+</div>
+
+<div class="chapter" id="incrementality">
+<div class="chap-hdr"><h2>Incrementality and Holdout Testing</h2><button class="share-btn" onclick="copyLink('incrementality')">Share</button></div>
+<p>Incrementality testing is the gold standard of programmatic measurement. An incrementality test withholds the programmatic campaign from a randomly selected control group (typically 10–20% of the target audience) while serving the campaign normally to the treatment group. The difference in conversion rate between the exposed and control groups represents the incremental conversions caused by the campaign — the additional conversions that would not have occurred without advertising.</p>
+<p>Incrementality testing is more methodologically robust than any attribution model because it does not rely on assumptions about which touchpoints caused conversions — it directly measures the causal effect of advertising through random assignment. The trade-off is cost: withholding ads from the control group means those impressions are not served, reducing the campaign's reach. For high-value campaigns where measurement accuracy is critical, this cost is worth paying.</p>
+<p>Most major DSPs (DV360, The Trade Desk, Amazon DSP) offer built-in holdout testing tools. Third-party measurement providers (Measured, Rockerbox) specialise in incrementality testing across programmatic and other channels.</p>
+</div>
+
+<div class="chapter" id="brand-lift-measurement">
+<div class="chap-hdr"><h2>Brand Lift Measurement</h2><button class="share-btn" onclick="copyLink('brand-lift-measurement')">Share</button></div>
+<p>Brand lift studies measure the direct impact of programmatic advertising on brand metrics — awareness, ad recall, message association, purchase intent — rather than on conversion metrics. They are conducted by serving surveys to both exposed (saw the ads) and control (did not see the ads) audiences and measuring the difference in brand metric responses.</p>
+<p>Brand lift is the appropriate primary measurement for brand awareness and consideration campaigns where the goal is to move people along the purchase funnel rather than to drive immediate conversions. A programmatic campaign for a new product launch may have zero post-view conversions in the first week (because most people need multiple exposures and a consideration period before purchasing) but generate significant brand lift in awareness and purchase intent — which is the signal that the campaign is working.</p>
+</div>
+
+<div class="chapter" id="reporting-metrics">
+<div class="chap-hdr"><h2>Programmatic Reporting Metrics</h2><button class="share-btn" onclick="copyLink('reporting-metrics')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Metric</th><th>What It Measures</th><th>Good For</th><th>Watch Out For</th></tr></thead>
+  <tbody>
+    <tr><td>Impressions served</td><td>Total ad impressions delivered by the DSP</td><td>Campaign delivery tracking</td><td>Includes non-viewable and invalid impressions</td></tr>
+    <tr><td>Viewability rate</td><td>% of impressions meeting IAB viewability standard</td><td>Assessing impression quality</td><td>Viewable ≠ seen or noticed</td></tr>
+    <tr><td>Win rate</td><td>% of bid requests where the DSP won the auction</td><td>Diagnosing delivery issues; bid competitiveness</td><td>Low win rate may indicate underbidding or over-targeting</td></tr>
+    <tr><td>eCPM</td><td>Effective cost per thousand impressions</td><td>Cost benchmarking; supply path evaluation</td><td>Low eCPM with low viewability is not efficient</td></tr>
+    <tr><td>VCR (Video Completion Rate)</td><td>% of video impressions watched to completion</td><td>Video campaign effectiveness</td><td>100% VCR on non-skippable format is table stakes, not impressive</td></tr>
+    <tr><td>Post-view conversions</td><td>Conversions attributed to programmatic after impression</td><td>Directional performance indicator</td><td>Substantially inflated without holdout test comparison</td></tr>
+    <tr><td>Brand lift (awareness/recall)</td><td>Change in brand metrics between exposed/control groups</td><td>Brand campaign effectiveness</td><td>Requires panel research; sample size requirements</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="measurement-challenges">
+<div class="chap-hdr"><h2>The Core Measurement Challenges</h2><button class="share-btn" onclick="copyLink('measurement-challenges')">Share</button></div>
+<p>Three structural measurement challenges affect programmatic measurement accuracy that cannot be fully resolved with current industry infrastructure:</p>
+<p><strong>Cross-device fragmentation:</strong> A user who sees a programmatic ad on their desktop at work, considers the product on their mobile phone at lunch, and purchases on their home laptop may have three different device IDs. Without cross-device identity resolution, the display impression and the conversion may not be linkable, making the display campaign's contribution unmeasurable. Cross-device attribution is addressed through probabilistic and deterministic identity graphs, but neither approach is perfectly accurate.</p>
+<p><strong>Walled garden measurement gaps:</strong> Programmatic display measurement cannot follow users into walled gardens (Facebook, Google, Amazon) — the platforms where a significant proportion of final purchases occur. A display campaign that builds awareness but drives conversions that happen through a Google search or an Amazon product page may show low measured conversion rates while actually driving substantial business impact through these unattributed paths.</p>
+<p><strong>Long attribution windows:</strong> Many product categories have long consideration cycles — automotive, insurance, B2B software. A display impression may influence a purchase decision 30–90 days later. Standard attribution windows of 1–7 days miss this long-cycle impact entirely.</p>
+</div>
+
+<div class="chapter" id="building-measurement">
+<div class="chap-hdr"><h2>Building a Measurement Framework</h2><button class="share-btn" onclick="copyLink('building-measurement')">Share</button></div>
+<p>A practical programmatic measurement framework layers methods by reliability and cost:</p>
+<ol>
+  <li><strong>Always-on verification:</strong> IAS or DoubleVerify integrated with DSP for continuous viewability, brand safety, and IVT reporting on every campaign.</li>
+  <li><strong>Post-view attribution as directional indicator:</strong> Track post-view conversions in DSP and attribution platform, but treat as an upper bound on performance — the actual contribution is likely lower.</li>
+  <li><strong>Quarterly holdout tests:</strong> For always-on programmatic campaigns, run 10–20% holdout groups quarterly to calibrate the actual incremental contribution versus post-view attribution numbers.</li>
+  <li><strong>Annual brand lift study:</strong> For brand awareness campaigns, commission an annual brand lift study to track the cumulative effect of programmatic on brand metrics.</li>
+  <li><strong>Marketing Mix Modelling:</strong> For larger budgets, MMM provides the most complete picture of programmatic's contribution to business outcomes by modelling all marketing channels simultaneously against actual revenue data.</li>
+</ol>
+</div>
+
+<div class="chapter" id="sources">
+<h2>Sources &#38; Further Reading</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>All frameworks, data, and examples in this guide draw from official documentation, peer-reviewed research, and documented practitioner case studies. We learn from primary sources and explain them in our own words.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:#fdf4ff;color:#6b21a8">Research</span><strong><a href="https://www.ana.net/content/show/id/botfraud-2023" target="_blank" rel="noopener">ANA — Ad Fraud Research</a></strong><p>ANA's documented annual research on programmatic ad fraud and invalid traffic costs.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://www.iab.com/guidelines/invalid-traffic-detection/" target="_blank" rel="noopener">IAB — Invalid Traffic Guidelines</a></strong><p>IAB and MRC official invalid traffic detection standards and classification framework.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://www.mrc-media.org/resources/" target="_blank" rel="noopener">MRC — Media Rating Council</a></strong><p>MRC's official documentation on viewability standards and measurement accreditation.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://integralads.com/insider/measurement/" target="_blank" rel="noopener">IAS — Measurement Resources</a></strong><p>Integral Ad Science's documented measurement framework for viewability and ad fraud detection.</p></div></div>
+</div>
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/attribution-modelling/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">Attribution Modelling</span><span class="rc-arr">&#8594;</span></a><a href="/codex/paid-advertising/facebook-instagram/campaign-objectives/" class="related-card"><span class="rc-tag">Meta Ads</span><span class="rc-title">Campaign Objectives</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/marketing-budget-allocation/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Marketing Budget Allocation</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 5,200</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#measurement-framework" class="sb-link on">The Programmatic Measurement Framework</a><a href="#viewability" class="sb-link">Viewability: The IAB Standard</a><a href="#ivt-fraud" class="sb-link">Invalid Traffic and Ad Fraud</a><a href="#attribution-display" class="sb-link">Attribution for Display Advertising</a><a href="#post-view-caution" class="sb-link">Post-View Attribution: The Inflation Problem</a><a href="#incrementality" class="sb-link">Incrementality and Holdout Testing</a><a href="#brand-lift-measurement" class="sb-link">Brand Lift Measurement</a><a href="#reporting-metrics" class="sb-link">Programmatic Reporting Metrics</a><a href="#measurement-challenges" class="sb-link">The Core Measurement Challenges</a><a href="#building-measurement" class="sb-link">Building a Measurement Framework</a><a href="#sources" class="sb-link">Sources</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>218 guides. Official sources only.</h2><p>The complete digital marketing knowledge base.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/programmatic/" class="btn btn-outline-w btn-lg">More Programmatic Advertising</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>Official sources only &#183; No affiliate links</p></div>
+  <div class="ft-col"><h5>Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/programmatic/">Programmatic Advertising</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 218 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+  <div class="ft-col"><h5>Legal</h5><ul><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-of-use/">Terms of Use</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');
+function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);
+if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+</body>
+</html>

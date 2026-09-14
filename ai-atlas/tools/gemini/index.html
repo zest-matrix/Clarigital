@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Gemini — The Complete Guide | AI Atlas — Clarigital</title>
+<meta name="description" content="The complete Gemini guide — Google's AI in Gmail, Docs, Search and beyond. History, how it works, 20 prompts, 1M token context explained, and full technical depth.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/ai-atlas/tools/gemini/">
+<meta property="og:title" content="Gemini — The Complete Guide | AI Atlas">
+<meta property="og:description" content="The complete Gemini guide — Google's AI in Gmail, Docs, Search and beyond. History, how it works, 20 prompts, 1M token context explained, and full technical depth.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/tools/gemini/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzRGNDZFNSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD48L3N2Zz4="><meta name="theme-color" content="#0A0F1E">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Gemini \u2014 The Complete Guide | AI Atlas", "description": "The complete Gemini guide \u2014 Google's AI in Gmail, Docs, Search and beyond. History, how it works, 20 prompts, 1M token context explained, and full technical depth.", "url": "https://www.clarigital.com/ai-atlas/tools/gemini/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Tools", "item": "https://www.clarigital.com/ai-atlas/tools/"}, {"@type": "ListItem", "position": 4, "name": "Gemini \u2014 The Complete Guide | AI Atlas", "item": "https://www.clarigital.com/ai-atlas/tools/gemini/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/tools/">Tools</a><span class="sep">/</span><span>Gemini</span></nav>
+    <span class="label-tag">AI Tool Guide</span>
+    <h1>Gemini — The Complete Guide</h1>
+    <p class="hero-lead">Google&#8217;s AI assistant — built into Search, Gmail, Docs, Sheets, and YouTube. The most deeply integrated AI in the world. How it was made, what it does, how to use it in your daily life and work, and full technical depth. Three reading levels. Official sources only.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Gemini</span>
+      <span class="meta-tag mt-gray">Google DeepMind</span>
+      <span class="meta-tag mt-gray">~9,800 words</span>
+      <span class="meta-tag mt-gray">Updated April 2026</span>
+    
+  </div>
+  <div style="margin-top:16px"><a href="https://gemini.google.com" target="_blank" rel="noopener" class="btn-official" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;font-size:.85rem;font-weight:600;padding:10px 20px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Visit Gemini ↗</a><span style="font-size:.75rem;color:var(--muted);margin-left:10px">gemini.google.com</span></div>
+
+  </div>
+</section>
+
+
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<!-- ══ SIMPLE LANE ══ -->
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+<h2 id="s-green-0">What is Gemini?</h2>
+<p>Gemini is Google&#8217;s AI assistant. If you use Gmail, Google Docs, Google Search, or YouTube, you have probably already seen it. It is the AI that can summarise your emails, help you write in Google Docs, answer questions in Search, and understand images and videos — not just text.</p>
+<p>You can use Gemini directly at <strong>gemini.google.com</strong>, or find it built into your existing Google tools.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">The clearest way to understand Gemini</div>
+  <p style="color:var(--fg);margin:0">ChatGPT is a standalone AI you visit separately. Gemini is an AI that lives inside the tools you already use every day. If your life runs on Google — Gmail, Google Drive, Search, YouTube — Gemini is already there, ready to help.</p>
+</div>
+
+<h2 id="s-green-1">Who made Gemini?</h2>
+<p>Gemini was made by <strong>Google DeepMind</strong> — the result of a 2023 merger between Google Brain (Google&#8217;s internal AI research team, founded 2011) and DeepMind (an independent AI lab Google acquired in 2014).</p>
+<p>DeepMind&#8217;s greatest earlier achievement was AlphaGo — the AI that, in 2016, defeated the world champion at Go, a board game considered far too complex for computers to master. That victory, watched by 200 million people, demonstrated that AI could master tasks previously thought to require human intuition.</p>
+<p>The combined Google DeepMind team, headquartered in London and Mountain View, is one of the largest and most highly regarded AI research organisations in the world.</p>
+
+<h2 id="s-green-2">The history of Gemini</h2>
+
+<h3>The long road before Gemini</h3>
+<p>Google had been doing AI research longer than almost anyone. Their researchers invented the transformer architecture in 2017 — the technology that underlies ChatGPT, Claude, and Gemini itself. They developed BERT in 2018, which transformed how Google Search understood queries. They built LaMDA, the conversational AI that became famous in 2022 when a Google engineer publicly claimed it was sentient (Google disagreed and the engineer was eventually dismissed).</p>
+<p>But Google was slow to put a consumer-facing AI in front of the public. When ChatGPT launched in November 2022, Google declared an internal &#8220;code red.&#8221;</p>
+
+<h3>February 2023: Bard — a stumbling start</h3>
+<p>Google rushed to release Bard in February 2023, just weeks after ChatGPT&#8217;s explosive growth. The launch was not smooth. In a promotional video, Bard gave an incorrect answer about the James Webb Space Telescope. Google&#8217;s share price fell 7% — wiping approximately $100 billion from its market value in a single day. It was a painful demonstration of the risks of rushing AI to market.</p>
+<p>Despite the rough start, Bard improved rapidly and was made available in more countries over the following months.</p>
+
+<h3>December 2023: Gemini is unveiled</h3>
+<p>On 6 December 2023, Google rebranded and relaunched with Gemini. This was not just a rename — the underlying model was genuinely new and more capable. Gemini was presented as natively multimodal from the ground up (able to understand text, images, audio, video, and code simultaneously) and came in three sizes: Ultra (the most capable), Pro (the balanced version), and Nano (designed to run on devices like phones).</p>
+<p>The launch demo showed impressive capabilities, but was later revealed to have been edited to make it appear faster and more seamless than it was in real-time use. This created another wave of criticism about Google&#8217;s communication around Gemini.</p>
+
+<h3>February 2024: Bard becomes Gemini</h3>
+<p>Google retired the Bard name entirely. The product became Gemini. The app launched on Android and iOS. Gemini Advanced — powered by the Ultra model — launched as part of Google One AI Premium at $19.99/month.</p>
+
+<h3>May 2024: Gemini 1.5 — the million-token breakthrough</h3>
+<p>Gemini 1.5 Pro introduced a context window of up to one million tokens — by far the largest available from any commercial AI at the time. To put this in perspective: one million tokens is roughly equivalent to one hour of video, 11 hours of audio, 30,000 lines of code, or 700,000 words of text — all held in a single conversation. This was a genuine technical achievement, made possible by a new architecture called Multi-Head Latent Attention.</p>
+
+<h3>2024–2025: Deep Google integration</h3>
+<p>Gemini becomes embedded throughout Google&#8217;s products. Gemini in Gmail can summarise email threads and draft replies. Gemini in Google Docs can write, improve, and summarise documents. Gemini in Google Sheets can analyse data and generate formulas. Gemini in Google Meet generates meeting notes. Google Search begins showing AI Overviews — Gemini-generated summaries at the top of search results.</p>
+
+<h3>December 2024: Gemini 2.0</h3>
+<p>Gemini 2.0 Flash launches as the new standard model — faster, more capable, and with improved reasoning. Google positions 2.0 as the foundation for &#8220;agentic&#8221; AI — capable of taking multi-step actions on behalf of users across Google&#8217;s ecosystem. Project Astra (a research prototype demonstrating real-time visual AI interaction) and Project Mariner (an agent that browses the web) are demonstrated.</p>
+
+<h3>2025–2026: Gemini 2.5</h3>
+<p>Gemini 2.5 Pro, released in 2025, becomes Google&#8217;s frontier model — achieving top rankings on multiple coding, reasoning, and mathematical benchmarks. It features deep thinking capabilities similar to Claude 3.7&#8217;s extended thinking and OpenAI&#8217;s o1.</p>
+
+<h2 id="s-green-3">What makes Gemini different?</h2>
+
+<div class="callout callout-simple">
+  <div class="callout-head">The thing that makes Gemini genuinely unique</div>
+  <p style="color:var(--fg);margin:0">Gemini is the only major AI that lives inside your existing Google tools. If your emails are in Gmail, your documents in Google Docs, your calendar in Google Calendar — Gemini can see all of it (with your permission) and help you across all of it. No other AI assistant has this level of integration with tools that hundreds of millions of people already use every day.</p>
+</div>
+
+<h2 id="s-green-4">Practical uses — real examples</h2>
+
+<h3>In Gmail</h3>
+<p>Open any email thread. Click the Gemini icon. Ask: &#8220;Summarise this thread and tell me what I need to respond to.&#8221; Or click &#8220;Help me write&#8221; and describe what you want to say — Gemini drafts the reply.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Gmail prompt</div>
+  <div class="prompt-text">Summarise this email thread. What has been decided? What is still outstanding? What do I need to respond to, and by when?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>In Google Docs</h3>
+<p>Open any document. Click &#8220;Help me write&#8221; or &#8220;Help me improve.&#8221; Describe what you need — Gemini writes or rewrites directly in the document.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Google Docs prompt</div>
+  <div class="prompt-text">Improve this document for clarity and flow. Keep the original meaning. Make the writing more direct and remove any unnecessary words. Suggest a stronger opening if the current one is weak.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>In Google Search</h3>
+<p>When you search on Google, you may see an &#8220;AI Overview&#8221; at the top — a Gemini-generated summary with sources. You can also type more complex questions and get detailed AI-assisted answers.</p>
+
+<h3>Uploading images and documents</h3>
+<p>At gemini.google.com, you can upload photos, PDFs, or documents and ask questions about them. Upload a receipt and ask what you spent on food last month. Upload a document and ask for a summary. Upload a photo of a plant and ask what it is.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Image analysis prompt</div>
+  <div class="prompt-text">Here is a photo of [describe what you uploaded]. Please: describe what you see in detail, identify the key elements, and answer my specific question about it: [your question].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h2 id="s-green-5">Free vs paid</h2>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 24px">
+  <div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.75rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Free (Gemini)</div>
+    <ul style="list-style:none;font-size:.85rem;color:var(--muted)">
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Gemini 2.0 Flash</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Image uploads</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Google Search integration</li>
+      <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#EF4444">&#10007;</span> Usage limits</li>
+    </ul>
+  </div>
+  <div style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.75rem;font-weight:700;color:#10B981;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Google One AI Premium ($19.99/mo)</div>
+    <ul style="list-style:none;font-size:.85rem;color:var(--muted)">
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Gemini 2.5 Pro (most capable)</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Gemini in Gmail, Docs, Sheets, Meet</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> 2TB Google Drive storage</li>
+      <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Deep Research feature</li>
+    </ul>
+  </div>
+</div>
+<p><em>Source: <a href="https://gemini.google.com" target="_blank" style="color:#6366F1">gemini.google.com</a> and <a href="https://one.google.com/about/ai-premium" target="_blank" style="color:#6366F1">one.google.com</a> — April 2026</em></p>
+
+</div>
+
+<!-- ══ WORKING LANE ══ -->
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+<h2 id="s-indigo-0">Using Gemini effectively across Google&#8217;s ecosystem</h2>
+<p>Gemini&#8217;s power compounds when you use it across multiple Google products rather than in isolation. Here is how to integrate it into a real workflow.</p>
+
+<h3>The Google Workspace workflow</h3>
+<p>A practical example: you receive a long email thread about a project. Use Gemini in Gmail to summarise it and extract action items. Open Google Docs and use Gemini to draft a follow-up document. Use Gemini in Sheets to build a tracker for the action items. Use Gemini in Meet to generate notes from the resulting call. This entire workflow stays within Google&#8217;s ecosystem — no copy-pasting between applications.</p>
+
+<h2 id="s-indigo-1">20 high-value prompts for Gemini</h2>
+
+<div class="prompt-box">
+  <div class="prompt-label">1. Email thread summary (Gmail)</div>
+  <div class="prompt-text">Summarise this email thread chronologically. What has been agreed? What is still unresolved? What action do I need to take, and is there a deadline mentioned?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">2. Draft a professional reply (Gmail)</div>
+  <div class="prompt-text">Draft a reply to this email. My response should: acknowledge their message, answer their question about [topic] with [your answer], and close by proposing [next step]. Tone: professional and friendly. Max 150 words.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">3. Improve a document (Google Docs)</div>
+  <div class="prompt-text">Improve this document. Make the writing clearer, more direct, and more engaging. Remove jargon. Strengthen the opening. Improve transitions between sections. Do not change the substance or add new information.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">4. Analyse spreadsheet data (Google Sheets)</div>
+  <div class="prompt-text">Analyse the data in this spreadsheet. Identify: the key trends, any outliers or unusual values, what the data suggests about [business question], and what additional data would help answer [specific question].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">5. Generate a formula (Google Sheets)</div>
+  <div class="prompt-text">Write a Google Sheets formula that: [describe what you want the formula to do in plain language]. Explain what the formula does and how to use it.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">6. Deep Research on a topic</div>
+  <div class="prompt-text">Research [topic] thoroughly. I need to understand: the current state, the key players, recent developments (last 12 months), the main debates or controversies, and the most important things I should know if I&#8217;m [your context — e.g. investing, writing about it, deciding whether to use it]. Cite your sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">7. Understand an image</div>
+  <div class="prompt-text">I have uploaded an image of [describe it briefly]. Please: describe what you see in detail, identify the key elements and their significance, and answer this specific question about it: [your question].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">8. Summarise a YouTube video</div>
+  <div class="prompt-text">Summarise this YouTube video: [paste URL]. What are the main points? What is the speaker&#8217;s core argument or recommendation? What are the 3 most actionable takeaways?</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">9. Plan a project</div>
+  <div class="prompt-text">Help me plan [project]. I need to: [describe goal]. I have [time/resources]. Create a structured plan with phases, key tasks in each phase, dependencies between tasks, and potential risks. Format it so I could use it as a Google Docs working document.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">10. Prepare for a meeting</div>
+  <div class="prompt-text">I have a meeting tomorrow about [topic] with [who]. My goal is [outcome]. Based on what you know about this topic, prepare me: key background I should know, likely discussion points, questions I should ask, and potential objections to my position with responses.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">11. Write presentation speaker notes</div>
+  <div class="prompt-text">Here are my presentation slides/outline: [paste content]. Write speaker notes for each slide. Notes should be: conversational (not read verbatim), contain the key point to make, include a transition to the next slide, and take approximately [time] minutes per slide to deliver.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">12. Understand a complex topic with Google Search integration</div>
+  <div class="prompt-text">Explain [complex topic] to me. I want to understand: what it is, why it matters, how it works in practice, and what I should know about the current state of it. Use recent sources where relevant. Flag where there is genuine debate or uncertainty.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">13. Convert document to structured format</div>
+  <div class="prompt-text">Here is a document/set of notes: [paste content]. Convert it into a structured [format: table / bulleted summary / FAQ / action plan / timeline]. Preserve all important information. Organise it so it is easy to scan and reference quickly.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">14. Brainstorm with constraints</div>
+  <div class="prompt-text">I need ideas for [goal]. Constraints: [list them — budget, time, audience, resources]. Generate 10 ideas ranging from conservative/safe to creative/ambitious. For each, give a one-sentence description and flag the main risk or challenge.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">15. Write a job description</div>
+  <div class="prompt-text">Write a job description for [role] at [type of company]. The role involves: [key responsibilities]. We are looking for someone with [key qualities — not just skills]. Tone: [professional/conversational/startup]. Include: role overview, responsibilities, requirements, what we offer. Make it appealing to strong candidates, not just a list of demands.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">16. Fact-check with sources</div>
+  <div class="prompt-text">I have heard/read the following claim: [state the claim]. Is this accurate? What does the evidence say? Please search for current, reliable sources and tell me: whether this is supported, what the nuances or caveats are, and where I can verify this myself.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">17. Create a study schedule</div>
+  <div class="prompt-text">I need to study for [exam/subject] in [time available]. I currently know [describe your level]. Create a day-by-day study plan. Include: what to cover each day, how long to spend, practice activities, and a review schedule in the final week. Be realistic about what is achievable.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">18. Analyse a business situation</div>
+  <div class="prompt-text">Here is a business situation I am facing: [describe it]. Analyse it using a structured framework. Identify: the core problem, contributing factors, options available, the tradeoffs of each option, and your recommendation. Be specific — not generic strategy consulting language.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">19. Gemini API — basic call</div>
+  <div class="prompt-text">Write Python code using the Google Generative AI library to: [describe your task]. Use the gemini-2.0-flash model. Include error handling. Add comments explaining each part of the code.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">20. Long document analysis (1M token context)</div>
+  <div class="prompt-text">I am going to share a very long document with you. Please read the entire thing carefully before responding. After reading: summarise the main argument in 3 paragraphs, identify the 5 most important claims, note any internal contradictions or unsupported assertions, and answer these specific questions: [list your questions].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+</div>
+
+<!-- ══ DEEP LANE ══ -->
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+<h2 id="s-red-0">Architecture: natively multimodal from the ground up</h2>
+<p>Gemini was designed from the outset as a natively multimodal model — meaning it processes text, images, audio, video, and code through a single unified architecture rather than separate specialist models. This contrasts with GPT-4, which added vision as a modality after the fact via a separate vision encoder.</p>
+<p>The Gemini technical report describes the architecture as a transformer-based model with modifications to efficiently handle multimodal inputs. The model uses a shared vocabulary across modalities rather than separate tokenisation pipelines for each input type.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">Gemini Team, Google (2023). &#8220;Gemini: A Family of Highly Capable Multimodal Models.&#8221; <a href="https://arxiv.org/abs/2312.11805" target="_blank" style="color:#EF4444">arxiv.org/abs/2312.11805</a></p>
+</div>
+
+<h3>The million-token context: Multi-Head Latent Attention</h3>
+<p>Gemini 1.5&#8217;s 1M token context window was achieved through a mixture-of-experts (MoE) architecture combined with a novel attention mechanism. Standard transformer attention scales quadratically with sequence length — making million-token contexts computationally infeasible with conventional approaches. Gemini 1.5 uses sparse attention patterns and MoE routing to achieve linear-ish scaling, making long-context processing practical.</p>
+<p>The Gemini 1.5 technical report demonstrates the model performing tasks that require integrating information across the full context window — including identifying a specific scene in a 3-hour film given only a sketch, and retrieving specific information from a 10 million token codebase.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">Gemini Team, Google (2024). &#8220;Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context.&#8221; <a href="https://arxiv.org/abs/2403.05530" target="_blank" style="color:#EF4444">arxiv.org/abs/2403.05530</a></p>
+</div>
+
+<h3>Gemini 2.0 and agentic AI</h3>
+<p>Gemini 2.0 is positioned as Anthropic&#8217;s foundation for agentic applications — AI systems that take multi-step actions in the world rather than just generating text. Google&#8217;s Project Astra prototype demonstrates real-time visual understanding and memory across sessions. Project Mariner demonstrates browser-based agentic tasks. These capabilities are built on Gemini&#8217;s native tool use (the ability to call external APIs and services) and its spatial reasoning over visual inputs.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">Google DeepMind (2024). &#8220;Gemini 2.0: Our new AI model for the agentic era.&#8221; <a href="https://blog.google/technology/google-deepmind/google-gemini-ai-update-december-2024/" target="_blank" style="color:#EF4444">blog.google/technology/google-deepmind</a></p>
+</div>
+
+<h3>Gemini API — technical reference</h3>
+
+<div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:1.25rem;margin:1.2rem 0;overflow-x:auto">
+  <div style="font-size:.68rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem">Basic API call (Python)</div>
+  <pre style="font-family:monospace;font-size:.82rem;color:var(--fg);line-height:1.6;margin:0;white-space:pre-wrap">import google.generativeai as genai
+
+genai.configure(api_key="your-api-key")
+model = genai.GenerativeModel("gemini-2.0-flash")
+
+response = model.generate_content(
+    "Explain transformer architecture simply."
+)
+print(response.text)</pre>
+</div>
+
+<p>Available models (April 2026): <code style="background:rgba(99,102,241,.12);padding:2px 6px;border-radius:3px;font-family:monospace;font-size:.85rem">gemini-2.5-pro</code>, <code style="background:rgba(99,102,241,.12);padding:2px 6px;border-radius:3px;font-family:monospace;font-size:.85rem">gemini-2.0-flash</code>, <code style="background:rgba(99,102,241,.12);padding:2px 6px;border-radius:3px;font-family:monospace;font-size:.85rem">gemini-1.5-pro</code>. Full reference: <a href="https://ai.google.dev/gemini-api/docs" target="_blank" style="color:#6366F1">ai.google.dev/gemini-api/docs</a></p>
+
+</div>
+
+</div>
+
+<!-- SIDEBAR -->
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Gemini?</a><a href="#s-green-1">Who made Gemini?</a><a href="#s-green-2">The history of Gemini</a><a href="#s-green-3">What makes Gemini different?</a><a href="#s-green-4">Practical uses — real examples</a><a href="#s-green-5">Free vs paid</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Using Gemini effectively across Google&amp;#8217;s ecosyst</a><a href="#s-indigo-1">20 high-value prompts for Gemini</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Architecture: natively multimodal from the ground up</a></div></div>
+  <div class="sidebar-card">
+    <h4>Quick facts</h4>
+    <div style="font-size:.82rem;color:var(--muted);line-height:1.7">
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">Google DeepMind</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Launched</span><span style="color:var(--fg);font-weight:500">Dec 2023</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Current model</span><span style="color:var(--fg);font-weight:500">Gemini 2.5 Pro</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Context window</span><span style="color:var(--fg);font-weight:500">1M+ tokens</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Free tier</span><span style="color:#10B981;font-weight:500">Yes</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Paid plan</span><span style="color:var(--fg);font-weight:500">$19.99/month</span></div>
+    </div>
+  </div>
+  <div class="sidebar-card">
+    <h4>Official sources</h4>
+    <a href="https://gemini.google.com" class="sidebar-link" target="_blank">gemini.google.com</a>
+    <a href="https://ai.google.dev" class="sidebar-link" target="_blank">Google AI Developer</a>
+    <a href="https://arxiv.org/abs/2312.11805" class="sidebar-link" target="_blank">Gemini technical report</a>
+    <a href="https://arxiv.org/abs/2403.05530" class="sidebar-link" target="_blank">Gemini 1.5 paper</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Compare</h4>
+    <a href="/ai-atlas/tools/chatgpt/" class="sidebar-link">ChatGPT (OpenAI)</a>
+    <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude (Anthropic)</a>
+    <a href="/ai-atlas/tools/copilot/" class="sidebar-link">Copilot (Microsoft)</a>
+    <a href="/ai-atlas/which-ai/" class="sidebar-link">Which AI to use?</a>
+  </div>
+</div>
+
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),
+      drawer=document.getElementById('navDrawer'),
+      close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+// Lane switcher
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+
+}
+// Copy prompt
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';
+    setTimeout(function(){btn.textContent=orig;},2000);
+  });
+}
+// Init first lane on page load
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

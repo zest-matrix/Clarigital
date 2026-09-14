@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Payments and Reconciliation | Clarigital</title>
+<meta name="description" content="Matching engines and exception handling — tolerance bands, one-to-many matching, UPI dispute rails, ledger design and chargeback economics.">
+<link rel="canonical" href="/fintech-ai/payments-reconciliation/">
+<meta property="og:type" content="article"><meta property="og:title" content="Payments and Reconciliation">
+<meta property="og:description" content="Matching engines and exception handling — tolerance bands, one-to-many matching, UPI dispute rails, ledger design and chargeback economics."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/payments-reconciliation/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Payments and Reconciliation">
+<meta name="twitter:description" content="Matching engines and exception handling — tolerance bands, one-to-many matching, UPI dispute rails, ledger design and chargeback economics."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Payments and Reconciliation", "description": "Matching engines and exception handling \u2014 tolerance bands, one-to-many matching, UPI dispute rails, ledger design and chargeback economics.", "url": "https://www.clarigital.com/fintech-ai/payments-reconciliation/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Payments and Reconciliation", "item": "https://www.clarigital.com/fintech-ai/payments-reconciliation/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h4{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2,#243044)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;align-items:center;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green,#10B981);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo,#6366F1);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber,#F59E0B);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint,#64748b)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+</style>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><span class="sep">&rsaquo;</span><span>Payments and Reconciliation</span></nav>
+  <div class="label-tag">Module 05</div>
+  <div class="ft-tag">Fintech AI</div><h1>Payments and Reconciliation</h1>
+  <p class="hero-lead">Proving where the money actually is. This module covers the matching cascade, tolerance design, one-to-many settlement matching, the exception taxonomy, India&rsquo;s URCS and TAT dispute rails, double-entry ledger design, and the ways a reconciliation silently goes wrong while reporting a perfect match rate.</p>
+  <div class="art-meta"><span class="meta-tag">Verified May 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>What reconciliation actually is</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>Why it is harder than matching two lists</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>What AI can and cannot do here</a><a href="#s-green-3"><span class="tdot" style="background:var(--green)"></span>The structural fact: money moves on a different clock</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>The matching cascade</a><a class="sub" href="#s-indigo-rule"><span class="tdot" style="background:var(--indigo)"></span>Record which rule fired</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>One-to-many and the ambiguity rule</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>The exception taxonomy</a><a class="sub" href="#s-indigo-unapplied"><span class="tdot" style="background:var(--indigo)"></span>The one people underestimate</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>India: the dispute and settlement rails</a><a class="sub" href="#s-indigo-tat"><span class="tdot" style="background:var(--indigo)"></span>Turn-around time</a><a class="sub" href="#s-indigo-urcs"><span class="tdot" style="background:var(--indigo)"></span>URCS, UDIR and the TCC/RET mechanism</a><a class="sub" href="#s-indigo-deemed"><span class="tdot" style="background:var(--indigo)"></span>The deemed-acceptance trap that was fixed</a><a class="sub" href="#s-indigo-escalation"><span class="tdot" style="background:var(--indigo)"></span>Customer-facing timelines</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>The registry</a><a href="#s-indigo-5"><span class="tdot" style="background:var(--indigo)"></span>A prompt for designing your reconciliation</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Design the ledger so breaks cannot happen</a><a class="sub" href="#s-amber-idem"><span class="tdot" style="background:var(--amber)"></span>Idempotency is the one to get right first</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>Measuring it honestly</a><a class="sub" href="#s-amber-tolerance"><span class="tdot" style="background:var(--amber)"></span>The way auto-match rate gets gamed</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Disputes and chargebacks as a system</a><a class="sub" href="#s-amber-lifecycle"><span class="tdot" style="background:var(--amber)"></span>The lifecycle</a><a class="sub" href="#s-amber-evidence"><span class="tdot" style="background:var(--amber)"></span>Where AI genuinely helps</a><a class="sub" href="#s-amber-econ"><span class="tdot" style="background:var(--amber)"></span>The economics people get wrong</a><a href="#s-amber-3"><span class="tdot" style="background:var(--amber)"></span>Where reconciliation silently fails</a><a href="#s-amber-4"><span class="tdot" style="background:var(--amber)"></span>The audit trail, and where this module ends</a><a class="sub" href="#s-amber-handoff"><span class="tdot" style="background:var(--amber)"></span>Where this module ends</a></div></div>
+    
+    
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<div class="note"><span class="note-lbl">Build sheet</span><p>Every tool for this module, how to use each one, what it costs, the best combinations and three recommended builds: <a href="/fintech-ai/payments-reconciliation/build-sheet/"><strong>Payments Build Sheet &rarr;</strong></a></p></div><h2 id="s-green-0">What reconciliation actually is</h2>
+<p>You think you moved money. The bank thinks something happened. Your ledger says one thing, the settlement file says another. Reconciliation is the process of proving those views agree &rsquo; and finding the ones that do not.</p><p>Every payment touches at least three records:</p><ol><li><strong>Your ledger</strong> — what your system believes happened</li><li><strong>The processor or scheme</strong> — what the payment rail reports</li><li><strong>The bank account</strong> — what money actually arrived or left</li></ol><p>When all three agree, nothing needs doing. When they disagree, someone&rsquo;s money is in the wrong place and it is your problem to find out whose.</p><div class="note"><span class="note-lbl">Note</span><p>This is the least glamorous module in the section and the one that most often decides whether a fintech survives its first audit. A company can have excellent fraud detection and a beautiful app, and still fail because it cannot prove where its customers&rsquo; money is.</p></div>
+<h2 id="s-green-1">Why it is harder than matching two lists</h2>
+<p>If every payment had a unique reference that appeared identically in all three systems, this would be a database join. It does not.</p><table><tr><th>What goes wrong</th><th>Why</th></tr><tr><td><strong>Timing differences</strong></td><td>A transaction happens on Tuesday and settles on Thursday. Both records are correct; they disagree on Wednesday.</td></tr><tr><td><strong>Netting</strong></td><td>The processor settles 400 transactions as one bank credit, minus fees. One deposit, four hundred records.</td></tr><tr><td><strong>Fees deducted at source</strong></td><td>You expected ₹10,000; ₹9,823 arrived. The difference is a fee you have to derive.</td></tr><tr><td><strong>Partial payments</strong></td><td>One invoice paid across three transfers. Or three invoices paid with one lump sum.</td></tr><tr><td><strong>Missing references</strong></td><td>The customer paid with no reference at all, which is extremely common.</td></tr><tr><td><strong>Reversals and refunds</strong></td><td>Which original does this refund belong to? Often not stated.</td></tr><tr><td><strong>Currency and rounding</strong></td><td>Conversion applied at a rate you did not choose, rounded in a direction you did not pick.</td></tr></table><p>The last one on that list &rsquo; a payment with no reference &rsquo; is where most reconciliation software quietly fails.</p>
+<h2 id="s-green-2">What AI can and cannot do here</h2>
+<table><tr><th>Task</th><th>How well AI does it</th></tr><tr><td>Match transactions with clean references</td><td><strong>Trivially.</strong> Deterministic rules handle this; no AI needed.</td></tr><tr><td>Match with tolerance for timing and rounding</td><td><strong>Very well.</strong> Still rules, just better rules.</td></tr><tr><td>Match a payment with no reference to an open invoice</td><td><strong>Well.</strong> Amount, timing, payer history, partial-text similarity. This is where AI earns its place.</td></tr><tr><td>Many-to-many matching</td><td><strong>Reasonably.</strong> Combinatorially hard and the main source of residual exceptions.</td></tr><tr><td>Explain why two records did not match</td><td><strong>Well.</strong> Genuinely useful for the exception queue.</td></tr><tr><td>Decide that a difference is acceptable</td><td><strong>It should not.</strong> That is a write-off decision with accounting consequences.</td></tr><tr><td>Sign off a reconciliation</td><td><strong>No.</strong> Someone is accountable for that signature.</td></tr></table><div class="warn"><span class="note-lbl">Watch out</span><p>Mature platforms report auto-match rates between 90% and 99%, and published benchmarks show reconciling 1,000 records dropping from around 7.2 hours manually to about 1.6. Those gains are real. They are also gains on <em>matching</em>, not on <em>accountability</em> — do not automate matching and remove human sign-off in the same project.</p></div>
+<h2 id="s-green-3">The structural fact: money moves on a different clock</h2>
+<p>The single idea that makes reconciliation make sense: <strong>the transaction clock and the settlement clock are different clocks.</strong></p><p>A card payment is authorised instantly, captured later, settled in batch, and the money lands in your account a day or more after the customer saw "payment successful". A UPI payment appears instant to the user and still settles between banks in defined cycles.</p><p>Everything in this module follows from that gap. Exceptions are usually not errors — they are records observed at different points on two different clocks. The skill is telling apart a timing difference that will resolve itself from a genuine break that will not.</p><p>In India this is codified. The RBI harmonised turn-around-time framework sets the expected auto-reversal window for failed transactions, and the NPCI dispute rails are built around settlement cycles rather than wall-clock time. Designing your reconciliation on wall-clock assumptions guarantees false exceptions.</p>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">The matching cascade</h2>
+<p>Run the most certain rules first. Every stage you clear cheaply is a stage the expensive ones never have to consider.</p><div class="cb"><div class="cb-head"><span class="cb-lang">The matching cascade — cheapest and most certain first</span><button class="cb-copy" type="button">Copy</button></div><pre><code>RECORDS FROM BOTH SIDES
+  |
+  1. EXACT REFERENCE      unique id present and identical on both sides
+  |                       -&gt; should clear 60-80% instantly. If it does not,
+  |                          fix your reference propagation before anything else.
+  |
+  2. EXACT AMOUNT + DATE  same amount, same value date, one candidate only
+  |
+  3. TOLERANCE MATCH      amount within fee/rounding tolerance,
+  |                       date within settlement window
+  |                       -&gt; tolerances are POLICY, versioned and approved
+  |
+  4. DERIVED-FEE MATCH    expected_gross - known_fee_schedule = observed_net
+  |
+  5. ONE-TO-MANY          one settlement credit vs N transactions
+  |                       -&gt; subset-sum within tolerance
+  |
+  6. MANY-TO-MANY         N payments against M invoices
+  |                       -&gt; the genuinely hard case
+  |
+  7. PROBABILISTIC        no reference: score on amount, timing, payer
+  |                       history, narration similarity
+  |                       -&gt; SUGGESTS a match, a human confirms
+  |
+  8. EXCEPTION            categorise, age, assign an owner
+  |
+NEVER let stages 5-7 auto-post without review until you have measured
+their precision on your own data for at least one full close cycle.</code></pre></div><div class="cb"><div class="cb-head"><span class="cb-lang">Python — deterministic core with tolerance bands</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from dataclasses import dataclass
+from datetime import date, timedelta
+from decimal import Decimal
+
+@dataclass(frozen=True)
+class Tolerance:
+    &quot;&quot;&quot;Tolerances are POLICY. Versioned, approved, logged with every match.
+    Widening a tolerance to clear a backlog is a control change, not a
+    configuration tweak.&quot;&quot;&quot;
+    version: str
+    amount_abs: Decimal        # absolute paise/cents tolerance
+    amount_pct: Decimal        # proportional tolerance for fee variance
+    date_days: int             # settlement window
+
+def amount_within(a: Decimal, b: Decimal, tol: Tolerance) -&gt; bool:
+    diff = abs(a - b)
+    return diff &lt;= tol.amount_abs or (b and diff / abs(b) &lt;= tol.amount_pct)
+
+def match_pass(ledger, bank, tol: Tolerance):
+    &quot;&quot;&quot;Returns (matches, unmatched_ledger, unmatched_bank).
+    Each match records WHICH RULE fired - that is what makes the
+    reconciliation auditable rather than merely complete.&quot;&quot;&quot;
+    matches, used_bank = [], set()
+
+    # Stage 1: exact reference. Highest certainty, do it first.
+    bank_by_ref = {}
+    for b in bank:
+        if b.get(&quot;reference&quot;):
+            bank_by_ref.setdefault(b[&quot;reference&quot;].strip().upper(), []).append(b)
+
+    for l in ledger:
+        ref = (l.get(&quot;reference&quot;) or &quot;&quot;).strip().upper()
+        cands = [b for b in bank_by_ref.get(ref, []) if id(b) not in used_bank]
+        if ref and len(cands) == 1:
+            b = cands[0]
+            used_bank.add(id(b))
+            matches.append({&quot;ledger&quot;: l, &quot;bank&quot;: b, &quot;rule&quot;: &quot;exact_reference&quot;,
+                            &quot;confidence&quot;: 1.0, &quot;tolerance_version&quot;: tol.version})
+
+    # Stage 2-3: amount + date within tolerance, ONE candidate only.
+    # Ambiguity is an exception, never a guess.
+    rem_l = [l for l in ledger if not any(m[&quot;ledger&quot;] is l for m in matches)]
+    for l in rem_l:
+        cands = [b for b in bank
+                 if id(b) not in used_bank
+                 and amount_within(Decimal(str(l[&quot;amount&quot;])),
+                                   Decimal(str(b[&quot;amount&quot;])), tol)
+                 and abs((l[&quot;value_date&quot;] - b[&quot;value_date&quot;]).days) &lt;= tol.date_days]
+        if len(cands) == 1:
+            b = cands[0]
+            used_bank.add(id(b))
+            exact = Decimal(str(l[&quot;amount&quot;])) == Decimal(str(b[&quot;amount&quot;]))
+            matches.append({&quot;ledger&quot;: l, &quot;bank&quot;: b,
+                            &quot;rule&quot;: &quot;amount_date_exact&quot; if exact else &quot;amount_date_tolerance&quot;,
+                            &quot;difference&quot;: Decimal(str(b[&quot;amount&quot;])) - Decimal(str(l[&quot;amount&quot;])),
+                            &quot;confidence&quot;: 0.95 if exact else 0.85,
+                            &quot;tolerance_version&quot;: tol.version})
+
+    matched_l = {id(m[&quot;ledger&quot;]) for m in matches}
+    return (matches,
+            [l for l in ledger if id(l) not in matched_l],
+            [b for b in bank if id(b) not in used_bank])</code></pre></div><h3 id="s-indigo-rule">Record which rule fired</h3><p>The field that makes a reconciliation auditable is not whether it matched &rsquo; it is <em>why</em>. "Matched by exact reference" and "matched by amount within a 2% tolerance" carry very different confidence, and an auditor will ask you to separate them.</p><div class="note"><span class="note-lbl">Note</span><p>If your exact-reference stage is not clearing the majority of volume, stop building matching logic and go fix reference propagation instead. A reference that survives from your ledger through the processor to the bank statement is worth more than any amount of fuzzy matching downstream.</p></div>
+<h2 id="s-indigo-1">One-to-many and the ambiguity rule</h2>
+<p>A processor settles four hundred transactions as a single bank credit, net of fees. Matching that credit back to its components is a subset-sum problem, and subset-sum is exponential.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Python — one-to-many subset matching (bounded, not brute force)</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from itertools import combinations
+from decimal import Decimal
+
+def subset_match(settlement_amount, candidates, tol, max_items=6, max_combos=50000):
+    &quot;&quot;&quot;A single settlement credit against N underlying transactions.
+    Brute force is 2^N - bound it hard and fall through to exception.
+
+    Returns the UNIQUE subset if exactly one fits. Multiple fits means
+    ambiguity, and ambiguity goes to a human. Picking one arbitrarily
+    is how reconciliations become confidently wrong.&quot;&quot;&quot;
+    target = Decimal(str(settlement_amount))
+    hits, tried = [], 0
+
+    # Prune first: nothing larger than the target can be in the subset
+    pool = sorted((c for c in candidates
+                   if Decimal(str(c[&quot;amount&quot;])) &lt;= target + tol.amount_abs),
+                  key=lambda c: -Decimal(str(c[&quot;amount&quot;])))
+
+    for size in range(1, min(max_items, len(pool)) + 1):
+        for combo in combinations(pool, size):
+            tried += 1
+            if tried &gt; max_combos:
+                return {&quot;status&quot;: &quot;search_exhausted&quot;, &quot;tried&quot;: tried}
+            total = sum(Decimal(str(c[&quot;amount&quot;])) for c in combo)
+            if abs(total - target) &lt;= tol.amount_abs:
+                hits.append(combo)
+                if len(hits) &gt; 1:
+                    return {&quot;status&quot;: &quot;ambiguous&quot;, &quot;candidate_count&quot;: len(hits)}
+
+    if len(hits) == 1:
+        return {&quot;status&quot;: &quot;matched&quot;, &quot;items&quot;: hits[0], &quot;rule&quot;: &quot;one_to_many_subset&quot;}
+    return {&quot;status&quot;: &quot;no_match&quot;}</code></pre></div><p>Two design decisions in that code matter more than the algorithm. <strong>Bound the search</strong>, because an unbounded combinatorial match will hang your close. And <strong>treat ambiguity as an exception</strong> — if more than one subset fits, a human decides. Picking the first fit is how a reconciliation becomes confidently and invisibly wrong.</p><p>In practice, most settlement files include a batch or settlement identifier that makes this unnecessary. Use it if it exists. Subset matching is the fallback for processors whose files do not.</p>
+<h2 id="s-indigo-2">The exception taxonomy</h2>
+<p>Unmatched items are not one thing. Categorising them is what turns a queue into a workflow.</p><table><tr><th>Category</th><th>Meaning</th><th>Typical action</th><th>Ages to</th></tr><tr><td><strong>Timing</strong></td><td>In one system, not yet the other</td><td>Wait for the next cycle</td><td>Auto-resolves, or becomes a real break at T+n</td></tr><tr><td><strong>Fee variance</strong></td><td>Net differs from expected by an undocumented amount</td><td>Reconcile against the fee schedule; if persistent, raise with the processor</td><td>Revenue leakage</td></tr><tr><td><strong>Missing in bank</strong></td><td>Your ledger says paid; no money arrived</td><td>Investigate urgently</td><td>Real loss or a failed payment not handled</td></tr><tr><td><strong>Missing in ledger</strong></td><td>Money arrived you did not expect</td><td>Identify the payer; do not spend it</td><td>Unapplied cash, and a liability</td></tr><tr><td><strong>Amount mismatch</strong></td><td>Both exist, amounts differ beyond tolerance</td><td>Determine which is correct</td><td>Adjustment or dispute</td></tr><tr><td><strong>Duplicate</strong></td><td>Same payment appears twice</td><td>Check idempotency; refund if genuinely double-charged</td><td>Customer complaint</td></tr><tr><td><strong>Ambiguous</strong></td><td>Multiple plausible matches</td><td>Human decision</td><td>Stays until someone decides</td></tr></table><h3 id="s-indigo-unapplied">The one people underestimate</h3><p>"Missing in ledger" — money that arrived and you cannot identify — is the most dangerous category. It looks like a windfall and it is a liability. Somebody paid you for something, and until you know who and why, that money is not yours.</p><p>Unapplied cash sitting in a suspense account for months is a standard audit finding and a standard route to customer complaints, because the customer who paid believes they have paid and your system believes they have not.</p>
+<h2 id="s-indigo-3">India: the dispute and settlement rails</h2>
+<p>Indian payment disputes run on specific infrastructure with specific timing, and the rules changed materially.</p><h3 id="s-indigo-tat">Turn-around time</h3><p>The RBI harmonised turn-around-time framework (circular RBI/2019-20/67, 20 September 2019, as subsequently amended) sets expected auto-reversal windows for failed transactions across payment systems. For failed UPI transactions the auto-reversal expectation is T+1 working day, with compensation payable for delay beyond it.</p><p>Design consequence: a debit with no corresponding credit is not immediately a break. It is an item inside a defined reversal window. Alerting on it at T+0 generates noise; failing to alert at T+2 is a compliance problem.</p><h3 id="s-indigo-urcs">URCS, UDIR and the TCC/RET mechanism</h3><p>UPI disputes are handled through the UPI Dispute Resolution System, with the Unified Dispute and Issue Resolution interface for customer-initiated queries. Two codes do most of the work:</p><ul><li><strong>TCC</strong> — Transaction Credit Confirmation. The beneficiary bank confirms the credit was applied.</li><li><strong>RET</strong> — Return. The beneficiary bank returns the funds because the credit could not be applied.</li></ul><h3 id="s-indigo-deemed">The deemed-acceptance trap that was fixed</h3><p>Worth understanding because it shows how settlement timing becomes a financial risk.</p><p>Previously, a remitting bank could file a chargeback in URCS from T+0 — often before the beneficiary bank had finished reconciling. The beneficiary bank would raise a return, find the chargeback already filed, and the chargeback would close with <em>deemed acceptance</em>. Banks were penalised by the RBI for the resulting mess.</p><p>NPCI revised the framework so that from 15 February 2025, URCS automatically accepts or rejects a chargeback based on the TCC or RET raised by the beneficiary bank in the subsequent settlement cycle — giving the beneficiary bank a cycle to reconcile first. The change applies to bulk upload and UDIR paths rather than front-end dispute options.</p><div class="warn"><span class="note-lbl">Watch out</span><p>The lesson generalises beyond UPI: if your dispute process can conclude before your reconciliation process has run, you will lose money to deemed outcomes. Sequence disputes behind settlement, not in parallel with it.</p></div><h3 id="s-indigo-escalation">Customer-facing timelines</h3><p>RBI data indicates UPI complaints exceeded 1.2 million per month in early 2026, with around 60% being "amount debited but not credited". Customers who are unsatisfied can escalate to the RBI Ombudsman through the CMS portal after the bank window elapses. The Reserve Bank - Integrated Ombudsman Scheme 2026 replaced the 2021 scheme from 1 July 2026, with award limits of up to ₹30 lakh for consequential loss and up to ₹3 lakh for time, expense and harassment.</p><p>Build your internal service levels inside those windows, not up against them.</p>
+<h2 id="s-indigo-4">The registry</h2>
+<div class="reg"><div class="reg-head"><h4>Reconciliation platforms</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">HighRadius<span class="pill p-direct">direct</span></div><div class="d">Enterprise record-to-report and invoice-to-cash. Published auto-match rates in the mid-90s and above. Three-to-six-month implementations; suits large finance operations.</div></div><div class="reg-row"><div class="n">BlackLine<span class="pill p-direct">direct</span></div><div class="d">The incumbent default for Fortune 500 close operations. Mature, heavy, audit-oriented.</div></div><div class="reg-row"><div class="n">Trintech<span class="pill p-direct">direct</span></div><div class="d">Financial close and reconciliation, strong in regulated and SOX environments.</div></div><div class="reg-row"><div class="n">Ledge<span class="pill p-direct">direct</span></div><div class="d">Built for high-volume real-time fintech and marketplace matching. Faster to first production matching than enterprise suites.</div></div><div class="reg-row"><div class="n">Numeric<span class="pill p-direct">direct</span></div><div class="d">AI-native, oriented to modern-stack ERPs and mid-market finance teams.</div></div><div class="reg-row"><div class="n">Kognitos<span class="pill p-direct">direct</span></div><div class="d">Agentic automation across bank matching, AP and AR with a deterministic audit trail.</div></div><div class="reg-row"><div class="n">Nanonets / Osfin / Cointab<span class="pill p-direct">direct</span></div><div class="d">Reconciliation automation with India market presence.</div></div></div><div class="reg"><div class="reg-head"><h4>Payment rails and data sources — India</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">NPCI URCS / UDIR<span class="pill p-indirect">indirect</span></div><div class="d">UPI dispute resolution. Accessed through your sponsor bank or PSP, not directly.</div></div><div class="reg-row"><div class="n">NPCI settlement files<span class="pill p-indirect">indirect</span></div><div class="d">Settlement and raw data files reach you via the sponsor bank or payment aggregator.</div></div><div class="reg-row"><div class="n">RBI CMS portal<span class="pill p-direct">direct</span></div><div class="d">Ombudsman complaint system — customer-facing, and you should monitor what reaches it.</div></div><div class="reg-row"><div class="n">Razorpay / Cashfree / PayU / Paytm PG<span class="pill p-direct">direct</span></div><div class="d">Payment aggregators. Settlement reports and reconciliation APIs; the practical source of truth for most fintechs.</div></div><div class="reg-row"><div class="n">Account Aggregator<span class="pill p-indirect">indirect</span></div><div class="d">Consented bank statement data — usable for reconciliation as well as underwriting.</div></div></div><div class="reg"><div class="reg-head"><h4>Build-your-own components</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">pandas / Polars<span class="pill p-oss">oss</span></div><div class="d">Dataframe matching for moderate volumes. Polars handles larger files materially faster.</div></div><div class="reg-row"><div class="n">DuckDB<span class="pill p-oss">oss</span></div><div class="d">In-process analytical SQL. Excellent for reconciliation joins over large files without a warehouse.</div></div><div class="reg-row"><div class="n">RapidFuzz<span class="pill p-oss">oss</span></div><div class="d">String similarity for narration-based probabilistic matching.</div></div><div class="reg-row"><div class="n">Apache Arrow / Parquet<span class="pill p-oss">oss</span></div><div class="d">Columnar storage for settlement file archives you must retain and re-query.</div></div><div class="reg-row"><div class="n">dbt<span class="pill p-oss">oss</span></div><div class="d">Versioned, tested transformation logic — useful because reconciliation rules are exactly the kind of logic that must be testable.</div></div></div><div class="warn"><span class="note-lbl">Watch out</span><p>Registry reflects what was publicly visible in May 2026. NPCI dispute rules in particular have changed more than once; verify the current circular set with your sponsor bank before designing around any timing assumption.</p></div>
+<h2 id="s-indigo-5">A prompt for designing your reconciliation</h2>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Prompt — paste into any AI</span><button class="cb-copy" type="button">Copy</button></div><pre><code>You are a payments operations lead who has built reconciliation
+for high-volume fintechs.
+
+My situation:
+- Rails I use: [e.g. UPI via Razorpay, cards via a PG, NACH mandates]
+- Daily transaction volume: [number]
+- Settlement pattern: [e.g. T+1 net settlement, gross, multiple]
+- Systems holding records: [ledger, PG dashboard, bank statement, ERP]
+- Current process: [describe, or &quot;spreadsheets&quot;]
+- Team size on reconciliation: [number]
+
+Give me:
+
+1. A matching cascade for MY rails - the specific stages in order,
+   and what share of volume each should clear.
+2. The tolerance bands I should start with for amount and date,
+   with the reasoning for each rail.
+3. My exception categories, and the action and owner for each.
+4. Which exceptions are timing artefacts that will self-resolve, and
+   at what point each becomes a genuine break I must investigate.
+5. The India-specific timing rules I must respect - TAT windows,
+   settlement cycles, dispute sequencing.
+6. What to log so that a year from now I can prove where a specific
+   customer&#x27;s money went.
+7. The three ways this reconciliation will silently go wrong.
+
+Be concrete about numbers and say where they must be calibrated on
+my own settlement data.</code></pre></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Design the ledger so breaks cannot happen</h2>
+<p>Most reconciliation problems are ledger design problems that became visible at settlement. Three decisions prevent the majority of them.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Double-entry ledger — the design that prevents most breaks</span><button class="cb-copy" type="button">Copy</button></div><pre><code>-- Money is never a column you UPDATE. It is a sequence of entries
+-- you APPEND. Balances are derived, never stored as mutable truth.
+
+CREATE TABLE ledger_entry (
+  entry_id        BIGSERIAL PRIMARY KEY,
+  transaction_id  UUID        NOT NULL,   -- groups the legs together
+  account_id      TEXT        NOT NULL,
+  direction       CHAR(2)     NOT NULL CHECK (direction IN (&#x27;DR&#x27;,&#x27;CR&#x27;)),
+  amount_minor    BIGINT      NOT NULL CHECK (amount_minor &gt; 0),
+  currency        CHAR(3)     NOT NULL,
+  effective_at    TIMESTAMPTZ NOT NULL,   -- when it counts (value date)
+  recorded_at     TIMESTAMPTZ NOT NULL DEFAULT now(),  -- when we learned
+  idempotency_key TEXT        NOT NULL,
+  external_ref    TEXT,                   -- the reference that must survive
+  metadata        JSONB       NOT NULL DEFAULT &#x27;{}&#x27;,
+  UNIQUE (idempotency_key)
+);
+
+-- Every transaction must balance. Enforce it, do not assume it.
+CREATE OR REPLACE FUNCTION assert_balanced(txn UUID) RETURNS VOID AS $$
+DECLARE d BIGINT; c BIGINT;
+BEGIN
+  SELECT COALESCE(SUM(amount_minor) FILTER (WHERE direction=&#x27;DR&#x27;),0),
+         COALESCE(SUM(amount_minor) FILTER (WHERE direction=&#x27;CR&#x27;),0)
+    INTO d, c FROM ledger_entry WHERE transaction_id = txn;
+  IF d &lt;&gt; c THEN
+    RAISE EXCEPTION &#x27;Unbalanced transaction %: DR=% CR=%&#x27;, txn, d, c;
+  END IF;
+END; $$ LANGUAGE plpgsql;
+
+-- THREE THINGS THAT PREVENT MOST RECONCILIATION PAIN:
+--
+-- 1. amount_minor as BIGINT in the smallest unit (paise, cents).
+--    Never floating point. Never. 0.1 + 0.2 != 0.3 and you will
+--    discover this during a month-end close.
+--
+-- 2. effective_at separate from recorded_at. The two clocks from the
+--    Beginner lane, made explicit in the schema. This is what lets you
+--    answer &quot;what did we believe on Tuesday&quot; versus &quot;what was true&quot;.
+--
+-- 3. idempotency_key UNIQUE. A retried webhook, a double-clicked
+--    button, a replayed settlement file - all become no-ops instead
+--    of duplicate money.</code></pre></div><h3 id="s-amber-idem">Idempotency is the one to get right first</h3><p>Payment systems retry. Webhooks arrive twice. Settlement files get reprocessed after a partial failure. Networks time out after the money moved but before you heard about it.</p><p>Without an idempotency key on the write path, every one of those becomes a duplicate ledger entry, and duplicates are the hardest reconciliation break to unwind because both entries look legitimate.</p><div class="note"><span class="note-lbl">Note</span><p>The rule worth adopting: a payment is identified by a key the <em>caller</em> supplies, not by one you generate. If the caller retries with the same key you return the original result rather than creating a second transaction. This single pattern removes an entire category of exception.</p></div>
+<h2 id="s-amber-1">Measuring it honestly</h2>
+<p>Auto-match rate is the number everyone quotes and it is easy to make look good.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Reconciliation metrics that mean something</span><button class="cb-copy" type="button">Copy</button></div><pre><code>1. AUTO-MATCH RATE, by rail and by rule
+   matched automatically / total items
+   Mature platforms report 90-99%. Track it MONTHLY by rail - a drop
+   in one rail is a signal, a blended figure hides it.
+   Break it down by RULE: a high rate achieved mostly through wide
+   tolerances is not the same as one achieved by exact reference.
+
+2. EXCEPTION AGING
+   The single most important number. No unmatched item older than
+   30 days without a documented owner and a plan.
+   Report the distribution, not the average: 0-3d / 4-7d / 8-30d / 30d+
+
+3. VALUE AT RISK IN EXCEPTIONS
+   Sum of unmatched amounts, by category and age.
+   500 exceptions worth Rs 200 each is an annoyance.
+   3 exceptions worth Rs 40 lakh each is an incident.
+
+4. REVIEWER HOURS: PREPARING vs APPROVING
+   Before automation the ratio is heavily weighted to preparing.
+   It should invert within two close cycles. If it has not, the
+   automation moved work rather than removing it.
+
+5. DAYS TO RECONCILE
+   Target a 50% reduction within two close cycles.
+
+WHAT NOT TO REPORT AS SUCCESS
+  - auto-match rate alone, with no rule breakdown
+  - exceptions CLOSED, with no distinction between resolved
+    and written off
+  - a blended rate across rails with very different profiles</code></pre></div><h3 id="s-amber-tolerance">The way auto-match rate gets gamed</h3><p>Widen the tolerances and the auto-match rate rises immediately. The exceptions do not disappear &rsquo; they get absorbed into matches that are slightly wrong, and the error accumulates somewhere invisible.</p><p>This is why tolerance changes should be treated as control changes: versioned, approved, dated, with the auto-match rate reported <em>before and after</em> so the improvement is attributable to the right cause.</p><div class="warn"><span class="note-lbl">Watch out</span><p>If auto-match rate improves sharply and exception value does not fall proportionately, someone widened a tolerance. Ask.</p></div>
+<h2 id="s-amber-2">Disputes and chargebacks as a system</h2>
+<p>A dispute is a reconciliation problem with a deadline and a counterparty.</p><h3 id="s-amber-lifecycle">The lifecycle</h3><ol><li><strong>Trigger</strong> — customer complaint, failed credit, or a scheme-initiated claim</li><li><strong>Evidence assembly</strong> — the transaction record, the authorisation, delivery proof, prior history</li><li><strong>Representment or acceptance</strong> — contest with evidence, or accept the loss</li><li><strong>Resolution</strong> — funds move, or do not</li><li><strong>Post-mortem</strong> — feed the outcome back into fraud and product</li></ol><h3 id="s-amber-evidence">Where AI genuinely helps</h3><p>Evidence assembly is the slow part and it is mechanical. Pulling the transaction, the device fingerprint, the delivery confirmation, the customer contact history and prior dispute record into a single pack is exactly the kind of retrieval task that should be automated.</p><p>Deciding whether to contest is not. That is a commercial judgement about the cost of representment against the probability of winning against the customer relationship.</p><h3 id="s-amber-econ">The economics people get wrong</h3><p>Contesting a dispute has a cost &rsquo; staff time, sometimes a scheme fee, sometimes a penalty if you lose. For small amounts, accepting is frequently the rational answer and teams contest anyway out of principle.</p><p>Model it: expected value of contesting is (probability of winning × amount) minus cost of representment. Set a threshold below which you accept automatically, and review it quarterly against actual win rates rather than assumed ones.</p><div class="note"><span class="note-lbl">Note</span><p>Watch the dispute ratio as a separate metric from the dispute count. Schemes and regulators care about the ratio, and a rising ratio with flat volume signals a product problem — not a fraud problem — far earlier than revenue figures will.</p></div>
+<h2 id="s-amber-3">Where reconciliation silently fails</h2>
+<table><tr><th>Failure</th><th>How it looks</th><th>How to catch it</th></tr><tr><td><strong>Silent file truncation</strong></td><td>Settlement file arrives short; everything in it reconciles perfectly</td><td>Reconcile the control totals in the file header, not just the rows</td></tr><tr><td><strong>Timezone drift</strong></td><td>Items land in the wrong day; month-end is persistently wrong by a few items</td><td>Store everything in UTC with an explicit value date; never infer</td></tr><tr><td><strong>Float arithmetic</strong></td><td>Tiny unexplained differences that accumulate</td><td>Integer minor units everywhere. This is not negotiable.</td></tr><tr><td><strong>Tolerance creep</strong></td><td>Auto-match rate quietly improving over quarters</td><td>Version tolerances; alert on changes</td></tr><tr><td><strong>Suspense account growth</strong></td><td>Unapplied cash accumulating unnoticed</td><td>Age and value the suspense balance in the same report as exceptions</td></tr><tr><td><strong>Reprocessed files</strong></td><td>A file re-ingested after a failure creates duplicates</td><td>Idempotency on file ingestion as well as on transactions</td></tr><tr><td><strong>Fee schedule drift</strong></td><td>Processor changes fees; your derived-fee matching degrades</td><td>Track fee variance as a monitored metric, not an exception category</td></tr></table><div class="warn"><span class="note-lbl">Watch out</span><p>Control totals deserve particular attention. A settlement file that is missing its last 200 rows will reconcile with a perfect match rate on the rows present. Nothing looks wrong. The only defence is reconciling against the count and total the file itself declares.</p></div>
+<h2 id="s-amber-4">The audit trail, and where this module ends</h2>
+<div class="cb"><div class="cb-head"><span class="cb-lang">JSON — reconciliation run record</span><button class="cb-copy" type="button">Copy</button></div><pre><code>{
+  &quot;run_id&quot;: &quot;rec_2026-05-23_upi_01&quot;,
+  &quot;rail&quot;: &quot;upi&quot;,
+  &quot;period&quot;: {&quot;from&quot;: &quot;2026-05-22T00:00:00Z&quot;, &quot;to&quot;: &quot;2026-05-22T23:59:59Z&quot;},
+  &quot;executed_at&quot;: &quot;2026-05-23T04:15:00Z&quot;,
+
+  &quot;sources&quot;: [
+    {&quot;name&quot;: &quot;internal_ledger&quot;, &quot;records&quot;: 41288, &quot;control_total_minor&quot;: 918442100},
+    {&quot;name&quot;: &quot;psp_settlement_file&quot;, &quot;file&quot;: &quot;stl_20260522.csv&quot;,
+     &quot;records&quot;: 41290, &quot;declared_records&quot;: 41290,
+     &quot;control_total_minor&quot;: 916118400, &quot;checksum&quot;: &quot;sha256:9a1c...&quot;},
+    {&quot;name&quot;: &quot;bank_statement&quot;, &quot;records&quot;: 37, &quot;control_total_minor&quot;: 916118400}
+  ],
+  &quot;control_total_check&quot;: &quot;passed&quot;,
+
+  &quot;configuration&quot;: {
+    &quot;cascade_version&quot;: &quot;recon-cascade-v9&quot;,
+    &quot;tolerance_version&quot;: &quot;tol-v4&quot;,
+    &quot;tolerances&quot;: {&quot;amount_abs_minor&quot;: 100, &quot;amount_pct&quot;: 0.002, &quot;date_days&quot;: 2},
+    &quot;tolerance_approved_by&quot;: &quot;finance_controller_2026-04-02&quot;
+  },
+
+  &quot;results&quot;: {
+    &quot;matched&quot;: 41205,
+    &quot;by_rule&quot;: {&quot;exact_reference&quot;: 39880, &quot;amount_date_exact&quot;: 1102,
+                &quot;amount_date_tolerance&quot;: 198, &quot;one_to_many_subset&quot;: 25},
+    &quot;auto_match_rate&quot;: 0.998,
+    &quot;exceptions&quot;: 85,
+    &quot;exceptions_by_category&quot;: {&quot;timing&quot;: 61, &quot;fee_variance&quot;: 14,
+                               &quot;missing_in_ledger&quot;: 7, &quot;ambiguous&quot;: 3},
+    &quot;exception_value_minor&quot;: 2323700
+  },
+
+  &quot;aging&quot;: {&quot;0_3d&quot;: 61, &quot;4_7d&quot;: 17, &quot;8_30d&quot;: 6, &quot;over_30d&quot;: 1,
+            &quot;over_30d_owner&quot;: &quot;ops_lead_04&quot;, &quot;over_30d_plan_ref&quot;: &quot;JIRA-8812&quot;},
+
+  &quot;signoff&quot;: {&quot;prepared_by&quot;: &quot;system&quot;, &quot;reviewed_by&quot;: &quot;analyst_12&quot;,
+              &quot;approved_by&quot;: &quot;finance_controller&quot;, &quot;approved_at&quot;: &quot;...&quot;}
+}</code></pre></div><p>Three fields carry disproportionate weight. <code>control_total_check</code>, because it catches truncated files that otherwise reconcile perfectly. <code>by_rule</code>, because it distinguishes a genuinely clean reconciliation from one achieved through wide tolerances. And <code>over_30d_owner</code>, because an aged exception without a named owner is an aged exception nobody is working.</p><h3 id="s-amber-handoff">Where this module ends</h3><ul><li><strong>Fraud detection</strong> is Module 03. A dispute may originate in fraud, but reconciliation is about where the money is, not who took it.</li><li><strong>AML transaction monitoring</strong> is Module 04 and runs on the same transaction data for a different purpose. Share the pipeline, not the logic.</li><li><strong>Customer communication</strong> during a dispute is Customer Operations, and what you may say is constrained by the tipping-off rules in Module 04.</li><li><strong>Core banking and ledger infrastructure</strong> choices are Infrastructure.</li><li><strong>Settlement obligations and TAT compliance</strong> sit in the India regulatory spine page.</li></ul><div class="warn"><span class="note-lbl">Watch out</span><p>Illustrative throughout. A production ledger and reconciliation system handling customer money needs an independent financial controls review, and the ledger schema in particular should be reviewed by someone accountable for the accounting treatment before it holds real balances.</p></div>
+<h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI (Regulation of Payment Aggregators) Directions, 2025</strong> &mdash; PA-O / PA-P / PA-CB, escrow and settlement. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>Payment and Settlement Systems Act, 2007</strong> &mdash; the statutory basis for payment system regulation in India. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>NPCI</strong> &mdash; UPI volumes, dispute handling and settlement mechanics. <a href="https://www.npci.org.in" target="_blank" rel="noopener">www.npci.org.in</a></li><li><span class="src-k src-official">official</span><strong>RB-IOS and the RBI CMS portal</strong> &mdash; the complaint route and award limits. <a href="https://cms.rbi.org.in" target="_blank" rel="noopener">cms.rbi.org.in</a></li></ol><p style="font-size:.8rem;color:var(--muted);margin-top:12px">Tooling, pricing and cost sources for this module are on its build sheet: <a href="/fintech-ai/payments-reconciliation/build-sheet/#sources"><strong>sources &rarr;</strong></a></p><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Regulation in this area is actively developing; the date is part of the claim.</p></div></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=[], secs=[];
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  
+  
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

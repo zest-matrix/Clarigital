@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Learn AI Safety for Families — Free Course | Clarigital</title>
+<meta name="description" content="Free AI Safety for Families course — Beginner to Advanced. Everything parents need to keep their children safe when using AI — the 5 rules explained,...">
+<link rel="canonical" href="/courses/ai-kids-safety/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--green-dim:rgba(16,185,129,.12);
+  --red:#EF4444;--amber:#F59E0B;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;--max:1080px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font)}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg)}
+.nav-links a.active{color:var(--green);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.course-hero{padding:52px 0 40px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:16px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.course-hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.04em;line-height:1.2;margin-bottom:12px}
+.hero-sub{font-size:clamp(.9rem,2vw,1.05rem);color:var(--muted);max-width:620px;line-height:1.75;margin-bottom:20px}
+.hero-outcomes{display:flex;flex-direction:column;gap:7px;margin-bottom:24px;max-width:580px}
+.outcome{display:flex;align-items:flex-start;gap:9px;font-size:.87rem;color:var(--muted)}
+.outcome-check{color:var(--green);flex-shrink:0;margin-top:2px}
+.hero-meta{display:flex;gap:16px;flex-wrap:wrap}
+.hm-item{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:5px}
+.hm-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+
+
+
+
+.track-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}
+
+
+.progress-wrap{margin-bottom:28px}
+.progress-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:7px}
+.progress-bar{height:6px;background:var(--bg2);border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;background:var(--green);border-radius:100px;transition:width .4s ease}
+.lessons{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.lesson{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;transition:border-color .18s}
+.lesson.done{border-color:rgba(16,185,129,.25);background:rgba(16,185,129,.04)}
+.lesson-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;margin-top:2px;transition:all .18s;background:none}
+.lesson.done .lesson-check{background:var(--green);border-color:var(--green)}
+.lesson-check svg{display:none}
+.lesson.done .lesson-check svg{display:block}
+.lesson-body{flex:1}
+.lesson-num{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:3px}
+.lesson-title{font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px;line-height:1.3}
+.lesson-desc{font-size:.83rem;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.lesson-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.lesson-time{font-size:.72rem;color:var(--faint)}
+.lesson-link{font-size:.78rem;font-weight:600;color:var(--indigo);display:flex;align-items:center;gap:4px}
+.lesson-link:hover{color:var(--fg)}
+.track-info{background:var(--bg2);border-radius:10px;padding:14px 18px;margin-bottom:24px;display:flex;gap:20px;flex-wrap:wrap}
+.ti-item{font-size:.8rem;color:var(--muted)}
+.ti-item strong{color:var(--fg);display:block;font-size:.88rem;margin-bottom:2px}
+.quiz-section{margin-top:8px}
+.quiz-toggle{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;cursor:pointer;width:100%;text-align:left;font-family:var(--font);display:flex;align-items:center;justify-content:space-between;transition:border-color .18s}
+.quiz-toggle:hover{border-color:var(--indigo)}
+.quiz-toggle h3{font-size:.93rem;font-weight:700;color:var(--fg)}
+.quiz-toggle .qt-meta{font-size:.78rem;color:var(--muted)}
+.quiz-body{display:block;padding-top:16px}
+html.js .quiz-body{display:none}
+html.js .quiz-body.open{display:block}
+.quiz-opts{display:flex;flex-direction:column;gap:7px}
+.quiz-feedback{font-size:.82rem;margin-top:10px;line-height:1.6;color:var(--muted)}
+.quiz-feedback.ok{color:var(--green)}
+.quiz-feedback.no{color:var(--amber)}
+.quiz-opt.wrong{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.35);color:#F87171}
+.quiz-opt:disabled{cursor:default}
+.qt-arrow{color:var(--muted);font-size:.75rem;flex-shrink:0}
+.quiz-q{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:18px;margin-bottom:12px}
+.quiz-q .qn{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px}
+.quiz-q p{font-size:.9rem;color:var(--fg);margin-bottom:12px;line-height:1.55}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.quiz-opt{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:9px 13px;font-size:.85rem;color:var(--muted);cursor:pointer;text-align:left;font-family:var(--font);transition:all .18s;width:100%}
+.quiz-opt:hover{border-color:var(--indigo);color:var(--fg)}
+.quiz-opt.correct{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);color:var(--green)}
+.quiz-opt.wrong{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);color:var(--red)}
+.quiz-explanation{font-size:.82rem;color:var(--muted);padding:8px 12px;background:var(--bg3);border-radius:6px;margin-top:8px;display:none;line-height:1.6}
+.quiz-explanation.show{display:block}
+.next-cta{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.next-cta h4{font-size:.93rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.next-cta p{font-size:.82rem;color:var(--muted);margin:0}
+.btn-next{background:var(--indigo);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:.83rem;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .18s;white-space:nowrap;display:inline-block}
+.btn-next:hover{opacity:.88}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+/* --- sticky left rail (migrated from top tabs) --- */
+.crs-layout{display:grid;grid-template-columns:232px minmax(0,1fr);gap:38px;align-items:start;margin-top:32px}
+.crs-rail{position:sticky;top:72px;max-height:calc(100vh - 92px);overflow-y:auto;padding-right:4px}
+.crs-rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint,#94a3b8);margin-bottom:10px}
+.track-tabs{display:flex;flex-direction:column;gap:7px;border-bottom:none;margin-top:0}
+.track-tab{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border);border-bottom:1px solid var(--border);border-radius:9px;padding:10px 12px;font-size:.84rem;font-weight:600;color:var(--muted);cursor:pointer;font-family:var(--font);text-align:left;transition:all .16s;white-space:normal;line-height:1.35}
+.track-tab:hover{border-color:var(--muted);color:var(--text,#f1f5f9)}
+.track-tab.active{background:rgba(255,255,255,.04);color:var(--text,#f1f5f9);border-color:currentColor}
+.crs-main{min-width:0}
+
+
+
+@media(max-width:900px){
+ .crs-layout{grid-template-columns:1fr;gap:16px}
+ .crs-rail{position:static;max-height:none;padding-bottom:6px}
+ .track-tabs{flex-direction:row;flex-wrap:wrap}
+ .track-tab{width:auto}
+}
+
+.track-panel{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:46px 0 20px;padding-top:10px;border-top:1px solid var(--border)}.track-panel:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.depth-note{font-size:.79rem;color:var(--faint,#94a3b8)}
+
+.track-progress{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+.tp-bar{flex:1;height:6px;background:var(--bg2);border:1px solid var(--border);border-radius:100px;overflow:hidden}
+.tp-fill{height:100%;background:var(--green);border-radius:100px;transition:width .35s ease}
+#prog-i{background:var(--indigo)}
+#prog-a{background:var(--amber)}
+.tp-label{font-size:.72rem;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.lessons-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.lesson-meta{font-size:.74rem;color:var(--faint)}
+@media(max-width:600px){.track-progress{gap:9px}.tp-label{font-size:.68rem}}
+</style>
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn AI Safety for Families — Free Course, Beginner to Advanced">
+<meta property="og:description" content="Free AI Safety for Families course — Beginner to Advanced. Everything parents need to keep their children safe when using AI — the 5 rules explained,...">
+<meta property="og:url" content="https://www.clarigital.com/courses/ai-kids-safety/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-courses.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Learn AI Safety for Families — Free Course, Beginner to Advanced">
+<meta name="twitter:description" content="Free AI Safety for Families course — Beginner to Advanced. Everything parents need to keep their children safe when using AI — the 5 rules explained,...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-courses.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Course", "name": "Learn AI Safety for Families \u2014 Free Course, Beginner to Advanced", "description": "Free AI Safety for Families course \u2014 Beginner to Advanced. Everything parents need to keep their children safe when using AI \u2014 the 5 rules explained,...", "url": "https://www.clarigital.com/courses/ai-kids-safety/", "provider": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "isAccessibleForFree": true}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Courses", "item": "https://www.clarigital.com/courses/"}, {"@type": "ListItem", "position": 3, "name": "Learn AI Safety for Families \u2014 Free Course, Beginner to Advanced", "item": "https://www.clarigital.com/courses/ai-kids-safety/"}]}</script>
+</head>
+<body>
+<nav class="site-nav" role="navigation"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span></a><div class="nav-search"><svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="search" placeholder="Search 360+ guides" data-search-input autocomplete="off"><div class="search-results" data-search-results></div></div><div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/ai-kids/" style="color:#10B981">AI Kids</a><a href="/courses/" class="active">Courses</a><a href="/about/">About</a></div><button class="nav-ham" id="navHam" aria-label="Open menu"><span></span><span></span><span></span></button></div></nav><div class="nav-drawer" id="navDrawer"><div class="nav-panel"><div class="nav-panel-top"><span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span><button class="nav-close" id="navClose">✕</button></div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a><a href="/codex/" class="di">The Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a></div></div>
+<div class="course-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/courses/">Courses</a><span class="sep">›</span><span>Learn AI Safety for Families</span></nav>
+    <h1>Learn AI Safety for Families</h1>
+    <p class="hero-sub">Everything parents need to keep their children safe when using AI — the 5 rules explained, common risks, platform guidance, and having good conversations.</p>
+    <div class="hero-outcomes"><div class="outcome"><span class="outcome-check">✓</span><span>Understand the specific AI safety risks for children</span></div><div class="outcome"><span class="outcome-check">✓</span><span>Implement the 5 safety rules as genuine habits</span></div><div class="outcome"><span class="outcome-check">✓</span><span>Choose appropriate AI platforms for different ages</span></div><div class="outcome"><span class="outcome-check">✓</span><span>Have productive ongoing conversations about AI with your child</span></div></div>
+    <div class="hero-meta">
+      <span class="hm-item"><span class="hm-dot"></span>Free forever</span>
+      <span class="hm-item"><span class="hm-dot"></span>No signup required</span>
+      <span class="hm-item"><span class="hm-dot"></span>Progress saved locally</span>
+      <span class="hm-item"><span class="hm-dot"></span>15 lessons</span>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="track-info"><p>Three tracks — pick your level. Progress is saved automatically in your browser.</p></div>
+  <div class="crs-layout">
+  <aside class="crs-rail">
+    <div class="crs-rail-title">Your level</div>
+<div class="track-tabs">
+    <button class="track-tab active" id="tab-beginner" onclick="showTrack('beginner')"><span class="track-dot" style="background:var(--green)"></span>Beginner — 3 hrs</button>
+    <button class="track-tab" id="tab-intermediate" onclick="showTrack('intermediate')"><span class="track-dot" style="background:var(--indigo)"></span>Intermediate — 5 hrs</button>
+    <button class="track-tab" id="tab-advanced" onclick="showTrack('advanced')"><span class="track-dot" style="background:var(--amber)"></span>Advanced — 8 hrs</button>
+  </div>
+  </aside>
+  <main class="crs-main">
+
+  <div class="track-panel active" id="track-beginner"><div class="depth-band"><span class="depth-badge" style="color:var(--green)">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+
+    <div class="track-progress"><div class="tp-bar"><div class="tp-fill" id="prog-b" style="width:0%"></div></div><span class="tp-label" id="prog-b-label">0 of 5 complete</span></div>
+    <div class="lessons-list">      <div class="lesson" id="b-l1">
+        <button class="lesson-check" onclick="toggleLesson('b-l1')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 1</div>
+          <div class="lesson-title">Why AI Safety for Children is Different</div>
+          <div class="lesson-desc">How the risks children face with AI differ from adult risks — grooming, data, emotional manipulation, and misinformation.</div>
+          <div class="lesson-footer"><span class="lesson-time">~25 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="b-l2">
+        <button class="lesson-check" onclick="toggleLesson('b-l2')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 2</div>
+          <div class="lesson-title">The 5 Safety Rules — In Depth</div>
+          <div class="lesson-desc">Each rule explained in full — the reasoning, the specific risks it addresses, and how to reinforce it.</div>
+          <div class="lesson-footer"><span class="lesson-time">~30 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="b-l3">
+        <button class="lesson-check" onclick="toggleLesson('b-l3')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 3</div>
+          <div class="lesson-title">Privacy and Children's Data</div>
+          <div class="lesson-desc">What AI tools collect, COPPA and DPDP requirements, and why children should never create AI accounts.</div>
+          <div class="lesson-footer"><span class="lesson-time">~25 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="b-l4">
+        <button class="lesson-check" onclick="toggleLesson('b-l4')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 4</div>
+          <div class="lesson-title">Age-Appropriate AI Use</div>
+          <div class="lesson-desc">Which AI tools are appropriate for which ages — and the platforms to avoid entirely for children under 13.</div>
+          <div class="lesson-footer"><span class="lesson-time">~25 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="b-l5">
+        <button class="lesson-check" onclick="toggleLesson('b-l5')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 5</div>
+          <div class="lesson-title">Emotional Manipulation Risks</div>
+          <div class="lesson-desc">Companion AI, relationship chatbots, and the specific risk of children forming inappropriate attachments to AI.</div>
+          <div class="lesson-footer"><span class="lesson-time">~20 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div></div>
+        <div class="quiz-section">
+      <button class="quiz-toggle" onclick="toggleQuiz('b-quiz')">
+        <h3>Test your understanding</h3><span class="qt-arrow">▼</span>
+      </button>
+      <div class="quiz-body" id="b-quiz"><div class="quiz-q"><p class="qtext">Why is supervised AI use important for children?</p><div class="quiz-opts"><button class="quiz-opt" onclick="checkAnswer(this,false)">Adults know more about AI</button><button class="quiz-opt" onclick="checkAnswer(this,true)">Children are developmentally less equipped to recognise manipulation, evaluate credibility, or maintain appropriate emotional distance from AI</button><button class="quiz-opt" onclick="checkAnswer(this,false)">AI is dangerous without supervision</button><button class="quiz-opt" onclick="checkAnswer(this,false)">Rules require it</button></div><div class="quiz-feedback"></div></div><div class="quiz-q"><p class="qtext">What is the most important thing to check before a child uses any AI tool?</p><div class="quiz-opts"><button class="quiz-opt" onclick="checkAnswer(this,false)">The price</button><button class="quiz-opt" onclick="checkAnswer(this,true)">Whether the tool requires personal account creation — children should use AI through a parent's account only</button><button class="quiz-opt" onclick="checkAnswer(this,false)">The speed</button><button class="quiz-opt" onclick="checkAnswer(this,false)">The features</button></div><div class="quiz-feedback"></div></div></div>
+    </div>
+  </div>
+  <div class="track-panel" id="track-intermediate"><div class="depth-band"><span class="depth-badge" style="color:var(--indigo)">Intermediate</span><span class="depth-note">Build on the basics.</span></div>
+
+    <div class="track-progress"><div class="tp-bar"><div class="tp-fill" id="prog-i" style="width:0%"></div></div><span class="tp-label" id="prog-i-label">0 of 5 complete</span></div>
+    <div class="lessons-list">      <div class="lesson" id="i-l1">
+        <button class="lesson-check" onclick="toggleLesson('i-l1')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 1</div>
+          <div class="lesson-title">Misinformation and Children</div>
+          <div class="lesson-desc">Why children are particularly vulnerable to AI-generated misinformation and the verification habits that help.</div>
+          <div class="lesson-footer"><span class="lesson-time">~25 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="i-l2">
+        <button class="lesson-check" onclick="toggleLesson('i-l2')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 2</div>
+          <div class="lesson-title">Deepfakes and Synthetic Media</div>
+          <div class="lesson-desc">Age-appropriate explanation of AI-generated fake images and video — and what to do if a child encounters them.</div>
+          <div class="lesson-footer"><span class="lesson-time">~20 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="i-l3">
+        <button class="lesson-check" onclick="toggleLesson('i-l3')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 3</div>
+          <div class="lesson-title">AI and Homework — Drawing the Line</div>
+          <div class="lesson-desc">Where AI assistance ends and academic dishonesty begins — the conversation to have before it becomes a problem.</div>
+          <div class="lesson-footer"><span class="lesson-time">~25 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="i-l4">
+        <button class="lesson-check" onclick="toggleLesson('i-l4')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 4</div>
+          <div class="lesson-title">Signs to Watch For</div>
+          <div class="lesson-desc">Behavioural signals that AI use might be becoming problematic — excessive reliance, secrecy, emotional investment.</div>
+          <div class="lesson-footer"><span class="lesson-time">~20 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="i-l5">
+        <button class="lesson-check" onclick="toggleLesson('i-l5')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 5</div>
+          <div class="lesson-title">Setting Up Safe AI Use at Home</div>
+          <div class="lesson-desc">Practical setup — shared device, supervised time, account settings, and the family agreement.</div>
+          <div class="lesson-footer"><span class="lesson-time">~20 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div></div>
+        <div class="quiz-section">
+      <button class="quiz-toggle" onclick="toggleQuiz('i-quiz')">
+        <h3>Test your understanding</h3><span class="qt-arrow">▼</span>
+      </button>
+      <div class="quiz-body" id="i-quiz"><div class="quiz-q"><p class="qtext">What is companion AI and why is it a risk for children?</p><div class="quiz-opts"><button class="quiz-opt" onclick="checkAnswer(this,false)">A type of education tool</button><button class="quiz-opt" onclick="checkAnswer(this,true)">AI systems designed to form ongoing relationships — the risk is children developing emotional dependency on a tool that cannot genuinely care about them</button><button class="quiz-opt" onclick="checkAnswer(this,false)">A safety feature</button><button class="quiz-opt" onclick="checkAnswer(this,false)">A content filter</button></div><div class="quiz-feedback"></div></div><div class="quiz-q"><p class="qtext">What is the correct response if a child has shared personal information with AI?</p><div class="quiz-opts"><button class="quiz-opt" onclick="checkAnswer(this,false)">Punish them</button><button class="quiz-opt" onclick="checkAnswer(this,true)">Stay calm, explain why it matters, change account settings if needed, and reinforce the rule as a habit going forward</button><button class="quiz-opt" onclick="checkAnswer(this,false)">Stop AI use entirely</button><button class="quiz-opt" onclick="checkAnswer(this,false)">Contact the AI company</button></div><div class="quiz-feedback"></div></div></div>
+    </div>
+  </div>
+  <div class="track-panel" id="track-advanced"><div class="depth-band"><span class="depth-badge" style="color:var(--amber)">Advanced</span><span class="depth-note">Depth, edge cases and strategy.</span></div>
+
+    <div class="track-progress"><div class="tp-bar"><div class="tp-fill" id="prog-a" style="width:0%"></div></div><span class="tp-label" id="prog-a-label">0 of 5 complete</span></div>
+    <div class="lessons-list">      <div class="lesson" id="a-l1">
+        <button class="lesson-check" onclick="toggleLesson('a-l1')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 1</div>
+          <div class="lesson-title">Talking to Children About AI</div>
+          <div class="lesson-desc">Age-appropriate conversations about what AI is, what it is not, and why rules matter.</div>
+          <div class="lesson-footer"><span class="lesson-time">~25 min</span><a href="/ai-kids/parents/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="a-l2">
+        <button class="lesson-check" onclick="toggleLesson('a-l2')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 2</div>
+          <div class="lesson-title">School AI Policies</div>
+          <div class="lesson-desc">Understanding your school's AI policy and how to align home and school AI expectations.</div>
+          <div class="lesson-footer"><span class="lesson-time">~15 min</span><a href="/ai-kids/parents/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="a-l3">
+        <button class="lesson-check" onclick="toggleLesson('a-l3')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 3</div>
+          <div class="lesson-title">If Something Goes Wrong</div>
+          <div class="lesson-desc">What to do if your child sees something inappropriate, shares personal information, or becomes distressed.</div>
+          <div class="lesson-footer"><span class="lesson-time">~20 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="a-l4">
+        <button class="lesson-check" onclick="toggleLesson('a-l4')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 4</div>
+          <div class="lesson-title">Staying Current with AI Risks</div>
+          <div class="lesson-desc">How AI tools change and how to stay informed about new risks without anxiety.</div>
+          <div class="lesson-footer"><span class="lesson-time">~15 min</span><a href="/ai-kids/parents/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div>
+      <div class="lesson" id="a-l5">
+        <button class="lesson-check" onclick="toggleLesson('a-l5')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 5</div>
+          <div class="lesson-title">Building Lifelong AI Safety Habits</div>
+          <div class="lesson-desc">Moving from rules to internalised values — what AI safety looks like as children grow older.</div>
+          <div class="lesson-footer"><span class="lesson-time">~15 min</span><a href="/ai-kids/safety/" class="lesson-link">Read the guide →</a></div>
+        </div>
+      </div></div>
+        <div class="quiz-section">
+      <button class="quiz-toggle" onclick="toggleQuiz('a-quiz')">
+        <h3>Test your understanding</h3><span class="qt-arrow">▼</span>
+      </button>
+      <div class="quiz-body" id="a-quiz"><div class="quiz-q"><p class="qtext">When should AI assistance with homework cross from help to dishonesty?</p><div class="quiz-opts"><button class="quiz-opt" onclick="checkAnswer(this,false)">Never — AI always helps</button><button class="quiz-opt" onclick="checkAnswer(this,true)">When the student submits AI output as their own understanding without genuinely engaging with the material</button><button class="quiz-opt" onclick="checkAnswer(this,false)">When it is used for maths</button><button class="quiz-opt" onclick="checkAnswer(this,false)">When parents do not know</button></div><div class="quiz-feedback"></div></div><div class="quiz-q"><p class="qtext">What is the most important ingredient in a safe home AI environment for children?</p><div class="quiz-opts"><button class="quiz-opt" onclick="checkAnswer(this,false)">The right tools</button><button class="quiz-opt" onclick="checkAnswer(this,true)">Open ongoing conversation — children who can talk to parents about what they encounter with AI are the safest</button><button class="quiz-opt" onclick="checkAnswer(this,false)">Content filters</button><button class="quiz-opt" onclick="checkAnswer(this,false)">Device restrictions</button></div><div class="quiz-feedback"></div></div></div>
+    </div>
+  </div>
+
+  </main>
+</div>
+</div>
+<footer style="padding:32px 20px;text-align:center;color:var(--faint);font-size:.8rem;border-top:1px solid var(--border);margin-top:60px">
+  <p>Part of <a href="/" style="color:var(--blue)">Clarigital.com</a> · Free · Official sources · No ads</p>
+</footer>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showTrack(track){var el=document.getElementById("track-"+track);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});document.querySelectorAll(".track-tab").forEach(function(t){t.classList.toggle("active",t.id==="tab-"+track);});}
+var SKEY='cl-seo-lessons';
+function getP(){try{return JSON.parse(localStorage.getItem(SKEY))||{};}catch(e){return {};}}
+function saveP(p){localStorage.setItem(SKEY,JSON.stringify(p));}
+function toggleLesson(id){var p=getP();p[id]=!p[id];saveP(p);renderP();}
+function renderP(){
+  var p=getP();
+  var tracks={
+    beginner: ['b-l1', 'b-l2', 'b-l3', 'b-l4', 'b-l5'],
+    intermediate: ['i-l1', 'i-l2', 'i-l3', 'i-l4', 'i-l5'],
+    advanced: ['a-l1', 'a-l2', 'a-l3', 'a-l4', 'a-l5'],
+  };
+  Object.keys(tracks).forEach(function(track){
+    var _s={beginner:'b',intermediate:'i',advanced:'a'}[track]||track;
+    var ids=tracks[track];
+    var done=ids.filter(function(id){return p[id];}).length;
+    var fill=document.getElementById('prog-'+_s);
+    var label=document.getElementById('prog-'+_s+'-label');
+    if(fill)fill.style.width=Math.round((done/ids.length)*100)+'%';
+    if(label)label.textContent=done+' of '+ids.length+' lessons';
+    ids.forEach(function(id){var el=document.getElementById(id);if(el){if(p[id])el.classList.add('done');else el.classList.remove('done');}});
+  });
+}
+function answerQ(qid,chosen,correct){
+  var q=document.getElementById(qid);
+  if(q.classList.contains('answered'))return;
+  q.classList.add('answered');
+  var opts=q.querySelectorAll('.quiz-opt');
+  opts.forEach(function(opt,i){
+    var letter=['a','b','c','d'][i];
+    if(letter===correct)opt.classList.add('correct');
+    else if(letter===chosen&&chosen!==correct)opt.classList.add('wrong');
+    opt.disabled=true;
+  });
+  var exp=document.getElementById('exp-'+qid);
+  if(exp)exp.classList.add('show');
+}
+function toggleQuiz(id){
+  var body=document.getElementById(id);
+  if(!body)return;
+  var open=body.classList.toggle('open');
+  var icon=document.getElementById(id+'-icon');
+  if(!icon){
+    var sec=body.parentNode;
+    var btn=sec?sec.querySelector('.quiz-toggle'):null;
+    if(btn)icon=btn.querySelector('.qt-arrow');
+  }
+  if(icon)icon.textContent=open?'▴':'▾';
+  var btn2=body.parentNode?body.parentNode.querySelector('.quiz-toggle'):null;
+  if(btn2)btn2.setAttribute('aria-expanded',open?'true':'false');
+}
+function checkAnswer(btn,ok){
+  var q=btn.closest?btn.closest('.quiz-q'):null;
+  if(!q)return;
+  var opts=q.querySelectorAll('.quiz-opt');
+  for(var i=0;i<opts.length;i++){opts[i].classList.remove('correct','wrong');opts[i].disabled=true;}
+  btn.classList.add(ok?'correct':'wrong');
+  var fb=q.querySelector('.quiz-feedback');
+  if(fb){
+    fb.textContent=ok?'Correct.':'Not quite. The right answer is highlighted above.';
+    fb.className='quiz-feedback '+(ok?'ok':'no');
+    if(!ok){
+      for(var j=0;j<opts.length;j++){
+        if(opts[j].getAttribute('onclick')&&opts[j].getAttribute('onclick').indexOf('true')>-1){
+          opts[j].classList.add('correct');
+        }
+      }
+    }
+  }
+}
+(function(){
+  renderP();
+  var saved=localStorage.getItem('cl-seo-track');
+  if(!saved||['beginner','intermediate','advanced'].indexOf(saved)<0)saved='beginner';
+  if(document.getElementById('track-'+saved)){
+    document.querySelectorAll('.track-panel').forEach(function(p){p.classList.remove('active');});
+    document.querySelectorAll('.track-tab').forEach(function(t){t.classList.remove('active');});
+    document.getElementById('track-'+saved).classList.add('active');
+    document.getElementById('tab-'+saved).classList.add('active');
+  }
+})();
+</script>
+</body>
+</html>

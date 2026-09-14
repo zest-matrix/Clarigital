@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Attribution Modelling: How GA4 Credits | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Attribution Modelling: How GA4 Credits | Digital Codex">
+<meta property="og:description" content="How attribution modelling works in GA4 — the attribution models available, data-driven attribution, cross-channel conversion credits, and how to change...">
+<meta property="og:url" content="https://www.clarigital.com/codex/analytics-cro/attribution-modelling/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="How attribution modelling works in GA4 — the attribution models available, data-driven attribution, cross-channel conversion credits, and how to change...">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="/codex/analytics-cro/attribution-modelling/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Attribution Modelling: How GA4 Credits Conversions to Channels","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-06","articleSection":"Analytics & CRO","wordCount":"4,900"}</script>
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.nav-search-form{display:flex;align-items:center;gap:0;margin-left:.5rem}
+.nav-search-input{border:1.5px solid var(--g200);border-radius:6px 0 0 6px;padding:5px 10px;font-size:.8rem;width:160px;outline:none;font-family:inherit}
+.nav-search-input:focus{border-color:var(--navy)}
+.nav-search-btn{background:var(--navy);color:#fff;border:none;border-radius:0 6px 6px 0;padding:5px 10px;cursor:pointer;font-size:.8rem;font-family:inherit}
+@media(max-width:900px){.nav-search-form{display:none}}
+</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Attribution Modelling: How GA4 Credits | Digital Codex">
+<meta name="twitter:description" content="How attribution modelling works in GA4 — the attribution models available, data-driven attribution, cross-channel conversion credits, and how to change...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Analytics Cro", "item": "https://www.clarigital.com/codex/analytics-cro/"}, {"@type": "ListItem", "position": 4, "name": "Attribution Modelling: How GA4 Credits", "item": "https://www.clarigital.com/codex/analytics-cro/attribution-modelling/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/content-marketing/">Content</a></li><li><a href="/codex/social-media/">Social</a></li><li><a href="/codex/analytics-cro/" class="cur">Analytics</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A&#8211;Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/content-marketing/" class="di">Content</a><a href="/codex/social-media/" class="di">Social</a><a href="/codex/analytics-cro/" class="di cur">Analytics</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#why-attribution">Why Attribution Matters</a><a class="cnl" href="#touchpoints">Touchpoints and User Journeys</a><a class="cnl" href="#attribution-models">Attribution Models Explained</a><a class="cnl" href="#data-driven">Data-Driven Attribution</a><a class="cnl" href="#ga4-attribution">Attribution in GA4</a><a class="cnl" href="#cross-channel">Cross-Channel Attribution</a><a class="cnl" href="#attribution-reports">Attribution Reports</a><a class="cnl" href="#changing-models">Changing Attribution Settings</a><a class="cnl" href="#attribution-limits">Attribution Limitations</a><a class="cnl" href="#practical-attribution">Practical Attribution Strategy</a><a class="cnl" href="#sources">Sources</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/analytics-cro/">Analytics &amp; CRO</a><span class="sep">/</span><span class="cur">Attribution Modelling</span></nav>
+  <span class="label-tag">Analytics &amp; CRO &#183; Session 12, Guide 5</span>
+  <h1>Attribution Modelling &#183; How GA4 Credits Conversions to Channels</h1>
+  <p class="hero-lead">Attribution modelling is the process of assigning credit for a conversion to the marketing touchpoints that contributed to it. A user who found the site through organic search, later saw a Google Ad, then returned via a direct visit before converting — should that conversion be credited to organic search? To the paid ad? To direct? Or split among all three? The answer depends on which attribution model is applied. GA4 supports multiple attribution models and has moved to data-driven attribution as its default — a model that uses machine learning to distribute conversion credit based on each channel's actual incremental contribution. Understanding attribution modelling is essential for evaluating marketing channel performance accurately.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo">Analytics &amp; CRO</span><span class="meta-tag mt-gray">4,900 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+  <li>Why attribution modelling directly affects how marketing channel performance is reported</li>
+  <li>What constitutes a touchpoint in GA4's attribution system</li>
+  <li>The six attribution models — last click, first click, linear, time decay, position-based, data-driven</li>
+  <li>How data-driven attribution uses machine learning to assign credit based on incremental contribution</li>
+  <li>How GA4's attribution settings work and which model GA4 uses by default</li>
+  <li>Cross-channel attribution and the difference between ads-preferred and cross-channel models</li>
+  <li>How to use the Advertising Snapshot and Attribution reports in GA4</li>
+  <li>How to change the attribution model in GA4 and what changes</li>
+  <li>The inherent limitations of any attribution model</li>
+  <li>A practical approach to attribution for most marketing teams</li>
+</ul></div></div>
+
+<div class="chapter" id="why-attribution">
+<div class="chap-hdr"><h2>Why Attribution Matters</h2><button class="share-btn" onclick="copyLink('why-attribution')">Share</button></div>
+<p>Attribution directly determines how channel performance is reported — and therefore where marketing budgets are allocated. Under last-click attribution, all conversion credit goes to the final channel before the conversion — typically direct or branded search. Under first-click attribution, all credit goes to the channel that first acquired the user — typically organic search or paid social. Under data-driven attribution, credit is distributed based on each channel's actual contribution to conversions. The channel that looks best depends entirely on which model is applied.</p>
+<p>This matters because marketing teams typically allocate budget based on reported performance. A model that under-credits awareness channels (like paid social or display) relative to their actual contribution will result in under-investment in those channels; a model that over-credits last-touch channels will result in over-investment in channels that capture conversions already in progress but do not generate them. Choosing the right attribution model is not a technicality — it affects real budget decisions.</p>
+<div class="g3">
+  <div class="stat-card"><p class="stat-h">GA4 default</p><div class="stat-n">Data-driven</div><p class="stat-l">GA4's default attribution model since 2022 — machine learning distributes credit based on actual channel contribution</p></div>
+  <div class="stat-card"><p class="stat-h">Lookback window</p><div class="stat-n">30 days</div><p class="stat-l">GA4's default attribution lookback window — touchpoints within 30 days before conversion receive credit</p></div>
+  <div class="stat-card"><p class="stat-h">Touchpoint types</p><div class="stat-n">All channels</div><p class="stat-l">GA4 attributes across paid, organic, email, direct, referral, and social simultaneously</p></div>
+</div>
+</div>
+
+<div class="chapter" id="touchpoints">
+<div class="chap-hdr"><h2>Touchpoints and User Journeys</h2><button class="share-btn" onclick="copyLink('touchpoints')">Share</button></div>
+<p>A touchpoint in GA4's attribution system is any session that occurred within the attribution lookback window before a conversion. If a user visited the site from organic search on Monday, from a Google Ad on Wednesday, and then directly on Friday before converting — those are three touchpoints in the conversion journey.</p>
+<p>GA4 attributes conversions to channels rather than specific campaigns or landing pages at the top-level attribution reports. The conversion path — the sequence of channels — is visible in the Attribution section of GA4 (Advertising → Attribution → Conversion Paths). This report shows the most common multi-touch paths to conversion, revealing which combinations of channels tend to produce the most conversions.</p>
+<p>GA4's attribution uses sessions as the touchpoint unit, not individual interactions within sessions. A session from a specific channel (paid search, organic social, email) is one touchpoint — regardless of how many pages were viewed in that session.</p>
+</div>
+
+<div class="chapter" id="attribution-models">
+<div class="chap-hdr"><h2>Attribution Models Explained</h2><button class="share-btn" onclick="copyLink('attribution-models')">Share</button></div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Model</th><th>Credit Distribution</th><th>Best For</th><th>Risk</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Last click</strong></td><td>100% to the final touchpoint before conversion</td><td>Seeing which channel "closes" conversions</td><td>Under-credits awareness and mid-funnel channels; over-credits direct and branded search</td></tr>
+    <tr><td><strong>First click</strong></td><td>100% to the first touchpoint in the journey</td><td>Evaluating which channels initiate journeys</td><td>Ignores the role of channels that nurture and convert; under-credits closing channels</td></tr>
+    <tr><td><strong>Linear</strong></td><td>Equal credit to every touchpoint</td><td>Treating all channels as equally valuable</td><td>Over-simplifies — not all touchpoints contribute equally</td></tr>
+    <tr><td><strong>Time decay</strong></td><td>More credit to touchpoints closer to the conversion; less to earlier ones</td><td>Short sales cycles where recency matters</td><td>Systematically under-credits top-of-funnel channels</td></tr>
+    <tr><td><strong>Position-based (U-shaped)</strong></td><td>40% to first and last; 20% split among middle touchpoints</td><td>Valuing acquisition and conversion equally</td><td>Arbitrary weighting not based on actual data</td></tr>
+    <tr><td><strong>Data-driven</strong></td><td>Credit distributed based on machine learning analysis of each channel's incremental contribution</td><td>Most accurate reflection of channel contribution for accounts with sufficient conversion volume</td><td>Requires sufficient conversion data; less interpretable than rule-based models</td></tr>
+  </tbody>
+</table></div>
+</div>
+
+<div class="chapter" id="data-driven">
+<div class="chap-hdr"><h2>Data-Driven Attribution</h2><button class="share-btn" onclick="copyLink('data-driven')">Share</button></div>
+<p>Data-driven attribution (DDA) is a machine learning-based model that analyses the actual conversion paths in an account and determines the incremental contribution of each touchpoint — the probability that removing that touchpoint from the path would have prevented the conversion. Credit is distributed proportionally based on this incremental contribution analysis.</p>
+<p>Google has documented that data-driven attribution outperforms rule-based models in driving more efficient advertising outcomes because it more accurately reflects which channels are actually driving incremental conversions rather than simply appearing in journeys that would have converted anyway. A channel that appears in many conversion paths but consistently on paths that would have converted without it receives less credit under DDA than under linear attribution.</p>
+<p>Data-driven attribution requires a minimum volume of conversion data to operate — Google's documentation indicates that a conversion action needs at least 300 conversions in 30 days before DDA is available for that conversion. Below this threshold, GA4 falls back to last-click attribution for that conversion action.</p>
+</div>
+
+<div class="chapter" id="ga4-attribution">
+<div class="chap-hdr"><h2>Attribution in GA4</h2><button class="share-btn" onclick="copyLink('ga4-attribution')">Share</button></div>
+<p>GA4 uses data-driven attribution as the default model for reporting on conversions in most reports. The attribution model and lookback window are configured at the property level: Admin → Data Display → Attribution Settings.</p>
+<h3>Lookback windows in GA4</h3>
+<p>The lookback window defines how far back in time GA4 looks for touchpoints to attribute to a conversion. GA4 provides separate lookback window settings for:</p>
+<ul>
+  <li>Acquisition conversion events: the default is 30 days</li>
+  <li>All other conversion events: the default is 30 days for click-based interactions; 1 day for view-through interactions (when a user saw but did not click an ad)</li>
+</ul>
+<p>Longer lookback windows (90 days is available) capture more touchpoints in longer consideration cycles — appropriate for B2B or high-value purchases where the research process spans weeks or months. Shorter windows are appropriate for impulse purchases or services with short consideration cycles.</p>
+</div>
+
+<div class="chapter" id="cross-channel">
+<div class="chap-hdr"><h2>Cross-Channel Attribution</h2><button class="share-btn" onclick="copyLink('cross-channel')">Share</button></div>
+<p>GA4 offers two variants of most attribution models: "ads-preferred" and "cross-channel" (also referred to as "Google Paid Channels Last Click" and "Cross-channel" respectively in some GA4 documentation).</p>
+<p>Ads-preferred models: when a paid Google click and an organic interaction occur in the same session (or close in time), the paid click receives preferential credit. This benefits Google Ads' reported conversion numbers — which is why it is important to understand whether you are using ads-preferred or cross-channel attribution when comparing paid and organic performance.</p>
+<p>Cross-channel models: credit is distributed without preferential treatment of paid clicks. These give a more balanced view of the contribution of paid vs organic channels. Google's recommendation is to use cross-channel data-driven attribution for the most accurate picture of channel contribution.</p>
+</div>
+
+<div class="chapter" id="attribution-reports">
+<div class="chap-hdr"><h2>Attribution Reports in GA4</h2><button class="share-btn" onclick="copyLink('attribution-reports')">Share</button></div>
+<p>GA4's attribution analysis is in the Advertising section (left navigation → Advertising). Key reports:</p>
+<ul>
+  <li><strong>Attribution → Model Comparison.</strong> Compares conversion counts under different attribution models side by side — showing how the reported credit for each channel changes when switching from last-click to data-driven to first-click. Essential for understanding how sensitive your channel performance conclusions are to the attribution model choice.</li>
+  <li><strong>Attribution → Conversion Paths.</strong> Shows the most common sequences of channels leading to conversions — the actual multi-touch paths. Reveals which channel combinations most frequently appear in converting journeys and which channels most often initiate or close journeys.</li>
+  <li><strong>Advertising Snapshot.</strong> A high-level summary of advertising performance connecting Google Ads spend to GA4 conversion data.</li>
+</ul>
+</div>
+
+<div class="chapter" id="changing-models">
+<div class="chap-hdr"><h2>Changing Attribution Settings</h2><button class="share-btn" onclick="copyLink('changing-models')">Share</button></div>
+<p>Change the attribution model: Admin → Data Display → Attribution Settings → Reporting attribution model. Changing the attribution model affects how historical data is reported in GA4's conversion reports — it is not retroactively fixed; GA4 recalculates historical reports using the new model. This means a model change can create an apparent discontinuity in conversion reporting history.</p>
+<p>For this reason, changing attribution models is significant and should not be done casually. If you are evaluating a model change, use the Model Comparison report to understand what the current data looks like under the proposed model before switching — so you can set appropriate expectations for how reports will change.</p>
+</div>
+
+<div class="chapter" id="attribution-limits">
+<div class="chap-hdr"><h2>Attribution Limitations</h2><button class="share-btn" onclick="copyLink('attribution-limits')">Share</button></div>
+<p>All attribution models, including data-driven attribution, have inherent limitations that are important to understand when making budget decisions based on attribution data:</p>
+<ul>
+  <li><strong>Unmeasured touchpoints.</strong> Attribution only credits touchpoints GA4 can track — sessions that fire the GA4 tag with a source/medium. Offline touchpoints (sales calls, physical ads, word-of-mouth) are not captured. Attribution data is only as complete as the tracking implementation.</li>
+  <li><strong>Cross-device gaps.</strong> Users who research on mobile and convert on desktop appear as two separate users in GA4 unless User ID or Google Signals (both requiring user identification and consent) are implemented. Cross-device journeys are systematically under-measured in standard GA4 attribution.</li>
+  <li><strong>Consent-gap modelling.</strong> Non-consenting users are modelled, not directly measured. The modelled conversions in GA4 (visible when Consent Mode is implemented) are estimates, not observations. Attribution accuracy is reduced proportionally to the non-consent rate.</li>
+  <li><strong>Correlation vs causation.</strong> Attribution credits channels that appear in conversion paths — it cannot directly measure whether those channels caused the conversion. A channel that consistently appears in paths but whose removal would not affect conversion volume (because users would have converted through another channel) receives credit it does not deserve. True incrementality requires controlled testing, not attribution modelling alone.</li>
+</ul>
+</div>
+
+<div class="chapter" id="practical-attribution">
+<div class="chap-hdr"><h2>Practical Attribution Strategy</h2><button class="share-btn" onclick="copyLink('practical-attribution')">Share</button></div>
+<p>For most marketing teams, a practical attribution strategy combines several approaches rather than relying on any single model:</p>
+<ul>
+  <li>Use data-driven attribution in GA4 as the primary performance model — it is the most sophisticated available within GA4 for accounts with sufficient conversion volume.</li>
+  <li>Use the Model Comparison report quarterly to validate that data-driven attribution is not materially distorting channel performance vs last-click — specifically to confirm you are not over-crediting or under-crediting any single channel.</li>
+  <li>Use the Conversion Paths report to understand the most common multi-touch journeys — this qualitative view of the funnel complements the quantitative credit assignment of attribution models.</li>
+  <li>Supplement attribution data with incrementality testing (holdout experiments) for major channel budget decisions — specifically for decisions about whether to increase or decrease investment in a channel significantly. Attribution tells you what correlates with conversion; incrementality testing tells you what causes conversion.</li>
+</ul>
+
+<div class="chapter" id="sources">
+<h2>Authentic Sources</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>Every factual claim in this guide is drawn from official Google documentation, regulatory bodies, or platform-published technical specifications. No third-party blogs or marketing tools are used as primary sources. All content is written in our own words — we learn from official sources and explain them; we never copy.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/10596866" target="_blank" rel="noopener">Google Analytics Help — About Attribution</a></strong><p>Official GA4 documentation on attribution models, lookback windows, and attribution settings.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/9974553" target="_blank" rel="noopener">Google Analytics Help — Data-Driven Attribution</a></strong><p>Official documentation on how data-driven attribution works in GA4 and its data requirements.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/10215702" target="_blank" rel="noopener">Google Analytics Help — Conversion Paths</a></strong><p>Official documentation on the GA4 Conversion Paths report.</p></div><div class="source-card"><span class="src-tag" style="background:var(--blue-bg);color:var(--navy)">Official</span><strong><a href="https://support.google.com/analytics/answer/10548384" target="_blank" rel="noopener">Google Analytics Help — Model Comparison</a></strong><p>Official documentation on comparing attribution models in GA4.</p></div></div>
+</div>
+
+<div class="related-guides">
+  <h3 class="rg-head">Related Guides</h3>
+  <div class="rg-grid"><a href="/codex/seo/fundamentals/core-web-vitals/" class="related-card"><span class="rc-tag">SEO</span><span class="rc-title">Core Web Vitals</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/saas-metrics-kpis/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">SaaS Metrics & KPIs</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/marketing-funnel-frameworks/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Marketing Funnel Frameworks</span><span class="rc-arr">&#8594;</span></a></div>
+</div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 4,900 &nbsp;&#183;&nbsp; <strong>Session:</strong> 12 of 16</p></div>
+</div></article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#why-attribution" class="sb-link on">Why Attribution Matters</a><a href="#touchpoints" class="sb-link">Touchpoints</a><a href="#attribution-models" class="sb-link">Attribution Models</a><a href="#data-driven" class="sb-link">Data-Driven</a><a href="#ga4-attribution" class="sb-link">GA4 Attribution</a><a href="#cross-channel" class="sb-link">Cross-Channel</a><a href="#attribution-reports" class="sb-link">Attribution Reports</a><a href="#changing-models" class="sb-link">Changing Settings</a><a href="#attribution-limits" class="sb-link">Limitations</a><a href="#practical-attribution" class="sb-link">Practical Strategy</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box"><div class="sb-head">Analytics &amp; CRO</div><div class="sb-body"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="sb-link">1. GA4 Setup & Configuration</a><a href="/codex/analytics-cro/ga4-events-conversions/" class="sb-link">2. GA4 Events & Conversions</a><a href="/codex/analytics-cro/ga4-reports-exploration/" class="sb-link">3. GA4 Reports & Exploration</a><a href="/codex/analytics-cro/google-tag-manager/" class="sb-link">4. Google Tag Manager</a><a href="/codex/analytics-cro/attribution-modelling/" class="sb-link sb-cur">5. Attribution Modelling</a><a href="/codex/analytics-cro/cohort-funnel-analysis/" class="sb-link">6. Cohort & Funnel Analysis</a><a href="/codex/analytics-cro/business-metrics-kpis/" class="sb-link">7. Business Metrics & KPIs</a><a href="/codex/analytics-cro/privacy-first-analytics/" class="sb-link">8. Privacy-First Analytics</a><a href="/codex/analytics-cro/cro-framework/" class="sb-link">9. CRO Framework</a><a href="/codex/analytics-cro/ab-testing-methodology/" class="sb-link">10. A/B Testing Methodology</a><a href="/codex/analytics-cro/heatmaps-session-recording/" class="sb-link">11. Heatmaps & Session Recording</a><a href="/codex/analytics-cro/landing-page-optimisation/" class="sb-link">12. Landing Page Optimisation</a><a href="/codex/analytics-cro/form-optimisation/" class="sb-link">13. Form Optimisation</a><a href="/codex/analytics-cro/trust-signals-social-proof/" class="sb-link">14. Trust Signals & Social Proof</a><a href="/codex/analytics-cro/cro-metrics-measurement/" class="sb-link">15. CRO Metrics & Measurement</a></div></div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>600 guides. All authentic sources.</h2><p>Official documentation only.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A&#8211;Z Glossary</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides. Official sources only.</p></div>
+  <div class="ft-col"><h5>Analytics &amp; CRO</h5><ul><li><a href='/analytics-cro/ga4-setup-configuration/'>GA4 Setup & Configuration</a></li><li><a href='/analytics-cro/ga4-events-conversions/'>GA4 Events & Conversions</a></li><li><a href='/analytics-cro/ga4-reports-exploration/'>GA4 Reports & Exploration</a></li><li><a href='/analytics-cro/google-tag-manager/'>Google Tag Manager</a></li><li><a href='/analytics-cro/attribution-modelling/'>Attribution Modelling</a></li></ul></div>
+  <div class="ft-col"><h5>Other Sections</h5><ul><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/content-marketing/">Content</a></li><li><a href="/codex/social-media/">Social Media</a></li></ul></div>
+  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Official sources only &#183; No affiliate links</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+// Auto-run search if ?q= param present on homepage
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+
+</body>
+</html>

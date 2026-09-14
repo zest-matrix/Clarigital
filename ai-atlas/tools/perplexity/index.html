@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Perplexity — The Complete Guide | Clarigital AI Atlas</title>
+<meta name="description" content="The complete Perplexity guide — AI search with cited sources. Full history, 20 prompts, RAG architecture explained, Sonar models, Deep Research, and...">
+<link rel="canonical" href="/ai-atlas/tools/perplexity">
+<meta property="og:title" content="Perplexity — The Complete Guide">
+<meta property="og:description" content="The complete Perplexity guide — AI search with cited sources. Full history, 20 prompts, RAG architecture explained, Sonar models, Deep Research, and full API reference. Official sources only.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/tools/perplexity">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Perplexity \u2014 The Complete Guide", "description": "The complete Perplexity guide \u2014 AI search with cited sources. Full history, 20 prompts, RAG architecture explained, Sonar models, Deep Research, and...", "url": "https://www.clarigital.com/ai-atlas/tools/perplexity", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Tools", "item": "https://www.clarigital.com/ai-atlas/tools/"}, {"@type": "ListItem", "position": 4, "name": "Perplexity \u2014 The Complete Guide", "item": "https://www.clarigital.com/ai-atlas/tools/perplexity/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/tools/">Tools</a><span class="sep">/</span><span>Perplexity</span></nav>
+    <span class="label-tag">AI Tool Guide</span>
+    <h1>Perplexity — The Complete Guide</h1>
+    <p class="hero-lead">The AI search engine that gives you answers with sources — not just links. Used by researchers, students, journalists, doctors, lawyers, and curious people who want to know something accurately and fast. What it is, how it works, the full history, 20 prompts, and complete technical depth. Three reading levels. Official sources only.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Perplexity AI</span>
+      <span class="meta-tag mt-gray">~9,500 words</span>
+      <span class="meta-tag mt-gray">Updated April 2026</span>
+    
+  </div>
+  <div style="margin-top:16px"><a href="https://www.perplexity.ai" target="_blank" rel="noopener" class="btn-official" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;font-size:.85rem;font-weight:600;padding:10px 20px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Visit Perplexity ↗</a><span style="font-size:.75rem;color:var(--muted);margin-left:10px">perplexity.ai</span></div>
+
+  </div>
+</section>
+
+
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+
+<!-- ══════════════════════════════════════════════════════════════
+     SIMPLE LANE
+══════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+<h2 id="s-green-0">What is Perplexity — in plain English?</h2>
+<p>You know how Google works. You type a question, you get ten blue links. Then you have to click on one, read through the article, come back, try another, piece together an answer yourself. It works — but it takes time and effort.</p>
+<p>Perplexity is different. You type the same question — and instead of giving you links, Perplexity reads those pages itself and writes you a clear, direct answer. Then it shows you the sources underneath so you can check everything.</p>
+<p>It is available free at <strong>perplexity.ai</strong>. You do not need to create an account to start using it.</p>
+
+<div class="callout callout-simple">
+  <div class="callout-head">A real example — mum looking up a medication</div>
+  <p style="color:var(--fg);margin:0">Her doctor prescribed a new blood pressure medication. She wants to know: what are the side effects? What should she avoid eating? Can she take it with her existing vitamins?<br><br>
+  On Google: she gets pharmaceutical company pages, NHS pages, WebMD — she has to read three different articles and try to piece together the answers herself.<br><br>
+  On Perplexity: she types the question. Perplexity reads the NHS page, the BNF, and the manufacturer information and tells her: the common side effects are X, Y, Z; avoid grapefruit juice; yes, it is safe with most common vitamins but check with your pharmacist about [specific supplement]. Every point linked directly to its source. Five minutes of work done in 30 seconds.</p>
+</div>
+
+<h2 id="s-green-1">Who made Perplexity?</h2>
+<p>Perplexity AI was founded in August 2022 in San Francisco by four people: <strong>Aravind Srinivas</strong> (CEO), <strong>Denis Yarats</strong> (CTO), <strong>Johnny Ho</strong>, and <strong>Andy Konwinski</strong>.</p>
+<p>Their backgrounds are remarkable. Aravind Srinivas had worked as a research scientist at OpenAI — one of the people who helped build the early GPT models. Denis Yarats had been a research scientist at Meta AI. Andy Konwinski co-founded Databricks, one of the most successful data infrastructure companies in the world. These were not first-time founders or students — these were experienced AI researchers and entrepreneurs who saw a specific problem and built a focused solution.</p>
+
+<h3>The investors who believed early</h3>
+<p>Perplexity&#8217;s investor list reads like a who&#8217;s-who of technology: <strong>Jeff Bezos</strong> invested personally. <strong>NVIDIA</strong> invested — unusual for a hardware company to back an AI application startup. <strong>Sequoia Capital</strong> and <strong>NEA</strong> led rounds. Former Google CEO <strong>Eric Schmidt</strong> invested. IVP, Elad Gil, and Nat Friedman (former GitHub CEO) also backed the company early.</p>
+<p>By early 2024, Perplexity had raised over $500 million at a valuation approaching $3 billion — remarkable for a company just 18 months old.</p>
+
+<h2 id="s-green-2">The history of Perplexity — from idea to 10 million daily users</h2>
+
+<h3>The problem they saw</h3>
+<p>In 2022, when Aravind Srinivas was still at OpenAI, he was already thinking about the next generation of search. The insight was simple but powerful: large language models had become good enough to not just retrieve relevant documents but to synthesise answers from them. The bottleneck was not AI capability — it was the interface. Search engines were still showing links when they could be showing answers.</p>
+<p>The specific frustration: when you search something factual, you know what you want. You want the answer. Not ten guesses at which page might have it.</p>
+
+<h3>Launch and early growth (2022–2023)</h3>
+<p>Perplexity launched its beta in December 2022 — just weeks after ChatGPT&#8217;s launch. The timing was perfect. ChatGPT had made the public aware that AI could have conversations and give direct answers. Perplexity offered something slightly different: an AI specifically designed for factual, sourced answers to search-style queries.</p>
+<p>Early users were enthusiastic. Researchers loved the academic paper integration. Journalists loved being able to fact-check quickly with sourced answers. Students used it for research in a way that felt more trustworthy than asking ChatGPT directly (because every claim had a source attached).</p>
+<p>By the end of 2023, Perplexity had tens of millions of monthly users and was growing rapidly.</p>
+
+<h3>2024: The year Perplexity challenged Google</h3>
+<p>In 2024, Perplexity began to be discussed seriously as a threat to Google Search — something that had seemed unthinkable just a year earlier. Several factors contributed:</p>
+<ul>
+  <li>Google&#8217;s AI Overviews feature launched with embarrassing errors (recommending people eat rocks, suggesting adding glue to pizza) — creating an opening for a competitor perceived as more careful</li>
+  <li>Perplexity launched <strong>Perplexity Pages</strong> — a feature that generates comprehensive, formatted research documents on any topic</li>
+  <li>The <strong>Deep Research</strong> feature launched, enabling multi-step research that could take 30 minutes of human work and produce it in minutes</li>
+  <li>Partnerships with telecom companies including SoftBank meant Perplexity was pre-installed on new phones in some markets</li>
+</ul>
+
+<h3>Controversy: the publisher issue</h3>
+<p>2024 also brought significant controversy. Several major publishers — including News Corp, The New York Times (via legal action against OpenAI, which raised related questions), and others — raised concerns about AI search tools summarising their content without compensation. Perplexity was specifically accused of generating answers that closely paraphrased premium content, potentially reducing traffic to original publishers.</p>
+<p>Perplexity responded by launching a publisher revenue-sharing programme, but the debate about AI and content economics remained unresolved.</p>
+
+<h3>2025–2026: Perplexity as a daily habit</h3>
+<p>By 2025, Perplexity had over 10 million daily active users. The product expanded significantly: voice search, an iOS and Android app with on-device understanding, integration with third-party tools, and the Perplexity API allowing developers to build applications using Perplexity&#8217;s search-grounded AI. The company positioned itself not as a search engine replacement but as an &#8220;answer engine&#8221; — a distinct category.</p>
+
+<h2 id="s-green-3">What Perplexity can do — real examples for everyone</h2>
+
+<h3>For a student writing a report</h3>
+<p>Instead of spending two hours in the library and on Google cobbling together sources, a student types: &#8220;What were the main causes of the First World War? I need academic sources for my A-level history essay.&#8221; Perplexity gives a structured answer with five cited academic sources — each one linked. The student can then go and read the full sources for their bibliography. Two hours becomes twenty minutes.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Student research prompt</div>
+  <div class="prompt-text">I am writing an essay about [topic] for [level — GCSE/A-level/university]. Give me: the main points I should cover, key evidence or examples for each point, and academic or authoritative sources I can cite. Flag any areas where historians/scientists/experts genuinely disagree.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>For someone following the news</h3>
+<p>Instead of reading three different news websites and trying to understand what is actually happening, you type: &#8220;What is happening with [current news story]? Explain it from the beginning.&#8221; Perplexity reads recent news sources and gives you a coherent narrative — with sources from multiple outlets so you can read further.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">News explanation prompt</div>
+  <div class="prompt-text">Explain [news story or situation] from the beginning. I haven&#8217;t been following it. Cover: what happened, who the key people and organisations are, why it matters, and where things stand today. Use recent news sources and cite them clearly.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>For a small business owner</h3>
+<p>You want to know: is [competitor] still in business? What are their current prices? What are customers saying about them recently? Perplexity searches the current web and gives you up-to-date intelligence — far more current than asking ChatGPT, which has a knowledge cutoff.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Competitor research prompt</div>
+  <div class="prompt-text">Research [competitor company or product]. I need current information (last 6 months) on: their pricing, their recent changes or announcements, what customers are saying in recent reviews, any news about them, and how they position themselves vs [your type of business]. Cite recent sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h3>For a parent</h3>
+<p>Your child has been diagnosed with something you&#8217;ve never heard of. You type the medical term into Perplexity. It gives you a clear explanation, what the treatment typically involves, what questions to ask the doctor, and links to NHS, Mayo Clinic, and peer-reviewed sources. Not scary forum posts. Not outdated articles. Sourced, current, clear.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Medical information prompt</div>
+  <div class="prompt-text">Explain [medical condition or term] in plain language. Cover: what it is, what causes it, what the treatment options are, what daily life looks like for someone with this condition, and what questions I should ask the doctor. Use NHS, Mayo Clinic, or peer-reviewed sources only. Do not use forums or opinion sites.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h2 id="s-green-4">When to use Perplexity vs ChatGPT vs Google</h2>
+
+<div style="overflow-x:auto;margin:16px 0 24px">
+<table style="width:100%;border-collapse:collapse;font-size:.84rem">
+  <thead>
+    <tr style="border-bottom:1px solid rgba(99,102,241,.25)">
+      <th style="text-align:left;padding:10px 14px;color:var(--faint);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em">Task</th>
+      <th style="text-align:left;padding:10px 14px;color:var(--faint);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em">Best tool</th>
+      <th style="text-align:left;padding:10px 14px;color:var(--faint);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em">Why</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom:1px solid var(--border2)"><td style="padding:10px 14px;color:var(--fg)">Find a current fact</td><td style="padding:10px 14px;color:#10B981;font-weight:600">Perplexity</td><td style="padding:10px 14px;color:var(--muted)">Live web search + cited sources</td></tr>
+    <tr style="border-bottom:1px solid var(--border2)"><td style="padding:10px 14px;color:var(--fg)">Understand a news story</td><td style="padding:10px 14px;color:#10B981;font-weight:600">Perplexity</td><td style="padding:10px 14px;color:var(--muted)">Synthesises multiple current sources</td></tr>
+    <tr style="border-bottom:1px solid var(--border2)"><td style="padding:10px 14px;color:var(--fg)">Academic research</td><td style="padding:10px 14px;color:#10B981;font-weight:600">Perplexity (Academic mode)</td><td style="padding:10px 14px;color:var(--muted)">Searches peer-reviewed papers with citations</td></tr>
+    <tr style="border-bottom:1px solid var(--border2)"><td style="padding:10px 14px;color:var(--fg)">Write an email or document</td><td style="padding:10px 14px;color:#6366F1;font-weight:600">ChatGPT or Claude</td><td style="padding:10px 14px;color:var(--muted)">Perplexity is not optimised for generation</td></tr>
+    <tr style="border-bottom:1px solid var(--border2)"><td style="padding:10px 14px;color:var(--fg)">Find a specific website</td><td style="padding:10px 14px;color:#60A5FA;font-weight:600">Google</td><td style="padding:10px 14px;color:var(--muted)">Google&#8217;s index is larger for navigation</td></tr>
+    <tr style="border-bottom:1px solid var(--border2)"><td style="padding:10px 14px;color:var(--fg)">Fact-check a claim</td><td style="padding:10px 14px;color:#10B981;font-weight:600">Perplexity</td><td style="padding:10px 14px;color:var(--muted)">Sources cited for every claim</td></tr>
+    <tr style="border-bottom:1px solid var(--border2)"><td style="padding:10px 14px;color:var(--fg)">Brainstorm ideas</td><td style="padding:10px 14px;color:#6366F1;font-weight:600">ChatGPT or Claude</td><td style="padding:10px 14px;color:var(--muted)">Generation task, not research task</td></tr>
+    <tr><td style="padding:10px 14px;color:var(--fg)">Current prices, stock, weather</td><td style="padding:10px 14px;color:#10B981;font-weight:600">Perplexity</td><td style="padding:10px 14px;color:var(--muted)">Real-time web access</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="s-green-5">Getting started right now</h2>
+<ol style="margin:1rem 0 1.4rem 1.4rem;color:var(--muted)">
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Go to <strong style="color:#F1F5F9">perplexity.ai</strong> — no sign-up required to start</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Type any question in the search box — write it as a full question, not just keywords</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Read the answer and check the numbered sources underneath each claim</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Ask follow-up questions — Perplexity maintains the context of your search thread</li>
+  <li style="line-height:1.7;font-size:.97rem">Use the <strong style="color:#F1F5F9">Focus</strong> menu to restrict sources (Academic, News, YouTube, Reddit)</li>
+</ol>
+
+<div class="prompt-box">
+  <div class="prompt-label">Your very first Perplexity search</div>
+  <div class="prompt-text">What is the most important thing happening in the world of AI right now? Give me a brief overview of the current state of AI — which companies are leading, what the most significant recent developments are, and what I should know as someone who wants to understand it. Use recent sources from the last month.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<h2 id="s-green-6">Free vs paid — what do you actually need?</h2>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 24px">
+  <div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.75rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Free tier</div>
+    <ul style="list-style:none;font-size:.85rem;color:var(--muted)">
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Unlimited standard searches</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Web sources with citations</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Follow-up questions</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Focus filters (News, Academic etc)</li>
+      <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#EF4444">&#10007;</span> Limited Pro searches per day (5)</li>
+    </ul>
+  </div>
+  <div style="background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:18px">
+    <div style="font-size:.75rem;font-weight:700;color:#10B981;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Pro — $20/month</div>
+    <ul style="list-style:none;font-size:.85rem;color:var(--muted)">
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> 300+ Pro searches per day</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Choose AI model (GPT-4o, Claude, Sonar)</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Deep Research (30-min research tasks)</li>
+      <li style="margin-bottom:6px;padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> File and image uploads</li>
+      <li style="padding-left:14px;position:relative"><span style="position:absolute;left:0;color:#10B981">&#10003;</span> Perplexity Pages (research documents)</li>
+    </ul>
+  </div>
+</div>
+<p>For most people, <strong>the free tier is genuinely sufficient</strong> for everyday research. The 5 daily Pro searches covers most casual use. Power users — researchers, journalists, analysts, students doing serious academic work — will find Pro worth it, particularly for Deep Research.</p>
+<p><em>Source: <a href="https://www.perplexity.ai/pro" target="_blank" style="color:#6366F1">perplexity.ai/pro</a> — April 2026</em></p>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     WORKING LANE
+══════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+<h2 id="s-indigo-0">Getting the most from Perplexity</h2>
+<p>Perplexity rewards specific, well-formed questions far more than keyword searches. The shift from &#8220;Google mode&#8221; (keywords) to &#8220;Perplexity mode&#8221; (complete questions with context) is the single most important thing you can do to improve your results.</p>
+
+<div class="callout callout-tip">
+  <div class="callout-head">The most important habit to build</div>
+  <p style="color:var(--fg);margin:0">Instead of searching &#8220;ibuprofen side effects&#8221; — ask &#8220;What are the side effects of ibuprofen for a 60-year-old woman who also takes blood pressure medication? What should she avoid?&#8221;<br><br>
+  Instead of searching &#8220;solar panels cost UK&#8221; — ask &#8220;What is the current cost of installing solar panels on a 3-bedroom house in the UK in 2026? What government grants are available and what is the typical payback period?&#8221;<br><br>
+  Context transforms the quality of the answer.</p>
+</div>
+
+<h3>The Focus filters — use them intentionally</h3>
+<p>Before searching, consider which Focus mode is right for your task. The default is Web. Switch to:</p>
+<ul>
+  <li><strong>Academic</strong> — for peer-reviewed research, scientific questions, medical evidence</li>
+  <li><strong>News</strong> — for current events, breaking stories, recent developments</li>
+  <li><strong>YouTube</strong> — to find and summarise relevant video content</li>
+  <li><strong>Reddit</strong> — for community opinions, product experiences, practical tips from real users</li>
+</ul>
+
+<h2 id="s-indigo-1">20 high-value prompts for Perplexity</h2>
+
+<div class="prompt-box">
+  <div class="prompt-label">1. Current factual research with context</div>
+  <div class="prompt-text">What is the current state of [topic] as of [current month/year]? Give me: the key facts, recent developments (last 3–6 months), the most important numbers or statistics, and cite your sources with dates so I can verify they are current.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">2. Evidence-based fact check</div>
+  <div class="prompt-text">I have heard the claim that [state the claim]. Is this accurate according to current evidence? Search credible sources and tell me: whether this is supported, contradicted, or nuanced; what the best available evidence says; and provide source links so I can verify. Flag if this is disputed or contested.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">3. Academic literature overview (Academic mode)</div>
+  <div class="prompt-text">What does the peer-reviewed academic literature say about [topic/question]? I need: the current scientific or academic consensus, the main areas of active debate among researchers, the most significant recent studies (last 3 years), and methodological limitations I should be aware of. Cite all papers with authors, journal, and year.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">4. Explain a complex news story from scratch</div>
+  <div class="prompt-text">Explain [news story or geopolitical situation] to me from the beginning — as if I have never heard of it. Cover: the historical background, what has happened recently, who the key players are and what they want, why this matters, and where things stand right now. Use multiple current news sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">5. Competitor and market intelligence</div>
+  <div class="prompt-text">I am researching [company/product/market]. Give me current intelligence (last 6 months) on: their pricing and recent changes, product updates or announcements, customer sentiment from recent reviews, any notable news or controversies, and how they compare to [competitor]. Cite sources with dates.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">6. Deep Research — investment or purchasing decision</div>
+  <div class="prompt-text">I am considering [purchasing/investing in] [product/asset/company]. I need a thorough research report covering: what it is, current pricing and recent price changes, what experts and users say about it, known risks or drawbacks, alternatives I should consider, and any recent news that affects the decision. Be comprehensive and cite everything.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">7. Medical information with authoritative sources</div>
+  <div class="prompt-text">Explain [medical condition, symptom, medication, or procedure] clearly. Use sources from NHS, Mayo Clinic, peer-reviewed journals, or official health organisations only. Cover: what it is, causes, symptoms, treatment options, what to expect, and what questions I should ask my doctor. Note anything that requires professional medical advice rather than self-management.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">8. Legal and regulatory research</div>
+  <div class="prompt-text">What is the current legal/regulatory situation regarding [topic] in [country/jurisdiction]? I need: the relevant laws or regulations (with names and dates), what they require or prohibit, any recent changes or pending changes, and official sources I can reference. Flag anything that requires a qualified lawyer rather than general information.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">9. Science and technology explained</div>
+  <div class="prompt-text">Explain how [technology or scientific concept] works. I want three levels: a simple one-paragraph explanation for a non-technical person, a more detailed explanation for an educated non-specialist, and the technical details for someone who wants depth. For the technical explanation, cite peer-reviewed sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">10. Financial and economic research</div>
+  <div class="prompt-text">Research [financial topic — interest rates / housing market / specific investment / economic indicator] in [country] currently. Give me: the current situation with specific numbers, recent changes and trajectory, expert analysis and forecasts (cite sources), key risks, and what this means practically for [your situation — a first-time buyer / a small business / a pension holder].</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">11. Product comparison with current data</div>
+  <div class="prompt-text">Compare [Product A] vs [Product B] as of today. I need: current pricing for both, key differences in features, what real users say in recent reviews (search review sites), which is better for [your specific use case], and any recent updates that have changed the comparison. Cite recent sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">12. Travel research with current information</div>
+  <div class="prompt-text">I am planning a trip to [destination] in [month/year]. Give me current information on: visa requirements for [nationality], safety situation, best areas to stay and why, current costs (hotels, food, transport), anything that has changed recently that travellers should know, and recommended resources for booking. Use recent, reliable travel sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">13. People and organisations — background research</div>
+  <div class="prompt-text">Give me a comprehensive background on [person or organisation]. Cover: who they are, their history and key achievements, their current role and activities, their public reputation and any notable controversies, what they are currently known for (last 12 months), and cite multiple sources so I get a balanced picture.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">14. Industry trends with cited evidence</div>
+  <div class="prompt-text">What are the most significant trends currently shaping [industry]? For each trend: explain what it is, cite evidence that it is real (data, reports, examples), identify which companies or organisations are driving it, and explain what it means for someone working in or dealing with this industry. Use recent industry reports and credible sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">15. Perplexity Pages — comprehensive research document</div>
+  <div class="prompt-text">Create a comprehensive, structured research document on [topic]. Include: an overview, historical context, current state, key players, main debates or controversies, data and statistics, future outlook, and a list of authoritative sources for further reading. Format it as a proper reference document I can save and share.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">16. Reddit research — real user experiences</div>
+  <div class="prompt-text">Search Reddit for real user experiences with [product/service/situation]. What do users say about: common problems, unexpected positives, tips and tricks that actually work, what they wish they had known before starting, and any patterns in complaints or praise? Focus on recent posts (last 12 months).</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">17. Policy and government research</div>
+  <div class="prompt-text">What is the current government policy on [topic] in [country]? I need: the official policy (cite government sources), when it was introduced or last changed, what it means in practice, any announced changes coming, and any debate or criticism of the policy from credible sources. Focus on official and authoritative sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">18. Climate and environmental research</div>
+  <div class="prompt-text">What does the current scientific evidence say about [environmental topic]? Use peer-reviewed sources and official bodies (IPCC, NASA, NOAA etc). Cover: what we know with high confidence, what is still uncertain, the most recent data, and what this means practically. Distinguish clearly between scientific consensus and areas of ongoing research.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">19. Job market and salary research</div>
+  <div class="prompt-text">What is the current job market for [role/profession] in [location]? I need: typical salary ranges with sources (not generic estimates), demand trends (growing/shrinking/stable), key skills currently valued, which companies are hiring, and any significant changes in the last 12 months. Use current job market data and credible sources.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+<div class="prompt-box">
+  <div class="prompt-label">20. Deep Research — multi-source synthesis</div>
+  <div class="prompt-text">I need a deep research report on [complex topic]. This will take thorough research across multiple sources. Please: search academic literature, recent news, official reports, and expert analysis; synthesise the findings into a coherent picture; distinguish between what is established, what is contested, and what is speculative; and provide a comprehensive bibliography. Do not rush this — I need depth over speed.</div>
+  <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+</div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     DEEP LANE
+══════════════════════════════════════════════════════════════ -->
+<div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+<h2 id="s-red-0">How Perplexity works technically: RAG at scale</h2>
+<p>Perplexity is built on Retrieval-Augmented Generation (RAG) — an architecture that combines the knowledge synthesis capabilities of large language models with real-time information retrieval from the web. Understanding RAG is essential to understanding what Perplexity can and cannot do.</p>
+
+<h3>The standard LLM limitation RAG solves</h3>
+<p>A standard LLM like GPT-4 or Claude has a knowledge cutoff — it cannot know about events that happened after its training data was collected. It also cannot verify facts against current sources; it can only recall patterns from training. RAG addresses both limitations: at query time, it retrieves relevant documents from the current web, then passes those documents as context to the LLM, which synthesises an answer grounded in retrieved content rather than training memory alone.</p>
+
+<h3>Perplexity&#8217;s RAG pipeline — step by step</h3>
+<p>When you submit a query to Perplexity, a multi-stage pipeline executes:</p>
+
+<div style="background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.2);border-radius:10px;padding:20px;margin:16px 0">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;gap:14px;align-items:flex-start">
+      <div style="min-width:28px;height:28px;border-radius:50%;background:var(--indigo-dk);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0">1</div>
+      <div><strong style="color:var(--fg);font-size:.9rem">Query understanding</strong><p style="font-size:.84rem;margin:.4rem 0 0">The input query is parsed and reformulated for retrieval. Implicit context is made explicit. A poorly specified query like &#8220;rate&#8221; might be expanded to &#8220;current Bank of England base interest rate April 2026.&#8221;</p></div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start">
+      <div style="min-width:28px;height:28px;border-radius:50%;background:var(--indigo-dk);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0">2</div>
+      <div><strong style="color:var(--fg);font-size:.9rem">Retrieval</strong><p style="font-size:.84rem;margin:.4rem 0 0">A hybrid retrieval system combines sparse (BM25 keyword) and dense (vector similarity) retrieval over Perplexity&#8217;s proprietary web index plus real-time crawl. The top-k most relevant document chunks are retrieved.</p></div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start">
+      <div style="min-width:28px;height:28px;border-radius:50%;background:var(--indigo-dk);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0">3</div>
+      <div><strong style="color:var(--fg);font-size:.9rem">Reranking</strong><p style="font-size:.84rem;margin:.4rem 0 0">Retrieved chunks are reranked by a cross-encoder model that evaluates relevance more carefully than the initial retrieval step. This two-stage approach (fast retrieval followed by careful reranking) is standard in production RAG systems.</p></div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start">
+      <div style="min-width:28px;height:28px;border-radius:50%;background:var(--indigo-dk);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0">4</div>
+      <div><strong style="color:var(--fg);font-size:.9rem">Grounded generation</strong><p style="font-size:.84rem;margin:.4rem 0 0">The reranked chunks are passed as context to the generation model (GPT-4o, Claude, or Sonar depending on user settings). The model is instructed to generate an answer citing specific sources from the provided context rather than its training knowledge.</p></div>
+    </div>
+    <div style="display:flex;gap:14px;align-items:flex-start">
+      <div style="min-width:28px;height:28px;border-radius:50%;background:var(--indigo-dk);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:#fff;flex-shrink:0">5</div>
+      <div><strong style="color:var(--fg);font-size:.9rem">Citation attribution</strong><p style="font-size:.84rem;margin:.4rem 0 0">Each factual claim in the generated response is mapped back to the specific source chunk it came from. The numbered citations [1], [2], [3] link to the exact URLs, allowing verification.</p></div>
+    </div>
+  </div>
+</div>
+
+<h3>The Sonar model family</h3>
+<p>Perplexity has developed its own model family — the Sonar series — specifically optimised for search-grounded generation. Unlike general-purpose LLMs, Sonar models are fine-tuned on data that trains them to:</p>
+<ul>
+  <li>Prioritise information from retrieved context over training-time knowledge when the two conflict</li>
+  <li>Generate accurate inline citations that map correctly to source documents</li>
+  <li>Express appropriate uncertainty when retrieved sources disagree or are incomplete</li>
+  <li>Handle multi-hop reasoning across multiple retrieved documents</li>
+</ul>
+<p>The Sonar Pro model is used for Pro searches; Sonar is used for standard searches. Pro users can also choose GPT-4o or Claude as the generation model, with Perplexity&#8217;s retrieval layer providing the web grounding.</p>
+
+<div class="callout callout-deep">
+  <div class="callout-head">Primary source</div>
+  <p style="color:var(--fg);margin:0">Perplexity AI (2024). &#8220;Introducing Sonar Pro.&#8221; Perplexity Blog. <a href="https://www.perplexity.ai/hub/blog/introducing-sonar-pro" target="_blank" style="color:#EF4444">perplexity.ai/hub/blog</a></p>
+</div>
+
+<h3>Deep Research: multi-step agentic retrieval</h3>
+<p>Perplexity&#8217;s Deep Research feature (Pro) goes beyond single-step RAG. It implements an agentic research loop:</p>
+<ol style="margin:1rem 0 1.4rem 1.4rem;color:var(--muted)">
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">The initial query is decomposed into a research plan — multiple sub-questions that need to be answered to address the overall topic</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">Each sub-question triggers an independent retrieval-and-synthesis cycle</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">The model evaluates whether the retrieved information is sufficient or whether additional searches are needed (a form of self-critique)</li>
+  <li style="margin-bottom:.8rem;line-height:1.7;font-size:.97rem">All retrieved information is synthesised into a comprehensive research report with full citations</li>
+</ol>
+<p>This can involve dozens of retrieval steps and takes several minutes — hence the &#8220;30 minutes of human research in minutes&#8221; positioning. The output is a structured report with a full bibliography.</p>
+
+<h3>Perplexity API — technical reference</h3>
+<p>The Perplexity API uses an OpenAI-compatible interface, making it straightforward to integrate for developers already using OpenAI&#8217;s Python SDK.</p>
+
+<div style="background:var(--card-bg);border:1px solid rgba(99,102,241,.2);border-radius:8px;padding:1.25rem;margin:1.2rem 0;overflow-x:auto">
+  <div style="font-size:.68rem;font-weight:700;color:#6366F1;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.75rem">Perplexity API — Python</div>
+  <pre style="font-family:monospace;font-size:.82rem;color:var(--fg);line-height:1.6;margin:0;white-space:pre-wrap">from openai import OpenAI
+
+client = OpenAI(
+    api_key="your-perplexity-api-key",
+    base_url="https://api.perplexity.ai"
+)
+
+response = client.chat.completions.create(
+    model="sonar-pro",
+    messages=[
+        {
+            "role": "system",
+            "content": "Be precise and cite sources for all factual claims."
+        },
+        {
+            "role": "user",
+            "content": "What is the current state of AI regulation in the EU?"
+        }
+    ],
+    # Perplexity-specific parameters:
+    # search_recency_filter: "hour" | "day" | "week" | "month" | "year"
+    # return_citations: True (included by default in sonar models)
+)
+
+print(response.choices[0].message.content)
+
+# Access citations if available
+if hasattr(response, 'citations'):
+    for i, citation in enumerate(response.citations):
+        print(f"[{i+1}] {citation}")</pre>
+</div>
+
+<h3>Key API parameters</h3>
+<ul>
+  <li><strong style="color:#F1F5F9">model</strong> — <code style="background:rgba(99,102,241,.12);padding:2px 5px;border-radius:3px;font-family:monospace">sonar-pro</code>, <code style="background:rgba(99,102,241,.12);padding:2px 5px;border-radius:3px;font-family:monospace">sonar</code>, <code style="background:rgba(99,102,241,.12);padding:2px 5px;border-radius:3px;font-family:monospace">sonar-reasoning-pro</code></li>
+  <li><strong style="color:#F1F5F9">search_recency_filter</strong> — Restrict retrieved sources to a time window (hour/day/week/month/year)</li>
+  <li><strong style="color:#F1F5F9">search_domain_filter</strong> — Whitelist or blacklist specific domains for retrieval</li>
+  <li><strong style="color:#F1F5F9">return_related_questions</strong> — Boolean, returns follow-up questions for the query</li>
+</ul>
+
+<p>Full API documentation: <a href="https://docs.perplexity.ai" target="_blank" style="color:#6366F1">docs.perplexity.ai</a></p>
+
+<h3>Limitations of RAG systems — important to understand</h3>
+<p>Understanding the failure modes of Perplexity specifically helps you use it more effectively:</p>
+<ul>
+  <li><strong>Source quality inheritance</strong> — If the top-ranked web sources are wrong, Perplexity&#8217;s answer will likely be wrong. It retrieves and synthesises; it does not independently verify claims against ground truth.</li>
+  <li><strong>Citation hallucination</strong> — Despite grounding, models can occasionally generate a claim that seems cited but either misrepresents the source or maps to the wrong citation number. Always click through and verify important citations.</li>
+  <li><strong>Recency vs quality tradeoff</strong> — Very recent events may have fewer high-quality sources indexed. Perplexity may return lower-quality sources for breaking news than for well-covered topics.</li>
+  <li><strong>Index coverage</strong> — Perplexity&#8217;s index, while substantial, is smaller than Google&#8217;s. For very obscure topics, it may return fewer relevant results.</li>
+</ul>
+
+</div>
+
+</div>
+
+<!-- SIDEBAR -->
+<div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Perplexity — in plain English?</a><a href="#s-green-1">Who made Perplexity?</a><a href="#s-green-2">The history of Perplexity — from idea to 10 million daily </a><a href="#s-green-3">What Perplexity can do — real examples for everyone</a><a href="#s-green-4">When to use Perplexity vs ChatGPT vs Google</a><a href="#s-green-5">Getting started right now</a><a href="#s-green-6">Free vs paid — what do you actually need?</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Getting the most from Perplexity</a><a href="#s-indigo-1">20 high-value prompts for Perplexity</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">How Perplexity works technically: RAG at scale</a></div></div>
+  <div class="sidebar-card">
+    <h4>Perplexity guide</h4>
+    <a href="#" class="sidebar-link active">Overview &amp; history</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="sidebar-link">Compare: ChatGPT</a>
+    <a href="/ai-atlas/tools/gemini/" class="sidebar-link">Compare: Gemini</a>
+    <a href="/ai-atlas/which-ai/" class="sidebar-link">Which AI to use?</a>
+    <a href="/ai-atlas/prompt-library/" class="sidebar-link">Full prompt library</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Quick facts</h4>
+    <div style="font-size:.82rem;color:var(--muted);line-height:1.7">
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Founded</span><span style="color:var(--fg);font-weight:500">August 2022</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>HQ</span><span style="color:var(--fg);font-weight:500">San Francisco</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Daily users</span><span style="color:var(--fg);font-weight:500">10M+</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Architecture</span><span style="color:var(--fg);font-weight:500">RAG</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Free tier</span><span style="color:#10B981;font-weight:500">Yes</span></div>
+      <div style="display:flex;justify-content:space-between;padding:5px 0"><span>Pro plan</span><span style="color:var(--fg);font-weight:500">$20/month</span></div>
+    </div>
+  </div>
+  <div class="sidebar-card">
+    <h4>Official sources</h4>
+    <a href="https://www.perplexity.ai" class="sidebar-link" target="_blank">perplexity.ai</a>
+    <a href="https://docs.perplexity.ai" class="sidebar-link" target="_blank">API documentation</a>
+    <a href="https://www.perplexity.ai/hub/blog" class="sidebar-link" target="_blank">Perplexity blog</a>
+    <a href="https://www.perplexity.ai/pro" class="sidebar-link" target="_blank">Pro pricing</a>
+  </div>
+  <div class="sidebar-card">
+    <h4>Compare AI tools</h4>
+    <a href="/ai-atlas/tools/chatgpt/" class="sidebar-link">ChatGPT (OpenAI)</a>
+    <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude (Anthropic)</a>
+    <a href="/ai-atlas/tools/gemini/" class="sidebar-link">Gemini (Google)</a>
+    <a href="/ai-atlas/tools/grok/" class="sidebar-link">Grok (xAI)</a>
+  </div>
+</div>
+
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script>
+(function(){
+  // Lane tabs
+  var tabs=[];
+  var sections=[];
+  function showLane(color){
+    tabs.forEach(function(t){t.classList.toggle('active',t.id==='tab-'+color);});
+    sections.forEach(function(s){s.classList.toggle('active',s.id==='lane-'+color);});
+  }
+  window.showLane=showLane;
+  // Default active tab
+  var first=document.querySelector('.lane-tab');
+  if(first){var m=first.id.match(/tab-(\w+)/);if(m)showLane(m[1]);}
+  // Prompt copy
+  window.copyPrompt=function(btn){
+    var text=btn.previousElementSibling.textContent;
+    navigator.clipboard.writeText(text).then(function(){
+      var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+      setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},1800);
+    });
+  };
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Digital Codex · The Authority on Digital Marketing</title>
+<meta name="description" content="218 in-depth digital marketing guides covering SEO, Google Ads, Meta Ads, Email, Content, Social Media, Analytics, CRO, and Business Strategy. Official...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/codex/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Digital Codex · The Authority on Digital Marketing">
+<meta property="og:description" content="218 guides. Official sources only. Free forever.">
+<meta property="og:url" content="https://www.clarigital.com/codex/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Digital Codex","url":"https://www.clarigital.com","description":"218 in-depth digital marketing guides. Official sources only.","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.clarigital.com/codex/?q={search_term_string}"},"query-input":"required name=search_term_string"}}</script>
+<style>
+/* THEME VARIABLES — light/dark */
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+/* Search result styles shared */
+.search-results,.hero-search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s;text-decoration:none}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+/* Theme toggle */
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--blue)}
+/* Nav search */
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:inherit;transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--blue)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+
+/* ============================================================
+   DIGITAL CODEX — HUB PAGE
+   System fonts · No external deps · 95%+ PageSpeed
+   Colors: Navy #1D4ED8 · Orange #E85C0D
+   ============================================================ */
+
+/* RESET */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+/* TOKENS */
+:root{
+  --navy:      #1D4ED8;
+  --navy-dk:   #1e3a8a;
+  --orange:    #E85C0D;
+  --orange-dk: #C44A08;
+  --orange-bg: #FEF3EC;
+  --w:         #ffffff;
+  --g50:       #F8FAFC;
+  --g100:      #F1F5F9;
+  --g200:      #E2E8F0;
+  --g300:      #CBD5E1;
+  --g500:      #64748B;
+  --g700:      #374151;
+  --g900:      #0F172A;
+  --green:     #059669;
+  --purple:    #7C3AED;
+  --amber:     #B45309;
+  --teal:      #0E7490;
+  --pink:      #BE185D;
+  --blue2:     #0369A1;
+  --t:         .17s ease;
+  --r:         10px;
+  --font:      -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:       1100px;
+}
+
+/* BASE */
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{color:var(--g900);line-height:1.25;font-weight:700}
+a{color:var(--orange);text-decoration:none;transition:color var(--t)}
+a:hover{color:var(--orange-dk)}
+p{line-height:1.75}
+img{max-width:100%;height:auto;display:block}
+
+/* UTILITY */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t),transform var(--t);white-space:nowrap;line-height:1}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}
+.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff;border-color:rgba(255,255,255,.6)}
+.btn-sm{padding:6px 14px;font-size:.78rem}
+.btn-lg{padding:11px 24px;font-size:.9rem}
+
+/* ── NAV ── */
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0;letter-spacing:-.02em}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}
+.nav-text small{display:block;font-size:.62rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t),color var(--t)}
+.nav-links a:hover,.nav-links a[aria-current]{background:var(--g100);color:var(--g900)}
+.nav-links a[aria-current]{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+
+/* hamburger */
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto;flex-shrink:0}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px;transition:all var(--t)}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+
+/* mobile drawer */
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px;line-height:1}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}
+.nav-panel a.di:hover{background:var(--g50)}
+
+/* ── HERO ── */
+.hub-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);padding:68px 0 56px;text-align:center;position:relative;overflow:hidden}
+.hub-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 28% 50%,rgba(232,92,13,.13) 0%,transparent 58%),radial-gradient(ellipse at 72% 50%,rgba(29,78,216,.10) 0%,transparent 58%);pointer-events:none}
+.hero-in{position:relative;z-index:1}
+.hero-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.18);color:#FCA572;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 12px;border-radius:4px;margin-bottom:16px}
+.hub-hero h1{color:#fff;font-size:clamp(26px,4.5vw,48px);font-weight:700;letter-spacing:-.5px;line-height:1.1;margin-bottom:14px}
+.hub-hero h1 em{color:var(--orange);font-style:normal}
+.hero-lead{color:rgba(255,255,255,.55);font-size:clamp(13px,1.6vw,16px);max-width:580px;margin:0 auto 28px;line-height:1.7}
+.hero-stats{display:flex;align-items:center;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:32px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px 24px;max-width:580px;margin-left:auto;margin-right:auto;margin-bottom:32px}
+.hstat{text-align:center;flex:1;min-width:90px;padding:4px 12px}
+.hstat-n{font-size:22px;font-weight:700;color:var(--orange);line-height:1}
+.hstat-l{font-size:10px;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+.hstat-div{width:1px;height:32px;background:rgba(255,255,255,.1);flex-shrink:0}
+
+/* search */
+.hero-search-wrap{max-width:520px;margin:0 auto}
+.hero-search{display:flex;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:8px;overflow:hidden;transition:all .2s}
+.hero-search:focus-within{background:#fff;border-color:var(--orange);box-shadow:0 0 0 3px rgba(232,92,13,.18)}
+.hero-search input{flex:1;padding:12px 16px;font-family:var(--font);font-size:13.5px;background:transparent;border:none;outline:none;color:#fff;min-width:0}
+.hero-search input::placeholder{color:rgba(255,255,255,.4)}
+.hero-search:focus-within input{color:var(--g900)}
+.hero-search:focus-within input::placeholder{color:var(--g300)}
+.hero-search-btn{padding:0 18px;background:var(--orange);border:none;cursor:pointer;color:#fff;font-size:12.5px;font-weight:600;font-family:var(--font);transition:background var(--t);white-space:nowrap;flex-shrink:0}
+.hero-search-btn:hover{background:var(--orange-dk)}
+.search-fb{color:rgba(255,255,255,.6);font-size:12px;margin-top:8px;min-height:16px;text-align:center}
+
+/* ── ALPHA STRIP ── */
+.alpha-strip{background:var(--w);border-bottom:1px solid var(--g200);padding:28px 0 24px}
+.strip-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#94A3B8;margin-bottom:14px;text-align:center}
+.alpha-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
+.alpha-card{background:var(--g50);border:1.5px solid var(--g200);border-radius:var(--r);padding:16px 10px 14px;text-align:center;cursor:pointer;transition:border-color var(--t),background var(--t),transform var(--t),box-shadow var(--t);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:104px;text-decoration:none;color:inherit}
+.alpha-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,.09)}
+.al{font-size:2.2rem;font-weight:800;line-height:1;margin-bottom:5px}
+.an{font-size:.7rem;font-weight:600;color:var(--g900);margin-bottom:2px;line-height:1.2}
+.ac{font-size:.64rem;color:var(--g500);font-weight:500}
+/* color pairs: letter colour + hover state */
+.ca-navy{} .ca-navy .al{color:var(--navy)} .ca-navy:hover{border-color:var(--navy);background:#EEF2FF}
+.ca-orange .al{color:var(--orange)} .ca-orange:hover{border-color:var(--orange);background:var(--orange-bg)}
+.ca-green .al{color:var(--green)} .ca-green:hover{border-color:var(--green);background:#F0FDF4}
+.ca-purple .al{color:var(--purple)} .ca-purple:hover{border-color:var(--purple);background:#FAF5FF}
+.ca-amber .al{color:var(--amber)} .ca-amber:hover{border-color:var(--amber);background:#FFFBEB}
+.ca-teal .al{color:var(--teal)} .ca-teal:hover{border-color:var(--teal);background:#F0FDFA}
+.ca-pink .al{color:var(--pink)} .ca-pink:hover{border-color:var(--pink);background:#FDF2F8}
+.ca-blue2 .al{color:var(--blue2)} .ca-blue2:hover{border-color:var(--blue2);background:#F0F9FF}
+.ca-gray .al{color:#374151} .ca-gray:hover{border-color:#374151;background:var(--g100)}
+
+/* ── AUDIENCE STRIP ── */
+.aud-strip{background:var(--w);border-bottom:1px solid var(--g100);padding:22px 0}
+.aud-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:10px}
+.aud-card{border:1.5px solid var(--g100);border-radius:9px;padding:14px 12px;text-decoration:none;display:block;transition:border-color var(--t),background var(--t),transform var(--t)}
+.aud-card:hover{border-color:var(--orange);background:var(--orange-bg);transform:translateY(-2px)}
+.aud-icon{font-size:18px;margin-bottom:6px;line-height:1}
+.aud-title{font-size:12px;font-weight:600;color:var(--g900);margin-bottom:2px}
+.aud-desc{font-size:11px;color:var(--g500);line-height:1.4}
+
+/* ── SECTION NAV ── */
+.sec-nav{background:#0D1B2A;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.sec-nav::-webkit-scrollbar{display:none}
+.sec-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.snl{color:rgba(255,255,255,.44);text-decoration:none;font-size:11.5px;font-weight:500;padding:13px 12px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.snl:hover{color:#fff}
+.snl.on{color:var(--orange);border-bottom-color:var(--orange);font-weight:600}
+
+/* ── HUB BODY ── */
+.hub-body{max-width:var(--max);margin:0 auto;padding:40px 20px 72px}
+.hub-sec{margin-bottom:52px;scroll-margin-top:160px}
+.sec-hdr{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--g100)}
+.sec-badge{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:-.02em}
+.sec-meta{flex:1;min-width:0}
+.sec-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94A3B8;margin-bottom:3px}
+.sec-title{font-size:18px;font-weight:700;color:#0D1B2A;line-height:1.25}
+.sec-desc{font-size:12px;color:#475569;margin-top:4px;line-height:1.55}
+
+/* article cards */
+.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:12px}
+.art-card{border:1.5px solid var(--g100);border-radius:9px;padding:17px;text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:border-color var(--t),box-shadow var(--t),transform var(--t);background:var(--w);position:relative}
+.art-card:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(0,0,0,.07);transform:translateY(-2px)}
+.art-card.feat{border-color:var(--orange);background:var(--orange-bg)}
+.card-sec{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;line-height:1}
+.card-title{font-size:13px;font-weight:600;color:#0D1B2A;line-height:1.4}
+.card-desc{font-size:11.5px;color:#475569;line-height:1.55;flex:1}
+.card-arrow{font-size:11px;color:var(--orange);margin-top:2px;font-weight:600}
+
+/* no results */
+.no-results{display:none;text-align:center;padding:56px 20px;color:var(--g500)}
+.no-results.show{display:block}
+.search-hidden{display:none!important}
+
+/* ── HUB CTA ── */
+.hub-cta{background:#0D1B2A;border-radius:14px;padding:48px 40px;text-align:center;margin-top:16px}
+.hub-cta h2{color:#fff;font-size:clamp(18px,2.5vw,24px);font-weight:700;margin-bottom:8px;line-height:1.25}
+.hub-cta p{color:rgba(255,255,255,.46);font-size:13px;margin-bottom:24px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.6}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--g900);padding:52px 0 28px}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:7px}
+.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t);font-weight:400}
+.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .hub-cta{padding:36px 24px}
+  .alpha-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}
+}
+@media(max-width:600px){
+  .hub-hero{padding:52px 0 44px}
+  .hero-stats{padding:12px 16px;gap:0}
+  .hstat-n{font-size:18px}
+  .art-grid{grid-template-columns:1fr}
+  .sec-hdr{flex-direction:column;gap:10px}
+  .aud-grid{grid-template-columns:1fr 1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .hub-cta{padding:28px 18px}
+}
+@media(max-width:400px){
+  .alpha-grid{grid-template-columns:repeat(3,1fr)}
+  .aud-grid{grid-template-columns:1fr}
+}
+
+/* ── PRINT ── */
+@media print{.site-nav,.sec-nav,.hub-cta,.site-footer{display:none}}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+/* ── Section card grid (added to existing hub layout) ── */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:8px}
+.sec-icon{font-size:1.1rem;margin-right:6px;vertical-align:middle}
+.sec-cnt{font-size:.8rem;color:#64748b;font-weight:500}
+.sec-all-link{font-size:.82rem;font-weight:600;text-decoration:none}
+.sec-all-link:hover{text-decoration:underline}
+.hero-sub{color:rgba(255,255,255,.85);font-size:clamp(14px,1.7vw,17px);max-width:600px;margin:0 auto 28px;line-height:1.7}
+.role-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;padding:14px 0;background:#fff;border-bottom:1px solid #e2e8f0}
+.role-label{font-size:.82rem;color:#475569;font-weight:500}
+.role-btn{font-size:.8rem;font-weight:600;color:#E85C0D;text-decoration:none;padding:4px 12px;border:1.5px solid #E85C0D;border-radius:20px;transition:background .15s,color .15s;white-space:nowrap}
+.role-btn:hover{background:#E85C0D;color:#fff}
+.snl-wrap{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;padding:6px 0;overflow-x:auto;scrollbar-width:none}
+.cta-strip{background:#1D4ED8;padding:3.5rem 0}
+.cta-in{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.cta-in h2{color:#fff;font-size:clamp(1.2rem,2.5vw,1.6rem);margin-bottom:.3rem}
+.cta-in p{color:rgba(255,255,255,.75);font-size:.9rem}
+/* stat class aliases — HTML uses stat-n/stat-l, CSS defines hstat-n/hstat-l */
+.stat-n{font-size:22px;font-weight:700;color:#E85C0D;line-height:1}
+.stat-l{font-size:10px;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+
+.ft-brand{}
+.ft-col{}
+
+.ca-navy{}.ca-orange{}.ca-green{}.ca-purple{}.ca-amber{}.ca-teal{}.ca-pink{}.ca-blue2{}.ca-gray{}
+
+/* Nav/footer utilities */
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.btn-indigo{background:var(--indigo);color:#fff;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;display:inline-block;transition:opacity .18s}
+.btn-indigo:hover{opacity:.88}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digital Codex · The Authority on Digital Marketing">
+<meta name="twitter:description" content="218 in-depth digital marketing guides covering SEO, Google Ads, Meta Ads, Email, Content, Social Media, Analytics, CRO, and Business Strategy. Official sou">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<meta property="og:site_name" content="Clarigital">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Digital Codex \u00b7 The Authority on Digital Marketing", "item": "https://www.clarigital.com/codex/"}]}</script>
+</head>
+<body>
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+
+<!-- HERO -->
+<section class="hub-hero" aria-labelledby="hub-h1">
+  <div class="wrap">
+    <div class="hero-pill" aria-label="Free resource">Free · No login · Official sources only</div>
+    <h1 id="hub-h1">The <em>Digital Codex</em></h1>
+    <p class="hero-sub">The complete digital marketing knowledge base — 218 comprehensive guides across SEO, Paid Ads, Email, Content, Analytics, and Business Strategy. Every claim cites official documentation, peer-reviewed research, or verified practitioner frameworks.</p>
+    <div class="hero-stats" role="list" aria-label="Site statistics">
+      <div class="hstat"><div class="hstat-n">364</div><div class="hstat-l">Guides</div></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><div class="hstat-n">11</div><div class="hstat-l">Disciplines</div></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><div class="hstat-n">900K+</div><div class="hstat-l">Words</div></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><div class="hstat-n">0</div><div class="hstat-l">Ads</div></div>
+    </div>
+    <div class="hero-search-wrap" role="search">
+      <div class="hero-search">
+        <label for="hubSearch" class="sr-only">Search all guides</label>
+        <input type="search" id="hubSearch" name="q" placeholder="Search the guides: Quality Score, GA4 setup, SaaS churn, BERT…" autocomplete="off" oninput="doSearch(this.value)" aria-label="Search guides">
+        <button class="hero-search-btn" onclick="doSearch(document.getElementById('hubSearch').value)" aria-label="Search">Search</button>
+      </div>
+      <div class="search-fb" id="searchFb" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- JUMP BY CATEGORY (Alphabet Cards) -->
+<section class="alpha-strip" aria-label="Jump by Category">
+  <div class="wrap">
+    <p class="strip-lbl">Jump by Category</p>
+    <div class="alpha-grid">
+      <a href="/codex/seo/" class="alpha-card ca-navy"><div class="al">S</div><div class="an">Search Engine Optimisation</div><div class="ac">39 guides</div></a>
+      <a href="/codex/sem/" class="alpha-card ca-orange"><div class="al">G</div><div class="an">Google Ads &amp; SEM</div><div class="ac">24 guides</div></a>
+      <a href="/codex/paid-advertising/" class="alpha-card ca-blue2"><div class="al">F</div><div class="an">Facebook &amp; Instagram Ads</div><div class="ac">24 guides</div></a>
+      <a href="/codex/email-marketing/" class="alpha-card ca-green"><div class="al">E</div><div class="an">Email Marketing</div><div class="ac">20 guides</div></a>
+      <a href="/codex/content-marketing/" class="alpha-card ca-purple"><div class="al">C</div><div class="an">Content Marketing</div><div class="ac">12 guides</div></a>
+      <a href="/codex/social-media/" class="alpha-card ca-teal"><div class="al">M</div><div class="an">Social Media Organic</div><div class="ac">14 guides</div></a>
+      <a href="/codex/analytics-cro/" class="alpha-card ca-blue2"><div class="al">A</div><div class="an">Analytics &amp; CRO</div><div class="ac">15 guides</div></a>
+      <a href="/codex/business-strategy/" class="alpha-card ca-amber"><div class="al">B</div><div class="an">Business Strategy</div><div class="ac">20 guides</div></a>
+      <a href="/codex/programmatic/" class="alpha-card ca-navy"><div class="al">P</div><div class="an">Programmatic Advertising</div><div class="ac">8 guides</div></a>
+      <a href="/codex/affiliate-marketing/" class="alpha-card ca-green"><div class="al">AF</div><div class="an">Affiliate Marketing</div><div class="ac">6 guides</div></a>
+      <a href="/codex/ecommerce/" class="alpha-card ca-orange"><div class="al">EC</div><div class="an">E-Commerce Marketing</div><div class="ac">8 guides</div></a>
+      <a href="/codex/case-studies/" class="alpha-card ca-pink"><div class="al">CS</div><div class="an">Case Studies</div><div class="ac">15 studies</div></a>
+      <a href="/codex/history/" class="alpha-card ca-gray"><div class="al">H</div><div class="an">History of Digital Marketing</div><div class="ac">8 guides</div></a>
+      <a href="/codex/tools-resources/" class="alpha-card ca-gray"><div class="al">T</div><div class="an">Tools &amp; Resources</div><div class="ac">7 guides</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE STRIP -->
+<section class="aud-strip" aria-label="Start here based on your role">
+  <div class="wrap">
+    <div class="aud-grid">
+      <a href="/codex/seo/fundamentals/how-google-search-works/" class="aud-card">
+        <div class="aud-icon">🔍</div><div class="aud-title">New to SEO</div><div class="aud-desc">Start with how Google search works</div>
+      </a>
+      <a href="/codex/sem/google-ads/overview/" class="aud-card">
+        <div class="aud-icon">🎯</div><div class="aud-title">Running Google Ads</div><div class="aud-desc">Platform overview, auction &amp; bidding</div>
+      </a>
+      <a href="/codex/business-strategy/startup-marketing-fundamentals/" class="aud-card">
+        <div class="aud-icon">🚀</div><div class="aud-title">Startup Founder</div><div class="aud-desc">ICP, PMF, GTM &amp; channel sequencing</div>
+      </a>
+      <a href="/codex/analytics-cro/ga4-setup-configuration/" class="aud-card">
+        <div class="aud-icon">📊</div><div class="aud-title">Setting Up Analytics</div><div class="aud-desc">GA4 setup, events &amp; conversions</div>
+      </a>
+      <a href="/codex/business-strategy/saas-metrics-kpis/" class="aud-card">
+        <div class="aud-icon">💡</div><div class="aud-title">SaaS Marketer</div><div class="aud-desc">MRR, churn, NRR &amp; growth metrics</div>
+      </a>
+      <a href="/codex/all-guides/" class="aud-card">
+        <div class="aud-icon">📚</div><div class="aud-title">Browsing Everything</div><div class="aud-desc">All 218 guides across 14 disciplines</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION NAV -->
+<nav class="sec-nav" id="secNav" aria-label="Jump to section">
+  <div class="wrap">
+    <div class="snl-wrap">
+      <a href="#sec-seo" class="snl" style="--clr:#1D4ED8"><span>🔍</span> Search</a><a href="#sec-sem" class="snl" style="--clr:#E85C0D"><span>🎯</span> Google</a><a href="#sec-meta" class="snl" style="--clr:#1877F2"><span>📱</span> Facebook</a><a href="#sec-email" class="snl" style="--clr:#059669"><span>📧</span> Email</a><a href="#sec-content" class="snl" style="--clr:#7C3AED"><span>✍️</span> Content</a><a href="#sec-social" class="snl" style="--clr:#0E7490"><span>📲</span> Social</a><a href="#sec-analytics" class="snl" style="--clr:#0369A1"><span>📊</span> Analytics</a><a href="#sec-business" class="snl" style="--clr:#B45309"><span>🏢</span> Business</a><a href="#sec-cases" class="snl" style="--clr:#BE185D"><span>📋</span> Case</a><a href="#sec-history" class="snl" style="--clr:#374151"><span>📜</span> History</a><a href="#sec-tools" class="snl" style="--clr:#374151"><span>🛠️</span> Tools</a>
+    <a href="#sec-programmatic" class="snl" style="--clr:#0369A1"><span>🖥️</span> Programmatic</a><a href="#sec-affiliate" class="snl" style="--clr:#059669"><span>🤝</span> Affiliate</a><a href="#sec-ecommerce" class="snl" style="--clr:#B45309"><span>🛒</span> E-Commerce</a>
+    </div>
+  </div>
+</nav>
+
+<!-- GUIDE SECTIONS -->
+<main id="hubResults">
+<div class="hub-body">
+<div class="no-results" id="noResults" role="alert" aria-live="assertive">No guides match your search. Try: "Quality Score", "GA4", "SaaS churn", "email deliverability", "BERT".</div>
+
+
+<section class="hub-sec" id="sec-seo" aria-labelledby="sec-seo-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">🔍</span>
+      <h2 class="sec-title" id="sec-seo-h" style="color:#1D4ED8">Search Engine Optimisation</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">39 guides</span>
+      <a href="/codex/seo/" class="sec-all-link" style="color:#1D4ED8">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/seo/fundamentals/how-google-search-works/" class="art-card feat" data-t="How Google Search Works ⭐ Start here googlebot crawl index rank algorithm search console signals" data-d="googlebot crawl index rank algorithm search console signals"><span class="card-sec" style="color:#1D4ED8">⭐ ⭐ Start here</span><div class="card-title">How Google Search Works</div><div class="card-desc">Crawling, indexing, and ranking explained using official Google documentation.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/fundamentals/ranking-factors/" class="art-card" data-t="Ranking Factors: Complete Guide SEO ranking signals EEAT links content technical quality factors" data-d="ranking signals EEAT links content technical quality factors"><span class="card-sec" style="color:#64748b">SEO</span><div class="card-title">Ranking Factors: Complete Guide</div><div class="card-desc">Every confirmed ranking signal from official sources. Verified factors only.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/fundamentals/search-intent/" class="art-card" data-t="Search Intent vs Keywords SEO search intent informational navigational transactional commercial investigation" data-d="search intent informational navigational transactional commercial investigation"><span class="card-sec" style="color:#64748b">SEO</span><div class="card-title">Search Intent vs Keywords</div><div class="card-desc">Why intent classification matters more than keyword matching.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/fundamentals/pagerank-explained/" class="art-card" data-t="PageRank Explained SEO pagerank link equity backlinks internal linking authority mathematics" data-d="pagerank link equity backlinks internal linking authority mathematics"><span class="card-sec" style="color:#64748b">SEO</span><div class="card-title">PageRank Explained</div><div class="card-desc">Google's link-based authority algorithm and how link equity flows.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/fundamentals/core-web-vitals/" class="art-card" data-t="Core Web Vitals for SEO SEO core web vitals LCP INP CLS page experience ranking signal performance" data-d="core web vitals LCP INP CLS page experience ranking signal performance"><span class="card-sec" style="color:#64748b">SEO</span><div class="card-title">Core Web Vitals for SEO</div><div class="card-desc">LCP, INP, and CLS — Google's page experience ranking signals.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/fundamentals/crawlability-indexation/" class="art-card" data-t="Crawlability & Indexation SEO crawl budget robots noindex canonical sitemap index coverage" data-d="crawl budget robots noindex canonical sitemap index coverage"><span class="card-sec" style="color:#64748b">SEO</span><div class="card-title">Crawlability & Indexation</div><div class="card-desc">Crawl budget, robots.txt, XML sitemaps, canonicalisation, noindex directives.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/fundamentals/mobile-first-indexing/" class="art-card" data-t="Mobile-First Indexing SEO mobile first indexing smartphone googlebot responsive design" data-d="mobile first indexing smartphone googlebot responsive design"><span class="card-sec" style="color:#64748b">SEO</span><div class="card-title">Mobile-First Indexing</div><div class="card-desc">Why Google uses the mobile version to index and rank pages.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/fundamentals/serp-features/" class="art-card" data-t="SERP Features Guide SEO featured snippet knowledge panel people also ask local pack rich results" data-d="featured snippet knowledge panel people also ask local pack rich results"><span class="card-sec" style="color:#64748b">SEO</span><div class="card-title">SERP Features Guide</div><div class="card-desc">Featured Snippets, Knowledge Panels, PAA — how each is triggered.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/keyword-research/" class="art-card" data-t="Keyword Research On-Page keyword research search volume competition intent keyword planner" data-d="keyword research search volume competition intent keyword planner"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">Keyword Research</div><div class="card-desc">How to find, evaluate, and prioritise keywords using official tools.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/keyword-clustering/" class="art-card" data-t="Keyword Clustering On-Page keyword clustering topic grouping content architecture intent mapping" data-d="keyword clustering topic grouping content architecture intent mapping"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">Keyword Clustering</div><div class="card-desc">Grouping keywords by intent to create better content architecture.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/title-tags-meta/" class="art-card" data-t="Title Tags & Meta Descriptions On-Page title tag meta description CTR click through rate snippet optimisation" data-d="title tag meta description CTR click through rate snippet optimisation"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">Title Tags & Meta Descriptions</div><div class="card-desc">How to write titles and meta descriptions that rank and earn clicks.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/header-tags/" class="art-card" data-t="Header Tags (H1–H6) On-Page H1 H2 H3 header tags headings structure accessibility" data-d="H1 H2 H3 header tags headings structure accessibility"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">Header Tags (H1–H6)</div><div class="card-desc">How to use heading tags for SEO, accessibility, and content structure.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/internal-linking/" class="art-card" data-t="Internal Linking Strategy On-Page internal linking anchor text link equity site architecture navigation" data-d="internal linking anchor text link equity site architecture navigation"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">Internal Linking Strategy</div><div class="card-desc">How to build internal link structures that distribute authority.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/content-length-depth/" class="art-card" data-t="Content Length & Depth On-Page content length depth word count comprehensive coverage topical authority" data-d="content length depth word count comprehensive coverage topical authority"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">Content Length & Depth</div><div class="card-desc">What the research says about content length and ranking.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/image-optimisation/" class="art-card" data-t="Image Optimisation for SEO On-Page image optimisation alt text WebP compression lazy loading file size" data-d="image optimisation alt text WebP compression lazy loading file size"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">Image Optimisation for SEO</div><div class="card-desc">Alt text, file names, formats, compression, and lazy loading.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/eeat/" class="art-card" data-t="E-E-A-T: Experience, Expertise, Authoritativeness, Trust On-Page EEAT experience expertise authoritativeness trust quality rater guidelines" data-d="EEAT experience expertise authoritativeness trust quality rater guidelines"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">E-E-A-T: Experience, Expertise, Authoritativeness, Trust</div><div class="card-desc">Google's quality framework for evaluating content.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/on-page/ymyl/" class="art-card" data-t="YMYL: Your Money or Your Life On-Page YMYL your money your life health finance legal safety quality standards" data-d="YMYL your money your life health finance legal safety quality standards"><span class="card-sec" style="color:#64748b">On-Page</span><div class="card-title">YMYL: Your Money or Your Life</div><div class="card-desc">High-stakes content categories and their elevated quality requirements.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/ttfb/" class="art-card" data-t="TTFB: Time to First Byte Technical TTFB time to first byte server response hosting CDN optimisation" data-d="TTFB time to first byte server response hosting CDN optimisation"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">TTFB: Time to First Byte</div><div class="card-desc">How TTFB affects SEO, how to measure it, and how to reduce it.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/lcp-optimisation/" class="art-card" data-t="LCP Optimisation Technical LCP largest contentful paint optimisation images fonts render blocking" data-d="LCP largest contentful paint optimisation images fonts render blocking"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">LCP Optimisation</div><div class="card-desc">How to improve Largest Contentful Paint for real users.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/inp-optimisation/" class="art-card" data-t="INP Optimisation Technical INP interaction to next paint JavaScript responsiveness event handlers" data-d="INP interaction to next paint JavaScript responsiveness event handlers"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">INP Optimisation</div><div class="card-desc">How to improve Interaction to Next Paint — the newest Core Web Vital.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/cls-optimisation/" class="art-card" data-t="CLS Optimisation Technical CLS cumulative layout shift ads fonts images dimensions layout" data-d="CLS cumulative layout shift ads fonts images dimensions layout"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">CLS Optimisation</div><div class="card-desc">How to eliminate layout shifts that hurt user experience and rankings.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/page-speed/" class="art-card" data-t="Page Speed Optimisation Technical page speed loading performance lighthouse pagespeed insights CDN minification" data-d="page speed loading performance lighthouse pagespeed insights CDN minification"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">Page Speed Optimisation</div><div class="card-desc">The complete technical guide to making pages load faster.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/javascript-seo/" class="art-card" data-t="JavaScript SEO Technical javascript SEO SPA rendering crawl googlebot dynamic content hydration" data-d="javascript SEO SPA rendering crawl googlebot dynamic content hydration"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">JavaScript SEO</div><div class="card-desc">How Googlebot handles JavaScript, crawling SPAs, and rendering.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/ssr-vs-csr/" class="art-card" data-t="SSR vs CSR: SEO Implications Technical SSR CSR server side rendering client side rendering next.js SEO framework" data-d="SSR CSR server side rendering client side rendering next.js SEO framework"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">SSR vs CSR: SEO Implications</div><div class="card-desc">Server-side vs client-side rendering — the SEO impact and trade-offs.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/schema-markup/" class="art-card" data-t="Schema Markup & Structured Data Technical schema markup structured data JSON-LD rich results recipe review FAQ" data-d="schema markup structured data JSON-LD rich results recipe review FAQ"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">Schema Markup & Structured Data</div><div class="card-desc">How to implement Schema.org structured data for rich results.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/hreflang/" class="art-card" data-t="Hreflang Implementation Technical hreflang international SEO multilingual multiregional language targeting" data-d="hreflang international SEO multilingual multiregional language targeting"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">Hreflang Implementation</div><div class="card-desc">How to correctly implement hreflang for international SEO.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/technical/log-file-analysis/" class="art-card" data-t="Log File Analysis for SEO Technical log file analysis crawl budget googlebot server logs SEO audit" data-d="log file analysis crawl budget googlebot server logs SEO audit"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">Log File Analysis for SEO</div><div class="card-desc">How to analyse server logs to understand crawl behaviour.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/off-page/backlink-fundamentals/" class="art-card" data-t="Backlink Fundamentals Off-Page backlinks link building domain authority page authority anchor text nofollow" data-d="backlinks link building domain authority page authority anchor text nofollow"><span class="card-sec" style="color:#64748b">Off-Page</span><div class="card-title">Backlink Fundamentals</div><div class="card-desc">How backlinks work, what makes a quality link, and link metrics.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/off-page/link-building-strategies/" class="art-card" data-t="Link Building Strategies Off-Page link building guest posts digital PR outreach broken link building HARO" data-d="link building guest posts digital PR outreach broken link building HARO"><span class="card-sec" style="color:#64748b">Off-Page</span><div class="card-title">Link Building Strategies</div><div class="card-desc">Documented link building techniques — outreach, digital PR, content.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/off-page/anchor-text-strategy/" class="art-card" data-t="Anchor Text Strategy Off-Page anchor text exact match partial match branded naked URL optimisation" data-d="anchor text exact match partial match branded naked URL optimisation"><span class="card-sec" style="color:#64748b">Off-Page</span><div class="card-title">Anchor Text Strategy</div><div class="card-desc">How to build a natural, diverse anchor text profile.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/off-page/featured-snippet-optimisation/" class="art-card" data-t="Featured Snippet Optimisation Off-Page featured snippet position zero paragraph list table optimisation" data-d="featured snippet position zero paragraph list table optimisation"><span class="card-sec" style="color:#64748b">Off-Page</span><div class="card-title">Featured Snippet Optimisation</div><div class="card-desc">How to earn position zero in Google search results.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/off-page/xml-sitemaps-robots-txt/" class="art-card" data-t="XML Sitemaps & Robots.txt Off-Page XML sitemap robots.txt crawl directives disallow noindex configuration" data-d="XML sitemap robots.txt crawl directives disallow noindex configuration"><span class="card-sec" style="color:#64748b">Off-Page</span><div class="card-title">XML Sitemaps & Robots.txt</div><div class="card-desc">How to configure sitemaps and robots.txt correctly.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/algorithm/google-algorithm-updates-timeline/" class="art-card" data-t="Google Algorithm Updates Timeline Algorithms google algorithm updates history timeline Panda Penguin Hummingbird BERT MUM" data-d="google algorithm updates history timeline Panda Penguin Hummingbird BERT MUM"><span class="card-sec" style="color:#64748b">Algorithms</span><div class="card-title">Google Algorithm Updates Timeline</div><div class="card-desc">Every major Google algorithm update — documented and explained.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/algorithm/panda/" class="art-card" data-t="Google Panda Update Algorithms google panda content quality thin content duplicate content recovery" data-d="google panda content quality thin content duplicate content recovery"><span class="card-sec" style="color:#64748b">Algorithms</span><div class="card-title">Google Panda Update</div><div class="card-desc">How Panda works, what content it targets, and how to recover.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/algorithm/penguin/" class="art-card" data-t="Google Penguin Update Algorithms google penguin link spam unnatural links disavow recovery" data-d="google penguin link spam unnatural links disavow recovery"><span class="card-sec" style="color:#64748b">Algorithms</span><div class="card-title">Google Penguin Update</div><div class="card-desc">How Penguin works, link spam, and how to clean a link profile.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/algorithm/hummingbird-rankbrain/" class="art-card" data-t="Hummingbird & RankBrain Algorithms hummingbird rankbrain semantic search NLP machine learning query understanding" data-d="hummingbird rankbrain semantic search NLP machine learning query understanding"><span class="card-sec" style="color:#64748b">Algorithms</span><div class="card-title">Hummingbird & RankBrain</div><div class="card-desc">Semantic search, query understanding, and machine learning in Google.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/algorithm/bert-mum/" class="art-card" data-t="BERT & MUM Algorithms BERT MUM natural language processing transformer model long form queries" data-d="BERT MUM natural language processing transformer model long form queries"><span class="card-sec" style="color:#64748b">Algorithms</span><div class="card-title">BERT & MUM</div><div class="card-desc">How BERT and MUM changed natural language processing in Google.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/algorithm/core-updates/" class="art-card" data-t="Google Core Updates Algorithms core update broad core algorithm update recovery assessment quality" data-d="core update broad core algorithm update recovery assessment quality"><span class="card-sec" style="color:#64748b">Algorithms</span><div class="card-title">Google Core Updates</div><div class="card-desc">What core updates target, how to assess impact, and recovery.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/seo/algorithm/helpful-content-update/" class="art-card" data-t="Helpful Content Update Algorithms helpful content system people-first content HCU recovery classifier" data-d="helpful content system people-first content HCU recovery classifier"><span class="card-sec" style="color:#64748b">Algorithms</span><div class="card-title">Helpful Content Update</div><div class="card-desc">Google's system for rewarding people-first content.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-sem" aria-labelledby="sec-sem-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">🎯</span>
+      <h2 class="sec-title" id="sec-sem-h" style="color:#E85C0D">Google Ads & SEM</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">24 guides</span>
+      <a href="/codex/sem/" class="sec-all-link" style="color:#E85C0D">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/sem/google-ads/overview/" class="art-card feat" data-t="Google Ads Platform Overview ⭐ Start here google ads overview campaigns account structure auction ad rank quality score" data-d="google ads overview campaigns account structure auction ad rank quality score"><span class="card-sec" style="color:#E85C0D">⭐ ⭐ Start here</span><div class="card-title">Google Ads Platform Overview</div><div class="card-desc">Campaign types, account structure, bidding overview, and how the auction works.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/how-auction-works/" class="art-card" data-t="How the Google Ads Auction Works Google Ads google ads auction real time bidding ad position CPC determination" data-d="google ads auction real time bidding ad position CPC determination"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">How the Google Ads Auction Works</div><div class="card-desc">The real-time auction process that determines ad position and CPC.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/ad-rank-formula/" class="art-card" data-t="Ad Rank Formula Google Ads ad rank formula quality score bid expected CTR landing page" data-d="ad rank formula quality score bid expected CTR landing page"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Ad Rank Formula</div><div class="card-desc">How Google calculates Ad Rank and what affects your position.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/quality-score-deep-dive/" class="art-card" data-t="Quality Score Deep Dive Google Ads quality score expected CTR landing page experience ad relevance ad rank" data-d="quality score expected CTR landing page experience ad relevance ad rank"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Quality Score Deep Dive</div><div class="card-desc">How Quality Score is calculated and how to improve each component.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/keyword-matching-types/" class="art-card" data-t="Keyword Match Types Google Ads keyword match types broad match phrase match exact match negative keywords" data-d="keyword match types broad match phrase match exact match negative keywords"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Keyword Match Types</div><div class="card-desc">Broad, phrase, and exact match — how each works and when to use them.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/negative-keywords/" class="art-card" data-t="Negative Keywords Google Ads negative keywords search term report irrelevant traffic waste prevention" data-d="negative keywords search term report irrelevant traffic waste prevention"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Negative Keywords</div><div class="card-desc">How to build and maintain a negative keyword list that prevents waste.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/bidding-strategies/" class="art-card" data-t="Bidding Strategies Explained Google Ads smart bidding target CPA target ROAS maximize conversions manual CPC" data-d="smart bidding target CPA target ROAS maximize conversions manual CPC"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Bidding Strategies Explained</div><div class="card-desc">Manual CPC, Target CPA, Target ROAS, Maximise Conversions — when to use each.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/search-campaign-setup/" class="art-card" data-t="Search Campaign Setup Google Ads search campaign setup structure ad groups targeting location device" data-d="search campaign setup structure ad groups targeting location device"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Search Campaign Setup</div><div class="card-desc">Step-by-step search campaign structure, ad groups, and targeting.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/ad-copy-best-practices/" class="art-card" data-t="Ad Copy Best Practices Google Ads ad copy headlines descriptions RSA responsive search ads CTR quality" data-d="ad copy headlines descriptions RSA responsive search ads CTR quality"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Ad Copy Best Practices</div><div class="card-desc">How to write Google Ads copy that earns clicks and improves Quality Score.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/ad-extensions/" class="art-card" data-t="Ad Extensions (Assets) Google Ads ad extensions assets sitelinks callout structured snippet call location" data-d="ad extensions assets sitelinks callout structured snippet call location"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Ad Extensions (Assets)</div><div class="card-desc">Sitelinks, callouts, structured snippets — how each extension works.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/display/display-network-fundamentals/" class="art-card" data-t="Display Network Fundamentals Display google display network GDN audiences placements contextual targeting remarketing" data-d="google display network GDN audiences placements contextual targeting remarketing"><span class="card-sec" style="color:#64748b">Display</span><div class="card-title">Display Network Fundamentals</div><div class="card-desc">How GDN works, targeting options, and measuring display effectiveness.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/display/display-audiences/" class="art-card" data-t="Display Audiences Display display audiences in-market affinity custom intent similar segments" data-d="display audiences in-market affinity custom intent similar segments"><span class="card-sec" style="color:#64748b">Display</span><div class="card-title">Display Audiences</div><div class="card-desc">In-market, affinity, and custom audiences for Display campaigns.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/display/remarketing/" class="art-card" data-t="Remarketing Campaigns Display remarketing retargeting past visitors customer lists RLSA display" data-d="remarketing retargeting past visitors customer lists RLSA display"><span class="card-sec" style="color:#64748b">Display</span><div class="card-title">Remarketing Campaigns</div><div class="card-desc">How to set up and optimise remarketing to past website visitors.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/display/responsive-display-ads/" class="art-card" data-t="Responsive Display Ads Display responsive display ads RDA headlines descriptions images logos assets" data-d="responsive display ads RDA headlines descriptions images logos assets"><span class="card-sec" style="color:#64748b">Display</span><div class="card-title">Responsive Display Ads</div><div class="card-desc">How to build and optimise RDAs for the Display Network.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/shopping/merchant-center-setup/" class="art-card" data-t="Merchant Center Setup Shopping google merchant center setup feed product data shopping ads" data-d="google merchant center setup feed product data shopping ads"><span class="card-sec" style="color:#64748b">Shopping</span><div class="card-title">Merchant Center Setup</div><div class="card-desc">How to set up Google Merchant Center and connect it to Google Ads.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/shopping/product-feed-optimisation/" class="art-card" data-t="Product Feed Optimisation Shopping product feed optimisation title description GTIN brand product type" data-d="product feed optimisation title description GTIN brand product type"><span class="card-sec" style="color:#64748b">Shopping</span><div class="card-title">Product Feed Optimisation</div><div class="card-desc">How to optimise product titles, descriptions, and attributes for Shopping.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/shopping/shopping-campaign-structure/" class="art-card" data-t="Shopping Campaign Structure Shopping shopping campaign structure product groups priority bidding segmentation" data-d="shopping campaign structure product groups priority bidding segmentation"><span class="card-sec" style="color:#64748b">Shopping</span><div class="card-title">Shopping Campaign Structure</div><div class="card-desc">How to structure Shopping campaigns for maximum control and efficiency.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/shopping/performance-max/" class="art-card" data-t="Performance Max Campaigns Shopping performance max PMax asset groups audiences signals automation AI campaigns" data-d="performance max PMax asset groups audiences signals automation AI campaigns"><span class="card-sec" style="color:#64748b">Shopping</span><div class="card-title">Performance Max Campaigns</div><div class="card-desc">Google's AI-driven campaign type that spans all channels.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/youtube/youtube-ad-formats/" class="art-card" data-t="YouTube Ad Formats YouTube youtube ad formats skippable non-skippable bumper in-stream discovery" data-d="youtube ad formats skippable non-skippable bumper in-stream discovery"><span class="card-sec" style="color:#64748b">YouTube</span><div class="card-title">YouTube Ad Formats</div><div class="card-desc">Skippable, non-skippable, bumper ads — how each format works.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/youtube/youtube-audience-targeting/" class="art-card" data-t="YouTube Audience Targeting YouTube youtube audience targeting custom intent in-market affinity remarketing" data-d="youtube audience targeting custom intent in-market affinity remarketing"><span class="card-sec" style="color:#64748b">YouTube</span><div class="card-title">YouTube Audience Targeting</div><div class="card-desc">Custom intent, in-market, and remarketing audiences for YouTube.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/advanced/conversion-tracking/" class="art-card" data-t="Conversion Tracking Setup Advanced conversion tracking setup goals actions website app phone enhanced" data-d="conversion tracking setup goals actions website app phone enhanced"><span class="card-sec" style="color:#64748b">Advanced</span><div class="card-title">Conversion Tracking Setup</div><div class="card-desc">How to track conversions accurately across Google Ads campaigns.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/advanced/google-ads-ga4-integration/" class="art-card" data-t="Google Ads & GA4 Integration Advanced google ads GA4 integration import conversions audiences linking measurement" data-d="google ads GA4 integration import conversions audiences linking measurement"><span class="card-sec" style="color:#64748b">Advanced</span><div class="card-title">Google Ads & GA4 Integration</div><div class="card-desc">How to link Google Ads with GA4 for complete measurement.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/google-ads-history/" class="art-card" data-t="History of Google Ads History google ads history adwords timeline paid search evolution 2000" data-d="google ads history adwords timeline paid search evolution 2000"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of Google Ads</div><div class="card-desc">How Google AdWords became Google Ads — the documented history.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/sem/google-ads/overview/" class="art-card" data-t="Google Ads Overview Google Ads google ads platform overview account structure campaigns types" data-d="google ads platform overview account structure campaigns types"><span class="card-sec" style="color:#64748b">Google Ads</span><div class="card-title">Google Ads Overview</div><div class="card-desc">Complete overview of the Google Ads platform, account structure and campaign types.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-meta" aria-labelledby="sec-meta-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">📱</span>
+      <h2 class="sec-title" id="sec-meta-h" style="color:#1877F2">Facebook & Instagram Ads</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">24 guides</span>
+      <a href="/codex/paid-advertising/" class="sec-all-link" style="color:#1877F2">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/paid-advertising/facebook-instagram/ads-manager-overview/" class="art-card feat" data-t="Meta Ads Manager Overview ⭐ Start here meta ads manager facebook ads campaign ad set ad level structure overview" data-d="meta ads manager facebook ads campaign ad set ad level structure overview"><span class="card-sec" style="color:#1877F2">⭐ ⭐ Start here</span><div class="card-title">Meta Ads Manager Overview</div><div class="card-desc">The complete Meta Ads Manager interface, campaign structure, and navigation.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/campaign-objectives/" class="art-card" data-t="Campaign Objectives Meta Ads campaign objectives awareness traffic engagement leads app sales conversions" data-d="campaign objectives awareness traffic engagement leads app sales conversions"><span class="card-sec" style="color:#64748b">Meta Ads</span><div class="card-title">Campaign Objectives</div><div class="card-desc">How to choose the right campaign objective for your goal.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/meta-ads-auction/" class="art-card" data-t="Meta Ads Auction Meta Ads meta ads auction delivery cost relevance score bid budget optimisation" data-d="meta ads auction delivery cost relevance score bid budget optimisation"><span class="card-sec" style="color:#64748b">Meta Ads</span><div class="card-title">Meta Ads Auction</div><div class="card-desc">How the Facebook ad auction determines delivery, cost, and results.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/campaign-budget-optimisation/" class="art-card" data-t="Campaign Budget Optimisation Meta Ads CBO campaign budget optimisation ABO ad set budget distribution" data-d="CBO campaign budget optimisation ABO ad set budget distribution"><span class="card-sec" style="color:#64748b">Meta Ads</span><div class="card-title">Campaign Budget Optimisation</div><div class="card-desc">How CBO works and when to use it vs ad set budget control.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/core-audiences/" class="art-card" data-t="Core Audiences Audiences core audiences demographics interests behaviours location targeting facebook" data-d="core audiences demographics interests behaviours location targeting facebook"><span class="card-sec" style="color:#64748b">Audiences</span><div class="card-title">Core Audiences</div><div class="card-desc">Location, demographics, interests, and behaviours targeting.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/custom-audiences/" class="art-card" data-t="Custom Audiences Audiences custom audiences website visitors customer list email lookalike source" data-d="custom audiences website visitors customer list email lookalike source"><span class="card-sec" style="color:#64748b">Audiences</span><div class="card-title">Custom Audiences</div><div class="card-desc">Website visitors, customer lists, video viewers, and engagement audiences.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/lookalike-audiences/" class="art-card" data-t="Lookalike Audiences Audiences lookalike audiences source quality percentage size expansion similar" data-d="lookalike audiences source quality percentage size expansion similar"><span class="card-sec" style="color:#64748b">Audiences</span><div class="card-title">Lookalike Audiences</div><div class="card-desc">How to build lookalike audiences and choose the right source.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/meta-pixel-implementation/" class="art-card" data-t="Meta Pixel Implementation Tracking meta pixel facebook pixel implementation events tracking standard custom" data-d="meta pixel facebook pixel implementation events tracking standard custom"><span class="card-sec" style="color:#64748b">Tracking</span><div class="card-title">Meta Pixel Implementation</div><div class="card-desc">How to install and configure the Meta Pixel for conversion tracking.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/events-setup-verification/" class="art-card" data-t="Events Setup & Verification Tracking meta events manager standard events custom events verification pixel" data-d="meta events manager standard events custom events verification pixel"><span class="card-sec" style="color:#64748b">Tracking</span><div class="card-title">Events Setup & Verification</div><div class="card-desc">Configuring standard and custom events in Meta Events Manager.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/conversions-api-setup/" class="art-card" data-t="Conversions API Setup Tracking conversions API CAPI server side tracking signal quality iOS privacy" data-d="conversions API CAPI server side tracking signal quality iOS privacy"><span class="card-sec" style="color:#64748b">Tracking</span><div class="card-title">Conversions API Setup</div><div class="card-desc">Server-side tracking to maintain signal quality post iOS 14.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/image-video-ads/" class="art-card" data-t="Image & Video Ads Creative image video ads creative specifications formats size ratio best practices" data-d="image video ads creative specifications formats size ratio best practices"><span class="card-sec" style="color:#64748b">Creative</span><div class="card-title">Image & Video Ads</div><div class="card-desc">Creative specifications, best practices, and formats for image and video ads.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/carousel-collection-ads/" class="art-card" data-t="Carousel & Collection Ads Creative carousel ads collection ads ecommerce product catalogue storytelling format" data-d="carousel ads collection ads ecommerce product catalogue storytelling format"><span class="card-sec" style="color:#64748b">Creative</span><div class="card-title">Carousel & Collection Ads</div><div class="card-desc">How to use carousel and collection formats for e-commerce and storytelling.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/stories-reels-ads/" class="art-card" data-t="Stories & Reels Ads Creative stories reels ads vertical video placement format specifications" data-d="stories reels ads vertical video placement format specifications"><span class="card-sec" style="color:#64748b">Creative</span><div class="card-title">Stories & Reels Ads</div><div class="card-desc">Vertical video ad formats for Stories and Reels placements.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/lead-ads/" class="art-card" data-t="Lead Ads Creative lead ads lead generation native forms instant forms CRM integration" data-d="lead ads lead generation native forms instant forms CRM integration"><span class="card-sec" style="color:#64748b">Creative</span><div class="card-title">Lead Ads</div><div class="card-desc">How to run lead generation campaigns using Meta native forms.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/dynamic-product-ads/" class="art-card" data-t="Dynamic Product Ads Creative dynamic product ads DPA catalogue remarketing product feed personalisation" data-d="dynamic product ads DPA catalogue remarketing product feed personalisation"><span class="card-sec" style="color:#64748b">Creative</span><div class="card-title">Dynamic Product Ads</div><div class="card-desc">Automated remarketing ads that show relevant products to past visitors.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/advantage-plus-shopping/" class="art-card" data-t="Advantage+ Shopping Campaigns Creative advantage plus shopping ASC automated AI catalogue ROAS ecommerce" data-d="advantage plus shopping ASC automated AI catalogue ROAS ecommerce"><span class="card-sec" style="color:#64748b">Creative</span><div class="card-title">Advantage+ Shopping Campaigns</div><div class="card-desc">Meta's AI-driven automated shopping campaign format.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/instagram-reels-strategy/" class="art-card" data-t="Instagram Reels Ads Strategy Instagram instagram reels ads strategy placement creative hook retention vertical" data-d="instagram reels ads strategy placement creative hook retention vertical"><span class="card-sec" style="color:#64748b">Instagram</span><div class="card-title">Instagram Reels Ads Strategy</div><div class="card-desc">How to create and optimise ads in the Reels placement.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/instagram-shopping-ads/" class="art-card" data-t="Instagram Shopping Ads Instagram instagram shopping ads product tags catalogue checkout shoppable posts" data-d="instagram shopping ads product tags catalogue checkout shoppable posts"><span class="card-sec" style="color:#64748b">Instagram</span><div class="card-title">Instagram Shopping Ads</div><div class="card-desc">Product tagging, shopping tabs, and shoppable ads on Instagram.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/meta-business-suite/" class="art-card" data-t="Meta Business Suite Platform meta business suite facebook instagram manage pages posts ads unified" data-d="meta business suite facebook instagram manage pages posts ads unified"><span class="card-sec" style="color:#64748b">Platform</span><div class="card-title">Meta Business Suite</div><div class="card-desc">The unified management platform for Facebook and Instagram.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/ab-testing-meta/" class="art-card" data-t="A/B Testing in Meta Ads Measurement AB testing meta ads experiments split test audiences creatives placements" data-d="AB testing meta ads experiments split test audiences creatives placements"><span class="card-sec" style="color:#64748b">Measurement</span><div class="card-title">A/B Testing in Meta Ads</div><div class="card-desc">How to run controlled experiments in Meta Ads Manager.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/attribution-reporting/" class="art-card" data-t="Attribution & Reporting Measurement meta attribution reporting click view 7 day 1 day window model" data-d="meta attribution reporting click view 7 day 1 day window model"><span class="card-sec" style="color:#64748b">Measurement</span><div class="card-title">Attribution & Reporting</div><div class="card-desc">How Meta attribution models work and how to interpret results.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/meta-ads-reporting/" class="art-card" data-t="Meta Ads Reporting Measurement meta ads reporting custom columns metrics ROAS CPM CPC CTR frequency" data-d="meta ads reporting custom columns metrics ROAS CPM CPC CTR frequency"><span class="card-sec" style="color:#64748b">Measurement</span><div class="card-title">Meta Ads Reporting</div><div class="card-desc">Building custom reports in Ads Manager and interpreting key metrics.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/privacy-changes-impact/" class="art-card" data-t="Privacy Changes Impact Measurement iOS 14 ATT privacy changes signal loss attribution CAPI modelled conversions" data-d="iOS 14 ATT privacy changes signal loss attribution CAPI modelled conversions"><span class="card-sec" style="color:#64748b">Measurement</span><div class="card-title">Privacy Changes Impact</div><div class="card-desc">How iOS 14.5, ATT, and privacy regulation changed Meta Ads.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/paid-advertising/facebook-instagram/facebook-ads-history/" class="art-card" data-t="History of Facebook Ads History facebook ads history timeline evolution 2007 2012 iOS privacy changes" data-d="facebook ads history timeline evolution 2007 2012 iOS privacy changes"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of Facebook Ads</div><div class="card-desc">How Facebook advertising evolved from 2007 to today.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-email" aria-labelledby="sec-email-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">📧</span>
+      <h2 class="sec-title" id="sec-email-h" style="color:#059669">Email Marketing</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">20 guides</span>
+      <a href="/codex/email-marketing/" class="sec-all-link" style="color:#059669">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/email-marketing/how-email-deliverability-works/" class="art-card feat" data-t="How Email Deliverability Works ⭐ Start here email deliverability inbox spam sender reputation ISP filtering" data-d="email deliverability inbox spam sender reputation ISP filtering"><span class="card-sec" style="color:#059669">⭐ ⭐ Start here</span><div class="card-title">How Email Deliverability Works</div><div class="card-desc">Reputation, authentication, and infrastructure — why emails land in inbox or spam.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/authentication-spf-dkim-dmarc/" class="art-card" data-t="SPF, DKIM & DMARC Technical SPF DKIM DMARC email authentication DNS TXT record configuration" data-d="SPF DKIM DMARC email authentication DNS TXT record configuration"><span class="card-sec" style="color:#64748b">Technical</span><div class="card-title">SPF, DKIM & DMARC</div><div class="card-desc">The three email authentication protocols every sender must configure.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/list-building-strategies/" class="art-card" data-t="List Building Strategies List Management email list building opt-in signup forms lead magnets content upgrades" data-d="email list building opt-in signup forms lead magnets content upgrades"><span class="card-sec" style="color:#64748b">List Management</span><div class="card-title">List Building Strategies</div><div class="card-desc">How to grow an email list with genuinely interested subscribers.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/list-hygiene-decay/" class="art-card" data-t="List Hygiene & Decay List Management list hygiene decay bounce hard soft unsubscribe cleaning inactive" data-d="list hygiene decay bounce hard soft unsubscribe cleaning inactive"><span class="card-sec" style="color:#64748b">List Management</span><div class="card-title">List Hygiene & Decay</div><div class="card-desc">Why lists decay, what to clean, and how often to clean them.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/email-segmentation/" class="art-card" data-t="Email Segmentation Strategy email segmentation demographic behavioural purchase history engagement RFM" data-d="email segmentation demographic behavioural purchase history engagement RFM"><span class="card-sec" style="color:#64748b">Strategy</span><div class="card-title">Email Segmentation</div><div class="card-desc">How to segment subscribers for higher relevance and engagement.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/email-personalisation/" class="art-card" data-t="Email Personalisation Strategy email personalisation dynamic content merge tags conditional content" data-d="email personalisation dynamic content merge tags conditional content"><span class="card-sec" style="color:#64748b">Strategy</span><div class="card-title">Email Personalisation</div><div class="card-desc">Dynamic content, merge tags, and behavioural personalisation.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/welcome-series/" class="art-card" data-t="Welcome Series Automation welcome series onboarding email sequence automation first impression" data-d="welcome series onboarding email sequence automation first impression"><span class="card-sec" style="color:#64748b">Automation</span><div class="card-title">Welcome Series</div><div class="card-desc">How to design and automate a welcome email sequence.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/drip-campaigns/" class="art-card" data-t="Drip Campaigns Automation drip campaigns automated nurture sequence time-based triggered emails" data-d="drip campaigns automated nurture sequence time-based triggered emails"><span class="card-sec" style="color:#64748b">Automation</span><div class="card-title">Drip Campaigns</div><div class="card-desc">Time-based automated email sequences for nurturing and education.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/abandoned-cart-emails/" class="art-card" data-t="Abandoned Cart Emails Automation abandoned cart emails recovery sequence timing incentive ecommerce" data-d="abandoned cart emails recovery sequence timing incentive ecommerce"><span class="card-sec" style="color:#64748b">Automation</span><div class="card-title">Abandoned Cart Emails</div><div class="card-desc">How to recover abandoned purchases with automated email sequences.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/re-engagement-campaigns/" class="art-card" data-t="Re-Engagement Campaigns Automation re-engagement winback inactive subscribers sunset policy cleaning" data-d="re-engagement winback inactive subscribers sunset policy cleaning"><span class="card-sec" style="color:#64748b">Automation</span><div class="card-title">Re-Engagement Campaigns</div><div class="card-desc">How to win back inactive subscribers before removing them.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/promotional-campaigns/" class="art-card" data-t="Promotional Campaigns Campaigns promotional email campaigns sale offer discount urgency segmentation" data-d="promotional email campaigns sale offer discount urgency segmentation"><span class="card-sec" style="color:#64748b">Campaigns</span><div class="card-title">Promotional Campaigns</div><div class="card-desc">How to plan and execute promotional email campaigns.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/newsletter-campaigns/" class="art-card" data-t="Newsletter Campaigns Campaigns newsletter email campaigns editorial content curation engagement open rate" data-d="newsletter email campaigns editorial content curation engagement open rate"><span class="card-sec" style="color:#64748b">Campaigns</span><div class="card-title">Newsletter Campaigns</div><div class="card-desc">How to build a newsletter readers actually open and read.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/transactional-emails/" class="art-card" data-t="Transactional Emails Campaigns transactional emails receipts shipping password reset confirmation" data-d="transactional emails receipts shipping password reset confirmation"><span class="card-sec" style="color:#64748b">Campaigns</span><div class="card-title">Transactional Emails</div><div class="card-desc">Receipts, shipping notifications, and password resets — how to optimise them.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/subject-line-best-practices/" class="art-card" data-t="Subject Line Best Practices Optimisation subject lines open rate A/B testing preview text spam triggers length" data-d="subject lines open rate A/B testing preview text spam triggers length"><span class="card-sec" style="color:#64748b">Optimisation</span><div class="card-title">Subject Line Best Practices</div><div class="card-desc">How to write subject lines that improve open rates.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/ab-testing-email/" class="art-card" data-t="A/B Testing Email Optimisation email AB testing subject line content send time sample size significance" data-d="email AB testing subject line content send time sample size significance"><span class="card-sec" style="color:#64748b">Optimisation</span><div class="card-title">A/B Testing Email</div><div class="card-desc">How to run statistically valid email tests.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/email-analytics-metrics/" class="art-card" data-t="Email Analytics & Metrics Optimisation email metrics open rate click rate unsubscribe deliverability reporting" data-d="email metrics open rate click rate unsubscribe deliverability reporting"><span class="card-sec" style="color:#64748b">Optimisation</span><div class="card-title">Email Analytics & Metrics</div><div class="card-desc">Open rate, click rate, deliverability — what matters and why.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/workflow-automation/" class="art-card" data-t="Email Workflow Automation Automation email automation workflow triggers ESP platform sequences conditional" data-d="email automation workflow triggers ESP platform sequences conditional"><span class="card-sec" style="color:#64748b">Automation</span><div class="card-title">Email Workflow Automation</div><div class="card-desc">How to build trigger-based automation workflows in ESP platforms.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/unsubscribe-best-practices/" class="art-card" data-t="Unsubscribe Best Practices Compliance unsubscribe best practices one-click list-unsubscribe GDPR CAN-SPAM" data-d="unsubscribe best practices one-click list-unsubscribe GDPR CAN-SPAM"><span class="card-sec" style="color:#64748b">Compliance</span><div class="card-title">Unsubscribe Best Practices</div><div class="card-desc">How to handle unsubscribes correctly and reduce list damage.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/can-spam-gdpr-ccpa-compliance/" class="art-card" data-t="CAN-SPAM, GDPR & CCPA Compliance CAN-SPAM GDPR CCPA compliance consent opt-in unsubscribe legal" data-d="CAN-SPAM GDPR CCPA compliance consent opt-in unsubscribe legal"><span class="card-sec" style="color:#64748b">Compliance</span><div class="card-title">CAN-SPAM, GDPR & CCPA</div><div class="card-desc">Email compliance requirements under US, EU, and California law.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/email-marketing/email-marketing-history/" class="art-card" data-t="History of Email Marketing History email marketing history 1978 first email spam evolution ESP tools" data-d="email marketing history 1978 first email spam evolution ESP tools"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of Email Marketing</div><div class="card-desc">How email marketing evolved from 1978 to today.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-content" aria-labelledby="sec-content-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">✍️</span>
+      <h2 class="sec-title" id="sec-content-h" style="color:#7C3AED">Content Marketing</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">12 guides</span>
+      <a href="/codex/content-marketing/" class="sec-all-link" style="color:#7C3AED">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/content-marketing/content-strategy-framework/" class="art-card feat" data-t="Content Strategy Framework ⭐ Start here content strategy framework goals audience research channels KPIs editorial" data-d="content strategy framework goals audience research channels KPIs editorial"><span class="card-sec" style="color:#7C3AED">⭐ ⭐ Start here</span><div class="card-title">Content Strategy Framework</div><div class="card-desc">How to build a content strategy that drives measurable business outcomes.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/topic-clusters-pillar-pages/" class="art-card" data-t="Topic Clusters & Pillar Pages Strategy topic clusters pillar pages topical authority hub and spoke SEO structure" data-d="topic clusters pillar pages topical authority hub and spoke SEO structure"><span class="card-sec" style="color:#64748b">Strategy</span><div class="card-title">Topic Clusters & Pillar Pages</div><div class="card-desc">How to structure content for topical authority and SEO.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/content-calendar-planning/" class="art-card" data-t="Content Calendar Planning Strategy content calendar planning editorial schedule publishing workflow team" data-d="content calendar planning editorial schedule publishing workflow team"><span class="card-sec" style="color:#64748b">Strategy</span><div class="card-title">Content Calendar Planning</div><div class="card-desc">How to build and manage a content calendar at scale.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/content-audit-gap-analysis/" class="art-card" data-t="Content Audit & Gap Analysis Strategy content audit gap analysis inventory performance quality thin content" data-d="content audit gap analysis inventory performance quality thin content"><span class="card-sec" style="color:#64748b">Strategy</span><div class="card-title">Content Audit & Gap Analysis</div><div class="card-desc">How to audit existing content and find strategic gaps.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/content-refresh-strategy/" class="art-card" data-t="Content Refresh Strategy Strategy content refresh update republish improve rankings traffic recovery" data-d="content refresh update republish improve rankings traffic recovery"><span class="card-sec" style="color:#64748b">Strategy</span><div class="card-title">Content Refresh Strategy</div><div class="card-desc">How to update existing content to recover and improve rankings.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/content-seo-integration/" class="art-card" data-t="Content & SEO Integration Strategy content SEO integration keyword research intent mapping optimisation" data-d="content SEO integration keyword research intent mapping optimisation"><span class="card-sec" style="color:#64748b">Strategy</span><div class="card-title">Content & SEO Integration</div><div class="card-desc">How to align content creation with SEO strategy.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/blog-post-best-practices/" class="art-card" data-t="Blog Post Best Practices Formats blog post best practices structure introduction headings internal links CTA" data-d="blog post best practices structure introduction headings internal links CTA"><span class="card-sec" style="color:#64748b">Formats</span><div class="card-title">Blog Post Best Practices</div><div class="card-desc">How to write blog posts that rank, engage, and convert.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/long-form-content-guide/" class="art-card" data-t="Long-Form Content Guide Formats long form content guide comprehensive depth expertise research citations" data-d="long form content guide comprehensive depth expertise research citations"><span class="card-sec" style="color:#64748b">Formats</span><div class="card-title">Long-Form Content Guide</div><div class="card-desc">How to create comprehensive long-form content that earns authority.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/web-copywriting-best-practices/" class="art-card" data-t="Web Copywriting Formats web copywriting copy clarity value proposition CTA conversion benefits" data-d="web copywriting copy clarity value proposition CTA conversion benefits"><span class="card-sec" style="color:#64748b">Formats</span><div class="card-title">Web Copywriting</div><div class="card-desc">How to write web copy that communicates clearly and converts.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/video-content-marketing/" class="art-card" data-t="Video Content Marketing Formats video content marketing YouTube explainer tutorial product demo strategy" data-d="video content marketing YouTube explainer tutorial product demo strategy"><span class="card-sec" style="color:#64748b">Formats</span><div class="card-title">Video Content Marketing</div><div class="card-desc">How to use video as part of a content marketing strategy.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/content-distribution-strategy/" class="art-card" data-t="Content Distribution Strategy Distribution content distribution amplification social email paid promotion SEO channels" data-d="content distribution amplification social email paid promotion SEO channels"><span class="card-sec" style="color:#64748b">Distribution</span><div class="card-title">Content Distribution Strategy</div><div class="card-desc">How to get content in front of the right audience.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/content-marketing/content-repurposing/" class="art-card" data-t="Content Repurposing Distribution content repurposing reformatting repackaging blog podcast video social" data-d="content repurposing reformatting repackaging blog podcast video social"><span class="card-sec" style="color:#64748b">Distribution</span><div class="card-title">Content Repurposing</div><div class="card-desc">How to extend the reach of content across multiple formats.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-social" aria-labelledby="sec-social-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">📲</span>
+      <h2 class="sec-title" id="sec-social-h" style="color:#0E7490">Social Media Organic</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">14 guides</span>
+      <a href="/codex/social-media/" class="sec-all-link" style="color:#0E7490">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/social-media/instagram-algorithm/" class="art-card feat" data-t="Instagram Algorithm ⭐ Start here instagram algorithm feed reels explore stories ranking signals" data-d="instagram algorithm feed reels explore stories ranking signals"><span class="card-sec" style="color:#0E7490">⭐ ⭐ Start here</span><div class="card-title">Instagram Algorithm</div><div class="card-desc">How Instagram's feed, Reels, and Stories algorithms work.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/instagram-content-strategy/" class="art-card" data-t="Instagram Content Strategy Instagram instagram content strategy growth engagement posts format frequency" data-d="instagram content strategy growth engagement posts format frequency"><span class="card-sec" style="color:#64748b">Instagram</span><div class="card-title">Instagram Content Strategy</div><div class="card-desc">How to build an Instagram content strategy that grows following and engagement.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/instagram-reels-strategy/" class="art-card" data-t="Instagram Reels Strategy Instagram instagram reels strategy hook retention audio trending viral organic" data-d="instagram reels strategy hook retention audio trending viral organic"><span class="card-sec" style="color:#64748b">Instagram</span><div class="card-title">Instagram Reels Strategy</div><div class="card-desc">How to create Reels that perform in the algorithm.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/tiktok-algorithm/" class="art-card" data-t="TikTok Algorithm TikTok tiktok algorithm FYP for you page signals engagement watch time" data-d="tiktok algorithm FYP for you page signals engagement watch time"><span class="card-sec" style="color:#64748b">TikTok</span><div class="card-title">TikTok Algorithm</div><div class="card-desc">How TikTok's For You Page algorithm distributes content.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/tiktok-content-strategy/" class="art-card" data-t="TikTok Content Strategy TikTok tiktok content strategy trends sounds hooks format creator" data-d="tiktok content strategy trends sounds hooks format creator"><span class="card-sec" style="color:#64748b">TikTok</span><div class="card-title">TikTok Content Strategy</div><div class="card-desc">How to build a content strategy for TikTok organic growth.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/youtube-organic-strategy/" class="art-card" data-t="YouTube Organic Strategy YouTube youtube organic strategy SEO titles thumbnails CTR watch time retention" data-d="youtube organic strategy SEO titles thumbnails CTR watch time retention"><span class="card-sec" style="color:#64748b">YouTube</span><div class="card-title">YouTube Organic Strategy</div><div class="card-desc">How to grow a YouTube channel with SEO and content strategy.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/youtube-shorts-strategy/" class="art-card" data-t="YouTube Shorts Strategy YouTube youtube shorts strategy algorithm vertical video growth discovery" data-d="youtube shorts strategy algorithm vertical video growth discovery"><span class="card-sec" style="color:#64748b">YouTube</span><div class="card-title">YouTube Shorts Strategy</div><div class="card-desc">How to use YouTube Shorts for channel growth and discovery.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/linkedin-algorithm/" class="art-card" data-t="LinkedIn Algorithm LinkedIn linkedin algorithm feed distribution dwell time connections engagement" data-d="linkedin algorithm feed distribution dwell time connections engagement"><span class="card-sec" style="color:#64748b">LinkedIn</span><div class="card-title">LinkedIn Algorithm</div><div class="card-desc">How LinkedIn's feed algorithm ranks and distributes content.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/linkedin-content-strategy/" class="art-card" data-t="LinkedIn Content Strategy LinkedIn linkedin content strategy B2B thought leadership personal brand posts" data-d="linkedin content strategy B2B thought leadership personal brand posts"><span class="card-sec" style="color:#64748b">LinkedIn</span><div class="card-title">LinkedIn Content Strategy</div><div class="card-desc">How to build a LinkedIn presence that generates business results.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/linkedin-organic-reach/" class="art-card" data-t="LinkedIn Organic Reach LinkedIn linkedin organic reach algorithm native content text posts format" data-d="linkedin organic reach algorithm native content text posts format"><span class="card-sec" style="color:#64748b">LinkedIn</span><div class="card-title">LinkedIn Organic Reach</div><div class="card-desc">How to maximise organic reach on LinkedIn.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/linkedin-lead-generation/" class="art-card" data-t="LinkedIn Lead Generation LinkedIn linkedin lead generation B2B organic outreach connections DMs pipeline" data-d="linkedin lead generation B2B organic outreach connections DMs pipeline"><span class="card-sec" style="color:#64748b">LinkedIn</span><div class="card-title">LinkedIn Lead Generation</div><div class="card-desc">How to generate B2B leads organically on LinkedIn.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/twitter-x-algorithm/" class="art-card" data-t="Twitter/X Algorithm Twitter/X twitter X algorithm feed ranking engagement replies retweets timeline" data-d="twitter X algorithm feed ranking engagement replies retweets timeline"><span class="card-sec" style="color:#64748b">Twitter/X</span><div class="card-title">Twitter/X Algorithm</div><div class="card-desc">How X (formerly Twitter) ranks and distributes content.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/facebook-algorithm/" class="art-card" data-t="Facebook Algorithm Facebook facebook algorithm news feed ranking signals engagement meaningful interactions" data-d="facebook algorithm news feed ranking signals engagement meaningful interactions"><span class="card-sec" style="color:#64748b">Facebook</span><div class="card-title">Facebook Algorithm</div><div class="card-desc">How Facebook's News Feed algorithm works in 2024.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/social-media/social-media-analytics/" class="art-card" data-t="Social Media Analytics Analytics social media analytics metrics reach engagement impressions reporting" data-d="social media analytics metrics reach engagement impressions reporting"><span class="card-sec" style="color:#64748b">Analytics</span><div class="card-title">Social Media Analytics</div><div class="card-desc">How to measure and report on organic social media performance.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-analytics" aria-labelledby="sec-analytics-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">📊</span>
+      <h2 class="sec-title" id="sec-analytics-h" style="color:#0369A1">Analytics & CRO</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">15 guides</span>
+      <a href="/codex/analytics-cro/" class="sec-all-link" style="color:#0369A1">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/analytics-cro/ga4-setup-configuration/" class="art-card feat" data-t="GA4 Setup & Configuration ⭐ Start here GA4 setup configuration property stream data stream tag implementation" data-d="GA4 setup configuration property stream data stream tag implementation"><span class="card-sec" style="color:#0369A1">⭐ ⭐ Start here</span><div class="card-title">GA4 Setup & Configuration</div><div class="card-desc">How to set up Google Analytics 4 correctly from the start.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/ga4-events-conversions/" class="art-card" data-t="GA4 Events & Conversions GA4 GA4 events conversions key events automatic enhanced measurement custom" data-d="GA4 events conversions key events automatic enhanced measurement custom"><span class="card-sec" style="color:#64748b">GA4</span><div class="card-title">GA4 Events & Conversions</div><div class="card-desc">How the GA4 event model works and how to configure conversions.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/ga4-reports-exploration/" class="art-card" data-t="GA4 Reports & Explorations GA4 GA4 reports explorations funnel path analysis segments dimensions metrics" data-d="GA4 reports explorations funnel path analysis segments dimensions metrics"><span class="card-sec" style="color:#64748b">GA4</span><div class="card-title">GA4 Reports & Explorations</div><div class="card-desc">Standard reports, funnel explorations, and path analysis in GA4.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/google-tag-manager/" class="art-card" data-t="Google Tag Manager Tracking google tag manager GTM tags triggers variables data layer implementation" data-d="google tag manager GTM tags triggers variables data layer implementation"><span class="card-sec" style="color:#64748b">Tracking</span><div class="card-title">Google Tag Manager</div><div class="card-desc">How to use GTM to manage all tracking without code changes.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/attribution-modelling/" class="art-card" data-t="Attribution Modelling Measurement attribution modelling last click first click linear data-driven multi-touch" data-d="attribution modelling last click first click linear data-driven multi-touch"><span class="card-sec" style="color:#64748b">Measurement</span><div class="card-title">Attribution Modelling</div><div class="card-desc">How to assign credit for conversions across marketing channels.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/cohort-funnel-analysis/" class="art-card" data-t="Cohort & Funnel Analysis Measurement cohort analysis funnel analysis conversion drop-off user journey behaviour" data-d="cohort analysis funnel analysis conversion drop-off user journey behaviour"><span class="card-sec" style="color:#64748b">Measurement</span><div class="card-title">Cohort & Funnel Analysis</div><div class="card-desc">How to analyse user behaviour through cohorts and conversion funnels.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/business-metrics-kpis/" class="art-card" data-t="Business Metrics & KPIs Measurement business metrics KPIs revenue conversion rate CAC LTV churn retention" data-d="business metrics KPIs revenue conversion rate CAC LTV churn retention"><span class="card-sec" style="color:#64748b">Measurement</span><div class="card-title">Business Metrics & KPIs</div><div class="card-desc">The key business metrics every marketing team should track.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/privacy-first-analytics/" class="art-card" data-t="Privacy-First Analytics Privacy privacy first analytics cookieless consent mode server side modelling" data-d="privacy first analytics cookieless consent mode server side modelling"><span class="card-sec" style="color:#64748b">Privacy</span><div class="card-title">Privacy-First Analytics</div><div class="card-desc">How to maintain measurement quality in a cookieless environment.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/cro-framework/" class="art-card feat" data-t="CRO Framework ⭐ Start here CRO framework research hypotheses testing prioritisation ICE PIE" data-d="CRO framework research hypotheses testing prioritisation ICE PIE"><span class="card-sec" style="color:#0369A1">⭐ ⭐ Start here</span><div class="card-title">CRO Framework</div><div class="card-desc">The systematic process for improving conversion rates.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/ab-testing-methodology/" class="art-card" data-t="A/B Testing Methodology CRO AB testing methodology statistical significance sample size duration MDE" data-d="AB testing methodology statistical significance sample size duration MDE"><span class="card-sec" style="color:#64748b">CRO</span><div class="card-title">A/B Testing Methodology</div><div class="card-desc">How to run statistically valid A/B tests.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/heatmaps-session-recording/" class="art-card" data-t="Heatmaps & Session Recording CRO heatmaps session recording click maps scroll maps behaviour Hotjar" data-d="heatmaps session recording click maps scroll maps behaviour Hotjar"><span class="card-sec" style="color:#64748b">CRO</span><div class="card-title">Heatmaps & Session Recording</div><div class="card-desc">How to use qualitative tools to understand user behaviour.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/landing-page-optimisation/" class="art-card" data-t="Landing Page Optimisation CRO landing page optimisation conversion rate test above fold headline CTA" data-d="landing page optimisation conversion rate test above fold headline CTA"><span class="card-sec" style="color:#64748b">CRO</span><div class="card-title">Landing Page Optimisation</div><div class="card-desc">How to test and improve landing page conversion rates.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/form-optimisation/" class="art-card" data-t="Form Optimisation CRO form optimisation fields abandonment multi-step progress validation" data-d="form optimisation fields abandonment multi-step progress validation"><span class="card-sec" style="color:#64748b">CRO</span><div class="card-title">Form Optimisation</div><div class="card-desc">How to reduce form abandonment and improve completion rates.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/trust-signals-social-proof/" class="art-card" data-t="Trust Signals & Social Proof CRO trust signals social proof testimonials reviews badges security logos" data-d="trust signals social proof testimonials reviews badges security logos"><span class="card-sec" style="color:#64748b">CRO</span><div class="card-title">Trust Signals & Social Proof</div><div class="card-desc">How to use reviews, testimonials, and trust badges to increase conversions.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/analytics-cro/cro-metrics-measurement/" class="art-card" data-t="CRO Metrics & Measurement CRO CRO metrics measurement conversion rate lift revenue per visitor reporting" data-d="CRO metrics measurement conversion rate lift revenue per visitor reporting"><span class="card-sec" style="color:#64748b">CRO</span><div class="card-title">CRO Metrics & Measurement</div><div class="card-desc">How to define, measure, and report on CRO programme results.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-business" aria-labelledby="sec-business-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">🏢</span>
+      <h2 class="sec-title" id="sec-business-h" style="color:#B45309">Business Strategy</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">20 guides</span>
+      <a href="/codex/business-strategy/" class="sec-all-link" style="color:#B45309">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/business-strategy/startup-marketing-fundamentals/" class="art-card feat" data-t="Startup Marketing Fundamentals ⭐ Start here startup marketing ICP value proposition positioning channel sequencing strategy" data-d="startup marketing ICP value proposition positioning channel sequencing strategy"><span class="card-sec" style="color:#B45309">⭐ ⭐ Start here</span><div class="card-title">Startup Marketing Fundamentals</div><div class="card-desc">Strategy before tactics — ICP, value proposition, positioning, and channel sequencing.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/product-market-fit/" class="art-card" data-t="Product-Market Fit Startup product market fit PMF Sean Ellis 40% survey retention aha moment" data-d="product market fit PMF Sean Ellis 40% survey retention aha moment"><span class="card-sec" style="color:#64748b">Startup</span><div class="card-title">Product-Market Fit</div><div class="card-desc">How to find, measure, and validate PMF — the Sean Ellis survey and retention signals.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/go-to-market-strategy/" class="art-card" data-t="Go-to-Market Strategy Startup go to market GTM strategy segment positioning channels pricing sales-led PLG" data-d="go to market GTM strategy segment positioning channels pricing sales-led PLG"><span class="card-sec" style="color:#64748b">Startup</span><div class="card-title">Go-to-Market Strategy</div><div class="card-desc">Five GTM components — target segment, positioning, channels, pricing, and motion.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/growth-hacking-frameworks/" class="art-card" data-t="Growth Hacking Frameworks Growth growth hacking AARRR pirate metrics viral coefficient K-factor loops Dropbox" data-d="growth hacking AARRR pirate metrics viral coefficient K-factor loops Dropbox"><span class="card-sec" style="color:#64748b">Growth</span><div class="card-title">Growth Hacking Frameworks</div><div class="card-desc">AARRR, viral coefficient, growth loops — Dropbox, Hotmail, Airbnb cases.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/customer-acquisition-cost/" class="art-card" data-t="Customer Acquisition Cost Economics customer acquisition cost CAC LTV payback period channel blended calculation" data-d="customer acquisition cost CAC LTV payback period channel blended calculation"><span class="card-sec" style="color:#64748b">Economics</span><div class="card-title">Customer Acquisition Cost</div><div class="card-desc">Full-cost CAC calculation, LTV:CAC ratio, and channels that reduce acquisition cost.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/minimum-viable-product-marketing/" class="art-card" data-t="MVP Marketing Startup MVP marketing smoke test early adopters validated learning lean startup" data-d="MVP marketing smoke test early adopters validated learning lean startup"><span class="card-sec" style="color:#64748b">Startup</span><div class="card-title">MVP Marketing</div><div class="card-desc">Smoke tests, early adopter acquisition, and validated learning.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/startup-content-strategy/" class="art-card" data-t="Startup Content Strategy Startup startup content strategy distribution first SEO audience building compounding" data-d="startup content strategy distribution first SEO audience building compounding"><span class="card-sec" style="color:#64748b">Startup</span><div class="card-title">Startup Content Strategy</div><div class="card-desc">Building audience from zero — distribution-first, format selection, and compounding.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/saas-marketing-fundamentals/" class="art-card" data-t="SaaS Marketing Fundamentals SaaS SaaS marketing fundamentals recurring revenue PLG SLG funnel MRR churn" data-d="SaaS marketing fundamentals recurring revenue PLG SLG funnel MRR churn"><span class="card-sec" style="color:#64748b">SaaS</span><div class="card-title">SaaS Marketing Fundamentals</div><div class="card-desc">Recurring revenue model, PLG vs SLG, the SaaS funnel, and the key metrics.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/saas-pricing-strategy/" class="art-card" data-t="SaaS Pricing Strategy SaaS SaaS pricing strategy per seat usage based flat rate tiering freemium psychology" data-d="SaaS pricing strategy per seat usage based flat rate tiering freemium psychology"><span class="card-sec" style="color:#64748b">SaaS</span><div class="card-title">SaaS Pricing Strategy</div><div class="card-desc">Pricing models, value-based pricing, tiering, freemium, and psychology.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/saas-onboarding-activation/" class="art-card" data-t="SaaS Onboarding & Activation SaaS SaaS onboarding activation aha moment time to value email sequences checklist" data-d="SaaS onboarding activation aha moment time to value email sequences checklist"><span class="card-sec" style="color:#64748b">SaaS</span><div class="card-title">SaaS Onboarding & Activation</div><div class="card-desc">The aha moment, onboarding design, email sequences, and time-to-value.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/saas-churn-retention/" class="art-card" data-t="SaaS Churn & Retention SaaS SaaS churn retention health score dunning involuntary onboarding playbooks" data-d="SaaS churn retention health score dunning involuntary onboarding playbooks"><span class="card-sec" style="color:#64748b">SaaS</span><div class="card-title">SaaS Churn & Retention</div><div class="card-desc">Churn types, health scoring, dunning management, and building a retention programme.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/saas-expansion-revenue/" class="art-card" data-t="SaaS Expansion Revenue SaaS SaaS expansion revenue upsell cross-sell seat expansion NRR negative net churn" data-d="SaaS expansion revenue upsell cross-sell seat expansion NRR negative net churn"><span class="card-sec" style="color:#64748b">SaaS</span><div class="card-title">SaaS Expansion Revenue</div><div class="card-desc">Upsell, cross-sell, seat expansion, negative net churn, and NRR.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/saas-metrics-kpis/" class="art-card" data-t="SaaS Metrics & KPIs SaaS SaaS metrics KPIs MRR ARR NRR churn Rule of 40 CAC payback LTV magic number" data-d="SaaS metrics KPIs MRR ARR NRR churn Rule of 40 CAC payback LTV magic number"><span class="card-sec" style="color:#64748b">SaaS</span><div class="card-title">SaaS Metrics & KPIs</div><div class="card-desc">MRR, ARR, churn, NRR, Rule of 40, CAC payback — correct formulas.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/marketing-funnel-frameworks/" class="art-card" data-t="Marketing Funnel Frameworks Frameworks marketing funnel AIDA TOFU MOFU BOFU flywheel channel mapping funnel leaks" data-d="marketing funnel AIDA TOFU MOFU BOFU flywheel channel mapping funnel leaks"><span class="card-sec" style="color:#64748b">Frameworks</span><div class="card-title">Marketing Funnel Frameworks</div><div class="card-desc">AIDA, TOFU/MOFU/BOFU, HubSpot flywheel — channel and content mapping.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/brand-positioning-strategy/" class="art-card" data-t="Brand Positioning Strategy Frameworks brand positioning Dunford perceptual map category creation positioning statement" data-d="brand positioning Dunford perceptual map category creation positioning statement"><span class="card-sec" style="color:#64748b">Frameworks</span><div class="card-title">Brand Positioning Strategy</div><div class="card-desc">Dunford's framework, perceptual mapping, category creation, positioning statement.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/competitive-analysis-framework/" class="art-card" data-t="Competitive Analysis Framework Frameworks competitive analysis framework landscape mapping win loss competitor research" data-d="competitive analysis framework landscape mapping win loss competitor research"><span class="card-sec" style="color:#64748b">Frameworks</span><div class="card-title">Competitive Analysis Framework</div><div class="card-desc">Landscape mapping, research methods, win/loss analysis, and monitoring.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/marketing-budget-allocation/" class="art-card" data-t="Marketing Budget Allocation Frameworks marketing budget allocation brand performance split channel ROI measurement" data-d="marketing budget allocation brand performance split channel ROI measurement"><span class="card-sec" style="color:#64748b">Frameworks</span><div class="card-title">Marketing Budget Allocation</div><div class="card-desc">Budget setting, brand vs performance split, channel allocation, and ROI.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/channel-mix-strategy/" class="art-card" data-t="Channel Mix Strategy Frameworks channel mix strategy owned rented sequencing portfolio dependency risk compounding" data-d="channel mix strategy owned rented sequencing portfolio dependency risk compounding"><span class="card-sec" style="color:#64748b">Frameworks</span><div class="card-title">Channel Mix Strategy</div><div class="card-desc">Owned vs rented channels, sequencing, portfolio design, and dependency risk.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/b2b-marketing-strategy/" class="art-card" data-t="B2B Marketing Strategy B2B B2B marketing strategy demand generation ABM account based marketing sales alignment" data-d="B2B marketing strategy demand generation ABM account based marketing sales alignment"><span class="card-sec" style="color:#64748b">B2B</span><div class="card-title">B2B Marketing Strategy</div><div class="card-desc">Demand gen, ABM, buying committee content, sales alignment, and metrics.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/business-strategy/marketing-team-structure/" class="art-card" data-t="Marketing Team Structure B2B marketing team structure first hire product marketing demand gen CMO agency" data-d="marketing team structure first hire product marketing demand gen CMO agency"><span class="card-sec" style="color:#64748b">B2B</span><div class="card-title">Marketing Team Structure</div><div class="card-desc">First hire, role sequencing, product marketing, demand gen, and leadership.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-cases" aria-labelledby="sec-cases-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">📋</span>
+      <h2 class="sec-title" id="sec-cases-h" style="color:#BE185D">Case Studies</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">15 case studies</span>
+      <a href="/codex/case-studies/" class="sec-all-link" style="color:#BE185D">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/case-studies/airbnb-seo-content-strategy/" class="art-card feat" data-t="Airbnb SEO & Content Strategy ⭐ Featured airbnb SEO content strategy organic growth neighbourhood guides UGC" data-d="airbnb SEO content strategy organic growth neighbourhood guides UGC"><span class="card-sec" style="color:#BE185D">⭐ ⭐ Featured</span><div class="card-title">Airbnb SEO & Content Strategy</div><div class="card-desc">How Airbnb built an SEO content engine that drives millions in organic bookings.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/netflix-email-personalisation/" class="art-card" data-t="Netflix Email Personalisation Case Study netflix email personalisation data driven behavioural targeting retention" data-d="netflix email personalisation data driven behavioural targeting retention"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Netflix Email Personalisation</div><div class="card-desc">How Netflix uses behavioural data to personalise every email at scale.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/spotify-data-marketing/" class="art-card" data-t="Spotify Data-Driven Marketing Case Study spotify wrapped data marketing personalisation user data campaign viral" data-d="spotify wrapped data marketing personalisation user data campaign viral"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Spotify Data-Driven Marketing</div><div class="card-desc">How Spotify uses listening data to create its famous Wrapped campaigns.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/slack-b2b-product-led-growth/" class="art-card" data-t="Slack B2B Product-Led Growth Case Study slack PLG product led growth B2B freemium viral loop team messaging" data-d="slack PLG product led growth B2B freemium viral loop team messaging"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Slack B2B Product-Led Growth</div><div class="card-desc">How Slack grew from 0 to $7B through product-led, bottom-up B2B growth.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/booking-com-ab-testing/" class="art-card" data-t="Booking.com A/B Testing Culture Case Study booking.com AB testing culture experimentation conversion rate optimisation" data-d="booking.com AB testing culture experimentation conversion rate optimisation"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Booking.com A/B Testing Culture</div><div class="card-desc">How Booking.com became the most aggressive A/B testing company in the world.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/amazon-product-page-optimisation/" class="art-card" data-t="Amazon Product Page Optimisation Case Study amazon product page optimisation conversion reviews social proof buy box" data-d="amazon product page optimisation conversion reviews social proof buy box"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Amazon Product Page Optimisation</div><div class="card-desc">How Amazon's product detail page design is engineered for conversion.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/hubspot-inbound-marketing-story/" class="art-card" data-t="HubSpot Inbound Marketing Case Study hubspot inbound marketing category creation content SEO freemium tools" data-d="hubspot inbound marketing category creation content SEO freemium tools"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">HubSpot Inbound Marketing</div><div class="card-desc">How HubSpot created the inbound marketing category and owned it.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/mailchimp-small-business-story/" class="art-card" data-t="Mailchimp Small Business Growth Case Study mailchimp growth freemium content marketing small business brand email" data-d="mailchimp growth freemium content marketing small business brand email"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Mailchimp Small Business Growth</div><div class="card-desc">How Mailchimp grew to $700M revenue through product-led and content-led growth.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/old-spice-social-media-campaign/" class="art-card" data-t="Old Spice Social Media Campaign Case Study old spice man could smell like social media viral youtube response campaign" data-d="old spice man could smell like social media viral youtube response campaign"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Old Spice Social Media Campaign</div><div class="card-desc">How Old Spice's 2010 campaign became the most viral brand campaign of its era.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/dove-real-beauty-campaign/" class="art-card" data-t="Dove Real Beauty Campaign Case Study dove real beauty brand positioning values purpose driven marketing women" data-d="dove real beauty brand positioning values purpose driven marketing women"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Dove Real Beauty Campaign</div><div class="card-desc">How Dove repositioned a commodity product through values-led marketing.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/red-bull-content-marketing/" class="art-card" data-t="Red Bull Content Marketing Case Study red bull content marketing media company events sponsorship extreme sports" data-d="red bull content marketing media company events sponsorship extreme sports"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Red Bull Content Marketing</div><div class="card-desc">How Red Bull became a media company that happens to sell energy drinks.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/blendtec-will-it-blend/" class="art-card" data-t="Blendtec — Will It Blend? Case Study blendtec will it blend youtube viral content marketing ROI product demonstration" data-d="blendtec will it blend youtube viral content marketing ROI product demonstration"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Blendtec — Will It Blend?</div><div class="card-desc">How a blender company's YouTube series became a $700M brand builder.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/zendesk-brand-search-campaign/" class="art-card" data-t="Zendesk Brand Search Campaign Case Study zendesk brand search alternative competitors creative campaign SEO" data-d="zendesk brand search alternative competitors creative campaign SEO"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Zendesk Brand Search Campaign</div><div class="card-desc">How Zendesk turned competitor brand searches into a creative campaign.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/google-adwords-quality-score-case/" class="art-card" data-t="Google AdWords Quality Score Case Study google adwords quality score history ad rank CPC auction mechanism" data-d="google adwords quality score history ad rank CPC auction mechanism"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">Google AdWords Quality Score</div><div class="card-desc">The documented history and mechanics of the Quality Score system.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/case-studies/john-lewis-christmas-campaigns/" class="art-card" data-t="John Lewis Christmas Campaigns Case Study john lewis christmas campaigns emotional advertising brand equity UK retail" data-d="john lewis christmas campaigns emotional advertising brand equity UK retail"><span class="card-sec" style="color:#64748b">Case Study</span><div class="card-title">John Lewis Christmas Campaigns</div><div class="card-desc">How John Lewis's annual Christmas ads became a UK cultural event.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-history" aria-labelledby="sec-history-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">📜</span>
+      <h2 class="sec-title" id="sec-history-h" style="color:#374151">History of Digital Marketing</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">8 guides</span>
+      <a href="/codex/history/" class="sec-all-link" style="color:#374151">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/history/history-of-digital-marketing/" class="art-card feat" data-t="History of Digital Marketing ⭐ Start here history digital marketing 1994 banner ads search engines social media evolution" data-d="history digital marketing 1994 banner ads search engines social media evolution"><span class="card-sec" style="color:#374151">⭐ ⭐ Start here</span><div class="card-title">History of Digital Marketing</div><div class="card-desc">The complete documented history of digital marketing from 1994 to today.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/history/google-algorithm-history/" class="art-card" data-t="Google Algorithm History History google algorithm history pagerank florida panda penguin hummingbird BERT" data-d="google algorithm history pagerank florida panda penguin hummingbird BERT"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">Google Algorithm History</div><div class="card-desc">Every major algorithm update from PageRank to Helpful Content.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/history/history-of-seo/" class="art-card" data-t="History of SEO History history of SEO keyword stuffing link farms quality signals evolution" data-d="history of SEO keyword stuffing link farms quality signals evolution"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of SEO</div><div class="card-desc">How search engine optimisation evolved from keyword stuffing to today.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/history/history-of-social-media/" class="art-card" data-t="History of Social Media Marketing History history social media marketing myspace facebook twitter instagram tiktok" data-d="history social media marketing myspace facebook twitter instagram tiktok"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of Social Media Marketing</div><div class="card-desc">How social media became a marketing channel — from MySpace to TikTok.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/history/history-of-email-marketing/" class="art-card" data-t="History of Email Marketing History history email marketing 1978 first email spam CAN-SPAM GDPR evolution" data-d="history email marketing 1978 first email spam CAN-SPAM GDPR evolution"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of Email Marketing</div><div class="card-desc">The first marketing email (1978) to the GDPR era.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/history/history-of-paid-advertising/" class="art-card" data-t="History of Paid Advertising History history paid advertising display ads adwords RTB programmatic social ads" data-d="history paid advertising display ads adwords RTB programmatic social ads"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of Paid Advertising</div><div class="card-desc">From print display ads to programmatic — the evolution of paid.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/history/history-of-content-marketing/" class="art-card" data-t="History of Content Marketing History history content marketing john deere 1895 inbound hubspot blogging evolution" data-d="history content marketing john deere 1895 inbound hubspot blogging evolution"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of Content Marketing</div><div class="card-desc">How content marketing evolved from John Deere to HubSpot.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/history/history-of-privacy-regulation/" class="art-card" data-t="History of Privacy Regulation History history privacy regulation GDPR CCPA cookie law consent data protection" data-d="history privacy regulation GDPR CCPA cookie law consent data protection"><span class="card-sec" style="color:#64748b">History</span><div class="card-title">History of Privacy Regulation</div><div class="card-desc">GDPR, CCPA, and the documented history of digital privacy law.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-tools" aria-labelledby="sec-tools-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">🛠️</span>
+      <h2 class="sec-title" id="sec-tools-h" style="color:#374151">Tools & Resources</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">7 guides</span>
+      <a href="/codex/tools-resources/" class="sec-all-link" style="color:#374151">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/tools-resources/google-search-console-guide/" class="art-card feat" data-t="Google Search Console Guide ⭐ Featured google search console GSC performance coverage index URL inspection" data-d="google search console GSC performance coverage index URL inspection"><span class="card-sec" style="color:#374151">⭐ ⭐ Featured</span><div class="card-title">Google Search Console Guide</div><div class="card-desc">How to use Search Console to monitor and improve SEO performance.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/tools-resources/core-web-vitals-tools/" class="art-card" data-t="Core Web Vitals Tools Tools core web vitals tools PageSpeed Insights CrUX Lighthouse field lab data" data-d="core web vitals tools PageSpeed Insights CrUX Lighthouse field lab data"><span class="card-sec" style="color:#64748b">Tools</span><div class="card-title">Core Web Vitals Tools</div><div class="card-desc">The tools for measuring and improving Core Web Vitals.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/tools-resources/seo-research-tools/" class="art-card" data-t="SEO Research Tools Tools SEO tools keyword research Ahrefs Semrush Moz Screaming Frog audit" data-d="SEO tools keyword research Ahrefs Semrush Moz Screaming Frog audit"><span class="card-sec" style="color:#64748b">Tools</span><div class="card-title">SEO Research Tools</div><div class="card-desc">The documented tools for keyword research, backlink analysis, and audits.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/tools-resources/cms-platforms-overview/" class="art-card" data-t="CMS Platforms Overview Tools CMS platforms WordPress Webflow Shopify Squarespace SEO comparison" data-d="CMS platforms WordPress Webflow Shopify Squarespace SEO comparison"><span class="card-sec" style="color:#64748b">Tools</span><div class="card-title">CMS Platforms Overview</div><div class="card-desc">WordPress, Webflow, Shopify — documented comparison for SEO and marketing.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/tools-resources/email-marketing-platforms/" class="art-card" data-t="Email Marketing Platforms Tools email marketing platforms Mailchimp Klaviyo HubSpot ActiveCampaign comparison" data-d="email marketing platforms Mailchimp Klaviyo HubSpot ActiveCampaign comparison"><span class="card-sec" style="color:#64748b">Tools</span><div class="card-title">Email Marketing Platforms</div><div class="card-desc">Mailchimp, Klaviyo, HubSpot — documented comparison.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/tools-resources/google-analytics-tools/" class="art-card" data-t="Google Analytics Tools Tools google analytics tools GA4 Looker Studio BigQuery reporting dashboard" data-d="google analytics tools GA4 Looker Studio BigQuery reporting dashboard"><span class="card-sec" style="color:#64748b">Tools</span><div class="card-title">Google Analytics Tools</div><div class="card-desc">GA4, Looker Studio, BigQuery — the Google measurement ecosystem.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/tools-resources/social-media-scheduling-tools/" class="art-card" data-t="Social Media Scheduling Tools Tools social media scheduling Buffer Hootsuite Sprout Social Later comparison" data-d="social media scheduling Buffer Hootsuite Sprout Social Later comparison"><span class="card-sec" style="color:#64748b">Tools</span><div class="card-title">Social Media Scheduling Tools</div><div class="card-desc">Buffer, Hootsuite, Sprout — tools for managing social content.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+
+<section class="hub-sec" id="sec-programmatic" aria-labelledby="sec-programmatic-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">🖥️</span>
+      <h2 class="sec-title" id="sec-programmatic-h" style="color:#0369A1">Programmatic Advertising</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">8 guides</span>
+      <a href="/codex/programmatic/" class="sec-all-link" style="color:#0369A1">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/programmatic/programmatic-advertising-fundamentals/" class="art-card feat" data-t="Programmatic Advertising Fundamentals ⭐ Start here programmatic RTB DSPs SSPs ad exchanges auction automated buying" data-d="programmatic RTB DSPs SSPs ad exchanges auction automated buying"><span class="card-sec" style="color:#0369A1">⭐ ⭐ Start here</span><div class="card-title">Programmatic Advertising Fundamentals</div><div class="card-desc">How RTB, DSPs, SSPs, and ad exchanges work together.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/programmatic/demand-side-platforms/" class="art-card" data-t="Demand-Side Platforms (DSPs) Programmatic DSP demand side platform DV360 Trade Desk Amazon targeting bidding" data-d="DSP demand side platform DV360 Trade Desk Amazon targeting bidding"><span class="card-sec" style="color:#64748b">Programmatic</span><div class="card-title">Demand-Side Platforms (DSPs)</div><div class="card-desc">How to buy programmatic advertising across major DSP platforms.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/programmatic/supply-side-platforms/" class="art-card" data-t="Supply-Side Platforms (SSPs) Programmatic SSP supply side platform header bidding yield optimisation floor price" data-d="SSP supply side platform header bidding yield optimisation floor price"><span class="card-sec" style="color:#64748b">Programmatic</span><div class="card-title">Supply-Side Platforms (SSPs)</div><div class="card-desc">How publishers sell inventory programmatically and maximise yield.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/programmatic/ad-exchanges/" class="art-card" data-t="Ad Exchanges Programmatic ad exchange marketplace OpenX Xandr Google AdX programmatic trading" data-d="ad exchange marketplace OpenX Xandr Google AdX programmatic trading"><span class="card-sec" style="color:#64748b">Programmatic</span><div class="card-title">Ad Exchanges</div><div class="card-desc">The marketplaces connecting buyers and sellers in programmatic.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/programmatic/programmatic-targeting/" class="art-card" data-t="Programmatic Targeting Programmatic programmatic targeting contextual audience cookieless privacy sandbox" data-d="programmatic targeting contextual audience cookieless privacy sandbox"><span class="card-sec" style="color:#64748b">Programmatic</span><div class="card-title">Programmatic Targeting</div><div class="card-desc">Audience, contextual, and cookieless targeting in programmatic.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/programmatic/connected-tv-advertising/" class="art-card" data-t="Connected TV (CTV) Advertising Programmatic CTV connected TV streaming programmatic advertising OTT measurement" data-d="CTV connected TV streaming programmatic advertising OTT measurement"><span class="card-sec" style="color:#64748b">Programmatic</span><div class="card-title">Connected TV (CTV) Advertising</div><div class="card-desc">Reaching streaming audiences through programmatic CTV campaigns.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/programmatic/programmatic-brand-safety/" class="art-card" data-t="Brand Safety in Programmatic Programmatic brand safety programmatic blocklist IAS DoubleVerify GARM verification" data-d="brand safety programmatic blocklist IAS DoubleVerify GARM verification"><span class="card-sec" style="color:#64748b">Programmatic</span><div class="card-title">Brand Safety in Programmatic</div><div class="card-desc">Protecting your brand at scale with blocklists and verification.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/programmatic/programmatic-measurement/" class="art-card" data-t="Programmatic Measurement Programmatic programmatic measurement viewability IVT ad fraud brand lift attribution" data-d="programmatic measurement viewability IVT ad fraud brand lift attribution"><span class="card-sec" style="color:#64748b">Programmatic</span><div class="card-title">Programmatic Measurement</div><div class="card-desc">Viewability, attribution, and ad fraud detection.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-affiliate" aria-labelledby="sec-affiliate-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">🤝</span>
+      <h2 class="sec-title" id="sec-affiliate-h" style="color:#059669">Affiliate Marketing</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">6 guides</span>
+      <a href="/codex/affiliate-marketing/" class="sec-all-link" style="color:#059669">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/affiliate-marketing/affiliate-marketing-fundamentals/" class="art-card feat" data-t="Affiliate Marketing Fundamentals ⭐ Start here affiliate marketing fundamentals commission CPS CPL network publisher" data-d="affiliate marketing fundamentals commission CPS CPL network publisher"><span class="card-sec" style="color:#059669">⭐ ⭐ Start here</span><div class="card-title">Affiliate Marketing Fundamentals</div><div class="card-desc">How affiliate marketing works — publishers, advertisers, and commission models.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/affiliate-marketing/affiliate-networks-platforms/" class="art-card" data-t="Affiliate Networks & Platforms Affiliate affiliate networks CJ Awin ShareASale Rakuten SaaS platforms comparison" data-d="affiliate networks CJ Awin ShareASale Rakuten SaaS platforms comparison"><span class="card-sec" style="color:#64748b">Affiliate</span><div class="card-title">Affiliate Networks & Platforms</div><div class="card-desc">CJ, Awin, ShareASale, Rakuten — choosing the right network.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/affiliate-marketing/running-affiliate-programme/" class="art-card" data-t="Running an Affiliate Programme Affiliate affiliate programme management recruitment commission rate assets fraud" data-d="affiliate programme management recruitment commission rate assets fraud"><span class="card-sec" style="color:#64748b">Affiliate</span><div class="card-title">Running an Affiliate Programme</div><div class="card-desc">Recruiting affiliates, setting commissions, and managing the channel.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/affiliate-marketing/affiliate-seo-content/" class="art-card" data-t="Affiliate SEO & Content Affiliate affiliate SEO content review comparison buyer intent organic traffic" data-d="affiliate SEO content review comparison buyer intent organic traffic"><span class="card-sec" style="color:#64748b">Affiliate</span><div class="card-title">Affiliate SEO & Content</div><div class="card-desc">How affiliates use SEO to drive buyer-intent traffic.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/affiliate-marketing/affiliate-tracking-attribution/" class="art-card" data-t="Affiliate Tracking & Attribution Affiliate affiliate tracking cookies attribution iOS privacy server side disputes" data-d="affiliate tracking cookies attribution iOS privacy server side disputes"><span class="card-sec" style="color:#64748b">Affiliate</span><div class="card-title">Affiliate Tracking & Attribution</div><div class="card-desc">How tracking works and how privacy changes affect attribution.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/affiliate-marketing/affiliate-compliance-regulation/" class="art-card" data-t="Affiliate Compliance & FTC Disclosure Affiliate FTC disclosure affiliate compliance ASA GDPR endorsement guides" data-d="FTC disclosure affiliate compliance ASA GDPR endorsement guides"><span class="card-sec" style="color:#64748b">Affiliate</span><div class="card-title">Affiliate Compliance & FTC Disclosure</div><div class="card-desc">FTC disclosure requirements and advertiser compliance obligations.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+<section class="hub-sec" id="sec-ecommerce" aria-labelledby="sec-ecommerce-h">
+  <div class="sec-hdr">
+    <div>
+      <span class="sec-icon">🛒</span>
+      <h2 class="sec-title" id="sec-ecommerce-h" style="color:#B45309">E-Commerce Marketing</h2>
+    </div>
+    <div class="sec-meta">
+      <span class="sec-cnt">8 guides</span>
+      <a href="/codex/ecommerce/" class="sec-all-link" style="color:#B45309">All guides →</a>
+    </div>
+  </div>
+  <div class="card-grid">
+<a href="/codex/ecommerce/ecommerce-marketing-fundamentals/" class="art-card feat" data-t="E-Commerce Marketing Fundamentals ⭐ Start here ecommerce marketing funnel channels ROAS LTV CAC conversion rate" data-d="ecommerce marketing funnel channels ROAS LTV CAC conversion rate"><span class="card-sec" style="color:#B45309">⭐ ⭐ Start here</span><div class="card-title">E-Commerce Marketing Fundamentals</div><div class="card-desc">The e-commerce funnel, channel mix, unit economics, and key metrics.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/ecommerce/ecommerce-seo/" class="art-card" data-t="E-Commerce SEO E-Commerce ecommerce SEO category product pages faceted navigation schema duplicate" data-d="ecommerce SEO category product pages faceted navigation schema duplicate"><span class="card-sec" style="color:#64748b">E-Commerce</span><div class="card-title">E-Commerce SEO</div><div class="card-desc">Category pages, product pages, faceted navigation, and technical SEO.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/ecommerce/product-page-optimisation/" class="art-card" data-t="Product Page Optimisation E-Commerce product page optimisation images copy reviews social proof CRO structured data" data-d="product page optimisation images copy reviews social proof CRO structured data"><span class="card-sec" style="color:#64748b">E-Commerce</span><div class="card-title">Product Page Optimisation</div><div class="card-desc">Images, copy, reviews, and CRO for product pages.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/ecommerce/ecommerce-paid-acquisition/" class="art-card" data-t="E-Commerce Paid Acquisition E-Commerce ecommerce paid ads Google Shopping Meta DPA ROAS attribution prospecting" data-d="ecommerce paid ads Google Shopping Meta DPA ROAS attribution prospecting"><span class="card-sec" style="color:#64748b">E-Commerce</span><div class="card-title">E-Commerce Paid Acquisition</div><div class="card-desc">Google Shopping, Meta DPA, ROAS targets, and blended attribution.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/ecommerce/ecommerce-email-marketing/" class="art-card" data-t="E-Commerce Email Marketing E-Commerce ecommerce email flows abandoned cart welcome post purchase winback Klaviyo" data-d="ecommerce email flows abandoned cart welcome post purchase winback Klaviyo"><span class="card-sec" style="color:#64748b">E-Commerce</span><div class="card-title">E-Commerce Email Marketing</div><div class="card-desc">Welcome, abandoned cart, post-purchase, and win-back flows.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/ecommerce/customer-lifetime-value-ecommerce/" class="art-card" data-t="Customer Lifetime Value in E-Commerce E-Commerce ecommerce LTV customer lifetime value RFM cohort analysis repeat purchase" data-d="ecommerce LTV customer lifetime value RFM cohort analysis repeat purchase"><span class="card-sec" style="color:#64748b">E-Commerce</span><div class="card-title">Customer Lifetime Value in E-Commerce</div><div class="card-desc">Calculating, segmenting, and improving e-commerce LTV.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/ecommerce/ecommerce-marketplace-strategy/" class="art-card" data-t="Marketplace Strategy: Amazon & Beyond E-Commerce amazon marketplace strategy A9 algorithm Brand Registry seller DTC balance" data-d="amazon marketplace strategy A9 algorithm Brand Registry seller DTC balance"><span class="card-sec" style="color:#64748b">E-Commerce</span><div class="card-title">Marketplace Strategy: Amazon & Beyond</div><div class="card-desc">Amazon SEO, Brand Registry, and DTC vs marketplace balance.</div><div class="card-arrow">Read guide →</div></a>
+<a href="/codex/ecommerce/ecommerce-conversion-rate-optimisation/" class="art-card" data-t="E-Commerce CRO E-Commerce ecommerce CRO checkout cart abandonment product page funnel Baymard" data-d="ecommerce CRO checkout cart abandonment product page funnel Baymard"><span class="card-sec" style="color:#64748b">E-Commerce</span><div class="card-title">E-Commerce CRO</div><div class="card-desc">Homepage to checkout — systematic conversion rate improvement.</div><div class="card-arrow">Read guide →</div></a>
+  </div>
+</section>
+
+</div>
+</main>
+
+<!-- CTA STRIP -->
+<section class="cta-strip" aria-label="Browse all guides">
+  <div class="wrap">
+    <div class="cta-in">
+      <div>
+        <h2>218 guides. Official sources only.</h2>
+        <p>No affiliate links. No advertising. No paywalls.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a>
+        <a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A–Z Glossary</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+
+<script>
+/* Session 47b: doSearch() was called from two inline handlers on this page and
+   defined nowhere on the site, so the hero search box was dead. The nav search
+   (data-search-input) is a separate control wired by theme-search.js and works.
+   This one filters the cards already rendered on the page. */
+function doSearch(q){
+  q=(q||'').trim().toLowerCase();
+  var cards=document.querySelectorAll('#hubResults .art-card');
+  var shown=0;
+  for(var i=0;i<cards.length;i++){
+    var c=cards[i];
+    var hay=((c.getAttribute('data-t')||'')+' '+(c.getAttribute('data-d')||'')+' '+c.textContent).toLowerCase();
+    var hit=!q||hay.indexOf(q)>-1;
+    c.style.display=hit?'':'none';
+    if(hit)shown++;
+  }
+  var secs=document.querySelectorAll('#hubResults .hub-sec');
+  for(var j=0;j<secs.length;j++){
+    var vis=secs[j].querySelectorAll('.art-card:not([style*="display: none"])').length;
+    secs[j].style.display=(q&&vis===0)?'none':'';
+  }
+  var nr=document.getElementById('noResults');
+  if(nr)nr.style.display=(q&&shown===0)?'block':'none';
+  var fb=document.getElementById('searchFb');
+  if(fb)fb.textContent=q?(shown+' guide'+(shown===1?'':'s')+' match "'+q+'"'):'';
+}
+</script>
+</body>
+</html>

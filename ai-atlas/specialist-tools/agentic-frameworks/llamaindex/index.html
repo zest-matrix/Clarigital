@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LlamaIndex — Complete Guide to Data-Augmented AI | Clarigital</title>
+<meta name="description" content="LlamaIndex explained — RAG pipelines, data-augmented agents, how to query documents with AI, 13 copy-paste prompts, pricing, and when to choose it. April 2026.">
+<link rel="canonical" href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">
+<meta property="og:title" content="LlamaIndex — Complete Guide to Data-Augmented AI Agents">
+<meta property="og:description" content="LlamaIndex specialises in AI agents that reason over documents, databases, and knowledge bases. The definitive guide to RAG pipelines and data-augmented agents.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+.sidebar-text{font-size:.83rem;color:var(--muted);line-height:1.6}
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+.lane-section strong{color:var(--fg)}
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative}
+.prompt-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.88rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+.callout{background:var(--bg2);border-left:3px solid var(--indigo);border-radius:0 8px 8px 0;padding:14px 16px;margin:20px 0}
+.callout p{margin:0;font-size:.9rem}
+.callout-blue{border-left-color:var(--blue)}
+.callout-green{border-left-color:var(--green)}
+.rag-flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:20px 0;padding:18px;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px}
+.rag-step{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;text-align:center;min-width:90px}
+.rag-step .rs-label{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:3px}
+.rag-step .rs-name{font-size:.82rem;font-weight:700;color:var(--fg)}
+.rag-arrow{color:var(--faint);font-size:.9rem;flex-shrink:0}
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "LlamaIndex \u2014 Complete Guide to Data-Augmented AI Agents", "description": "LlamaIndex explained \u2014 RAG pipelines, data-augmented agents, how to query documents with AI, 13 copy-paste prompts, pricing, and when to choose it. April 2026.", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "LlamaIndex \u2014 Complete Guide to Data-Augmented AI Agents", "description": "LlamaIndex explained \u2014 RAG pipelines, data-augmented agents, how to query documents with AI, 13 copy-paste prompts, pricing, and when to choose it. April 2026.", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LlamaIndex — Complete Guide to Data-Augmented AI Agents">
+<meta name="twitter:description" content="LlamaIndex explained — RAG pipelines, data-augmented agents, how to query documents with AI, 13 copy-paste prompts, pricing, and when to choose it. April 2026.">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/sources/" class="di">Sources</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/ai-atlas/">AI Atlas</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/">Specialist Tools</a>
+      <span class="sep">›</span>
+      <a href="/ai-atlas/specialist-tools/agentic-frameworks/">Agentic Frameworks</a>
+      <span class="sep">›</span>
+      <span>LlamaIndex</span>
+    </nav>
+    <div class="label-tag">Agentic Frameworks</div>
+    <h1>LlamaIndex</h1>
+    <p class="hero-lead">LlamaIndex specialises in AI agents that reason over data — your company's documents, internal knowledge bases, databases, APIs, and more. Where other frameworks treat data retrieval as one tool among many, LlamaIndex is built from the ground up around it. The result: the most capable and most configurable RAG and data-augmented agent stack available in open source.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Agentic Framework</span>
+      <span class="meta-tag">Free · Open Source · MIT</span>
+      <span class="meta-tag">Python + TypeScript</span>
+      <span class="meta-tag"><time datetime="2026-04-24">Last verified: April 2026</time></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="art-layout">
+    <div>
+      
+
+      <!-- SIMPLE LANE -->
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+        <h2 id="s-green-0">The problem LlamaIndex solves</h2>
+        <p>Large language models are trained on public data up to a cutoff date. They know nothing about your company's internal documents, your product catalogue, your customer data, or anything written after their training ended. If you want an AI that can answer questions about your specific data, you have two options: fine-tune a model on your data (expensive, slow, requires ML expertise) or give the model access to your data at query time so it can read what it needs before answering.</p>
+        <p>The second approach is called RAG — Retrieval-Augmented Generation. Instead of the model knowing everything, it retrieves the relevant parts of your data when needed and uses those as context. LlamaIndex is the most capable open-source framework for building RAG systems — and for building AI agents that use RAG as one of their core capabilities.</p>
+
+        <h2 id="s-green-1">RAG in plain terms</h2>
+        <p>The process has five steps:</p>
+
+        <div class="rag-flow">
+          <div class="rag-step"><div class="rs-label">Step 1</div><div class="rs-name">Load</div></div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-step"><div class="rs-label">Step 2</div><div class="rs-name">Chunk</div></div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-step"><div class="rs-label">Step 3</div><div class="rs-name">Embed</div></div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-step"><div class="rs-label">Step 4</div><div class="rs-name">Store</div></div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-step"><div class="rs-label">Step 5</div><div class="rs-name">Retrieve &amp; Answer</div></div>
+        </div>
+
+        <p><strong>Load</strong> — your documents are loaded from their source. PDFs, Word files, web pages, Notion pages, databases, APIs. LlamaIndex has over 160 data loaders.</p>
+        <p><strong>Chunk</strong> — documents are split into smaller pieces (chunks). This is necessary because most documents are too large to fit in a model's context window, and smaller, focused chunks produce better search results.</p>
+        <p><strong>Embed</strong> — each chunk is converted to a numerical representation (an embedding vector) that captures its meaning. Similar chunks end up with similar vectors.</p>
+        <p><strong>Store</strong> — chunks and their vectors are stored in a vector database. LlamaIndex works with Pinecone, Chroma, Weaviate, Qdrant, and others.</p>
+        <p><strong>Retrieve and answer</strong> — when a question arrives, LlamaIndex converts it to a vector, finds the most similar chunks in the database, and passes those chunks to the LLM as context. The model answers using the retrieved information.</p>
+
+        <h2 id="s-green-2">What makes LlamaIndex different from just using LangChain for RAG</h2>
+        <p>LangChain can do RAG. The difference is depth. LlamaIndex provides far more tuning options at every step of the pipeline — different chunking strategies, different retrieval algorithms, hybrid search (combining semantic and keyword search), query rewriting, reranking, and evaluation. For applications where RAG quality is critical — a customer service bot that must answer accurately from a product manual, a legal research tool, a medical knowledge base — LlamaIndex's additional control is significant.</p>
+
+        <div class="callout callout-blue">
+          <p><strong>Choose LlamaIndex when:</strong> your primary challenge is getting an AI to reason accurately over your own documents or data. If your workflow does not involve large custom knowledge bases, start with LangChain or CrewAI.</p>
+        </div>
+
+      </div>
+
+      <!-- WORKING LANE -->
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+        <h2 id="s-indigo-0">LlamaIndex's core abstractions</h2>
+        <p><strong>Documents and Nodes</strong> — a Document is a raw piece of content (a PDF, a web page, a database row). A Node is a chunk of a Document, with metadata linking it back to the original source. Everything in LlamaIndex flows through these two types.</p>
+        <p><strong>VectorStoreIndex</strong> — the most commonly used index type. Stores Nodes as embedding vectors. Supports semantic similarity search. The starting point for most RAG applications.</p>
+        <p><strong>QueryEngine</strong> — takes a natural language question, retrieves relevant Nodes, and generates an answer. The simplest complete RAG pipeline: one line to create it from an index, one line to query it.</p>
+        <p><strong>Agent</strong> — a ReAct agent that can use a QueryEngine (and any other tool) to answer multi-step questions. Decides when to query the knowledge base, when to use other tools, and when it has enough information to answer.</p>
+
+        <h2 id="s-indigo-1">Prompts for building with LlamaIndex</h2>
+
+        <h3>Getting started</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Build a basic RAG pipeline</div>
+          <div class="prompt-text">Write complete Python code using LlamaIndex to: (1) load all PDF files from a local directory, (2) split them into chunks with chunk_size=1024 and chunk_overlap=200, (3) create embeddings using OpenAI's text-embedding-3-small, (4) store the index locally, (5) create a query engine, (6) answer the question "What are the main topics covered in these documents?" Show all imports and include error handling if the directory is empty.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">LlamaIndex vs LangChain for RAG — help me decide</div>
+          <div class="prompt-text">I need to build a RAG system over [describe your documents — e.g. "500 internal policy PDFs"]. My primary concern is accuracy — the system must cite sources and not hallucinate. Should I use LlamaIndex or LangChain for this? Compare the specific features that affect RAG quality: chunking options, retrieval algorithms, reranking, and evaluation tooling. Give me a direct recommendation.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Persist and reload a LlamaIndex index</div>
+          <div class="prompt-text">I've built a LlamaIndex VectorStoreIndex over 200 PDFs. Building it takes 10 minutes due to the embedding API calls. Show me how to persist the index to disk after building it, and how to reload it in subsequent runs without re-embedding the documents. What format does LlamaIndex use for storage? What happens if I add new documents — do I need to rebuild the whole index?</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Advanced retrieval</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Improve retrieval accuracy with hybrid search</div>
+          <div class="prompt-text">My LlamaIndex RAG system gives good results for conceptual questions but poor results for specific names, dates, and product codes — things where keyword matching would work better than semantic similarity. Show me how to implement hybrid search in LlamaIndex that combines vector similarity (semantic) with BM25 keyword matching. How do I weight the two approaches? Which vector stores support this natively?</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Add a reranker to improve results</div>
+          <div class="prompt-text">My LlamaIndex retriever returns the top 10 chunks, but only 2 or 3 are actually relevant to the query. The irrelevant chunks confuse the LLM. Show me how to add a reranker that takes the top 10 retrieved chunks and reorders them by relevance, then passes only the top 3 to the LLM. What reranker options does LlamaIndex support? Show the code for adding a Cohere reranker.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Query multiple document collections</div>
+          <div class="prompt-text">I have three separate document collections: technical documentation, customer support tickets, and product specifications. I want a LlamaIndex agent that automatically decides which collection to query based on the question, can query multiple collections if needed, and synthesises answers from multiple sources. Show me how to set up a RouterQueryEngine or an agent with multiple query engine tools to achieve this.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Agents and multi-step reasoning</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Build a document Q&amp;A agent</div>
+          <div class="prompt-text">Build a LlamaIndex ReAct agent that can answer complex multi-step questions about a document collection. The agent should: query the knowledge base when it needs specific information, perform calculations on retrieved data when needed, and cite the source document and page number for every factual claim in its final answer. Use Claude claude-sonnet-4-20250514 as the LLM. Show the full code.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Combine LlamaIndex with web search</div>
+          <div class="prompt-text">I want a LlamaIndex agent that can answer questions using both my internal documents and current web information. If the answer exists in my knowledge base, use that (more reliable). If it requires current information not in my documents, search the web. Show me how to build an agent with both a VectorStoreIndex query engine and a web search tool, and how to configure it to prefer internal documents.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Evaluation and production</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Evaluate RAG pipeline quality</div>
+          <div class="prompt-text">I want to measure how accurate my LlamaIndex RAG pipeline is before deploying it. Show me how to use LlamaIndex's built-in evaluation framework to measure: (1) whether retrieved chunks are actually relevant to the query (retrieval quality), (2) whether the generated answer is faithful to the retrieved context and doesn't hallucinate, (3) whether the answer actually addresses the original question. Provide the code for running these evaluations on a dataset of 20 test question/answer pairs.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Connect LlamaIndex to a production vector database</div>
+          <div class="prompt-text">I've been using LlamaIndex's default in-memory storage for development. I now need to connect to Pinecone for production — it needs to persist data, support multiple users, and handle 50,000+ documents. Show me: (1) how to set up the Pinecone integration in LlamaIndex, (2) how to build the index against Pinecone instead of in-memory storage, (3) how to load the existing index on subsequent runs without rebuilding it, (4) any considerations for managing costs with a large document set.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Add metadata filtering to retrieval</div>
+          <div class="prompt-text">My LlamaIndex knowledge base contains documents from multiple departments (HR, Legal, Engineering, Finance). I want to be able to restrict retrieval to documents from a specific department when relevant — e.g. an HR question should only retrieve HR documents. Show me how to add department metadata to documents during ingestion, and how to apply metadata filters at query time in LlamaIndex.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+      </div>
+
+      <!-- DEEP LANE -->
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+        <h2 id="s-red-0">The indexing pipeline — technical detail</h2>
+        <p>LlamaIndex's indexing pipeline consists of four stages, each configurable:</p>
+
+        <h3>1. Data loading</h3>
+        <p>LlamaIndex provides over 160 data loaders via the LlamaHub ecosystem, covering PDFs (using PyMuPDF or PyPDF2), Word documents, web pages, databases (SQL, MongoDB, Elasticsearch), APIs (Notion, Confluence, Slack, Google Drive), and more. Loaders return Document objects with a text field and a metadata dictionary. Metadata is preserved through the pipeline and attached to every Node derived from the Document.</p>
+
+        <h3>2. Node parsing and chunking</h3>
+        <p>Documents are split into Nodes using a NodeParser. The default is SentenceSplitter, which respects sentence boundaries. Alternative parsers include: TokenTextSplitter (splits on token count), SemanticSplitterNodeParser (uses embeddings to find semantically coherent split points — higher quality but more expensive), and HierarchicalNodeParser (creates parent and child nodes, enabling retrieval at multiple granularities).</p>
+        <p>Chunk size and overlap are the primary tuning parameters. Smaller chunks (256–512 tokens) produce more precise retrieval but may lack context. Larger chunks (1024–2048 tokens) preserve more context but may retrieve less precisely. The optimal value depends on document structure and query type.</p>
+
+        <h3>3. Embedding</h3>
+        <p>Each Node's text is converted to an embedding vector using a configured embedding model. LlamaIndex supports OpenAI (text-embedding-3-small and text-embedding-3-large), Cohere, HuggingFace models (for local/private deployment), and others via the embeddings abstraction. The embedding model used at ingestion must be the same model used at query time — embedding spaces are model-specific and not interoperable.</p>
+
+        <h3>4. Vector storage</h3>
+        <p>Nodes and their vectors are stored in a VectorStore. LlamaIndex's SimpleVectorStore stores everything in memory (suitable for development and small collections). Production deployments use external vector databases: Pinecone, Weaviate, Chroma, Qdrant, pgvector (PostgreSQL extension), or others. LlamaIndex provides a consistent interface across all stores, so switching storage backends requires only a configuration change.</p>
+
+        <h2 id="s-red-1">Advanced retrieval — beyond simple similarity search</h2>
+
+        <h3>HyDE (Hypothetical Document Embeddings)</h3>
+        <p>Instead of embedding the user's query directly, HyDE first asks the LLM to generate a hypothetical document that would answer the query, then embeds that hypothetical document. The idea: a generated answer tends to live in the same embedding space as actual answers, producing better retrieval than embedding the question. LlamaIndex implements this via HyDEQueryTransform.</p>
+
+        <h3>Sentence window retrieval</h3>
+        <p>Nodes are created at sentence granularity for precise matching, but when a sentence is retrieved, its surrounding window (several sentences before and after) is passed to the LLM as context. This combines precise retrieval with sufficient context for coherent answering — a significant quality improvement over standard chunking.</p>
+
+        <h3>Auto-merging retrieval</h3>
+        <p>Hierarchical chunking creates small child nodes and larger parent nodes. When enough child nodes from the same parent are retrieved, LlamaIndex automatically replaces them with the parent node — providing the LLM with a coherent larger chunk rather than several disconnected small ones. Particularly effective for structured documents.</p>
+
+        <h2 id="s-red-2">LlamaIndex agents — the ReAct pattern over data</h2>
+        <p>LlamaIndex agents use the ReAct pattern (Reasoning + Acting) with QueryEngines and other tools as the available actions. A QueryEngine over a document collection is wrapped as a Tool with a name and description — the agent reads the description and decides when to query which collection. This enables agents that reason over multiple knowledge bases, deciding which to consult based on the nature of each sub-question.</p>
+        <p>LlamaIndex's agent framework is less feature-rich than LangGraph for complex workflow orchestration, but substantially easier to use for data-heavy tasks. The two are often combined: a LangGraph orchestrator coordinates the overall workflow; LlamaIndex components handle document retrieval.</p>
+
+        <h2 id="s-red-3">LlamaCloud — the managed service</h2>
+        <p>LlamaCloud is LlamaIndex's hosted data ingestion and retrieval service. It manages the ingestion pipeline (parsing, chunking, embedding, storage) as a managed API, with connectors to common data sources (Google Drive, Confluence, Notion, SharePoint). Pricing starts with a free tier; enterprise pricing is available. For organisations that want LlamaIndex capabilities without managing vector database infrastructure, LlamaCloud is the production path. Documentation at <a href="https://docs.cloud.llamaindex.ai" target="_blank" rel="noopener" style="color:var(--indigo)">docs.cloud.llamaindex.ai</a>.</p>
+
+        <h2 id="s-red-4">Evaluation — the RAGAS framework</h2>
+        <p>LlamaIndex integrates with RAGAS (Retrieval-Augmented Generation Assessment), the standard evaluation framework for RAG pipelines. RAGAS measures: Context Precision (are retrieved chunks relevant?), Context Recall (were all relevant chunks retrieved?), Faithfulness (does the answer stay within what the retrieved context says?), and Answer Relevancy (does the answer address the question?). These four metrics together characterise a RAG pipeline's quality comprehensively. Running RAGAS evaluations before deployment is strongly recommended for any production RAG application.</p>
+
+        <h2 id="s-red-5">Official documentation</h2>
+        <ul>
+          <li>Documentation: <a href="https://docs.llamaindex.ai" target="_blank" rel="noopener" style="color:var(--indigo)">docs.llamaindex.ai</a></li>
+          <li>GitHub: <a href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener" style="color:var(--indigo)">github.com/run-llama/llama_index</a></li>
+          <li>LlamaCloud: <a href="https://docs.cloud.llamaindex.ai" target="_blank" rel="noopener" style="color:var(--indigo)">docs.cloud.llamaindex.ai</a></li>
+        </ul>
+
+        <div class="callout">
+          <p><strong>Source note:</strong> All technical specifications are drawn from the official LlamaIndex documentation at docs.llamaindex.ai and the LlamaIndex GitHub repository. LlamaCloud pricing information is from the official LlamaCloud documentation. Verified April 2026.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">The problem LlamaIndex solves</a><a href="#s-green-1">RAG in plain terms</a><a href="#s-green-2">What makes LlamaIndex different from just using LangChain </a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">LlamaIndex&#x27;s core abstractions</a><a href="#s-indigo-1">Prompts for building with LlamaIndex</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">The indexing pipeline — technical detail</a><a href="#s-red-1">Advanced retrieval — beyond simple similarity search</a><a href="#s-red-2">LlamaIndex agents — the ReAct pattern over data</a><a href="#s-red-3">LlamaCloud — the managed service</a><a href="#s-red-4">Evaluation — the RAGAS framework</a><a href="#s-red-5">Official documentation</a></div></div>
+      <div class="sidebar-card">
+        <h4>Pricing</h4>
+        <p class="sidebar-text" style="margin-bottom:8px"><strong style="color:var(--green)">LlamaIndex</strong> — Free, open source (MIT)</p>
+        <p class="sidebar-text" style="margin-bottom:8px">You pay for LLM + embedding API calls</p>
+        <p class="sidebar-text"><strong style="color:var(--fg)">LlamaCloud</strong> (managed)</p>
+        <p class="sidebar-text">Free tier available · Enterprise custom</p>
+      </div>
+      <div class="sidebar-card">
+        <h4>Other frameworks</h4>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="sidebar-link">LangChain / LangGraph</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" class="sidebar-link">CrewAI</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" class="sidebar-link">Microsoft AutoGen</a>
+        <a href="/ai-atlas/specialist-tools/agentic-frameworks/" class="sidebar-link">Compare all four →</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Concept guides</h4>
+        <a href="/ai-atlas/agentic-ai/" class="sidebar-link">What is Agentic AI</a>
+        <a href="/ai-atlas/agentic-ai/how-agents-work/" class="sidebar-link">How Agents Work</a>
+        <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="sidebar-link">Multi-Agent Systems</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Official docs</h4>
+        <a href="https://docs.llamaindex.ai" target="_blank" rel="noopener" class="sidebar-link">LlamaIndex Docs ↗</a>
+        <a href="https://github.com/run-llama/llama_index" target="_blank" rel="noopener" class="sidebar-link">GitHub ↗</a>
+        <a href="https://docs.cloud.llamaindex.ai" target="_blank" rel="noopener" class="sidebar-link">LlamaCloud ↗</a>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>Frameworks</h5><ul>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
+        <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},2000);
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

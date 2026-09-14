@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Identity and Onboarding | Clarigital</title>
+<meta name="description" content="KYC with AI — the document pipeline, OCR engine trade-offs, field extraction, Aadhaar checksum validation, face match, liveness and the review queue.">
+<link rel="canonical" href="/fintech-ai/identity-onboarding/">
+<meta property="og:type" content="article"><meta property="og:title" content="Identity and Onboarding">
+<meta property="og:description" content="KYC with AI — the document pipeline, OCR engine trade-offs, field extraction, Aadhaar checksum validation, face match, liveness and the review queue."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/identity-onboarding/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Identity and Onboarding">
+<meta name="twitter:description" content="KYC with AI — the document pipeline, OCR engine trade-offs, field extraction, Aadhaar checksum validation, face match, liveness and the review queue."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Identity and Onboarding", "description": "KYC with AI \u2014 the document pipeline, OCR engine trade-offs, field extraction, Aadhaar checksum validation, face match, liveness and the review queue.", "url": "https://www.clarigital.com/fintech-ai/identity-onboarding/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Identity and Onboarding", "item": "https://www.clarigital.com/fintech-ai/identity-onboarding/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h4{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2,#243044)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;align-items:center;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green,#10B981);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo,#6366F1);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber,#F59E0B);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint,#64748b)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+</style>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><span class="sep">&rsaquo;</span><span>Identity and Onboarding</span></nav>
+  <div class="label-tag">Module 01</div>
+  <div class="ft-tag">Fintech AI</div><h1>Identity and Onboarding</h1>
+  <p class="hero-lead">Every regulated financial product starts by proving who the customer is. This module covers the full pipeline — quality gating, preprocessing, OCR, field extraction, validation, face match and liveness — with the tools that exist today, working code, and the failure modes that decide whether it ships.</p>
+  <div class="art-meta"><span class="meta-tag">Verified May 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>What identity verification actually is</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>Why reading a document is harder than it sounds</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>What AI can and cannot do here</a><a href="#s-green-3"><span class="tdot" style="background:var(--green)"></span>The one thing that decides your architecture</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>The pipeline, stage by stage</a><a class="sub" href="#s-indigo-gate"><span class="tdot" style="background:var(--indigo)"></span>The quality gate is the highest-return stage</a><a class="sub" href="#s-indigo-prep"><span class="tdot" style="background:var(--indigo)"></span>Preprocessing earns more than model choice</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Choosing an OCR engine — and why it matters less than you think</a><a class="sub" href="#s-indigo-converge"><span class="tdot" style="background:var(--indigo)"></span>The finding that should change your plan</a><a class="sub" href="#s-indigo-vlmrisk"><span class="tdot" style="background:var(--indigo)"></span>The specific VLM risk</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Field extraction — getting structure out of text</a><a class="sub" href="#s-indigo-hybrid"><span class="tdot" style="background:var(--indigo)"></span>The hybrid pattern, which is what most teams end up with</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>Validation — the step that catches what extraction missed</a><a class="sub" href="#s-indigo-checksum"><span class="tdot" style="background:var(--indigo)"></span>Aadhaar carries a checksum. Use it.</a><a class="sub" href="#s-indigo-cross"><span class="tdot" style="background:var(--indigo)"></span>Cross-field checks find what checksums cannot</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>Face match and liveness</a><a class="sub" href="#s-indigo-facematch"><span class="tdot" style="background:var(--indigo)"></span>Face match</a><a class="sub" href="#s-indigo-liveness"><span class="tdot" style="background:var(--indigo)"></span>Liveness</a><a class="sub" href="#s-indigo-deepfake"><span class="tdot" style="background:var(--indigo)"></span>The 2026 reality</a><a href="#s-indigo-5"><span class="tdot" style="background:var(--indigo)"></span>The tool registry</a><a href="#s-indigo-6"><span class="tdot" style="background:var(--indigo)"></span>A prompt for specifying your own pipeline</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Confidence thresholds and the review queue</a><a class="sub" href="#s-amber-tune"><span class="tdot" style="background:var(--amber)"></span>How to actually set the numbers</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>How this gets attacked</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Cost, and where it actually goes</a><a href="#s-amber-3"><span class="tdot" style="background:var(--amber)"></span>What to log, because you will be asked</a><a href="#s-amber-4"><span class="tdot" style="background:var(--amber)"></span>Where this module ends and others begin</a></div></div>
+    
+    
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<div class="note"><span class="note-lbl">Build sheet</span><p>Every tool for this module, how to use each one, what it costs, the best combinations and three recommended builds: <a href="/fintech-ai/identity-onboarding/build-sheet/"><strong>Identity Build Sheet &rarr;</strong></a></p></div><div class="note"><span class="note-lbl">Product guide</span><p>Building document reading as a product? Step-by-step, with the options at each stage and how to connect them: <a href="/fintech-ai/products/document-ai/"><strong>Document AI: How to Build It &rarr;</strong></a></p></div><h2 id="s-green-0">What identity verification actually is</h2>
+<p>Before a bank, lender or broker can give you an account, it has to answer three questions with evidence:</p><ol><li><strong>Does this person exist?</strong> Is the identity real, and does the document refer to a real registered person?</li><li><strong>Is this person who they claim to be?</strong> Is the human in front of the camera the same human on the document?</li><li><strong>Should we do business with them?</strong> Are they sanctioned, politically exposed, or already known for fraud?</li></ol><p>This is Know Your Customer. Every regulated financial product starts here, and nothing else in your product matters until it works.</p><div class="note"><span class="note-lbl">Note</span><p>The three questions need completely different technology. Question one is document reading and database lookup. Question two is face matching and liveness. Question three is name screening against lists. People often assume "KYC" is one thing and buy one tool for it. It is three problems.</p></div>
+<h2 id="s-green-1">Why reading a document is harder than it sounds</h2>
+<p>You would think reading a name off an ID card is solved. For a clean, flat, well-lit scan of a standard document, it mostly is. Real onboarding does not produce those.</p><p>What actually arrives:</p><ul><li>A photograph of a document, taken at an angle, on a bed, in poor light</li><li>A photocopy of a photocopy, faded, with a stamp across the text</li><li>A laminated card with glare covering the date of birth</li><li>A document in Hindi, Tamil, Bengali or Marathi, sometimes with English on the same card</li><li>A screenshot of a PDF, re-compressed twice by a messaging app</li><li>A deliberately altered document, because some share of applicants are committing fraud</li></ul><p>Each of these breaks a different part of the pipeline. That is why "just use OCR" does not survive contact with production.</p>
+<h2 id="s-green-2">What AI can and cannot do here</h2>
+<table><tr><th>Task</th><th>How well AI does it</th></tr><tr><td>Read printed text from a clear document</td><td><strong>Very well.</strong> Effectively solved.</td></tr><tr><td>Read a document at an angle, in poor light</td><td><strong>Well, with preprocessing.</strong> The preprocessing matters as much as the model.</td></tr><tr><td>Find the right field on an unfamiliar layout</td><td><strong>Reasonably.</strong> Vision-language models are good at this; older OCR is not.</td></tr><tr><td>Read handwriting</td><td><strong>Inconsistently.</strong> Better than five years ago, still unreliable for anything consequential.</td></tr><tr><td>Match a selfie to a document photo</td><td><strong>Very well</strong>, when both images are decent.</td></tr><tr><td>Tell a live face from a photograph held to the camera</td><td><strong>Well,</strong> against casual attempts. Against a determined attacker with a deepfake, this is an arms race.</td></tr><tr><td>Decide whether a document is genuine</td><td><strong>Partially.</strong> It catches crude forgeries. It cannot confirm a document is real — only the issuing database can.</td></tr><tr><td>Decide whether to onboard someone</td><td><strong>It should not.</strong> That is a business and regulatory decision with a documented reason.</td></tr></table><div class="warn"><span class="note-lbl">Watch out</span><p>The most expensive mistake in this module is treating extraction confidence as identity confidence. A model can be 99% certain it read "RAHUL SHARMA" correctly off a document that is entirely fake. Reading well and verifying are different problems.</p></div>
+<h2 id="s-green-3">The one thing that decides your architecture</h2>
+<p>In India, you cannot call the Aadhaar verification API directly. Aadhaar eKYC is available only through UIDAI-licensed entities &rsquo; a KYC User Agency or a sub-licensed aggregator. Direct access requires RBI authorisation and a separate licence.</p><p>This is the single most important practical fact in this module. A startup cannot buy Aadhaar verification the way it buys cloud hosting. It goes through a licensed intermediary, and that intermediary relationship shapes cost, latency, contract terms and what you are permitted to store.</p><p>The same pattern repeats across financial infrastructure. A large share of what you need is <em>indirect</em> access only. Knowing the indirect route is frequently the difference between a product being buildable and not.</p><p>The registry in the Intermediate lane marks every entry as direct, indirect or open source for exactly this reason.</p>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">The pipeline, stage by stage</h2>
+<p>Nine stages. Most teams build three of them, then spend months debugging the six they skipped.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Document pipeline — the stages that matter</span><button class="cb-copy" type="button">Copy</button></div><pre><code>INPUT  photo / scan / PDF page
+  |
+  1. INTAKE          reject &gt; 10MB, convert HEIC/PDF-&gt;image, cap resolution
+  |
+  2. QUALITY GATE    blur score, brightness, glare, resolution
+  |                  -&gt; FAIL FAST. Ask for a re-shoot. This single step
+  |                     removes most downstream errors.
+  |
+  3. PREPROCESS      deskew, de-warp, crop to document edges,
+  |                  denoise, contrast normalise
+  |
+  4. CLASSIFY        which document is this? (Aadhaar / PAN / DL / passport /
+  |                  voter ID / utility bill / other)
+  |
+  5. LAYOUT + OCR    text detection -&gt; recognition, OR a single VLM pass
+  |
+  6. FIELD EXTRACT   map raw text -&gt; {name, dob, id_number, address, ...}
+  |
+  7. VALIDATE        checksums, format rules, cross-field consistency,
+  |                  date sanity, name-vs-face consistency
+  |
+  8. CONFIDENCE      per-field score -&gt; auto-accept / review / reject
+  |
+  9. VERIFY          issuing-database lookup via licensed provider
+  |                  (this is the only step that proves the document is real)
+  |
+OUTPUT structured record + confidence + full audit trail</code></pre></div><h3 id="s-indigo-gate">The quality gate is the highest-return stage</h3><p>It is also the one most often missing. A blurry photo produces garbage extraction, low confidence, a review queue item, a manual correction and a support ticket. Catching it at capture, while the user still has the document in their hand, costs nothing.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Python — cheap quality gate before any OCR</span><button class="cb-copy" type="button">Copy</button></div><pre><code>import cv2, numpy as np
+
+def quality_gate(image_path, min_blur=100.0, min_side=800):
+    &quot;&quot;&quot;Reject bad captures before spending money on OCR.
+    Tune thresholds on YOUR OWN sample of real rejected images.&quot;&quot;&quot;
+    img = cv2.imread(image_path)
+    if img is None:
+        return False, &quot;unreadable_file&quot;
+
+    h, w = img.shape[:2]
+    if min(h, w) &lt; min_side:
+        return False, &quot;resolution_too_low&quot;
+
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+    # Variance of Laplacian: low variance = few sharp edges = blurry
+    blur = cv2.Laplacian(gray, cv2.CV_64F).var()
+    if blur &lt; min_blur:
+        return False, &quot;too_blurry&quot;
+
+    mean = gray.mean()
+    if mean &lt; 55:
+        return False, &quot;too_dark&quot;
+    if mean &gt; 205:
+        return False, &quot;overexposed&quot;
+
+    # Glare: large saturated region usually sits over a field you need
+    saturated = float((gray &gt; 250).sum()) / gray.size
+    if saturated &gt; 0.06:
+        return False, &quot;glare_detected&quot;
+
+    return True, &quot;ok&quot;
+
+# Returning a SPECIFIC reason matters. &quot;Try again&quot; gets you the same
+# bad photo. &quot;Too dark - move to a brighter spot&quot; gets you a usable one.</code></pre></div><h3 id="s-indigo-prep">Preprocessing earns more than model choice</h3><div class="cb"><div class="cb-head"><span class="cb-lang">Python — deskew and crop to the document</span><button class="cb-copy" type="button">Copy</button></div><pre><code>import cv2, numpy as np
+
+def deskew(gray):
+    &quot;&quot;&quot;Rotate so text lines are horizontal.&quot;&quot;&quot;
+    inv = cv2.bitwise_not(gray)
+    thr = cv2.threshold(inv, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
+    coords = np.column_stack(np.where(thr &gt; 0))
+    if len(coords) &lt; 50:
+        return gray
+    angle = cv2.minAreaRect(coords)[-1]
+    angle = -(90 + angle) if angle &lt; -45 else -angle
+    if abs(angle) &lt; 0.4:          # don&#x27;t rotate for nothing
+        return gray
+    h, w = gray.shape
+    M = cv2.getRotationMatrix2D((w // 2, h // 2), angle, 1.0)
+    return cv2.warpAffine(gray, M, (w, h),
+                          flags=cv2.INTER_CUBIC,
+                          borderMode=cv2.BORDER_REPLICATE)
+
+def crop_to_document(img):
+    &quot;&quot;&quot;Find the largest 4-sided contour and crop to it.
+    Removes the bedsheet, the table, the fingers.&quot;&quot;&quot;
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    edged = cv2.Canny(cv2.GaussianBlur(gray, (5, 5), 0), 50, 200)
+    cnts, _ = cv2.findContours(edged, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    for c in sorted(cnts, key=cv2.contourArea, reverse=True)[:5]:
+        peri = cv2.arcLength(c, True)
+        approx = cv2.approxPolyDP(c, 0.02 * peri, True)
+        if len(approx) == 4 and cv2.contourArea(c) &gt; 0.25 * img.size / 3:
+            x, y, w, h = cv2.boundingRect(approx)
+            return img[y:y + h, x:x + w]
+    return img   # fall back to the original rather than returning nothing
+
+def preprocess(path):
+    img = crop_to_document(cv2.imread(path))
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = deskew(gray)
+    gray = cv2.fastNlMeansDenoising(gray, h=10)
+    return cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8)).apply(gray)</code></pre></div>
+<h2 id="s-indigo-1">Choosing an OCR engine — and why it matters less than you think</h2>
+<p>The honest comparison, with what each actually breaks on:</p><table><tr><th>Engine</th><th>Type</th><th>Strongest at</th><th>Breaks on</th><th>Licence note</th></tr><tr><td><strong>Tesseract 5</strong></td><td>Classic</td><td>Clean printed text, tiny footprint, fast</td><td>Angles, low contrast, complex layout, most Indic scripts</td><td>Apache 2.0</td></tr><tr><td><strong>PaddleOCR</strong></td><td>Deep learning</td><td>Complex layouts, tables, multilingual; PP-Structure adds layout analysis</td><td>Heavy dependency; environment/model-loading friction</td><td>Apache 2.0</td></tr><tr><td><strong>docTR</strong></td><td>Deep learning</td><td>Good detection+recognition in one pipeline, tunable speed/accuracy</td><td>Less multilingual coverage than Paddle</td><td>Apache 2.0</td></tr><tr><td><strong>EasyOCR</strong></td><td>Deep learning</td><td>Fastest to a working prototype, 80+ languages</td><td>Roughly 3x slower inference; lower accuracy ceiling at volume</td><td>Apache 2.0</td></tr><tr><td><strong>Surya</strong></td><td>VLM-style</td><td>Best layout analysis in the open group, 90+ languages, dense pages</td><td>GPU cost</td><td><strong>Check this.</strong> Code GPL-3.0; model under a licence that is free for research and small companies but requires a commercial licence above a revenue threshold</td></tr><tr><td><strong>Qwen2.5-VL / olmOCR / GOT-OCR</strong></td><td>Vision-language</td><td>Reads contextually, infers structure, handles messy layouts and some handwriting</td><td>GPU-hungry; can <em>hallucinate</em> plausible text that was never on the page</td><td>Varies by model</td></tr><tr><td><strong>Cloud document APIs</strong><br><span style="color:var(--faint);font-size:.9em">Google Document AI, AWS Textract, Azure Document Intelligence, Mistral OCR</span></td><td>Managed</td><td>No infrastructure, good accuracy, pre-built ID parsers</td><td>Per-page cost at volume; data leaves your environment (a hard blocker under data localisation)</td><td>Commercial</td></tr></table><h3 id="s-indigo-converge">The finding that should change your plan</h3><p>A controlled 2026 benchmark running eight open-source engines on identical receipt datasets found two things worth internalising.</p><p>First, <strong>vision-language models are not automatically more accurate on clean printed text.</strong> The best traditional engine and the best VLM landed within a hair of each other on character error rate.</p><p>Second, and more consequentially: <strong>once an LLM post-processor was added, six of the eight engines converged into the same narrow field-accuracy band</strong> regardless of engine family. The post-processing step compressed most of the difference between them.</p><div class="note"><span class="note-lbl">Note</span><p>Read that again before choosing an engine. If a cleanup and structuring layer sits after OCR, the engine you pick matters far less than the quality gate before it and the validation after it. Spend your time there. Pick the engine that fits your deployment constraints, not the one at the top of a benchmark.</p></div><h3 id="s-indigo-vlmrisk">The specific VLM risk</h3><p>A vision-language model asked to read a document can produce fluent, well-formatted, entirely invented text. Classic OCR fails visibly, returning garbage characters. A VLM fails invisibly, returning a plausible name that was never on the card.</p><p>For identity documents this is the worse failure mode. If you use a VLM, validate every extracted field against the raw detected text or against a checksum. Never accept a VLM field without a second source.</p>
+<h2 id="s-indigo-2">Field extraction — getting structure out of text</h2>
+<p>OCR gives you text. You need <code>{name, dob, id_number, address}</code>. These are different problems and the second one is where layouts bite.</p><table><tr><th>Approach</th><th>How it works</th><th>Use when</th><th>Weakness</th></tr><tr><td><strong>Regex + anchors</strong></td><td>Find a label, take the text near it</td><td>One fixed layout you control</td><td>Breaks on any layout change; brittle across document versions</td></tr><tr><td><strong>Positional templates</strong></td><td>Fields live at known coordinates after alignment</td><td>Standardised cards, high volume, same issuer</td><td>Requires a template per document type <em>and</em> per version</td></tr><tr><td><strong>Layout models</strong> (LayoutLM family, Donut)</td><td>Model learns which text span is which field from position + content</td><td>Many layouts, enough labelled examples to fine-tune</td><td>Needs training data; a real ML project</td></tr><tr><td><strong>VLM prompting</strong></td><td>Send the image, ask for JSON</td><td>Unknown or varied layouts, fast to build</td><td>Hallucination; cost per page; must validate every field</td></tr><tr><td><strong>Hybrid</strong></td><td>OCR extracts text, an LLM structures it, validators check it</td><td><strong>Most production systems</strong></td><td>More moving parts to monitor</td></tr></table><h3 id="s-indigo-hybrid">The hybrid pattern, which is what most teams end up with</h3><div class="cb"><div class="cb-head"><span class="cb-lang">Python — OCR, then LLM structuring, then hard validation</span><button class="cb-copy" type="button">Copy</button></div><pre><code>import json, re
+
+EXTRACTION_PROMPT = &quot;&quot;&quot;You are extracting fields from an identity document.
+
+Below is raw OCR text. Return ONLY a JSON object. No prose, no markdown.
+
+Rules:
+- Use ONLY text present in the OCR output. Never infer or complete a value.
+- If a field is absent or unreadable, set it to null.
+- Do not correct spellings. Return exactly what appears.
+- dob must be ISO format YYYY-MM-DD, or null if the format is ambiguous.
+
+Schema:
+{&quot;document_type&quot;: &quot;aadhaar|pan|passport|driving_licence|voter_id|other&quot;,
+ &quot;name&quot;: string|null,
+ &quot;father_name&quot;: string|null,
+ &quot;dob&quot;: string|null,
+ &quot;gender&quot;: &quot;M&quot;|&quot;F&quot;|&quot;O&quot;|null,
+ &quot;id_number&quot;: string|null,
+ &quot;address&quot;: string|null,
+ &quot;issue_date&quot;: string|null,
+ &quot;expiry_date&quot;: string|null}
+
+OCR TEXT:
+---
+{ocr_text}
+---&quot;&quot;&quot;
+
+def structure_fields(ocr_text, llm_call):
+    raw = llm_call(EXTRACTION_PROMPT.replace(&quot;{ocr_text}&quot;, ocr_text))
+    raw = re.sub(r&quot;^```(?:json)?|```$&quot;, &quot;&quot;, raw.strip(), flags=re.M).strip()
+    try:
+        fields = json.loads(raw)
+    except json.JSONDecodeError:
+        return None, &quot;llm_returned_invalid_json&quot;
+
+    # CRITICAL: every returned value must actually appear in the OCR text.
+    # This is the guard against a fluent, confident hallucination.
+    haystack = re.sub(r&quot;[^A-Z0-9]&quot;, &quot;&quot;, ocr_text.upper())
+    for key in (&quot;name&quot;, &quot;id_number&quot;, &quot;father_name&quot;):
+        val = fields.get(key)
+        if not val:
+            continue
+        needle = re.sub(r&quot;[^A-Z0-9]&quot;, &quot;&quot;, str(val).upper())
+        if needle and needle not in haystack:
+            fields[key] = None
+            fields.setdefault(&quot;_rejected&quot;, []).append(key)
+
+    return fields, None</code></pre></div><div class="warn"><span class="note-lbl">Watch out</span><p>The grounding check in the last block is not optional. Without it you are trusting a generative model not to invent a customer identity, and it will eventually invent one.</p></div>
+<h2 id="s-indigo-3">Validation — the step that catches what extraction missed</h2>
+<p>Extraction confidence tells you how sure the model is about pixels. Validation tells you whether the value can possibly be correct. The second is far more useful, and it is cheap.</p><h3 id="s-indigo-checksum">Aadhaar carries a checksum. Use it.</h3><p>An Aadhaar number is 12 digits with a Verhoeff check digit. A single misread digit fails the checksum. This catches a large share of OCR errors before they reach a human &rsquo; for free, offline, in microseconds.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Python — Verhoeff checksum (Aadhaar) and PAN format validation</span><button class="cb-copy" type="button">Copy</button></div><pre><code># Verhoeff algorithm - dihedral group D5. Catches all single-digit
+# errors and all adjacent transpositions, which is exactly the OCR
+# failure profile.
+
+_D = [[0,1,2,3,4,5,6,7,8,9],[1,2,3,4,0,6,7,8,9,5],[2,3,4,0,1,7,8,9,5,6],
+      [3,4,0,1,2,8,9,5,6,7],[4,0,1,2,3,9,5,6,7,8],[5,9,8,7,6,0,4,3,2,1],
+      [6,5,9,8,7,1,0,4,3,2],[7,6,5,9,8,2,1,0,4,3],[8,7,6,5,9,3,2,1,0,4],
+      [9,8,7,6,5,4,3,2,1,0]]
+_P = [[0,1,2,3,4,5,6,7,8,9],[1,5,7,6,2,8,3,0,9,4],[5,8,0,3,7,9,6,1,4,2],
+      [8,9,1,6,0,4,3,5,2,7],[9,4,5,3,1,2,6,8,7,0],[4,2,8,6,5,7,3,9,0,1],
+      [2,7,9,3,8,0,6,4,1,5],[7,0,4,6,9,1,3,2,5,8]]
+
+def verhoeff_valid(number: str) -&gt; bool:
+    digits = [int(d) for d in str(number) if d.isdigit()]
+    if len(digits) != 12:
+        return False
+    c = 0
+    for i, d in enumerate(reversed(digits)):
+        c = _D[c][_P[i % 8][d]]
+    return c == 0
+
+def aadhaar_valid(number: str) -&gt; bool:
+    n = &quot;&quot;.join(ch for ch in str(number) if ch.isdigit())
+    if len(n) != 12:
+        return False
+    if n[0] in &quot;01&quot;:            # Aadhaar never starts 0 or 1
+        return False
+    if len(set(n)) == 1:        # 111111111111 etc. - test data
+        return False
+    return verhoeff_valid(n)
+
+import re
+def pan_valid(pan: str) -&gt; bool:
+    &quot;&quot;&quot;AAAAA9999A. 4th char encodes holder type, 5th is surname initial.&quot;&quot;&quot;
+    p = str(pan).strip().upper()
+    if not re.fullmatch(r&quot;[A-Z]{5}[0-9]{4}[A-Z]&quot;, p):
+        return False
+    return p[3] in &quot;ABCFGHLJPTK&quot;   # P = individual, C = company, etc.
+
+def gstin_valid(g: str) -&gt; bool:
+    return bool(re.fullmatch(
+        r&quot;[0-3][0-9][A-Z]{5}[0-9]{4}[A-Z][1-9A-Z]Z[0-9A-Z]&quot;, str(g).strip().upper()))</code></pre></div><h3 id="s-indigo-cross">Cross-field checks find what checksums cannot</h3><div class="cb"><div class="cb-head"><span class="cb-lang">Python — consistency rules that catch real errors</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import date
+
+def cross_validate(f: dict) -&gt; list:
+    &quot;&quot;&quot;Returns a list of problems. Empty list = internally consistent.
+    None of these prove the document is genuine - they prove it is
+    not internally contradictory.&quot;&quot;&quot;
+    issues = []
+
+    dob = f.get(&quot;dob&quot;)
+    if dob:
+        try:
+            y, m, d = (int(x) for x in dob.split(&quot;-&quot;))
+            born = date(y, m, d)
+            age = (date.today() - born).days / 365.25
+            if age &lt; 0:      issues.append(&quot;dob_in_future&quot;)
+            elif age &lt; 18:   issues.append(&quot;applicant_is_minor&quot;)
+            elif age &gt; 110:  issues.append(&quot;dob_implausible&quot;)
+        except Exception:
+            issues.append(&quot;dob_unparseable&quot;)
+
+    if f.get(&quot;expiry_date&quot;) and f.get(&quot;issue_date&quot;):
+        if f[&quot;expiry_date&quot;] &lt;= f[&quot;issue_date&quot;]:
+            issues.append(&quot;expiry_before_issue&quot;)
+
+    name = (f.get(&quot;name&quot;) or &quot;&quot;).strip()
+    if name:
+        if len(name) &lt; 3:                       issues.append(&quot;name_too_short&quot;)
+        if any(ch.isdigit() for ch in name):    issues.append(&quot;digits_in_name&quot;)
+        if name == name.lower():                issues.append(&quot;name_case_suspicious&quot;)
+
+    dt = f.get(&quot;document_type&quot;)
+    num = f.get(&quot;id_number&quot;)
+    if dt == &quot;aadhaar&quot; and num and not aadhaar_valid(num):
+        issues.append(&quot;aadhaar_checksum_failed&quot;)
+    if dt == &quot;pan&quot; and num and not pan_valid(num):
+        issues.append(&quot;pan_format_failed&quot;)
+
+    return issues</code></pre></div>
+<h2 id="s-indigo-4">Face match and liveness</h2>
+<p>Document reading answers "what does this card say". Face match answers "is the person holding it the person on it". They are separate systems and separate vendors more often than not.</p><h3 id="s-indigo-facematch">Face match</h3><p>Compare the selfie to the photo extracted from the document. Modern models do this well when both images are usable. The failure cases are predictable: a twenty-year-old passport photo, a heavily compressed document scan, significant weight or facial hair change, and occlusion.</p><p>Output is a similarity score, not a yes or no. You choose the threshold, and that choice is a business decision with a fraud-versus-friction trade-off, not a technical default.</p><h3 id="s-indigo-liveness">Liveness</h3><p><strong>Passive liveness</strong> analyses a single frame or short video for the signals of a real face — texture, depth cues, screen moiré, reflection. No user effort, better completion rates, weaker against a determined attacker.</p><p><strong>Active liveness</strong> asks the user to blink, turn or follow a prompt. Harder to spoof, and every added instruction loses a percentage of applicants at the exact moment they were about to convert.</p><div class="note"><span class="note-lbl">Note</span><p>India-specific and worth knowing before you pick a vendor: models trained largely on Western datasets underperform on Indian skin tones, low-light interiors and inexpensive Android cameras. Providers that trained on Indian data report meaningfully higher approval rates and fewer false rejections in tier-2 and tier-3 contexts. Test on your actual user base and devices, not on a vendor demo.</p></div><h3 id="s-indigo-deepfake">The 2026 reality</h3><p>An RBI Master Direction update in late November 2025 made deepfake and face-liveness maturity, along with regional-language document handling, decisive evaluation criteria for Indian KYC providers. That is not a marketing framing &rsquo; it reflects that injection attacks and synthetic faces moved from theoretical to routine.</p><p>Treat liveness as an adversarial control that needs re-testing, not a box that gets ticked at integration.</p>
+<h2 id="s-indigo-5">The tool registry</h2>
+<p>Marked <span class="pill p-direct">direct</span> if you can sign up and integrate yourself, <span class="pill p-indirect">indirect</span> if it requires a licensed intermediary, and <span class="pill p-oss">oss</span> if you host it.</p><div class="reg"><div class="reg-head"><h4>OCR and document extraction</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">Tesseract 5<span class="pill p-oss">oss</span></div><div class="d">Classic engine, Apache 2.0. Small footprint, fast on clean printed text. Weak on Indic scripts and angled captures.</div></div><div class="reg-row"><div class="n">PaddleOCR<span class="pill p-oss">oss</span></div><div class="d">Apache 2.0. Strong on complex layouts and multilingual; PP-Structure adds layout analysis. Heavy dependency chain.</div></div><div class="reg-row"><div class="n">docTR<span class="pill p-oss">oss</span></div><div class="d">Apache 2.0. Detection and recognition in one pipeline, tunable speed/accuracy trade-off.</div></div><div class="reg-row"><div class="n">EasyOCR<span class="pill p-oss">oss</span></div><div class="d">Apache 2.0. Fastest route to a prototype, 80+ languages. Slower inference, lower ceiling at volume.</div></div><div class="reg-row"><div class="n">Surya<span class="pill p-oss">oss</span></div><div class="d">Best layout analysis in the open group, 90+ languages. <strong>Licence needs checking</strong> — code is GPL-3.0, model licence is free for research and small companies but requires a commercial licence above a revenue threshold.</div></div><div class="reg-row"><div class="n">Qwen2.5-VL / olmOCR / GOT-OCR 2.0<span class="pill p-oss">oss</span></div><div class="d">Vision-language OCR. Reads contextually, handles messy layouts and some handwriting. GPU-hungry and can hallucinate — always validate output.</div></div><div class="reg-row"><div class="n">Google Document AI<span class="pill p-direct">direct</span></div><div class="d">Managed, pre-built identity document parsers, strong accuracy. Per-page cost; data leaves your environment.</div></div><div class="reg-row"><div class="n">AWS Textract<span class="pill p-direct">direct</span></div><div class="d">Managed OCR with forms and tables extraction. Same data-residency consideration.</div></div><div class="reg-row"><div class="n">Azure Document Intelligence<span class="pill p-direct">direct</span></div><div class="d">Managed, prebuilt ID models, good layout handling.</div></div><div class="reg-row"><div class="n">Mistral OCR<span class="pill p-direct">direct</span></div><div class="d">LLM-based document reading API, strong on structure preservation.</div></div></div><div class="reg"><div class="reg-head"><h4>India — identity verification and KYC</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">Aadhaar eKYC (UIDAI)<span class="pill p-indirect">indirect</span></div><div class="d"><strong>Not directly accessible.</strong> Available only through a UIDAI-licensed KYC User Agency or a sub-licensed aggregator. Direct access requires RBI authorisation. This routes almost every fintech through a provider below.</div></div><div class="reg-row"><div class="n">DigiLocker<span class="pill p-indirect">indirect</span></div><div class="d">Government-issued documents pulled with user consent. Reached through licensed partners for most commercial use.</div></div><div class="reg-row"><div class="n">CKYCR<span class="pill p-indirect">indirect</span></div><div class="d">Central KYC Registry — search and upload. Accessed through a licensed entity.</div></div><div class="reg-row"><div class="n">Signzy<span class="pill p-direct">direct</span></div><div class="d">End-to-end onboarding orchestration, RBI video KYC sandbox experience, CKYCR and DigiLocker integration. Suits banks and NBFCs wanting a full flow rather than parts. Quote-only pricing.</div></div><div class="reg-row"><div class="n">HyperVerge<span class="pill p-direct">direct</span></div><div class="d">Computer-vision specialist. Face match and liveness models trained on Indian faces and low-end device conditions — materially better approval rates in tier-2/3 contexts than global models. Quote-only pricing.</div></div><div class="reg-row"><div class="n">IDfy<span class="pill p-direct">direct</span></div><div class="d">Strong OCR and video KYC; bundles Aadhaar, PAN and bank account checks into single workflows. Common in lending and insurance.</div></div><div class="reg-row"><div class="n">Karza / Perfios<span class="pill p-direct">direct</span></div><div class="d">Identity plus financial verification in one stack — bank statement analysis, income checks, fraud signals alongside KYC.</div></div><div class="reg-row"><div class="n">Surepass<span class="pill p-direct">direct</span></div><div class="d">Very broad API catalogue (400+ verification endpoints), fast sandbox-to-production. Contact-sales pricing.</div></div><div class="reg-row"><div class="n">AuthBridge<span class="pill p-direct">direct</span></div><div class="d">KYC plus wider background screening — employment, education, criminal record. Enterprise-oriented.</div></div><div class="reg-row"><div class="n">Digio<span class="pill p-direct">direct</span></div><div class="d">Strongest on the document side — Aadhaar eSign and eStamp. The usual pick when onboarding must end in a signed agreement.</div></div><div class="reg-row"><div class="n">Setu<span class="pill p-direct">direct</span></div><div class="d">Identity and Account Aggregator infrastructure APIs.</div></div><div class="reg-row"><div class="n">Hypersign<span class="pill p-direct">direct</span></div><div class="d">Publishes a public rate card, which is unusual in this market — roughly ₹6 per verification and ₹15 for a full journey with face match at time of writing. Useful as a pricing benchmark even if you buy elsewhere.</div></div></div><div class="reg"><div class="reg-head"><h4>Face matching and liveness</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">HyperVerge<span class="pill p-direct">direct</span></div><div class="d">Liveness and face match tuned for Indian faces, poor lighting and low-cost Android cameras.</div></div><div class="reg-row"><div class="n">AWS Rekognition<span class="pill p-direct">direct</span></div><div class="d">General-purpose face comparison and liveness. Widely used globally; reported to underperform on Indian device and lighting conditions relative to India-tuned models.</div></div><div class="reg-row"><div class="n">Azure Face API<span class="pill p-direct">direct</span></div><div class="d">Face verification and liveness detection. Access is gated — Microsoft restricts the face service and requires an approved use case.</div></div><div class="reg-row"><div class="n">FaceIO / iProov / Incode<span class="pill p-direct">direct</span></div><div class="d">Global liveness and anti-spoofing vendors; iProov in particular is oriented to high-assurance and government use.</div></div><div class="reg-row"><div class="n">InsightFace / ArcFace<span class="pill p-oss">oss</span></div><div class="d">Open-source face recognition models. Good quality, and you own the entire operational and bias-testing burden.</div></div><div class="reg-row"><div class="n">DeepFace<span class="pill p-oss">oss</span></div><div class="d">Python wrapper over several recognition backends. Fine for prototyping, not a compliance-grade liveness solution.</div></div></div><div class="warn"><span class="note-lbl">Watch out</span><p>Pricing in this market is overwhelmingly quote-only. Public rate cards are rare enough that where one exists it is useful mainly as a benchmark for negotiating elsewhere. Verify current terms directly — this registry records what was publicly visible in May 2026.</p></div>
+<h2 id="s-indigo-6">A prompt for specifying your own pipeline</h2>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Prompt — paste into any AI</span><button class="cb-copy" type="button">Copy</button></div><pre><code>You are a senior engineer who has built KYC document pipelines in
+production for regulated lenders.
+
+My situation:
+- Documents I must handle: [e.g. Aadhaar, PAN, driving licence, utility bills]
+- Languages / scripts: [e.g. English, Hindi, Tamil]
+- Expected volume: [documents per month]
+- Capture channel: [mobile app camera / web upload / agent-assisted]
+- Data residency constraint: [e.g. data must remain in India]
+- Team size and ML experience: [describe honestly]
+
+Give me:
+
+1. A stage-by-stage pipeline design, saying at each stage whether to
+   build, buy, or use open source - and why for MY constraints.
+2. A specific OCR engine recommendation with the reason, including
+   what it will fail on.
+3. The validation rules I must implement for these document types,
+   including any checksum or format algorithms.
+4. Confidence thresholds to start with, and how to tune them from
+   real review-queue data.
+5. Estimated cost per 1,000 documents for the buy option versus the
+   self-hosted option, stating your assumptions.
+6. The three things most likely to go wrong in month one.
+
+Be specific about trade-offs. Where you are uncertain about current
+pricing or vendor capability, say so rather than guessing.</code></pre></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Confidence thresholds and the review queue</h2>
+<p>Every automated identity system has three outcomes, not two: accept, reject, and <em>send to a human</em>. The third one is where the design work is, and it is the part most teams leave until after launch.</p><div class="cb"><div class="cb-head"><span class="cb-lang">Python — threshold routing with per-field granularity</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from dataclasses import dataclass, field
+
+@dataclass
+class Decision:
+    action: str                    # auto_accept | review | reject
+    reasons: list = field(default_factory=list)
+    priority: str = &quot;normal&quot;       # review queue ordering
+
+# Thresholds are per FIELD, not per document. An address read at 0.72
+# is survivable. An ID number read at 0.72 is not.
+FIELD_MIN = {
+    &quot;id_number&quot;: 0.95,   # checksum-protected, so demand high confidence
+    &quot;name&quot;:      0.90,   # drives sanctions screening downstream
+    &quot;dob&quot;:       0.90,   # drives age eligibility
+    &quot;gender&quot;:    0.75,
+    &quot;address&quot;:   0.70,   # long, noisy, lower stakes
+}
+
+def route(fields, confidences, validation_issues, face_score, liveness_pass):
+    d = Decision(action=&quot;auto_accept&quot;)
+
+    # Hard rejects first - no point queueing these for a human
+    if not liveness_pass:
+        return Decision(&quot;reject&quot;, [&quot;liveness_failed&quot;], &quot;high&quot;)
+    for blocking in (&quot;aadhaar_checksum_failed&quot;, &quot;pan_format_failed&quot;,
+                     &quot;expiry_before_issue&quot;, &quot;dob_in_future&quot;):
+        if blocking in validation_issues:
+            return Decision(&quot;reject&quot;, [blocking])
+
+    # Soft signals -&gt; human review
+    for f_name, floor in FIELD_MIN.items():
+        if fields.get(f_name) is None:
+            d.action = &quot;review&quot;; d.reasons.append(f&quot;missing:{f_name}&quot;)
+        elif confidences.get(f_name, 0.0) &lt; floor:
+            d.action = &quot;review&quot;; d.reasons.append(f&quot;low_conf:{f_name}&quot;)
+
+    if fields.get(&quot;_rejected&quot;):        # LLM grounding check fired
+        d.action = &quot;review&quot;
+        d.reasons.append(&quot;ungrounded_llm_field&quot;)
+        d.priority = &quot;high&quot;
+
+    # Face match: a band, not a line
+    if face_score &lt; 0.60:
+        return Decision(&quot;reject&quot;, [&quot;face_mismatch&quot;], &quot;high&quot;)
+    elif face_score &lt; 0.80:
+        d.action = &quot;review&quot;; d.reasons.append(&quot;face_borderline&quot;)
+
+    if &quot;applicant_is_minor&quot; in validation_issues:
+        return Decision(&quot;reject&quot;, [&quot;under_18&quot;])
+
+    return d</code></pre></div><h3 id="s-amber-tune">How to actually set the numbers</h3><p>Do not pick thresholds from a vendor benchmark. Derive them from your own review queue:</p><ol><li>Launch deliberately conservative. Route far more to review than you think necessary.</li><li>Have reviewers record, for every item, whether the machine was right.</li><li>After a few thousand decisions, plot accuracy against confidence. The threshold is the point where machine accuracy meets the accuracy your reviewers actually achieve &rsquo; which is not 100%.</li><li>Loosen one field at a time and watch the downstream fraud rate, not just the review volume.</li></ol><div class="note"><span class="note-lbl">Note</span><p>The review queue is also your training data and your best product feedback. Every override is a labelled example and a signal about which document type or capture path is failing. Instrument it from day one — you cannot backfill this.</p></div>
+<h2 id="s-amber-1">How this gets attacked</h2>
+<p>Identity verification is adversarial. A share of your applicants are actively trying to defeat it, and the tooling available to them is cheap.</p><table><tr><th>Attack</th><th>What it looks like</th><th>What counters it</th></tr><tr><td><strong>Print attack</strong></td><td>Photograph of a photograph held to the camera</td><td>Passive liveness — moiré, texture, reflection; easily caught</td></tr><tr><td><strong>Replay attack</strong></td><td>A recorded video played to the camera</td><td>Active liveness with randomised challenges</td></tr><tr><td><strong>Deepfake / face swap</strong></td><td>Synthetic face rendered live over a real feed</td><td>Vendor-side deepfake detection; treat as an arms race, not a fix</td></tr><tr><td><strong>Camera injection</strong></td><td>Virtual camera feeds a prepared stream, bypassing capture entirely</td><td>Device attestation, SDK integrity checks, refusing virtual camera devices — <em>this is the one most teams miss</em></td></tr><tr><td><strong>Document tampering</strong></td><td>Edited photo, altered DOB, substituted portrait</td><td>Tamper detection, font/spacing analysis, and crucially the issuing-database lookup</td></tr><tr><td><strong>Synthetic identity</strong></td><td>Real ID number, fabricated person assembled around it</td><td>Cross-source consistency; bureau and CKYCR history checks</td></tr><tr><td><strong>Coerced / mule onboarding</strong></td><td>A genuine person, genuinely live, opening an account for someone else</td><td>No liveness system catches this. Behavioural and transaction monitoring do — see the Fraud module.</td></tr></table><div class="warn"><span class="note-lbl">Watch out</span><p>Camera injection deserves particular attention. Every control discussed above assumes the image came from the device camera. If an attacker can feed a virtual camera, passive and active liveness both evaluate a perfect synthetic face and pass it. Mobile SDK attestation is the defence, and web capture is structurally weaker than native for this reason.</p></div><p>Note also the last row. The strongest liveness in the world validates that a real person is present &rsquo; not that they are acting freely or for themselves. Mule accounts are opened by real people passing real KYC. That problem belongs to transaction monitoring, not onboarding.</p>
+<h2 id="s-amber-2">Cost, and where it actually goes</h2>
+<p>Indicative cost structure per 1,000 documents. Treat the numbers as shape rather than quotation — pricing in this market is almost entirely negotiated.</p><table><tr><th>Approach</th><th>Cost driver</th><th>Sensible at</th></tr><tr><td>Managed cloud document API</td><td>Per page, tiered down with volume</td><td>Low to moderate volume; no ML team; no data-residency blocker</td></tr><tr><td>Self-hosted classic OCR (Tesseract, Paddle)</td><td>CPU only. Effectively free per page after infrastructure</td><td>High volume, clean documents, strict data residency</td></tr><tr><td>Self-hosted VLM OCR</td><td>GPU hours — the dominant line item</td><td>Messy or varied documents where accuracy justifies GPU spend</td></tr><tr><td>Indian KYC provider (full journey)</td><td>Per verification; public benchmarks sit in low double-digit rupees for a full journey with face match</td><td>Almost everyone, because Aadhaar access is indirect anyway</td></tr><tr><td><strong>Human review</strong></td><td><strong>Reviewer minutes</strong></td><td><strong>This is usually the largest line and the one nobody models</strong></td></tr></table><div class="note"><span class="note-lbl">Note</span><p>Run the arithmetic honestly. If 12% of documents hit the review queue and each takes a reviewer three minutes, that is 36 reviewer-minutes per 100 documents. At any realistic salary this dwarfs the per-page API cost. Reducing the review rate by improving the capture quality gate is almost always the cheapest cost lever available — and it improves conversion at the same time.</p></div>
+<h2 id="s-amber-3">What to log, because you will be asked</h2>
+<p>An Indian regulator, a partner bank auditor or a court will eventually ask you to reconstruct a specific onboarding decision from two years ago. Design for that on day one; retrofitting it is several times the work.</p><div class="cb"><div class="cb-head"><span class="cb-lang">JSON — the minimum audit record per onboarding attempt</span><button class="cb-copy" type="button">Copy</button></div><pre><code>{
+  &quot;attempt_id&quot;: &quot;onb_01HXY...&quot;,
+  &quot;customer_ref&quot;: &quot;cust_9f3a...&quot;,
+  &quot;timestamp&quot;: &quot;2026-05-22T09:14:22Z&quot;,
+
+  &quot;capture&quot;: {
+    &quot;channel&quot;: &quot;mobile_ios&quot;,
+    &quot;sdk_version&quot;: &quot;3.4.1&quot;,
+    &quot;device_attestation&quot;: &quot;passed&quot;,
+    &quot;quality_gate&quot;: {&quot;result&quot;: &quot;pass&quot;, &quot;blur_score&quot;: 184.2, &quot;retries&quot;: 1}
+  },
+
+  &quot;extraction&quot;: {
+    &quot;document_type&quot;: &quot;aadhaar&quot;,
+    &quot;engine&quot;: &quot;paddleocr-2.9 + llm-structuring&quot;,
+    &quot;model_versions&quot;: {&quot;ocr&quot;: &quot;PP-OCRv4&quot;, &quot;structuring&quot;: &quot;&lt;model-id&gt;&quot;},
+    &quot;fields&quot;: {&quot;name&quot;: &quot;...&quot;, &quot;dob&quot;: &quot;...&quot;, &quot;id_number_masked&quot;: &quot;XXXXXXXX1234&quot;},
+    &quot;confidences&quot;: {&quot;name&quot;: 0.97, &quot;dob&quot;: 0.94, &quot;id_number&quot;: 0.99},
+    &quot;grounding_check&quot;: &quot;passed&quot;
+  },
+
+  &quot;validation&quot;: {&quot;checksum&quot;: &quot;pass&quot;, &quot;cross_field_issues&quot;: []},
+
+  &quot;biometric&quot;: {
+    &quot;face_match_score&quot;: 0.91,
+    &quot;liveness&quot;: {&quot;type&quot;: &quot;passive&quot;, &quot;result&quot;: &quot;pass&quot;, &quot;vendor&quot;: &quot;...&quot;,
+                 &quot;vendor_ref&quot;: &quot;lv_88121&quot;}
+  },
+
+  &quot;verification&quot;: {
+    &quot;source&quot;: &quot;uidai_via_&lt;licensed_provider&gt;&quot;,
+    &quot;provider_ref&quot;: &quot;txn_55219&quot;,
+    &quot;result&quot;: &quot;match&quot;,
+    &quot;consent_ref&quot;: &quot;cons_772a&quot;, &quot;consent_timestamp&quot;: &quot;2026-05-22T09:13:58Z&quot;
+  },
+
+  &quot;decision&quot;: {
+    &quot;action&quot;: &quot;review&quot;,
+    &quot;reasons&quot;: [&quot;face_borderline&quot;],
+    &quot;policy_version&quot;: &quot;kyc-policy-v7&quot;,
+    &quot;human_reviewer&quot;: &quot;rev_114&quot;,
+    &quot;human_action&quot;: &quot;approved&quot;,
+    &quot;human_rationale&quot;: &quot;lighting artefact; document photo 9 years old&quot;,
+    &quot;final_timestamp&quot;: &quot;2026-05-22T11:02:10Z&quot;
+  }
+}</code></pre></div><p>Three properties matter more than the exact schema. The record must be <strong>immutable</strong> — append-only, never updated in place. It must capture <strong>model and policy versions</strong>, because "which model made this decision" is the first question asked. And it must store the <strong>human rationale in free text</strong>, because that is what demonstrates a real review rather than a rubber stamp.</p><div class="warn"><span class="note-lbl">Watch out</span><p>Mask or tokenise identity numbers in logs. Storing full Aadhaar numbers in application logs is a data protection problem regardless of how well the rest of the system is built. Store the masked form plus a reference to the secured record.</p></div>
+<h2 id="s-amber-4">Where this module ends and others begin</h2>
+<p>Identity verification proves who opened the account. It does not tell you whether they should be lent to, whether their transactions are suspicious, or whether they are on a sanctions list.</p><ul><li><strong>Sanctions and PEP screening</strong> — the third KYC question — is covered in the AML &amp; Compliance module, because name matching across scripts and transliterations is its own substantial problem.</li><li><strong>Mule and synthetic identity detection</strong> belongs to Fraud &amp; Risk, since it surfaces in behaviour after onboarding rather than during it.</li><li><strong>Model governance</strong> for the face-match and extraction models — bias testing, drift monitoring, documentation — is in Governance.</li><li><strong>What you are permitted to collect and retain</strong> is in the India and global regulatory spine pages.</li></ul><div class="warn"><span class="note-lbl">Watch out</span><p>Everything in this module is illustrative. Code shown here is correct in pattern and is not production-hardened. Any system performing KYC on real customers needs review by people qualified and accountable for compliance in your jurisdiction, and a security review of the capture path in particular.</p></div>
+<h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI Master Direction on KYC</strong> &mdash; CDD requirements, V-CIP conditions, and record retention. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>UIDAI</strong> &mdash; Aadhaar authentication routes and what an offline XML does and does not prove. <a href="https://uidai.gov.in" target="_blank" rel="noopener">uidai.gov.in</a></li><li><span class="src-k src-official">official</span><strong>DigiLocker</strong> &mdash; issued-document retrieval as an alternative to reading a photograph. <a href="https://www.digilocker.gov.in" target="_blank" rel="noopener">www.digilocker.gov.in</a></li><li><span class="src-k src-official">official</span><strong>DPDP Act, 2023</strong> &mdash; consent, purpose limitation and retention for identity data. <a href="https://www.meity.gov.in" target="_blank" rel="noopener">www.meity.gov.in</a></li></ol><p style="font-size:.8rem;color:var(--muted);margin-top:12px">Tooling, pricing and cost sources for this module are on its build sheet: <a href="/fintech-ai/identity-onboarding/build-sheet/#sources"><strong>sources &rarr;</strong></a></p><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Regulation in this area is actively developing; the date is part of the claim.</p></div></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=[], secs=[];
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  
+  
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

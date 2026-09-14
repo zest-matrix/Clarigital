@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile-First Indexing: The Complete Guide | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mobile-First Indexing: The Complete Guide | Digital Codex">
+<meta property="og:description" content="What mobile-first indexing is, why Google moved to it, how it affects your site, and how to ensure your mobile experience is fully optimised for...">
+<meta property="og:url" content="https://www.clarigital.com/codex/seo/mobile-first-indexing/">
+<meta property="og:site_name" content="Digital Codex">
+<meta name="description" content="What mobile-first indexing is, why Google moved to it, how it affects your site, and how to ensure your mobile experience is fully optimised for...">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="/codex/seo/fundamentals/mobile-first-indexing/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Mobile-First Indexing: The Complete Guide","description":"What mobile-first indexing is, why Google moved to it, how it affects your site, and how to optimise for the mobile-first index.","author":{"@type":"Organization","name":"Digital Codex"},"publisher":{"@type":"Organization","name":"Digital Codex","url":"https://www.clarigital.com"},"mainEntityOfPage":"https://www.clarigital.com/codex/seo/mobile-first-indexing/","articleSection":"SEO Foundation","datePublished":"2026-04-04"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--g300:#CBD5E1;--red-bg:#FEF2F2;--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500;transition:color var(--t)}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+table{width:100%;border-collapse:collapse;margin:0;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t),transform var(--t);white-space:nowrap;line-height:1}.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t),color var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:var(--g500);text-decoration:none;transition:color var(--t)}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g300)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:var(--g500);background:var(--g100);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t),color var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:40px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'✓';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.toc{border:1px solid var(--g200);border-radius:var(--r);padding:18px;background:var(--w);margin-bottom:24px}
+.toc-title{font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500);margin-bottom:10px}
+.toc ul{list-style:none;margin:0;padding:0}.toc li{margin-bottom:2px}
+.toc a{display:block;font-size:.8rem;font-weight:500;color:var(--g700);padding:5px 8px;border-radius:4px;text-decoration:none;border-left:2px solid transparent;transition:all var(--t)}
+.toc a:hover{background:var(--g50);color:var(--navy)}.toc a.on{color:var(--navy);border-left-color:var(--navy);background:var(--blue-bg);font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.timeline{list-style:none;margin:20px 0;padding:0}
+.timeline li{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--g100)}
+.timeline li:last-child{border-bottom:none}
+.tl-year{font-size:.8rem;font-weight:700;color:var(--navy);min-width:44px;flex-shrink:0;padding-top:2px}
+.tl-body strong{display:block;font-size:.88rem;font-weight:600;color:var(--g900);margin-bottom:3px}
+.tl-body p{font-size:.83rem;color:var(--g500);margin:0;line-height:1.55}
+.checklist{list-style:none;margin:16px 0;padding:0}
+.checklist li{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--g100);font-size:.88rem}
+.checklist li:last-child{border-bottom:none}
+.ck-status{width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;margin-top:1px}
+.ck-pass{background:var(--green-bg);color:var(--green)}
+.ck-warn{background:var(--amber-bg);color:var(--amber)}
+.ck-fail{background:var(--red-bg);color:var(--red)}
+.ck-content strong{display:block;font-size:.86rem;font-weight:600;color:var(--g900);margin-bottom:2px}
+.ck-content p{font-size:.8rem;color:var(--g500);margin:0}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}.callout.red{border-left-color:var(--red)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--orange-bg);color:var(--orange-dk)}.st-govt{background:var(--g100);color:var(--g700)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t);font-weight:400}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mobile-First Indexing: The Complete Guide | Digital Codex">
+<meta name="twitter:description" content="What mobile-first indexing is, why Google moved to it, how it affects your site, and how to ensure your mobile experience is fully optimised for...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Seo", "item": "https://www.clarigital.com/codex/seo/"}, {"@type": "ListItem", "position": 4, "name": "Mobile-First Indexing: The Complete Guide", "item": "https://www.clarigital.com/codex/seo/mobile-first-indexing/"}]}</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links" role="list"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/" class="cur">SEO</a></li><li><a href="/codex/sem/">SEM</a></li><li><a href="/codex/social-media/">Social</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">A–Z Glossary</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">✕</button></div>
+    <a href="/codex/" class="di">Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+  <a href="/codex/seo/" class="di">SEO</a><a href="/codex/sem/" class="di">SEM</a><a href="/codex/social-media/" class="di">Social</a><a href="/codex/analytics-cro/" class="di">Analytics</a><a href="/codex/all-guides/" class="di">All Guides</a><a href="/codex/glossary/" class="di">Glossary</a>
+</div></div>
+</header>
+
+<nav class="chap-nav"><div class="chap-nav-in">
+  <a class="cnl on" href="#what-is-mfi">What is MFI</a>
+  <a class="cnl" href="#timeline">Timeline</a>
+  <a class="cnl" href="#how-it-works">How It Works</a>
+  <a class="cnl" href="#impact">SEO Impact</a>
+  <a class="cnl" href="#responsive-vs-separate">Responsive vs Separate</a>
+  <a class="cnl" href="#checklist">Audit Checklist</a>
+  <a class="cnl" href="#common-issues">Common Issues</a>
+  <a class="cnl" href="#sources">Sources</a>
+</div></nav>
+
+<main id="main">
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/seo/">SEO</a><span class="sep">/</span><span class="cur" aria-current="page">Mobile-First Indexing</span></nav>
+    <span class="label-tag">SEO Foundation · Guide 8 of 8</span>
+    <h1>Mobile-First Indexing · The Complete Guide</h1>
+    <p class="hero-lead">What mobile-first indexing means for how Google crawls and ranks your site, the complete history of the rollout, how responsive design differs from separate mobile URLs, and a full audit checklist to ensure your mobile experience is optimised for the primary index.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-seo">SEO</span><span class="meta-tag mt-gray">2,800 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+      <button class="share-btn" id="shareBtn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>Share</button>
+    </div>
+  </div>
+</section>
+
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="learn-box"><div class="lb-head"><h3>What You'll Learn</h3></div><div class="lb-body"><ul>
+  <li>What mobile-first indexing is and why Google switched to it</li>
+  <li>The full timeline from announcement (2016) to completion (2023)</li>
+  <li>Exactly how Googlebot crawls in mobile-first mode and what it evaluates</li>
+  <li>How mobile-first indexing affects ranking — for both mobile and desktop searchers</li>
+  <li>The difference between responsive design, dynamic serving, and separate mobile URLs</li>
+  <li>A complete 12-point mobile-first audit checklist with specific fixes</li>
+  <li>The most common mobile-first indexing problems and how to identify them in GSC</li>
+</ul></div></div>
+
+<nav class="toc" id="tocMobile" style="display:none"><p class="toc-title">Contents</p><ul>
+  <li><a href="#what-is-mfi">What is Mobile-First Indexing</a></li>
+  <li><a href="#timeline">History and Timeline</a></li>
+  <li><a href="#how-it-works">How Google Crawls in MFI Mode</a></li>
+  <li><a href="#impact">SEO Impact</a></li>
+  <li><a href="#responsive-vs-separate">Responsive vs Separate URLs</a></li>
+  <li><a href="#checklist">Mobile-First Audit Checklist</a></li>
+  <li><a href="#common-issues">Common Issues in GSC</a></li>
+  <li><a href="#sources">Sources</a></li>
+</ul></nav>
+
+<!-- Ch 1 -->
+<div class="chapter" id="what-is-mfi">
+  <div class="chap-hdr"><h2>What is Mobile-First Indexing</h2><button class="share-btn" onclick="copyLink('what-is-mfi')">Share</button></div>
+  <p>Mobile-first indexing means Google primarily uses the mobile version of a page's content for indexing and ranking. In practice: when Googlebot crawls your site, it uses a smartphone user agent (Googlebot Smartphone) rather than a desktop user agent. The content it sees — the text, images, links, and structured data visible on the mobile version of the page — is what gets indexed and what is used to determine rankings for all searches, including desktop searches.</p>
+  <p>This is the opposite of how Google historically operated. Before mobile-first indexing, Google crawled desktop versions of pages and used desktop content as the primary indexing signal, treating mobile optimisation as a secondary ranking factor. The fundamental shift is that your mobile experience is now your entire search presence — not a separate or secondary consideration.</p>
+
+  <div class="g3">
+    <div class="stat-card"><p class="stat-h">Global mobile share</p><div class="stat-n">~63<span class="u">%</span></div><p class="stat-l">Of all web traffic comes from mobile devices (Statcounter, 2024)</p></div>
+    <div class="stat-card"><p class="stat-h">MFI completion</p><div class="stat-n">2023</div><p class="stat-l">All sites moved to mobile-first indexing by Google</p></div>
+    <div class="stat-card"><p class="stat-h">MFI announcement</p><div class="stat-n">2016</div><p class="stat-l">Google first announced mobile-first indexing experiments</p></div>
+  </div>
+
+  <div class="callout orange">
+    <strong>Mobile-first indexing affects all searches — not just mobile</strong>
+    <p>A common misunderstanding: mobile-first indexing does not mean Google only uses mobile content for mobile search results. It means Google uses the mobile version of your page as the primary version for <em>all</em> indexing and ranking — both mobile and desktop search results. If your mobile page has less content than your desktop page, that missing content does not get indexed at all.</p>
+  </div>
+</div>
+
+<!-- Ch 2 -->
+<div class="chapter" id="timeline">
+  <div class="chap-hdr"><h2>History and Timeline of Mobile-First Indexing</h2><button class="share-btn" onclick="copyLink('timeline')">Share</button></div>
+  <p>Mobile-first indexing was one of the most significant structural changes in Google's history — a 7-year rollout reflecting both the technical complexity of the change and Google's caution about disrupting existing rankings.</p>
+
+  <ul class="timeline">
+    <li><div class="tl-year">2015</div><div class="tl-body"><strong>Mobile-friendliness becomes a ranking signal</strong><p>Google's "Mobilegeddon" update (April 2015) made mobile-friendliness a ranking factor for mobile searches. Desktop rankings were unaffected — a separate signal applied only when users searched from mobile devices.</p></div></li>
+    <li><div class="tl-year">2016</div><div class="tl-body"><strong>Mobile-first indexing announced</strong><p>Google announced it was experimenting with a mobile-first index, noting that over half of global Google searches were being performed on mobile devices. No deployment timeline was given.</p></div></li>
+    <li><div class="tl-year">2018</div><div class="tl-body"><strong>Gradual rollout begins</strong><p>Google began migrating the first batch of sites to mobile-first indexing, notifying webmasters via Google Search Console. Migration was based on each site's mobile readiness assessment.</p></div></li>
+    <li><div class="tl-year">2019</div><div class="tl-body"><strong>Mobile-first indexing becomes default for new sites</strong><p>Google announced that all new websites would be indexed mobile-first by default. Existing sites continued to be migrated gradually.</p></div></li>
+    <li><div class="tl-year">2020</div><div class="tl-body"><strong>Completion target announced (then delayed)</strong><p>Google announced a September 2020 target for completing the migration of all sites. The deadline was extended due to COVID-19 disruptions and technical challenges with some site types.</p></div></li>
+    <li><div class="tl-year">2023</div><div class="tl-body"><strong>Full completion</strong><p>Google completed the migration of all remaining sites to mobile-first indexing. As of 2023, there is only one Google index — the mobile-first index. All sites are now crawled and indexed using smartphone Googlebot.</p></div></li>
+  </ul>
+</div>
+
+<!-- Ch 3 -->
+<div class="chapter" id="how-it-works">
+  <div class="chap-hdr"><h2>How Google Crawls in Mobile-First Mode</h2><button class="share-btn" onclick="copyLink('how-it-works')">Share</button></div>
+  <p>When crawling in mobile-first mode, Googlebot Smartphone requests your pages with a smartphone user agent string: <code>Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/W.X.Y.Z Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)</code>. Your server responds with whatever it would serve to that user agent — and that is what gets indexed.</p>
+
+  <h3>What Googlebot Evaluates on the Mobile Version</h3>
+  <ul>
+    <li><strong>Text content.</strong> All text visible to mobile users, including text in expandable sections (accordions, tabs) — Google has confirmed it indexes content inside expandable elements even if not immediately visible, though this content may carry slightly less weight than fully visible text.</li>
+    <li><strong>Images.</strong> Images visible on the mobile version, their alt text, and their context. Images hidden on mobile but visible on desktop are not indexed.</li>
+    <li><strong>Structured data / schema markup.</strong> Any structured data implemented on the mobile version. If you have schema markup only on desktop, it will not be indexed.</li>
+    <li><strong>Internal and external links.</strong> Links present on the mobile version pass PageRank. Links on desktop-only pages or elements hidden on mobile do not contribute to the link graph.</li>
+    <li><strong>Canonical tags.</strong> Google reads the canonical tag present on the mobile version of the page.</li>
+    <li><strong>Meta robots directives.</strong> Noindex and other meta robots directives on the mobile version control indexing for the entire page.</li>
+  </ul>
+
+  <div class="insight"><p class="insight-lbl">Google renders JavaScript on mobile</p><p>Googlebot Smartphone renders pages using a Chromium-based rendering engine — the same as desktop Googlebot. JavaScript-rendered content is therefore accessible to mobile-first indexing, subject to the same rendering delay considerations (Googlebot processes JavaScript in a second wave of crawling, which can introduce a lag of days to weeks between initial crawl and full JavaScript rendering). Serving JavaScript-critical content via server-side rendering or static HTML ensures it is immediately accessible.</p></div>
+</div>
+
+<!-- Ch 4 -->
+<div class="chapter" id="impact">
+  <div class="chap-hdr"><h2>SEO Impact of Mobile-First Indexing</h2><button class="share-btn" onclick="copyLink('impact')">Share</button></div>
+  <p>For sites built with responsive design where the mobile and desktop experiences serve identical content (just in different layouts), mobile-first indexing has minimal direct impact — Google indexes the same content regardless of which version it crawls.</p>
+  <p>The impact is significant for sites that fall into one of these categories:</p>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Site Configuration</th><th>Mobile-First Indexing Risk</th><th>Primary Concern</th></tr></thead>
+    <tbody>
+      <tr><td>Responsive design (same content)</td><td>Low</td><td>Verify Core Web Vitals on mobile, check mobile usability</td></tr>
+      <tr><td>Separate mobile URLs (m.example.com)</td><td>Medium-High</td><td>Mobile version may have less content; canonical and hreflang must be correct</td></tr>
+      <tr><td>Dynamic serving (same URL, different HTML)</td><td>Medium</td><td>Ensure Googlebot Smartphone receives full content, not a stripped version</td></tr>
+      <tr><td>Desktop-only site (no mobile version)</td><td>High (historically)</td><td>Now deprecated — all sites have been migrated; desktop-only sites index as-is but may perform poorly on mobile</td></tr>
+      <tr><td>App-only content (no web equivalent)</td><td>High</td><td>Content not accessible via web cannot be indexed</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout red">
+    <strong>Content hidden on mobile is not fully indexed</strong>
+    <p>If your site serves a stripped-down mobile version that omits substantial text content, images, or structured data that appears on the desktop version, that content will not be indexed. Rankings for queries where that content was relevant will degrade. This is the most common source of significant ranking loss from poor mobile-first indexing implementation.</p>
+  </div>
+</div>
+
+<!-- Ch 5 -->
+<div class="chapter" id="responsive-vs-separate">
+  <div class="chap-hdr"><h2>Responsive Design vs Separate Mobile URLs</h2><button class="share-btn" onclick="copyLink('responsive-vs-separate')">Share</button></div>
+  <p>Google officially recommends responsive web design as the best approach for mobile-first indexing. Understanding why helps clarify how different configurations interact with the mobile-first index.</p>
+
+  <h3>Responsive Web Design (Google's Recommendation)</h3>
+  <p>A responsive site serves the same HTML content on the same URL to both desktop and mobile users, using CSS media queries to adapt the layout to different screen sizes. For mobile-first indexing, this is the simplest configuration — Googlebot Smartphone sees the same content as desktop Googlebot, just potentially in a different visual arrangement. There are no duplicate content concerns, no canonical tag issues between versions, and no risk of mobile-specific content gaps.</p>
+
+  <h3>Separate Mobile URLs (m.example.com)</h3>
+  <p>Sites that serve a separate mobile website at a different URL (typically an <code>m.</code> subdomain) require careful implementation for mobile-first indexing. Key requirements:</p>
+  <ul>
+    <li>The mobile version must contain the same primary content as the desktop version — not a truncated or simplified version.</li>
+    <li>Each mobile URL must have a <code>rel="canonical"</code> tag pointing to the desktop URL, and each desktop URL must have a <code>rel="alternate" media="only screen and (max-width: 640px)"</code> tag pointing to the mobile URL.</li>
+    <li>The hreflang implementation (if applicable for international sites) must be present on both versions.</li>
+    <li>Structured data must be implemented on the mobile version, not just the desktop version.</li>
+    <li>Images and other resources must not be blocked to Googlebot Smartphone.</li>
+  </ul>
+
+  <div class="callout green">
+    <strong>Google's official recommendation is responsive design</strong>
+    <p>Google Search Central documentation explicitly states that responsive web design is the recommended configuration for mobile-first indexing because it eliminates the need to maintain content parity between two separate versions of each page. For sites currently operating with separate mobile URLs, migrating to responsive design is recommended unless there are strong technical reasons preventing it.</p>
+  </div>
+</div>
+
+<!-- Ch 6 -->
+<div class="chapter" id="checklist">
+  <div class="chap-hdr"><h2>Mobile-First Indexing Audit Checklist</h2><button class="share-btn" onclick="copyLink('checklist')">Share</button></div>
+  <p>Use this checklist to identify and fix mobile-first indexing problems on your site. Check each item using Google Search Console, the Mobile-Friendly Test tool, or by directly inspecting the mobile version of your pages.</p>
+
+  <ul class="checklist">
+    <li><div class="ck-status ck-pass">✓</div><div class="ck-content"><strong>Verify the viewport meta tag is present</strong><p>Every page must include <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> in the <code>&lt;head&gt;</code>. Without this, mobile browsers and Googlebot cannot correctly render the mobile layout.</p></div></li>
+    <li><div class="ck-status ck-pass">✓</div><div class="ck-content"><strong>Confirm mobile content parity with desktop</strong><p>Manually compare the text content, images, and key elements between the desktop and mobile versions of your most important pages. Use Chrome DevTools device emulation or a real mobile device.</p></div></li>
+    <li><div class="ck-status ck-warn">!</div><div class="ck-content"><strong>Ensure structured data is present on mobile</strong><p>If you use schema markup (Article, Product, FAQPage, etc.), verify it is present in the mobile version of the page. Test using Google's Rich Results Test with mobile user agent selected.</p></div></li>
+    <li><div class="ck-status ck-warn">!</div><div class="ck-content"><strong>Check that images are accessible on mobile</strong><p>Ensure images are not hidden via CSS on mobile versions using <code>display: none</code>. Hidden images are not indexed. Also verify that image <code>alt</code> attributes are present and descriptive on the mobile version.</p></div></li>
+    <li><div class="ck-status ck-pass">✓</div><div class="ck-content"><strong>Verify robots.txt allows Googlebot Smartphone</strong><p>If you have user agent-specific rules in robots.txt, ensure Googlebot Smartphone is not accidentally blocked from crawling CSS, JavaScript, or page content.</p></div></li>
+    <li><div class="ck-status ck-warn">!</div><div class="ck-content"><strong>Ensure internal links are present on mobile</strong><p>Navigation menus condensed to hamburger menus on mobile must still contain the same links as desktop navigation. Links present only in desktop-specific elements will not pass PageRank in the mobile-first index.</p></div></li>
+    <li><div class="ck-status ck-pass">✓</div><div class="ck-content"><strong>Check mobile page speed (Core Web Vitals)</strong><p>Review Google Search Console's Core Web Vitals report filtered for mobile. Mobile field data is typically worse than desktop due to device and network constraints. Poor mobile CWV directly affects the ranking signal.</p></div></li>
+    <li><div class="ck-status ck-fail">✗</div><div class="ck-content"><strong>Avoid blocked resources for mobile Googlebot</strong><p>Googlebot Smartphone must be able to load all CSS and JavaScript required to render the mobile experience. Check Search Console's Mobile Usability report and URL Inspection tool for rendering errors.</p></div></li>
+    <li><div class="ck-status ck-pass">✓</div><div class="ck-content"><strong>Verify tap targets are appropriately sized</strong><p>Buttons and links must be large enough for touch interaction — Google recommends a minimum tap target size of 48×48 CSS pixels with adequate spacing. Small or overlapping tap targets generate Mobile Usability errors in GSC.</p></div></li>
+    <li><div class="ck-status ck-warn">!</div><div class="ck-content"><strong>Check text legibility on mobile</strong><p>Font sizes must be large enough to read without zooming. Google recommends a base font size of at least 16px for body text on mobile.</p></div></li>
+    <li><div class="ck-status ck-warn">!</div><div class="ck-content"><strong>Ensure content does not require Flash or unsupported plugins</strong><p>Mobile browsers do not support Flash. Any content that relies on it is invisible to mobile users and to Googlebot Smartphone.</p></div></li>
+    <li><div class="ck-status ck-pass">✓</div><div class="ck-content"><strong>Test using URL Inspection in Google Search Console</strong><p>Use GSC's URL Inspection tool with "Test Live URL" to see exactly what Googlebot sees when it crawls your page in mobile-first mode. This is the most direct diagnostic tool available.</p></div></li>
+  </ul>
+</div>
+
+<!-- Ch 7 -->
+<div class="chapter" id="common-issues">
+  <div class="chap-hdr"><h2>Common Mobile-First Indexing Problems in Google Search Console</h2><button class="share-btn" onclick="copyLink('common-issues')">Share</button></div>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>GSC Issue</th><th>Root Cause</th><th>Fix</th></tr></thead>
+    <tbody>
+      <tr><td>Mobile Usability — Clickable elements too close together</td><td>Tap targets are too small or too densely packed for accurate touch input</td><td>Increase button/link padding; ensure min 48px tap target size; add spacing between adjacent links</td></tr>
+      <tr><td>Mobile Usability — Text too small to read</td><td>Font sizes below ~12px on mobile viewport</td><td>Set base font-size to 16px; use relative units (rem/em); avoid fixed pixel font sizes under 14px</td></tr>
+      <tr><td>Mobile Usability — Viewport not configured</td><td>Missing or incorrect viewport meta tag</td><td>Add <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> to every page's <code>&lt;head&gt;</code></td></tr>
+      <tr><td>Mobile Usability — Content wider than screen</td><td>Horizontal overflow due to fixed-width elements or unresponsive CSS</td><td>Use max-width: 100% on images; avoid fixed pixel widths on containers; use responsive CSS grid/flexbox</td></tr>
+      <tr><td>Indexed — though blocked by robots.txt</td><td>Mobile URL accessible but blocked; or canonical tag conflict between mobile and desktop</td><td>Verify robots.txt allows both Googlebot and Googlebot-Smartphone; check canonical tag consistency</td></tr>
+      <tr><td>Coverage errors on mobile URLs only</td><td>Separate m. mobile site has redirects, 404s, or canonical errors not present on desktop</td><td>Audit m. domain separately; align redirect logic and canonical tags between both versions</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="insight"><p class="insight-lbl">Use URL Inspection as your primary diagnostic tool</p><p>Google Search Console's URL Inspection tool (available for individual pages) shows you exactly what Googlebot saw when it last crawled a page, including the rendered HTML, any resources that failed to load, and whether the mobile or desktop version was crawled. This is more reliable than third-party tools for understanding your actual mobile-first indexing status. Use "Test Live URL" to see the current state; use the cached snapshot to see what was indexed at last crawl.</p></div>
+</div>
+
+<!-- Sources -->
+<div class="chapter" id="sources">
+  <h2>Authentic Sources Used in This Guide</h2>
+  <div class="g2">
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing" target="_blank" rel="noopener">Google Search Central — Mobile-First Indexing</a></strong><p>Official documentation on mobile-first indexing, best practices, and troubleshooting guidance.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/docs/crawling-indexing/mobile/responsive-design" target="_blank" rel="noopener">Google Search Central — Responsive Web Design</a></strong><p>Official guidance on responsive design as the recommended mobile configuration for SEO.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/blog/2016/11/mobile-first-indexing" target="_blank" rel="noopener">Google Search Central Blog — Mobile-First Indexing Announcement (2016)</a></strong><p>Original announcement of mobile-first indexing experiments and the reasoning behind the change.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://developers.google.com/search/blog/2023/10/mobile-first-is-complete" target="_blank" rel="noopener">Google Search Central Blog — MFI Complete (2023)</a></strong><p>Official announcement of the completion of mobile-first indexing migration for all sites.</p></div>
+    <div class="source-card"><span class="src-tag st-off">Official</span><strong><a href="https://support.google.com/webmasters/answer/9367943" target="_blank" rel="noopener">Google Search Console — Mobile Usability Report</a></strong><p>Documentation on the Mobile Usability report in GSC and how to interpret and fix mobile usability errors.</p></div>
+    <div class="source-card"><span class="src-tag st-govt">Data</span><strong><a href="https://gs.statcounter.com/platform-market-share/desktop-mobile-tablet/" target="_blank" rel="noopener">Statcounter — Desktop vs Mobile Market Share</a></strong><p>Global web traffic distribution data used for mobile traffic share statistics cited in this guide.</p></div>
+  </div>
+</div>
+
+<div class="related-guides"><h3 class="rg-head">Related Guides</h3><div class="rg-grid"><a href="/codex/analytics-cro/ga4-setup-configuration/" class="related-card"><span class="rc-tag">Analytics & CRO</span><span class="rc-title">GA4 Setup & Configuration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/content-marketing/content-seo-integration/" class="related-card"><span class="rc-tag">Content Marketing</span><span class="rc-title">Content & SEO Integration</span><span class="rc-arr">&#8594;</span></a><a href="/codex/tools-resources/google-search-console-guide/" class="related-card"><span class="rc-tag">Tools</span><span class="rc-title">Google Search Console Guide</span><span class="rc-arr">&#8594;</span></a></div></div>
+<div class="art-footer"><p><strong>Published:</strong> 4 April 2026 &nbsp;·&nbsp; <strong>Words:</strong> 2,800 &nbsp;·&nbsp; <strong>Category:</strong> SEO Foundation &nbsp;·&nbsp; <strong>Sources:</strong> Official &amp; Verified Data</p></div>
+</article>
+
+<aside>
+  <nav class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="tocSidebar">
+    <a href="#what-is-mfi" class="sb-link on">What is MFI</a>
+    <a href="#timeline" class="sb-link">Timeline</a>
+    <a href="#how-it-works" class="sb-link">How It Works</a>
+    <a href="#impact" class="sb-link">SEO Impact</a>
+    <a href="#responsive-vs-separate" class="sb-link">Responsive vs Separate</a>
+    <a href="#checklist" class="sb-link">Audit Checklist</a>
+    <a href="#common-issues" class="sb-link">Common Issues</a>
+    <a href="#sources" class="sb-link">Sources</a>
+  </div></nav>
+  <div class="sb-box"><div class="sb-head">Related Guides</div><div class="sb-body">
+    <a href="/codex/seo/fundamentals/core-web-vitals/" class="sb-link">Core Web Vitals</a>
+    <a href="/codex/seo/fundamentals/crawlability-indexation/" class="sb-link">Crawlability &amp; Indexation</a>
+    <a href="/codex/seo/fundamentals/ranking-factors/" class="sb-link">Ranking Factors</a>
+    <a href="/codex/seo/fundamentals/serp-features/" class="sb-link">SERP Features</a>
+    <a href="/codex/seo/fundamentals/how-google-search-works/" class="sb-link">How Google Search Works</a>
+  </div></div>
+  <div class="sb-box"><div class="sb-head">SEO Foundation Series</div><div class="sb-body">
+    <a href="/codex/seo/fundamentals/how-google-search-works/" class="sb-link">1. How Google Search Works</a>
+    <a href="/codex/seo/fundamentals/pagerank-explained/" class="sb-link">2. PageRank Explained</a>
+    <a href="/codex/seo/fundamentals/crawlability-indexation/" class="sb-link">3. Crawlability &amp; Indexation</a>
+    <a href="/codex/seo/fundamentals/ranking-factors/" class="sb-link">4. Ranking Factors</a>
+    <a href="/codex/seo/fundamentals/search-intent/" class="sb-link">5. Search Intent</a>
+    <a href="/codex/seo/fundamentals/serp-features/" class="sb-link">6. SERP Features</a>
+    <a href="/codex/seo/fundamentals/core-web-vitals/" class="sb-link">7. Core Web Vitals</a>
+    <a href="/codex/seo/fundamentals/mobile-first-indexing/" class="sb-link sb-cur">8. Mobile-First Indexing</a>
+  </div></div>
+</aside>
+</div></div></section>
+</main>
+
+<section class="cta-strip"><div class="wrap"><div class="cta-in"><div><h2>600 guides on digital marketing. All authentic sources.</h2><p>Official documentation, academic research, and government data only. No blogger opinions.</p></div><div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A–Z Glossary</a></div></div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid"><div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides built on official documentation and academic research. No affiliate links.</p></div><div class="ft-col"><h5>SEO</h5><ul><li><a href="/codex/seo/fundamentals/how-google-search-works/">How Google Works</a></li><li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li><li><a href="/codex/seo/fundamentals/core-web-vitals/">Core Web Vitals</a></li></ul></div><div class="ft-col"><h5>SEM</h5><ul><li><a href="/codex/sem/google-ads/overview/">Google Ads</a></li><li><a href="/codex/sem/google-ads/quality-score-deep-dive/">Quality Score</a></li></ul></div><div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A–Z Glossary</a></li></ul></div></div><div class="ft-bot"><span>© 2026 Digital Codex.</span><span>Authentic sources only · No affiliate links</span></div></div></footer>
+
+<script>
+(function(){var ham=document.getElementById('navHam'),dr=document.getElementById('navDrawer'),cl=document.getElementById('navClose');function open(){dr.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function shut(){dr.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(ham)ham.addEventListener('click',open);if(cl)cl.addEventListener('click',shut);if(dr)dr.addEventListener('click',function(e){if(e.target===dr)shut();});})();
+(function(){var t=document.getElementById('tocMobile');function c(){if(t)t.style.display=window.innerWidth<=860?'block':'none';}c();window.addEventListener('resize',c);})();
+(function(){if(!('IntersectionObserver' in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#tocSidebar .sb-link'),tl=document.querySelectorAll('#tocMobile .toc a');function set(id){[nl,sl,tl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){obs.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+document.getElementById('shareBtn').addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+<script>
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+</body>
+</html>

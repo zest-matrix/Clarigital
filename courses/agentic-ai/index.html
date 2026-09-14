@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Learn Agentic AI — Free Course, Beginner to Advanced | Clarigital</title>
+<meta name="description" content="Free agentic AI course with three tracks. Beginner: what agents are. Intermediate: LangChain, CrewAI, AutoGen, LlamaIndex. Advanced: safety, MCP,...">
+<link rel="canonical" href="/courses/agentic-ai/">
+<meta property="og:title" content="Learn Agentic AI — Free Course, Beginner to Advanced | Clarigital">
+<meta property="og:description" content="Three learning tracks covering agentic AI from first principles to building production systems. Free. No signup. Links to 8 full reference guides.">
+<meta property="og:url" content="https://www.clarigital.com/courses/agentic-ai/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--green-dim:rgba(16,185,129,.12);
+  --red:#EF4444;--amber:#F59E0B;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font)}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg)}
+.nav-links a.active{color:var(--green);font-weight:600}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* HERO */
+.course-hero{padding:52px 0 40px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:16px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.course-hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.04em;line-height:1.2;margin-bottom:12px}
+.hero-sub{font-size:clamp(.9rem,2vw,1.05rem);color:var(--muted);max-width:620px;line-height:1.75;margin-bottom:20px}
+.hero-outcomes{display:flex;flex-direction:column;gap:7px;margin-bottom:24px;max-width:580px}
+.outcome{display:flex;align-items:flex-start;gap:9px;font-size:.87rem;color:var(--muted)}
+.outcome-check{color:var(--green);flex-shrink:0;margin-top:2px}
+.hero-meta{display:flex;gap:16px;flex-wrap:wrap}
+.hm-item{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:5px}
+.hm-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+
+/* TRACK TABS */
+
+
+
+
+.track-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px}
+.dot-beginner{background:var(--green)}
+.dot-intermediate{background:var(--indigo)}
+.dot-advanced{background:var(--amber)}
+
+
+
+/* PROGRESS BAR */
+.progress-wrap{margin-bottom:28px}
+.progress-label{display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-bottom:7px}
+.progress-bar{height:6px;background:var(--bg2);border-radius:100px;overflow:hidden}
+.progress-fill{height:100%;background:var(--green);border-radius:100px;transition:width .4s ease}
+
+/* LESSON CARDS */
+.lessons{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.lesson{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;transition:border-color .18s}
+.lesson.done{border-color:rgba(16,185,129,.25);background:rgba(16,185,129,.04)}
+.lesson-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;margin-top:2px;transition:all .18s;background:none}
+.lesson.done .lesson-check{background:var(--green);border-color:var(--green)}
+.lesson-check svg{display:none}
+.lesson.done .lesson-check svg{display:block}
+.lesson-body{flex:1}
+.lesson-num{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:3px}
+.lesson-title{font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:4px;line-height:1.3}
+.lesson-desc{font-size:.83rem;color:var(--muted);line-height:1.6;margin-bottom:8px}
+.lesson-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.lesson-time{font-size:.72rem;color:var(--faint)}
+.lesson-link{font-size:.78rem;font-weight:600;color:var(--indigo);display:flex;align-items:center;gap:4px;transition:color .18s}
+.lesson-link:hover{color:var(--fg)}
+
+/* TRACK INFO BAR */
+.track-info{background:var(--bg2);border-radius:10px;padding:14px 18px;margin-bottom:24px;display:flex;gap:20px;flex-wrap:wrap}
+.ti-item{font-size:.8rem;color:var(--muted)}
+.ti-item strong{color:var(--fg);display:block;font-size:.88rem;margin-bottom:2px}
+
+/* QUIZ */
+.quiz-section{margin-top:8px}
+.quiz-toggle{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px 18px;cursor:pointer;width:100%;text-align:left;font-family:var(--font);display:flex;align-items:center;justify-content:space-between;transition:border-color .18s}
+.quiz-toggle:hover{border-color:var(--indigo)}
+.quiz-toggle h3{font-size:.93rem;font-weight:700;color:var(--fg)}
+.quiz-toggle .qt-meta{font-size:.78rem;color:var(--muted)}
+.quiz-body{display:block;padding-top:16px}
+html.js .quiz-body{display:none}
+html.js .quiz-body.open{display:block}
+.quiz-opts{display:flex;flex-direction:column;gap:7px}
+.quiz-feedback{font-size:.82rem;margin-top:10px;line-height:1.6;color:var(--muted)}
+.quiz-feedback.ok{color:var(--green)}
+.quiz-feedback.no{color:var(--amber)}
+.quiz-opt.wrong{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.35);color:#F87171}
+.quiz-opt:disabled{cursor:default}
+.qt-arrow{color:var(--muted);font-size:.75rem;flex-shrink:0}
+.quiz-q{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:18px;margin-bottom:12px}
+.quiz-q .qn{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:8px}
+.quiz-q p{font-size:.9rem;color:var(--fg);margin-bottom:12px;line-height:1.55}
+.quiz-options{display:flex;flex-direction:column;gap:7px}
+.quiz-opt{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:9px 13px;font-size:.85rem;color:var(--muted);cursor:pointer;text-align:left;font-family:var(--font);transition:all .18s;width:100%}
+.quiz-opt:hover{border-color:var(--indigo);color:var(--fg)}
+.quiz-opt.correct{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);color:var(--green)}
+.quiz-opt.wrong{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);color:var(--red)}
+.quiz-explanation{font-size:.82rem;color:var(--muted);padding:8px 12px;background:var(--bg3);border-radius:6px;margin-top:8px;display:none;line-height:1.6}
+.quiz-explanation.show{display:block}
+
+/* NEXT TRACK CTA */
+.next-cta{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.next-cta h4{font-size:.93rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.next-cta p{font-size:.82rem;color:var(--muted);margin:0}
+.btn-next{background:var(--indigo);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-size:.83rem;font-weight:600;cursor:pointer;font-family:var(--font);transition:opacity .18s;white-space:nowrap}
+.btn-next:hover{opacity:.88}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:32px;margin-bottom:32px}
+@media(max-width:700px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:6px}
+.ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--blue)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+/* --- sticky left rail (migrated from top tabs) --- */
+.crs-layout{display:grid;grid-template-columns:232px minmax(0,1fr);gap:38px;align-items:start;margin-top:32px}
+.crs-rail{position:sticky;top:72px;max-height:calc(100vh - 92px);overflow-y:auto;padding-right:4px}
+.crs-rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint,#94a3b8);margin-bottom:10px}
+.track-tabs{display:flex;flex-direction:column;gap:7px;border-bottom:none;margin-top:0}
+.track-tab{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border);border-bottom:1px solid var(--border);border-radius:9px;padding:10px 12px;font-size:.84rem;font-weight:600;color:var(--muted);cursor:pointer;font-family:var(--font);text-align:left;transition:all .16s;white-space:normal;line-height:1.35}
+.track-tab:hover{border-color:var(--muted);color:var(--text,#f1f5f9)}
+.track-tab.active{background:rgba(255,255,255,.04);color:var(--text,#f1f5f9);border-color:currentColor}
+.crs-main{min-width:0}
+
+
+
+@media(max-width:900px){
+ .crs-layout{grid-template-columns:1fr;gap:16px}
+ .crs-rail{position:static;max-height:none;padding-bottom:6px}
+ .track-tabs{flex-direction:row;flex-wrap:wrap}
+ .track-tab{width:auto}
+}
+
+.track-panel{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:46px 0 20px;padding-top:10px;border-top:1px solid var(--border)}.track-panel:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.69rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.depth-note{font-size:.79rem;color:var(--faint,#94a3b8)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Learn Agentic AI \u2014 Free Course, Beginner to Advanced", "description": "Free agentic AI course with three tracks. Beginner: what agents are. Intermediate: LangChain, CrewAI, AutoGen, LlamaIndex. Advanced: safety, MCP,...", "url": "https://www.clarigital.com/courses/agentic-ai/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Learn Agentic AI \u2014 Free Course, Beginner to Advanced", "description": "Free agentic AI course with three tracks. Beginner: what agents are. Intermediate: LangChain, CrewAI, AutoGen, LlamaIndex. Advanced: safety, MCP,...", "url": "https://www.clarigital.com/courses/agentic-ai/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-courses.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Learn Agentic AI — Free Course, Beginner to Advanced">
+<meta name="twitter:description" content="Free agentic AI course with three tracks. Beginner: what agents are. Intermediate: LangChain, CrewAI, AutoGen, LlamaIndex. Advanced: safety, MCP,...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-courses.png">
+</head>
+<body>
+
+<nav class="site-nav" role="navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">CL</div>
+      <span><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+    </a>
+    <div class="nav-search">
+      <svg class="si" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search all guides" data-search-input id="navSearch" autocomplete="off">
+      <div class="search-results" data-search-results id="searchResults"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/" class="active">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
+      <button class="nav-close" id="navClose">✕</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/codex/" class="di">The Codex</a>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/curriculum/" class="di">Curriculum</a>
+    <a href="/about/" class="di">About</a>
+  </div>
+</div>
+
+<div class="course-hero">
+  <div class="wrap">
+    <nav class="breadcrumb">
+      <a href="/courses/">Courses</a>
+      <span class="sep">›</span>
+      <span>Learn Agentic AI</span>
+    </nav>
+    <h1>Learn Agentic AI</h1>
+    <p class="hero-sub">From understanding what an AI agent is to building production multi-agent systems. Three tracks — pick the one that matches where you are right now.</p>
+    <div class="hero-outcomes">
+      <div class="outcome"><span class="outcome-check">✓</span><span>Understand what agentic AI is and how it differs from standard AI</span></div>
+      <div class="outcome"><span class="outcome-check">✓</span><span>Know the four major frameworks: LangChain, CrewAI, AutoGen, LlamaIndex</span></div>
+      <div class="outcome"><span class="outcome-check">✓</span><span>Understand agent safety, MCP, and production deployment considerations</span></div>
+    </div>
+    <div class="hero-meta">
+      <span class="hm-item"><span class="hm-dot"></span>Free forever</span>
+      <span class="hm-item"><span class="hm-dot"></span>No signup required</span>
+      <span class="hm-item"><span class="hm-dot"></span>Progress saved in your browser</span>
+      <span class="hm-item"><span class="hm-dot"></span>8 full reference guides included</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="crs-layout">
+  <aside class="crs-rail">
+    <div class="crs-rail-title">Your level</div>
+<div class="track-tabs">
+    <button class="track-tab active" id="tab-beginner" onclick="showTrack('beginner')">
+      <span class="track-dot dot-beginner"></span>Beginner — 3 hrs
+    </button>
+    <button class="track-tab" id="tab-intermediate" onclick="showTrack('intermediate')">
+      <span class="track-dot dot-intermediate"></span>Intermediate — 5 hrs
+    </button>
+    <button class="track-tab" id="tab-advanced" onclick="showTrack('advanced')">
+      <span class="track-dot dot-advanced"></span>Advanced — 8 hrs
+    </button>
+  </div>
+  </aside>
+  <main class="crs-main">
+
+
+  <!-- BEGINNER TRACK -->
+  <div class="track-panel active" id="track-beginner"><div class="depth-band"><span class="depth-badge" style="color:var(--green)">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+
+    <div class="track-info">
+      <div class="ti-item"><strong>Who this is for</strong>No prior AI knowledge required. You use AI tools but don't know what "agents" means.</div>
+      <div class="ti-item"><strong>Time</strong>~3 hours across 5 lessons</div>
+      <div class="ti-item"><strong>Next step</strong>Intermediate track</div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Your progress</span>
+        <span id="prog-beginner-label">0 of 5 lessons</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="prog-beginner-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="lessons" id="lessons-beginner">
+
+      <div class="lesson" id="b-l1">
+        <button class="lesson-check" onclick="toggleLesson('b-l1')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 1</div>
+          <div class="lesson-title">What is AI? The starting point</div>
+          <div class="lesson-desc">Before agents, you need a clear picture of what AI actually is — not the hype version, the real one. What language models do, how they generate text, and why they're different from software you've used before.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~30 min</span>
+            <a href="/ai-atlas/start-here/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="b-l2">
+        <button class="lesson-check" onclick="toggleLesson('b-l2')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 2</div>
+          <div class="lesson-title">What is Agentic AI?</div>
+          <div class="lesson-desc">The single biggest shift in AI right now. Standard AI answers questions. Agentic AI completes projects. Learn exactly what that difference means, where you already encounter agents, and why it matters.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~35 min</span>
+            <a href="/ai-atlas/agentic-ai/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="b-l3">
+        <button class="lesson-check" onclick="toggleLesson('b-l3')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 3</div>
+          <div class="lesson-title">How AI Agents Work</div>
+          <div class="lesson-desc">The agent loop — perceive, plan, act, observe — explained from first principles. What tools are, why they matter, and the three most common ways an agent can fail.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~40 min</span>
+            <a href="/ai-atlas/agentic-ai/how-agents-work/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="b-l4">
+        <button class="lesson-check" onclick="toggleLesson('b-l4')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 4</div>
+          <div class="lesson-title">Multi-Agent Systems</div>
+          <div class="lesson-desc">One agent doing everything has limits. A team of agents — each with a role, coordinated by an orchestrator — can handle far more complex tasks. Learn how the team model works.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~35 min</span>
+            <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="b-l5">
+        <button class="lesson-check" onclick="toggleLesson('b-l5')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 5</div>
+          <div class="lesson-title">AI tools that use agents today</div>
+          <div class="lesson-desc">ChatGPT with tools on, Claude with tool use, Perplexity — you may already be using agents without knowing it. This lesson connects the concepts to the tools you know.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~20 min</span>
+            <a href="/ai-atlas/tools/chatgpt/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="quiz-section">
+      <button class="quiz-toggle" onclick="toggleQuiz('quiz-beginner')">
+        <div><h3>Test your understanding</h3><div class="qt-meta">5 questions · Beginner track</div></div>
+        <span id="quiz-beginner-icon">▾</span>
+      </button>
+      <div class="quiz-body" id="quiz-beginner">
+
+        <div class="quiz-q" id="qq-b1">
+          <div class="qn">Question 1</div>
+          <p>What is the key difference between a standard AI chatbot and an AI agent?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-b1','a','b')">A) Agents use a better AI model</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b1','b','b')">B) Agents can take actions and complete multi-step tasks autonomously</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b1','c','b')">C) Agents always cost more to use</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b1','d','b')">D) Agents can only work with code</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-b1">Correct. Standard AI responds to prompts and waits for the next input. An agent receives a goal, plans and executes the steps required to achieve it, and continues until the task is complete — without requiring a prompt at every step.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-b2">
+          <div class="qn">Question 2</div>
+          <p>What are the four core components every AI agent has?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-b2','a','a')">A) Perception, Memory, Planning, Action</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b2','b','a')">B) Input, Output, Storage, Display</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b2','c','a')">C) Model, Prompt, Response, Log</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b2','d','a')">D) Search, Write, Review, Publish</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-b2">Correct. Every agent — regardless of which framework built it — has: Perception (what it can observe), Memory (what it can remember), Planning (how it decides what to do next), and Action (what it can do with tools).</div>
+        </div>
+
+        <div class="quiz-q" id="qq-b3">
+          <div class="qn">Question 3</div>
+          <p>In a multi-agent system, what is the role of the orchestrator agent?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-b3','a','b')">A) It executes all the code and API calls</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b3','b','b')">B) It receives the overall goal, assigns sub-tasks to specialists, and assembles the final output</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b3','c','b')">C) It stores all information in a database</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b3','d','b')">D) It is the only agent that talks to the user</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-b3">Correct. The orchestrator coordinates the team — it does not necessarily do the detailed work itself. It breaks the goal into sub-tasks, assigns them, monitors progress, and assembles the final result.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-b4">
+          <div class="qn">Question 4</div>
+          <p>Which of these is an example of an agentic AI tool you can use today?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-b4','a','c')">A) A simple calculator app</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b4','b','c')">B) A static FAQ page on a website</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b4','c','c')">C) Perplexity, which automatically searches multiple sources for every query</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b4','d','c')">D) A spell checker in a word processor</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-b4">Correct. Perplexity is an agent — it decides which sources to search, retrieves them, and synthesises results without you directing each step. The calculator, FAQ page, and spell checker are all non-agentic: they respond to inputs but do not plan or take autonomous actions.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-b5">
+          <div class="qn">Question 5</div>
+          <p>What does MCP (Model Context Protocol) standardise?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-b5','a','b')">A) How AI models are trained</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b5','b','b')">B) How AI agents connect to external tools and data sources</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b5','c','b')">C) How AI outputs are evaluated for quality</button>
+            <button class="quiz-opt" onclick="answerQ('qq-b5','d','b')">D) How much agents cost to run per hour</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-b5">Correct. MCP is the "USB port" standard for AI agents — it defines a universal interface so any tool built to the MCP standard works with any agent built to the MCP standard, regardless of which framework or model is used.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="next-cta">
+      <div>
+        <h4>Ready for the next level?</h4>
+        <p>The Intermediate track covers the four major frameworks: LangChain, CrewAI, AutoGen, and LlamaIndex.</p>
+      </div>
+      <button class="btn-next" onclick="showTrack('intermediate')">Intermediate track →</button>
+    </div>
+  </div>
+
+  <!-- INTERMEDIATE TRACK -->
+  <div class="track-panel" id="track-intermediate"><div class="depth-band"><span class="depth-badge" style="color:var(--indigo)">Intermediate</span><span class="depth-note">Build on the basics.</span></div>
+
+    <div class="track-info">
+      <div class="ti-item"><strong>Who this is for</strong>You understand what AI agents are. You want to learn the frameworks used to build them.</div>
+      <div class="ti-item"><strong>Time</strong>~5 hours across 5 lessons</div>
+      <div class="ti-item"><strong>Prerequisite</strong>Beginner track or equivalent knowledge</div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Your progress</span>
+        <span id="prog-intermediate-label">0 of 5 lessons</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="prog-intermediate-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="lessons" id="lessons-intermediate">
+
+      <div class="lesson" id="i-l1">
+        <button class="lesson-check" onclick="toggleLesson('i-l1')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 1</div>
+          <div class="lesson-title">LangChain &amp; LangGraph</div>
+          <div class="lesson-desc">The most widely used framework. LangChain provides the ecosystem of 1,000+ integrations; LangGraph provides the graph-based state machine for reliable multi-step agent workflows. Start here for complex pipelines.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~60 min</span>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="i-l2">
+        <button class="lesson-check" onclick="toggleLesson('i-l2')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 2</div>
+          <div class="lesson-title">CrewAI</div>
+          <div class="lesson-desc">The easiest framework to get started with. Define agents with a role, goal, and backstory — like hiring a team. Sequential or hierarchical task execution. The fastest path from idea to working multi-agent system.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~50 min</span>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="i-l3">
+        <button class="lesson-check" onclick="toggleLesson('i-l3')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 3</div>
+          <div class="lesson-title">Microsoft AutoGen</div>
+          <div class="lesson-desc">Conversation-based multi-agent framework from Microsoft Research. Agents communicate by sending messages to each other. Important: AutoGen is in maintenance mode and merging into AG2 — understand what this means before building with it.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~45 min</span>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="i-l4">
+        <button class="lesson-check" onclick="toggleLesson('i-l4')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 4</div>
+          <div class="lesson-title">LlamaIndex</div>
+          <div class="lesson-desc">Specialises in data-augmented agents — AI that reasons over your own documents, databases, and knowledge bases using RAG. The go-to choice when your agent needs to work with proprietary or large-scale data.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~55 min</span>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="i-l5">
+        <button class="lesson-check" onclick="toggleLesson('i-l5')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 5</div>
+          <div class="lesson-title">AI Automation tools for agents</div>
+          <div class="lesson-desc">n8n, Make, and Zapier provide no-code and low-code ways to connect AI agents to real-world workflows — CRM updates, email sending, Slack notifications, database writes. The operational layer underneath your agents.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~30 min</span>
+            <a href="/ai-atlas/specialist-tools/automation/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="quiz-section">
+      <button class="quiz-toggle" onclick="toggleQuiz('quiz-intermediate')">
+        <div><h3>Test your understanding</h3><div class="qt-meta">5 questions · Intermediate track</div></div>
+        <span id="quiz-intermediate-icon">▾</span>
+      </button>
+      <div class="quiz-body" id="quiz-intermediate">
+
+        <div class="quiz-q" id="qq-i1">
+          <div class="qn">Question 1</div>
+          <p>What is the key difference between LangChain and LangGraph?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-i1','a','b')">A) LangChain is for Python; LangGraph is for JavaScript</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i1','b','b')">B) LangChain is the tool ecosystem; LangGraph is the graph-based architecture for reliable agent workflows</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i1','c','b')">C) LangGraph is a paid version of LangChain</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i1','d','b')">D) LangChain is deprecated; LangGraph replaced it entirely</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-i1">Correct. LangChain provides the components (model connectors, tools, document loaders). LangGraph provides the architectural pattern for assembling those components into reliable, stateful, cyclical agent workflows. The two work together.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-i2">
+          <div class="qn">Question 2</div>
+          <p>In CrewAI, what are the three fields that define every agent?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-i2','a','b')">A) Name, model, temperature</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i2','b','b')">B) Role, goal, backstory</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i2','c','b')">C) Input, output, tools</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i2','d','b')">D) System prompt, user prompt, context</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-i2">Correct. CrewAI's defining feature is role-based agent definition: each agent has a Role (what it is), a Goal (what it is trying to achieve), and a Backstory (how it approaches its work). These three fields shape every decision the agent makes.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-i3">
+          <div class="qn">Question 3</div>
+          <p>Why should you think carefully before starting a new project with AutoGen?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-i3','a','c')">A) AutoGen requires a paid subscription</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i3','b','c')">B) AutoGen only works with OpenAI models</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i3','c','c')">C) AutoGen is in maintenance mode — no new features, being merged into AG2</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i3','d','c')">D) AutoGen cannot build multi-agent systems</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-i3">Correct. AutoGen is actively maintained for bug fixes only. It is being merged into Microsoft's Agent Framework (AG2). New projects should evaluate AG2 or actively developed alternatives like CrewAI or LangGraph before committing to AutoGen.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-i4">
+          <div class="qn">Question 4</div>
+          <p>What does RAG stand for and what problem does LlamaIndex help solve with it?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-i4','a','b')">A) Rapid Agent Generation — running agents faster</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i4','b','b')">B) Retrieval-Augmented Generation — giving AI access to your specific documents at query time</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i4','c','b')">C) Role-Aligned Generation — making agents follow instructions better</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i4','d','b')">D) Reasoning and Generation — enabling step-by-step thinking</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-i4">Correct. RAG solves the problem of AI models not knowing about your specific data (internal documents, product info, etc.). Instead of retraining the model, you retrieve relevant document chunks at query time and pass them as context. LlamaIndex provides the most capable tooling for building and optimising RAG pipelines.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-i5">
+          <div class="qn">Question 5</div>
+          <p>Which framework would you choose for an agent that needs to query a large internal document knowledge base?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-i5','a','c')">A) AutoGen — because it handles conversations well</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i5','b','c')">B) CrewAI — because it has the easiest setup</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i5','c','c')">C) LlamaIndex — because it specialises in data-augmented agents and RAG pipelines</button>
+            <button class="quiz-opt" onclick="answerQ('qq-i5','d','c')">D) Any framework — they are all identical for this use case</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-i5">Correct. LlamaIndex is specifically designed for agents that reason over large document sets. It provides advanced retrieval features (hybrid search, reranking, HyDE, sentence window retrieval) that the other frameworks do not offer out of the box.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="next-cta">
+      <div>
+        <h4>Ready to go deeper?</h4>
+        <p>The Advanced track covers multi-agent safety, MCP in depth, and production deployment.</p>
+      </div>
+      <button class="btn-next" onclick="showTrack('advanced')">Advanced track →</button>
+    </div>
+  </div>
+
+  <!-- ADVANCED TRACK -->
+  <div class="track-panel" id="track-advanced"><div class="depth-band"><span class="depth-badge" style="color:var(--amber)">Advanced</span><span class="depth-note">Depth, edge cases and strategy.</span></div>
+
+    <div class="track-info">
+      <div class="ti-item"><strong>Who this is for</strong>You understand the frameworks. You want to understand agent safety, MCP, and production deployment.</div>
+      <div class="ti-item"><strong>Time</strong>~8 hours across 5 lessons</div>
+      <div class="ti-item"><strong>Prerequisite</strong>Intermediate track or equivalent experience</div>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span>Your progress</span>
+        <span id="prog-advanced-label">0 of 5 lessons</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="prog-advanced-fill" style="width:0%"></div></div>
+    </div>
+
+    <div class="lessons" id="lessons-advanced">
+
+      <div class="lesson" id="a-l1">
+        <button class="lesson-check" onclick="toggleLesson('a-l1')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 1</div>
+          <div class="lesson-title">Multi-Agent Systems — architecture in depth</div>
+          <div class="lesson-desc">Graph architectures, DAGs, the actor model, hierarchical task networks. Cascading failure, prompt injection in multi-agent systems, and the inter-agent communication standards (MCP, A2A) emerging in 2026.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~60 min</span>
+            <a href="/ai-atlas/agentic-ai/multi-agent-systems/" class="lesson-link">Read the guide →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="a-l2">
+        <button class="lesson-check" onclick="toggleLesson('a-l2')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 2</div>
+          <div class="lesson-title">Agent safety — OWASP Top 10 for Agentic AI</div>
+          <div class="lesson-desc">The first formal taxonomy of agentic AI security risks. Prompt injection, insecure tool permissions, uncontrolled resource consumption, goal misalignment, memory poisoning. What each means and how to mitigate it in production systems.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~50 min</span>
+            <a href="/ai-atlas/agentic-ai/" class="lesson-link">Read the guide (Deep lane) →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="a-l3">
+        <button class="lesson-check" onclick="toggleLesson('a-l3')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 3</div>
+          <div class="lesson-title">MCP — Model Context Protocol in depth</div>
+          <div class="lesson-desc">How MCP works at the protocol level — JSON-RPC over stdio and SSE, tool schema definitions, server and client architecture. How LangGraph, CrewAI, and Claude implement MCP natively. How to build an MCP server.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~60 min</span>
+            <a href="/ai-atlas/agentic-ai/how-agents-work/" class="lesson-link">Read the guide (Deep lane) →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="a-l4">
+        <button class="lesson-check" onclick="toggleLesson('a-l4')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 4</div>
+          <div class="lesson-title">LangGraph in production — checkpointing, streaming, evaluation</div>
+          <div class="lesson-desc">Persistence backends (SQLite, PostgreSQL), time travel debugging with LangSmith, streaming intermediate outputs, RAGAS evaluation framework, and cost management strategies for multi-step agent workflows.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~70 min</span>
+            <a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/" class="lesson-link">Read the guide (Deep lane) →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lesson" id="a-l5">
+        <button class="lesson-check" onclick="toggleLesson('a-l5')" aria-label="Mark complete">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="lesson-body">
+          <div class="lesson-num">Lesson 5</div>
+          <div class="lesson-title">EU AI Act and regulatory compliance for agents</div>
+          <div class="lesson-desc">High-risk classifications, mandatory documentation requirements, human oversight obligations. Which agentic deployments require conformity assessments and what that means for teams building in the EU. Provisions taking full effect August 2026.</div>
+          <div class="lesson-footer">
+            <span class="lesson-time">~40 min</span>
+            <a href="/ai-atlas/agentic-ai/" class="lesson-link">Read the guide (Deep lane) →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="quiz-section">
+      <button class="quiz-toggle" onclick="toggleQuiz('quiz-advanced')">
+        <div><h3>Test your understanding</h3><div class="qt-meta">4 questions · Advanced track</div></div>
+        <span id="quiz-advanced-icon">▾</span>
+      </button>
+      <div class="quiz-body" id="quiz-advanced">
+
+        <div class="quiz-q" id="qq-a1">
+          <div class="qn">Question 1</div>
+          <p>According to the OWASP Top 10 for Agentic AI, what is the primary risk category?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-a1','a','b')">A) Excessive API costs</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a1','b','b')">B) Prompt injection — malicious content in the environment overrides the agent's behaviour</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a1','c','b')">C) Slow response times</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a1','d','b')">D) Incorrect language generation</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-a1">Correct. Prompt injection is the top-ranked risk — malicious instructions embedded in content the agent reads (web pages, documents, emails) can override the agent's goals and cause it to take unintended actions. The attack surface is large: every external source any agent reads is a potential vector.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-a2">
+          <div class="qn">Question 2</div>
+          <p>What does LangGraph's checkpointing system enable that simple agent loops do not?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-a2','a','c')">A) Faster model response times</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a2','b','c')">B) Lower API costs per call</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a2','c','c')">C) Resumable workflows, human-in-the-loop pauses, and time travel debugging</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a2','d','c')">D) Automatic translation between programming languages</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-a2">Correct. Checkpointing saves the full state at every node execution. This enables: resuming interrupted workflows from the last checkpoint, pausing for human review and modifying state before continuing, and replaying exact failure conditions from historical checkpoints for debugging.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-a3">
+          <div class="qn">Question 3</div>
+          <p>Under the EU AI Act, when do high-risk provisions for agentic AI deployments take full effect?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-a3','a','c')">A) January 2025</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a3','b','c')">B) January 2026</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a3','c','c')">C) August 2026</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a3','d','c')">D) December 2027</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-a3">Correct. The EU AI Act (Regulation 2024/1689) came into force in August 2024. High-risk provisions — including mandatory conformity assessments and human oversight requirements for agentic systems in high-risk domains — take full effect from August 2026.</div>
+        </div>
+
+        <div class="quiz-q" id="qq-a4">
+          <div class="qn">Question 4</div>
+          <p>What transport protocols does MCP use for communication between agent clients and tool servers?</p>
+          <div class="quiz-options">
+            <button class="quiz-opt" onclick="answerQ('qq-a4','a','b')">A) REST and GraphQL</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a4','b','b')">B) JSON-RPC over stdio and HTTP with SSE (Server-Sent Events)</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a4','c','b')">C) WebSockets and gRPC</button>
+            <button class="quiz-opt" onclick="answerQ('qq-a4','d','b')">D) SOAP and XML-RPC</button>
+          </div>
+          <div class="quiz-explanation" id="exp-qq-a4">Correct. MCP defines two transport options: stdio (for local tool servers running as child processes) and HTTP with Server-Sent Events (for remote tool servers). Both use JSON-RPC as the underlying message format. This is specified in the official MCP specification at modelcontextprotocol.io.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="next-cta" style="background:var(--green-dim);border-color:rgba(16,185,129,.2)">
+      <div>
+        <h4 style="color:var(--green)">Course complete</h4>
+        <p>You've covered the full agentic AI stack — concepts, frameworks, safety, and production. Explore the full reference guides for anything you want to go deeper on.</p>
+      </div>
+      <a href="/ai-atlas/agentic-ai/" class="btn-next" style="background:var(--green)">Full reference guides →</a>
+    </div>
+  </div>
+
+
+  </main>
+</div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>Digital Marketing Codex &amp; AI Atlas. Official sources only. No ads. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>This Course</h5><ul>
+        <li><a href="/ai-atlas/agentic-ai/">What is Agentic AI</a></li>
+        <li><a href="/ai-atlas/agentic-ai/how-agents-work/">How Agents Work</a></li>
+        <li><a href="/ai-atlas/agentic-ai/multi-agent-systems/">Multi-Agent Systems</a></li>
+        <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Courses</h5><ul>
+        <li><a href="/courses/">All Courses</a></li>
+        <li><a href="/curriculum/school/">School Curriculum</a></li>
+        <li><a href="/curriculum/college/">College Curriculum</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/ai-atlas/">AI Atlas</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/theme-search.js" defer></script>
+<script>
+// NAV DRAWER
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+
+// TRACK SWITCHING
+function showTrack(track){var el=document.getElementById("track-"+track);if(el)el.scrollIntoView({behavior:"smooth",block:"start"});document.querySelectorAll(".track-tab").forEach(function(t){t.classList.toggle("active",t.id==="tab-"+track);});}
+
+// LESSON PROGRESS (LocalStorage)
+var STORAGE_KEY = 'cl-agentic-lessons';
+
+function getProgress(){
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e){ return {}; }
+}
+
+function saveProgress(p){ localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
+
+function toggleLesson(id){
+  var p = getProgress();
+  p[id] = !p[id];
+  saveProgress(p);
+  renderProgress();
+}
+
+function renderProgress(){
+  var p = getProgress();
+  var tracks = {
+    beginner: ['b-l1','b-l2','b-l3','b-l4','b-l5'],
+    intermediate: ['i-l1','i-l2','i-l3','i-l4','i-l5'],
+    advanced: ['a-l1','a-l2','a-l3','a-l4','a-l5']
+  };
+  Object.keys(tracks).forEach(function(track){
+    var lessons = tracks[track];
+    var done = lessons.filter(function(id){ return p[id]; }).length;
+    var total = lessons.length;
+    var pct = Math.round((done/total)*100);
+    var fill = document.getElementById('prog-'+track+'-fill');
+    var label = document.getElementById('prog-'+track+'-label');
+    if(fill) fill.style.width = pct + '%';
+    if(label) label.textContent = done + ' of ' + total + ' lessons';
+    // Update lesson cards
+    lessons.forEach(function(id){
+      var el = document.getElementById(id);
+      if(el){
+        if(p[id]) el.classList.add('done');
+        else el.classList.remove('done');
+      }
+    });
+  });
+}
+
+// QUIZ
+function answerQ(questionId, chosen, correct){
+  var q = document.getElementById(questionId);
+  if(q.classList.contains('answered')) return;
+  q.classList.add('answered');
+  var opts = q.querySelectorAll('.quiz-opt');
+  opts.forEach(function(opt, i){
+    var letter = ['a','b','c','d'][i];
+    if(letter === correct) opt.classList.add('correct');
+    else if(letter === chosen && chosen !== correct) opt.classList.add('wrong');
+    opt.disabled = true;
+  });
+  var exp = document.getElementById('exp-'+questionId);
+  if(exp) exp.classList.add('show');
+}
+
+function toggleQuiz(id){
+  var body = document.getElementById(id);
+  var icon = document.getElementById(id+'-icon');
+  body.classList.toggle('open');
+  if(icon) icon.textContent = body.classList.contains('open') ? '▴' : '▾';
+}
+
+// RESTORE STATE ON LOAD
+(function(){
+  renderProgress();
+  var savedTrack = localStorage.getItem('cl-agentic-track');
+  if(!savedTrack||['beginner','intermediate','advanced'].indexOf(savedTrack)<0)savedTrack='beginner';
+  if(document.getElementById('track-'+savedTrack)){
+    document.querySelectorAll('.track-panel').forEach(function(p){p.classList.remove('active');});
+    document.querySelectorAll('.track-tab').forEach(function(t){t.classList.remove('active');});
+    document.getElementById('track-'+savedTrack).classList.add('active');
+    document.getElementById('tab-'+savedTrack).classList.add('active');
+  }
+})();
+</script>
+</body>
+</html>

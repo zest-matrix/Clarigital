@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Google Search Works: Crawling, Indexing | Digital Codex</title>
+  <meta name="description" content="Understand exactly how Google crawls, indexes, and ranks websites. Complete guide using only official Google documentation, academic research, and...">
+  <meta name="author" content="Digital Codex">
+  <link rel="canonical" href="https://www.digitalcodex.com/seo/how-google-search-works/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How Google Search Works | Digital Codex">
+  <meta property="og:description" content="The complete guide to Google's crawl, index, and ranking pipeline. Official sources only.">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:site_name" content="Digital Codex">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How Google Search Works: Crawling, Indexing & Ranking",
+    "description": "Understand exactly how Google crawls, indexes, and ranks websites. Complete guide using official Google documentation and academic research.",
+    "author": {"@type": "Organization", "name": "Digital Codex"},
+    "publisher": {"@type": "Organization", "name": "Digital Codex", "url": "https://www.digitalcodex.com"},
+    "mainEntityOfPage": "https://www.digitalcodex.com/seo/how-google-search-works/",
+    "articleSection": "SEO Foundation",
+    "datePublished": "2026-03-28"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+
+  <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+  body { font-family:var(--font); color:var(--gray-700); background:var(--orange-bg); line-height:1.65; -webkit-font-smoothing:antialiased; }
+  h1 { font-size:clamp(1.6rem,3vw,2.2rem); font-weight:700; color:var(--gray-900); line-height:1.25; }
+  h2 { font-size:clamp(1.1rem,2vw,1.4rem); font-weight:700; color:var(--gray-900); line-height:1.35; margin:40px 0 14px; border-bottom:1px solid var(--gray-100); padding-bottom:10px; }
+  h3 { font-size:1.02rem; font-weight:700; color:var(--gray-900); line-height:1.4; margin:24px 0 8px; }
+  h4 { font-size:.875rem; font-weight:700; color:var(--gray-900); margin:16px 0 6px; }
+  p  { margin-bottom:14px; color:var(--gray-700); line-height:1.8; font-size:.95rem; }
+  p:last-child { margin-bottom:0; }
+  a  { color:var(--orange); text-decoration:none; font-weight:500; transition:color var(--t); }
+  a:hover { color:var(--orange-dk); }
+  ul,ol { margin:12px 0 16px 22px; }
+  li { margin-bottom:8px; font-size:.93rem; color:var(--gray-700); line-height:1.65; }
+  strong { font-weight:600; color:var(--gray-900); }
+  table { width:100%; border-collapse:collapse; margin:20px 0; font-size:.875rem; border-radius:8px; overflow:hidden; border:1px solid var(--gray-200); }
+  thead { background:var(--gray-50); }
+  th { padding:11px 16px; text-align:left; font-weight:600; color:var(--gray-900); border-bottom:1px solid var(--gray-200); font-size:.78rem; text-transform:uppercase; letter-spacing:.04em; }
+  td { padding:11px 16px; border-bottom:1px solid var(--gray-100); color:var(--gray-700); font-size:.875rem; }
+  tr:last-child td { border-bottom:none; }
+  .container { max-width:var(--container); margin:0 auto; padding:0 20px; }
+  .section { padding:52px 0; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+  @media(max-width:860px){ .grid-3 { grid-template-columns:1fr; } }
+  @media(max-width:640px){ .grid-2 { grid-template-columns:1fr; } }
+  .mt-16{margin-top:16px} .mt-24{margin-top:24px} .mt-32{margin-top:32px}
+  .label-tag { display:inline-flex; align-items:center; gap:6px; background:var(--orange-bg); color:var(--orange-dk); font-size:.72rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:4px 10px; border-radius:3px; margin-bottom:14px; }
+
+  /* NAV */
+  .site-nav { background:var(--white); border-bottom:1px solid var(--gray-200); position:sticky; top:0; z-index:200; }
+  .nav-inner { max-width:var(--container); margin:0 auto; padding:0 20px; height:60px; display:flex; align-items:center; gap:28px; }
+  .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; flex-shrink:0; color:var(--gray-900); font-weight:700; font-size:.92rem; }
+  .nav-logo-box { width:34px; height:34px; background:var(--navy); color:#fff; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:.78rem; flex-shrink:0; }
+  .nav-logo small { display:block; font-size:.68rem; font-weight:400; color:var(--gray-500); margin-top:1px; }
+  .nav-links { display:flex; list-style:none; gap:2px; margin-left:auto; }
+  .nav-links a { font-size:.84rem; font-weight:500; color:var(--gray-700); padding:6px 11px; border-radius:5px; transition:background var(--t),color var(--t); text-decoration:none; }
+  .nav-links a:hover { background:var(--gray-100); color:var(--gray-900); }
+  .nav-links a.active { color:var(--navy); font-weight:600; }
+  .btn { display:inline-flex; align-items:center; gap:6px; font-size:.84rem; font-weight:600; padding:8px 18px; border-radius:6px; cursor:pointer; border:none; text-decoration:none; transition:background var(--t),color var(--t),transform var(--t); white-space:nowrap; }
+  .btn:hover { transform:translateY(-1px); }
+  .btn-primary { background:var(--orange); color:#fff; }
+  .btn-primary:hover { background:var(--orange-dk); color:#fff; }
+  .btn-outline { background:transparent; color:var(--navy); border:1.5px solid var(--navy); }
+  .btn-outline:hover { background:var(--navy); color:#fff; }
+  .btn-outline-white { background:transparent; color:#fff; border:1.5px solid rgba(255,255,255,.4); }
+  .btn-outline-white:hover { background:rgba(255,255,255,.1); color:#fff; border-color:rgba(255,255,255,.7); }
+  .btn-sm { padding:6px 14px; font-size:.78rem; }
+  .nav-cta { margin-left:8px; }
+  .nav-hamburger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; margin-left:auto; }
+  .nav-hamburger span { display:block; width:22px; height:2px; background:var(--gray-700); border-radius:2px; }
+  @media(max-width:720px){ .nav-links,.nav-cta{display:none;} .nav-hamburger{display:flex;} }
+  .nav-drawer { position:fixed; inset:0; background:rgba(15,23,42,.6); z-index:300; opacity:0; pointer-events:none; transition:opacity var(--t); }
+  .nav-drawer.open { opacity:1; pointer-events:all; }
+  .nav-drawer-panel { position:absolute; top:0; right:0; height:100%; width:min(300px,90vw); background:var(--white); padding:24px 20px; transform:translateX(100%); transition:transform .25s ease; display:flex; flex-direction:column; gap:4px; }
+  .nav-drawer.open .nav-drawer-panel { transform:translateX(0); }
+  .nav-drawer-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--gray-100); }
+  .nav-close { background:none; border:none; cursor:pointer; font-size:1.1rem; color:var(--gray-500); padding:4px 8px; }
+  .nav-drawer a.di { display:block; padding:11px 12px; font-size:.9rem; font-weight:500; color:var(--gray-700); border-radius:6px; text-decoration:none; transition:background var(--t); }
+  .nav-drawer a.di:hover { background:var(--gray-50); }
+
+  /* CHAPTER NAV */
+  .chapter-nav { background:var(--white); border-bottom:1px solid var(--gray-200); position:sticky; top:60px; z-index:100; overflow-x:auto; }
+  .chapter-nav-inner { max-width:var(--container); margin:0 auto; padding:0 20px; display:flex; gap:0; white-space:nowrap; }
+  .chapter-nav a { display:block; padding:11px 14px; font-size:.79rem; font-weight:500; color:var(--gray-500); border-bottom:2px solid transparent; text-decoration:none; transition:color var(--t),border-color var(--t); }
+  .chapter-nav a:hover { color:var(--gray-900); }
+  .chapter-nav a.active { color:var(--navy); border-bottom-color:var(--navy); font-weight:600; }
+
+  /* PAGE HERO */
+  .page-hero { background:var(--white); border-bottom:1px solid var(--gray-200); padding:44px 0 36px; }
+  .breadcrumb { display:flex; align-items:center; gap:6px; margin-bottom:18px; flex-wrap:wrap; }
+  .breadcrumb a { font-size:.79rem; color:var(--gray-500); text-decoration:none; font-weight:400; }
+  .breadcrumb a:hover { color:var(--orange); }
+  .breadcrumb .sep { font-size:.7rem; color:var(--gray-300); }
+  .breadcrumb .current { font-size:.79rem; color:var(--gray-700); font-weight:500; }
+  .page-hero .lead { font-size:.97rem; color:var(--gray-500); line-height:1.78; margin-top:10px; max-width:680px; }
+  .article-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:18px; }
+  .meta-tag { font-size:.7rem; font-weight:700; padding:3px 9px; border-radius:3px; letter-spacing:.04em; text-transform:uppercase; }
+  .meta-seo { background:var(--blue-bg); color:var(--navy); }
+  .meta-words { background:var(--gray-100); color:var(--gray-700); }
+  .share-btn { display:inline-flex; align-items:center; gap:5px; font-size:.74rem; font-weight:600; color:var(--gray-500); background:var(--gray-100); border:none; cursor:pointer; padding:5px 10px; border-radius:4px; transition:background var(--t),color var(--t); margin-left:auto; }
+  .share-btn:hover { background:var(--gray-200); color:var(--gray-900); }
+
+  /* ARTICLE LAYOUT */
+  .article-layout { display:grid; grid-template-columns:1fr 272px; gap:40px; align-items:start; }
+  @media(max-width:860px){ .article-layout{grid-template-columns:1fr;} aside{position:static;top:auto} }
+
+  /* CHAPTER */
+  .chapter { margin-bottom:40px; scroll-margin-top:116px; }
+  .chapter:last-child { margin-bottom:0; }
+  .chapter-header { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:14px; }
+  .chapter-header h2 { margin:0; border:none; padding:0; }
+
+  /* SERVICE CARDS */
+  .svc-card { border:1px solid var(--gray-200); border-radius:var(--radius); padding:22px; background:var(--white); transition:box-shadow var(--t),transform var(--t); }
+  .svc-card:hover { box-shadow:0 6px 24px rgba(13,27,42,.07); transform:translateY(-2px); }
+  .svc-icon { width:40px; height:40px; border-radius:8px; display:flex; align-items:center; justify-content:center; margin-bottom:12px; flex-shrink:0; }
+  .svc-card h3 { font-size:.97rem; margin:0 0 7px; }
+  .svc-card p.caption { font-size:.85rem; color:var(--gray-500); line-height:1.6; margin-bottom:12px; }
+  .svc-link { font-size:.79rem; font-weight:600; color:var(--orange); }
+  .svc-link:hover { color:var(--orange-dk); }
+
+  /* STAT CARD */
+  .stat-card { border:1px solid var(--gray-200); border-radius:var(--radius); padding:18px 22px; background:var(--white); }
+  .stat-n { font-size:1.9rem; font-weight:700; color:var(--navy); line-height:1.1; }
+  .stat-n .unit { color:var(--orange); font-size:1.1rem; }
+  .stat-l { font-size:.79rem; color:var(--gray-500); margin-top:4px; }
+  .stat-h4 { font-size:.73rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--gray-500); margin:0 0 7px; }
+
+  /* CALLOUT */
+  .callout { border:1px solid var(--gray-200); border-left:3px solid var(--navy); border-radius:var(--radius); padding:16px 18px; background:var(--white); margin:22px 0; }
+  .callout.orange { border-left-color:var(--orange); }
+  .callout.green  { border-left-color:var(--green); }
+  .callout strong { display:block; font-size:.84rem; font-weight:700; color:var(--gray-900); margin-bottom:5px; }
+  .callout p { font-size:.86rem; margin:0; color:var(--gray-700); }
+
+  /* INSIGHT BOX */
+  .insight-box { background:var(--blue-bg); border:1px solid #BFDBFE; border-radius:var(--radius); padding:18px 22px; margin:22px 0; }
+  .insight-label { font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--navy); margin-bottom:7px; }
+  .insight-box p { font-size:.88rem; color:var(--gray-700); margin:0; line-height:1.72; }
+
+  /* SOURCE CARD */
+  .source-card { border:1px solid var(--gray-200); border-left:3px solid var(--green); border-radius:var(--radius); padding:14px 18px; background:var(--white); }
+  .source-tag { display:inline-block; font-size:.68rem; font-weight:700; padding:3px 8px; border-radius:3px; text-transform:uppercase; letter-spacing:.04em; margin-bottom:7px; }
+  .st-official { background:var(--blue-bg); color:var(--navy); }
+  .st-academic { background:var(--orange-bg); color:var(--orange-dk); }
+  .st-govt { background:var(--gray-100); color:var(--gray-700); }
+  .st-industry { background:var(--green-bg); color:var(--green); }
+  .source-card strong { display:block; font-size:.86rem; font-weight:600; color:var(--gray-900); margin-bottom:3px; }
+  .source-card p { font-size:.79rem; color:var(--gray-500); margin:0; }
+
+  /* TOC */
+  .toc { border:1px solid var(--gray-200); border-radius:var(--radius); padding:18px; background:var(--white); margin-bottom:22px; }
+  .toc-title { font-size:.75rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--gray-500); margin:0 0 10px; }
+  .toc ul { list-style:none; margin:0; padding:0; }
+  .toc li { margin-bottom:2px; }
+  .toc a { display:block; font-size:.81rem; font-weight:500; color:var(--gray-700); padding:5px 8px; border-radius:4px; text-decoration:none; border-left:2px solid transparent; transition:all var(--t); }
+  .toc a:hover { background:var(--gray-50); color:var(--navy); }
+  .toc a.active { color:var(--navy); border-left-color:var(--navy); background:var(--blue-bg); font-weight:600; }
+
+  /* SIDEBAR */
+  aside { position:sticky; top:calc(60px + 44px + 16px); }
+  .sidebar-box { border:1px solid var(--gray-200); border-radius:var(--radius); background:var(--white); overflow:hidden; margin-bottom:14px; }
+  .sidebar-box-head { padding:12px 15px; background:var(--gray-50); border-bottom:1px solid var(--gray-200); font-size:.71rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--gray-500); }
+  .sidebar-box-body { padding:12px 15px; }
+  .sidebar-link { display:block; font-size:.79rem; font-weight:500; color:var(--gray-700); padding:6px 0; border-bottom:1px solid var(--gray-100); text-decoration:none; transition:color var(--t); }
+  .sidebar-link:last-child { border-bottom:none; }
+  .sidebar-link:hover { color:var(--orange); }
+
+  /* LEARN BOX */
+  .learn-box { background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius); overflow:hidden; margin-bottom:28px; }
+  .learn-box-head { padding:14px 18px; background:var(--gray-50); border-bottom:1px solid var(--gray-200); }
+  .learn-box-head h3 { font-size:.87rem; margin:0; font-weight:700; color:var(--gray-900); }
+  .learn-box-body { padding:14px 18px; }
+  .learn-box-body ul { list-style:none; margin:0; padding:0; }
+  .learn-box-body li { display:flex; gap:10px; align-items:flex-start; padding:5px 0; font-size:.86rem; border-bottom:1px solid var(--gray-100); }
+  .learn-box-body li:last-child { border-bottom:none; }
+  .learn-box-body li::before { content:'✓'; font-weight:700; color:var(--green); flex-shrink:0; margin-top:1px; }
+
+  /* PROCESS STEPS */
+  .steps { list-style:none; margin:14px 0; padding:0; }
+  .steps li { display:flex; gap:14px; align-items:flex-start; padding:12px 0; border-bottom:1px solid var(--gray-100); }
+  .steps li:last-child { border-bottom:none; }
+  .step-num { width:26px; height:26px; border-radius:50%; background:var(--navy); color:#fff; font-size:.73rem; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+  .step-content strong { display:block; font-size:.88rem; margin-bottom:3px; }
+  .step-content p { font-size:.84rem; margin:0; color:var(--gray-500); }
+
+  /* CTA STRIP */
+  .cta-strip { background:var(--navy); padding:60px 0; }
+  .cta-inner { display:flex; align-items:center; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+  .cta-inner h2 { color:#fff; max-width:440px; margin:0; font-size:1.35rem; border:none; padding:0; }
+  .cta-inner p  { color:rgba(255,255,255,.55); margin-top:8px; font-size:.88rem; }
+  .cta-actions  { display:flex; gap:12px; flex-wrap:wrap; flex-shrink:0; }
+
+  /* FOOTER */
+  .site-footer { background:var(--gray-900); color:rgba(255,255,255,.7); padding:52px 0 28px; }
+  .footer-grid { display:grid; grid-template-columns:1.5fr repeat(3,1fr); gap:36px; margin-bottom:36px; }
+  @media(max-width:860px){ .footer-grid{grid-template-columns:1fr 1fr;} }
+  @media(max-width:520px){ .footer-grid{grid-template-columns:1fr;} }
+  .footer-brand p { font-size:.83rem; line-height:1.7; margin-top:12px; color:rgba(255,255,255,.45); }
+  .footer-col h5 { font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.38); margin-bottom:12px; }
+  .footer-col ul { list-style:none; padding:0; margin:0; }
+  .footer-col li { margin-bottom:7px; }
+  .footer-col a { font-size:.83rem; color:rgba(255,255,255,.58); text-decoration:none; transition:color var(--t); font-weight:400; }
+  .footer-col a:hover { color:#fff; }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,.1); padding-top:22px; font-size:.78rem; color:rgba(255,255,255,.32); display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px; }
+
+  /* DIAGRAM */
+  .diagram-wrap { background:var(--gray-50); border:1px solid var(--gray-200); border-radius:8px; padding:18px; margin:22px 0; overflow:hidden; }
+  .diagram-label { font-size:.74rem; font-weight:600; color:var(--gray-500); margin-bottom:10px; }
+
+  /* ARTICLE FOOTER */
+  .article-footer { border-top:1px solid var(--gray-200); padding-top:22px; margin-top:36px; }
+  .article-footer p { font-size:.79rem; color:var(--gray-500); }
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+<style>
+.related-guides{margin:2.5rem 0 1.5rem;padding:1.5rem;background:var(--blue-bg);border-radius:10px;border:1.5px solid var(--navy)}
+.rg-head{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
+.rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.6rem}
+.related-card{display:flex;flex-direction:column;gap:.3rem;background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.75rem .9rem;text-decoration:none;transition:border-color .15s}
+.related-card:hover{border-color:var(--navy)}
+.rc-tag{font-size:.7rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.rc-title{font-size:.85rem;font-weight:600;color:var(--navy);line-height:1.35}
+.rc-arr{font-size:.8rem;color:var(--orange);margin-top:.1rem}
+
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.page-hero h1{color:#fff}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.page-hero .breadcrumb .current{color:rgba(255,255,255,.3)}
+.page-hero .label-tag{background:rgba(232,92,13,.2);color:#FCA572}
+.page-hero .hero-lead{color:rgba(255,255,255,.75)}
+.page-hero .art-meta .meta-tag{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.page-hero .mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}
+.page-hero .share-btn{color:rgba(255,255,255,.55);background:rgba(255,255,255,.08)}
+</style></style>
+<meta property="og:image" content="https://www.clarigital.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Google Search Works: Crawling, Indexing | Digital Codex">
+<meta name="twitter:description" content="Understand exactly how Google crawls, indexes, and ranks websites. Complete guide using only official Google documentation, academic research, and...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Https:", "item": "https://www.clarigital.com/https:/"}, {"@type": "ListItem", "position": 3, "name": "Www.Digitalcodex.Com", "item": "https://www.clarigital.com/https:/www.digitalcodex.com/"}, {"@type": "ListItem", "position": 4, "name": "Seo", "item": "https://www.clarigital.com/https:/www.digitalcodex.com/seo/"}, {"@type": "ListItem", "position": 5, "name": "How Google Search Works: Crawling, Indexing", "item": "https://www.clarigital.com/https:/www.digitalcodex.com/seo/how-google-search-works/"}]}</script>
+</head>
+
+<body>
+
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="/codex/" class="nav-logo" aria-label="Digital Codex Home">
+      <div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span>
+    </a>
+    <ul class="nav-links" role="list"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li>
+      <li><a href="/codex/seo/" class="active">SEO</a></li>
+      <li><a href="/codex/sem/">SEM</a></li>
+      <li><a href="/codex/social-media/">Social Media</a></li>
+      <li><a href="/codex/analytics-cro/">Analytics</a></li>
+      <li><a href="/codex/">All Guides</a></li>
+    </ul>
+    <div class="nav-cta"><a href="/codex/glossary/" class="btn btn-outline btn-sm">Glossary</a></div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="nav-drawer-panel">
+    <div class="nav-drawer-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose" aria-label="Close menu">✕</button>
+    </div>
+    <a href="/ai-atlas/" class="di">AI Atlas</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/codex/seo/"       class="di">SEO</a>
+    <a href="/codex/sem/"       class="di">SEM &amp; Google Ads</a>
+    <a href="/codex/social-media/"    class="di">Social Media</a>
+    <a href="/codex/analytics-cro/" class="di">Analytics</a>
+    <a href="/codex/"     class="di">All Guides</a>
+    <a href="/codex/glossary/"  class="di">Glossary</a>
+  </div>
+</div>
+</header>
+
+<nav class="chapter-nav" aria-label="Jump to chapter">
+  <div class="chapter-nav-inner">
+    <a href="#crawling" class="active">How Crawling Works</a>
+    <a href="#indexation">Indexation</a>
+    <a href="#ranking">Ranking Algorithm</a>
+    <a href="#factors">Ranking Factors</a>
+    <a href="#serp">SERP Features</a>
+    <a href="#technical">Technical Signals</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<section class="page-hero" aria-labelledby="guide-h1">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/codex/">Home</a>
+      <span class="sep">/</span>
+      <a href="/codex/seo/">SEO</a>
+      <span class="sep">/</span>
+      <span class="current" aria-current="page">How Google Search Works</span>
+    </nav>
+    <span class="label-tag">SEO Foundation · Guide 1</span>
+    <h1 id="guide-h1">How Google Search Works · The Complete Guide</h1>
+    <p class="lead">How Google discovers, processes, and ranks billions of web pages — the complete crawl, index, and ranking pipeline explained using only official Google documentation, academic research, and government data.</p>
+    <div class="article-meta">
+      <span class="meta-tag meta-seo">SEO</span>
+      <span class="meta-tag meta-words">2,800 words</span>
+      <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href)" aria-label="Share">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Share
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="article-layout">
+
+      <article aria-label="How Google Search Works guide">
+
+        <div class="learn-box">
+          <div class="learn-box-head"><h3>What You'll Learn</h3></div>
+          <div class="learn-box-body">
+            <ul>
+              <li>How Googlebot discovers and crawls web pages across the open internet</li>
+              <li>How Google processes content and builds its search index</li>
+              <li>The core principles behind Google's ranking algorithm</li>
+              <li>Key ranking factors confirmed by official Google documentation</li>
+              <li>How SERP features (Featured Snippets, Knowledge Panels) are generated</li>
+              <li>What technical signals Google uses to evaluate page quality</li>
+            </ul>
+          </div>
+        </div>
+
+        <nav class="toc" aria-label="Table of contents">
+          <p class="toc-title">Contents</p>
+          <ul>
+            <li><a href="#crawling">How Crawling Works</a></li>
+            <li><a href="#indexation">Indexation &amp; Content Processing</a></li>
+            <li><a href="#ranking">Google's Ranking Algorithm</a></li>
+            <li><a href="#factors">Key Ranking Factors</a></li>
+            <li><a href="#serp">SERP Features Explained</a></li>
+            <li><a href="#technical">Technical Quality Signals</a></li>
+            <li><a href="#sources">Sources Used</a></li>
+          </ul>
+        </nav>
+
+        <!-- Chapter 1: Crawling -->
+        <div class="chapter" id="crawling">
+          <div class="chapter-header">
+            <h2>How Google Crawls the Web</h2>
+            <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.origin+window.location.pathname+'#crawling')">Share</button>
+          </div>
+
+          <p>Google's discovery process begins with Googlebot, an automated web crawler that systematically browses the internet to find and download web pages. According to Google's official Search Central documentation, crawling is the first stage of a three-part process: crawling, indexing, and serving results.</p>
+
+          <p>Googlebot starts from a list of known URLs, then follows links on those pages to discover new content. Google maintains a crawl queue — a prioritised list of URLs waiting to be crawled — managed by a process called crawl scheduling. Pages with higher quality signals, more frequent updates, or more inbound links receive more frequent crawling.</p>
+
+          <div class="grid-3 mt-24">
+            <div class="stat-card">
+              <p class="stat-h4">Daily Crawl Volume</p>
+              <div class="stat-n">20B<span class="unit">+</span></div>
+              <p class="stat-l">URLs crawled per day globally</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-h4">Index Size</p>
+              <div class="stat-n">100B<span class="unit">+</span></div>
+              <p class="stat-l">Pages in Google's search index</p>
+            </div>
+            <div class="stat-card">
+              <p class="stat-h4">Crawl Budget</p>
+              <div class="stat-n">≤48<span class="unit">hrs</span></div>
+              <p class="stat-l">Typical crawl interval for popular pages</p>
+            </div>
+          </div>
+
+          <h3>How Googlebot Discovers URLs</h3>
+          <p>Google uses several methods to discover new pages:</p>
+          <ul>
+            <li><strong>Sitemaps.</strong> Webmasters submit XML sitemaps through Google Search Console to directly inform Google of all important URLs on a site.</li>
+            <li><strong>Link following.</strong> Googlebot follows hyperlinks on pages it has already crawled, which is why internal linking structure matters for crawl coverage.</li>
+            <li><strong>URL submission.</strong> Webmasters can request individual URLs for crawling via the URL Inspection tool in Google Search Console.</li>
+            <li><strong>Redirects.</strong> When a crawled URL redirects to another, Google may add the destination URL to its crawl queue.</li>
+          </ul>
+
+          <h3>Crawl Budget and Crawl Rate</h3>
+          <p>Google uses the concept of <strong>crawl budget</strong> — the number of URLs Googlebot will crawl on a given site within a given time frame. According to Google's official documentation, crawl budget is determined by two main factors: crawl rate limit (how fast Googlebot can crawl without overwhelming a server) and crawl demand (how much Google wants to re-crawl pages based on their popularity and freshness).</p>
+
+          <div class="callout">
+            <strong>Official guidance on crawl budget</strong>
+            <p>Google's documentation states crawl budget matters most for sites with more than one million unique URLs, sites with rapid content turnover, or sites with large numbers of low-quality or duplicate pages. For smaller sites, crawl budget is rarely a limiting factor.</p>
+          </div>
+
+          <h3>What Googlebot Renders</h3>
+          <p>Modern Googlebot renders pages using a headless version of Chromium. This means JavaScript-dependent content can be indexed, though Google notes that JavaScript rendering is done in a second wave — HTML content is typically indexed faster than content that requires JavaScript execution. Critical content should be accessible in the HTML source for fastest indexing.</p>
+        </div>
+
+        <!-- Chapter 2: Indexation -->
+        <div class="chapter" id="indexation">
+          <div class="chapter-header">
+            <h2>Indexation: How Google Understands Content</h2>
+            <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.origin+window.location.pathname+'#indexation')">Share</button>
+          </div>
+
+          <p>After crawling a page, Google processes its content to understand what the page is about and whether it deserves to be added to the index. The index is a massive database of processed page information, not a copy of the web. According to Google, the index stores information about words, their locations on pages, and many other signals about the page's content and quality.</p>
+
+          <h3>The Indexing Pipeline</h3>
+          <ol class="steps">
+            <li><span class="step-num">1</span><div class="step-content"><strong>Content extraction</strong><p>Googlebot downloads the page HTML and renders any JavaScript. Text, links, and structured data are extracted.</p></div></li>
+            <li><span class="step-num">2</span><div class="step-content"><strong>Language detection</strong><p>Google identifies the primary language of the page using its language detection systems.</p></div></li>
+            <li><span class="step-num">3</span><div class="step-content"><strong>Content analysis</strong><p>Google processes the text to understand entities, topics, relationships, and the overall subject of the page.</p></div></li>
+            <li><span class="step-num">4</span><div class="step-content"><strong>Canonicalisation</strong><p>Google selects the canonical URL when multiple pages have similar or identical content, consolidating signals to one preferred version.</p></div></li>
+            <li><span class="step-num">5</span><div class="step-content"><strong>Index decision</strong><p>Based on quality signals, Google decides whether to add the page to the index. Low-quality pages may be excluded.</p></div></li>
+          </ol>
+
+          <h3>Canonicalisation</h3>
+          <p>When multiple URLs serve the same or very similar content (for example, HTTP vs HTTPS versions, www vs non-www, or pages with and without trailing slashes), Google selects one as the canonical — the preferred version. This is critical because Google consolidates link signals, indexing, and ranking signals to the canonical URL.</p>
+
+          <p>Webmasters can signal their preferred canonical using the <code>rel="canonical"</code> link element, the canonical URL in XML sitemaps, or by setting up proper 301 redirects. Google treats these as signals, not directives — it may override them if other evidence contradicts the declaration.</p>
+
+          <div class="insight-box">
+            <p class="insight-label">Key Indexing Insight</p>
+            <p>Google's documentation distinguishes between crawled pages and indexed pages. A page can be crawled without being indexed. Google may exclude pages from the index due to thin content, duplicate content, noindex directives, or quality issues identified during processing.</p>
+          </div>
+
+          <h3>Structured Data and Rich Results</h3>
+          <p>Structured data markup — implemented using JSON-LD, Microdata, or RDFa — helps Google understand the specific type and meaning of content. Schema.org vocabulary is the recommended standard. Structured data can enable Rich Results (formerly Rich Snippets) in the SERP, such as star ratings for reviews, recipe information, FAQ accordions, and event listings. Google's Rich Results Test tool allows webmasters to validate their structured data markup.</p>
+        </div>
+
+        <!-- Chapter 3: Ranking -->
+        <div class="chapter" id="ranking">
+          <div class="chapter-header">
+            <h2>Google's Ranking Algorithm</h2>
+            <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.origin+window.location.pathname+'#ranking')">Share</button>
+          </div>
+
+          <p>When a user types a query into Google, the system retrieves potentially relevant pages from the index and ranks them using hundreds of signals to determine which results best answer the query. Google has repeatedly stated that its ranking algorithm uses more than 200 signals, though only a subset are publicly confirmed.</p>
+
+          <p>Google's search algorithm is not a single system but a collection of systems working in sequence. Key systems include the retrieval system (finding candidate pages), the ranking system (ordering them), and numerous quality filters and classifiers that run on top of raw ranking scores.</p>
+
+          <h3>Core Algorithm Components</h3>
+          <div class="grid-3 mt-16">
+            <div class="svc-card">
+              <div class="svc-icon" style="background:var(--blue-bg)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <h3>Query Understanding</h3>
+              <p class="caption">Google interprets the meaning and intent behind a query — not just the keywords — to determine what type of result is most useful.</p>
+              <span class="svc-link">Learn about search intent →</span>
+            </div>
+            <div class="svc-card">
+              <div class="svc-icon" style="background:var(--orange-bg)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E85C0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <h3>Relevance Scoring</h3>
+              <p class="caption">Content relevance is assessed by matching page topics, entities, and language patterns to the user's query and intent.</p>
+              <span class="svc-link">Learn about ranking factors →</span>
+            </div>
+            <div class="svc-card">
+              <div class="svc-icon" style="background:var(--green-bg)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <h3>Quality Assessment</h3>
+              <p class="caption">Google assesses E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) as a framework for quality evaluation.</p>
+              <a href="/codex/seo/on-page/eeat/" class="svc-link">Learn about E-E-A-T →</a>
+            </div>
+          </div>
+
+          <h3>RankBrain and Neural Matching</h3>
+          <p>Google confirmed in 2015 that RankBrain, a machine learning component, helps Google understand queries it has not seen before. RankBrain maps queries and pages to a vector space of concepts, allowing Google to find relevant results even when query words don't appear literally on a page. Google later introduced Neural Matching (2018), BERT (2019), and MUM (2021) — progressively more powerful language understanding systems that now influence a significant proportion of all searches.</p>
+
+          <div class="callout orange">
+            <strong>BERT processes almost every query</strong>
+            <p>Google announced in 2019 that BERT (Bidirectional Encoder Representations from Transformers) now processes nearly all queries in English and many other languages. BERT understands the nuanced context of words within a sentence, improving Google's ability to match conversational queries with the most relevant pages.</p>
+          </div>
+        </div>
+
+        <!-- Chapter 4: Ranking Factors -->
+        <div class="chapter" id="factors">
+          <div class="chapter-header">
+            <h2>Key Ranking Factors Explained</h2>
+            <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.origin+window.location.pathname+'#factors')">Share</button>
+          </div>
+
+          <p>While Google does not publish a complete list of ranking factors, several have been confirmed directly by Google's documentation, official statements, or verified through the 2024 API leak that exposed internal documentation. Below are the most significant confirmed factors.</p>
+
+          <div class="table-wrap"><table>
+            <thead>
+              <tr>
+                <th>Factor</th>
+                <th>Type</th>
+                <th>Confirmation Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Relevance to query intent</td><td>Content</td><td>Google Search Central documentation</td></tr>
+              <tr><td>PageRank / link authority</td><td>Links</td><td>Original PageRank patent (1998); confirmed ongoing</td></tr>
+              <tr><td>E-E-A-T signals</td><td>Quality</td><td>Google Quality Rater Guidelines (public)</td></tr>
+              <tr><td>Core Web Vitals (LCP, INP, CLS)</td><td>Technical</td><td>Google official ranking signal announcement (2021)</td></tr>
+              <tr><td>HTTPS security</td><td>Technical</td><td>Google confirmed ranking signal in 2014</td></tr>
+              <tr><td>Mobile-friendliness</td><td>Technical</td><td>Google mobile-first indexing documentation</td></tr>
+              <tr><td>Page content comprehensiveness</td><td>Content</td><td>Google Search Quality Rater Guidelines</td></tr>
+              <tr><td>Anchor text of inbound links</td><td>Links</td><td>Original Google research papers; confirmed in documentation</td></tr>
+            </tbody>
+          </table></div>
+
+          <h3>E-E-A-T: Experience, Expertise, Authoritativeness, Trustworthiness</h3>
+          <p>Google's Search Quality Rater Guidelines — a public document used to train human quality raters who evaluate Google's search results — are built around the E-E-A-T framework. Google added the first "E" (Experience) in 2022 to existing E-A-T, recognising that first-hand experience with a topic is a quality signal.</p>
+
+          <p><strong>Trust is the most important component.</strong> Google's documentation explicitly states that trust is the most important member of the E-E-A-T family. An untrustworthy page has low E-E-A-T regardless of its apparent expertise.</p>
+
+          <div class="callout green">
+            <strong>E-E-A-T is not a direct ranking factor</strong>
+            <p>Google has clarified that E-E-A-T itself is not a direct algorithmic ranking signal. Rather, it is a framework for human quality raters to evaluate pages, and this evaluation data trains machine learning systems that do influence rankings. The distinction matters: you cannot "optimise" for E-E-A-T as a metric — you need to genuinely demonstrate it.</p>
+          </div>
+        </div>
+
+        <!-- Chapter 5: SERP -->
+        <div class="chapter" id="serp">
+          <div class="chapter-header">
+            <h2>SERP Features: Beyond the Blue Links</h2>
+            <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.origin+window.location.pathname+'#serp')">Share</button>
+          </div>
+
+          <p>Modern Google search results pages (SERPs) are far more complex than a simple list of blue links. Google serves numerous special result formats called SERP features, each designed to answer different query types more directly.</p>
+
+          <div class="grid-2 mt-16">
+            <div class="svc-card">
+              <div class="svc-icon" style="background:var(--blue-bg)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+              </div>
+              <h3>Featured Snippets</h3>
+              <p class="caption">A selected search result displayed at the top of the SERP, above the organic results ("position zero"). Can be paragraph, list, or table format. Triggered when Google determines a page directly answers a question query.</p>
+            </div>
+            <div class="svc-card">
+              <div class="svc-icon" style="background:var(--orange-bg)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E85C0D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <h3>Knowledge Panels</h3>
+              <p class="caption">Information boxes on the right side (desktop) or top (mobile) of the SERP, drawn from Google's Knowledge Graph. Triggered for well-known entities: people, organisations, locations, films, and more.</p>
+            </div>
+            <div class="svc-card">
+              <div class="svc-icon" style="background:var(--green-bg)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <h3>People Also Ask</h3>
+              <p class="caption">An expandable box of related questions, each revealing a Featured Snippet-style answer when clicked. Google dynamically generates additional questions as users interact with the box.</p>
+            </div>
+            <div class="svc-card">
+              <div class="svc-icon" style="background:var(--purple-bg)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <h3>Local Pack</h3>
+              <p class="caption">A set of three local business results, typically with a map, shown for queries with local intent. Rankings are based on relevance, distance, and prominence in Google's local algorithm.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 6: Technical Signals -->
+        <div class="chapter" id="technical">
+          <div class="chapter-header">
+            <h2>Technical Quality Signals</h2>
+            <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.origin+window.location.pathname+'#technical')">Share</button>
+          </div>
+
+          <p>Technical signals affect whether pages can be properly crawled and indexed, and whether they meet Google's quality bar for ranking. Google has confirmed several technical factors as direct ranking signals.</p>
+
+          <h3>Core Web Vitals</h3>
+          <p>Google's Core Web Vitals became a ranking signal in June 2021 as part of the Page Experience update. The three current Core Web Vitals metrics are:</p>
+          <ul>
+            <li><strong>Largest Contentful Paint (LCP):</strong> Measures loading performance. Google's target: under 2.5 seconds for a "Good" score.</li>
+            <li><strong>Interaction to Next Paint (INP):</strong> Measures responsiveness to user interactions. Replaced First Input Delay in March 2024. Google's target: under 200ms.</li>
+            <li><strong>Cumulative Layout Shift (CLS):</strong> Measures visual stability — how much the page layout shifts unexpectedly. Google's target: under 0.1.</li>
+          </ul>
+
+          <h3>HTTPS</h3>
+          <p>Google confirmed HTTPS as a ranking signal in 2014. All pages served over HTTPS receive a lightweight boost compared to equivalent HTTP pages. With HTTPS now ubiquitous, this is largely a baseline requirement rather than an advantage — sites not on HTTPS are at a disadvantage.</p>
+
+          <h3>Mobile-First Indexing</h3>
+          <p>Google switched to mobile-first indexing by default for all new sites in 2020, and completed the transition for all sites by 2023. This means Google predominantly uses the mobile version of a page for indexing and ranking decisions. Pages that serve significantly different content to mobile and desktop users may have indexing issues if the mobile version has less content or fewer links than the desktop version.</p>
+
+          <div class="insight-box">
+            <p class="insight-label">Confirmed vs. Speculative Factors</p>
+            <p>There are many claimed SEO ranking factors that circulate in the industry. The factors covered in this guide are those confirmed by official Google documentation, Google's own statements, or academic research. Practitioners should be sceptical of claimed factors that lack primary source confirmation, especially those from SEO tool vendors with a commercial interest in promoting certain metrics.</p>
+          </div>
+        </div>
+
+        <!-- Sources -->
+        <div class="chapter" id="sources">
+          <h2>Authentic Sources Used in This Guide</h2>
+          <p style="font-size:.875rem;color:var(--gray-500);margin-bottom:18px;">Only official documentation, academic research, and verified industry data. No blogger opinions.</p>
+          <div class="grid-2">
+            <div class="source-card">
+              <span class="source-tag st-official">Official</span>
+              <strong><a href="https://developers.google.com/search/docs" target="_blank" rel="noopener">Google Search Central Documentation</a></strong>
+              <p>The primary official source for how Google Search works, crawling, indexing, and structured data.</p>
+            </div>
+            <div class="source-card">
+              <span class="source-tag st-academic">Academic</span>
+              <strong><a href="https://storage.googleapis.com/gweb-research2023-media/pubtools/1376.pdf" target="_blank" rel="noopener">The Anatomy of a Large-Scale Hypertextual Web Search Engine</a></strong>
+              <p>Brin &amp; Page (1998), Stanford University. The original Google research paper describing PageRank and the search architecture.</p>
+            </div>
+            <div class="source-card">
+              <span class="source-tag st-official">Official</span>
+              <strong><a href="https://static.googleusercontent.com/media/guidelines.raterhub.com/en//searchqualityevaluatorguidelines.pdf" target="_blank" rel="noopener">Google Search Quality Rater Guidelines</a></strong>
+              <p>Public document outlining E-E-A-T and the criteria used to evaluate search result quality.</p>
+            </div>
+            <div class="source-card">
+              <span class="source-tag st-official">Official</span>
+              <strong><a href="https://web.dev/explore/learn-core-web-vitals" target="_blank" rel="noopener">Core Web Vitals — web.dev</a></strong>
+              <p>Google's official guidance on Core Web Vitals metrics, measurement, and optimization.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-footer">
+          <p><strong>Published:</strong> 28 March 2026 &nbsp;·&nbsp; <strong>Words:</strong> 2,800 &nbsp;·&nbsp; <strong>Category:</strong> SEO Foundation &nbsp;·&nbsp; <strong>Sources:</strong> Official &amp; Academic Only</p>
+        </div>
+
+      </article>
+
+      <!-- SIDEBAR -->
+      <aside aria-label="Related guides">
+        <nav class="toc" aria-label="On this page">
+          <p class="toc-title">On This Page</p>
+          <ul>
+            <li><a href="#crawling">How Crawling Works</a></li>
+            <li><a href="#indexation">Indexation</a></li>
+            <li><a href="#ranking">Ranking Algorithm</a></li>
+            <li><a href="#factors">Ranking Factors</a></li>
+            <li><a href="#serp">SERP Features</a></li>
+            <li><a href="#technical">Technical Signals</a></li>
+            <li><a href="#sources">Sources</a></li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-box">
+          <div class="sidebar-box-head">Related Guides</div>
+          <div class="sidebar-box-body">
+            <a href="/codex/seo/fundamentals/pagerank-explained/" class="sidebar-link">PageRank Explained</a>
+            <a href="/codex/seo/fundamentals/crawlability-indexation/" class="sidebar-link">Crawlability &amp; Indexation</a>
+            <a href="/codex/seo/fundamentals/ranking-factors/" class="sidebar-link">Ranking Factors Complete</a>
+            <a href="/codex/seo/fundamentals/search-intent/" class="sidebar-link">Search Intent vs Keywords</a>
+            <a href="/codex/seo/fundamentals/core-web-vitals/" class="sidebar-link">Core Web Vitals for SEO</a>
+          </div>
+        </div>
+
+        <div class="sidebar-box">
+          <div class="sidebar-box-head">SEO Foundation Series</div>
+          <div class="sidebar-box-body">
+            <a href="/codex/seo/fundamentals/how-google-search-works/" class="sidebar-link" style="color:var(--navy);font-weight:600;">1. How Google Search Works ←</a>
+            <a href="/codex/seo/fundamentals/pagerank-explained/" class="sidebar-link">2. PageRank Explained</a>
+            <a href="/codex/seo/fundamentals/crawlability-indexation/" class="sidebar-link">3. Crawlability &amp; Indexation</a>
+            <a href="/codex/seo/fundamentals/ranking-factors/" class="sidebar-link">4. Ranking Factors</a>
+            <a href="/codex/seo/fundamentals/search-intent/" class="sidebar-link">5. Search Intent</a>
+            <a href="/codex/seo/fundamentals/serp-features/" class="sidebar-link">6. SERP Features</a>
+            <a href="/codex/seo/fundamentals/core-web-vitals/" class="sidebar-link">7. Core Web Vitals</a>
+            <a href="/codex/seo/fundamentals/mobile-first-indexing/" class="sidebar-link">8. Mobile-First Indexing</a>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="cta-strip" aria-labelledby="cta-h2">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 id="cta-h2">600 guides on digital marketing. All authentic sources.</h2>
+        <p>Official documentation, academic research, and government data only. No blogger opinions, ever.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/codex/"    class="btn btn-primary">Browse All Guides</a>
+        <a href="/codex/glossary/" class="btn btn-outline-white">A–Z Glossary</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span>
+        </div>
+        <p>The digital marketing authority. 600 guides, 1.5 million words. Official sources only.</p>
+      </div>
+      <div class="footer-col">
+        <h5>SEO</h5>
+        <ul>
+          <li><a href="/codex/seo/fundamentals/how-google-search-works/">How Google Works</a></li>
+          <li><a href="/codex/seo/fundamentals/pagerank-explained/">PageRank Explained</a></li>
+          <li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability</a></li>
+          <li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li>
+          <li><a href="/codex/seo/fundamentals/core-web-vitals/">Core Web Vitals</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>SEM &amp; Ads</h5>
+        <ul>
+          <li><a href="/codex/sem/google-ads/overview/">Google Ads Overview</a></li>
+          <li><a href="/codex/sem/google-ads/bidding-strategies/">Bidding Strategies</a></li>
+          <li><a href="/codex/sem/google-ads/quality-score-deep-dive/">Quality Score</a></li>
+          <li><a href="/codex/sem/google-ads/search-campaign-setup/">Search Ads</a></li>
+          <li><a href="/codex/sem/google-ads/display/display-network-fundamentals/">Display Network</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="/codex/">All 600 Guides</a></li>
+          <li><a href="/codex/glossary/">A–Z Glossary</a></li>
+          <li><a href="/about/">About Digital Codex</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Digital Codex. All rights reserved.</p>
+      <p>Authentic sources only. No affiliate links. No sponsored content.</p>
+    </div>
+  </div>
+</footer>
+
+<script defer>
+(function(){
+  var h=document.getElementById('hamburger'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');
+  function openD(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function closeD(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(h)h.addEventListener('click',openD);
+  if(c)c.addEventListener('click',closeD);
+  if(d)d.addEventListener('click',function(e){if(e.target===d)closeD();});
+  var chapters=document.querySelectorAll('.chapter[id]');
+  var navLinks=document.querySelectorAll('.chapter-nav a');
+  var tocLinks=document.querySelectorAll('.toc a');
+  function setActive(id){
+    navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});
+    tocLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});
+  }
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-15% 0px -70% 0px'});
+    chapters.forEach(function(ch){obs.observe(ch);});
+  }
+  document.querySelectorAll('.share-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){var orig=btn.textContent.trim();btn.textContent='Copied!';setTimeout(function(){btn.textContent=orig;},1500);});
+  });
+})();
+</script>
+<script>
+(function(){
+  if(window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if(q && typeof doSearch === 'function'){
+    var inp = document.getElementById('hubSearch');
+    if(inp){ inp.value = q; doSearch(q); inp.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }
+})();
+</script>
+</body>
+</html>

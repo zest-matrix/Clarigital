@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Claude Code — The Complete Guide | Clarigital</title>
+<meta name="description" content="The complete guide to Claude Code — Anthropic's terminal coding agent. Installation, CLAUDE.md setup, 19 ready-to-use prompts, scheduled tasks, MCP...">
+<link rel="canonical" href="/ai-atlas/specialist-tools/coding/claude-code/">
+<meta property="og:title" content="Claude Code — The Complete Guide">
+<meta property="og:description" content="Everything about Claude Code — terminal install, CLAUDE.md, agent tasks, scheduled jobs, computer use, and 19 copy-paste prompts. Official sources. April 2026.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/specialist-tools/coding/claude-code/">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0F172A">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+[data-theme="dark"]{
+  --bg:#0A0F1E;--bg2:#111827;--bg3:#1E293B;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(10,15,30,.93);
+  --input-bg:#1E293B;
+  --shadow:none;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col h5{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+/* Hub tool grid */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:20px}
+@media(max-width:500px){.tool-grid{grid-template-columns:repeat(2,1fr)}}
+.tool-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:14px 16px;transition:border-color .18s,box-shadow .18s;box-shadow:var(--shadow)}
+.tool-card:hover{border-color:var(--indigo);box-shadow:0 2px 12px rgba(99,102,241,.12)}
+.tc-name{font-size:.9rem;font-weight:700;color:var(--fg);margin-bottom:2px}
+.tc-by{font-size:.72rem;color:var(--faint);margin-bottom:6px}
+.tc-desc{font-size:.78rem;color:var(--muted);line-height:1.5;margin-bottom:8px}
+.tc-tag{display:inline-block;font-size:.65rem;font-weight:600;padding:2px 7px;border-radius:100px;margin-right:4px;margin-bottom:2px}
+.tc-tag-text{background:rgba(37,99,235,.1);color:var(--blue)}
+.tc-tag-image{background:rgba(99,102,241,.1);color:var(--indigo)}
+.tc-tag-video{background:rgba(239,68,68,.08);color:var(--red)}
+.tc-tag-code{background:rgba(16,185,129,.08);color:var(--green)}
+.tc-tag-prod{background:rgba(245,158,11,.08);color:#D97706}
+.hub-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:16px}
+.hub-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:18px;box-shadow:var(--shadow)}
+.hc-icon{font-size:1.4rem;margin-bottom:8px}
+.hc-title{font-size:.92rem;font-weight:700;color:var(--fg);margin-bottom:4px}
+.hc-desc{font-size:.8rem;color:var(--muted);line-height:1.55}
+.hc-count{font-size:.72rem;color:var(--faint);margin-top:6px}
+.btn-lg{font-size:.95rem;padding:12px 24px;border-radius:9px}
+.btn-outline{background:var(--card-bg);color:var(--fg);border:1px solid var(--border);font-size:.88rem;font-weight:500;padding:9px 18px;border-radius:8px;display:inline-block;transition:background .18s}
+.btn-outline:hover{background:var(--bg2)}
+.art-body{min-width:0;overflow-wrap:break-word}
+
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claude Code — The Complete Guide">
+<meta name="twitter:description" content="The complete guide to Claude Code — Anthropic's terminal coding agent. Installation, CLAUDE.md setup, 19 ready-to-use prompts, scheduled tasks, MCP...">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Claude Code \u2014 The Complete Guide", "description": "The complete guide to Claude Code \u2014 Anthropic's terminal coding agent. Installation, CLAUDE.md setup, 19 ready-to-use prompts, scheduled tasks, MCP...", "url": "https://www.clarigital.com/ai-atlas/specialist-tools/coding/claude-code/", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Specialist Tools", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/"}, {"@type": "ListItem", "position": 4, "name": "Coding", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/coding/"}, {"@type": "ListItem", "position": 5, "name": "Claude Code \u2014 The Complete Guide", "item": "https://www.clarigital.com/ai-atlas/specialist-tools/coding/claude-code/"}]}</script>
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 253 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/ai-atlas/specialist-tools/" class="di">&#128295; Specialist Tools</a>
+    <a href="/ai-atlas/specialist-tools/coding/" class="di" style="padding-left:24px">&#8627; AI for Coding</a>
+    <a href="/ai-atlas/specialist-tools/automation/" class="di" style="padding-left:24px">&#8627; AI for Automation</a>
+    <a href="/ai-atlas/specialist-tools/research-knowledge/" class="di" style="padding-left:24px">&#8627; AI for Research</a>
+    <a href="/codex/" class="di">&#128218; Codex — 220 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    <div style="padding:14px 12px 4px;border-top:1px solid var(--border);margin-top:8px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-size:.8rem;color:var(--muted)">Theme</span>
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <nav class="breadcrumb">
+      <a href="/">Home</a><span class="sep">/</span>
+      <a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span>
+      <a href="/ai-atlas/specialist-tools/">Specialist Tools</a><span class="sep">/</span>
+      <a href="/ai-atlas/specialist-tools/coding/">AI for Coding</a><span class="sep">/</span>
+      <span>Claude Code</span>
+    </nav>
+    <span class="label-tag">AI for Coding</span>
+    <h1>Claude Code — The Complete Guide</h1>
+    <p class="hero-lead">Claude Code is Anthropic's terminal-based coding agent. It lives in your command line, reads your entire codebase, and makes changes directly to your files — no IDE required, no copy-pasting from a chat window. As of April 2026 it is tied with the leading commercial coding agents on SWE-bench, works as a VS Code and Cursor extension, and is available to all Claude subscribers.</p>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">AI Coding Agent</span>
+      <span class="meta-tag mt-gray">Requires Claude subscription</span>
+      <span class="meta-tag mt-gray">Terminal · VS Code · Cursor</span>
+      <span class="meta-tag mt-gray">macOS · Windows · Linux</span>
+      <span class="meta-tag mt-gray">Last reviewed: April 2026</span>
+    
+  </div>
+  <div style="margin-top:16px"><a href="https://code.claude.com" target="_blank" rel="noopener" class="btn-official" style="display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;font-size:.85rem;font-weight:600;padding:10px 20px;border-radius:100px;text-decoration:none" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter='none'">Visit Claude Code ↗</a><span style="font-size:.75rem;color:var(--muted);margin-left:10px">code.claude.com</span></div>
+
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="art-layout">
+    <div class="art-body">
+
+      
+
+      <!-- SIMPLE -->
+      <div class="lane-section" id="lane-green"><div class="depth-band"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+
+
+        <h2 id="s-green-0">What is Claude Code?</h2>
+        <p>Claude Code is a coding agent built by Anthropic — the company that makes Claude. Unlike Claude's regular chat interface where you describe a problem and read an answer, Claude Code operates directly inside your development environment. You run it from the terminal, give it a task, and it reads your files, makes changes, runs commands and produces working code — without you touching the keyboard again until it is done.</p>
+
+        <p>The simplest way to understand it: Claude Code is Claude with hands. It can see your codebase, open files, edit them, run tests, check the output and keep going until the task is complete. The chat version of Claude writes code you then have to copy somewhere. Claude Code writes code into your actual project.</p>
+
+        <p>It was built specifically for developers who want an AI that participates in real engineering work — not just answers questions about it.</p>
+
+        <h2 id="s-green-1">What makes Claude Code different</h2>
+        <p>Most AI coding tools are IDE plugins — they add AI features to an editor you already use. Claude Code takes a different approach. It is a terminal agent that works from the command line, which gives it some important properties:</p>
+
+        <p><strong>It works in any project, any language, without configuration.</strong> Open a terminal in any project folder, run <code>claude</code>, describe what you want. There is no extension to install, no editor to configure, no project to set up. It reads the files that are there.</p>
+
+        <p><strong>It can run commands.</strong> Claude Code is not limited to editing files. It can run your test suite, execute scripts, install packages, check build output, read error messages and try again. It is an agent with access to your terminal, not just a text editor.</p>
+
+        <p><strong>It works while you are doing something else.</strong> Scheduled tasks and background agents let Claude Code run jobs on Anthropic's cloud infrastructure even when your computer is off — reviewing PRs overnight, running dependency audits weekly, fixing CI failures automatically.</p>
+
+        <p><strong>It also works as a VS Code and Cursor extension.</strong> Despite being terminal-native, Claude Code has a full VS Code and Cursor extension that brings inline diffs, plan review and conversation history into the editor. You choose the interface that suits the task.</p>
+
+        <h2 id="s-green-2">Who Claude Code is for</h2>
+        <p><strong>Developers who want the most capable coding agent available.</strong> On SWE-bench — the standard benchmark for AI coding agents that tests whether the AI can resolve real GitHub issues — Claude Code is at the top of the commercial tool rankings as of April 2026, per Anthropic's official documentation and independent assessments.</p>
+
+        <p><strong>Developers who prefer the terminal.</strong> If you spend most of your day in the command line, Claude Code feels natural. It does not require you to adopt a new editor or change your workflow.</p>
+
+        <p><strong>Developers who want to automate repetitive tasks.</strong> Scheduled tasks are Claude Code's most distinctive feature — the ability to set up recurring jobs that run automatically. No other coding tool offers this. Code review every morning, dependency audit every week, CI failure triage overnight.</p>
+
+        <p><strong>Teams already using Claude.</strong> Claude Code is included with Claude Pro and Max subscriptions. If your team already pays for Claude, you can start using Claude Code today with no additional cost.</p>
+
+        <h2 id="s-green-3">What Claude Code is not</h2>
+        <p>Claude Code does not have Tab completion — the instant inline suggestions that appear as you type in Cursor or GitHub Copilot. It is an agent for tasks, not a completion engine for individual lines. If continuous autocomplete is important to your workflow, use Cursor or GitHub Copilot alongside Claude Code rather than instead of it.</p>
+
+        <p>Claude Code also requires more intentional use than drag-and-drop tools like Bolt.new or Replit Agent. You describe tasks in plain English but you are working in a real development environment, not a sandbox. Understanding what the agent is doing — reviewing the changes before accepting them — is more important here than in consumer-facing tools.</p>
+
+        <h2 id="s-green-4">Why not just use Claude in the chat?</h2>
+        <p>Claude in the browser is excellent for understanding code, planning architecture, reviewing a specific function or generating a standalone snippet. The limitation is context and integration.</p>
+
+        <p>When you paste code into the chat, you give Claude a fragment. Claude does not know what the rest of your project looks like. It cannot run your tests. It cannot see the error message your code produced. It cannot make the change and verify it worked. You do all of that manually.</p>
+
+        <p>Claude Code reads your entire project. It can run <code>npm test</code> and read what failed. It can make a change, run the tests again, see that something else broke, trace why, and fix that too — without you intervening at each step. The gap between Claude in the chat and Claude Code is the gap between advice and action.</p>
+
+        <h2 id="s-green-5">Is Claude Code free?</h2>
+        <p>Claude Code requires a Claude subscription (Pro at $20/month or Max) or an Anthropic Console account with API credits. There is no separate standalone free tier. If you have a Claude Pro subscription, Claude Code is included — install it and start using it immediately.</p>
+
+        <p>Students and researchers may be eligible for Anthropic usage grants. The Claude Code documentation at code.claude.com describes available access options.</p>
+
+      </div>
+
+      <!-- WORKING -->
+      <div class="lane-section" id="lane-indigo"><div class="depth-band"><span class="depth-badge db-indigo">Working</span><span class="depth-note">Build it</span></div>
+
+
+        <h2 id="s-indigo-0">Getting started in 10 minutes</h2>
+
+        <h3>Step 1 — Install Claude Code</h3>
+        <p>Claude Code requires Node.js. Open your terminal and run:</p>
+        <div class="prompt-box" style="margin-bottom:1rem">
+          <div class="prompt-label">Install command (npm)</div>
+          <div class="prompt-text">npm install -g @anthropic-ai/claude-code</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+        <p>On macOS you can also use Homebrew: <code>brew install claude-code</code>. On Windows, use the WinGet command: <code>winget install Anthropic.ClaudeCode</code>. Windows also requires Git for Windows to be installed first.</p>
+
+        <h3>Step 2 — Log in</h3>
+        <p>Navigate to any project folder and run <code>claude</code>. On first use you will be prompted to log in to your Anthropic account. This links Claude Code to your Claude subscription or Console account. After logging in once, you stay authenticated.</p>
+
+        <h3>Step 3 — Give Claude Code a task</h3>
+        <p>With Claude Code running, describe what you want in plain English. Start with something small and self-contained:</p>
+        <div class="prompt-box">
+          <div class="prompt-label">First task — explain the codebase</div>
+          <div class="prompt-text">Explore this codebase and give me a clear overview of how it is structured. What are the main modules? How do they connect? What does the entry point do? Keep it practical — I want to understand the architecture before making changes.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Step 4 — The CLAUDE.md file — do this first</h3>
+        <p>Create a file called <strong>CLAUDE.md</strong> in the root of your project. This is Claude Code's equivalent of a .cursorrules file — persistent instructions that Claude reads automatically for every session in this project. Even five lines makes a significant difference to output quality.</p>
+        <div class="prompt-box">
+          <div class="prompt-label">Starter CLAUDE.md template</div>
+          <div class="prompt-text"># Project context
+[One paragraph describing what this project is and what it does]
+
+# Tech stack
+Language: [e.g. TypeScript, Python 3.11]
+Framework: [e.g. Next.js 14, FastAPI]
+Testing: [e.g. Jest, pytest]
+Package manager: [e.g. npm, pnpm, poetry]
+
+# Conventions
+- [Naming convention, e.g. camelCase for variables, PascalCase for classes]
+- [Error handling pattern your codebase uses]
+- [Any imports or patterns to always use or avoid]
+
+# Running the project
+- Start dev server: [command]
+- Run tests: [command]
+- Build: [command]</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Step 5 — Try an agent task</h3>
+        <p>Give Claude Code a complete task — something that involves reading multiple files, making changes and verifying the result. This is where its real value shows.</p>
+
+        <h2 id="s-indigo-1">19 prompts for Claude Code</h2>
+
+        <h3>Understanding your codebase</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Map the architecture</div>
+          <div class="prompt-text">Read the codebase and create a clear map of the architecture. List the main modules and what each one is responsible for. Show me how data flows between them. Identify any parts that look like they need attention — technical debt, missing error handling, or unclear boundaries between modules.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Find all TODOs and unfinished work</div>
+          <div class="prompt-text">Search the codebase for all TODO comments, FIXME markers, and any functions that throw NotImplementedError or similar. List them all with file and line number. Group them by category: bugs to fix, features to complete, and technical debt to address. Sort by priority based on how critical each area looks.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Understand a specific module</div>
+          <div class="prompt-text">Read all the files in the [module/directory name] module. Explain what it does, how it is designed, and what its interface looks like to the rest of the application. Note anything that looks unusual or that I should be aware of before making changes here.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Building features</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Implement a feature from scratch</div>
+          <div class="prompt-text">Implement [feature description]. Before writing code, read the existing codebase to understand the patterns used — how routing works, how the data layer is structured, how errors are handled. Then implement the feature following those same patterns. Write tests alongside the implementation. Run the test suite when done and fix any failures.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Add an API endpoint</div>
+          <div class="prompt-text">Add a [METHOD] endpoint at [/path] that [describe what it should do]. It should: accept [describe input], validate inputs and return clear error messages for invalid data, return [describe output format], handle errors gracefully. Follow the patterns used by the existing endpoints in this API. Add tests for the happy path and the main error cases.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Build a complete component</div>
+          <div class="prompt-text">Build a [component name] component that [describe functionality]. Requirements: [list 4-6 specific requirements]. Look at the existing components in this project to understand the conventions — how props are typed, how state is managed, how styles are applied — and follow the same patterns. Include a basic test that verifies the main functionality.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Fixing bugs</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Fix a specific bug</div>
+          <div class="prompt-text">Fix this bug: [describe the bug — what happens, what should happen instead, and how to reproduce it]. Before making any changes, find the root cause by reading the relevant code. Explain what you found. Then fix the root cause rather than the symptom. Add a test that would catch this bug if it regressed. Run the full test suite after fixing to make sure nothing else broke.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Debug a failing test</div>
+          <div class="prompt-text">This test is failing: [paste test name or file]. Run it and read the full error output. Find the root cause — is it a bug in the implementation, an incorrect assumption in the test, or a missing dependency? Fix whichever is wrong. Then run the full test suite to confirm everything passes.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Fix all TypeScript errors</div>
+          <div class="prompt-text">Run the TypeScript compiler and get the full list of type errors. Fix all of them systematically. Start with the errors that are blocking other things. Do not use 'any' as a fix unless there is truly no better option — infer the correct types from how the values are actually used.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Testing</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Write tests for a module</div>
+          <div class="prompt-text">Write comprehensive tests for the [module name] module. Run the existing tests first to understand the testing patterns and framework used. Write tests that cover: every public function's happy path, null and undefined inputs, boundary values, and error states. Each test should have a clear name that describes exactly what it verifies. Run the tests when done and fix any failures.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Improve test coverage</div>
+          <div class="prompt-text">Run the test coverage report and find the areas with the lowest coverage. Identify which uncovered paths are the riskiest — places where a bug would be hard to catch without a test. Write tests for the top five riskiest uncovered areas. Focus on tests that would actually catch real bugs, not just lines that touch the code without testing logic.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Refactoring and maintenance</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Refactor a module</div>
+          <div class="prompt-text">Refactor the [module name] to [describe the goal — reduce duplication, separate concerns, improve readability, etc.]. Do not change any observable behaviour — all existing tests must still pass after the refactor. Run the tests before you start so you have a baseline. Make changes incrementally and run tests after each meaningful change to catch regressions early.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Update all dependencies</div>
+          <div class="prompt-text">Check for outdated dependencies using the appropriate package manager command. List what is outdated and note which ones have major version bumps that may include breaking changes. Update patch and minor versions first and run the test suite. Then tackle each major version update individually — read the relevant changelog, make the necessary code changes, and verify tests pass before moving to the next one.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Security audit</div>
+          <div class="prompt-text">Perform a security audit of this codebase. Check for: hardcoded secrets or API keys, SQL injection risks in any database queries, missing input validation on user-supplied data, insecure direct object references, missing authentication or authorisation checks on sensitive routes, and any dependencies with known vulnerabilities. Report each finding with severity (Critical / High / Medium / Low), the affected file and line, and the recommended fix.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h3>Scheduled tasks (set up in the CLI with /schedule)</h3>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Daily PR review</div>
+          <div class="prompt-text">Every morning at 9am, review all open pull requests in this repository. For each PR: summarise what it changes, check for obvious bugs or missing tests, flag anything that needs attention before merging, and post a comment on the PR with your findings. Keep comments constructive and specific.</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-label">Weekly dependency check</div>
+          <div class="prompt-text">Every Monday morning, run a dependency audit on this project. Check for packages with known security vulnerabilities using the appropriate audit command. If any critical or high severity vulnerabilities are found, create a GitHub issue with the details and the recommended fix. Post a summary to [Slack channel / email].</div>
+          <button class="prompt-copy" onclick="copyPrompt(this)">Copy</button>
+        </div>
+
+        <h2 id="s-indigo-2">Tips that make a significant difference</h2>
+
+        <p><strong>CLAUDE.md is the most important file.</strong> Claude Code reads it at the start of every session. Five lines of context — language, framework, test command, naming convention — transforms generic output into code that fits your project. Create it before your first real task.</p>
+
+        <p><strong>Use --continue to pick up where you left off.</strong> Run <code>claude --continue</code> to resume a previous session with full context. This avoids re-reading the codebase and is much faster for multi-session work on the same project.</p>
+
+        <p><strong>Use /plan before large tasks.</strong> For any task that will touch multiple files, type /plan in the Claude Code session before proceeding. Claude will describe exactly what it intends to do before doing it. Review the plan. If anything looks wrong, correct it before a single file is changed.</p>
+
+        <p><strong>Commit before each task.</strong> Before giving Claude Code a task that modifies files, commit your current state with git. If the output is not what you wanted, you can reset cleanly. This is the single most important safety habit when using any coding agent.</p>
+
+        <p><strong>Use .claudeignore to reduce noise.</strong> Create a .claudeignore file in your project root listing directories Claude Code should not read — node_modules, dist, build, .git. Excluding these reduces the tokens Claude uses per session, which reduces cost and improves response speed. A typical .claudeignore reduces session token usage by 50–70%.</p>
+
+        <p><strong>Auto mode for routine approvals.</strong> By Anthropic's own data, users approve 93% of Claude Code's permission prompts. Auto mode handles safe actions automatically and blocks genuinely risky ones. Enable it for routine work to remove the constant interruptions.</p>
+
+      </div>
+
+      <!-- DEEP -->
+      <div class="lane-section" id="lane-red"><div class="depth-band"><span class="depth-badge db-red">Deep</span><span class="depth-note">Go deeper</span></div>
+
+
+        <h2 id="s-red-0">Architecture and technical background</h2>
+        <p>Claude Code is built by Anthropic and uses Anthropic's Claude models. As of April 2026, it runs on Claude Sonnet 4.6 by default with access to Claude Opus 4.6 for tasks requiring the highest reasoning quality. Both models support a one million token context window at standard pricing, documented in Anthropic's official release notes from March 2026.</p>
+
+        <p>Claude Code is distributed as an npm package (<code>@anthropic-ai/claude-code</code>) and can also be installed via Homebrew on macOS or WinGet on Windows, per the official documentation at code.claude.com.</p>
+
+        <h3>How the agent works</h3>
+        <p>Claude Code operates as a loop: receive a task, read relevant files, plan the approach, make changes, run verification commands (tests, builds, linters), read the output, and iterate until the task is complete or it needs input. The loop is driven by Claude's tool use capability — the model calls tools (read file, write file, run command, search codebase) rather than generating passive text.</p>
+
+        <p>According to Anthropic's official release notes, Claude Code uses an input-layer prompt injection probe and an output-layer transcript classifier in Auto mode to distinguish safe actions (which run automatically) from risky ones (which are blocked and replaced with safer alternatives).</p>
+
+        <h3>CLAUDE.md and memory</h3>
+        <p>Claude Code reads CLAUDE.md files hierarchically — a root CLAUDE.md applies to the whole project, and subdirectory CLAUDE.md files provide additional context for specific modules. According to Anthropic's official scientific computing guide, a recommended pattern for multi-day sessions includes a root CLAUDE.md, a CHANGELOG.md as working memory, and test oracles to guide agent verification.</p>
+
+        <p>As of March 2026, Claude Code Memory allows Claude to remember project context, debugging patterns and preferred approaches across sessions automatically, per Anthropic's official release notes.</p>
+
+        <h3>Scheduled tasks</h3>
+        <p>Scheduled tasks, introduced in early 2026, run on Anthropic-managed cloud infrastructure. Each scheduled run starts from a fresh clone of the repository, creates its own session, and produces output you can review and turn into a pull request. Tasks can be created from the Claude web interface, the desktop app or the /schedule command in the CLI. Per the builder.io analysis of March 2026 Claude Code updates, scheduled tasks support recurring jobs including nightly CI triage, weekly dependency audits and daily PR review.</p>
+
+        <h3>MCP support</h3>
+        <p>Claude Code supports the Model Context Protocol (MCP), allowing it to connect to external tools, databases and APIs. MCP servers can be configured in the project settings and give Claude Code access to resources beyond the local filesystem — Slack, GitHub, databases, internal APIs. Per Anthropic's official Claude platform documentation, MCP Apps support structured content for richer tool outputs.</p>
+
+        <h3>Computer use (Pro and Max)</h3>
+        <p>As of March 23 2026, Claude Code supports computer use on Pro and Max plans, per Anthropic's official release notes. This gives Claude Code the ability to open files in GUI applications, run visual dev tools, point, click and navigate UI elements — not just operate in the terminal. This is particularly useful for workflows where a process leaves the terminal and enters a browser or desktop application.</p>
+
+        <h3>VS Code and Cursor extension</h3>
+        <p>The Claude Code VS Code extension, documented at code.claude.com, provides inline diffs, @-mentions, plan review and conversation history inside the editor. It installs in VS Code or Cursor via the Extensions marketplace. The extension brings the same Claude Code agent to an IDE context, allowing developers who prefer a visual interface to use Claude Code without leaving their editor.</p>
+
+        <h3>SWE-bench performance</h3>
+        <p>SWE-bench is the standard benchmark for AI coding agents, testing whether an agent can resolve real GitHub issues from popular open source repositories. Claude Code's performance on SWE-bench places it among the top commercial coding agents available as of April 2026, per Anthropic's official product claims and independent third-party assessments. The JetBrains January 2026 developer survey found Claude Code tied with Cursor for second place in professional developer adoption at 18% usage at work, behind GitHub Copilot at 29%.</p>
+
+        <h3>Official sources</h3>
+        <div class="callout callout-deep">
+          <div class="callout-head">Primary sources cited in this guide</div>
+          <ul>
+            <li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener" style="color:var(--indigo)">code.claude.com/docs/en/overview</a> — Official Claude Code documentation</li>
+            <li><a href="https://support.claude.com/en/articles/12138966-release-notes" target="_blank" rel="noopener" style="color:var(--indigo)">support.claude.com — Release notes</a> — Official Anthropic release notes including computer use, scheduled tasks and Claude Code Memory</li>
+            <li><a href="https://platform.claude.com/docs/en/release-notes/overview" target="_blank" rel="noopener" style="color:var(--indigo)">platform.claude.com — API release notes</a> — Claude API and model documentation including context window and model capabilities</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div><!-- art-body -->
+
+    <div class="art-sidebar">
+<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Claude Code?</a><a href="#s-green-1">What makes Claude Code different</a><a href="#s-green-2">Who Claude Code is for</a><a href="#s-green-3">What Claude Code is not</a><a href="#s-green-4">Why not just use Claude in the chat?</a><a href="#s-green-5">Is Claude Code free?</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Getting started in 10 minutes</a><a href="#s-indigo-1">19 prompts for Claude Code</a><a href="#s-indigo-2">Tips that make a significant difference</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Architecture and technical background</a></div></div>
+      <div class="sidebar-card">
+        <h4>In this guide</h4>
+        <a href="#" class="sidebar-link active" onclick="showLane('green');return false;">What it is — Simple</a>
+        <a href="#" class="sidebar-link" onclick="showLane('indigo');return false;">How to use it — Working</a>
+        <a href="#" class="sidebar-link" onclick="showLane('red');return false;">Technical detail — Deep</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Requirements</h4>
+        <a href="https://code.claude.com" target="_blank" rel="noopener" class="sidebar-link">Claude Pro ($20/mo) or Max</a>
+        <a href="https://code.claude.com" target="_blank" rel="noopener" class="sidebar-link">Or Anthropic Console account</a>
+        <a href="https://code.claude.com" target="_blank" rel="noopener" class="sidebar-link">Node.js required for CLI</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>Related coding tools</h4>
+        <a href="/ai-atlas/specialist-tools/coding/cursor/" class="sidebar-link">Cursor</a>
+        <a href="/ai-atlas/specialist-tools/coding/github-copilot/" class="sidebar-link">GitHub Copilot</a>
+        <a href="/ai-atlas/specialist-tools/coding/windsurf/" class="sidebar-link">Windsurf</a>
+        <a href="/ai-atlas/specialist-tools/coding/replit-agent/" class="sidebar-link">Replit Agent</a>
+      </div>
+      <div class="sidebar-card">
+        <h4 style="color:var(--indigo);font-size:.8rem">🔗 Official links</h4>
+        <a href="https://code.claude.com" target="_blank" rel="noopener" class="sidebar-link">code.claude.com ↗</a>
+        <a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener" class="sidebar-link">Documentation ↗</a>
+        <a href="https://claude.ai" target="_blank" rel="noopener" class="sidebar-link">Claude.ai (subscription) ↗</a>
+      </div>
+      <div class="sidebar-card">
+        <h4>See also in AI Atlas</h4>
+        <a href="/ai-atlas/tools/claude/" class="sidebar-link">Claude (chat guide)</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><h5>AI Atlas</h5><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>AI Tools</h5><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><h5>Clarigital</h5><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+function showLane(lane){
+  document.querySelectorAll('.lane-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.lane-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('lane-'+lane);
+  var tab=document.getElementById('tab-'+lane);
+  if(sec)sec.classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+function copyPrompt(btn){
+  var text=btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(function(){btn.textContent=orig;btn.classList.remove('copied');},2000);
+  });
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var first=document.querySelector('.lane-tab');
+  if(first)first.click();
+});
+</script>
+</body>
+</html>

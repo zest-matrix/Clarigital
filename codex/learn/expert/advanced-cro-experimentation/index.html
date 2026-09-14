@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPgogIDx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9Ii1hcHBsZS1zeXN0ZW0sQmxpbmtNYWNTeXN0ZW1Gb250LHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiIGxldHRlci1zcGFjaW5nPSItMC41Ij5DTDwvdGV4dD4KPC9zdmc+">
+<meta name="theme-color" content="#0D1B2A">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Advanced CRO & Experimentation: Building a | Digital Codex</title>
+<meta property="og:type" content="article">
+<meta property="og:title" content="Advanced CRO & Experimentation: Building a | Digital Codex">
+<meta property="og:description" content="Beyond A/B testing basics — sequential testing, Bayesian methods, multi-armed bandits, experimentation infrastructure, and the organisational...">
+<meta property="og:url" content="https://www.clarigital.com/codex/learn/expert/advanced-cro-experimentation/">
+<meta property="og:site_name" content="Digital Codex">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Advanced CRO & Experimentation: Building a", "description": "Beyond A/B testing basics \u2014 sequential testing, Bayesian methods, multi-armed bandits, experimentation infrastructure, and the organisational...", "url": "https://www.clarigital.com/codex/learn/expert/advanced-cro-experimentation/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "headline": "Advanced CRO & Experimentation: Building a", "description": "Beyond A/B testing basics \u2014 sequential testing, Bayesian methods, multi-armed bandits, experimentation infrastructure, and the organisational...", "url": "https://www.clarigital.com/codex/learn/expert/advanced-cro-experimentation/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-05-22"}</script>
+<meta name="description" content="Beyond A/B testing basics — sequential testing, Bayesian methods, multi-armed bandits, experimentation infrastructure, and the organisational...">
+<link rel="canonical" href="/codex/learn/expert/advanced-cro-experimentation/">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+:root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);color:var(--g700);background:var(--orange-bg);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1{font-size:clamp(1.55rem,3vw,2.15rem);font-weight:700;color:var(--g900);line-height:1.2}
+h2{font-size:clamp(1.1rem,2vw,1.38rem);font-weight:700;color:var(--g900);line-height:1.3;margin:40px 0 14px;border-bottom:1px solid var(--g100);padding-bottom:10px}
+h3{font-size:1.02rem;font-weight:700;color:var(--g900);margin:24px 0 8px}
+p{margin-bottom:14px;line-height:1.8;font-size:.94rem;color:var(--g700)}p:last-child{margin-bottom:0}
+a{color:var(--orange);text-decoration:none;font-weight:500}a:hover{color:var(--orange-dk)}
+ul,ol{margin:12px 0 16px 22px}li{margin-bottom:8px;font-size:.92rem;color:var(--g700);line-height:1.65}
+strong{font-weight:600;color:var(--g900)}
+code{font-family:ui-monospace,monospace;font-size:.84em;background:var(--g100);padding:2px 6px;border-radius:3px;color:var(--g900)}
+pre{background:var(--g900);color:#e2e8f0;padding:18px 20px;border-radius:8px;overflow-x:auto;margin:16px 0;font-size:.82rem;line-height:1.7}
+pre code{background:none;padding:0;color:inherit}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:.86rem;border-radius:8px;overflow:hidden;border:1px solid var(--g200)}
+thead{background:var(--g50)}th{padding:11px 14px;text-align:left;font-weight:600;color:var(--g900);border-bottom:1px solid var(--g200);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em}
+td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-size:.86rem}tr:last-child td{border-bottom:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font);font-size:.84rem;font-weight:600;padding:9px 20px;border-radius:6px;border:none;cursor:pointer;text-decoration:none;transition:background var(--t),color var(--t);white-space:nowrap}
+.btn-primary{background:var(--orange);color:#fff}.btn-primary:hover{background:var(--orange-dk);color:#fff}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--navy)}.btn-outline:hover{background:var(--navy);color:#fff}
+.btn-outline-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}.btn-outline-w:hover{background:rgba(255,255,255,.1);color:#fff}
+.btn-sm{padding:6px 14px;font-size:.78rem}.btn-lg{padding:11px 24px;font-size:.9rem}
+.site-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:0;z-index:200}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;gap:24px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--fg)}
+.nav-box{width:34px;height:34px;background:var(--navy);color:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.75rem;flex-shrink:0}
+.nav-text{font-size:.9rem;font-weight:700;color:var(--g900);line-height:1.2}.nav-text small{display:block;font-size:.65rem;font-weight:400;color:var(--g500);margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:2px;margin-left:auto}
+.nav-links a{font-size:.82rem;font-weight:500;color:var(--g700);padding:6px 11px;border-radius:5px;text-decoration:none;transition:background var(--t)}
+.nav-links a:hover,.nav-links a.cur{background:var(--g100);color:var(--g900)}.nav-links a.cur{color:var(--navy);font-weight:600}
+.nav-cta{margin-left:6px;flex-shrink:0}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+.nav-ham span{display:block;width:22px;height:2px;background:var(--g700);border-radius:2px}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.nav-ham{display:flex}}
+.nav-drawer{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--t)}.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(300px,88vw);background:var(--w);padding:22px 18px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px}.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--g100)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--g500);padding:4px 8px}
+.nav-panel a.di{display:block;padding:11px 10px;font-size:.88rem;font-weight:500;color:var(--g700);border-radius:6px;text-decoration:none;transition:background var(--t)}.nav-panel a.di:hover{background:var(--g50)}
+.chap-nav{background:var(--w);border-bottom:1px solid var(--g200);position:sticky;top:60px;z-index:150;overflow-x:auto;scrollbar-width:none}.chap-nav::-webkit-scrollbar{display:none}
+.chap-nav-in{max-width:var(--max);margin:0 auto;padding:0 20px;display:flex;white-space:nowrap}
+.cnl{color:var(--g500);text-decoration:none;font-size:.79rem;font-weight:500;padding:12px 13px;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--t),border-color var(--t);display:inline-block}
+.cnl:hover{color:var(--g900)}.cnl.on{color:var(--navy);border-bottom-color:var(--navy);font-weight:600}
+.page-hero{background:linear-gradient(135deg,#0D1B2A 0%,#152336 55%,#0D1B2A 100%);border-bottom:none;padding:44px 0 36px}
+.breadcrumb{display:flex;align-items:center;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.breadcrumb a{font-size:.78rem;color:rgba(255,255,255,.45);text-decoration:none}.breadcrumb a:hover{color:var(--orange)}
+.breadcrumb .sep{font-size:.7rem;color:var(--g200)}.breadcrumb .cur{font-size:.78rem;color:var(--g700);font-weight:500}
+.label-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(232,92,13,.2);color:#FCA572;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero-lead{font-size:.96rem;color:rgba(255,255,255,.75);line-height:1.78;margin-top:10px;max-width:700px}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.04em;text-transform:uppercase}
+.mt-seo{background:rgba(29,78,216,.25);color:#93c5fd}.mt-gray{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+.share-btn{display:inline-flex;align-items:center;gap:5px;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.55);background:rgba(255,255,255,.08);border:none;cursor:pointer;padding:5px 10px;border-radius:4px;transition:background var(--t);margin-left:auto;font-family:var(--font)}.share-btn:hover{background:var(--g200);color:var(--g900)}
+.art-layout{display:grid;grid-template-columns:1fr 268px;gap:40px;align-items:start;padding:48px 0 64px}
+@media(max-width:860px){.art-layout{grid-template-columns:1fr;gap:32px}aside{position:static;top:auto}}
+article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
+.chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
+.learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
+.lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
+.lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+.stat-card{border:1px solid var(--g200);border-radius:var(--r);padding:18px 20px;background:var(--w)}
+.stat-h{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.stat-n{font-size:1.85rem;font-weight:700;color:var(--navy);line-height:1}
+.stat-n .u{color:var(--orange);font-size:1.1rem}
+.stat-l{font-size:.77rem;color:var(--g500);margin-top:4px}
+.fix-card{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin:14px 0}
+.fc-head{padding:13px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g100)}
+.fc-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
+.fc-title{font-size:.88rem;font-weight:700;color:var(--g900)}
+.fc-impact{font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-left:auto}
+.impact-h{background:var(--green-bg);color:var(--green)}.impact-m{background:var(--amber-bg);color:var(--amber)}
+.fc-body{padding:14px 18px}
+.fc-body p{font-size:.86rem;margin-bottom:10px}.fc-body ul{margin:0 0 0 18px}.fc-body li{font-size:.83rem;margin-bottom:5px}
+.callout{border:1px solid var(--g200);border-left:3px solid var(--navy);border-radius:0 var(--r) var(--r) 0;padding:16px 18px;background:var(--w);margin:20px 0}
+.callout.orange{border-left-color:var(--orange)}.callout.green{border-left-color:var(--green)}
+.callout strong{display:block;font-size:.83rem;font-weight:700;color:var(--g900);margin-bottom:5px}.callout p{font-size:.85rem;margin:0}
+.insight{background:var(--blue-bg);border:1px solid #BFDBFE;border-radius:var(--r);padding:17px 20px;margin:20px 0}
+.insight-lbl{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:6px}
+.insight p{font-size:.88rem;color:var(--g700);margin:0;line-height:1.72}
+.source-card{border:1px solid var(--g200);border-left:3px solid var(--green);border-radius:0 var(--r) var(--r) 0;padding:14px 18px;background:var(--w)}
+.src-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px}
+.st-off{background:var(--blue-bg);color:var(--navy)}.st-acad{background:var(--amber-bg);color:var(--amber)}
+.source-card strong{display:block;font-size:.84rem;font-weight:600;color:var(--g900);margin-bottom:2px}.source-card p{font-size:.77rem;color:var(--g500);margin:0}
+.art-footer{border-top:1px solid var(--g200);padding-top:20px;margin-top:36px}.art-footer p{font-size:.77rem;color:var(--g500)}
+aside{position:sticky;top:calc(60px + 44px + 16px)}
+.sb-box{border:1px solid var(--g200);border-radius:var(--r);background:var(--w);overflow:hidden;margin-bottom:14px}
+.sb-head{padding:11px 14px;background:var(--g50);border-bottom:1px solid var(--g200);font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--g500)}
+.sb-body{padding:12px 14px}
+.sb-link{display:block;font-size:.78rem;font-weight:500;color:var(--g700);padding:6px 0;border-bottom:1px solid var(--g100);text-decoration:none;transition:color var(--t)}.sb-link:last-child{border-bottom:none}.sb-link:hover{color:var(--orange)}
+.sb-link::after{content:' →';color:var(--orange);font-size:.72rem}.sb-cur{color:var(--navy);font-weight:600}.sb-cur::after{content:' ←';color:var(--navy)}
+.cta-strip{background:var(--g900);padding:60px 0}.cta-in{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.cta-in h2{color:#fff;max-width:440px;margin:0;font-size:clamp(1.1rem,2vw,1.4rem);border:none;padding:0}.cta-in p{color:rgba(255,255,255,.5);margin-top:8px;font-size:.88rem}
+.cta-btns{display:flex;gap:10px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
+.ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
+.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
+.ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
+@media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
+@media(max-width:600px){.page-hero{padding:32px 0 28px}.art-layout{padding:32px 0 48px}.ft-grid{grid-template-columns:1fr}.cta-strip{padding:44px 0}}
+@media print{.site-nav,.chap-nav,aside,.cta-strip,.site-footer{display:none}.art-layout{grid-template-columns:1fr}}
+.page-hero h1{color:#fff}
+.breadcrumb{}
+.page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
+.page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style>
+<style>
+.expert-pill{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.6rem;background:#ede9fe;color:#4c1d95}
+.framework-box{background:#f5f3ff;border:2px solid #7c3aed;border-radius:10px;padding:1.2rem 1.4rem;margin:1.4rem 0}
+.framework-box .fb-head{font-weight:700;color:#4c1d95;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem}
+.ns-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.6rem}
+.ns-card{background:#fff;border:1.5px solid var(--border);border-radius:8px;padding:.7rem .9rem;text-decoration:none;transition:border-color .15s;display:flex;flex-direction:column;gap:.25rem}
+.ns-card:hover{border-color:var(--navy)}
+.ns-tag{font-size:.68rem;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em}
+.ns-title{font-size:.83rem;font-weight:600;color:var(--navy);line-height:1.35}
+</style>
+<meta property="og:image" content="https://www.clarigital.com/og-codex.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Advanced CRO & Experimentation: Building a | Digital Codex">
+<meta name="twitter:description" content="Beyond A/B testing basics — sequential testing, Bayesian methods, multi-armed bandits, experimentation infrastructure, and the organisational...">
+<meta name="twitter:image" content="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYzMCI+CiAgPHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjMwIiBmaWxsPSIjMEQxQjJBIi8+CiAgPGRlZnM+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9ImciIGN4PSI1MCUiIGN5PSIwJSIgcj0iNjAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U4NUMwRCIgc3RvcC1vcGFjaXR5PSIwLjE1Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzBEMUIyQSIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIGZpbGw9InVybCgjZykiLz4KICA8cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjEwIiBmaWxsPSIjMUQ0RUQ4Ii8+CiAgPHRleHQgeD0iMTA1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSItYXBwbGUtc3lzdGVtLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI4MDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmZmZmYiPkRDPC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMTE0IiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmZmZmIj5UaGUgQ29kZXg8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjMwMCIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsc2VyaWYiIGZvbnQtc2l6ZT0iNjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmZmZmYiPjIxOCBkaWdpdGFsIG1hcmtldGluZzwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMzg1IiBmb250LWZhbWlseT0iR2VvcmdpYSxzZXJpZiIgZm9udC1zaXplPSI2OCIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iI0U4NUMwRCI+Z3VpZGVzLjwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNDgwIiBmb250LWZhbWlseT0iLWFwcGxlLXN5c3RlbSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjI4IiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNDUpIj5PZmZpY2lhbCBzb3VyY2VzIG9ubHkgwrcgRnJlZSBmb3JldmVyIMK3IGNsYXJpZ2l0YWwuY29tL2NvZGV4PC90ZXh0Pgo8L3N2Zz4=">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7DFK94MRK7');
+</script>
+</head>
+<body>
+<header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
+
+<nav class="site-nav"><div class="nav-in">
+  <a href="/codex/" class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></a>
+  <ul class="nav-links"><li><a href="/ai-atlas/">AI Atlas</a></li><li><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a></li><li><a href="/ai-kids/">AI Kids</a></li><li><a href="/courses/">Courses</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/business-strategy/">Business</a></li><li><a href="/codex/learn/expert/" class="cur">Expert Track</a></li><li><a href="/codex/all-guides/">All Guides</a></li></ul>
+  <div class="nav-cta"><a href="/codex/learn/beginner/" class="btn btn-outline btn-sm">Beginner Track</a></div>
+  <button class="nav-ham" id="navHam" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true"><div class="nav-panel">
+  <div class="nav-panel-top"><div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><button class="nav-close" id="navClose">&#x2715;</button></div>
+  <a href="/codex/" class="di">Codex</a><a href="/ai-atlas/" class="di">AI Atlas</a><a href="/fintech-ai/" class="di">Fintech AI</a><a href="/ai-kids/" class="di">AI Kids</a><a href="/courses/" class="di">Courses</a>
+  <a href="/codex/learn/expert/" class="di cur">Expert Track</a><a href="/codex/learn/beginner/" class="di">Beginner Track</a><a href="/codex/seo/" class="di">SEO</a><a href="/codex/all-guides/" class="di">All Guides</a>
+</div></div>
+</header>
+<nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#experimentation-maturity">Experimentation Maturity Model</a><a class="cnl" href="#frequentist-vs-bayesian">Frequentist vs Bayesian Testing</a><a class="cnl" href="#sequential-testing">Sequential Testing: Faster Decisions</a><a class="cnl" href="#mab">Multi-Armed Bandits</a><a class="cnl" href="#test-design">Advanced Test Design</a><a class="cnl" href="#experiment-platform">Building an Experimentation Platform</a><a class="cnl" href="#novelty-effects">Novelty Effects and Validity Threats</a><a class="cnl" href="#interaction-effects">Interaction Effects Between Tests</a><a class="cnl" href="#cro-research-advanced">Advanced CRO Research Methods</a><a class="cnl" href="#experimentation-culture">Building an Experimentation Culture</a><a class="cnl" href="#next">Further Reading</a></div></nav>
+<main>
+<section class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/learn/">Learn</a><span class="sep">/</span><a href="/codex/learn/expert/">Expert Track</a><span class="sep">/</span><span>Advanced CRO & Experimentation</span></nav>
+  <div class="expert-pill">&#9889; Expert Track &nbsp;&#183;&nbsp; Guide 5 of 10</div>
+  <h1>Advanced CRO &#38; Experimentation &#183; Statistics, Velocity &#38; Culture</h1>
+  <p class="hero-lead">Most CRO programmes run 4–6 tests per year. Mature experimentation organisations run hundreds. The difference is not budget — it is infrastructure, statistical methodology, and organisational alignment. This guide covers what separates a test-and-learn culture from a test-and-wait culture.</p>
+  <div class="art-meta">
+    <span class="meta-tag mt-seo" style="background:#ede9fe;color:#4c1d95">Expert</span>
+    <span class="meta-tag mt-gray">5+ years experience assumed</span>
+    <span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <button class="share-btn" id="shareBtn">Share</button>
+  </div>
+</div></section>
+<section><div class="wrap"><div class="art-layout">
+<article>
+
+<div class="chapter" id="experimentation-maturity">
+<div class="chap-hdr"><h2>Experimentation Maturity Model</h2><button class="share-btn" onclick="copyLink('experimentation-maturity')">Share</button></div>
+<p>Microsoft Research's documented Experimentation Maturity Model describes five levels of organisational experimentation capability, from crawl (no infrastructure, manual processes) to run (hundreds of concurrent tests, automated analysis, democratised access). Most organisations sit at levels 2–3; Amazon, Booking.com, and Netflix are documented examples of level 5 organisations running thousands of simultaneous experiments.</p>
+<p>The practical levers that advance maturity: investing in experimentation infrastructure (a proper feature flagging and randomisation platform rather than ad-hoc tool configurations); expanding test velocity (more concurrent tests, faster iteration cycles, lower friction for proposing and launching tests); improving statistical sophistication (moving beyond fixed-horizon tests to sequential methods that safely stop tests early); and democratising access (enabling product managers, designers, and content teams to run tests without constant data science support).</p>
+</div>
+
+<div class="chapter" id="frequentist-vs-bayesian">
+<div class="chap-hdr"><h2>Frequentist vs Bayesian Testing</h2><button class="share-btn" onclick="copyLink('frequentist-vs-bayesian')">Share</button></div>
+<p>The frequentist hypothesis testing framework — the basis of most A/B testing tools — produces a p-value: the probability of observing the data (or more extreme data) if the null hypothesis (no difference between variants) were true. The convention of p < 0.05 as "statistically significant" is an arbitrary threshold, not a measure of the probability that the winner is genuinely better.</p>
+<p>The practical consequences of frequentist testing misuse are well-documented: peeking (stopping tests when p < 0.05 first appears, before the planned sample size is reached) dramatically inflates false positive rates; multiple testing corrections are routinely ignored; and the binary pass/fail framing obscures the uncertainty in effect size estimates that matters for business decisions.</p>
+<p>Bayesian A/B testing produces a posterior probability distribution over possible effect sizes — it directly answers "what is the probability that variant B is better than control, and by how much?" rather than the harder-to-interpret p-value. Bayesian methods allow continuous monitoring (you can check results at any point without inflating false positive rates, as long as you use proper Bayesian sequential analysis); they naturally incorporate prior information; and they produce intuitive outputs ("73% probability that variant B is better, with expected lift of 2.3% ± 0.8%") that communicate uncertainty better than binary significance claims.</p>
+<div class="framework-box"><div class="fb-head">&#9889; When to use each approach</div><p>Frequentist testing is appropriate when: you have regulatory requirements for specific statistical standards; you need interoperability with existing tooling; and when teams are familiar with p-values. Bayesian testing is preferable when: you need to stop tests early; you want to monitor results continuously; or when communicating effect size uncertainty to stakeholders is important. Both approaches, used correctly with pre-registered analysis plans and appropriate sample sizes, produce valid results. The key is using whichever you choose correctly — not mixing approaches or interpreting outputs from one framework using the other's conventions.</p></div>
+</div>
+
+<div class="chapter" id="sequential-testing">
+<div class="chap-hdr"><h2>Sequential Testing: Faster Decisions</h2><button class="share-btn" onclick="copyLink('sequential-testing')">Share</button></div>
+<p>Fixed-horizon A/B tests require committing to a sample size before the test starts, running the test until that sample is collected, and only looking at the results at the end. This is statistically valid but often impractical — business conditions change, losing variants waste traffic, and decisions may be needed faster than the sample accumulates.</p>
+<p>Sequential testing methods (Sequential Probability Ratio Test, Alpha Spending, CUPED-enhanced variance reduction, or Always Valid Inference) allow continuous monitoring of test results with statistical validity. They do this by applying spending functions to the Type I error budget — the statistical test "spends" some of the false positive allowance each time it is checked, so the cumulative false positive rate stays controlled even with repeated checks.</p>
+<p>Variance reduction through CUPED (Controlled-experiment Using Pre-Experiment Data) is the most impactful implementation improvement available to mature experimentation programmes. CUPED uses the pre-experiment period's metric value for each user as a covariate in the analysis, removing variance that is unrelated to the treatment. Documented implementations at Microsoft and LinkedIn reduced required sample sizes by 30–50%, effectively doubling test throughput without increasing traffic.</p>
+</div>
+
+<div class="chapter" id="mab">
+<div class="chap-hdr"><h2>Multi-Armed Bandits</h2><button class="share-btn" onclick="copyLink('mab')">Share</button></div>
+<p>Multi-Armed Bandit (MAB) algorithms adapt traffic allocation during a test based on observed performance — progressively routing more traffic to better-performing variants rather than maintaining a fixed split throughout. This reduces the regret of showing a losing variant to users during the test, at the cost of slower convergence to precise effect estimates.</p>
+<p>The exploration-exploitation trade-off: MABs exploit early-performing variants (routing more traffic to them) while continuing to explore alternatives (maintaining some traffic to potentially better options). This makes MABs appropriate for situations where minimising regret (the cost of showing inferior variants) is more important than estimating precise effect sizes — promotional content, personalisation, and revenue-sensitive front pages.</p>
+<p>MABs are not universally superior to A/B tests. For feature releases where understanding the true long-term effect matters (does this navigation change actually improve conversion, or just novelty effect?), the speed of MAB allocation can amplify novelty effects and produce misleading conclusions. MABs are better tools for continuous optimisation of high-frequency content (recommendations, promotions); A/B tests are better tools for feature experiments where causal understanding matters.</p>
+</div>
+
+<div class="chapter" id="test-design">
+<div class="chap-hdr"><h2>Advanced Test Design</h2><button class="share-btn" onclick="copyLink('test-design')">Share</button></div>
+<p>Test design quality determines whether an experiment produces actionable learning. Advanced test design considerations beyond sample size and split:</p>
+<p><strong>Unit of randomisation:</strong> User-level randomisation (same user always sees the same variant) is appropriate for most conversion tests. Session-level randomisation can introduce carry-over bias (a user who saw variant B in a previous session brings that exposure into a control-session comparison). Page-level randomisation is appropriate for content tests where user-level consistency is not needed. Cluster randomisation (randomising by household, account, or geographic unit) is required when the treatment affects multiple users simultaneously.</p>
+<p><strong>Metric selection:</strong> Primary metric selection should precede test design — the primary metric determines the sample size calculation and the stopping rule. Avoid choosing the primary metric after seeing data. Secondary metrics (guardrail metrics) should include any metric that should not decline: if a conversion rate test increases sign-up rate but reduces engagement or NPS, the test has a negative secondary effect that should be weighted in the decision.</p>
+<p><strong>Novelty and primacy effects:</strong> New features often show inflated positive effects initially (users engage out of curiosity) that decay to the true steady-state effect. Conversely, changes to familiar UI elements show initial negative effects (users need to relearn the pattern) that improve to a better long-run state. Both effects mean early test data can be misleading. Running tests for a minimum of two full weekly cycles and analysing new-user cohorts separately from returning users mitigates but does not eliminate these validity threats.</p>
+</div>
+
+<div class="chapter" id="experiment-platform">
+<div class="chap-hdr"><h2>Building an Experimentation Platform</h2><button class="share-btn" onclick="copyLink('experiment-platform')">Share</button></div>
+<p>An experimentation platform is the infrastructure that enables randomised assignment, feature delivery, logging, and analysis of experiments across an organisation. At low maturity, this is a third-party tool (Optimizely, VWO, AB Tasty). At high maturity, it is a custom-built system that integrates directly with the product's feature flag infrastructure and data pipeline.</p>
+<p>The core components of an experimentation platform: feature flagging system (enables controlled rollout of variants without code deployments); assignment and exposure logging (records which user saw which variant when, with timestamps); event logging (records all relevant user actions with the assignment ID, enabling outcome analysis); analysis layer (statistical tests, sample ratio mismatch detection, segmentation); and experiment registry (a searchable record of all past, current, and planned experiments with hypotheses, results, and decisions).</p>
+<p>The experiment registry is often the most underinvested component — and the most valuable for institutional learning. Without a registry, the same test is run repeatedly by different teams; learnings from failed tests are lost; and the cumulative understanding of what the customer responds to cannot compound across experiments.</p>
+</div>
+
+<div class="chapter" id="novelty-effects">
+<div class="chap-hdr"><h2>Novelty Effects and Validity Threats</h2><button class="share-btn" onclick="copyLink('novelty-effects')">Share</button></div>
+<p>The most common validity threats in CRO experimentation: novelty effects (inflated engagement from newness); primacy effects (negative response to change from habituated users); SRM (Sample Ratio Mismatch — when the actual split differs from the configured split, indicating a logging or assignment error); network effects (variant users' behaviour affecting control users through shared social or product features); and seasonal confounding (running a test over a holiday period creates a non-representative sample).</p>
+<p>SRM detection is critical and should be run on every experiment before analysing results. If 50% of users were configured to see variant B but only 42% are recorded as seeing it, something is wrong with the assignment or logging — and the experiment results are invalid. Chi-squared test of observed vs expected assignment proportions is the standard SRM detection method; most mature platforms automate this check.</p>
+</div>
+
+<div class="chapter" id="interaction-effects">
+<div class="chap-hdr"><h2>Interaction Effects Between Tests</h2><button class="share-btn" onclick="copyLink('interaction-effects')">Share</button></div>
+<p>Running many experiments simultaneously creates the risk of interaction effects — where the effect of Experiment A depends on which variant the user is in for Experiment B. If experiment A tests a new checkout button and experiment B tests a new product description format, and users who see both changes simultaneously behave differently from users who see only one, the individual experiment results are contaminated.</p>
+<p>Managing interaction effects: orthogonality (randomising experiments into independent layers so the probability of being in any combination of experiments is proportional to the product of individual assignment probabilities); monitoring for interaction detection (comparing results within cross-experiment segments; significant differences suggest an interaction); and conservative simultaneous testing policy (only run experiments simultaneously if they affect different, non-overlapping parts of the user experience).</p>
+</div>
+
+<div class="chapter" id="cro-research-advanced">
+<div class="chap-hdr"><h2>Advanced CRO Research Methods</h2><button class="share-btn" onclick="copyLink('cro-research-advanced')">Share</button></div>
+<p>Quantitative testing tells you what change improves conversion; research methods tell you why. The most information-dense research methods for experienced practitioners: moderated usability testing with think-aloud protocol (5–8 participants is typically sufficient to identify dominant barriers — Nielsen Norman Group's documented research shows diminishing returns to additional participants past this point); eye-tracking heatmaps for understanding visual attention patterns; card sorting and tree testing for information architecture research; and Jobs-to-Be-Done interviews for understanding the underlying motivations driving conversion barriers.</p>
+<p>Session recordings in mature programmes should be analysed with a specific hypothesis rather than browsed randomly — hypothesis-driven analysis (review 20 sessions specifically of users who reached the cart but did not complete checkout, looking for evidence of the specific barrier you are investigating) extracts more actionable insight per hour than unfocused watching.</p>
+</div>
+
+<div class="chapter" id="experimentation-culture">
+<div class="chap-hdr"><h2>Building an Experimentation Culture</h2><button class="share-btn" onclick="copyLink('experimentation-culture')">Share</button></div>
+<p>The technical infrastructure for high-velocity experimentation is the easier problem. The organisational culture that enables it — where failing tests are celebrated as learning, where intuitions are treated as hypotheses rather than answers, and where decisions wait for data rather than being made on seniority — is the harder and more valuable capability to build.</p>
+<p>Documented practices that accelerate experimentation culture: making experiment results publicly visible (a dashboard where everyone can see running and completed experiments with results); treating a well-designed test that produced a null result as a success (it prevented a change that would have been made on assumption); and explicitly separating the question "is this a well-designed experiment?" from "did the experiment find the answer we hoped for?" — evaluating teams on the quality of their experimentation process, not on the rate of positive results.</p>
+<p>The HIPPO problem — where the Highest Paid Person's Opinion overrides experimental evidence — is the most common cultural blocker to experimentation maturity. Organisations that have successfully addressed it tend to have explicit norms (we do not ship without experiment data for changes above a defined threshold) backed by leadership modelling (senior leaders visibly supporting null results and data-overridden intuitions).</p>
+</div>
+
+<div class="chapter" id="next">
+<h2>Further Reading</h2>
+<p>Go deeper with these reference guides from the Digital Codex library.</p>
+<div class="ns-grid"><a href="/codex/analytics-cro/ab-testing-methodology/" class="ns-card"><span class="ns-tag">Analytics Reference</span><span class="ns-title">A/B Testing Statistics</span></a><a href="/codex/analytics-cro/cro-framework/" class="ns-card"><span class="ns-tag">Analytics Reference</span><span class="ns-title">CRO Reference</span></a><a href="/codex/learn/expert/advanced-attribution-modelling/" class="ns-card"><span class="ns-tag">Expert Track</span><span class="ns-title">Advanced Attribution</span></a><a href="/codex/analytics-cro/heatmaps-session-recording/" class="ns-card"><span class="ns-tag">Analytics Reference</span><span class="ns-title">UX Research Methods</span></a></div>
+</div>
+<div class="chapter" id="sources">
+<h2>Sources &#38; References</h2>
+<div class="callout orange"><strong>Source integrity</strong><p>All frameworks, models, and data in this guide draw from peer-reviewed research, official documentation, and documented practitioner case studies.</p></div>
+<div class="g2"><div class="source-card"><span class="src-tag" style="background:#fdf4ff;color:#6b21a8">Research</span><strong><a href="https://www.microsoft.com/en-us/research/group/experimentation-platform-exp/" target="_blank" rel="noopener">Microsoft Research — Experimentation Platform</a></strong><p>Microsoft's documented research on large-scale A/B testing methodology and infrastructure.</p></div><div class="source-card"><span class="src-tag" style="background:#fdf4ff;color:#6b21a8">Research</span><strong><a href="https://www.exp-platform.com/Documents/2013%20controlledExperimentsAtScale.pdf" target="_blank" rel="noopener">Kohavi et al. — Controlled Experiments at Scale</a></strong><p>Foundational academic paper on large-scale experimentation methodology from Bing/Microsoft.</p></div><div class="source-card"><span class="src-tag" style="background:#f0fdf4;color:#166534">Framework</span><strong><a href="https://booking.ai/dont-use-a-fixed-horizon-test-b15b7e6f7fdf" target="_blank" rel="noopener">Booking.com — Sequential Testing</a></strong><p>Booking.com's documented practitioner guide to sequential testing methodology.</p></div><div class="source-card"><span class="src-tag" style="background:#fdf4ff;color:#6b21a8">Research</span><strong><a href="https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/" target="_blank" rel="noopener">Nielsen Norman Group — Usability Testing Sample Sizes</a></strong><p>NNG's documented research on optimal usability testing sample sizes.</p></div></div>
+</div>
+<div class="art-footer"><p><strong>Track:</strong> Expert &nbsp;&#183;&nbsp; <strong>Guide:</strong> 5/10 &nbsp;&#183;&nbsp; <strong>Published:</strong> 6 April 2026</p></div>
+</article>
+<aside>
+  <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#experimentation-maturity" class="sb-link on">Experimentation Maturity Model</a><a href="#frequentist-vs-bayesian" class="sb-link">Frequentist vs Bayesian Testing</a><a href="#sequential-testing" class="sb-link">Sequential Testing: Faster Decisions</a><a href="#mab" class="sb-link">Multi-Armed Bandits</a><a href="#test-design" class="sb-link">Advanced Test Design</a><a href="#experiment-platform" class="sb-link">Building an Experimentation Platform</a><a href="#novelty-effects" class="sb-link">Novelty Effects and Validity Threats</a><a href="#interaction-effects" class="sb-link">Interaction Effects Between Tests</a><a href="#cro-research-advanced" class="sb-link">Advanced CRO Research Methods</a><a href="#experimentation-culture" class="sb-link">Building an Experimentation Culture</a><a href="#next" class="sb-link">Further Reading</a><a href="#sources" class="sb-link">Sources</a></div></div>
+  <div class="sb-box" style="margin-top:1rem;background:#f5f3ff;border-color:#7c3aed">
+    <div class="sb-head" style="color:#4c1d95">Expert Track</div>
+    <div class="sb-body"><a href="/codex/learn/expert/advanced-attribution-modelling/" class="sb-link">1. Advanced Attribution Modelling</a><a href="/codex/learn/expert/programmatic-buying-advanced/" class="sb-link">2. Programmatic Buying: Advanced Strategy</a><a href="/codex/learn/expert/advanced-seo-technical-audit/" class="sb-link">3. Advanced Technical SEO Audit</a><a href="/codex/learn/expert/marketing-mix-modelling/" class="sb-link">4. Marketing Mix Modelling</a><a href="/codex/learn/expert/advanced-cro-experimentation/" class="sb-link  on">5. Advanced CRO & Experimentation</a><a href="/codex/learn/expert/saas-growth-metrics-advanced/" class="sb-link">6. SaaS Growth Metrics & Advanced Analytics</a><a href="/codex/learn/expert/b2b-revenue-operations/" class="sb-link">7. B2B Revenue Operations</a><a href="/codex/learn/expert/advanced-email-automation/" class="sb-link">8. Advanced Email Automation</a><a href="/codex/learn/expert/competitive-intelligence-advanced/" class="sb-link">9. Competitive Intelligence</a><a href="/codex/learn/expert/building-marketing-team-from-scratch/" class="sb-link">10. Building a Marketing Team From Scratch</a></div>
+  </div>
+</aside>
+</div></div></section>
+</main>
+<section class="cta-strip"><div class="wrap"><div class="cta-in">
+  <div><h2>218 deep-reference guides behind this track.</h2><p>Official sources only. Every claim cited.</p></div>
+  <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/learn/expert/" class="btn btn-outline-w btn-lg">Expert Track Index</a></div>
+</div></div></section>
+<footer class="site-footer"><div class="wrap"><div class="ft-grid">
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>Official sources only &#183; No affiliate links</p></div>
+  <div class="ft-col"><h5>Learn</h5><ul><li><a href="/codex/learn/expert/">Expert Track</a></li><li><a href="/codex/learn/beginner/">Beginner Track</a></li></ul></div>
+  <div class="ft-col"><h5>Sections</h5><ul><li><a href="/codex/analytics-cro/">Analytics</a></li><li><a href="/codex/seo/">SEO</a></li><li><a href="/codex/business-strategy/">Business</a></li></ul></div>
+  <div class="ft-col"><h5>Legal</h5><ul><li><a href="/privacy-policy/">Privacy Policy</a></li><li><a href="/terms-of-use/">Terms of Use</a></li></ul></div>
+</div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span></div></div></footer>
+<script>
+(function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');
+function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);
+if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();
+(function(){if(!('IntersectionObserver'in window))return;var ch=document.querySelectorAll('.chapter[id]'),nl=document.querySelectorAll('.cnl'),sl=document.querySelectorAll('#toc .sb-link');function set(id){[nl,sl].forEach(function(g){g.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id);});});}var ob=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)set(x.target.id);});},{rootMargin:'-15% 0px -70% 0px'});ch.forEach(function(c){ob.observe(c);});})();
+function copyLink(s){var u=window.location.origin+window.location.pathname+(s?'#'+s:'');navigator.clipboard&&navigator.clipboard.writeText(u);}
+var sb=document.getElementById('shareBtn');if(sb)sb.addEventListener('click',function(){copyLink('');this.textContent='Copied!';var b=this;setTimeout(function(){b.textContent='Share';},1600);});
+</script>
+</body>
+</html>

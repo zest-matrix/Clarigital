@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Document AI: How to Build It | Clarigital</title>
+<meta name="description" content="Build a document AI product step by step: the eight stages, your options at each one, how to connect them, and what it costs.">
+<link rel="canonical" href="/fintech-ai/products/document-ai/">
+<meta property="og:type" content="article"><meta property="og:title" content="Document AI: How to Build It">
+<meta property="og:description" content="Build a document AI product step by step: the eight stages, your options at each one, how to connect them, and what it costs."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/document-ai/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Document AI: How to Build It">
+<meta name="twitter:description" content="Build a document AI product step by step: the eight stages, your options at each one, how to connect them, and what it costs."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Document AI: How to Build It", "description": "Build a document AI product step by step: the eight stages, your options at each one, how to connect them, and what it costs.", "url": "https://www.clarigital.com/fintech-ai/products/document-ai/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-13"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Document AI: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/document-ai/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h4{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><span class="sep">&rsaquo;</span><span>Document AI: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 01</div>
+  <div class="ft-tag">Fintech AI</div><h1>Document AI: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building a document AI product. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What Document AI actually is</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 and 2 — getting a usable file</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Get the file</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Check it is usable</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 3 and 4 — what is it, and reading it</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; Work out what the document is</a><a class="sub" href="#s-indigo-s4">Step 4 &mdash; Read the text</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>The wiring between step 4 and step 5</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>Steps 5 and 6 — fields, and checking them</a><a class="sub" href="#s-indigo-s5">Step 5 &mdash; Turn words into fields</a><a class="sub" href="#s-indigo-s6">Step 6 &mdash; Check the fields are real</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>Steps 7 and 8 — deciding, and keeping proof</a><a class="sub" href="#s-indigo-s7">Step 7 &mdash; Accept, review or reject</a><a class="sub" href="#s-indigo-s8">Step 8 &mdash; Keep the evidence</a><a href="#s-indigo-5"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">The weekend version</a><a class="sub" href="#s-amber-proper">The proper version &mdash; start here if you are serious</a><a class="sub" href="#s-amber-big">The enterprise version</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page is different from the rest of this section. The modules explain how things work. The
+build sheets list what to buy. This page walks you through <strong>building one product, start to
+finish</strong>.</p>
+<p>It is written for someone who has not built this before. Every step says what goes in, what comes
+out, and how to plug it into the next step.</p>
+<table>
+<tr><th>If you want...</th><th>Read...</th></tr>
+<tr><td>To understand why document reading is hard</td><td><a href="/fintech-ai/identity-onboarding/">the Identity module</a></td></tr>
+<tr><td>A full list of every tool, with prices</td><td><a href="/fintech-ai/identity-onboarding/build-sheet/">the Identity Build Sheet</a></td></tr>
+<tr><td><strong>To build the thing</strong></td><td><strong>this page</strong></td></tr>
+</table>
+<p>Nothing here is secret. All of it is doable by two engineers in a few weeks. The hard part is not
+any single step. It is knowing which eight steps there are, and what to connect to what.</p>
+
+<h2 id="s-green-1">What Document AI actually is</h2>
+
+<p>Document AI takes a picture of a document and gives you back <strong>fields you can put in a
+database</strong>.</p>
+<p>Picture of a PAN card goes in. Out comes: name, PAN number, date of birth, father's name. Each
+one with a score saying how sure the system is.</p>
+<p>People also call it ICR, which stands for Intelligent Character Recognition. Older OCR read
+printed text. ICR is meant to also read handwriting and understand layout. In practice the words get
+used loosely and nobody minds.</p>
+<p><strong>What it is not:</strong></p>
+<ul>
+<li>It is <strong>not</strong> a decision. It reads a document. It does not tell you whether to open
+the account.</li>
+<li>It is <strong>not</strong> verification. Reading "Rajesh Kumar" off a card does not prove Rajesh
+Kumar exists or that this is his card. That is a different product.</li>
+<li>It is <strong>not</strong> one model. It is six or seven things in a row. This is the single
+biggest surprise for teams who thought they were buying an API.</li>
+</ul>
+<p>Who buys it: banks, lenders, insurers, and anyone who currently has people typing things off
+scanned paper. The business case is almost always <em>we have forty people doing data entry</em>.</p>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<p>Here is the whole thing. Eight steps. Read this table once and the rest of the page is just
+detail.</p>
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Get the file</strong></td><td>The document arrives from somewhere.</td></tr>
+<tr><td>2</td><td><strong>Check it is usable</strong></td><td>Is it too blurry to read? Find out before you pay to read it.</td></tr>
+<tr><td>3</td><td><strong>Work out what it is</strong></td><td>PAN card? Bank statement? You cannot extract fields until you know.</td></tr>
+<tr><td>4</td><td><strong>Read the text</strong></td><td>Turn pixels into words. This is the bit everyone calls "the OCR".</td></tr>
+<tr><td>5</td><td><strong>Turn words into fields</strong></td><td>A pile of words is not data. Which word is the name?</td></tr>
+<tr><td>6</td><td><strong>Check the fields are real</strong></td><td>Does the PAN number pass its checksum? Does the date make sense?</td></tr>
+<tr><td>7</td><td><strong>Accept, review or reject</strong></td><td>Send the uncertain ones to a human.</td></tr>
+<tr><td>8</td><td><strong>Keep the evidence</strong></td><td>What you read, from which image, how sure you were, when.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>Steps 2, 6, 7 and 8 are the ones people skip. They are also the ones that decide whether this works in production or only in the demo. A team that builds steps 1, 3, 4 and 5 has built a demo. That is not an insult &mdash; it is just a much smaller thing than it looks.</p></div>
+<p>Steps 3 and 4 are where the money goes. Steps 2, 6, 7 and 8 are where the product lives.</p>
+
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 and 2 — getting a usable file</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Get the file</h3>
+<p><strong>What it does:</strong> the document gets from the customer to your server.</p>
+<table>
+<tr><th>Option</th><th>What it is</th><th>Effort</th><th>Pick this when</th></tr>
+<tr><td><strong>A. Plain upload</strong></td><td>A file input on a web page.</td><td>Hours</td><td>Always start here. It works and it costs nothing.</td></tr>
+<tr><td><strong>B. Mobile SDK capture</strong></td><td>A vendor's camera component that guides the user and rejects bad shots on the phone.</td><td>Days, plus a licence</td><td>Consumer app, high volume, and bad photos are killing you.</td></tr>
+<tr><td><strong>C. DigiLocker fetch</strong></td><td>The customer consents and you receive the issued document directly.</td><td>Weeks, needs approval</td><td>You want a document that is already verified. Skips steps 2&ndash;6 entirely for supported documents.</td></tr>
+</table>
+<p><strong>What comes out:</strong> a file on disk or in object storage, plus an id.</p>
+<p><strong>Connect it to step 2:</strong> do not pass the file around. Save it once, give it an id, and
+pass the id. Every later step reads from storage using that id. If you pass image bytes between
+services you will run out of memory on the day someone uploads a 40&nbsp;MB scan.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Option C deserves more thought than it usually gets.</strong> If DigiLocker can give you the document directly, you are not reading a photograph of a PAN card &mdash; you are receiving the issued record. No blur, no glare, no OCR, no confidence score. Teams build the whole eight-step pipeline and only afterwards discover that a large share of their documents could have come down a route that skips six of the steps. Check what is available before you build.</p></div>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Check it is usable</h3>
+<p><strong>What it does:</strong> looks at the image and decides whether it is worth reading. Blurry,
+dark, cropped, upside down, or a photo of a screen.</p>
+<table>
+<tr><th>Option</th><th>What it is</th><th>Roughly costs</th><th>Pick this when</th></tr>
+<tr><td><strong>A. Simple maths</strong></td><td>OpenCV. Measure blur, brightness and resolution with about thirty lines of code.</td><td>Free</td><td>Start here. It catches most of the bad ones.</td></tr>
+<tr><td><strong>B. A small model</strong></td><td>A trained classifier that scores image quality.</td><td>Your own GPU time</td><td>Simple maths is passing things that later fail.</td></tr>
+<tr><td><strong>C. Skip it</strong></td><td>Send everything to the OCR and see what happens.</td><td>You pay per page, so this is the expensive option</td><td>Never, once you are past a few hundred documents a day.</td></tr>
+</table>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 2, the cheapest useful quality gate</span><button class="cb-copy" type="button">Copy</button></div><pre><code>import cv2
+
+# This is the whole thing. It is not clever. It works.
+def usable(path):
+    img = cv2.imread(path)
+    if img is None:
+        return {&quot;ok&quot;: False, &quot;why&quot;: &quot;not_an_image&quot;}
+
+    grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    h, w = grey.shape
+
+    # Blur. Laplacian variance: sharp images have high variance, blurry ones low.
+    blur = cv2.Laplacian(grey, cv2.CV_64F).var()
+
+    # Brightness. A photo taken in the dark, or washed out by flash.
+    bright = grey.mean()
+
+    checks = {
+        &quot;too_small&quot;:  w &lt; 800 or h &lt; 500,
+        &quot;too_blurry&quot;: blur &lt; 100,       # tune this on YOUR documents
+        &quot;too_dark&quot;:   bright &lt; 50,
+        &quot;too_bright&quot;: bright &gt; 205,
+    }
+    failed = [k for k, v in checks.items() if v]
+    return {&quot;ok&quot;: not failed, &quot;why&quot;: failed,
+            &quot;blur&quot;: round(blur, 1), &quot;brightness&quot;: round(bright, 1)}
+
+# WHAT TO CHECK
+# [ ] tune the thresholds on 200 of YOUR real documents, not on the numbers
+#     above. A PAN card photographed indoors and a scanned bank statement have
+#     completely different normal ranges
+# [ ] tell the user WHICH check failed. &quot;Please try again&quot; makes people retry
+#     the same bad photo. &quot;Too dark - move to a window&quot; gets you a good one
+# [ ] let the user override after two failures and send it to human review.
+#     A gate with no escape hatch becomes a customer who cannot open an account
+# [ ] log the scores even when the image passes. When accuracy drops next month
+#     you will want to know whether the images got worse
+</code></pre></div>
+<p><strong>What comes out:</strong> a yes/no, and if no, <em>which</em> check failed.</p>
+<p><strong>Connect it to step 3:</strong> only files that pass go forward. Files that fail go back to
+the user with the specific reason. This is the cheapest step on the page and it removes more OCR cost
+than anything else you will do.</p>
+
+<h2 id="s-indigo-1">Steps 3 and 4 — what is it, and reading it</h2>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; Work out what the document is</h3>
+<p><strong>What it does:</strong> decides whether this is a PAN card, an Aadhaar, a passport, a
+salary slip or a bank statement.</p>
+<p>You need this because step 4 and step 5 are different for each type. There is no general "read any
+document" that gives you clean fields.</p>
+<table>
+<tr><th>Option</th><th>What it is</th><th>Roughly costs</th><th>Pick this when</th></tr>
+<tr><td><strong>A. Ask the user</strong></td><td>A dropdown: "what are you uploading?"</td><td>Free</td><td>Start here. Genuinely. Most products never need more.</td></tr>
+<tr><td><strong>B. Keyword rules</strong></td><td>Run cheap OCR, look for giveaway words ("INCOME TAX DEPARTMENT", "Permanent Account Number").</td><td>≈ $1.50 per 1,000 pages</td><td>You have a few document types and they have distinctive text.</td></tr>
+<tr><td><strong>C. A classifier model</strong></td><td>Azure or Google classify the document before reading it.</td><td>≈ $3 per 1,000</td><td>Many types, or documents arrive in bulk with no user to ask.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>Option A sounds lazy and is usually right. If the user is standing in your app uploading their PAN card, they know it is a PAN card. Asking costs nothing and is more accurate than any classifier. Save the classifier for post boxes and bulk scans, where there is no user to ask.</p></div>
+<p><strong>What comes out:</strong> a document type, and a confidence score if you used B or C.</p>
+<p><strong>Connect it to step 4:</strong> the document type chooses <em>which</em> reader you call. PAN
+and Aadhaar go to an identity-document API. A bank statement goes to a table extractor. Sending a
+bank statement to an ID reader gets you nothing useful and still bills you.</p>
+
+<h3 id="s-indigo-s4">Step 4 &mdash; Read the text</h3>
+<p><strong>What it does:</strong> turns the picture into words, with a position on the page and a
+confidence for each one.</p>
+<table>
+<tr><th>Option</th><th>What it is</th><th>Roughly costs per 1,000 pages</th><th>Pick this when</th></tr>
+<tr><td><strong>A. Plain OCR</strong></td><td>AWS, Google or Azure. Just gives you words and boxes.</td><td><strong>≈ $1.50</strong>, all three within cents of each other</td><td>You will do the field-finding yourself in step 5.</td></tr>
+<tr><td><strong>B. Identity-document API</strong></td><td>AWS Textract AnalyzeID and equivalents. Knows what a passport and a driving licence look like.</td><td><strong>≈ $10&ndash;25</strong></td><td>ID documents specifically. It does steps 4 and 5 together.</td></tr>
+<tr><td><strong>C. Prebuilt or custom models</strong></td><td>Azure and Google models for invoices, receipts, and your own trained ones.</td><td>Prebuilt <strong>≈ $10</strong>, custom <strong>≈ $30</strong></td><td>A document type with a stable layout and real volume.</td></tr>
+<tr><td><strong>D. Self-hosted</strong></td><td>PaddleOCR, docTR, Tesseract on your own machine.</td><td><strong>No per-page fee.</strong> You pay for CPU, and GPU if you use a vision model</td><td>Data cannot leave your building, or volume is high enough that per-page pricing hurts.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Plain OCR is a commodity. Do not spend a week choosing.</strong> AWS, Google and Azure price it at roughly $1.50 per 1,000 pages and match each other to the cent. Pick the one your infrastructure already uses. The interesting choice is <strong>B versus A-plus-your-own-step-5</strong>, and that is a build-versus-buy decision, not a vendor comparison.</p></div>
+<p><strong>What comes out:</strong> a list of text pieces. Each has the text, a box saying where it sat
+on the page, and a confidence between 0 and 1.</p>
+<p><strong>Connect it to step 5:</strong> this is the most important handoff on the page, so it has its
+own section below.</p>
+
+<h2 id="s-indigo-2">The wiring between step 4 and step 5</h2>
+
+<p>Most guides stop after "call the OCR API". That is where the actual work starts, so this is the
+part we are going to be precise about.</p>
+<p>Step 4 gives you <strong>words</strong>. Step 5 needs to produce <strong>fields</strong>. The
+contract between them is where teams lose a fortnight.</p>
+<div class="cb"><div class="cb-head"><span class="cb-lang">The wiring — what step 4 hands to step 5, and what step 5 hands back</span><button class="cb-copy" type="button">Copy</button></div><pre><code># STEP 4 GIVES YOU THIS. Every OCR engine returns roughly this shape, with
+# different key names. Normalise to one shape IMMEDIATELY, in one small adapter
+# per engine. Then nothing downstream knows or cares which engine you used --
+# and swapping engines becomes a one-file change instead of a rewrite.
+
+ocr_output = {
+    &quot;doc_id&quot;: &quot;doc_8814&quot;,
+    &quot;engine&quot;: &quot;textract-v1&quot;,          # keep this. You WILL need to know later.
+    &quot;pages&quot;: [{
+        &quot;page&quot;: 1,
+        &quot;words&quot;: [
+            # text,            box (x, y, width, height as 0-1 fractions), score
+            {&quot;text&quot;: &quot;INCOME&quot;,   &quot;box&quot;: [0.10, 0.05, 0.08, 0.03], &quot;score&quot;: 0.99},
+            {&quot;text&quot;: &quot;TAX&quot;,      &quot;box&quot;: [0.19, 0.05, 0.04, 0.03], &quot;score&quot;: 0.99},
+            {&quot;text&quot;: &quot;ABCDE1234F&quot;,&quot;box&quot;: [0.10, 0.44, 0.22, 0.04], &quot;score&quot;: 0.97},
+            {&quot;text&quot;: &quot;RAJESH&quot;,   &quot;box&quot;: [0.10, 0.52, 0.12, 0.03], &quot;score&quot;: 0.94},
+            {&quot;text&quot;: &quot;KUMAR&quot;,    &quot;box&quot;: [0.23, 0.52, 0.11, 0.03], &quot;score&quot;: 0.95},
+        ],
+    }],
+}
+
+# STEP 5 MUST GIVE YOU THIS. Note what is carried through: the score, and WHERE
+# on the page it came from. Without those two, steps 6, 7 and 8 cannot work.
+
+fields_output = {
+    &quot;doc_id&quot;: &quot;doc_8814&quot;,
+    &quot;doc_type&quot;: &quot;pan_card&quot;,
+    &quot;fields&quot;: {
+        &quot;pan&quot;:  {&quot;value&quot;: &quot;ABCDE1234F&quot;, &quot;score&quot;: 0.97,
+                 &quot;source&quot;: {&quot;page&quot;: 1, &quot;box&quot;: [0.10, 0.44, 0.22, 0.04]}},
+        &quot;name&quot;: {&quot;value&quot;: &quot;RAJESH KUMAR&quot;, &quot;score&quot;: 0.94,   # LOWEST of its words
+                 &quot;source&quot;: {&quot;page&quot;: 1, &quot;box&quot;: [0.10, 0.52, 0.24, 0.03]}},
+    },
+    &quot;missing&quot;: [&quot;father_name&quot;, &quot;dob&quot;],      # ALWAYS list what you did not find
+}
+
+# WHAT TO CHECK
+# [ ] boxes as fractions of the page (0-1), never pixels. Pixels break the
+#     moment someone uploads the same document at a different resolution
+# [ ] a joined field takes the LOWEST score of its parts, not the average.
+#     &quot;RAJESH&quot; at 0.99 and &quot;KUMAR&quot; at 0.60 is a 0.60 name, not a 0.80 one.
+#     Averaging confidence is how bad reads get through
+# [ ] &quot;missing&quot; is a real list, not an absence of keys. &quot;We could not find the
+#     date of birth&quot; and &quot;we never looked for it&quot; are different facts
+# [ ] keep the box. When a human reviews this in step 7, you want to highlight
+#     the exact spot on the image. Reviewers go three to five times faster when
+#     they can see where the value came from
+# [ ] keep the engine name and its version. When accuracy shifts next quarter,
+#     the first question is whether the vendor changed the model
+# [ ] normalise every engine into this ONE shape in an adapter. Do not let
+#     Textract&#x27;s key names leak into your database
+</code></pre></div>
+<p>The rule underneath all of that: <strong>carry the confidence and the position all the way
+through.</strong> They feel like debugging information at step 5. By step 7 they are the product, and
+by step 8 they are your evidence.</p>
+
+<h2 id="s-indigo-3">Steps 5 and 6 — fields, and checking them</h2>
+
+<h3 id="s-indigo-s5">Step 5 &mdash; Turn words into fields</h3>
+<p><strong>What it does:</strong> decides which of those words is the name, which is the PAN number,
+which is the date of birth.</p>
+<table>
+<tr><th>Option</th><th>What it is</th><th>Roughly costs</th><th>Pick this when</th></tr>
+<tr><td><strong>A. Position rules</strong></td><td>On a PAN card the number is always in the same place. Take whatever text sits in that box.</td><td>Free</td><td>Fixed-layout documents. Fast, free, and completely predictable.</td></tr>
+<tr><td><strong>B. Label matching</strong></td><td>Find the word "Name", take what is to the right of it.</td><td>Free</td><td>Forms with printed labels. Handles small layout shifts.</td></tr>
+<tr><td><strong>C. Pattern matching</strong></td><td>A PAN is five letters, four digits, one letter. Find anything that matches.</td><td>Free</td><td>Fields with a strict format. Combine with A or B.</td></tr>
+<tr><td><strong>D. Let the API do it</strong></td><td>You picked option B in step 4, so fields come back already extracted.</td><td>Included in the $10&ndash;25</td><td>ID documents. Least code by a distance.</td></tr>
+<tr><td><strong>E. Ask a language model</strong></td><td>Give the model the OCR text and ask for JSON.</td><td>Per token, so it depends</td><td>Messy or varied layouts where A, B and C all fail.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Option E has a trap.</strong> A language model will happily invent a plausible date of birth if the OCR did not read one. You asked for JSON with a <code>dob</code> field and it will give you a <code>dob</code> field. Two rules if you use it: pass only the OCR text and <strong>never the image description</strong>, and then check every returned value actually appears in the OCR output. If the model returns something the OCR never read, throw it away and mark the field missing. This is the same rule as the refusal gate in <a href="/fintech-ai/customer-operations/build-sheet/">Build Sheet 06</a> &mdash; the value must be present in the retrieved text, not merely plausible.</p></div>
+<p><strong>Connect it to step 6:</strong> pass the whole field object, with scores and boxes. Do not
+flatten it to plain strings here. Step 6 needs the scores and step 7 needs the boxes.</p>
+
+<h3 id="s-indigo-s6">Step 6 &mdash; Check the fields are real</h3>
+<p><strong>What it does:</strong> catches wrong values that the OCR was <em>confident</em> about. This
+is the step that separates a demo from a product.</p>
+<p>A confidence score tells you how clearly the system saw the characters. It does not tell you
+whether the answer is right. An OCR engine can read a smudged 8 as a 3 with 0.98 confidence.</p>
+<table>
+<tr><th>Check</th><th>What it catches</th><th>Costs</th></tr>
+<tr><td><strong>Format</strong></td><td>A PAN that is not five letters, four digits, one letter. An eleven-digit phone number.</td><td>Free</td></tr>
+<tr><td><strong>Checksum</strong></td><td>Aadhaar has a check digit. So do IFSC and GSTIN and many others. A single misread character fails it.</td><td>Free</td></tr>
+<tr><td><strong>Cross-field</strong></td><td>Date of birth after today. Issue date after expiry date. Age of four on a PAN card.</td><td>Free</td></tr>
+<tr><td><strong>Against the source</strong></td><td>Ask the issuing authority whether this number exists and matches this name.</td><td>Per lookup, varies by provider</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>The first three are free and catch most of it. Do all three before you spend money on the fourth. A field that fails a checksum does not need a paid lookup to tell you it is wrong &mdash; and sending it anyway is a cost you can remove on your first afternoon.</p></div>
+<p><strong>Connect it to step 7:</strong> each field now carries both a confidence <em>and</em> a
+validation result. Step 7 needs both, and they disagree more often than you would expect. A field can
+be read clearly and still be wrong; a field can be read poorly and still be correct.</p>
+
+<h2 id="s-indigo-4">Steps 7 and 8 — deciding, and keeping proof</h2>
+
+<h3 id="s-indigo-s7">Step 7 &mdash; Accept, review or reject</h3>
+<p><strong>What it does:</strong> turns scores and checks into an actual decision about this document.</p>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 7, deciding what to do with each document</span><button class="cb-copy" type="button">Copy</button></div><pre><code># Three outcomes. Never two. A system with only accept and reject will either
+# reject good customers or accept bad data, and usually both.
+
+def decide(fields, doc_type, rules):
+    hard_fail, weak = [], []
+
+    for name, f in fields.items():
+        if name in rules[&quot;required&quot;][doc_type]:
+            if f[&quot;value&quot;] is None:
+                hard_fail.append((name, &quot;missing&quot;))
+                continue
+            if not f[&quot;valid&quot;]:                    # from step 6
+                hard_fail.append((name, f[&quot;invalid_reason&quot;]))
+                continue
+            if f[&quot;score&quot;] &lt; rules[&quot;min_score&quot;].get(name, 0.90):
+                weak.append((name, f[&quot;score&quot;]))
+
+    # A failed CHECKSUM is different from a LOW SCORE. The first means the value
+    # is wrong. The second means we are unsure. Do not merge them into one
+    # &quot;confidence&quot; number -- you lose the ability to tell the user which it was.
+    if hard_fail:
+        return {&quot;outcome&quot;: &quot;review&quot;, &quot;reason&quot;: &quot;failed_validation&quot;,
+                &quot;detail&quot;: hard_fail, &quot;show_boxes&quot;: True}
+    if weak:
+        return {&quot;outcome&quot;: &quot;review&quot;, &quot;reason&quot;: &quot;low_confidence&quot;,
+                &quot;detail&quot;: weak, &quot;show_boxes&quot;: True}
+    return {&quot;outcome&quot;: &quot;accept&quot;}
+
+# WHAT TO CHECK
+# [ ] &quot;reject&quot; is almost never the right automatic outcome for a document that
+#     a real customer uploaded. Route to REVIEW. Let a person reject
+# [ ] the review screen shows the image with the box drawn on it, next to the
+#     extracted value, in one editable field. Reviewers go 3-5x faster
+# [ ] thresholds live in config, are versioned, and are approved. Changing a
+#     threshold changes who gets accepted -- treat it as a control change
+# [ ] measure the review queue every week. If it is growing faster than volume,
+#     something upstream broke and nobody noticed
+# [ ] measure the OVERRIDE RATE. If humans accept 95% of what you send them,
+#     your thresholds are too tight and you are paying people to click yes
+# [ ] every correction a reviewer makes is training data and a bug report.
+#     Store the before and after. This is the highest-value data you will
+#     generate and most teams throw it away
+</code></pre></div>
+<p><strong>Connect it to step 8:</strong> the decision, the reason and the reviewer's edits all go into
+the record. Especially the edits.</p>
+
+<h3 id="s-indigo-s8">Step 8 &mdash; Keep the evidence</h3>
+<p><strong>What it does:</strong> stores what happened, so that in two years you can answer "why did
+you accept this document?"</p>
+<p>This is the step that gets left until last and then never gets built. It is also the one that
+regulators and auditors ask about first.</p>
+<table>
+<tr><th>Store</th><th>Why</th></tr>
+<tr><td>The original image</td><td>Everything else is a claim about it.</td></tr>
+<tr><td>The full OCR output</td><td>So you can re-run step 5 later without paying for step 4 again.</td></tr>
+<tr><td>The extracted fields, with scores and boxes</td><td>What you believed, and how sure you were.</td></tr>
+<tr><td>Which engine and which version</td><td>When accuracy shifts, this is the first thing you check.</td></tr>
+<tr><td>Which thresholds were in force</td><td>The rules change. The record must say which rules applied that day.</td></tr>
+<tr><td>The decision, and who made it</td><td>Automatic, or a named reviewer.</td></tr>
+<tr><td>Every correction a human made</td><td>Your best training data and your best bug report.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p>Store the record <strong>append-only</strong>. A correction is a new row, never an edit to the old one. The question is not only &ldquo;what do we believe now&rdquo; but &ldquo;what did we believe on the day we opened the account&rdquo;, and an updated row cannot answer the second one.</p></div>
+<h2 id="s-indigo-5">What it costs</h2>
+<div class="reg"><div class="reg-head"><h4>Document AI — what it costs per 1,000 pages</h4><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">Quality gate (step 2)<span class="pill p-oss">oss</span></div><div class="d"><strong>Free.</strong> OpenCV, thirty lines. Removes more OCR spend than any other decision here.</div></div><div class="reg-row"><div class="n">Classification (step 3)<span class="pill p-direct">direct</span></div><div class="d"><strong>Free</strong> if you ask the user. <strong>&asymp; $3</strong> per 1,000 for a cloud classifier. <strong>&asymp; $1.50</strong> if you classify by running plain OCR and keyword matching.</div></div><div class="reg-row"><div class="n">Plain OCR (step 4)<span class="pill p-direct">direct</span></div><div class="d"><strong>&asymp; $1.50 per 1,000 pages</strong> on AWS, Google and Azure &mdash; matching to the cent. Falls to <strong>&asymp; $0.60</strong> at high volume (above roughly 1M/month on Azure, 5M on Google). <strong>Price is not a reason to choose between them.</strong></div></div><div class="reg-row"><div class="n">Identity-document API (step 4+5)<span class="pill p-direct">direct</span></div><div class="d">AWS Textract AnalyzeID and equivalents: <strong>&asymp; $10&ndash;25 per 1,000</strong>. Does the reading and the field extraction together for ID documents.</div></div><div class="reg-row"><div class="n">Prebuilt and custom models<span class="pill p-direct">direct</span></div><div class="d">Prebuilt <strong>&asymp; $10 per 1,000</strong>. Custom extraction <strong>&asymp; $30 per 1,000</strong> on both Azure and Google.</div></div><div class="reg-row"><div class="n">Forms and tables<span class="pill p-direct">direct</span></div><div class="d">AWS Textract: tables <strong>&asymp; $15</strong>, forms <strong>&asymp; $50</strong>, forms+tables+queries <strong>&asymp; $65&ndash;70</strong> per 1,000. <strong>The wrong tool for an ID card</strong> &mdash; this is for bank statements and application forms.</div></div><div class="reg-row"><div class="n">Self-hosted (step 4)<span class="pill p-oss">oss</span></div><div class="d"><strong>No per-page fee.</strong> PaddleOCR, docTR, Tesseract. You pay for CPU, and GPU if you use a vision model. Check the licence of every model you pull &mdash; some are research-only.</div></div><div class="reg-row"><div class="n">Human review (step 7)<span class="pill p-direct">direct</span></div><div class="d"><strong>The line that decides your business case.</strong> A reviewer costs the same whether the document was cheap or expensive to read. If 30% of documents go to review, your real cost per document is dominated by people, not by API calls.</div></div></div><div class="warn"><span class="note-lbl">Watch out</span><p><strong>Features stack, and one document can hit several meters.</strong> A non-standard document typically runs a classifier (&asymp;$3) and then custom extraction (&asymp;$30), so the real cost is the sum of every model that fires &mdash; not a single headline rate. This is the most common mistake in a document-AI cost estimate.</p></div><div class="note"><span class="note-lbl">Note</span><p>Two more things that quietly distort estimates. Google bills roughly <strong>$0.05 an hour per deployed custom processor version</strong> &mdash; about <strong>$438 a year</strong> whether or not you send it any traffic. And <strong>multi-page documents bill page by page</strong>, so a 40-page file is 40 billable pages even if you only need page one.</p></div>
+<p>These figures were verified in May 2026 for <a href="/fintech-ai/identity-onboarding/build-sheet/">Build
+Sheet 01</a> and are carried here unchanged. Cloud pricing moves. Check the vendor's calculator before
+you commit to a number in a business case.</p>
+
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">The weekend version</h3>
+<p><strong>Build:</strong> upload form &rarr; OpenCV quality check &rarr; ask the user what the
+document is &rarr; Textract AnalyzeID &rarr; format and checksum validation &rarr; anything uncertain
+goes to a spreadsheet a person looks at &rarr; store everything in one Postgres table.</p>
+<p><strong>You get:</strong> a working product. Genuinely. Two engineers, one weekend, and it handles
+real documents.</p>
+<p><strong>It breaks when:</strong> volume passes a few hundred a day, or the review spreadsheet gets
+more than one person using it.</p>
+
+<h3 id="s-amber-proper">The proper version &mdash; start here if you are serious</h3>
+<p><strong>Build:</strong> everything above, plus &mdash; a real review interface that draws the box
+on the image &rarr; one adapter per OCR engine so you can switch &rarr; thresholds in versioned
+config &rarr; an append-only evidence table &rarr; corrections captured as training data &rarr;
+weekly numbers on queue size and override rate.</p>
+<p><strong>You get:</strong> something you can run a business on and show an auditor.</p>
+<p><strong>Cost shape:</strong> the API bill is small. The reviewers are the cost.</p>
+<p><strong>It breaks when:</strong> nothing, for a long time. This is the right build for almost
+everyone.</p>
+
+<h3 id="s-amber-big">The enterprise version</h3>
+<p><strong>Build:</strong> everything above, plus &mdash; self-hosted OCR for data that cannot leave
+your building &rarr; custom models per document type &rarr; a routing layer that picks the cheapest
+engine that will work &rarr; full audit and model governance.</p>
+<p><strong>Use when:</strong> millions of documents, or a data-residency rule that rules out the cloud
+APIs.</p>
+<p><strong>It breaks when:</strong> you build it too early. Most teams that start here spend six
+months and end up with the proper version anyway, having paid for the detour.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>build the weekend version first, this week.</strong> Run 200 real documents through it. What you learn in those 200 documents will change your design more than any amount of planning, and you will have thrown away almost nothing.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<p>Ranked by how often we see them, not by how serious they are.</p>
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>High confidence, wrong value</strong></td><td>Confidence measures how clearly the characters were seen, not whether the answer is right.</td><td>Step 6. Checksums and format rules, always, even on 0.99 fields.</td></tr>
+<tr><td><strong>Review queue quietly grows</strong></td><td>Something upstream changed &mdash; a new phone camera, a redesigned document, a vendor model update.</td><td>Chart queue size weekly. A rising line is always upstream.</td></tr>
+<tr><td><strong>The cost is triple the estimate</strong></td><td>Features stacked. Classifier plus custom extraction plus tables, all on one document.</td><td>Add up every meter that fires, per document type.</td></tr>
+<tr><td><strong>Averaged confidence hides a bad read</strong></td><td>A name joined from two words took the mean instead of the minimum.</td><td>Lowest score wins on any joined field.</td></tr>
+<tr><td><strong>The model invented a field</strong></td><td>A language model was asked for JSON and filled in a blank.</td><td>Check every value appears in the OCR text. If not, mark it missing.</td></tr>
+<tr><td><strong>Cannot explain a decision from last year</strong></td><td>The record was updated in place, or the thresholds were never stored.</td><td>Append-only, with the threshold version on every row.</td></tr>
+<tr><td><strong>Works in the demo, fails in the app</strong></td><td>Demo used clean scans. Real users send photos at night, at an angle, with a thumb over the corner.</td><td>Step 2, and test on photos your own team took on their own phones.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<p>This page covered one product. The same eight-step shape appears in others, and once you have
+built this you will recognise it.</p>
+<div class="mod-grid">
+<a href="/fintech-ai/identity-onboarding/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 01</div><h3>Identity &amp; Onboarding</h3><p>Every tool in this space with full pricing, plus the face-match and liveness layer that sits next to this one.</p></a>
+<a href="/fintech-ai/identity-onboarding/" class="mod-card"><div class="mod-num">MODULE 01</div><h3>Why this is hard</h3><p>The background: why document reading fails, and what verification actually proves.</p></a>
+<a href="/fintech-ai/customer-operations/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 06</div><h3>Grounding &amp; refusal</h3><p>The rule that stops a language model inventing a field, written out properly.</p></a>
+<a href="/fintech-ai/regulation-india/" class="mod-card"><div class="mod-num">REFERENCE</div><h3>India regulation</h3><p>What you are allowed to store, for how long, and what the KYC rules require.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. Document AI inside a regulated process carries KYC, record-keeping and data-protection obligations. Nothing here is legal advice. Have your retention, consent and review process checked by someone qualified before real customer documents go through it.</p></div>
+<h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which numbers are primary-sourced and which are industry reporting &mdash; they are not equivalent, and treating them as if they were is how a confident wrong number gets repeated.</p><div class="srcs"><ol><li><span class="src-k src-vendor">vendor</span><strong>AWS Textract pricing</strong> &mdash; plain OCR, AnalyzeID, tables, forms and queries, and the high-volume tiering. <a href="https://aws.amazon.com/textract/pricing/" target="_blank" rel="noopener">aws.amazon.com</a></li><li><span class="src-k src-vendor">vendor</span><strong>Azure AI Document Intelligence pricing</strong> &mdash; prebuilt and custom extraction rates, and the volume tiers. <a href="https://azure.microsoft.com/pricing/details/ai-document-intelligence/" target="_blank" rel="noopener">azure.microsoft.com</a></li><li><span class="src-k src-vendor">vendor</span><strong>Google Document AI pricing</strong> &mdash; processor rates, the per-hour deployed custom processor charge, and per-page billing on multi-page files. <a href="https://cloud.google.com/document-ai/pricing" target="_blank" rel="noopener">cloud.google.com</a></li><li><span class="src-k src-official">official</span><strong>DigiLocker</strong> &mdash; the issued-document route that skips most of the pipeline for supported documents. <a href="https://www.digilocker.gov.in" target="_blank" rel="noopener">www.digilocker.gov.in</a></li><li><span class="src-k src-official">official</span><strong>Income Tax Department &mdash; PAN</strong> &mdash; the PAN format used in the validation step. <a href="https://www.incometax.gov.in" target="_blank" rel="noopener">www.incometax.gov.in</a></li><li><span class="src-k src-industry">industry</span><strong>Open-source OCR projects</strong> &mdash; PaddleOCR, docTR and Tesseract, and the licence check required on any model pulled with them.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Pricing and draft regulation move; the date is part of the claim.</p></div></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>
