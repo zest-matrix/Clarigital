@@ -11,6 +11,7 @@ ne=nesting_errors(verbose=False)
 hr=home_route(verbose=False)
 oi=og_image_exists(verbose=False)
 ms=missing_sources(verbose=False)
+bu=bad_absolute_urls(verbose=False)
 hd=handler_check(verbose=False); ihd=inline_hidden_check(verbose=False)
 links=set()
 for f in H:
@@ -29,7 +30,7 @@ for f in H:
         except Exception: badld+=1
 flat=[f for f in H if not f.endswith('index.html')]
 ck=[("Broken internal links",len(bl)),("HTML structure errors",len(st)),("Render/JS problems",len(rc)),("Orphan pages",len(orph)),
- ("Inline handler errors",len(hd)),("Inline-hidden content",len(ihd)),("Nav section coverage",len(nv)),("Block nesting errors",len(ne)),("No route to home",len(hr)),("og:image file missing",len(oi)),("Pages missing sources",len(ms)),
+ ("Inline handler errors",len(hd)),("Inline-hidden content",len(ihd)),("Nav section coverage",len(nv)),("Block nesting errors",len(ne)),("No route to home",len(hr)),("og:image file missing",len(oi)),("Pages missing sources",len(ms)),("Malformed absolute URLs",len(bu)),
  ("Empty directories",sum(1 for r,ds,fs in os.walk('.') if not ds and not fs and r!='.')),
  ("Duplicate flat/dir pages",len([f for f in flat if os.path.exists(f[:-5]+'/index.html')])),
  ("Duplicate titles",sum(v for v in t.values() if v>1)),
@@ -54,5 +55,5 @@ if rc: print("\nrender:",list(rc.items())[:5])
 if hd: print("\nhandlers:",list(hd.items())[:6])
 if ihd: print("\ninline-hidden:",list(ihd.items())[:6])
 print(f"\n[metric] content pages under 800 words: {len(thin_content(verbose=False))}")
-print(f"[metric] pages with stamps >4 months old: {len(stale_stamps(verbose=False))}")
+print(f"[metric] old stamps NEXT TO a decaying figure: {len(decaying_stamps(verbose=False))}")
 print(f"[metric] classes used with no CSS rule: {len(orphan_classes(verbose=False))}")

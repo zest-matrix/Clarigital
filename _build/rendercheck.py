@@ -133,6 +133,12 @@ def inline_hidden_check(verbose=True):
 
 
 def stale_stamps(months=4, verbose=True):
+    """Session 66 note: this metric OVER-COUNTS. Of 292 pre-May-2026 stamps,
+    138 sit on pages with no figure that can decay -- a conceptual guide whose
+    dateModified says April 2026 is CORRECT, and bumping it would be lying to
+    readers and to search engines about freshness. Only the ~101 pages that
+    quote prices or dated regulation are a real re-verification backlog.
+    Use decaying_stamps() for the number that matters."""
     """Reportable metric. A stale date is valid HTML, valid JSON-LD and a working
     page, which is exactly why 545 pages carried a four-month-old dateModified
     without any check noticing."""
@@ -302,3 +308,44 @@ def missing_sources(verbose=True):
         print(f"Build sheets / product guides with no sources block: {len(bad)}")
         for f in bad[:10]: print("  ", f)
     return bad
+
+
+def bad_absolute_urls(verbose=True):
+    """Session 66. A page carried `clarigital.com/https:/www.yourdigitalcodex.com/...`
+    in its canonical, og:url AND breadcrumb JSON-LD -- a concatenation bug pointing at
+    a domain this site no longer uses, with breadcrumb names of "Https:" and
+    "Www.Yourdigitalcodex.Com". linkcheck never saw it because it only validates
+    paths, not whether an absolute URL is coherent."""
+    bad = {}
+    for f in glob.glob('**/*.html', recursive=True):
+        h = open(f, errors='ignore').read()
+        hits = re.findall(r'https?://[^"\'<> ]*(?:clarigital\.com/https:|digitalcodex\.com)[^"\'<> ]*', h)
+        if hits:
+            bad[f] = sorted(set(hits))[:3]
+    if verbose:
+        print(f"Pages with malformed or foreign absolute URLs: {len(bad)}")
+        for f, u in list(bad.items())[:10]: print(f"  {f}: {u}")
+    return bad
+
+
+def decaying_stamps(verbose=True):
+    """The honest version of stale_stamps: only pages whose old verification
+    stamp sits next to something that decays -- money, pricing, or a dated rule."""
+    import datetime
+    cut = datetime.date.today() - datetime.timedelta(days=120)
+    MON = {m: i+1 for i, m in enumerate(['January','February','March','April','May','June',
+           'July','August','September','October','November','December'])}
+    ABB = {m[:3]: i+1 for i, m in enumerate(MON)}
+    out = []
+    for f in glob.glob('**/*.html', recursive=True):
+        h = open(f, errors='ignore').read()
+        old = False
+        for mo, yr in re.findall(r'(?:Verified|Updated) ([A-Z][a-z]{2,8}) (\d{4})', h):
+            n = MON.get(mo) or ABB.get(mo[:3])
+            if n and datetime.date(int(yr), n, 1) < cut:
+                old = True
+        if old and re.search(r'(?:\$|\u20b9|&#8377;|USD|INR)\s?[\d,]+|\bper month\b|\bpricing\b', h, re.I):
+            out.append(f)
+    if verbose:
+        print(f"Pages with an old stamp NEXT TO a decaying figure: {len(out)}")
+    return out

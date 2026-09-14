@@ -1,6 +1,6 @@
 # Clarigital.com — Master Project File
-**Last updated: Monday 14 September 2026, 4:25 PM IST**
-**Current deploy zip: `clarigital-v58.zip`**
+**Last updated: Monday 14 September 2026, 5:00 PM IST**
+**Current deploy zip: `clarigital-v59.zip`**
 **Live site:** https://www.clarigital.com
 **Hosted on:** Cloudflare Pages (static, zero server-side functions)
 
@@ -10,10 +10,10 @@
 
 ```bash
 cd /home/claude/audit
-unzip -q /mnt/user-data/uploads/clarigital-v58.zip
+unzip -q /mnt/user-data/uploads/clarigital-v59.zip
 cd clarigital-v*/          # folder is named for the version
 cp _build/*.py /tmp/          # scripts live in the zip, not in /tmp
-python3 /tmp/audit.py         # confirm 22/22 at zero before changing anything
+python3 /tmp/audit.py         # confirm 23/23 at zero before changing anything
 ```
 
 All build and verification scripts are bundled at `_build/` inside the zip. `_build/README.md`
@@ -82,6 +82,74 @@ lost — the old 534 double-counted. Unique Codex guides actually rose by 33 in 
 | Invalid JSON-LD | 0 ✅ |
 | Titles over 65 chars | 0 ✅ |
 | Broken course lesson links | 0 of 1,020 ✅ |
+
+---
+
+### Session 66 — HOUSEKEEPING, AND A DEAD DOMAIN IN THE CANONICALS (DONE, 14 Sep 2026)
+
+Two carried items. Investigating the first turned up something considerably worse.
+
+#### ⚠ A DOMAIN THIS SITE NO LONGER USES, IN CANONICAL AND og:url
+
+`codex/all-guides/` and two other pages carried:
+
+```
+https://www.clarigital.com/https:/www.yourdigitalcodex.com/all-guides/
+```
+
+A **concatenation bug** — an absolute URL pasted into a path slot — pointing at a domain the
+site no longer uses. It appeared in **`rel=canonical`, `og:url` and the breadcrumb JSON-LD**, and the
+breadcrumb had been generated *from the broken URL*, producing list items literally named
+**`"Https:"`** and **`"Www.Yourdigitalcodex.Com"`**.
+
+**Every check was green.** `linkcheck` validates *paths*; it had no opinion on whether an absolute
+URL was coherent. A wrong canonical is one of the more damaging SEO defects available and it sat
+there invisibly.
+
+All three pages fixed; the breadcrumb rebuilt as Home → The Codex → All 364 Guides.
+
+**My first fix broke two links** — stripping the old domain left `/seo/how-google-search-works/`
+and `/all-guides/` without their `/codex/` prefix. `linkcheck` caught it in the same cycle. Repaired
+with an existence assertion on every target before writing.
+
+**CHECK #23 — &ldquo;Malformed absolute URLs&rdquo;.** Flags any absolute URL that is
+self-concatenated or points at a foreign domain we used to own.
+
+#### The fifth stale count: "All 218 Digital Marketing Guides"
+
+The **all-guides page** — the one whose entire job is listing everything — said **218** in its
+title, meta description, og, twitter card and JSON-LD, against **364** actual guides. Now correct.
+
+Sixth occurrence of a hardcoded count going stale (313 → 253 → 218 → 220 → the search
+placeholder → this). **Counts that describe the site must be derived at build time or removed.**
+
+#### The stale-stamp metric was measuring the wrong thing
+
+108 &rarr; investigated rather than bulk-fixed, and the split matters:
+
+| | Count | Verdict |
+|---|---|---|
+| Pages stamped Apr 2026 with **no figure that can decay** | **138** | **Correct as-is.** A conceptual guide whose `dateModified` says April is honest. **Bumping it would be lying** to readers and to search engines about freshness |
+| Pages stamped Apr 2026 that **quote prices or dated rules** | **~101** | A real re-verification backlog |
+
+**`stale_stamps()` kept with a docstring warning that it over-counts; `decaying_stamps()` added and
+wired into the audit in its place** — old stamp *next to* money, pricing or a dated rule.
+Currently **151** across the site.
+
+**The principle: a metric that tells you to do a dishonest thing is a broken metric.** Bumping 292
+dates would have turned every one of those checks green and made the site less trustworthy.
+
+#### Codex hub, resolved as deliberate
+
+**129 of 364 guides are not linked from the hub** — they live under section sub-hubs, and the
+orphan check is green because every one has an inbound link. The hub links `/codex/all-guides/`,
+which is the correct route. That is a **curated hub, not a broken one**, and it is now recorded as
+deliberate so it stops being re-raised.
+
+*(Open: `all-guides` itself lists 236 of 364. Not fixed this session — it needs the listing
+regenerated from the filesystem rather than hand-maintained, which is its own piece of work.)*
+
+**Site: 23/23 at zero &middot; 870 pages &middot; linkcheck 0.**
 
 ---
 
@@ -982,12 +1050,14 @@ site is verified and whatever is broken gets fixed.
 | ~~63~~ | ~~Sources pass part 1 — 9 build sheets + product guide~~ **DONE**, check #22 |
 | ~~64~~ | ~~**★ QA #2** — Courses~~ **DONE** — found the progress bar never updated |
 | ~~65~~ | ~~Sources pass part 2 — all 26 fintech pages~~ **DONE**, check #22 widened |
-| 66 | Housekeeping — 108 stale stamps, Codex hub 220 cards vs 364 guides |
+| ~~66~~ | ~~Housekeeping~~ **DONE** — dead domain in canonicals, check #23, metric corrected |
+| 67 | Regenerate `all-guides` from the filesystem (lists 236 of 364) |
 | ~~62~~ | ~~Fintech theme~~ **DONE** — section menu still outstanding |
 | ~~63~~ | ~~Sources pass part 1 — 9 build sheets + product guide~~ **DONE**, check #22 |
 | ~~64~~ | ~~**★ QA #2** — Courses~~ **DONE** — found the progress bar never updated |
 | ~~65~~ | ~~Sources pass part 2 — all 26 fintech pages~~ **DONE**, check #22 widened |
-| 66 | Housekeeping — 108 stale stamps, Codex hub 220 cards vs 364 guides |
+| ~~66~~ | ~~Housekeeping~~ **DONE** — dead domain in canonicals, check #23, metric corrected |
+| 67 | Regenerate `all-guides` from the filesystem (lists 236 of 364) |
 | **64** | **★ QA** |
 | 65 | Housekeeping — 108 stale stamps, Codex hub 220 cards vs 364 guides |
 | 66–68 | Product guides 02–04 |
