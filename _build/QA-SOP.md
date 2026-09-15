@@ -44,7 +44,8 @@ down what it does **not** cover — that sentence is where the next defect is hi
 | B4 | Every page links all five sections, top nav **and** drawer | **AUTO** — `Nav section coverage`. Added S53 after only **29 of 631** linked Fintech |
 | B5 | Every page can reach the site root | **AUTO** — `No route to home`. Deliberately weaker than B4 so sections with their own nav are held to a floor |
 | B6 | Sitemap = search index = page count | **AUTO** |
-| B7 | **Findability** beyond "not orphaned" | **MANUAL** — S61b: 12 pages shipped reachable only from one footer line. *Not orphaned is much weaker than findable* |
+| B7 | **Findability** beyond "not orphaned" | **MANUAL** — S61b: 12 pages shipped reachable only from one footer line. **S81: 7 of 8 product guides had no route in from the Fintech hub**, each linked only from its own module page. *Not orphaned is much weaker than findable*, and the orphan check is green at one inbound link |
+| B10 | **Link TEXT matches the target page** | **METRIC** — added S89 after `codex/all-guides/` showed the **`linkedin-algorithm` title on three different guides** — residual Session 76 contamination, in a generated index nobody re-ran after the source pages were fixed. Precise form: *link text is exactly another page&rsquo;s `<h1>`, and not the target&rsquo;s* — **14 hits, 1 real**. The loose form (no shared word) returns **1,265 across 280 pages** and is useless: editorial labels legitimately differ from titles. *Does not cover:* a wrong link whose text matches nothing on the site |
 | B8 | Outbound links still alive | **GAP** — one external link in AI Kids; nothing checks whether any external target still exists |
 | B9 | 404 page | **DONE** — `404.html` built from the site shell, noindex, excluded from the sitemap |
 
@@ -52,12 +53,13 @@ down what it does **not** cover — that sentence is where the next defect is hi
 
 | # | Check | Status |
 |---|---|---|
-| C1 | Pages under 800 words | **METRIC** — 217. ~70 are hubs where short is *correct* |
+| C1 | Pages under 800 words | **METRIC** — 217, flat across seven QAs. Classified S87, **corrected S88** (`_build/rescope.py` → `_build/thin-pages.md`): **45 HUB · 49 SYLLABUS · 3 NEARLY · 120 WRITE · 0 CUT**. **94 pages are routing, where short is correct**; the real backlog is **123**. Chrome is ~35 words, so the threshold is not inflated by nav and footer. *Does not cover:* whether a HUB or SYLLABUS is **thin as well as short** |
 | C2 | House style: British spelling, no em-dash asides, no "it's worth noting" | **MANUAL** |
 | C3 | "What to check" lists inside code blocks | **MANUAL** |
 | C4 | No stubs; unbuilt cards are non-clickable | **MANUAL** |
 | C5 | **Content leaking between pages** | **AUTO** — check #25. S76: three pages carried another article's og tags *and its `<h1>`* |
-| C6 | Duplicate or near-duplicate body content | **GAP** |
+| C8 | **Telling a routing page from a content page** | **SCRIPTED** — `rescope.py`. S87 tested `kids>=1`, which only looks DOWN the tree; a course syllabus routes OUTWARD to `/codex/` and 49 of them were counted as a content backlog. S88 added a template-keyed `syllabus_links()`. **A link-count threshold was measured and rejected**: courses score 8–21 out-links but AI Atlas tool guides reach 14–15 from a related-tools sidebar, so arithmetic cannot separate them and structure can. *Does not cover:* any future routing page that uses neither a child directory nor the lessons-list template |
+| C6 | Duplicate or near-duplicate body content | **METRIC** — S84 **Fintech**: max pairwise overlap **6.4%**, all boilerplate. S89 **Codex**, 333 leaf guides on deliberately overlapping topics: max **7.8%**, again all boilerplate (the sourcing statement and the *Related guides* sidebar). **No substantive duplication in either section.** *Does not cover:* paraphrase, reordered sentences, runs under 8 words, and the three sections not yet measured |
 | C7 | Reading level appropriate to the audience (AI Kids vs build sheets) | **MANUAL** |
 
 ## D. ACCURACY AND SOURCES
@@ -65,10 +67,12 @@ down what it does **not** cover — that sentence is where the next defect is hi
 | # | Check | Status |
 |---|---|---|
 | D1 | Every build sheet / product guide has a sources block | **AUTO** — `Pages missing sources` |
+| D8 | **Codex guides have a sources block** | **GAP** — the site footer promises *"331 guides. Official sources only."* The 104 `guide-*` template pages had **no sources block at all** and the template could not emit one. S90 added `sources_block()` to `guide_builder.py` and typed sources to 7 pages. **97 still have none.** *Does not cover:* the 239 flagship pages, which carry a free-text "Sources & Further Reading" section that is not typed |
 | D2 | Sources typed Official / Research / Vendor / Industry | **MANUAL** — the typing is the point; an undifferentiated list launders reporting into authority |
 | D3 | Verification date stamped | **MANUAL** |
 | D4 | Old stamp sitting next to a decaying figure | **METRIC** — `decaying_stamps`, 151. Replaced a metric that over-counted by flagging honest old dates on unchanged content |
 | D5 | Claims re-verified against primary sources | **MANUAL** — the single most important thing on this list and the least automatable |
+| D7 | **Source-link checks must exclude internal cross-references** | **MANUAL** — S84: a scan for non-https source links returned 9 hits, all of which were the deliberate Session 65 design (a module's sources block points at its build sheet's `#sources`). Correct by design, flagged by an over-broad check. *The rule: a link inside a sources block is not necessarily an external citation* |
 | D6 | Draft vs final regulation clearly marked | **MANUAL** |
 
 ## E. SEO — TECHNICAL
@@ -87,6 +91,8 @@ down what it does **not** cover — that sentence is where the next defect is hi
 | E10 | No foreign / malformed absolute URLs | **AUTO** — check #23 |
 | E11 | Published counts match the filesystem | **AUTO** — check #24. Eight stale-count incidents before it existed |
 | E12 | robots.txt, sitemap.xml, llms.txt present | **SCRIPTED** |
+| E16 | **Counts in section hub STAT STRIPS** | **SCRIPTED** — `gen_fintech_hub.py`, added S81 after the Fintech hub advertised **1 product guide against 8**, a number inserted by a one-off patch in S62 and never revisited through eight product-guide sessions. **E11 did not see it**: check #24 matches *"N guides"* prose on Codex hubs, not a `.ft-stat-n` digit in a strip. *Does not cover:* counts written into body prose on the same hubs, or stat strips in any other section |
+| E17 | **Non-numeric claims about coverage going stale** | **SCRIPTED** — same script. The Fintech strip read `RBI · SEBI` while the section had begun covering IRDAI. **Every count rule on this list assumed staleness is numeric; it is not.** Now derived by naming the regulators appearing on ≥3 pages in the section. *Does not cover:* the threshold is arbitrary and it only inspects three named regulators — a fourth would have to be added by hand |
 | E13 | hreflang | **GAP** — single-language today |
 | E14 | Keyword cannibalisation between pages | **GAP** |
 | E15 | Internal link depth from the homepage | **GAP** |
@@ -135,7 +141,7 @@ down what it does **not** cover — that sentence is where the next defect is hi
 | I4 | Content renders without JavaScript | **AUTO** — `Inline-hidden content` |
 | I5 | No `display:none` inline on togglable content | **AUTO** — inline always beats a class |
 | I6 | **Interactive components actually work** | **MANUAL / DOM-stub tested** — quiz, progress bar, parent panel all *parsed* while broken |
-| I7 | Classes used in markup have a CSS rule | **METRIC** — `orphan_classes`, 42. Triage: dangerous ones are elements needing styling *to exist* |
+| I7 | Classes used in markup have a CSS rule | **METRIC** — `orphan_classes`, 42. Triage: dangerous ones are elements needing styling *to exist*. **S90: the entire `guide-*` template is undefined** — `.guide-article`, `.guide-hero`, `.guide-body`, `.guide-content`, `.guide-sidebar`, `.guide-intro` and `.sidebar-card` have **no rule in `codex_style.txt` or on the page**, across **104 Codex guides**. Only `.wrap` is defined. The markup is semantic so the text reads, but the hero band, the two-column layout and the sidebar cards do not exist. **NOT FIXED — writing layout CSS for 104 pages blind is the risk this document exists to prevent.** Needs eyes |
 | I8 | localStorage / cookie behaviour | **GAP** |
 
 ## J. FORMS AND INPUTS
@@ -168,12 +174,15 @@ down what it does **not** cover — that sentence is where the next defect is hi
 | L4 | **Fix the builder in the same session as the page** | **MANUAL** — Rule 4. Broken five times, most recently by me in S61 |
 | L5 | `_build/` and `/tmp` in sync | **MANUAL** |
 | L6 | Version bumped, infra rebuilt, zip named for the version | **MANUAL** |
+| L9 | **A patch script that fails without failing loudly** | **MANUAL** — S87: a heredoc with a quoting error raised `SyntaxError`, wrote nothing, and the stale script then ran and printed the same numbers — reading as *"the fix made no difference"* rather than *"the fix never applied"*. Error on stderr, plausible output on stdout. **Second quiet tooling failure in four sessions.** Rule: after patching a script, assert the patch landed before trusting the run |
+| L8 | **A generator that rewrites files it did not change** | **SCRIPTED** — fixed S84. `gen_counts.py` used `re.subn`, whose return value counts **matches, not changes**, then wrote unconditionally. Every run rewrote four byte-identical files and printed *"1 count(s) derived"*, so the output read as a change on a site where nothing had changed. Two harms: **the log teaches you to ignore it**, and the bumped mtimes make `newpage_check --changed` select unrelated pages. Now writes only when `h2 != h`. *Does not cover:* the other generators were not audited for the same pattern |
+| L7 | **Content inserted by a one-off patch with no generator behind it** | **GAP** — added S81. Rule 4 says fix the generator, and it is silent when *there is no generator*. The Fintech hub's stat strip and its build-sheet grid were spliced in by a Session 62 patch script that was never bundled, so nothing owned those numbers and nobody could re-run them. **Both hub defects this session live in that category.** Fixed here with `gen_fintech_hub.py`; nothing checks the rest of the site for the same shape |
 
 ## M. SECURITY
 
 | # | Check | Status |
 |---|---|---|
-| M1 | External links carry `rel="noopener"` | **SCRIPTED** |
+| M1 | External links carry `rel="noopener"` | **SCRIPTED** — **narrowed S89.** The check flagged 5 codex links; **none uses `target="_blank"`**, and `window.opener` exposure only exists with a new browsing context, so all five were correct. *A check that fires on correct behaviour is worse than no check.* Now conditional on `target="_blank"`. *Does not cover:* links opened by JavaScript |
 | M2 | CSP, HSTS, X-Frame-Options | **GAP** — hosting-layer, never audited |
 | M3 | `.well-known/security.txt` | **DONE** |
 | M4 | No secrets in client code | **MANUAL** |
@@ -227,9 +236,13 @@ defect nobody was looking for.
 ## THE FIVE RULES THIS DOCUMENT EXISTS TO ENFORCE
 
 1. **A check only sees what its pattern matches.** Write down what it misses.
-2. **A checker is code, and untested code is wrong until read.** Seven false alarms in ten sessions —
+2. **A checker is code, and untested code is wrong until read.** Ten false alarms so far —
    `<p` matching inside `<path>`, an unmeasured count assertion, a regex needing a newline that was
-   not there, a variable extractor reading a theme override.
+   not there, a variable extractor reading a theme override, a skip-link search that read only the
+   first 4,000 characters, a noindex filter that matched the word in a guide's body text, and — S81
+   — a **verification diff that collapsed the whole page onto one line** and so reported no change on
+   a page that had changed in twenty places. *A checker that reports "nothing happened" is the
+   easiest kind to believe and the hardest kind to notice.*
 3. **When a check and a check disagree, neither is evidence until one is read.** Prefer the standing
    check over the one you just wrote.
 4. **Land a new check as a METRIC, fix the backlog, then promote it to AUTO.** A check that ships red

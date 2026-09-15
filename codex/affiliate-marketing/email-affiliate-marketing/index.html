@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:type" content="article">
@@ -177,7 +207,43 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <h2>Disclosure in Email</h2>
 <p>Email affiliate disclosure follows the same legal requirements as content. Include a clear disclosure at the top or bottom of any email containing affiliate links: "This email contains affiliate links. I earn a commission if you purchase, at no cost to you."</p><p>Some email platforms have specific rules about affiliate content. Review your platform's terms — some prohibit affiliate links entirely in certain contexts or require specific disclosure formats.</p>
 
-    </div>
+    <h2>Deliverability Is the Constraint, Not Creativity</h2>
+
+<p>Affiliate content stresses email deliverability in ways ordinary marketing does not, and a sender
+who ignores this discovers it as a sudden and unexplained collapse in open rates.</p>
+<p>Three mechanisms do the damage. <strong>Affiliate link domains carry reputation</strong> —
+redirect and tracking domains shared across many senders inherit the behaviour of the worst of them,
+and a link shortener with a poor history can affect your placement regardless of your own conduct.
+<strong>Promotional density</strong> shifts your mail into the promotions tab or the spam folder:
+a list conditioned to expect useful content will tolerate commercial mail and will not tolerate only
+commercial mail. And <strong>engagement decay</strong> compounds, because mailbox providers weight
+recent recipient behaviour heavily and an unengaged segment drags the whole domain.</p>
+<p>Practical mitigations: use your own tracking domain where the programme allows it, authenticate
+properly so your mail is attributable to you, and <strong>segment aggressively by engagement</strong>
+— mailing an unresponsive segment to hit a revenue number costs you the responsive one.</p>
+
+<h2>Disclosure in a Medium With No Hover State</h2>
+
+<p>Email removes the affordances other channels rely on for disclosure. There is no hover preview of
+a destination, no platform-native paid-partnership label, and no consistent rendering across clients.
+The obligation does not relax to compensate.</p>
+<p>What that means in practice:</p>
+<ul>
+<li><strong>Disclose near the top and near the link</strong>, not only in a footer. A reader who acts
+on the first recommendation never reaches the footer.</li>
+<li><strong>Make it legible as text</strong>. A disclosure in an image fails for anyone with images
+blocked by default, which is a large share of recipients.</li>
+<li><strong>It applies to the forwarded copy too.</strong> Email is forwarded and archived; a
+disclosure that depends on the original context does not survive.</li>
+<li><strong>The commercial relationship also engages email law separately</strong> — consent,
+accurate sender identification and a working unsubscribe are obligations regardless of the affiliate
+question, and affiliate revenue makes a message commercial for those purposes.</li>
+</ul>
+<p>The simplest defensible pattern is a short plain-text line immediately above the first
+recommendation, in the same typeface as the body copy, saying plainly that the links earn a
+commission.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>FTC Endorsement Guides</strong> &mdash; the disclosure obligations attaching to affiliate and endorsement relationships in the United States <a href="https://ftc.gov" rel="noopener" target="_blank">ftc.gov</a></li><li><span class="src-k src-official">official</span><strong>ASCI Guidelines for Influencer Advertising in Digital Media</strong> &mdash; the disclosure obligations for affiliate and influencer content aimed at Indian audiences <a href="https://ascionline.in" rel="noopener" target="_blank">ascionline.in</a></li><li><span class="src-k src-official">official</span><strong>CAN-SPAM Rule and the GDPR consent and transparency provisions</strong> &mdash; the consent, identification and unsubscribe obligations that apply to automated commercial email <a href="https://ftc.gov" rel="noopener" target="_blank">ftc.gov</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card">
         <h3>Related guides</h3>

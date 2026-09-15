@@ -22,15 +22,33 @@ SECNAME={'seo':'SEO','analytics-cro':'Analytics & CRO','email-marketing':'Email 
 'social-media':'Social Media','business-strategy':'Business Strategy','content-marketing':'Content Marketing',
 'paid-advertising':'Paid Advertising','programmatic':'Programmatic','ecommerce':'E-commerce','sem':'SEM'}
 
-def mk(path, title, meta, intro, sections, related, crumb_label, crumb_url):
+DATEMOD = "2026-09-15"   # S90: was hardcoded to 2026-05-22. Set once per session.
+
+
+def sources_block(rows):
+    """Typed sources, same contract as the fintech builder: the TYPE is the
+    point. An undifferentiated list launders reporting into authority.
+    rows = [(kind, name, what_it_supports, domain_or_empty), ...]"""
+    if not rows:
+        return ''
+    lis = ''.join(
+        '<li><span class="src-k src-%s">%s</span><strong>%s</strong> &mdash; %s%s</li>'
+        % (k, k, n, w, (' <a href="https://%s" rel="noopener" target="_blank">%s</a>' % (u, u)) if u else '')
+        for k, n, w, u in rows)
+    return ('<h2 id="sources">Sources</h2><p>What each claim on this page rests on. '
+            'Entries are typed so you can see which are primary.</p>'
+            '<div class="srcs"><ol>' + lis + '</ol></div>')
+
+
+def mk(path, title, meta, intro, sections, related, crumb_label, crumb_url, sources=None):
     """path e.g. codex/seo/local/local-citations"""
     assert len(meta)<=165, f"META TOO LONG ({len(meta)}): {path}"
     url=f"https://www.clarigital.com/{path}/"
-    body=''.join(f'<h2>{t}</h2>\n{c}\n' for t,c in sections)
+    body=''.join(f'<h2>{t}</h2>\n{c}\n' for t,c in sections)+sources_block(sources or [])
     rel=''.join(f'<li><a href="{u}">{t}</a></li>' for u,t in related)
     ld=json.dumps({"@context":"https://schema.org","@type":"Article","headline":title,
         "description":meta,"url":url,"author":{"@type":"Organization","name":"Clarigital"},
-        "publisher":{"@type":"Organization","name":"Clarigital"},"dateModified":"2026-05-22"})
+        "publisher":{"@type":"Organization","name":"Clarigital"},"dateModified":DATEMOD})
     bc=json.dumps({"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
         {"@type":"ListItem","position":1,"name":"Codex","item":"https://www.clarigital.com/codex/"},
         {"@type":"ListItem","position":2,"name":crumb_label,"item":f"https://www.clarigital.com{crumb_url}"},

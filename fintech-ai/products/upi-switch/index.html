@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>UPI Switch Infrastructure: How to Build It | Clarigital</title>
+<meta name="description" content="Build on UPI step by step: PSP banks and TPAP certification, the deemed state, technical declines, and what the September 2026 MDR notification changes.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/upi-switch/">
+<meta property="og:type" content="article"><meta property="og:title" content="UPI Switch Infrastructure: How to Build It">
+<meta property="og:description" content="Build on UPI step by step: PSP banks and TPAP certification, the deemed state, technical declines, and what the September 2026 MDR notification changes."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/upi-switch/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="UPI Switch Infrastructure: How to Build It">
+<meta name="twitter:description" content="Build on UPI step by step: PSP banks and TPAP certification, the deemed state, technical declines, and what the September 2026 MDR notification changes."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "UPI Switch Infrastructure: How to Build It", "description": "Build on UPI step by step: PSP banks and TPAP certification, the deemed state, technical declines, and what the September 2026 MDR notification changes.", "url": "https://www.clarigital.com/fintech-ai/products/upi-switch/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "UPI Switch Infrastructure: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/upi-switch/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero" id="main-content"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>UPI Switch Infrastructure: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 11</div>
+  <div class="ft-tag">Fintech AI</div><h1>UPI Switch Infrastructure: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building UPI infrastructure in India. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What you are actually building</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 to 3 — shape, bank, certification</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Pick the shape</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Find a bank</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; Certify with NPCI</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 4 and 5 — the payment path and the deemed state</a><a class="sub" href="#s-indigo-s4">Steps 4 and 5 &mdash; The payment path, and the deemed state</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 6 to 8 — disputes, settlement, running it</a><a class="sub" href="#s-indigo-s6">Steps 6 to 8 &mdash; Disputes, settlement, and running it</a><a class="sub" href="#s-indigo-scap">The 30% cap, still scheduled</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">Accept UPI</a><a class="sub" href="#s-amber-proper">Ship a UPI app on a sponsor bank</a><a class="sub" href="#s-amber-big">Build the switch</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building on UPI: an app that pays, a checkout that collects, or the
+switch underneath either. Not how UPI works for a user &mdash; how you connect to it, get certified,
+stay up, and settle.</p>
+<p>Ten guides on this site describe a rulebook written by a regulator. <strong>This one describes a
+rulebook written by a company.</strong> NPCI is not a regulator. It is a not-for-profit umbrella
+organisation operating an RBI-authorised payment system &mdash; and its circulars will constrain your
+product more tightly, day to day, than most regulations do.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>UPI acquired a revenue model this week, after six years without one.</strong> The <strong>Taxation and Other Laws (Amendment) Bill, 2026</strong> amended the <strong>Payment and Settlement Systems Act, 2007</strong> to remove the bar on charging for UPI and RuPay debit, and the government notification followed on <strong>14 September 2026</strong>. It fixes one thing and leaves the rest open: <strong>no charge on UPI transactions up to &#8377;2,000, no charge on RuPay debit, and P2P stays free.</strong> Whether MDR applies only above a merchant-size threshold, at what rate, and how the income is split between the parties is with NPCI's <strong>UPI and Services Steering Committee</strong>, expected to meet this week. Rates in the <strong>0.25% to 0.4%</strong> range have been discussed. <strong>Nothing above that sentence is settled, and by the time you read this some of it will be.</strong></p></div>
+<h2 id="s-green-1">What you are actually building</h2>
+
+<p>Four different products get called &ldquo;building on UPI&rdquo; and they have almost nothing in
+common except the rails:</p>
+<table>
+<tr><th>What you are building</th><th>What you actually need</th><th>Effort</th></tr>
+<tr><td><strong>Accepting UPI as a merchant</strong></td><td>A payment aggregator or gateway. You are a customer of this ecosystem, not a participant in it.</td><td>Days</td></tr>
+<tr><td><strong>A UPI app (TPAP)</strong></td><td>A <strong>PSP bank</strong> to sponsor you, plus NPCI certification.</td><td>Months</td></tr>
+<tr><td><strong>UPI inside your own app</strong></td><td>A sponsor bank&rsquo;s SDK, plus <strong>UDIR integration</strong>. See step 6.</td><td>Weeks to months</td></tr>
+<tr><td><strong>The switch itself</strong></td><td>To <em>be</em> a bank, or to build the switch a bank runs.</td><td>Quarters</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Work out which one you are before reading further.</strong> Most teams who say &ldquo;we are building a UPI product&rdquo; mean row one, which is a commercial decision rather than an engineering project and is covered in Build Sheet 05. Rows two and four are where this page lives.</p></div>
+<p><strong>Who is who on the rails:</strong></p>
+<table>
+<tr><th>Party</th><th>Role</th></tr>
+<tr><td><strong>NPCI</strong></td><td>Owns and operates UPI. Sets the rules, the liabilities, the settlement cut-offs and the dispute protocol. Approves who may participate. <strong>May audit you, directly or through a third party.</strong></td></tr>
+<tr><td><strong>PSP bank</strong></td><td>A bank, connected to UPI. Holds the handle. <strong>Audits your app, owns grievance redressal, and answers for your data residency.</strong></td></tr>
+<tr><td><strong>TPAP</strong></td><td>The app the customer sees. <strong>No licence, no direct line to the network.</strong> Borrows both.</td></tr>
+<tr><td><strong>Issuer and beneficiary banks</strong></td><td>Where the money leaves and lands. <strong>Neither is under your control and both can fail your transaction.</strong></td></tr>
+</table>
+<p><strong>What this is not:</strong></p>
+<ul>
+<li><strong>Not a licence you can hold.</strong> Participation is approved by NPCI and sponsored by a
+bank. You are always on somebody&rsquo;s paper.</li>
+<li><strong>Not a feature race.</strong> The product is <strong>uptime and decline rate</strong>.
+Step 8.</li>
+<li><strong>Not free forever.</strong> It was, until this week.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Pick the shape</strong></td><td>Which of the four products, honestly.</td></tr>
+<tr><td>2</td><td><strong>Find a bank</strong></td><td>The commercial step everyone underestimates.</td></tr>
+<tr><td>3</td><td><strong>Certify with NPCI</strong></td><td>Technical and compliance. Not a formality.</td></tr>
+<tr><td>4</td><td><strong>The payment path</strong></td><td>Intent, collect, QR, mandate. Four flows, one rulebook.</td></tr>
+<tr><td>5</td><td><strong>The deemed state</strong></td><td><strong>Not success, not failure. The state that breaks systems.</strong></td></tr>
+<tr><td>6</td><td><strong>Disputes</strong></td><td>UDIR, and a turnaround clock with a penalty on it.</td></tr>
+<tr><td>7</td><td><strong>Reconcile and settle</strong></td><td>Cut-offs you do not control.</td></tr>
+<tr><td>8</td><td><strong>Run it</strong></td><td>Declines, uptime, the 30% cap, and now MDR.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Steps 5, 6 and 8 are where the work is</strong>, and they are the three that look like operations rather than product. A team that builds steps 1 to 4 well has built a demo that works on a good day. UPI does not have only good days.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 to 3 — shape, bank, certification</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Pick the shape</h3>
+<p>The question that settles it: <strong>do you need to hold the customer&rsquo;s UPI handle?</strong>
+If you do, you are a TPAP and you need a PSP bank. If you only need to be paid, you need an aggregator
+and this page is mostly background.</p>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Find a bank</h3>
+<p>This is a partnership negotiation, not an integration, and it is the step that decides your
+timeline. The bank is taking on your risk: <strong>NPCI holds the PSP bank responsible for auditing
+your app and systems, for the grievance mechanism your customers use, and for keeping all UPI
+transaction data in India.</strong> A bank that signs you is accepting audit findings on your code.</p>
+<p>Two routes, and the trade is the usual one:</p>
+<table>
+<tr><th></th><th>Direct with a PSP bank</th><th>Through an enabler</th></tr>
+<tr><td><strong>You own</strong></td><td>The whole stack</td><td>The app surface</td></tr>
+<tr><td><strong>Certification</strong></td><td>Yours to pass</td><td>Largely inherited</td></tr>
+<tr><td><strong>Time</strong></td><td>Months</td><td>Weeks</td></tr>
+<tr><td><strong>Ceiling</strong></td><td>None you did not build</td><td>Theirs</td></tr>
+<tr><td><strong>Reversibility</strong></td><td>Hard &mdash; the handle suffix is theirs</td><td>Harder</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The handle suffix is a switching cost disguised as a branding decision.</strong> Your customers' UPI IDs end in your PSP bank's suffix. Changing banks later means every customer re-registers a new UPI ID, which in practice means losing a meaningful share of them. <strong>Ask about the exit before you sign the entry</strong> &mdash; same rule as the payment-gateway exit path in Build Sheet 05, and for the same reason: integration takes weeks and extraction takes quarters.</p></div>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; Certify with NPCI</h3>
+<p>NPCI approves participation. Certification covers the technical implementation and the compliance
+posture, and the specification moves &mdash; the common library, the PIN handling, the API versions and
+the dispute hooks all get revised, and revisions come with dates.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Budget for re-certification as a standing cost, not a launch cost.</strong> The single most common planning error on this rail is treating NPCI certification as a gate you pass once. It is closer to a subscription: circulars land, deprecations get announced, and the compliance date is set by somebody else's calendar. <strong>A team with no capacity reserved for spec changes will spend its roadmap on them anyway.</strong></p></div>
+<h2 id="s-indigo-1">Steps 4 and 5 — the payment path and the deemed state</h2>
+
+<h3 id="s-indigo-s4">Steps 4 and 5 &mdash; The payment path, and the deemed state</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 4 and 5, the four flows and the state that is neither success nor failure</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import datetime, timedelta
+
+# STEP 4. FOUR FLOWS, ONE RULEBOOK.
+FLOWS = {
+    &quot;intent&quot;:  &quot;customer taps, app opens, customer approves&quot;,     # best success
+    &quot;collect&quot;: &quot;you request, customer approves later&quot;,            # worst success
+    &quot;qr&quot;:      &quot;customer scans and pays&quot;,                         # merchant default
+    &quot;mandate&quot;: &quot;recurring, pre-authorised&quot;,                       # see Guide 05
+}
+
+# Collect requests are the flow most abused and the flow with the worst
+# conversion. Treat a high collect share as a product smell, not a feature.
+
+# STEP 5. THE DEEMED STATE. THIS IS THE ONE.
+# A UPI transaction that does not return a clean result is NOT a failure. It
+# is an UNKNOWN. The debit may have happened. The credit may have happened.
+# Your system knows neither, and the customer is looking at your screen.
+
+TERMINAL = {&quot;SUCCESS&quot;, &quot;FAILURE&quot;}
+
+def on_response(txn, response):
+    if response and response[&quot;result&quot;] in TERMINAL:
+        return {&quot;state&quot;: response[&quot;result&quot;], &quot;final&quot;: True}
+    # Deemed. Do not guess. Do not retry with a new reference.
+    return {&quot;state&quot;: &quot;DEEMED&quot;, &quot;final&quot;: False,
+            &quot;action&quot;: &quot;poll_status&quot;,
+            &quot;customer_message&quot;: &quot;We are confirming this payment&quot;,   # not &quot;Failed&quot;
+            &quot;never&quot;: &quot;initiate_a_second_debit&quot;}
+
+def poll_plan(txn):
+    &quot;&quot;&quot;Back off. A thundering herd of status checks is how an incident
+    becomes an outage -- yours and everyone else&#x27;s on the same switch.&quot;&quot;&quot;
+    return [5, 15, 30, 60, 120, 300]        # seconds, then hand to reconciliation
+
+def resolve(txn, npci_status, ledger):
+    # NPCI reconciles and the outcome is guaranteed to settle one way or the
+    # other. Your job is to make sure YOUR ledger ends up agreeing with it,
+    # and to never have told the customer something the ledger contradicts.
+    assert txn[&quot;reference&quot;] == npci_status[&quot;reference&quot;], &quot;same intent, same reference&quot;
+    ledger.apply(npci_status[&quot;final_state&quot;])
+    return npci_status[&quot;final_state&quot;]
+
+# WHAT TO CHECK
+# [ ] &quot;deemed&quot; is a first-class state in your schema, with its own screen,
+#     its own message and its own queue. Not a null, not a failure
+# [ ] a retry uses the SAME reference derived from the intent, stored BEFORE
+#     the call. A fresh reference on an unknown outcome is how a customer
+#     gets debited twice -- the same rule as payouts in Build Sheet 05
+# [ ] status polling backs off. Fixed-interval polling during a switch
+#     incident is load you are adding to an outage
+# [ ] never show &quot;Payment failed&quot; on a deemed transaction. The money may be
+#     gone, and you have just told someone it is not
+# [ ] every state change is idempotent and keyed on the event id, applied in
+#     the same database transaction as the ledger write
+# [ ] reconcile in IST against NPCI settlement cut-offs, not against your own
+#     calendar day
+</code></pre></div>
+<p><strong>The gotcha that produces the worst customer outcomes on this rail:</strong> <strong>a
+pending UPI transaction is an unknown, not a failure, and the two demand opposite behaviour.</strong>
+On a failure you retry. On an unknown you must not, because the debit may already have happened.</p>
+<p>The ecosystem resolves this for you eventually &mdash; NPCI reconciles, and a failed debit is
+auto-reversed under the RBI turnaround-time framework with a per-day penalty for delay. <strong>What
+the framework does not do is tell your customer what is happening in the ninety seconds they are
+staring at your screen.</strong> That copy is yours to write, and writing <em>&ldquo;Payment
+failed&rdquo;</em> on a deemed transaction is the single most damaging string in a UPI product.</p>
+
+<h2 id="s-indigo-2">Steps 6 to 8 — disputes, settlement, running it</h2>
+
+<h3 id="s-indigo-s6">Steps 6 to 8 &mdash; Disputes, settlement, and running it</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 6 to 8, disputes, settlement and the numbers you are actually judged on</span><button class="cb-copy" type="button">Copy</button></div><pre><code># STEP 6. DISPUTES GO THROUGH UDIR, NOT THROUGH YOUR SUPPORT INBOX.
+# Unified Dispute and Issue Resolution is the ecosystem&#x27;s protocol. If you
+# are a partner application on a sponsor bank&#x27;s SDK, integrating UDIR is a
+# requirement, not an option -- your customers&#x27; eligible complaints have to
+# be raised into it.
+
+def raise_dispute(txn, reason, udir):
+    case = udir.open(reference=txn[&quot;reference&quot;], reason=reason,
+                     raised_at=now_ist())
+    return {&quot;case_id&quot;: case[&quot;id&quot;], &quot;track_in&quot;: &quot;UDIR&quot;,
+            &quot;your_job&quot;: &quot;keep the customer informed while it runs&quot;}
+
+# STEP 7. SETTLEMENT. The cut-offs are NPCI&#x27;s, not yours.
+def settlement_day(txn_time_ist, cutoffs):
+    &quot;&quot;&quot;A transaction after the cut-off settles in the next cycle. Aggregating
+    on a UTC day boundary moves 5.5 hours of transactions into the wrong
+    settlement day, every single day.&quot;&quot;&quot;
+    return cutoffs.cycle_for(txn_time_ist)
+
+# STEP 8. WHAT YOU ARE ACTUALLY MEASURED ON.
+# Declines split two ways and only one of them is your problem -- but the
+# ecosystem measures BOTH against you, and the split is the whole
+# conversation with your bank and with NPCI.
+
+def classify_decline(code_, who):
+    TECHNICAL = {&quot;switch_timeout&quot;, &quot;psp_unavailable&quot;, &quot;issuer_down&quot;,
+                 &quot;beneficiary_unreachable&quot;}          # infrastructure
+    BUSINESS  = {&quot;insufficient_funds&quot;, &quot;wrong_pin&quot;, &quot;limit_exceeded&quot;,
+                 &quot;account_blocked&quot;}                  # the customer or their bank
+    if code_ in TECHNICAL:
+        return {&quot;type&quot;: &quot;TD&quot;, &quot;owner&quot;: who, &quot;counts_against_you&quot;: True}
+    if code_ in BUSINESS:
+        return {&quot;type&quot;: &quot;BD&quot;, &quot;owner&quot;: &quot;customer&quot;, &quot;counts_against_you&quot;: False}
+    return {&quot;type&quot;: &quot;UNCLASSIFIED&quot;, &quot;action&quot;: &quot;map_it_before_it_ships&quot;}
+
+def health(window):
+    return {
+        &quot;td_rate&quot;: technical_declines(window) / total(window),
+        &quot;td_by_issuer&quot;: td_split(window, &quot;issuer&quot;),      # not your fault, your problem
+        &quot;success_by_flow&quot;: success_split(window, &quot;flow&quot;),
+        &quot;deemed_rate&quot;: deemed(window) / total(window),
+        &quot;deemed_unresolved_over_1h&quot;: aging_deemed(window),
+        &quot;market_share_rolling_3m&quot;: share_rolling(window, months=3),  # the 30% cap
+    }
+
+# WHAT TO CHECK
+# [ ] every decline code is MAPPED to technical or business before launch.
+#     An unclassified bucket is where your real TD rate hides
+# [ ] plot TD by issuer bank. You cannot fix another bank&#x27;s infrastructure,
+#     but you can route around it, warn the customer, and take it to your PSP
+# [ ] track market share on a ROLLING THREE-MONTH basis if you are anywhere
+#     near scale. That is how the cap is computed
+# [ ] the deemed queue has an owner and an age, like the EDPMS queue in
+#     Guide 06. Unresolved deemed transactions are a support backlog that
+#     arrives all at once
+# [ ] build the per-rail, per-ticket-size fee engine NOW. The threshold is
+#     fixed at 2,000 rupees. The rate is not yours to choose or to schedule
+</code></pre></div>
+<p><strong>THE finding, and it is the reason this page exists:</strong> <strong>your technical
+decline rate is not a metric, it is the condition of your participation.</strong> UPI publishes
+bank-level performance, NPCI can audit participants, and a switch that declines transactions for
+infrastructure reasons is a problem the ecosystem addresses rather than tolerates. Feature roadmaps
+do not survive that conversation; decline rates do.</p>
+<p>And the part that makes it hard: <strong>a large share of your declines will not be your
+fault.</strong> An issuer bank you have no relationship with, on infrastructure you cannot see, will
+fail your customers&rsquo; payments and the customer will blame your app. You cannot fix it. You can
+measure it per issuer, route around it where a second option exists, tell the customer something
+truthful about why, and take the data to your PSP bank &mdash; which is the only party with standing
+to escalate it. <strong>Teams that do not split declines by issuer spend years believing their own
+switch is worse than it is.</strong></p>
+
+<h3 id="s-indigo-scap">The 30% cap, still scheduled</h3>
+<p>NPCI proposed in <strong>November 2020</strong> that no single third-party application provider
+should process more than <strong>30% of UPI transaction volume</strong>, measured over the preceding
+three months on a rolling basis, with breach met by <strong>a halt on onboarding new
+customers</strong> rather than by blocking transactions. Bank-owned UPI apps are outside it.</p>
+<p>The deadline has moved three times &mdash; 2022, then <strong>31 December 2024</strong>, then
+<strong>31 December 2026</strong>, which is where it stands. Two apps have been well above the cap
+throughout, at roughly three-quarters of monthly volume between them.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Be careful how you use this in a business case, in either direction.</strong> The honest statement is that the cap is <strong>scheduled for 31 December 2026 and has been deferred three times</strong>. A plan that assumes it binds on that date is betting against a consistent pattern. A plan that assumes it never binds is betting that a stated rule will not be enforced. <strong>The defensible position is to build the rolling three-month share measurement and know your own number</strong>, which costs almost nothing and is the input to either outcome. Check the current position before you rely on this paragraph; it is the most likely line on this page to be out of date.</p></div>
+<h2 id="s-indigo-3">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>UPI infrastructure &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">The bank relationship<span class="pill p-direct">direct</span></div><div class="d">Commercial terms with a PSP or sponsor bank, and the step that sets your timeline. <strong>Negotiate the exit at the same time as the entry</strong> &mdash; the handle suffix makes leaving expensive in customers, not in rupees.</div></div><div class="reg-row"><div class="n">NPCI certification<span class="pill p-direct">direct</span></div><div class="d">Technical and compliance certification to participate. <strong>Then treat re-certification as a standing engineering cost</strong>: specifications are revised and the compliance dates are set elsewhere.</div></div><div class="reg-row"><div class="n">Running the switch<span class="pill p-direct">direct</span></div><div class="d">Infrastructure sized for peak, not average, on a rail that does <strong>24.51 billion transactions worth &#8377;29.82 lakh crore in a month</strong>. Capacity is a compliance posture here, not a cost-optimisation exercise.</div></div><div class="reg-row"><div class="n">The deemed queue<span class="pill p-indirect">indirect</span></div><div class="d">Support and operations cost that arrives in bursts, during exactly the incidents when everything else is also on fire. Staff it as a queue with an owner.</div></div><div class="reg-row"><div class="n">Revenue, from this week<span class="pill p-direct">direct</span></div><div class="d"><strong>Zero since January 2020; the bar was removed by the 2026 amendment and notified on 14 September 2026.</strong> Confirmed so far: nothing charged up to <strong>&#8377;2,000</strong>, nothing on RuPay debit, P2P free. <strong>The rate, the merchant threshold and the split between parties are with the NPCI Steering Committee.</strong> Rates of 0.25% to 0.4% have been discussed &mdash; against 1&ndash;3% on credit cards and up to 0.9% on debit.</div></div><div class="reg-row"><div class="n">The shape of the revenue<span class="pill p-indirect">indirect</span></div><div class="d">In 2025-26, transactions above &#8377;2,000 to merchants were about <strong>4% of UPI volume and roughly two thirds of its value</strong>. <strong>A threshold set at &#8377;2,000 therefore exempts almost every transaction and reaches most of the money</strong> &mdash; which is the design, and it is why a volume-weighted revenue model will be badly wrong.</div></div></div><div class="note"><span class="note-lbl">Note</span><p><strong>Do not write an MDR number into a pricing model.</strong> This site said that in Session 49 when the change was a proposal, and it is still the right advice with the notification published, because the rate is not notified. <strong>Do build the ability to apply a per-rail, per-ticket-size, per-merchant-category fee</strong> &mdash; that is a schema decision, it takes a sprint, and the alternative is discovering you need it in the week NPCI publishes the circular.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">Accept UPI</h3>
+<p><strong>Build:</strong> an aggregator integration, webhook signature verification over raw bytes, a
+settlement-file reconciliation, and a fee engine that can price per rail and per ticket size.</p>
+<p><strong>You get:</strong> UPI acceptance in days. <strong>You are a customer of this ecosystem</strong>,
+and Build Sheet 05 is the page you want.</p>
+
+<h3 id="s-amber-proper">Ship a UPI app on a sponsor bank</h3>
+<p><strong>Build:</strong> sponsor bank agreement &rarr; SDK integration &rarr; <strong>UDIR</strong>
+&rarr; deemed-state handling with its own screen and queue &rarr; decline mapping before launch &rarr;
+data resident in India &rarr; a grievance route that reaches the PSP bank&rsquo;s mechanism.</p>
+<p><strong>Trade:</strong> speed against a ceiling. You inherit the enabler&rsquo;s roadmap and their
+certification, and you own the customer who is looking at a spinner.</p>
+
+<h3 id="s-amber-big">Build the switch</h3>
+<p><strong>Build:</strong> the whole transaction path, certified with NPCI, sized for peak, with
+per-issuer decline telemetry, rolling three-month share measurement, an idempotent ledger keyed on
+intent, and a fee engine waiting for a rate.</p>
+<p><strong>It breaks when:</strong> the team optimises for the happy path. <strong>Success rate on a
+good day is not the product.</strong> Behaviour during an issuer outage is, and it is the only thing
+that is visible to NPCI, to your bank and to your customers simultaneously.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>make &ldquo;deemed&rdquo; a real state in your schema today.</strong> Not a null, not a failure, not a retry. It costs a migration now and it is the difference between a bad hour and a double-debit incident with a dispute trail.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>Customer debited twice</strong></td><td>An unknown outcome was retried with a fresh reference.</td><td>Reference derived from intent, stored before the call.</td></tr>
+<tr><td><strong>&ldquo;Payment failed&rdquo; on a live debit</strong></td><td>Deemed mapped to failure in the UI.</td><td>Its own state, its own message, its own screen.</td></tr>
+<tr><td><strong>Status polling worsens an outage</strong></td><td>Fixed-interval retries during an incident.</td><td>Exponential backoff, then hand to reconciliation.</td></tr>
+<tr><td><strong>Real TD rate is invisible</strong></td><td>Unmapped decline codes in a catch-all bucket.</td><td>Map every code to technical or business before launch.</td></tr>
+<tr><td><strong>Blaming your own switch for years</strong></td><td>Declines never split by issuer bank.</td><td>Plot TD per issuer. Escalate through the PSP bank.</td></tr>
+<tr><td><strong>Complaints go nowhere</strong></td><td>Support inbox instead of UDIR.</td><td>Integrate UDIR. Eligible disputes are routed into it.</td></tr>
+<tr><td><strong>Settlement off by a day, every day</strong></td><td>Aggregating on a UTC boundary.</td><td>IST, against NPCI cut-offs.</td></tr>
+<tr><td><strong>Certification treated as a launch gate</strong></td><td>No capacity reserved for spec changes.</td><td>Standing engineering budget for re-certification.</td></tr>
+<tr><td><strong>Cannot change banks</strong></td><td>Every customer&rsquo;s handle carries the suffix.</td><td>Negotiate the exit before signing the entry.</td></tr>
+<tr><td><strong>No fee engine when the circular lands</strong></td><td>Six years of zero MDR encoded as an assumption.</td><td>Per-rail, per-ticket-size pricing in the schema now.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/payments-reconciliation/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 05</div><h3>Payments &amp; Reconciliation</h3><p>Aggregators, escrow, settlement files, and the economics of accepting payments.</p></a>
+<a href="/fintech-ai/products/recurring-payments/" class="mod-card"><div class="mod-num">GUIDE 05</div><h3>Recurring Payments</h3><p>UPI AutoPay and the 2026 e-mandate framework, in full.</p></a>
+<a href="/fintech-ai/products/cross-border-payments/" class="mod-card"><div class="mod-num">GUIDE 06</div><h3>Cross-Border Payments</h3><p>The other rail with a queue that arrives late and all at once.</p></a>
+<a href="/fintech-ai/infrastructure/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 08</div><h3>Infrastructure</h3><p>Ledger correctness, the three data planes, and designing for reversibility.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. UPI participation is governed by NPCI circulars and procedural guidelines that are revised regularly and are authoritative over anything written here, and the MDR position changed the day before this page was published. Nothing here is legal advice. Work from the current NPCI documentation your PSP bank gives you, and confirm the MDR framework with your bank before pricing anything.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>NPCI roles and responsibilities of NPCI, PSP banks and TPAPs</strong> &mdash; the allocation published by PSP banks under NPCI requirement: NPCI owns and operates UPI, prescribes the rules, liabilities, settlement cut-offs and dispute protocol, approves participation and may audit participants directly or through a third party; the PSP bank audits the TPAP&rsquo;s app and systems, owns grievance redressal and answers for data residency; and both PSP bank and TPAP must store all UPI transaction data only in India. <a href="https://www.npci.org.in" target="_blank" rel="noopener">www.npci.org.in</a></li><li><span class="src-k src-official">official</span><strong>Payment and Settlement Systems Act, 2007 and the Taxation and Other Laws (Amendment) Bill, 2026</strong> &mdash; the amendment removing the bar in section 10A, read with section 269SU of the Income-tax Act 1961, that had prevented any charge on BHIM-UPI, UPI-QR and RuPay debit payments since January 2020. <a href="https://www.indiacode.nic.in" target="_blank" rel="noopener">www.indiacode.nic.in</a></li><li><span class="src-k src-official">official</span><strong>Government notification of 14 September 2026 on MDR</strong> &mdash; the notified position that no charge applies to UPI transactions up to ₹2,000 or to RuPay debit, and that person-to-person transfers remain free. The notification does not fix the rate, the merchant threshold or the distribution of MDR income — those sit with the NPCI UPI and Services Steering Committee. <a href="https://dfs.gov.in" target="_blank" rel="noopener">dfs.gov.in</a></li><li><span class="src-k src-official">official</span><strong>RBI turnaround time framework for failed transactions</strong> &mdash; the auto-reversal of failed debits with compensation payable per day of delay — the mechanism that eventually resolves a deemed transaction, and which does not help the customer in the ninety seconds they are looking at your screen. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>NPCI circular on the third-party application volume cap</strong> &mdash; the 30% limit on a single TPAP&rsquo;s share of UPI transaction volume proposed in November 2020, computed over the preceding three months on a rolling basis, enforced by halting new customer onboarding, with bank-owned apps outside its scope. Deadline moved from 2022 to 31 December 2024 and then to 31 December 2026. <a href="https://www.npci.org.in" target="_blank" rel="noopener">www.npci.org.in</a></li><li><span class="src-k src-official">official</span><strong>NPCI dispute and decline framework</strong> &mdash; Unified Dispute and Issue Resolution as the ecosystem dispute protocol that partner applications are required to integrate, and the NPCI definitions and targets separating technical declines from business declines. <a href="https://www.npci.org.in" target="_blank" rel="noopener">www.npci.org.in</a></li><li><span class="src-k src-industry">industry</span><strong>UPI scale and MDR reporting, September 2026</strong> &mdash; 24.51 billion transactions worth ₹29.82 lakh crore in August 2026; more than 24,000 crore transactions worth ₹314 lakh crore in 2025-26, up 30% by volume and 21% by value; transactions above ₹2,000 to merchants at about 4% of volume and roughly two thirds of value; discussed MDR rates of 0.25% to 0.4% against card MDRs of 1–3% credit and up to 0.9% debit; and the Steering Committee&rsquo;s expected meeting. Reporting, not notification — confirm every figure before use.</li><li><span class="src-k src-industry">industry</span><strong>UPI architecture and operations commentary</strong> &mdash; the practitioner read on sponsor-bank SDK routes, handle-suffix switching costs, deemed-transaction polling behaviour during incidents, and per-issuer decline variation. Directional.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. <strong>This page has the shortest shelf life of any on this site.</strong> The MDR notification is one day old, the rate is unnotified, and the volume cap is scheduled for 31 December 2026 having been deferred three times. Verify all three before relying on them.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

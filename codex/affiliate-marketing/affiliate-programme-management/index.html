@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
 </style>
 
 <meta property="og:type" content="article">
@@ -177,7 +207,39 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <h2>Keeping Affiliates Engaged</h2>
 <p>Top affiliates work with dozens of programmes. What keeps them prioritising yours: competitive commission rates, reliable on-time payment, responsive affiliate manager, quality marketing materials, product updates and news they can write about, and performance bonuses for top performers.</p><p>Regular communication matters more than most advertisers realise. A monthly newsletter with new assets, performance data, upcoming promotions, and product news keeps your programme top of mind.</p>
 
-    </div>
+    <h2>The Small Number of Partners That Matter</h2>
+
+<p>Every mature affiliate programme has the same shape: a handful of partners produce most of the
+revenue, a long tail produces almost none, and the management effort is usually distributed the wrong
+way round.</p>
+<p>The useful discipline is to <strong>segment the programme and manage each tier differently</strong>.
+The top partners deserve direct relationships, bespoke commercial terms, advance notice of promotions
+and early access to product news. Treating them identically to a partner who has produced two sales is
+how you lose them to a competitor who does not.</p>
+<p>The middle tier is where growth actually comes from, and it responds to attention: a conversation
+about what is converting, better creative, a tailored offer. The long tail should be automated
+entirely — self-service onboarding, standard terms, no manual effort — because the cost of managing it
+individually exceeds what it returns.</p>
+<p><strong>Review the tiers on a schedule.</strong> Partners move between them, and a tiering nobody
+has revisited in a year is describing last year's programme.</p>
+
+<h2>Policing It Without Poisoning It</h2>
+
+<p>Affiliate fraud is mostly not exotic. It is a small number of recognisable behaviours, and the
+programme terms are where you address them — before they happen, not after.</p>
+<p><strong>Brand bidding</strong> is the most common dispute. An affiliate bidding on your brand name
+in search intercepts traffic that was already yours and charges you a commission for it. Decide your
+position explicitly, write it into the terms, and monitor it, because a policy nobody checks is an
+invitation.</p>
+<p><strong>Cookie stuffing</strong> — dropping tracking cookies without a genuine click — shows up as
+an implausible click-to-conversion ratio. <strong>Coupon-site last-click capture</strong> is not fraud
+at all, but it does mean a partner is being paid for a conversion that was already going to happen;
+the answer is commission tiering by partner type rather than accusation.</p>
+<p>And <strong>trademark misuse in ad copy</strong> is a legal exposure as much as a commercial one.</p>
+<p>Enforce consistently. A programme that tolerates a rule for a large partner and enforces it against
+a small one has no rule, and the partners will work that out faster than you do.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>FTC Endorsement Guides</strong> &mdash; the disclosure obligations for affiliate and endorsement relationships in the United States <a href="https://ftc.gov" rel="noopener" target="_blank">ftc.gov</a></li><li><span class="src-k src-official">official</span><strong>ASCI Guidelines for Influencer Advertising in Digital Media</strong> &mdash; the disclosure obligations that apply to affiliate and influencer content aimed at Indian audiences <a href="https://ascionline.in" rel="noopener" target="_blank">ascionline.in</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card">
         <h3>Related guides</h3>

@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
 </style>
 
 <meta property="og:type" content="article">
@@ -173,7 +203,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p><strong>Programmatic guaranteed</strong>: both price and volume are fixed. The buyer commits to a certain number of impressions at an agreed CPM. The publisher guarantees those impressions are available. Most similar to traditional direct buys.</p><p><strong>Preferred deals</strong>: price is fixed but volume is not guaranteed. The buyer gets first look at inventory at the agreed price, but the publisher can sell elsewhere if the buyer does not take it. Good for buyers who want pricing certainty without volume commitment.</p>
 <h2>When to Use Programmatic Direct</h2>
 <p>Programmatic direct suits campaigns where: specific high-quality inventory is required (premium publisher placements), brand safety is critical (pre-approval of contexts), consistent reach to a specific audience is needed, or creative requires specific placements (homepage takeovers, high-impact formats).</p><p>The trade-off: higher CPMs than open auction, less flexibility in targeting, minimum spend requirements from premium publishers.</p>
-</div>
+<h2>Setting One Up, Step by Step</h2>
+
+<p>The deal itself is a negotiation, but the execution is a specific sequence and it is where most
+first attempts stall.</p>
+<p>The publisher creates the deal in their ad server and issues a <strong>deal ID</strong>. The buyer
+adds that ID to a line item in their DSP. Both sides then have to agree on three things that are easy
+to leave vague and expensive to get wrong: <strong>the flight dates</strong>, <strong>the impression
+volume</strong>, and <strong>which creative sizes and formats are in scope</strong>.</p>
+<p>On the publisher side the line item is given a <strong>priority above open-auction demand</strong>.
+That priority is the whole mechanism — it is what converts a price agreement into a delivery
+guarantee, because the ad server serves the guaranteed line before it lets the auction compete for
+the same impression. A programmatic guaranteed deal running at the same priority as remnant inventory
+is not guaranteed; it is a preferred deal with optimistic paperwork.</p>
+<p>Before the flight starts, run a <strong>forecast</strong> in the publisher's ad server against the
+exact targeting the deal specifies. A forecast run against looser targeting than the deal carries will
+say the inventory exists when it does not.</p>
+
+<h2>What Goes Wrong</h2>
+
+<p><strong>Under-delivery.</strong> The most common failure, and usually a targeting problem rather
+than an inventory problem: the deal was forecast on broad criteria and bought with narrow ones —
+viewability floors, brand-safety exclusions or frequency caps applied on the buy side that the
+publisher never modelled. Check the buyer's applied targeting against the forecast's, not against the
+contract's.</p>
+<p><strong>Discrepancy.</strong> Buyer and publisher will count differently, because they count at
+different moments in the ad's life. Agree <strong>whose numbers bill</strong> before the flight, and
+agree the tolerance. Discovering in week three that the two systems disagree by several per cent is a
+commercial conversation nobody has time for mid-campaign.</p>
+<p><strong>Creative approval.</strong> A premium publisher will review creative, and that review takes
+time you have not scheduled. Submit early.</p>
+<p><strong>Priority collisions.</strong> Two guaranteed deals competing for the same narrow inventory
+will both under-deliver, and the ad server will not warn you — it will simply serve one and starve the
+other. This is a publisher-side planning failure that shows up as a buyer-side complaint.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>IAB Tech Lab specifications</strong> &mdash; the OpenRTB specification and the programmatic deal-type definitions this page uses <a href="https://iabtechlab.com" rel="noopener" target="_blank">iabtechlab.com</a></li><li><span class="src-k src-official">official</span><strong>Google Ad Manager documentation</strong> &mdash; line item priority, deal negotiation and the delivery forecasting behaviour described here <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/programmatic/programmatic-advertising-fundamentals/">Programmatic Fundamentals</a></li><li><a href="/codex/programmatic/demand-side-platforms/">DSP Explained</a></li><li><a href="/codex/programmatic/supply-side-platforms/">Supply-Side Platforms</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="/codex/programmatic/" class="sidebar-link">Programmatic overview →</a></div>

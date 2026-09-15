@@ -17,7 +17,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -143,6 +143,23 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -172,6 +189,39 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>The jobs-to-be-done framing segments by the progress a customer is trying to make rather than by who they are. Two demographically identical people buying the same product for different reasons are different segments.</p><p>It tends to produce more actionable segments because the job dictates the message directly. Its weakness is that jobs are harder to identify in data and usually require qualitative research to surface.</p>
 <h2>From Segments to Decisions</h2>
 <p>A completed segmentation should specify, for each segment: the message that resonates, the channels that reach them, the objections to overcome, the products that fit, and the expected value.</p><p>Then prioritise. Most organisations cannot serve every segment well. Choosing which to pursue — and which to deliberately decline — is the strategic act. Segmentation that concludes "all of them are attractive" has not done its job.</p>
+<h2>Building One That Survives Contact With the Business</h2>
+
+<p>A segmentation is only useful if someone can act on it, and the most common failure is a beautiful
+analysis that nobody can operationalise.</p>
+<p>Work backwards from the decision. <strong>Ask what will be done differently for each segment
+before you build it.</strong> If the answer is nothing, or if the answer is the same for every
+segment, the segmentation is a description rather than a tool. This single question kills most
+proposed segmentations and saves the effort.</p>
+<p>Then check three properties. <strong>Identifiable</strong>: can you tell which segment a given
+customer is in, from data you actually hold, at the moment you need to know? A segment defined by
+attitudes you measured in a survey cannot be applied to an inbound visitor.
+<strong>Substantial</strong>: is it large enough to justify treating differently?
+<strong>Stable</strong>: will membership hold long enough for the treatment to pay back?</p>
+<p>A segmentation that fails identifiability is the most common and the most expensive, because it
+usually fails at the end of the project rather than the beginning.</p>
+
+<h2>Why Segmentations Decay, and What To Do About It</h2>
+
+<p>Segmentations are built once and then quietly stop describing reality. Three mechanisms do most of
+the damage.</p>
+<p><strong>The market moves.</strong> Segments defined by behaviour around a channel, a price point or
+a competitor set stop meaning what they meant when any of those change.</p>
+<p><strong>Your own actions move it.</strong> This is the one people miss. If you treat a segment
+differently, you change its behaviour — which changes the data the segmentation was derived from. A
+successful segmentation invalidates itself, and the more effective it is the faster it does so.</p>
+<p><strong>The data changes underneath it.</strong> A field is deprecated, a tracking method changes,
+a consent regime removes a signal. The model keeps running and its inputs no longer mean the same
+thing.</p>
+<p>The practical response is not to rebuild constantly. It is to <strong>track segment sizes and
+segment-level behaviour over time as a standing report</strong>, and to treat a drifting distribution
+as the trigger for a rebuild. A segmentation with no monitoring attached will be wrong long before
+anyone notices, and the first sign will be a campaign that mysteriously stops working.</p>
+
 </div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/business-strategy/brand-positioning-strategy/">Brand Positioning</a></li><li><a href="/codex/business-strategy/market-research/">Market Research</a></li><li><a href="/codex/email-marketing/email-segmentation/">Email Segmentation</a></li></ul></div>

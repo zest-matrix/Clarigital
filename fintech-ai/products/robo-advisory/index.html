@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Robo-Advisory: How to Build It | Clarigital</title>
+<meta name="description" content="Build a robo-advisory product step by step: why advice and execution cannot sit in one entity, the fee ceiling, and what Regulation 16C means for AI.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/robo-advisory/">
+<meta property="og:type" content="article"><meta property="og:title" content="Robo-Advisory: How to Build It">
+<meta property="og:description" content="Build a robo-advisory product step by step: why advice and execution cannot sit in one entity, the fee ceiling, and what Regulation 16C means for AI."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/robo-advisory/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Robo-Advisory: How to Build It">
+<meta name="twitter:description" content="Build a robo-advisory product step by step: why advice and execution cannot sit in one entity, the fee ceiling, and what Regulation 16C means for AI."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Robo-Advisory: How to Build It", "description": "Build a robo-advisory product step by step: why advice and execution cannot sit in one entity, the fee ceiling, and what Regulation 16C means for AI.", "url": "https://www.clarigital.com/fintech-ai/products/robo-advisory/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Robo-Advisory: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/robo-advisory/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero" id="main-content"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>Robo-Advisory: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 12</div>
+  <div class="ft-tag">Fintech AI</div><h1>Robo-Advisory: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building automated investment advice in India. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What you are actually building</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 and 2 — the perimeter, and registration</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Is what you are building actually advice?</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Register, and budget properly for it</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 3 to 5 — onboard, profile, recommend</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; Onboard</a><a class="sub" href="#s-indigo-s4">Steps 4 and 5 &mdash; Profiling and the recommendation</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 6 to 8 — delivery, the wall, the clocks</a><a class="sub" href="#s-indigo-s6">Steps 6 to 8 &mdash; Delivery, the wall, and the two clocks</a><a class="sub" href="#s-indigo-s7">The execution wall, in detail</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">Education, honestly</a><a class="sub" href="#s-amber-proper">Fee-only advisory</a><a class="sub" href="#s-amber-big">Advisory and execution, two entities</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one product: software that tells someone what to invest in,
+and then either helps them do it or deliberately does not. Goal in, portfolio out, rebalanced over
+time.</p>
+<p>The regulator here is <strong>SEBI</strong>, not RBI, and the single most important thing to
+understand arrives before any code: <strong>the product most teams have in mind cannot be built by
+one entity.</strong></p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Advice and execution were structurally separated, and it was deliberate.</strong> A registered investment adviser advises and <strong>may not execute</strong>. An <strong>Execution Only Platform</strong> executes direct mutual fund plans and <strong>may not advise</strong>. The free-advice-plus-one-tap-buy product that several Indian platforms offered before 2023 is not one regulated activity that got harder &mdash; it is <strong>two regulated activities that may not sit in the same entity</strong>. Everything else on this page follows from that sentence.</p></div>
+<h2 id="s-green-1">What you are actually building</h2>
+
+<p>Before anything else, work out which of these you are. The answer determines your registration,
+your revenue model, your liability and roughly 80% of your architecture:</p>
+<table>
+<tr><th>You are</th><th>You may</th><th>You may NOT</th><th>You are paid by</th></tr>
+<tr><td><strong>Investment Adviser (IA)</strong></td><td>Recommend, plan, review</td><td><strong>Execute</strong></td><td><strong>The client.</strong> Fee-only, capped</td></tr>
+<tr><td><strong>Research Analyst (RA)</strong></td><td>Publish research, model portfolios</td><td>Give personalised advice</td><td>Subscription</td></tr>
+<tr><td><strong>Execution Only Platform (EOP)</strong></td><td>Transact <strong>direct plans</strong></td><td><strong>Advise</strong>, or touch regular plans</td><td>AMCs or investors, by category</td></tr>
+<tr><td><strong>Distributor</strong></td><td>Sell <strong>regular</strong> plans</td><td>Advise</td><td><strong>Commission from the manufacturer</strong></td></tr>
+<tr><td><strong>None of these</strong></td><td>Publish general education</td><td><strong>Anything a reasonable person reads as a recommendation</strong></td><td>Nobody, safely</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>&ldquo;Robo-advisory&rdquo; is not a registration category.</strong> There is no robo licence, no lighter-touch digital regime, and no threshold below which an algorithm counts as a calculator. SEBI regulates the <em>activity</em>, and a program that recommends securities to a specific person on the basis of their circumstances is giving investment advice regardless of whether a human read it first.</p></div>
+<p><strong>What this is not:</strong></p>
+<ul>
+<li><strong>Not a way to avoid the fee cap.</strong> Advisory fees for individuals and HUFs are
+capped, and that ceiling is the first number in the model. Build Sheet 07 works through why.</li>
+<li><strong>Not safer because the advice came from a model.</strong> <strong>Using AI increases your
+responsibility; it does not share it.</strong> Step 6.</li>
+<li><strong>Not education because you called it education.</strong> Step 1.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Which entity are you?</strong></td><td>And is what you are planning actually advice.</td></tr>
+<tr><td>2</td><td><strong>Register</strong></td><td>IA, EOP, or both through two entities.</td></tr>
+<tr><td>3</td><td><strong>Onboard</strong></td><td>KYC, agreement, fee disclosure.</td></tr>
+<tr><td>4</td><td><strong>Risk profiling</strong></td><td>Capacity and tolerance are different things.</td></tr>
+<tr><td>5</td><td><strong>Recommend</strong></td><td><strong>And store what you excluded.</strong></td></tr>
+<tr><td>6</td><td><strong>Deliver the advice</strong></td><td>With the AI disclosure, and a human who owns it.</td></tr>
+<tr><td>7</td><td><strong>Execution</strong></td><td><strong>The wall, and how the client crosses it.</strong></td></tr>
+<tr><td>8</td><td><strong>Review and audit</strong></td><td>Two clocks, and a line-wise annual audit.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 5, 7 and 8 are the skipped ones.</strong> Steps 3, 4 and 6 are the parts that look like a product and a vendor will sell you all three. The registration question, the exclusions record, the execution wall and the audit trail are what an inspection is about.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 and 2 — the perimeter, and registration</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Is what you are building actually advice?</h3>
+<p>Three screen tests, and if any answer is yes you are probably in the advisory perimeter:</p>
+<ul>
+<li>Does the output use anything you know about <strong>this specific user</strong>?</li>
+<li>Would a reasonable user read it as a recommendation?</li>
+<li>Would you be comfortable if a regulator saw it <strong>without the disclaimer</strong>?</li>
+</ul>
+<p>The drift is always gradual and it is always the same sequence. A calculator gains a
+&ldquo;based on your answers&rdquo; label. A fund table gains a default sort. A list gains a
+&ldquo;popular with people like you&rdquo; badge. <strong>No single change looks like the moment you
+started giving advice, and by the end you have.</strong></p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>&ldquo;For educational purposes only&rdquo; is not a defence, and there is a large order saying so.</strong> SEBI's December 2025 action against an unregistered advisory operation impounded roughly <strong>&#8377;546 crore</strong> and imposed a market ban. The regulator's position is that a disclaimer does not change what an activity is &mdash; inside a course, a private group, a newsletter or a chatbot reply. <strong>If the label is doing the compliance work, there is no compliance.</strong></p></div>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Register, and budget properly for it</h3>
+<table>
+<tr><th>Item</th><th>Position</th></tr>
+<tr><td><strong>Supervisory body</strong></td><td><strong>IAASB &mdash; BSE Limited</strong>, appointed 25 July 2024 for five years. Your day-to-day counterparty, not SEBI</td></tr>
+<tr><td><strong>Capital</strong></td><td>The old corporate net-worth requirement was <strong>abolished in December 2024</strong> and replaced by a <strong>deposit held under lien in favour of IAASB</strong></td></tr>
+<tr><td><strong>Qualification</strong></td><td>Since <strong>November 2025, a graduate of any discipline</strong> with the required NISM certification may register. The finance-degree requirement is gone</td></tr>
+<tr><td><strong>Fee</strong></td><td><strong>&#8377;15,000</strong> registration, within 15 days of approval. Budget <strong>3 to 6 months</strong> for the process</td></tr>
+<tr><td><strong>Corporatisation trigger</strong></td><td><strong>300 clients OR &#8377;3 crore</strong> in fees in a financial year, whichever comes first. Notify immediately, then 3 months to in-principle and 3 more to complete &mdash; onboarding continues throughout</td></tr>
+<tr><td><strong>Fee ceiling</strong></td><td><strong>&#8377;1.51 lakh per client per year</strong> for individuals and HUFs, inflation-revised</td></tr>
+<tr><td><strong>If you also want to execute</strong></td><td>A <strong>separate entity</strong> registered as an EOP. See step 7</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>Depth on the IA framework &mdash; part-time IA, compliance officer eligibility, the perimeter of &ldquo;investment advice&rdquo;, the tooling and the data licensing trap &mdash; lives in <a href="/fintech-ai/wealth-advisory/build-sheet/"><strong>Build Sheet 07</strong></a> and is not repeated here. <strong>This page owns the workflow and the wiring.</strong></p></div>
+<h2 id="s-indigo-1">Steps 3 to 5 — onboard, profile, recommend</h2>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; Onboard</h3>
+<p>KYC, the advisory agreement, and the fee disclosure in writing before any advice. Nothing exotic,
+and one thing worth building properly on day one: <strong>the client should be able to see the fee
+they are paying as a rupee figure, not only as a percentage</strong>. Against a ceiling of
+&#8377;1.51 lakh a year, the absolute number is the one that gets questioned later.</p>
+
+<h3 id="s-indigo-s4">Steps 4 and 5 &mdash; Profiling and the recommendation</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 4 and 5, profiling, the binding constraint, and the exclusions nobody stores</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import date, timedelta
+
+# STEP 4. TWO DIFFERENT THINGS, ROUTINELY COLLAPSED INTO ONE SCORE.
+#
+#   CAPACITY  = how much loss this person can absorb without the plan failing.
+#               Arithmetic. Horizon, income stability, dependants, emergency
+#               fund, the size of this pot relative to everything else.
+#   TOLERANCE = how much loss this person can live through without selling.
+#               Psychology. Measured by questionnaire, and questionnaires are
+#               optimistic on a day the market is calm.
+#
+# A single &quot;risk score&quot; that blends them is unusable, because the two failure
+# modes are opposite: too much capacity wastes return, too much tolerance
+# produces a complaint after a drawdown.
+
+def risk_inputs(client):
+    capacity = score_capacity(client)          # 1..7
+    tolerance = score_tolerance(client)        # 1..7
+    required = required_for_goal(client)       # what the GOAL demands
+    binding = min(capacity, tolerance)         # never &#x27;required&#x27;
+    return {
+        &quot;capacity&quot;: capacity, &quot;tolerance&quot;: tolerance,
+        &quot;required&quot;: required, &quot;binding&quot;: binding,
+        # The asymmetry that predicts complaints. Flag it, and record that
+        # the conversation happened.
+        &quot;flag_review&quot;: tolerance - capacity &gt;= 2,
+        &quot;goal_unreachable&quot;: required &gt; binding,
+    }
+
+def resolve_goal(inp, client):
+    &quot;&quot;&quot;If the goal needs more risk than the client can bear, the GOAL changes
+    -- horizon, contribution or target -- not the portfolio. This is exactly
+    the constraint an optimiser will quietly relax if you let it.&quot;&quot;&quot;
+    if not inp[&quot;goal_unreachable&quot;]:
+        return {&quot;action&quot;: &quot;proceed&quot;}
+    return {&quot;action&quot;: &quot;renegotiate_goal&quot;,
+            &quot;options&quot;: [&quot;extend_horizon&quot;, &quot;raise_contribution&quot;, &quot;lower_target&quot;],
+            &quot;not_an_option&quot;: &quot;raise_risk_above_binding&quot;}
+
+# STEP 5. THE RECOMMENDATION, AND THE PART EVERYONE DROPS.
+def recommend(universe, inp, policy):
+    included, excluded = [], []
+    for f in universe:
+        why = exclusion_reason(f, inp, policy)   # ONE reason, the first that bites
+        (excluded if why else included).append({&quot;fund&quot;: f[&quot;id&quot;], &quot;reason&quot;: why}
+                                               if why else {&quot;fund&quot;: f[&quot;id&quot;]})
+    return {
+        &quot;as_of&quot;: date.today().isoformat(),
+        &quot;binding_constraint&quot;: inp[&quot;binding&quot;],
+        &quot;universe_size&quot;: len(universe),
+        &quot;included&quot;: included,
+        # &quot;Why was this fund never recommended to this client?&quot; has a correct
+        # answer and it CANNOT be recomputed later, because the catalogue, the
+        # policy and the client&#x27;s profile will all have moved.
+        &quot;excluded&quot;: excluded,
+        &quot;policy_version&quot;: policy[&quot;version&quot;],
+        &quot;universe_snapshot_hash&quot;: sha256_of(universe),
+    }
+
+# WHAT TO CHECK
+# [ ] capacity and tolerance stored SEPARATELY, and both shown to the client
+# [ ] &#x27;required&#x27; is never a permission. If the goal needs more risk than the
+#     client can bear, the goal changes
+# [ ] tolerance exceeding capacity by two bands or more is flagged, the
+#     conversation is had, and the fact that it was had is recorded
+# [ ] store EXCLUSIONS, not just the recommendation. Cheap to write, and the
+#     difference between inspection-ready and inspection-panicked
+# [ ] store the universe as it stood, not a pointer to a catalogue that
+#     changes weekly
+# [ ] a risk profile has an expiry. So does a recommendation. They are not
+#     the same clock -- see step 8
+</code></pre></div>
+<p><strong>The gotcha that separates a defensible product from a pretty one:</strong>
+<strong>store the exclusions.</strong> Every robo-advisor stores what it recommended. Almost none
+stores what it ruled out and why, because at build time the excluded set looks like the absence of
+data rather than data.</p>
+<p>It is not. <em>&ldquo;Why was this fund never recommended to this client?&rdquo;</em> has a correct
+answer, it is the question an inspection asks, and it <strong>cannot be reconstructed later</strong>
+&mdash; the catalogue changes weekly, the policy changes quarterly, and the client&rsquo;s profile
+changes annually. A few kilobytes per recommendation buys an answer that no amount of effort
+afterwards can.</p>
+
+<h2 id="s-indigo-2">Steps 6 to 8 — delivery, the wall, the clocks</h2>
+
+<h3 id="s-indigo-s6">Steps 6 to 8 &mdash; Delivery, the wall, and the two clocks</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 6 to 8, the AI disclosure, the execution wall, and two clocks</span><button class="cb-copy" type="button">Copy</button></div><pre><code># STEP 6. DELIVERY, AND THE DISCLOSURE.
+# SEBI (Intermediaries) (Amendment) Regulations, 2025 -- notified 10 February
+# 2025 -- inserted Regulation 16C: a regulated entity is SOLELY liable for
+# the AI/ML tools it uses, whether built in-house or bought. Liability covers
+# data privacy and security, the integrity of the output, and compliance with
+# all applicable law. There is no vendor to point at.
+
+def deliver(advice, client, ai_used):
+    return {
+        &quot;advice_id&quot;: advice[&quot;id&quot;],
+        &quot;delivered_at_ist&quot;: now_ist(),
+        &quot;ai_disclosure&quot;: describe_ai_use(ai_used) if ai_used else None,
+        # Disclosing the EXTENT of AI use is the requirement. &quot;We use AI&quot; is
+        # not an extent. Which step, on what inputs, reviewed by whom.
+        &quot;reviewed_by&quot;: advice[&quot;qualified_reviewer&quot;],   # a named person
+        &quot;rationale_plain_words&quot;: advice[&quot;rationale&quot;],
+        &quot;rendered_document&quot;: advice[&quot;pdf_bytes&quot;],      # what they SAW
+    }
+
+# STEP 7. THE WALL.
+# An investment adviser may not execute. An Execution Only Platform may not
+# advise. The client crosses between them; your code must not.
+
+EOP_CATEGORY = {
+    1: {&quot;registers_with&quot;: &quot;AMFI&quot;, &quot;agent_of&quot;: &quot;AMC&quot;,      &quot;paid_by&quot;: &quot;AMC&quot;},
+    2: {&quot;registers_with&quot;: &quot;stock_exchange_EOP_segment&quot;,
+        &quot;agent_of&quot;: &quot;investor&quot;, &quot;paid_by&quot;: &quot;investor&quot;,
+        &quot;base_minimum_capital_rupees&quot;: 10_00_000},
+}
+
+def handoff(advice, client, eop):
+    # Direct plans only. An EOP may not touch regular plans, and an entity may
+    # not be Category 1 and Category 2 at once.
+    assert all(f[&quot;plan&quot;] == &quot;DIRECT&quot; for f in advice[&quot;included&quot;]), &quot;EOP: direct plans only&quot;
+    assert eop[&quot;entity_id&quot;] != advice[&quot;adviser_entity_id&quot;], &quot;advice and execution: separate entities&quot;
+    return {
+        &quot;action&quot;: &quot;present_to_client_for_authorisation&quot;,   # never auto-execute
+        &quot;client_authorises&quot;: True,
+        &quot;route&quot;: eop[&quot;entity_id&quot;],
+        &quot;adviser_receives_from_amc&quot;: 0,        # fee-only. No commission, ever.
+    }
+
+# STEP 8. TWO CLOCKS, AND THEY ARE NOT THE SAME CLOCK.
+def clocks(client, advice):
+    return {
+        &quot;profile_valid_until&quot;: client[&quot;profiled_on&quot;] + timedelta(days=365),
+        &quot;advice_valid_until&quot;: advice[&quot;as_of&quot;] + timedelta(days=advice[&quot;shelf_life_days&quot;]),
+        # Suitability can lapse with NOBODY transacting: the fund changed
+        # mandate, or the client&#x27;s circumstances did. Both need a trigger.
+        &quot;watch&quot;: [&quot;mandate_change&quot;, &quot;life_event&quot;, &quot;drawdown_breach&quot;],
+    }
+
+def monitoring_record(run):
+    # Record the runs that found NOTHING. An absence of records is
+    # indistinguishable from an absence of monitoring, including to you.
+    return {&quot;ran_at_ist&quot;: now_ist(), &quot;clients_checked&quot;: run[&quot;n&quot;],
+            &quot;exceptions&quot;: run[&quot;exceptions&quot;], &quot;no_exception_is_a_result&quot;: True}
+
+# WHAT TO CHECK
+# [ ] the adviser entity receives nothing from any product manufacturer. Not
+#     a rebate, not a marketing fee, not a platform contribution
+# [ ] no auto-execution. The client authorises, every time
+# [ ] a fund changing mandate re-checks EVERY client holding it. Suitability
+#     regresses without anyone transacting
+# [ ] glide paths beat annual reviews -- a yearly step-down is wrong for 364
+#     days and most wrong in the year before the client needs the money
+# [ ] the AI disclosure names the STEP and the INPUTS, not the vendor
+# [ ] the annual compliance audit is LINE-WISE against every provision, by a
+#     CA, CS or CMA. Build the evidence as you go or reconstruct it in March
+</code></pre></div>
+<p><strong>The AI position, stated plainly because it is the opposite of what most teams
+assume:</strong> <strong>using AI increases your responsibility, it does not share it.</strong>
+SEBI&rsquo;s position is that responsibility for AI-assisted advice sits with the adviser
+<em>irrespective of the scale and scenario of AI usage</em>, that the integrity and transparency of
+the derived advice must be ensured, and that <strong>the extent of AI use must be disclosed to the
+client</strong>. Since <strong>10 February 2025</strong> that has had a regulation number:
+<strong>Regulation 16C</strong> makes a regulated entity solely liable for AI and ML tools it uses,
+<strong>whether developed in-house or procured</strong>.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>A fuller AI framework is coming and it is not final yet.</strong> SEBI put out a consultation on responsible AI in the securities market on <strong>20 June 2025</strong>, comments closed 11 July 2025, and the Chairman has since signalled a <strong>tiered framework by purpose of AI use, with kill switches and human oversight</strong>. Principles trailed in the consultation: board-level governance with technically competent senior oversight, third-party model oversight, independent audits and periodic review, disclosure to clients where AI directly affects them &mdash; advisory is named &mdash; and <strong>testing in an environment segregated from live</strong>. <strong>Not final at the time of writing.</strong> Design to it anyway, because Regulation 16C already puts the liability on you and the tiering only decides how much evidence you have to keep.</p></div>
+
+<h3 id="s-indigo-s7">The execution wall, in detail</h3>
+<p>This is the structural fact of the product, so it is worth being precise about what sits on each
+side.</p>
+<table>
+<tr><th></th><th>Category 1 EOP</th><th>Category 2 EOP</th></tr>
+<tr><td><strong>Registers with</strong></td><td><strong>AMFI</strong></td><td><strong>Stock exchange</strong>, EOP segment, as a stock broker</td></tr>
+<tr><td><strong>Acts as agent of</strong></td><td>The <strong>AMCs</strong></td><td>The <strong>investor</strong></td></tr>
+<tr><td><strong>Integrates with</strong></td><td>AMCs and their RTAs</td><td>The exchange platform</td></tr>
+<tr><td><strong>Paid by</strong></td><td>The AMCs</td><td>The investor</td></tr>
+<tr><td><strong>Deposit</strong></td><td>&mdash;</td><td><strong>&#8377;10 lakh</strong> base minimum capital, not additive if already a member in another segment</td></tr>
+</table>
+<p><strong>Both categories: direct plans only, and you may not be both.</strong> An EOP may not
+provide services for regular plans at all, and Category 2 may not act as a transaction aggregator for
+direct plans.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>The commercial consequence is the one to plan around.</strong> The pre-2023 Indian model was free advice subsidised by execution or distribution revenue. The separation removed the subsidy: <strong>the adviser is fee-only against a capped fee, and the execution platform cannot advise.</strong> If your plan assumes advice is a free acquisition channel for an execution business, it is a plan for a structure that no longer exists &mdash; and that was the point of the change, not a side effect of it.</p></div>
+<h2 id="s-indigo-3">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>Robo-advisory &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">IA registration<span class="pill p-direct">direct</span></div><div class="d"><strong>&#8377;15,000</strong> within 15 days of approval, plus a <strong>deposit held under lien in favour of IAASB</strong> since the corporate net-worth requirement was abolished in December 2024. Budget <strong>3 to 6 months</strong> for the process itself.</div></div><div class="reg-row"><div class="n">A second entity, if you want to execute<span class="pill p-direct">direct</span></div><div class="d">An EOP registration. Category 1 through AMFI; Category 2 as a stock broker with a <strong>&#8377;10 lakh base minimum capital deposit</strong>, not additive if you are already a member in another segment. <strong>Two entities, two sets of filings, two boards.</strong></div></div><div class="reg-row"><div class="n">The fee ceiling<span class="pill p-indirect">indirect</span></div><div class="d"><strong>&#8377;1.51 lakh per client per year</strong> for individuals and HUFs is the ceiling, and the realistic retail average is a fraction of it. <strong>It decides whether you can afford human oversight per client, which decides whether you can be advisory at all.</strong> Most Indian plans fail at this line rather than at the technology &mdash; worked through in Build Sheet 07.</div></div><div class="reg-row"><div class="n">The calculation layer<span class="pill p-direct">direct</span></div><div class="d"><strong>Effectively free and should be built rather than bought.</strong> There is no meaningful optimiser market at Indian retail advisory scale. What a wealthtech platform actually sells is RTA plumbing, reporting and compliance workflow &mdash; evaluate it on that.</div></div><div class="reg-row"><div class="n">Market data<span class="pill p-direct">direct</span></div><div class="d"><strong>Read the redistribution licence before you show a price to a client.</strong> A broker API licence generally covers your own use; showing that data to <em>your clients</em> is redistribution. Teams find this in diligence. Detail in Build Sheet 07.</div></div><div class="reg-row"><div class="n">Compliance audit<span class="pill p-direct">direct</span></div><div class="d"><strong>Annual, line-wise against every provision</strong>, by a CA, CS or CMA, with adverse findings filed to timeline. Cheap if the evidence accumulates automatically; expensive if it is reconstructed in March.</div></div><div class="reg-row"><div class="n">AI, as a cost rather than a saving<span class="pill p-indirect">indirect</span></div><div class="d"><strong>Regulation 16C makes you solely liable</strong> for a model you bought. Add independent review, the disclosure surface, segregated testing and the evidence trail to the subscription price before comparing it against a human.</div></div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The number that decides the business is clients per adviser.</strong> Everything above is fixed cost against a capped per-client fee, so the model lives or dies on how many clients one qualified person can oversee without the oversight becoming a rubber stamp. <strong>Work that number out in week one</strong>, the same way the Video KYC guide says to work out your audit rate &mdash; it is the ceiling on the business and almost nobody computes it until they hit it.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">Education, honestly</h3>
+<p><strong>Build:</strong> calculators and explanatory content that use <strong>nothing about the
+individual user</strong>, with no default sort, no personalised badge and no &ldquo;based on your
+answers&rdquo;.</p>
+<p><strong>You get:</strong> a legitimate audience and no advisory perimeter. <strong>Run the three
+screen tests every release</strong>, because the drift is gradual and nobody intends it.</p>
+
+<h3 id="s-amber-proper">Fee-only advisory</h3>
+<p><strong>Build:</strong> IA registration &rarr; onboarding with the fee in rupees &rarr; capacity
+and tolerance profiled separately &rarr; recommendations with stored exclusions &rarr; AI extent
+disclosed and a named reviewer &rarr; client authorises execution elsewhere &rarr; two review clocks
+&rarr; evidence accumulating for the annual audit.</p>
+<p><strong>Trade:</strong> a capped fee against a defensible position. <strong>The economics are hard
+and the compliance is tractable</strong>, which is the opposite of what most teams expect.</p>
+
+<h3 id="s-amber-big">Advisory and execution, two entities</h3>
+<p><strong>Build:</strong> the above, plus a separately registered EOP, with a handoff that
+<strong>presents for authorisation and never auto-executes</strong>, and an adviser entity that
+receives nothing from any manufacturer.</p>
+<p><strong>It breaks when:</strong> the two entities share a product team and the wall becomes a
+diagram rather than a control. <strong>Assert it in code</strong> &mdash; the adviser entity id and
+the execution entity id are different values, and a commission field on the adviser side is
+hard-coded to zero.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>store what you excluded, and why.</strong> It costs a few kilobytes per recommendation, it is the question an inspection actually asks, and it is the one artefact here that cannot be reconstructed at any price after the fact.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>One entity doing advice and execution</strong></td><td>Built to the pre-2023 model.</td><td>Two entities. Assert the ids differ in code.</td></tr>
+<tr><td><strong>Capacity and tolerance blended into one score</strong></td><td>One number is easier to display.</td><td>Store and show both. The failure modes are opposite.</td></tr>
+<tr><td><strong>The optimiser relaxed the risk constraint</strong></td><td>&ldquo;Required&rdquo; treated as an input.</td><td>The goal changes, never the binding constraint.</td></tr>
+<tr><td><strong>Cannot say why a fund was never recommended</strong></td><td>Exclusions were never stored.</td><td>Store them at recommendation time, with the universe snapshot.</td></tr>
+<tr><td><strong>&ldquo;We use AI&rdquo; as the disclosure</strong></td><td>Treated as a label rather than an extent.</td><td>Name the step, the inputs and the reviewer.</td></tr>
+<tr><td><strong>Vendor blamed for a model output</strong></td><td>Procurement felt like risk transfer.</td><td>Regulation 16C: sole liability, in-house or bought.</td></tr>
+<tr><td><strong>Auto-execution on acceptance</strong></td><td>It converts better.</td><td>Client authorises. Every time.</td></tr>
+<tr><td><strong>Suitability lapsed with nobody transacting</strong></td><td>A fund changed mandate.</td><td>Mandate change re-checks every client holding it.</td></tr>
+<tr><td><strong>No record of monitoring that found nothing</strong></td><td>Only exceptions were logged.</td><td>Log the run. Absence of records reads as absence of monitoring.</td></tr>
+<tr><td><strong>&ldquo;Educational&rdquo; content that personalises</strong></td><td>Gradual drift, no single guilty release.</td><td>Three screen tests, every release.</td></tr>
+<tr><td><strong>Commission received on the adviser side</strong></td><td>A platform rebate booked as revenue.</td><td>Fee-only. Hard-code the field to zero and test it.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/wealth-advisory/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 07</div><h3>Wealth &amp; Advisory</h3><p>The IA framework in full: tooling, data licensing, costs and three recommended builds.</p></a>
+<a href="/fintech-ai/wealth-advisory/" class="mod-card"><div class="mod-num">MODULE 07</div><h3>Wealth &amp; Advisory</h3><p>Why SEBI treats AI as increasing responsibility rather than sharing it.</p></a>
+<a href="/fintech-ai/governance/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 09</div><h3>Governance</h3><p>Model inventories, independent validation and kill switches — the shape SEBI is moving toward.</p></a>
+<a href="/fintech-ai/products/account-aggregator/" class="mod-card"><div class="mod-num">GUIDE 04</div><h3>Account Aggregator</h3><p>Where a complete picture of a client&rsquo;s holdings comes from, with consent.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. Investment advice is a registered activity, the fee ceiling and the advice/execution separation are structural rather than negotiable, and the responsible-AI framework referred to here is a consultation. Nothing here is legal advice. Have your registration route, your advisory agreement and your execution handoff reviewed by qualified counsel before advising a single client.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>SEBI (Investment Advisers) Regulations and the 2024–25 amendments</strong> &mdash; the abolition of the corporate net-worth requirement in December 2024 and its replacement with a deposit held under lien in favour of the IAASB; BSE Limited appointed as IAASB on 25 July 2024 for five years; the ₹15,000 registration fee; the 300-client or ₹3 crore corporatisation trigger; the ₹1.51 lakh per client annual fee ceiling for individuals and HUFs; the November 2025 opening of registration to graduates of any discipline holding the required NISM certification; and the annual line-wise compliance audit by a CA, CS or CMA. <a href="https://www.sebi.gov.in" target="_blank" rel="noopener">www.sebi.gov.in</a></li><li><span class="src-k src-official">official</span><strong>SEBI (Intermediaries) (Amendment) Regulations, 2025 — Regulation 16C</strong> &mdash; notified 10 February 2025 following a November 2024 consultation and the Board&rsquo;s 208th meeting. A SEBI-regulated entity is solely liable for AI and ML tools it uses, whether developed in-house or procured, covering investor data privacy, the integrity of AI output and compliance with applicable law. Parallel amendments were made on the market infrastructure and depository side. <a href="https://www.sebi.gov.in" target="_blank" rel="noopener">www.sebi.gov.in</a></li><li><span class="src-k src-official">official</span><strong>SEBI regulatory framework for Execution Only Platforms</strong> &mdash; circular SEBI/HO/IMD/IMD-PoD-1/P/CIR/2023/86 dated 13 June 2023, effective 1 September 2023, with the base minimum capital circular of October 2023. Category 1 registering with AMFI as agent of the AMCs; Category 2 registering as a stock broker in the exchange EOP segment as agent of the investor with a ₹10 lakh deposit that is not additive across segments; direct plans only; no regular plans; and no transaction aggregation for direct plans by Category 2. <a href="https://www.sebi.gov.in" target="_blank" rel="noopener">www.sebi.gov.in</a></li><li><span class="src-k src-official">official</span><strong>SEBI position on advisory and execution segregation</strong> &mdash; the requirement that advisory and distribution be segregated at client level, and at group level for non-individuals, and that an individual may not provide advice and execution simultaneously — the basis for a robo-advisory platform needing a separate entity. <a href="https://www.sebi.gov.in" target="_blank" rel="noopener">www.sebi.gov.in</a></li><li><span class="src-k src-official">official</span><strong>SEBI consultation paper on responsible AI in the securities market</strong> &mdash; released 20 June 2025 with comments closed 11 July 2025: governance by technically competent senior management, third-party model oversight, data governance, independent audits and periodic review, disclosure to clients where AI directly affects them including advisory services, testing in an environment segregated from live, and a tiered approach by purpose of AI use. STATUS: NOT FINAL at the time of writing; the Chairman has since signalled tiering with kill switches and human oversight. <a href="https://www.sebi.gov.in" target="_blank" rel="noopener">www.sebi.gov.in</a></li><li><span class="src-k src-official">official</span><strong>SEBI enforcement on unregistered advisory</strong> &mdash; the December 2025 order impounding approximately ₹546 crore with a market ban, and the established position that a &ldquo;for educational purposes only&rdquo; label does not excuse unregistered advisory activity inside a course, a private group or a chatbot reply. <a href="https://www.sebi.gov.in" target="_blank" rel="noopener">www.sebi.gov.in</a></li><li><span class="src-k src-industry">industry</span><strong>Commentary on the effect of the EOP framework on robo-advisers</strong> &mdash; the observation that the framework ended the combined free-advice-plus-execution model, so investors no longer obtain both from one platform. Interpretation of a regulatory change, not a figure.</li><li><span class="src-k src-industry">industry</span><strong>Reporting on SEBI&rsquo;s forthcoming AI guidelines</strong> &mdash; the Chairman&rsquo;s June and August 2026 remarks on a tiered responsible-AI framework and on SEBI&rsquo;s own use of AI in surveillance. Speeches and reporting, not notified regulation — treat as direction.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. <strong>The responsible-AI framework is a consultation, not a regulation.</strong> Regulation 16C is in force and already places the liability on you; verify the tiering before designing to it.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

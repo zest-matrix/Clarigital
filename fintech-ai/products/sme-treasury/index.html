@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SME Treasury: How to Build It | Clarigital</title>
+<meta name="description" content="Build an SME treasury product step by step: the four lines that turn it into a regulated business, the IRN that makes a receivable real, and what breaks.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/sme-treasury/">
+<meta property="og:type" content="article"><meta property="og:title" content="SME Treasury: How to Build It">
+<meta property="og:description" content="Build an SME treasury product step by step: the four lines that turn it into a regulated business, the IRN that makes a receivable real, and what breaks."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/sme-treasury/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="SME Treasury: How to Build It">
+<meta name="twitter:description" content="Build an SME treasury product step by step: the four lines that turn it into a regulated business, the IRN that makes a receivable real, and what breaks."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SME Treasury: How to Build It", "description": "Build an SME treasury product step by step: the four lines that turn it into a regulated business, the IRN that makes a receivable real, and what breaks.", "url": "https://www.clarigital.com/fintech-ai/products/sme-treasury/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "SME Treasury: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/sme-treasury/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero" id="main-content"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>SME Treasury: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 13</div>
+  <div class="ft-tag">Fintech AI</div><h1>SME Treasury: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building cash and treasury software for Indian small businesses. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What SME treasury actually is</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 and 2 — the four lines, and the cash position</a><a class="sub" href="#s-indigo-s1">Steps 1 and 2 &mdash; What you are not, and what the money is</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 3 and 4 — receivables, the IRN, and payables</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; Receivables, and the IRN that makes one real</a><a class="sub" href="#s-indigo-s4">Step 4 &mdash; Payables, which is really about permission</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 5 to 8 — forecast, surplus, currency, close</a><a class="sub" href="#s-indigo-s5">Steps 5 to 8 &mdash; Forecast, surplus, currency, close</a><a class="sub" href="#s-indigo-s7">Where this product touches the rest of the section</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">Read-only visibility</a><a class="sub" href="#s-amber-proper">Visibility plus initiation</a><a class="sub" href="#s-amber-big">Treasury with financing and currency</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one product: software that tells a small business how much
+money it has, how much is coming, how much is going out, and what to do about the gap. Multiple bank
+accounts, unpaid invoices, a payroll date, and a surplus sitting in a current account earning
+nothing.</p>
+<p><strong>This is the thirteenth and last product guide, and it is the one where the other twelve
+meet.</strong> Almost every boundary described across this section runs through a treasury product,
+which is why it is a harder build than it looks and why it is last.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>It is also the least regulated product in this set, and that is the trap rather than the relief.</strong> There is no treasury licence. There is nothing to apply for. What there is instead is <strong>four lines you must not cross</strong>, each of which is crossed by a feature a customer will ask you for and an engineer can build in a sprint. <strong>The fastest way to become regulated in this product is to be helpful.</strong></p></div>
+<h2 id="s-green-1">What SME treasury actually is</h2>
+
+<p>SME treasury is <strong>visibility, timing and control</strong> over money a business already has
+and already owes. You are not a bank, not a lender, not a broker and not a payment company &mdash;
+and the product is largely defined by staying that way.</p>
+<p><strong>The four lines, and the feature request that crosses each one:</strong></p>
+<table>
+<tr><th>They ask for</th><th>You become</th><th>Instead</th></tr>
+<tr><td>&ldquo;Hold our money so payouts are instant&rdquo;</td><td>A <strong>payment aggregator</strong>. Escrow with a scheduled commercial bank, net worth &#8377;15 crore rising to &#8377;25 crore, day-end balance equal to the amount realised</td><td><strong>Never touch the money.</strong> Initiate from their account, on their mandate</td></tr>
+<tr><td>&ldquo;Tell us where to park the surplus&rdquo;</td><td>An <strong>investment adviser</strong>. Registration, a capped fee, and you may not execute</td><td>Show <strong>their own bank&rsquo;s</strong> options and the arithmetic. Recommend nothing</td></tr>
+<tr><td>&ldquo;Front us the cash until the invoice clears&rdquo;</td><td>A <strong>lender</strong>. NBFC registration, the Digital Lending Directions, a KFS</td><td>Route to a regulated lender, or to <strong>TReDS</strong></td></tr>
+<tr><td>&ldquo;Convert this to dollars for us&rdquo;</td><td>Inside <strong>FEMA</strong>, needing an authorised dealer</td><td>Their AD bank does the conversion. You do the <strong>tracking</strong></td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>None of those four looks like a licensing decision at the moment it is made.</strong> Each arrives as a support ticket from a customer you like, gets scoped as a fortnight of work, and is shipped by someone who has never read a Master Direction. <strong>Put the four assertions in code on day one</strong> &mdash; a boundary you can only enforce by remembering it is not a boundary.</p></div>
+<p><strong>What it is not:</strong></p>
+<ul>
+<li><strong>Not an accounting package.</strong> Accounting is what happened; treasury is what is about
+to happen and what you will do about it.</li>
+<li><strong>Not an ERP module.</strong> The value is <em>across</em> banks and counterparties, which is
+exactly what a single-system module cannot see.</li>
+<li><strong>Not a forecast.</strong> A forecast is one output. The product is the decision it
+supports.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Decide what you are not</strong></td><td>The four lines, asserted in code.</td></tr>
+<tr><td>2</td><td><strong>See the cash</strong></td><td>Every account, one position, one currency base.</td></tr>
+<tr><td>3</td><td><strong>Receivables</strong></td><td><strong>And the IRN that makes one real.</strong></td></tr>
+<tr><td>4</td><td><strong>Payables</strong></td><td>Approvals, limits, and who may release money.</td></tr>
+<tr><td>5</td><td><strong>Forecast</strong></td><td>A range with a confidence, not a number.</td></tr>
+<tr><td>6</td><td><strong>The surplus</strong></td><td>Show the arithmetic. Recommend nothing.</td></tr>
+<tr><td>7</td><td><strong>Currency</strong></td><td>If they trade abroad, there is a queue waiting for them.</td></tr>
+<tr><td>8</td><td><strong>Close the loop</strong></td><td>Reconciliation, and an audit trail of decisions.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 3 and 8 are the skipped ones</strong>, and they are unusual company: a licensing question, a tax-compliance dependency and a reconciliation job. None of the three is what a treasury product demo is about, and all three are what makes one trustworthy.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 and 2 — the four lines, and the cash position</h2>
+
+<h3 id="s-indigo-s1">Steps 1 and 2 &mdash; What you are not, and what the money is</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 1 and 2, the four assertions and one honest cash position</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import date, timedelta
+from decimal import Decimal
+
+# STEP 1. THE FOUR LINES, AS CODE RATHER THAN AS A POLICY DOCUMENT.
+# Each of these is a single feature away from a licence you do not hold.
+
+def assert_boundaries(action, ctx):
+    # 1. Money never rests with you. Not for an hour, not &quot;in transit&quot;.
+    assert action[&quot;settlement_account_owner&quot;] == &quot;customer&quot;, \
+        &quot;holding customer funds makes you a payment aggregator&quot;
+    # 2. You may show options and arithmetic. You may not rank, default-sort,
+    #    badge, or personalise them. See the robo-advisory guide.
+    assert not action.get(&quot;recommends_instrument&quot;), \
+        &quot;ranking an investment for a specific customer is investment advice&quot;
+    # 3. Bridging a gap with your own balance sheet is lending.
+    assert action[&quot;funding_source&quot;] != &quot;platform_balance_sheet&quot;, \
+        &quot;advancing funds is lending&quot;
+    # 4. Conversion belongs to an authorised dealer bank.
+    assert action.get(&quot;fx_conversion_by&quot;) in (None, &quot;customer_ad_bank&quot;), \
+        &quot;converting currency requires an AD bank&quot;
+    return True
+
+# STEP 2. ONE POSITION, ACROSS BANKS.
+# The whole reason this product exists: a business with four accounts at three
+# banks has four balances and no position.
+
+def position(accounts, as_of=None):
+    as_of = as_of or date.today()
+    total = Decimal(0); stale = []
+    for a in accounts:
+        # A balance is only as good as its timestamp. Say so on the screen.
+        age_h = (as_of - a[&quot;balance_as_of&quot;]).days * 24
+        if age_h &gt; 24:
+            stale.append({&quot;account&quot;: a[&quot;id&quot;], &quot;age_hours&quot;: age_h})
+        total += Decimal(a[&quot;balance_paise&quot;])
+    return {
+        &quot;as_of_ist&quot;: as_of.isoformat(),
+        &quot;total_paise&quot;: total,
+        &quot;by_account&quot;: [{&quot;id&quot;: a[&quot;id&quot;], &quot;bank&quot;: a[&quot;bank&quot;],
+                        &quot;balance_paise&quot;: a[&quot;balance_paise&quot;],
+                        &quot;as_of&quot;: a[&quot;balance_as_of&quot;].isoformat()} for a in accounts],
+        # Never present a stale figure as current. An SME will make a payroll
+        # decision on this number.
+        &quot;stale_accounts&quot;: stale,
+        &quot;confidence&quot;: &quot;LOW&quot; if stale else &quot;OK&quot;,
+    }
+
+# WHAT TO CHECK
+# [ ] every one of the four assertions runs on every money-adjacent action,
+#     not in a design review
+# [ ] a balance carries its own timestamp all the way to the screen
+# [ ] &quot;available&quot; is not &quot;balance&quot; -- subtract uncleared cheques, holds, and
+#     the minimum the bank requires
+# [ ] one currency base, converted at a STORED rate with a timestamp, never
+#     at today&#x27;s rate applied to yesterday&#x27;s balance
+# [ ] read-only access by default. The consent to SEE money and the consent
+#     to MOVE money are different permissions and should look different
+# [ ] aggregate in IST against bank cut-offs, not a UTC calendar day
+</code></pre></div>
+<p><strong>On data:</strong> a business&rsquo;s bank data reaches you through the <strong>Account
+Aggregator</strong> framework with a consent artefact, and GSTN is an information provider inside it,
+so returns are available on the same rails. Two things carry over from the
+<a href="/fintech-ai/products/account-aggregator/">AA guide</a> and are not repeated here:
+<strong>verify the consent artefact signature</strong>, and remember that <strong>two clocks
+apply</strong> &mdash; how long you may fetch is not how long you may keep.</p>
+
+<h2 id="s-indigo-1">Steps 3 and 4 — receivables, the IRN, and payables</h2>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; Receivables, and the IRN that makes one real</h3>
+<p>An SME treasury product lives on the receivables ledger, and in India that ledger has a tax
+dependency most treasury software treats as somebody else&rsquo;s problem.</p>
+<table>
+<tr><th>Rule</th><th>Position</th></tr>
+<tr><td><strong>E-invoicing applies</strong></td><td>AATO above <strong>&#8377;5 crore</strong> in any financial year since 2017-18. <strong>Permanent once crossed</strong> &mdash; it keeps applying to every GSTIN under that PAN even if a later year falls below</td></tr>
+<tr><td><strong>The 30-day hard stop</strong></td><td>AATO <strong>&#8377;10 crore and above</strong>, from <strong>1 April 2025</strong>: an invoice, credit note or debit note must reach the IRP <strong>within 30 days of its date</strong>. The portal refuses it afterwards</td></tr>
+<tr><td><strong>What a miss costs</strong></td><td>No IRN means <strong>no valid tax invoice</strong>, which means <strong>your customer cannot claim input tax credit</strong></td></tr>
+<tr><td><strong>Cancellation</strong></td><td><strong>24 hours</strong> on the IRP. After that it is a credit note, which itself must be reported</td></tr>
+<tr><td><strong>Turnover is aggregate</strong></td><td>Across all GSTINs under one PAN: taxable, exempt, exports and inter-state stock transfers, excluding GST itself</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>This is where a treasury problem becomes a customer relationship problem, and it is the finding worth carrying off this page.</strong> A missed IRN does not hurt the business that issued the invoice first. <strong>It hurts their customer</strong>, who loses input tax credit on a purchase they have already paid for &mdash; and who will remember it at renewal. <strong>Model the IRN as a state on the receivable, not as a field on the invoice</strong>, with an age, an owner and an escalation before day 30. A receivable with no IRN is not a receivable you can chase, finance or count.</p></div>
+<p>The rest of receivables is ordinary and still usually done badly: ageing buckets that mean
+something, a promised-payment date that is separate from the due date, and a single reference that
+survives from invoice to bank credit. <strong>If the invoice cannot be matched to the credit
+automatically, the whole product degrades into a spreadsheet with a login.</strong></p>
+
+<h3 id="s-indigo-s4">Step 4 &mdash; Payables, which is really about permission</h3>
+<p>The engineering here is small and the design is not. Three questions decide it: <strong>who may
+approve, up to what, and who may release</strong>. In most small businesses one person does all
+three, and the product&rsquo;s job is to make the separation cheap enough to adopt rather than to
+enforce a policy nobody asked for.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>The control that pays for itself is beneficiary verification on change, not approval limits.</strong> Invoice-redirection fraud does not defeat an approval workflow &mdash; the payment is genuinely approved, to genuinely the wrong account. <strong>Treat a change of bank details on an existing supplier as a separate event requiring separate confirmation through a channel the request did not arrive on.</strong> It is a day of work and it is the single highest-value control in this product.</p></div>
+<h2 id="s-indigo-2">Steps 5 to 8 — forecast, surplus, currency, close</h2>
+
+<h3 id="s-indigo-s5">Steps 5 to 8 &mdash; Forecast, surplus, currency, close</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 5 to 8, a forecast with a confidence, a surplus without advice, and the close</span><button class="cb-copy" type="button">Copy</button></div><pre><code># STEP 5. FORECAST. A NUMBER IS A LIE; A RANGE IS A FORECAST.
+# The useful output is not &quot;you will have 42 lakh on the 30th&quot;. It is &quot;payroll
+# on the 30th is covered unless these two invoices slip, and here they are&quot;.
+
+def cash_forecast(position, receivables, payables, horizon_days=45):
+    base = position[&quot;total_paise&quot;]
+    rows = []
+    for d in range(horizon_days):
+        day = date.today() + timedelta(days=d)
+        inflow_p50 = sum(r[&quot;amount_paise&quot;] * r[&quot;p_pay_by&quot;](day) for r in receivables)
+        outflow = sum(p[&quot;amount_paise&quot;] for p in payables if p[&quot;due&quot;] == day)
+        base = base + inflow_p50 - outflow
+        rows.append({&quot;date&quot;: day.isoformat(), &quot;expected_paise&quot;: base,
+                     &quot;committed_outflow_paise&quot;: outflow})
+    return {&quot;rows&quot;: rows,
+            &quot;confidence&quot;: position[&quot;confidence&quot;],      # inherits its inputs
+            &quot;drivers&quot;: top_swing_factors(receivables), # WHICH invoices decide it
+            &quot;breach_dates&quot;: [r[&quot;date&quot;] for r in rows if r[&quot;expected_paise&quot;] &lt; 0]}
+
+# The single most useful screen in the product is not the chart. It is:
+# &quot;these three invoices decide whether the 30th works.&quot;
+
+# STEP 6. THE SURPLUS, WITHOUT BECOMING AN ADVISER.
+def surplus_options(customer, amount_paise, days_until_needed):
+    opts = customer[&quot;bank&quot;].deposit_products(amount_paise, days_until_needed)
+    return {
+        &quot;amount_paise&quot;: amount_paise,
+        &quot;days_until_needed&quot;: days_until_needed,
+        # Arithmetic, in a stable order, with the assumptions visible.
+        &quot;options&quot;: [{&quot;name&quot;: o[&quot;name&quot;], &quot;rate_pa&quot;: o[&quot;rate_pa&quot;],
+                     &quot;lock_in_days&quot;: o[&quot;lock_in_days&quot;],
+                     &quot;interest_paise&quot;: simple_interest(amount_paise, o[&quot;rate_pa&quot;],
+                                                       days_until_needed),
+                     &quot;breaks_before_needed&quot;: o[&quot;lock_in_days&quot;] &gt; days_until_needed}
+                    for o in opts],
+        &quot;sort&quot;: &quot;stable_by_lock_in&quot;,     # NOT by return. A default sort ranks.
+        &quot;recommended&quot;: None,             # and it stays None
+        &quot;disclaimer_is_not_the_control&quot;: True,
+    }
+
+# STEP 7. CURRENCY -- if they trade abroad, there is a queue waiting for them.
+def fx_exposure(invoices, base=&quot;INR&quot;):
+    open_entries = [i for i in invoices if i[&quot;edpms_idpms_status&quot;] == &quot;OPEN&quot;]
+    return {&quot;by_currency&quot;: bucket(invoices, &quot;currency&quot;),
+            # Entries stay open until somebody closes them, and resurface as a
+            # bank declining the next transaction. Queue, owner, age.
+            &quot;open_regulatory_entries&quot;: len(open_entries),
+            &quot;oldest_open_days&quot;: max([i[&quot;age_days&quot;] for i in open_entries] or [0])}
+
+# STEP 8. CLOSE THE LOOP.
+def close(period, ledger, statements):
+    # FULL OUTER JOIN. A bank line matching no ledger entry is the interesting
+    # case -- money that moved and nobody can explain.
+    matched, only_ledger, only_bank = full_outer_match(ledger, statements)
+    assert control_total(statements) == expected_total(period), &quot;abort: file incomplete&quot;
+    return {&quot;matched&quot;: len(matched), &quot;unexplained_bank_lines&quot;: len(only_bank),
+            &quot;unmatched_ledger&quot;: len(only_ledger),
+            &quot;decisions_log&quot;: period[&quot;decisions&quot;]}   # what was decided, and why
+
+# WHAT TO CHECK
+# [ ] a forecast carries the confidence of its worst input, not its best
+# [ ] name the invoices that decide the outcome. That is the product
+# [ ] surplus options are never ranked, sorted by return, or badged. Stable
+#     order, visible assumptions, nothing recommended
+# [ ] control totals BEFORE matching, and abort on mismatch -- a truncated
+#     statement reconciles perfectly on the rows it contains
+# [ ] full outer join, never left. The unexplained bank line is the point
+# [ ] EDPMS and IDPMS entries tracked as a queue with an owner and an age
+# [ ] log the DECISION, not only the transaction: what was chosen, on what
+#     figures, by whom. That log is the difference between a tool and a record
+</code></pre></div>
+<p><strong>On forecasting, briefly, because the temptation is large.</strong> This is the step where
+a team reaches for a model, and for most SMEs a model is the wrong tool for an honest reason:
+<strong>the outcome is usually decided by two or three specific invoices</strong>, not by a pattern
+across thousands. Naming those invoices is more useful than predicting the aggregate, it is
+explainable, and it survives the month the business wins an unusually large order. <strong>If you do
+use a model, everything in the alternative credit scoring guide applies</strong> &mdash; including
+that a rule engine is a model and that you must be able to say why.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Step 6 is where this product most often crosses a line without noticing.</strong> Showing a customer what their own bank offers on a 30-day deposit, with the interest worked out, is arithmetic. <strong>Sorting that list by return is a recommendation.</strong> So is a &ldquo;best for you&rdquo; badge, a default selection, and a nudge that appears only when the balance is large. The <a href="/fintech-ai/products/robo-advisory/">robo-advisory guide</a> sets out the three screen tests; run them on this screen every release, because this is the screen a growth team will want to optimise.</p></div>
+
+<h3 id="s-indigo-s7">Where this product touches the rest of the section</h3>
+<p>Thirteen guides in, the map is worth drawing once. <strong>A treasury product is an integration of
+other people&rsquo;s regulated surfaces</strong>, and each one has its own page:</p>
+<table>
+<tr><th>Surface</th><th>Where the detail is</th></tr>
+<tr><td>Consented bank and GST data</td><td><a href="/fintech-ai/products/account-aggregator/">Account Aggregator</a></td></tr>
+<tr><td>Paying suppliers, collecting from customers</td><td><a href="/fintech-ai/payments-reconciliation/build-sheet/">Build Sheet 05</a> and <a href="/fintech-ai/products/upi-switch/">UPI</a></td></tr>
+<tr><td>Standing instructions and auto-debits</td><td><a href="/fintech-ai/products/recurring-payments/">Recurring Payments</a></td></tr>
+<tr><td>Turning an unpaid invoice into cash</td><td><a href="/fintech-ai/products/invoice-discounting/">Invoice Discounting</a></td></tr>
+<tr><td>Paying or being paid across borders</td><td><a href="/fintech-ai/products/cross-border-payments/">Cross-Border Payments</a></td></tr>
+<tr><td>Anything resembling a recommendation</td><td><a href="/fintech-ai/products/robo-advisory/">Robo-Advisory</a></td></tr>
+<tr><td>Anything resembling a credit decision</td><td><a href="/fintech-ai/products/alternative-credit-scoring/">Alternative Credit Scoring</a></td></tr>
+</table>
+
+<h2 id="s-indigo-3">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>SME treasury &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Registrations<span class="pill p-direct">direct</span></div><div class="d"><strong>None, if you hold the four lines.</strong> That is the entire commercial argument for building this product rather than a lending or payments one &mdash; and it evaporates the first time money rests in your account.</div></div><div class="reg-row"><div class="n">Account Aggregator<span class="pill p-direct">direct</span></div><div class="d">Per fetch, plus the build. Scope it as <strong>two modules</strong> if you are a regulated entity: joining as an FIU can also require joining as an FIP. Detail in the Account Aggregator guide.</div></div><div class="reg-row"><div class="n">Bank connectivity<span class="pill p-direct">direct</span></div><div class="d">The real integration cost, and it is <strong>per bank</strong>. Coverage is the product; a treasury tool that sees three of a customer&rsquo;s four accounts is worse than a spreadsheet, because it looks complete.</div></div><div class="reg-row"><div class="n">E-invoicing integration<span class="pill p-direct">direct</span></div><div class="d">IRP connectivity, or a GSP. Small against what a <strong>blocked IRN</strong> costs a customer&rsquo;s customer in lost input tax credit.</div></div><div class="reg-row"><div class="n">Forecast accuracy<span class="pill p-indirect">indirect</span></div><div class="d">Not a line item and the thing you are actually selling. <strong>A wrong forecast that looks confident is worse than no forecast</strong>, because an SME will schedule payroll against it.</div></div><div class="reg-row"><div class="n">The support cost of being right<span class="pill p-indirect">indirect</span></div><div class="d">Every stale balance, unmatched credit and open EDPMS entry becomes a conversation. <strong>Staff reconciliation as a queue with an owner</strong>, not as a month-end task.</div></div><div class="reg-row"><div class="n">What you are competing with<span class="pill p-indirect">indirect</span></div><div class="d"><strong>A spreadsheet and a WhatsApp group, and they are free and already working.</strong> The bar is not another treasury product. It is the incumbent process, which has no licence fee and no integration risk.</div></div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The honest pricing observation for this product:</strong> an SME will pay for a decision it can act on and will not pay for a dashboard. The willingness to pay sits on <em>&ldquo;payroll on the 30th is covered unless these two invoices slip&rdquo;</em> &mdash; a sentence, not a chart &mdash; and everything on this page exists to make that sentence true and defensible.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">Read-only visibility</h3>
+<p><strong>Build:</strong> AA consent &rarr; balances across every account with timestamps &rarr;
+receivables ageing with IRN state &rarr; one position, one currency base.</p>
+<p><strong>You get:</strong> the thing the spreadsheet cannot do, with <strong>no regulated
+surface at all</strong>. Read-only is a legitimate destination, not a stepping stone.</p>
+
+<h3 id="s-amber-proper">Visibility plus initiation</h3>
+<p><strong>Build:</strong> the above, plus approval workflow, beneficiary-change verification, payment
+initiation <strong>from the customer&rsquo;s own account on their own mandate</strong>, and
+reconciliation with control totals and a full outer join.</p>
+<p><strong>Trade:</strong> initiation is where the four assertions start earning their place daily.
+<strong>Money still never rests with you</strong> &mdash; if a feature needs it to, the feature is the
+problem, not the assertion.</p>
+
+<h3 id="s-amber-big">Treasury with financing and currency</h3>
+<p><strong>Build:</strong> the above, plus routing to <strong>TReDS</strong> or a regulated lender for
+the cash gap, EDPMS and IDPMS tracked as an aged queue, and surplus options shown as arithmetic in a
+stable order.</p>
+<p><strong>It breaks when:</strong> one of the four boundaries is crossed for a good reason. The
+sequence is always the same &mdash; a customer asks, it is scoped as a fortnight, and it ships.
+<strong>Make the assertion fail the build rather than fail a review.</strong></p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>the four boundaries are code, not policy.</strong> Every one of them will be crossed by a feature request that is reasonable, well-intentioned and small. An assertion that fails the build is the only version of that boundary that survives contact with a roadmap.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>Funds rest in a platform account</strong></td><td>&ldquo;Instant payouts&rdquo; shipped as a feature.</td><td>Assert the settlement account owner. You are not a payment aggregator.</td></tr>
+<tr><td><strong>Surplus list sorted by return</strong></td><td>It is the obvious default sort.</td><td>Stable order, no ranking, nothing recommended.</td></tr>
+<tr><td><strong>Stale balance shown as current</strong></td><td>The timestamp was dropped at the API layer.</td><td>Carry it to the screen. Payroll gets decided on that number.</td></tr>
+<tr><td><strong>Receivable with no IRN, past day 30</strong></td><td>IRN treated as a field, not a state.</td><td>State with an age, an owner and escalation before day 30.</td></tr>
+<tr><td><strong>Customer loses input tax credit</strong></td><td>A missed IRN on an invoice they already paid.</td><td>Same fix, and tell them early rather than at reconciliation.</td></tr>
+<tr><td><strong>Payment approved, to the wrong account</strong></td><td>Invoice redirection defeats approval, not verification.</td><td>Beneficiary change is a separate event, confirmed out of band.</td></tr>
+<tr><td><strong>Forecast confident and wrong</strong></td><td>Confidence not inherited from inputs.</td><td>A forecast carries the confidence of its worst input.</td></tr>
+<tr><td><strong>Reconciled perfectly against a truncated file</strong></td><td>No control totals.</td><td>Control totals first, abort on mismatch.</td></tr>
+<tr><td><strong>Unexplained bank credits never surface</strong></td><td>Left join instead of full outer.</td><td>Full outer join. The unmatched bank line is the point.</td></tr>
+<tr><td><strong>EDPMS backlog discovered by a declined transaction</strong></td><td>Nobody owned the queue.</td><td>Owner and age, from the first transaction.</td></tr>
+<tr><td><strong>Three of four accounts connected</strong></td><td>One bank had no integration.</td><td>Say so on screen. A partial position that looks complete is worse than none.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/products/invoice-discounting/" class="mod-card"><div class="mod-num">GUIDE 08</div><h3>Invoice Discounting</h3><p>The regulated way to turn a receivable into cash without becoming a lender.</p></a>
+<a href="/fintech-ai/payments-reconciliation/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 05</div><h3>Payments &amp; Reconciliation</h3><p>Escrow, control totals, full outer joins and the economics of moving money.</p></a>
+<a href="/fintech-ai/products/robo-advisory/" class="mod-card"><div class="mod-num">GUIDE 12</div><h3>Robo-Advisory</h3><p>The three screen tests for whether a screen has become a recommendation.</p></a>
+<a href="/fintech-ai/build-playbook/" class="mod-card"><div class="mod-num">PLAYBOOK</div><h3>Build Playbook</h3><p>Licensing, stack selection and the go-live gate, in one place.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. A treasury product sits next to four regulated activities and the distance between it and each of them is one feature. Nothing here is legal advice. Have your fund flows, your surplus screen and your financing referrals reviewed by qualified counsel before launch, and re-review them whenever the roadmap adds something a customer asked for.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>GST e-invoicing under Rule 48(4), CGST Rules</strong> &mdash; the ₹5 crore aggregate annual turnover threshold applying since 1 August 2023 to any financial year from 2017-18 onwards and continuing to apply once crossed; aggregate turnover computed across all GSTINs under one PAN including taxable, exempt, export and inter-state stock transfer values and excluding GST; and the treatment of an invoice issued without a valid IRN as not issued. <a href="https://www.cbic.gov.in" target="_blank" rel="noopener">www.cbic.gov.in</a></li><li><span class="src-k src-official">official</span><strong>GSTN advisory of 5 November 2024 on the IRP reporting window</strong> &mdash; the 30-day limit for reporting invoices, credit notes and debit notes to the Invoice Registration Portal, extended from taxpayers with AATO of ₹100 crore and above to those with ₹10 crore and above with effect from 1 April 2025, after which the portal refuses the document; and the 24-hour cancellation window on the IRP. <a href="https://einvoice.gst.gov.in" target="_blank" rel="noopener">einvoice.gst.gov.in</a></li><li><span class="src-k src-official">official</span><strong>RBI (Regulation of Payment Aggregators) Directions, 2025</strong> &mdash; the escrow requirement with a scheduled commercial bank, the exclusion of own funds, the day-end balance equal to the amount realised, and the ₹15 crore to ₹25 crore net worth path — the regime a treasury product enters the moment customer funds rest in its own account. Detail in Build Sheet 05. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>SEBI position on the advisory perimeter</strong> &mdash; that a program recommending securities to a specific person on the basis of their circumstances is giving investment advice, and that a disclaimer does not change what an activity is — the basis for showing surplus options as arithmetic in a stable order rather than as a ranked list. Detail in the Robo-Advisory guide. <a href="https://www.sebi.gov.in" target="_blank" rel="noopener">www.sebi.gov.in</a></li><li><span class="src-k src-official">official</span><strong>Account Aggregator framework and the NBFC-AA Master Direction</strong> &mdash; the consent-artefact mechanism through which bank and GST data reaches a treasury product, the requirement to verify the artefact signature, and the separate consent-expiry and data-life clocks. Detail in the Account Aggregator guide. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>FEMA and the EDPMS / IDPMS reporting framework</strong> &mdash; the requirement that currency conversion run through an authorised dealer bank, and that export and import entries remain open until documented — the queue that resurfaces as a bank declining the next transaction. Detail in the Cross-Border Payments guide. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-industry">industry</span><strong>E-invoicing implementation commentary</strong> &mdash; the operational read on threshold proposals below ₹5 crore, portal authentication changes, and the practical consequence of a blocked IRN for a recipient&rsquo;s input tax credit. Directional; confirm any threshold against the current notification before relying on it.</li><li><span class="src-k src-industry">industry</span><strong>SME cash-management practice</strong> &mdash; the observation that the incumbent process is a spreadsheet and a messaging group, and that willingness to pay attaches to an actionable decision rather than to a dashboard. Judgement, not a measured figure.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. GST thresholds have been lowered repeatedly and proposals below &#8377;5 crore have been discussed; confirm the current figure against the notification rather than against this page.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

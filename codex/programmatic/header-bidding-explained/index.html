@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
 </style>
 
 <meta property="og:type" content="article">
@@ -173,7 +203,40 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>The header bidding wrapper (typically Prebid.js) sits in the publisher's page header and fires bid requests to multiple SSPs and demand partners simultaneously when a page loads. Partners respond with bids within a defined timeout (typically 300-500ms). The winning bid enters the publisher's ad server as a line item, where it competes with direct-sold campaigns and other programmatic demand.</p><p>Server-side header bidding moves this auction off the browser and onto a server, reducing page latency — at the cost of some bid signal quality and potentially lower match rates.</p>
 <h2>Implications for Buyers</h2>
 <p>Header bidding increased competition for premium inventory, which generally increased CPMs for publishers. For buyers, the implication is that low bids that might have won in a waterfall are less likely to win in a header bidding auction with 10+ competing partners.</p><p>Bid shading (bidding below the clearing price in first-price auctions) became important as programmatic shifted to first-price auctions alongside header bidding adoption. DSPs that bid-shade intelligently reduce spend waste.</p>
-</div>
+<h2>Client-Side, Server-Side, and the Trade You Are Making</h2>
+
+<p>Header bidding comes in two architectures and the choice is a straight trade between revenue and
+page speed.</p>
+<p><strong>Client-side</strong> runs the auction in the visitor's browser. Every demand partner gets
+a genuine look, cookie matching works because the call comes from the browser itself, and match rates
+stay high. The cost is latency that scales with the number of partners, paid by the visitor. Each
+additional partner adds requests to a page that is also trying to render.</p>
+<p><strong>Server-side</strong> moves the auction to a server. One call leaves the browser, latency
+stops scaling with partner count, and you can add demand without punishing the page. The cost is
+cookie matching — the server is a third party to both the browser and the bidder, so match rates fall,
+and a bidder that cannot identify the user bids lower or not at all.</p>
+<p>Most publishers at scale run <strong>both</strong>: high-value partners client-side where match
+rates matter, the long tail server-side where they do not. That hybrid is the standard answer, not a
+compromise nobody chose.</p>
+
+<h2>What It Does Not Fix</h2>
+
+<p>Header bidding solves a sequencing problem: it lets demand sources compete simultaneously rather
+than in a waterfall. It does not solve any of the following, and expecting it to is the usual source
+of disappointment.</p>
+<p><strong>It does not create demand.</strong> If three partners want your inventory, adding a fourth
+auction mechanism does not make it four. Revenue lift comes from competition that was previously
+suppressed by the waterfall, and that lift is finite.</p>
+<p><strong>It does not fix inventory quality.</strong> Below-the-fold placements with poor viewability
+bid poorly in a unified auction for the same reason they bid poorly in a waterfall.</p>
+<p><strong>It does not reduce fees — it relocates them.</strong> Every additional intermediary in the
+chain takes a margin, and a publisher who adds partners without auditing the chain can increase gross
+revenue and reduce net.</p>
+<p><strong>And it adds an operational burden that is permanent.</strong> Timeouts, price floors and
+partner performance need ongoing attention. A configuration that was correct a year ago is a
+configuration nobody has looked at.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>IAB Tech Lab specifications</strong> &mdash; the OpenRTB specification and the programmatic deal-type definitions this page uses <a href="https://iabtechlab.com" rel="noopener" target="_blank">iabtechlab.com</a></li><li><span class="src-k src-official">official</span><strong>Google Ad Manager documentation</strong> &mdash; line item priority, deal negotiation and the delivery forecasting behaviour described here <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/programmatic/programmatic-advertising-fundamentals/">Programmatic Fundamentals</a></li><li><a href="/codex/programmatic/supply-side-platforms/">Supply-Side Platforms</a></li><li><a href="/codex/programmatic/real-time-bidding/">Real-Time Bidding</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="/codex/programmatic/" class="sidebar-link">Programmatic overview →</a></div>

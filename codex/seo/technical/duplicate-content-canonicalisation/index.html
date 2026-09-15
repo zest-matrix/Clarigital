@@ -17,7 +17,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -143,6 +143,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -172,7 +202,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>A canonical tag tells search engines which version is preferred. It is a strong hint, not a directive — Google may disregard it if other signals conflict.</p><p>Common mistakes: canonicals pointing to redirecting URLs, relative rather than absolute URLs, every page canonicalising to the homepage, conflicting canonical and hreflang, and paginated series all canonicalising to page one.</p><p>Self-referencing canonicals on every page are good practice. They remove ambiguity when parameters are appended.</p>
 <h2>Choosing the Right Fix</h2>
 <p>Match the mechanism to the situation:</p><ul><li><strong>301 redirect</strong> when one version should not exist at all — HTTP to HTTPS, old URL to new</li><li><strong>Canonical tag</strong> when both versions need to remain accessible but only one should be indexed</li><li><strong>noindex</strong> when a page must exist for users but has no search value — internal search results, thin filter combinations</li><li><strong>robots.txt</strong> to prevent crawling entirely; note this also prevents Google seeing a canonical or noindex on those URLs</li></ul>
-</div>
+<h2>When Google Ignores Your Canonical, and Why</h2>
+
+<p>A canonical tag is a <strong>hint, not a directive</strong>. Google selects a canonical itself and
+will override yours. Understanding the override conditions saves a great deal of wasted diagnosis.</p>
+<p>The common reasons a declared canonical is disregarded: <strong>the target differs substantially in
+content</strong>, so the pages are not duplicates and the declaration is simply wrong;
+<strong>conflicting signals</strong>, where internal links, the sitemap and hreflang point somewhere
+else than the tag does; <strong>the canonical target is non-indexable</strong>, whether noindexed,
+blocked in robots.txt or returning an error; <strong>canonical chains</strong>, where A points to B
+which points to C; and <strong>a relative URL that resolves wrongly</strong> on some templates.</p>
+<p>The diagnostic that answers it directly is the URL inspection tool, which reports the
+<strong>user-declared</strong> canonical and the <strong>Google-selected</strong> one side by side.
+When they differ, the problem is a signal conflict somewhere else on the site, and changing the tag
+again will not fix it.</p>
+
+<h2>Choosing the Right Instrument for the Problem</h2>
+
+<p>Canonical tags are the default answer to duplication and frequently the wrong one. Each instrument
+does something different and they are not interchangeable.</p>
+<table>
+<tr><th>Situation</th><th>Instrument</th></tr>
+<tr><td>Two URLs, genuinely the same page</td><td><strong>Canonical</strong> to the preferred one</td></tr>
+<tr><td>A page permanently moved</td><td><strong>301 redirect</strong>, not a canonical</td></tr>
+<tr><td>Faceted or filtered variants with no search value</td><td><strong>noindex</strong>, or block the parameter</td></tr>
+<tr><td>Paginated sequences</td><td><strong>Self-referencing canonicals</strong> on each page</td></tr>
+<tr><td>Same content for different regions or languages</td><td><strong>hreflang</strong> plus self-referencing canonicals</td></tr>
+<tr><td>Syndicated to a third party</td><td>Ask for a <strong>canonical back to you</strong>, or accept the risk</td></tr>
+</table>
+<p>Two errors are worth naming because they are frequent and expensive.
+<strong>Canonicalising paginated pages to page one</strong> removes deeper items from consideration
+entirely. And <strong>combining noindex with a canonical</strong> on the same URL sends contradictory
+instructions — one says do not index this, the other says consolidate its signals into another page —
+and the outcome is unpredictable. Choose one.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; canonicalisation, duplicate handling, and how Google selects a canonical URL <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability and Indexability</a></li><li><a href="/codex/seo/technical/hreflang/">Hreflang</a></li><li><a href="/codex/seo/technical/site-architecture/">Site Architecture</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Technical SEO" class="sidebar-link">/codex/seo/technical/ overview &rarr;</a></div>

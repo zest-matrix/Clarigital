@@ -21,6 +21,11 @@ cp _build/*.py /tmp/
 | `audit.py` | The **17**-check table. **Run before every package.** |
 | `bs04_aml.py` | Session 47 build script for the AML Build Sheet. Reference for Build Sheets 05–09. |
 | `meta_sweep.py` | Adds missing OG / Twitter / JSON-LD / BreadcrumbList |
+| `newpage_check.py` | **33 page-level SOP checks. Run `--changed` after building any page, before the audit.** Exit 1 on blockers |
+| `gen_counts.py` | Derives every Codex section-hub guide count from the filesystem (Session 68) |
+| `gen_all_guides.py` | Regenerates `/codex/all-guides/` from the filesystem (Session 67) |
+| `gen_fintech_hub.py` | **Session 81.** Derives the Fintech hub stat strip and the product-guide grid. Added after the hub advertised 1 product guide against 8, and after 7 of 8 guides turned out to have no route in from the hub. Idempotent; read its docstring for what it does NOT cover |
+| `pg01_*.py` … `pg13_*.py` | One build script per product guide. `pg13_treasury.py` is the most recent reference; the set is complete |
 | `fix_quiz.py` | Session 47b one-off. Repaired 6 quiz defects across 68 courses. Kept as a reference pattern for verified-before-write bulk edits. |
 | `c_style.txt`, `c_script.txt` | **Templates `course_builder_v3.py` requires.** Were /tmp-only until Session 47b, which made the builder unrunnable in a fresh session. |
 | `migrate_courses.py`, `consolidate.py`, `cons_atlas2.py` | One-off migrations, kept as reference patterns for balanced HTML extraction |
@@ -32,7 +37,7 @@ Session 47, which meant every page built after May shipped a stale verification 
 
 ```python
 VERIFIED = 'September 2026'   # hero meta-tag + default for registry() blocks
-DATEMOD  = '2026-09-13'       # JSON-LD dateModified
+DATEMOD  = '2026-09-15'       # JSON-LD dateModified — bump every session
 ```
 
 `rebuild_infra.py` now derives sitemap `lastmod`, the `llms-full.txt` header and

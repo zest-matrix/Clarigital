@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
 </style>
 
 <meta property="og:type" content="article">
@@ -173,7 +203,38 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>CTV inventory is available through programmatic channels at varying levels of quality and certainty. Premium CTV — inventory on major streaming platforms — is often sold through private marketplaces (PMPs) and programmatic guaranteed deals rather than open exchange. This reflects both the premium nature of the inventory and the brand safety requirements of large advertisers.</p><p>The open CTV exchange contains lower-quality inventory — smaller publishers, long-tail apps, and content that may not meet brand safety requirements. As with display, buyers get what they pay for.</p>
 <h2>CTV Measurement</h2>
 <p>CTV measurement is still maturing. Third-party verification (viewability, invalid traffic) is more straightforward than mobile — ads on a TV screen are almost always 100% viewable and not subject to the same bot traffic patterns as display. But attribution remains challenging: connecting a CTV ad exposure to a downstream purchase requires identity resolution across devices.</p><p>Household IP matching, ACR (automatic content recognition) data, and cross-device identity graphs are used to connect CTV exposure to outcomes. Measurement accuracy varies significantly by approach and the quality of the identity data used.</p>
-</div>
+<h2>Why CTV Frequency Is So Hard to Control</h2>
+
+<p>The complaint about connected TV is almost always the same: the same viewer sees the same ad far
+too many times. The cause is structural rather than a settings error.</p>
+<p>Inventory for one show reaches a buyer through several routes at once — the publisher's own app,
+an aggregator, a device manufacturer's platform, a virtual MVPD. <strong>Each route is a separate
+supply path with its own identifier for the same household</strong>, and a frequency cap set in one
+DSP can only count the impressions it can see.</p>
+<p>There is no universal identifier doing the work a cookie once did on the web. Device
+graph matching helps and is probabilistic, which means it is wrong some of the time in both
+directions.</p>
+<p>Practical mitigations, in order of how much they actually help: <strong>consolidate buying into
+fewer DSPs</strong>, because a cap works within a platform and not across them; <strong>buy through
+fewer supply paths</strong> for the same inventory; and <strong>set the cap materially lower than
+your intended exposure</strong>, because the observed frequency will exceed the set frequency.</p>
+
+<h2>Measuring It Without Fooling Yourself</h2>
+
+<p>CTV has no click. Everything downstream of the impression is inference, and the quality of that
+inference is the whole measurement question.</p>
+<p><strong>Completion rate</strong> is the metric most often quoted and the least informative. Most
+CTV inventory is non-skippable, so completion approaches total by construction. A completion rate
+near total tells you the format was non-skippable, not that the ad worked.</p>
+<p><strong>Incrementality</strong> is what you actually want, and geographic holdout testing is the
+most robust way to get it — withhold spend in matched regions and compare. It is slow, it costs
+reach, and it is the only method that answers the question directly.</p>
+<p><strong>Attribution by household IP</strong> connecting an ad exposure to a later visit on another
+device is useful and systematically generous. It cannot distinguish the household member who saw the
+ad from the one who searched, and it credits exposure that changed nothing.</p>
+<p>Use it directionally. Do not let it settle a budget argument on its own.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>IAB Tech Lab specifications</strong> &mdash; the OpenRTB specification and the programmatic deal-type definitions this page uses <a href="https://iabtechlab.com" rel="noopener" target="_blank">iabtechlab.com</a></li><li><span class="src-k src-official">official</span><strong>IAB digital audio and podcast measurement guidelines</strong> &mdash; the download-versus-impression distinction and the technical basis for audio measurement <a href="https://iabtechlab.com" rel="noopener" target="_blank">iabtechlab.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/programmatic/programmatic-advertising-fundamentals/">Programmatic Fundamentals</a></li><li><a href="/codex/paid-advertising/video-advertising/">Video Advertising</a></li><li><a href="/codex/analytics-cro/attribution-modelling/">Attribution Modelling</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="/codex/programmatic/" class="sidebar-link">Programmatic overview →</a></div>

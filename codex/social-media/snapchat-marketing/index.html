@@ -17,7 +17,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -143,6 +143,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -174,7 +204,39 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Snapchat penetration among teenagers and young adults remains very high in several markets, and usage is frequent and habitual. It also reaches users who have largely left Facebook and use Instagram differently.</p><p>Above roughly 35, penetration falls sharply. For brands whose customers are older, organic Snapchat effort is not justified regardless of execution quality.</p>
 <h2>Realistic Expectations</h2>
 <p>Snapchat organic reach is harder to build than on TikTok, because Spotlight distribution is less generous and discovery is weaker.</p><p>The workable model for most brands is organic Public Profile content supporting paid campaigns and Lenses, rather than organic as a standalone channel. Treat organic here as reinforcement, not as the primary mechanism.</p>
-</div>
+<h2>Creating for a Camera-First Audience</h2>
+
+<p>Content that performs elsewhere generally underperforms on Snapchat, because the platform's
+conventions were set by private messaging rather than by broadcast.</p>
+<p>Three differences shape production. <strong>Vertical, full-screen, sound-on is the baseline</strong>
+rather than an option, and repurposed landscape content reads as imported.
+<strong>Production polish is not an advantage.</strong> Content that looks made rather than captured
+is treated as advertising by an audience that came for something else, and a phone-shot clip often
+outperforms a studio one.
+<strong>The first second decides everything</strong>, with no title, thumbnail or caption doing that
+work in advance.</p>
+<p>Practically: shoot in the app or in a way indistinguishable from it, cut hard and early, put the
+substance before any branding, and caption for the meaningful share of viewing that happens without
+sound despite the sound-on default.</p>
+
+<h2>Whether It Is Worth Your Time</h2>
+
+<p>The honest assessment for most brands is that organic Snapchat is a poor use of scarce content
+capacity, and it is worth being specific about when that is wrong.</p>
+<p><strong>It is worth it when</strong> your audience genuinely skews to the platform's younger
+demographic and you can verify that from your own data rather than from a general statistic; when you
+can produce in the native idiom without a separate production cycle; or when AR is a real product fit
+— a try-on for eyewear, cosmetics or furniture is a functional tool rather than a campaign, and it is
+the platform's genuine differentiator.</p>
+<p><strong>It is not worth it when</strong> the plan is to cross-post existing vertical video, which
+performs poorly and costs the appearance of effort; when the goal is link traffic, which the platform
+constrains heavily for organic accounts; or when nobody owns it, because organic performance here
+decays faster than on platforms with a searchable back catalogue.</p>
+<p>Set the expectation before starting: <strong>this is a presence and a creative-capability
+investment, not an acquisition channel</strong>. Judged as the latter it will disappoint, and the
+disappointment will be correct.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Snap for Business documentation</strong> &mdash; Public Profile eligibility, Spotlight distribution and Lens publishing described here <a href="https://forbusiness.snapchat.com" rel="noopener" target="_blank">forbusiness.snapchat.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/snapchat-ads/">Snapchat Ads</a></li><li><a href="/codex/social-media/tiktok-content-strategy/">TikTok Content Strategy</a></li><li><a href="/codex/social-media/instagram-reels-strategy/">Instagram Reels Strategy</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Social Media" class="sidebar-link">/codex/social-media/ overview &rarr;</a></div>

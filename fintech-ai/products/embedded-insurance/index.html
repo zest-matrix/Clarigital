@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Embedded Insurance: How to Build It | Clarigital</title>
+<meta name="description" content="Build an embedded insurance product step by step: who may sell it, the 24-hour premium rule, and what changes on 1 January 2027.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/embedded-insurance/">
+<meta property="og:type" content="article"><meta property="og:title" content="Embedded Insurance: How to Build It">
+<meta property="og:description" content="Build an embedded insurance product step by step: who may sell it, the 24-hour premium rule, and what changes on 1 January 2027."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/embedded-insurance/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Embedded Insurance: How to Build It">
+<meta name="twitter:description" content="Build an embedded insurance product step by step: who may sell it, the 24-hour premium rule, and what changes on 1 January 2027."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Embedded Insurance: How to Build It", "description": "Build an embedded insurance product step by step: who may sell it, the 24-hour premium rule, and what changes on 1 January 2027.", "url": "https://www.clarigital.com/fintech-ai/products/embedded-insurance/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Embedded Insurance: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/embedded-insurance/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero" id="main-content"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>Embedded Insurance: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 09</div>
+  <div class="ft-tag">Fintech AI</div><h1>Embedded Insurance: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to selling insurance inside your own checkout in India. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What embedded insurance actually is</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 and 2 — permission, and the structure</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Are you allowed to sell it?</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Pick the structure</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 3 and 4 — product, insurer and the offer</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; Product and insurer</a><a class="sub" href="#s-indigo-s4">Step 4 &mdash; The offer on the page</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Step 5 — the premium, and the 24-hour clock</a><a class="sub" href="#s-indigo-s5">Step 5 &mdash; Take the money, and understand whose it is</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>Steps 6 to 8 — issue, refund, service</a><a class="sub" href="#s-indigo-s6">Steps 6 to 8 &mdash; Issue, refund, service</a><a class="sub" href="#s-indigo-s2027">What changes on 1 January 2027, in one place</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">Test demand without a licence</a><a class="sub" href="#s-amber-proper">Distribute on someone else&rsquo;s registration</a><a class="sub" href="#s-amber-big">Hold your own registration</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one product: selling an insurance policy inside a journey the
+customer came for something else. A phone with screen cover at checkout. Trip cover in a booking flow.
+Hospital cash alongside a loan. The insurance is two taps, and everything difficult about it sits
+behind those two taps.</p>
+<p>This is the first page on this site under <strong>IRDAI</strong> rather than RBI or SEBI. If you
+have built a lending or payments product, almost none of your regulatory instincts transfer.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>1 January 2027 is a hard date and two different regulators land on it.</strong> From that day the <strong>IRDAI (Insurance Intermediaries) (Amendment) Regulations, 2026</strong> (notified 30 July 2026) require every proposal form, policy and certificate of insurance to carry the name and functional identity of the person who sold it. The same day, the <strong>RBI Responsible Business Conduct (Second Amendment) Directions, 2026</strong> (notified 15 June 2026) take effect for banks and NBFCs, banning compulsory bundling and dark patterns. <strong>Both changes land on the checkout screen, not in the policy document.</strong></p></div>
+<h2 id="s-green-1">What embedded insurance actually is</h2>
+
+<p>Embedded insurance is <strong>distribution</strong>. You are not the insurer, you do not carry the
+risk, you do not decide claims, and in most designs the money is not yours for more than a day. What
+you own is the moment the customer is offered cover, and the obligations that attach to that moment.</p>
+<p>Four roles. Work out which one you are before anything else, because every later answer depends
+on it:</p>
+<table>
+<tr><th>Role</th><th>What it does</th><th>What it needs</th></tr>
+<tr><td><strong>Insurer</strong></td><td>Underwrites, prices, files the product, pays claims.</td><td>An insurance licence. Almost certainly not you.</td></tr>
+<tr><td><strong>Intermediary</strong></td><td>Solicits and procures the policy, and services the policyholder.</td><td><strong>IRDAI registration</strong> &mdash; corporate agent, broker or insurance marketing firm.</td></tr>
+<tr><td><strong>Platform</strong></td><td>Owns the surface the customer is standing on.</td><td>Nothing, on its own. <strong>Which is the trap.</strong></td></tr>
+<tr><td><strong>Master policyholder</strong></td><td>Holds a group policy under which members are covered.</td><td>A group that <strong>already exists</strong>. See step 2.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The three designs most teams reach for first are the three that do not work.</strong><br><br><strong>1. Referral for a revenue share.</strong> &ldquo;We just send traffic, the insurer does the selling.&rdquo; If you are presenting products, taking the customer through a choice and being paid for the outcome, you are soliciting insurance for remuneration. That needs registration, whatever the contract calls it.<br><br><strong>2. A group policy covering &lsquo;our customers&rsquo;.</strong> Buy one master policy, enrol buyers into it as they arrive, no intermediary licence required. The <strong>Protection of Policyholders&rsquo; Interests Regulations, 2024</strong> closed this: the group must be in existence <em>before</em> the policy is issued, and a master policyholder obtains cover only after the group has been formed and its members enrolled. You cannot constitute a group out of people who have not bought anything yet.<br><br><strong>3. Cover folded in so it cannot be declined.</strong> Barred for a corporate agent selling insurance alongside a principal product, and from 1 January 2027 barred outright for banks and NBFCs under the RBI Directions.</p></div>
+<p><strong>What embedded insurance is not:</strong></p>
+<ul>
+<li><strong>Not a feature.</strong> It is a regulated activity with a registration, a net worth, a
+named officer and an annual fee.</li>
+<li><strong>Not a payments integration.</strong> The premium is not revenue and the settlement clock
+is not yours. Step 5.</li>
+<li><strong>Not finished at issuance.</strong> Servicing the policyholder is a separate, explicitly
+non-delegable obligation. Step 8.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Are you allowed to sell it?</strong></td><td>Answer this before designing a screen.</td></tr>
+<tr><td>2</td><td><strong>Pick the structure</strong></td><td>Corporate agent, broker, marketing firm &mdash; or someone else&rsquo;s licence.</td></tr>
+<tr><td>3</td><td><strong>Product and insurer</strong></td><td>What can be embedded, and how many insurers you may hold.</td></tr>
+<tr><td>4</td><td><strong>The offer on the page</strong></td><td>Consent, disclosure, and the patterns now banned.</td></tr>
+<tr><td>5</td><td><strong>Take the money</strong></td><td><strong>24 hours, in full, no netting.</strong> The step that gets penalised.</td></tr>
+<tr><td>6</td><td><strong>Issue and deliver</strong></td><td>Electronic policy, and from 2027 a named seller on it.</td></tr>
+<tr><td>7</td><td><strong>Free look, cancellation, refund</strong></td><td>The refund that must not flow back through you.</td></tr>
+<tr><td>8</td><td><strong>Service the policyholder</strong></td><td>Grievances and claims support. Non-delegable.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 5, 7 and 8 are the ones people skip, and they are the ones an inspection looks at.</strong> Steps 3 and 4 are where the product feels like a product. A build that does 3 and 4 beautifully and skips the rest is a nicely designed checkout add-on that somebody is going to be fined for.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 and 2 — permission, and the structure</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Are you allowed to sell it?</h3>
+<p>Soliciting or procuring insurance for remuneration requires registration with IRDAI. There is no
+de minimis, no pilot exemption and no version of this that waits until you have traction.</p>
+<p>The one useful shortcut: <strong>every insurer must offer a search tool on its own website letting
+anyone verify which distribution channels are authorised to sell its policies.</strong> That
+requirement came in with the 2024 policyholder regulations. Before you sign anything with a partner
+who says they will handle the licensing, go and look yourself.</p>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Pick the structure</h3>
+<table>
+<tr><th>Route</th><th>You represent</th><th>Suits</th><th>Cost of entry</th></tr>
+<tr><td><strong>Corporate agent</strong></td><td>The insurer</td><td>Most embedded products. A fixed panel, one integration each.</td><td><strong>&#8377;50 lakh net worth</strong>, held at all times</td></tr>
+<tr><td><strong>Insurance broker</strong></td><td><strong>The customer</strong></td><td>Genuine comparison across the market, with a written recommendation.</td><td>Higher capital, higher duty</td></tr>
+<tr><td><strong>Insurance marketing firm</strong></td><td>The insurer, area-restricted</td><td>Smaller, regional distribution.</td><td>Lower, and narrower in scope</td></tr>
+<tr><td><strong>Someone else&rsquo;s licence</strong></td><td>Nobody &mdash; you are a vendor</td><td>Testing demand before committing.</td><td><strong>You may not be paid for the sale</strong></td></tr>
+</table>
+<p><strong>Corporate agent, in numbers.</strong> Up to <strong>nine life, nine general and nine health
+insurers</strong>; a composite corporate agent may hold up to <strong>27 arrangements in total</strong>.
+A corporate agent (general) is limited to retail lines plus commercial lines with a total sum insured
+<strong>not exceeding &#8377;5 crore per risk</strong>. Net worth <strong>&#8377;50 lakh at all
+times</strong> for an entity doing insurance intermediation exclusively, and where you have another
+business, the two must be kept at <strong>arm&rsquo;s length</strong>. A principal officer who is a
+graduate, has completed <strong>50 hours</strong> of Insurance Institute of India training and passed
+the examination. Any tie-up entered into, modified or terminated must be disclosed to IRDAI
+<strong>within 30 days</strong>.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Registration is now continuous, and that created a deadline rather than removing one.</strong> The <strong>Sabka Bima Sabki Raksha (Amendment of Insurance Laws) Act, 2025</strong> came into force on <strong>5 February 2026</strong> and replaced three-year renewals with registration that runs until it is surrendered, suspended or cancelled, against an annual fee of <strong>the higher of &#8377;10,000 or 0.04% of commission and other receipts from insurers in the preceding financial year</strong>. <strong>Existing three-year registrants must apply for a fresh certificate by 31 January 2027</strong>, with late applications accepted to <strong>31 March 2027</strong> on reasons and an additional <strong>&#8377;750</strong>. Miss that and the entity ceases to act as an intermediary and must register from scratch. If your embedded product runs on a partner&rsquo;s registration, this deadline is theirs and the outage is yours &mdash; ask them for the date they filed.</p></div>
+<h2 id="s-indigo-1">Steps 3 and 4 — product, insurer and the offer</h2>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; Product and insurer</h3>
+<p>Embedded works when the cover is <strong>small, specific and obviously connected to what the
+customer is already doing</strong>. Screen damage on a phone. Delay and cancellation on a trip.
+Shipment cover on a consignment. Hospital cash beside a loan. The further the cover drifts from the
+purchase, the more it looks like an unrelated financial product sold on impulse &mdash; which is
+precisely how the mis-selling definitions are drawn.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Your commission is not a commercial negotiation, it is a regulatory envelope.</strong> Since the product-level caps were removed in 2023 and consolidated into the <strong>Expenses of Management (including Commission) Regulations, 2024</strong>, an insurer sets what it pays you within an overall ceiling: <strong>30% of gross written premium for a general insurer, 35% for a standalone health insurer</strong>, and segment-level limits for life. An insurer that wants your distribution badly still cannot pay you out of a bucket that is full. Enforcement is real: one standalone health insurer was restricted from opening new branches for six months over a breach in FY25.</p></div>
+
+<h3 id="s-indigo-s4">Step 4 &mdash; The offer on the page</h3>
+<p>This is the step that changes on 1 January 2027, and the changes are in your interface, not in
+your contracts.</p>
+<table>
+<tr><th>Pattern</th><th>Status</th></tr>
+<tr><td>Cover pre-ticked, customer unticks to decline</td><td><strong>Banned</strong> &mdash; pre-selected add-on</td></tr>
+<tr><td>&ldquo;No thanks&rdquo; rendered small, grey or below the fold</td><td><strong>Banned</strong> &mdash; hidden decline</td></tr>
+<tr><td>Countdown timer on the insurance offer</td><td><strong>Banned</strong> &mdash; false urgency</td></tr>
+<tr><td>Premium appearing only at the payment screen</td><td><strong>Banned</strong> &mdash; drip pricing</td></tr>
+<tr><td>Cover required to complete the main purchase</td><td><strong>Banned</strong> &mdash; compulsory bundling and forced action</td></tr>
+<tr><td>Cover required, but the customer may buy it anywhere</td><td><strong>Permitted</strong> where it is a genuine risk mitigant</td></tr>
+<tr><td>Cancelling the cover is harder than buying it</td><td><strong>Banned</strong> &mdash; subscription trap</td></tr>
+</table>
+<p>Those come from the RBI Directions and bind banks and NBFCs. <strong>If you are neither, they do
+not bind you and you should build to them anyway</strong> &mdash; IRDAI reached the same conclusion
+by a different route when it penalised a distributor for ranking products as &ldquo;top&rdquo; and
+&ldquo;best&rdquo; with no objective basis, and your insurer partner is bound even where you are not.</p>
+
+<h2 id="s-indigo-2">Step 5 — the premium, and the 24-hour clock</h2>
+
+<h3 id="s-indigo-s5">Step 5 &mdash; Take the money, and understand whose it is</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 4 and 5, the offer and the premium that is not yours</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import datetime, timedelta
+from decimal import Decimal
+
+# STEP 4. THE OFFER.
+# The rule is not &quot;get consent&quot;, it is &quot;be able to show what they saw&quot;.
+# Store the RENDERED offer, not the inputs that produced it. Six months from
+# now the premium table, the wording and the layout will all have changed, and
+# the question in a complaint is always: what did this person actually see.
+
+def render_offer(quote, product):
+    return {
+        &quot;default_selected&quot;: False,          # NEVER pre-tick. Not a growth lever.
+        &quot;decline_equally_prominent&quot;: True,  # same size, same weight, same row
+        &quot;premium_shown_inclusive&quot;: quote[&quot;premium_paise&quot;],   # no drip pricing
+        &quot;gst_shown_separately&quot;: quote[&quot;gst_paise&quot;],
+        &quot;insurer_named&quot;: product[&quot;insurer_legal_name&quot;],      # not your brand
+        &quot;your_role_disclosed&quot;: &quot;corporate_agent&quot;,            # say what you are
+        &quot;cis_url&quot;: product[&quot;customer_information_sheet_url&quot;],
+        &quot;no_countdown&quot;: True,
+        &quot;main_purchase_blocked_if_declined&quot;: False,          # assert, don&#x27;t hope
+    }
+
+def record_consent(session, offer):
+    assert offer[&quot;default_selected&quot;] is False, &quot;pre-selected cover is a defect&quot;
+    return {
+        &quot;customer_id&quot;: session[&quot;customer_id&quot;],
+        &quot;at&quot;: datetime.utcnow().isoformat(),
+        &quot;action&quot;: &quot;ACCEPTED&quot;,                 # explicit, affirmative, logged
+        &quot;offer_snapshot_hash&quot;: sha256_of(offer),   # what they saw
+        &quot;offer_snapshot_blob&quot;: offer,              # keep the blob, not a recipe
+        &quot;channel&quot;: session[&quot;channel&quot;],
+    }
+
+# STEP 5. THE PREMIUM. THIS IS THE ONE.
+# Section 64VB, Insurance Act 1938: the insurer may not assume risk until the
+# premium is received. Sub-section (4): where you collect premium on the
+# insurer&#x27;s behalf you must deposit or dispatch it to the insurer IN FULL,
+# WITHOUT DEDUCTING YOUR COMMISSION, WITHIN 24 HOURS of collection, excluding
+# bank and postal holidays.
+#
+# Your PSP settles T+2. Your finance system nets fees. Both are wrong here,
+# and both are wrong by default rather than by anyone&#x27;s decision.
+
+REMIT_HOURS = 24
+
+def remittance_due(collected_at, holidays):
+    due, remaining = collected_at, timedelta(hours=REMIT_HOURS)
+    while remaining &gt; timedelta(0):
+        due += timedelta(hours=1)
+        if due.date() not in holidays:       # bank and postal holidays excluded
+            remaining -= timedelta(hours=1)
+    return due
+
+def build_remittance(collections, commission_ledger):
+    &quot;&quot;&quot;One job: move the gross premium. Commission is settled separately.&quot;&quot;&quot;
+    gross = sum(Decimal(c[&quot;premium_paise&quot;]) for c in collections)
+    netted = sum(Decimal(c.get(&quot;commission_withheld_paise&quot;, 0)) for c in collections)
+    assert netted == 0, &quot;commission may not be deducted from premium remitted&quot;
+    commission_ledger.accrue(collections)    # invoice the insurer, separately
+    return {&quot;to&quot;: &quot;insurer&quot;, &quot;amount_paise&quot;: gross, &quot;basis&quot;: &quot;gross&quot;}
+
+def cover_status(policy, remittance):
+    # What the customer is told must track what is legally true.
+    if not remittance or not remittance[&quot;confirmed_by_insurer&quot;]:
+        return &quot;COVER_PENDING&quot;               # not &quot;Insured&quot;. Not a tick.
+    return &quot;COVER_ACTIVE&quot;
+
+# WHAT TO CHECK
+# [ ] measure remittance age as a QUEUE with an owner, in hours, not as a
+#     month-end reconciliation. A regulator sampled 67 policies and found
+#     delays beyond 30 days; the same order covered 8,971 policies at 5-24
+#     days and roughly 77,033 that simply took longer than three working days,
+#     because three working days was the design
+# [ ] never net commission out of premium. Accrue it and invoice separately
+# [ ] the premium account is not a revenue account. It should not appear in
+#     your cash position, your runway, or any sweep
+# [ ] do not render &quot;Insured&quot; before the insurer confirms receipt. A tick in
+#     your UI does not attach risk; Section 64VB does
+# [ ] a payment that succeeds at your PSP and fails to remit is an OPEN
+#     obligation, not a resolved transaction
+# [ ] reconcile in IST against the insurer&#x27;s own receipt confirmation, never
+#     against your settlement file
+</code></pre></div>
+<p><strong>The gotcha that defines this product:</strong> <strong>the premium is not your money and
+the clock is 24 hours, not your settlement cycle.</strong> Every embedded checkout has the same
+shape &mdash; the customer pays you, your payment gateway settles to you in a day or two, your
+finance system nets what you are owed, and the balance goes out. Each of those three steps is
+sensible. Together they breach a 1938 statute.</p>
+<p>This is not a theoretical exposure. In an order dated <strong>4 August 2025</strong>, IRDAI fined
+a large online distributor <strong>&#8377;5 crore</strong> under section 102 of the Insurance Act
+across <strong>eleven charges</strong>, six of which carried <strong>&#8377;1 crore each</strong>.
+Premium remittance was one of them. The finding was not that something went wrong occasionally: the
+firm collected through <strong>its own payment gateway into its own nodal account</strong>, and
+<strong>a minimum of three working days to remit was how the system was built.</strong> A sample of
+67 policies showed delays of more than <strong>30 days</strong>. Another <strong>8,971</strong> ran
+<strong>5 to 24 days</strong> late. Roughly <strong>77,033</strong> simply took longer than three
+working days.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>The inspection was in June 2020. The show-cause notice came in October 2024. The order came in August 2025.</strong> Five years from the look to the bill. Whatever your embedded product is doing today is being assessed against rules you will be judged on years from now, and &ldquo;nobody has said anything&rdquo; is not evidence of anything at all.</p></div>
+<h2 id="s-indigo-3">Steps 6 to 8 — issue, refund, service</h2>
+
+<h3 id="s-indigo-s6">Steps 6 to 8 &mdash; Issue, refund, service</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 6 to 8, issuance, refunds and the servicing you cannot outsource</span><button class="cb-copy" type="button">Copy</button></div><pre><code># STEP 6. ISSUE AND DELIVER.
+# Policies are issued in electronic form. From 1 January 2027 the proposal
+# form, the policy and the certificate of insurance must each carry the name
+# and functional identity of the person who sold it, plus the mobile number
+# and email of the office through which it was sold.
+#
+# For an embedded product this is a SCHEMA CHANGE, not a compliance task. A
+# checkout has no salesperson. You now need a defined, named, resolvable
+# identity attached to every sale, and a policy-wise sales record the
+# regulator can reach remotely.
+
+def sale_attribution(session, staff_registry):
+    &quot;&quot;&quot;Every policy needs an answer to &#x27;who sold this&#x27;. Decide it now.&quot;&quot;&quot;
+    person = staff_registry.resolve(session)     # specified person / POS person
+    assert person is not None, &quot;unattributed sale: do not issue&quot;
+    assert person[&quot;certificate_active&quot;], &quot;seller certificate lapsed&quot;
+    return {
+        &quot;seller_name&quot;: person[&quot;name&quot;],
+        &quot;functional_identity&quot;: person[&quot;irdai_role&quot;],  # e.g. specified person
+        &quot;office_mobile&quot;: person[&quot;office&quot;][&quot;mobile&quot;],
+        &quot;office_email&quot;: person[&quot;office&quot;][&quot;email&quot;],
+    }
+
+# STEP 7. FREE LOOK, CANCELLATION AND REFUND.
+# Free look is 30 days for health, and for life policies with a term of a year
+# or more, from receipt of the policy document. Separately, a retail
+# policyholder may cancel at any time and receive a refund for the unexpired
+# period.
+#
+# Section 64VB(3): a refund of premium is paid by the INSURER DIRECTLY to the
+# INSURED, and shall in no case be credited to the account of the agent.
+
+def cancellation(policy, reason, your_psp):
+    route = {&quot;payer&quot;: &quot;insurer&quot;, &quot;payee&quot;: &quot;policyholder_bank_account&quot;}
+    # The one line that matters. Your checkout refunds the cart. The insurance
+    # line is not part of the cart for this purpose.
+    assert route[&quot;payer&quot;] != &quot;platform&quot;, &quot;premium refunds do not flow through you&quot;
+    your_psp.exclude_line(policy[&quot;order_line_id&quot;], reason=&quot;statutory_refund_route&quot;)
+    return {&quot;route&quot;: route, &quot;clawback&quot;: &quot;commission_reversed_via_insurer_ledger&quot;}
+
+# STEP 8. SERVICING. NON-DELEGABLE.
+def grievance_channels(config):
+    &quot;&quot;&quot;A generic support queue is not an insurance grievance channel.&quot;&quot;&quot;
+    required = [
+        config[&quot;insurance_specific_web_page&quot;],   # published, findable
+        config[&quot;ivr_option_for_insurance&quot;],      # an actual option on the line
+        config[&quot;named_grievance_officer&quot;],
+        config[&quot;turnaround_and_escalation_published&quot;],
+        config[&quot;route_to_insurer_and_ombudsman_published&quot;],
+    ]
+    assert all(required), &quot;CRM tagging is not a grievance framework&quot;
+    return required
+
+# WHAT TO CHECK
+# [ ] decide the seller identity model before 1 January 2027, not after. It
+#     touches your proposal payload, your policy record and your sales log
+# [ ] a lapsed specified-person certificate must block issuance, not warn
+# [ ] refunds never leave your accounts. Exclude the insurance line from cart
+#     refunds explicitly, in code, with a test
+# [ ] renewal notices are an obligation, not a marketing campaign, and their
+#     absence has been penalised
+# [ ] publish the insurance grievance route on the website AND put it on the
+#     phone line. Both have been found missing, in the same order
+# [ ] keep policy-wise sales records in a form a regulator can access
+#     remotely, including the call or session record where one exists
+</code></pre></div>
+<p><strong>The gotcha that costs the most to retrofit:</strong> <strong>servicing the policyholder is
+a distinct and non-delegable obligation, and your existing support stack almost certainly does not
+discharge it.</strong> In September 2026 IRDAI imposed a <strong>&#8377;1 crore</strong> penalty on a
+bank acting as a corporate agent. Part of the reasoning is worth reading closely, because it
+describes a setup most platforms have: an internal CRM-based tracking system and a generic
+customer-service escalation path, <strong>without a policyholder-facing, insurance-specific channel
+and disclosure</strong>, does not meet regulation 20(1) of the Corporate Agents Regulations, which
+places a distinct and non-delegable duty on the corporate agent to service and protect the interests
+of insurance policyholders. There was no insurance option on the toll-free IVR and no insurance
+grievance disclosure on the website.</p>
+<p>Read that as a specification. A tag in Zendesk is not a channel. <strong>An insurance grievance
+route has to be published where a policyholder can find it, reachable by phone, owned by a named
+person, and disclosed on your website alongside your registration number and your role.</strong></p>
+
+<h3 id="s-indigo-s2027">What changes on 1 January 2027, in one place</h3>
+<table>
+<tr><th>Change</th><th>Source</th><th>What it touches</th></tr>
+<tr><td><strong>Named seller on every proposal, policy and certificate</strong></td><td>IRDAI Intermediaries Amendment 2026</td><td>Your proposal payload and policy schema</td></tr>
+<tr><td><strong>Policy-wise sales records remotely accessible to the regulator</strong></td><td>IRDAI Intermediaries Amendment 2026</td><td>Your data model and retention</td></tr>
+<tr><td><strong>Professional indemnity cover</strong> where intermediation is more than half your revenue</td><td>IRDAI Intermediaries Amendment 2026</td><td>Your own insurance programme</td></tr>
+<tr><td><strong>Fresh certificate by 31 January 2027</strong> (grace to 31 March, &#8377;750)</td><td>SBSR Act 2025 read with the 2026 amendment</td><td>Whether you may trade at all</td></tr>
+<tr><td><strong>No compulsory bundling of third-party products</strong></td><td>RBI RBC (Second Amendment) 2026</td><td>Your checkout flow</td></tr>
+<tr><td><strong>Dark patterns prohibited</strong></td><td>RBI RBC (Second Amendment) 2026</td><td>Your interface</td></tr>
+<tr><td><strong>Full compensation for mis-selling</strong></td><td>RBI RBC (Second Amendment) 2026</td><td>Your refund and complaints path</td></tr>
+<tr><td><strong>Responsibility for DSAs, sub-agents and representatives</strong></td><td>RBI RBC (Second Amendment) 2026</td><td>Your partner and affiliate programme</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>One useful loosening in the same RBI Directions:</strong> an NBFC may distribute insurance <strong>without prior RBI approval</strong>, subject to its IRDAI registration. If you are an NBFC that shelved embedded insurance because of the approval step, the step has gone. The IRDAI registration has not.</p></div>
+<h2 id="s-indigo-4">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>Embedded insurance &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Corporate agent registration<span class="pill p-direct">direct</span></div><div class="d">Non-refundable application fee <strong>&#8377;10,000</strong>, registration fee <strong>&#8377;25,000</strong>, and <strong>&#8377;500</strong> per certificate for the principal officer, each specified person and each authorised verifier. Trivial next to what sits underneath it.</div></div><div class="reg-row"><div class="n">Net worth<span class="pill p-direct">direct</span></div><div class="d"><strong>&#8377;50 lakh, maintained at all times</strong>, for an entity doing insurance intermediation exclusively. This is locked capital, not a one-off fee, and where you have another business the two must be at arm&rsquo;s length.</div></div><div class="reg-row"><div class="n">Annual fee<span class="pill p-direct">direct</span></div><div class="d">Under the continuous-registration regime, <strong>the higher of &#8377;10,000 or 0.04% of commission and other receipts from insurers in the preceding financial year</strong>. It scales with you, which most licence fees do not.</div></div><div class="reg-row"><div class="n">Principal officer and certified sellers<span class="pill p-direct">direct</span></div><div class="d">A graduate principal officer with <strong>50 hours</strong> of Insurance Institute of India training and the examination passed, plus certification for every specified person. <strong>From 1 January 2027 every policy names one of them</strong>, so this headcount becomes a function of your sales volume rather than a fixed compliance cost.</div></div><div class="reg-row"><div class="n">Professional indemnity insurance<span class="pill p-direct">direct</span></div><div class="d">Required where insurance intermediation is more than half of your revenue. Price it before you assume the economics work at scale.</div></div><div class="reg-row"><div class="n">Your commission<span class="pill p-indirect">indirect</span></div><div class="d">Paid by the insurer out of its <strong>Expenses of Management</strong> envelope &mdash; <strong>30%</strong> of gross written premium for a general insurer, <strong>35%</strong> for a standalone health insurer, segmental for life. Not a number your partner is free to set.</div></div><div class="reg-row"><div class="n">The premium float<span class="pill p-indirect">indirect</span></div><div class="d"><strong>Zero, by law.</strong> Twenty-four hours, in full, without netting commission. If a business case anywhere in your model assumes working capital from held premium, delete it.</div></div><div class="reg-row"><div class="n">Servicing<span class="pill p-direct">direct</span></div><div class="d">A published insurance grievance route, an option on the phone line, a named officer, renewal notices, and policy-wise records reachable by the regulator. <strong>Non-delegable, which means it cannot be outsourced to the insurer and called done.</strong></div></div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The cost nobody models is attribution.</strong> An embedded checkout has no salesperson, and from 1 January 2027 every policy needs one. Whether that is a small certified team behind the flow or a defined functional identity, it is a decision with a headcount attached, and it is easier to make in 2026 than in a hurry in January.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">Test demand without a licence</h3>
+<p><strong>Build:</strong> a plain link or handoff to the insurer or to a licensed partner, with no
+selection, no recommendation and <strong>no payment to you for the outcome</strong>. Measure how many
+people click.</p>
+<p><strong>You get:</strong> an honest demand signal for the cost of a week. <strong>You do not get
+revenue</strong>, and the moment you take a per-policy fee you have changed what you are.</p>
+
+<h3 id="s-amber-proper">Distribute on someone else&rsquo;s registration</h3>
+<p><strong>Build:</strong> integrate with a licensed intermediary who owns the registration, the
+specified persons and the grievance route &rarr; your surface, their compliance &rarr; premium moves
+to them or to the insurer, never into your account.</p>
+<p><strong>Trade:</strong> thinner economics, and <strong>their 31 January 2027 filing is your
+availability risk</strong>. Ask for the date, in writing, and ask again in December.</p>
+
+<h3 id="s-amber-big">Hold your own registration</h3>
+<p><strong>Build:</strong> corporate agent registration &rarr; &#8377;50 lakh net worth &rarr;
+principal officer and certified specified persons &rarr; a panel of up to nine insurers per line
+&rarr; consent and offer-snapshot storage &rarr; a 24-hour premium remittance queue with an owner
+&rarr; seller attribution on every policy &rarr; a published insurance grievance channel.</p>
+<p><strong>It breaks when:</strong> the team treats it as a payments integration with a compliance
+review at the end. The four steps that carry the penalties &mdash; permission, premium, refunds and
+servicing &mdash; are all outside the part that looks like the product.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>the premium is not yours, and it has to be with the insurer within 24 hours, in full, without your commission taken out.</strong> Build the remittance queue before you build the offer screen. Everything else on this page can be retrofitted; that one is in the plumbing.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>Premium sits for two or three days</strong></td><td>PSP settlement cycle treated as the remittance clock.</td><td>24 hours from collection, excluding bank and postal holidays.</td></tr>
+<tr><td><strong>Commission netted out of premium</strong></td><td>Finance nets fees everywhere else.</td><td>Remit gross. Accrue and invoice commission separately.</td></tr>
+<tr><td><strong>UI says &ldquo;Insured&rdquo; before the insurer has the money</strong></td><td>Optimistic state after a successful card charge.</td><td>Cover pending until the insurer confirms receipt.</td></tr>
+<tr><td><strong>Cart refund returns the premium</strong></td><td>The insurance line is just another order line.</td><td>Refunds come from the insurer to the customer. Exclude the line.</td></tr>
+<tr><td><strong>Cover pre-ticked to lift attach rate</strong></td><td>It works, which is exactly the problem.</td><td>Unticked default. Decline as prominent as accept.</td></tr>
+<tr><td><strong>&ldquo;Best&rdquo; or &ldquo;Top&rdquo; labels on a product</strong></td><td>Ordinary e-commerce merchandising.</td><td>Objective, disclosed criteria, or no label.</td></tr>
+<tr><td><strong>Insurance complaints go to the general support queue</strong></td><td>One helpdesk for everything.</td><td>Published insurance channel, IVR option, named officer.</td></tr>
+<tr><td><strong>Policies with no identifiable seller</strong></td><td>A checkout has no salesperson.</td><td>Attribution model decided before 1 January 2027.</td></tr>
+<tr><td><strong>A group policy covering future customers</strong></td><td>Group treated as a marketing segment.</td><td>The group must exist and be enrolled before the policy issues.</td></tr>
+<tr><td><strong>Partner&rsquo;s registration lapses</strong></td><td>Nobody tracked their 31 January 2027 filing.</td><td>Track it like a certificate expiry, because it is one.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/customer-operations/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 06</div><h3>Customer Operations</h3><p>Grievance handling, contact windows and the conduct rules an insurance channel inherits.</p></a>
+<a href="/fintech-ai/payments-reconciliation/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 05</div><h3>Payments &amp; Reconciliation</h3><p>Escrow, settlement files and why a webhook is a notification rather than a fact.</p></a>
+<a href="/fintech-ai/products/bnpl-checkout/" class="mod-card"><div class="mod-num">GUIDE 03</div><h3>BNPL Checkout</h3><p>The other regulated product that lives inside somebody else&rsquo;s checkout screen.</p></a>
+<a href="/fintech-ai/regulation-india/" class="mod-card"><div class="mod-num">SPINE</div><h3>India regulation</h3><p>RBI, SEBI and IRDAI, and which one owns the question you are asking.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. Insurance distribution is a registered activity and the obligations described here sit on a registered intermediary, not on a technology vendor. Nothing here is legal advice. Have your structure, your premium handling and your grievance framework reviewed by qualified counsel, and confirm every date against the notified text, before the first policy is sold.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Insurance Act, 1938 &mdash; section 64VB</strong> &mdash; the rule that no risk attaches until the insurer receives the premium; that a refund is paid by the insurer directly to the insured and never credited to the agent; and that premium collected on an insurer&rsquo;s behalf must be deposited or dispatched in full, without deduction of commission, within 24 hours excluding bank and postal holidays. Section 102 is the penalty provision referred to below. <a href="https://www.indiacode.nic.in" target="_blank" rel="noopener">www.indiacode.nic.in</a></li><li><span class="src-k src-official">official</span><strong>IRDAI (Insurance Intermediaries) (Amendment) Regulations, 2026</strong> &mdash; notified 30 July 2026, amending the Corporate Agents Regulations 2015, Insurance Brokers Regulations 2018, Insurance Marketing Firm Regulations 2015, Web Aggregators Regulations 2017 and CPSC-SPV Regulations 2019. Continuous registration and the annual fee, the 31 January 2027 and 31 March 2027 dates, seller tagging on the proposal, policy and certificate from 1 January 2027, remotely accessible policy-wise sales records, and professional indemnity cover. <a href="https://irdai.gov.in" target="_blank" rel="noopener">irdai.gov.in</a></li><li><span class="src-k src-official">official</span><strong>IRDAI (Protection of Policyholders&rsquo; Interests, Operations and Allied Matters of Insurers) Regulations, 2024</strong> &mdash; notified 1 April 2024 with master circulars of 19 June 2024 and 5 September 2024, consolidating eight regulations and 41 circulars and applying to distribution channels as well as insurers. The requirement that a group exist before the policy issues, the 30-day free look, cancellation with a refund for the unexpired period, electronic issuance, and the insurer-side search tool for verifying authorised distribution channels. <a href="https://irdai.gov.in" target="_blank" rel="noopener">irdai.gov.in</a></li><li><span class="src-k src-official">official</span><strong>IRDAI corporate agent registration requirements and fee schedule</strong> &mdash; the &#8377;50 lakh net worth held at all times, the &#8377;10,000 application and &#8377;25,000 registration fees, &#8377;500 per principal officer, specified person and authorised verifier certificate, the nine-insurer per line and 27-in-total tie-up limits, the &#8377;5 crore per risk commercial-lines limit, the 30-day tie-up disclosure and the principal officer training requirement. <a href="https://irdai.gov.in" target="_blank" rel="noopener">irdai.gov.in</a></li><li><span class="src-k src-official">official</span><strong>RBI Responsible Business Conduct (Second Amendment) Directions, 2026</strong> &mdash; drafted 11 February 2026 and notified 15 June 2026, effective 1 January 2027, in mirror versions for commercial banks and NBFCs. The prohibition on compulsory bundling of third-party products, the ban on dark patterns, the mis-selling definition and compensation mechanism, responsibility for DSAs and sub-agents, and the removal of prior RBI approval for NBFC insurance distribution. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>IRDAI penalty orders</strong> &mdash; the &#8377;5 crore order of 4 August 2025 under section 102 of the Insurance Act, with eleven charges and the premium remittance and policy tagging findings; and the September 2026 &#8377;1 crore corporate agent order holding that a CRM-based tracking system and generic customer-service escalation do not discharge the distinct and non-delegable servicing duty under regulation 20(1). <a href="https://irdai.gov.in" target="_blank" rel="noopener">irdai.gov.in</a></li><li><span class="src-k src-industry">industry</span><strong>Expenses of Management enforcement and market context</strong> &mdash; the six-month branch expansion restriction on a standalone health insurer for an FY25 EoM breach, insurance penetration at 3.7% of GDP in 2024-25 against a global 7.3%, and reported commission outflows of about &#8377;60,800 crore for life and &#8377;47,266 crore for non-life in 2024-25. Directional context, not figures to build on.</li><li><span class="src-k src-industry">industry</span><strong>Bima Sugam status reporting</strong> &mdash; the phased rollout by Bima Sugam India Federation under the 2024 Insurance Electronic Marketplace Regulations, and IRDAI&rsquo;s statement that motor, health and term products should be live by the end of September 2026. The platform has missed several previous dates and its commercial model is reported rather than notified &mdash; confirm before designing around it.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. The intermediaries amendment is six weeks old and the two 1 January 2027 regimes are not yet in force. Verify against the notified text before you build to any date here.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

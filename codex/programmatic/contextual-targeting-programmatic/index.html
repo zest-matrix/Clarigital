@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:type" content="article">
@@ -173,7 +203,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Modern contextual targeting goes beyond keywords to semantic analysis — understanding the meaning and sentiment of content, not just the presence of specific words. A page about car accidents is contextually inappropriate for car insurance advertising even if it contains the word "car." Sentiment and topic modelling distinguish between these contexts.</p><p>Natural language processing categorises pages by topic, sentiment, brand safety signals, and audience intent signals derived from the content itself. This categorisation happens in real time as pages are crawled, or through real-time analysis at bid time.</p>
 <h2>Contextual vs Audience Targeting</h2>
 <p>The trade-offs are real. Audience targeting reaches your specific audience wherever they are — valuable when your audience is niche and does not congregate around easily identifiable content. Contextual reaches people in relevant moments — valuable when relevance to a specific activity or interest is the primary criterion.</p><p>Hybrid approaches work well: use first-party data to define your audience, then layer contextual signals to ensure ads reach them in receptive contexts. An automotive brand targeting in-market car buyers benefits from both the audience signal and the contextual alignment of appearing in automotive content.</p>
-</div>
+<h2>Where Contextual Classification Still Fails</h2>
+
+<p>Modern contextual analysis reads the page rather than matching keywords, which fixed most of the
+crude failures. The ones that remain are worth knowing because they are the ones that reach a brand
+safety report.</p>
+<p><strong>Irony, quotation and reporting.</strong> An article quoting something offensive in order to
+criticise it classifies on the quoted words. Systems have improved and this remains the hardest case.</p>
+<p><strong>Timing.</strong> Classification happens after content is published and crawled. On a page
+that updates rapidly — a live blog, a comment-heavy article — the classification can describe the
+page as it was rather than as it is.</p>
+<p><strong>Thin and dynamic pages.</strong> A listing page assembled at request time may carry too
+little stable text to classify confidently, and a system that returns low confidence is usually
+treated as a pass by default.</p>
+<p><strong>Language and locale.</strong> Classification quality is uneven across languages, and a
+taxonomy built for one market applies awkwardly to another. For Indian inventory in particular,
+check how a vendor handles multilingual and transliterated content before buying at scale.</p>
+
+<h2>Buying It Without Fooling Yourself About Reach</h2>
+
+<p>Contextual is frequently sold as a like-for-like replacement for audience targeting. It is not,
+and the difference shows up as a reach shortfall three weeks into a campaign.</p>
+<p>An audience segment follows a person across every page they visit. A contextual segment exists
+only where matching content exists — so <strong>the addressable inventory is bounded by publishing
+volume on your topic</strong>, not by the number of people interested in it. A narrow, brand-safe
+contextual segment on a niche subject can be too small to spend against, and will silently
+under-deliver rather than fail.</p>
+<p>Three things to establish before committing budget. <strong>Forecast the segment</strong> in the
+platform against your actual exclusions, not a generic estimate. <strong>Ask how the taxonomy maps
+to standard categories</strong>, because vendor-specific categories are difficult to compare and
+impossible to port. And <strong>ask what happens on low confidence</strong> — whether the impression
+is included or excluded by default, which quietly determines both your reach and your risk.</p>
+<p>Used well, contextual is a complement: it reaches people in a relevant moment regardless of what is
+known about them, which is exactly where audience targeting is weakest.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>IAB Tech Lab content taxonomy and specifications</strong> &mdash; the standard content categories contextual systems classify against <a href="https://iabtechlab.com" rel="noopener" target="_blank">iabtechlab.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/programmatic/programmatic-advertising-fundamentals/">Programmatic Fundamentals</a></li><li><a href="/codex/paid-advertising/facebook-instagram/core-audiences/">Audience Targeting</a></li><li><a href="/codex/programmatic/real-time-bidding/">Real-Time Bidding</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="/codex/programmatic/" class="sidebar-link">Programmatic overview →</a></div>

@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:type" content="article">
@@ -177,7 +207,42 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <h2>Finding SaaS Programmes</h2>
 <p>Most SaaS companies run their own affiliate programme rather than listing in a network, because recurring commissions are harder to track through third-party networks. Find them by searching "[tool name] affiliate programme" or checking the footer of the product's website.</p><p>Programme quality signals: real-time reporting dashboard, reliable payment terms, dedicated affiliate manager, marketing materials provided, and a company that is growing (commission is only worth something if the product retains customers).</p>
 
-    </div>
+    <h2>Churn Makes the Commission Model the Hard Part</h2>
+
+<p>SaaS affiliate programmes fail on commission design more often than on recruitment, because a
+subscription can be refunded, downgraded or churned after the commission is paid.</p>
+<p>Three structures, each with a failure mode worth understanding before choosing.
+<strong>Recurring commission</strong> — a share of revenue for as long as the customer pays —
+aligns the affiliate with retention and is the most attractive to serious partners. It is also the
+hardest to forecast and the most expensive at scale, and it creates a liability that outlives the
+relationship.</p>
+<p><strong>One-time commission</strong> is simple and predictable and gives the affiliate no reason to
+care whether the customer sticks, which shows up as poor-fit referrals.
+<strong>Hybrid</strong> — a larger first payment plus a smaller recurring share — is the common
+compromise and usually the right one.</p>
+<p>Whichever you choose, <strong>a clawback window is not optional</strong>. Define the period, make
+it visible in the terms, and set it against your actual observed refund and early-churn curve rather
+than a round number. An affiliate who discovers a clawback they were not told about does not stay.</p>
+
+<h2>Free Trials Break the Attribution You Think You Have</h2>
+
+<p>The SaaS funnel inserts a delay and a decision between the click and the money, and standard
+affiliate tracking was not designed for it.</p>
+<p>A user clicks an affiliate link, starts a free trial, uses the product for two weeks across
+several devices, and converts from a billing email on a different browser. <strong>Last-click
+attribution will credit nobody</strong>, and the affiliate will tell you their referrals are not
+being tracked. They are usually right.</p>
+<p>The fix is to <strong>attribute at trial start rather than at payment</strong>, stamp the referral
+onto the account record at signup, and carry it through to conversion server-side. That removes the
+dependence on a cookie surviving a fortnight and a device change. It also means you are paying on
+conversion but attributing on signup, which is the correct separation.</p>
+<p>Two further details that cause disputes. <strong>Self-serve upgrades months later</strong> — decide
+explicitly whether an affiliate is credited when a customer they referred on a free plan upgrades a
+year on, and write it down. And <strong>sales-assisted deals</strong>: if a referred trial becomes an
+enterprise contract closed by your sales team, the affiliate terms should already say what happens,
+because settling it afterwards satisfies nobody.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>FTC Endorsement Guides</strong> &mdash; the disclosure obligations attaching to affiliate and endorsement relationships in the United States <a href="https://ftc.gov" rel="noopener" target="_blank">ftc.gov</a></li><li><span class="src-k src-official">official</span><strong>ASCI Guidelines for Influencer Advertising in Digital Media</strong> &mdash; the disclosure obligations for affiliate and influencer content aimed at Indian audiences <a href="https://ascionline.in" rel="noopener" target="_blank">ascionline.in</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card">
         <h3>Related guides</h3>

@@ -13,7 +13,7 @@ FBUILT=[]
 # so every page built after May 2026 shipped a stale verification stamp and a
 # stale dateModified. Set them once per session; page() reads them.
 VERIFIED = 'September 2026'      # human-readable stamp in hero + registry blocks
-DATEMOD  = '2026-09-13'          # JSON-LD dateModified, ISO
+DATEMOD  = '2026-09-15'          # JSON-LD dateModified, ISO
 
 STYLE='''<style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');

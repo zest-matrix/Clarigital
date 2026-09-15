@@ -17,7 +17,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -143,6 +143,23 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -172,6 +189,44 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Localised content needs its own keyword research. Direct translations of source keywords frequently miss how the market actually searches, and search volume distributes differently across synonyms.</p><p>Technically, each language version needs its own indexable URL with correct hreflang annotation. Machine-translated pages published at scale are a known low-quality pattern and are treated as such.</p>
 <h2>Workflow and Governance</h2>
 <p>A workable process: define what must stay globally consistent, produce source content in a translation-friendly way, use a translation memory to keep terminology consistent and cost down, and have a local reviewer sign off before publication.</p><p>The local reviewer is the step most often cut and the one that catches the errors that matter — the phrasing that is technically correct and culturally wrong.</p>
+<h2>What It Costs, and Where the Cost Actually Sits</h2>
+
+<p>Localisation budgets are usually built around translation, which is the cheapest part and getting
+cheaper. The expensive parts are the ones nobody lists.</p>
+<p><strong>Review by someone who knows the market</strong> is the line that matters. A translation is
+correct; a market reviewer tells you that the correct translation is off-register, that the example
+means nothing locally, or that the claim you make routinely at home is not made in that market. This
+is a recurring cost per piece, not a one-off.</p>
+<p><strong>Visual and layout rework.</strong> Text length changes substantially between languages.
+Layouts built to one language's word length break in another, and the fix is design time rather than
+translation time.</p>
+<p><strong>Ongoing maintenance</strong> is the cost that ends most localisation programmes. Every
+update to the source now has to propagate to every locale. A programme that localises a hundred pages
+into four languages has not created four hundred pages — it has created a maintenance obligation on
+five hundred, forever.</p>
+<p>Localise less, deeper. A small number of properly maintained locales beats a large number of
+decaying ones.</p>
+
+<h2>The Signals That Tell You It Is Working</h2>
+
+<p>Localisation is easy to do and hard to evaluate, because the obvious metric — traffic in the target
+market — moves for reasons that have nothing to do with quality.</p>
+<p>More useful signals, in rough order of reliability:</p>
+<ul>
+<li><strong>Engaged time on localised pages versus the source-language equivalent in the same
+market.</strong> If local visitors spend longer on the English page, the localisation is worse than
+nothing and is actively getting in the way.</li>
+<li><strong>Conversion rate by locale, compared against itself over time</strong>, not against other
+locales — markets differ for reasons localisation cannot fix.</li>
+<li><strong>Search visibility for terms people in that market actually use</strong>, which is the test
+of whether you localised the keyword research or only the copy. This is the most common gap: the
+content is translated and the topic was chosen for a different market.</li>
+<li><strong>Support contacts in-language</strong>, which rise when localisation works and reveals
+demand the organisation may not be staffed for.</li>
+</ul>
+<p>That last one is worth anticipating. Localised marketing with unlocalised support produces a worse
+customer experience than no localisation at all.</p>
+
 </div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/content-marketing/content-strategy-framework/">Content Strategy Framework</a></li><li><a href="/codex/seo/technical/hreflang/">Hreflang</a></li><li><a href="/codex/business-strategy/international-marketing/">International Marketing</a></li></ul></div>

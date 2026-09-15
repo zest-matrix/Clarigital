@@ -41,7 +41,7 @@ for d, n in SEC.items():
         continue
     h = io.open(f, encoding='utf-8').read()
     h2, k = re.subn(r'(<p>)\d{1,4}(\s+guides\b)', lambda m: m.group(1) + str(n) + m.group(2), h, count=1)
-    if k:
+    if k and h2 != h:                     # S84: subn counts MATCHES, not CHANGES
         io.open(f, 'w', encoding='utf-8').write(h2)
         changed[f] = changed.get(f, 0) + k
 
@@ -53,7 +53,7 @@ def card(m):
     return m.group(0) if n is None else re.sub(r'(<div class="ac">)\d{1,4}(\s*guides)', rf'\g<1>{n}\g<2>', m.group(0))
 h2, k = re.subn(r'<a href="/codex/([a-z0-9-]+)/"[^>]*>.*?<div class="ac">\d{1,4}\s*guides</div>\s*</a>',
                 card, h, flags=re.S)
-if k: io.open(f, 'w', encoding='utf-8').write(h2); changed[f] = k
+if k and h2 != h: io.open(f, 'w', encoding='utf-8').write(h2); changed[f] = k
 
 # 3. homepage chips:  SEO &middot; NN guides
 f = 'index.html'; h = io.open(f, encoding='utf-8').read(); o = h
@@ -68,8 +68,10 @@ f = 'csp/orientation-2.html'
 if os.path.exists(f):
     h = io.open(f, encoding='utf-8').read()
     h2, k = re.subn(r'\b\d{1,4}(\s+guides on AI tools)', lambda m: str(ATLAS) + m.group(1), h)
-    if k: io.open(f, 'w', encoding='utf-8').write(h2); changed[f] = k
+    if k and h2 != h: io.open(f, 'w', encoding='utf-8').write(h2); changed[f] = k
 
 print(f"codex sections: {len(SEC)}  total guides: {TOTAL}  ai-atlas pages: {ATLAS}")
+if not changed:
+    print("  = all published counts already correct, nothing rewritten")
 for f, k in sorted(changed.items()):
-    print(f"  {f}: {k} count(s) derived")
+    print(f"  ✅ {f}: {k} count(s) CORRECTED")

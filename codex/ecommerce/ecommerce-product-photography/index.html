@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:type" content="article">
@@ -173,7 +203,45 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p><strong>Marketplace main image</strong>: clean product on white background, product filling 85%+ of frame, no text or graphics (most marketplace policies prohibit these on main images). This is a compliance requirement, not a creative choice.</p><p><strong>Lifestyle images</strong>: product in use, in context, by a person representing the target customer. These images answer "what does this look like in real life?" and perform significantly better in ads and social media than white-background images.</p><p><strong>Detail shots</strong>: close-ups of texture, stitching, materials, features. Reduce uncertainty about product quality. Particularly important for fashion, furniture, and food.</p>
 <h2>AI-Assisted Product Photography</h2>
 <p>AI image tools have made several previously expensive photographic operations accessible to smaller sellers: background removal and replacement (place any product in any context), model visualisation (show clothing on AI-generated models of different body types), and product image upscaling and enhancement.</p><p>The limitation: AI-generated lifestyle images often lack the authenticity of real photography and are increasingly recognisable as AI-generated. For brand-building, real photography of real people using real products is still significantly more effective. For marketplace compliance images, AI tools provide efficient white background and background removal at low cost.</p>
-</div>
+<h2>Specification Before Aesthetics</h2>
+
+<p>Product imagery is judged twice: by a human and by a feed validator, and the second one rejects
+silently. A listing disapproved on image grounds does not fail loudly — it simply stops appearing.</p>
+<p>The constraints that most often cause rejection are mechanical rather than artistic.
+<strong>Minimum dimensions</strong>, which differ between marketplace listings and shopping feeds.
+<strong>Background requirements</strong> — the main image is usually required to be on plain white
+with the product filling most of the frame.
+<strong>Prohibited overlays</strong>: promotional text, watermarks, borders, logos and calls to
+action are disallowed on primary images almost everywhere, and are the single most common cause of
+disapproval.
+<strong>Accurate representation</strong> — the image must show what is actually sold, so a picture
+showing accessories not included in the box is a compliance problem rather than a marketing choice.</p>
+<p><strong>Build the specification into the shoot brief</strong>, not into a retouching pass
+afterwards. Re-shooting because the framing left too little product in frame is expensive; cropping
+to fix it usually is not possible at the required resolution.</p>
+
+<h2>The Shot List That Actually Sells</h2>
+
+<p>Beyond the compliant primary image, the secondary images do the persuading, and the useful ones
+answer the questions that otherwise become returns or support contacts.</p>
+<ul>
+<li><strong>Scale.</strong> The product next to something with a known size. Ambiguous scale is one of
+the most common causes of a wrong-expectation return.</li>
+<li><strong>Detail.</strong> Material, texture, finish, stitching — close enough to answer
+&ldquo;what is this actually made of&rdquo;.</li>
+<li><strong>In use.</strong> Context that shows the product doing its job, which also communicates
+size implicitly.</li>
+<li><strong>What is in the box.</strong> Every component laid out. This single image removes a
+recurring class of complaint.</li>
+<li><strong>Dimensions.</strong> A clean diagram with measurements, where relevant.</li>
+</ul>
+<p>On <strong>AI-generated and AI-edited imagery</strong>, the rule follows from accurate
+representation rather than from any prohibition on the technique: <strong>background replacement and
+cleanup are ordinarily fine; altering the product itself is not.</strong> An image that makes the
+product look different from the item shipped creates returns, reviews and a disclosure problem, and
+the fact that a model rather than a retoucher produced it changes nothing.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Merchant Center product data specification</strong> &mdash; the image requirements a product feed must satisfy to remain eligible <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li><li><span class="src-k src-official">official</span><strong>Amazon Seller Central and Flipkart Seller Hub documentation</strong> &mdash; listing requirements, image specifications and the fee structures described here <a href="https://sellercentral.amazon.in" rel="noopener" target="_blank">sellercentral.amazon.in</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/ecommerce/ecommerce-marketing-fundamentals/">E-commerce Fundamentals</a></li><li><a href="/codex/content-marketing/">Content Marketing</a></li><li><a href="/ai-atlas/specialist-tools/images-design/">AI Image Tools</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="/codex/ecommerce/" class="sidebar-link">E-commerce overview →</a></div>

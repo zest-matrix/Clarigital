@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:type" content="article">
@@ -173,7 +203,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>The post-purchase period is when customers are most satisfied with their decision and most receptive to further engagement. A well-designed post-purchase flow: confirms the order (transactional), sets expectations for delivery, provides product usage guidance, requests a review at the right moment, and introduces relevant complementary products.</p><p>Review request timing matters significantly. Send the request after the customer has had time to actually use the product — not immediately on delivery. For consumables, this might be two weeks; for furniture, it might be a month.</p>
 <h2>Win-Back Campaigns</h2>
 <p>Customers who have not purchased in a defined period are lapsing. Win-back campaigns attempt to re-engage them before they become permanently inactive. The sequence typically starts with a re-engagement email (no incentive), moves to a soft incentive if there is no response, and concludes with a strong incentive or a final goodbye email.</p><p>The final goodbye email ("We're removing you from our list") has counter-intuitively high engagement — some customers click to stay on the list without purchasing. It also cleans your list of genuinely uninterested subscribers, which improves deliverability metrics.</p>
-</div>
+<h2>Sequencing Flows So They Do Not Collide</h2>
+
+<p>Each flow works in isolation and the trouble starts when a customer qualifies for several at once.
+A buyer who abandons a cart, then purchases, then browses again can receive an abandonment reminder,
+a purchase confirmation, a review request and a browse-abandonment message inside a day.</p>
+<p>The fix is a <strong>priority order and a global frequency cap</strong> applied above the
+individual flows, not inside them.</p>
+<p>A workable priority, highest first: <strong>transactional</strong> messages always send — order
+confirmations and shipping updates are expected and exempt from suppression.
+<strong>Post-purchase</strong> outranks acquisition, because a message about something already bought
+is more relevant than one about something not yet bought. <strong>Abandonment</strong> flows should
+<em>exit immediately on purchase</em>, which sounds obvious and is the most common defect in a live
+setup. <strong>Win-back and broadcast</strong> come last and should be suppressed for anyone active
+in another flow.</p>
+<p>Test the collision cases deliberately: abandon then buy, buy then abandon, buy twice. Each should
+produce a sequence a person would recognise as sensible.</p>
+
+<h2>Consent, Identification and the Unsubscribe That Has to Work</h2>
+
+<p>Automation multiplies whatever your consent practice is. A flawed list-building method sends one
+bad message manually and thousands automatically.</p>
+<p>Three obligations carry across jurisdictions even where the detail differs.
+<strong>Consent</strong> has to be given for marketing specifically — a checkout that collects an
+email to deliver an order has not obtained marketing consent by implication, and a pre-ticked box is
+not consent in regimes that require it to be freely given.
+<strong>Identification</strong> means the message says clearly who is sending it, with a genuine
+postal contact.
+<strong>Unsubscribe</strong> must work, must be easy, and must take effect promptly across every flow
+— not only the one the recipient was reading.</p>
+<p>That last point is the one automation breaks. An unsubscribe honoured by the broadcast tool but not
+by the transactional-adjacent flows produces exactly the complaint that damages a sending domain.
+<strong>Test the unsubscribe from inside each automated flow</strong>, not from a newsletter, and
+confirm the suppression propagates everywhere before the flow goes live.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>CAN-SPAM Rule and the GDPR consent and transparency provisions</strong> &mdash; the consent, identification and unsubscribe obligations that apply to automated commercial email <a href="https://ftc.gov" rel="noopener" target="_blank">ftc.gov</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/email-marketing/workflow-automation/">Email Automation</a></li><li><a href="/codex/ecommerce/ecommerce-marketing-fundamentals/">E-commerce Fundamentals</a></li><li><a href="/codex/ecommerce/customer-lifetime-value-ecommerce/">Customer Lifetime Value</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="/codex/ecommerce/" class="sidebar-link">E-commerce overview →</a></div>

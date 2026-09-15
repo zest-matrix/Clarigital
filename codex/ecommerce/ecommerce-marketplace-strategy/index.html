@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,36 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:type" content="article">
@@ -173,7 +203,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Marketplace search operates differently from Google. Algorithms on Amazon and Flipkart weight sales velocity, conversion rate, review quantity and quality, and listing completeness alongside keyword relevance. A new listing with no sales history faces structural disadvantages regardless of listing quality.</p><p>Listing optimisation: research marketplace-specific keywords (tools like Helium 10 for Amazon, marketplace search suggestions), front-load primary keywords in titles, use all available bullet points, optimise images for the product detail page format, and price competitively at launch to build sales velocity.</p>
 <h2>India-Specific Marketplace Dynamics</h2>
 <p>India's marketplace landscape has specific characteristics: Meesho dominates value segments and tier-2/3 city consumers, Flipkart has strong electronics and fashion categories, Amazon India is strongest in urban and premium segments, JioMart is emerging as a FMCG marketplace with kirana integration.</p><p>Quick commerce (Blinkit, Zepto, Swiggy Instamart) is an important channel for FMCG and daily essentials — not traditional e-commerce but operating in the same ecosystem. Social commerce through WhatsApp and Instagram direct is significant for SMB sellers, particularly in fashion and beauty.</p>
-</div>
+<h2>The Unit Economics Nobody Models Before Listing</h2>
+
+<p>Marketplace margin is not the platform commission. It is the commission plus everything the
+platform charges around it, and sellers routinely discover the difference after their first quarter.</p>
+<p>The costs that actually compound: <strong>the referral or commission fee</strong> on the sale;
+<strong>fulfilment fees</strong> if you use the platform's logistics, charged by weight band, so a
+product that sits just over a band boundary costs materially more than one just under;
+<strong>storage fees</strong> that escalate for slow-moving stock; <strong>return shipping</strong>,
+which on a generous-returns marketplace is a volume cost rather than an exception;
+<strong>advertising</strong>, which stops being optional once a category is competitive; and
+<strong>payment settlement timing</strong>, which is a working-capital cost rather than a fee.</p>
+<p>Model the product-level contribution after all of them <strong>before</strong> you list, and model
+it at your expected return rate rather than at zero. A product with healthy gross margin and a high
+return rate can be loss-making at volume, and the marketplace dashboard will not tell you — it reports
+revenue, not contribution.</p>
+
+<h2>Owning the Customer When the Platform Does Not Let You</h2>
+
+<p>The structural trade of marketplace selling is that the platform owns the customer relationship.
+You get demand you could not have bought; you do not get the email address, the repeat purchase, or
+the ability to speak to the buyer directly.</p>
+<p>What actually works within the rules is narrower than most advice suggests. <strong>Packaging
+inserts</strong> that offer genuine value — a registration for a warranty, a guide to using the
+product — can move a buyer onto your own channel, provided they do not solicit a review or disparage
+the platform. <strong>Brand registration programmes</strong> give you control of the listing content
+and some analytics. <strong>Building a brand people search for by name</strong> is the slowest route
+and the only durable one, because branded demand follows you across channels.</p>
+<p>What does not work: asking for reviews in exchange for anything, contacting buyers outside the
+platform's messaging system, or including your own storefront URL where the platform forbids it.
+These get accounts suspended, and a suspension on a channel carrying most of your revenue is an
+existential event rather than a setback. <strong>Treat marketplace dependence as concentration risk
+and measure it</strong> — the share of revenue from one platform is a number your business should
+know and most do not.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Amazon Seller Central and Flipkart Seller Hub documentation</strong> &mdash; listing requirements, image specifications and the fee structures described here <a href="https://sellercentral.amazon.in" rel="noopener" target="_blank">sellercentral.amazon.in</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/ecommerce/ecommerce-marketing-fundamentals/">E-commerce Fundamentals</a></li><li><a href="/codex/ecommerce/ecommerce-seo/">E-commerce SEO</a></li><li><a href="/codex/business-strategy/">Business Strategy</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="/codex/ecommerce/" class="sidebar-link">E-commerce overview →</a></div>

@@ -10,7 +10,7 @@
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 :root{--navy:#1D4ED8;--orange:#E85C0D;--orange-dk:#C44A08;--orange-bg:#FEF3EC;--w:#fff;--g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g500:#64748B;--g700:#374151;--g900:#0F172A;--green:#059669;--amber:#B45309;--blue-bg:#EFF6FF;--green-bg:#F0FDF4;--amber-bg:#FFFBEB;
-  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --bg:#0F172A;--teal:#14B8A6;--bg2:#1E293B;--bg3:#263043;
   --fg:#F1F5F9;--fg2:#E2E8F0;
   --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
   --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
@@ -136,6 +136,23 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.guide-hero{background:var(--bg2);border-bottom:1px solid var(--border);padding:34px 0 30px;margin-bottom:28px}
+.guide-hero h1{margin:0}
+.guide-intro{font-size:1.05rem;color:var(--muted);max-width:68ch;margin-top:12px;line-height:1.65}
+.guide-body{display:block}
+.guide-content{min-width:0}
+.guide-content>h2:first-child{margin-top:0}
+.guide-sidebar{margin-top:36px}
+.sidebar-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:10px}
+.sidebar-list{list-style:none;margin:0;padding:0}
+.sidebar-list li{margin:0 0 9px;font-size:.9rem;line-height:1.45}
+.sidebar-link{display:inline-block;font-size:.9rem;line-height:1.45}
+@media(min-width:861px){
+.guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
+.guide-sidebar{margin-top:0;position:sticky;top:96px}
+}
 </style>
 
 <meta property="og:type" content="article">
@@ -173,6 +190,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>The most effective return rate reduction strategies address the root causes of returns rather than restricting policy. The top causes: product not as described (address with better images and descriptions), wrong size (address with detailed size guides and fit tools), product quality below expectations (address at the product sourcing level), and impulse purchases (nothing to be done — these are legitimate returns).</p><p>Post-purchase communication that helps customers use the product correctly reduces returns in categories where returns are often due to setup difficulty or misuse — electronics, appliances, and complex products.</p>
 <h2>Returns as a Loyalty Driver</h2>
 <p>How a return is handled is one of the strongest determinants of whether a customer purchases again. A difficult returns process alienates a customer who had a legitimate problem with a product. A frictionless returns process often converts a disappointed customer into a loyal one.</p><p>Self-service returns portals, prepaid return labels, and instant refund processing (before the return has physically arrived, for trusted customers) significantly improve the returns experience and customer retention metrics.</p>
+<h2>Returns as a Data Source, Not Just a Cost</h2>
+
+<p>Most return policies are designed to minimise returns. The better ones are designed to
+<strong>learn from them</strong>, because a return is the most honest feedback a customer ever gives
+you and it arrives with a reason attached.</p>
+<p>The prerequisite is a reason taxonomy that distinguishes causes you can act on.
+<strong>Wrong size</strong> is a sizing-guidance problem. <strong>Not as described</strong> is a
+listing problem, and it is the one that predicts a review problem.
+<strong>Damaged</strong> is packaging or carrier. <strong>Changed mind</strong> is often a targeting
+problem — the wrong customer was persuaded. A single "returned" flag tells you the cost and none of
+the cause.</p>
+<p>Analyse those reasons <strong>by product and by acquisition channel</strong>. A product with an
+unusual return rate has a listing or a quality problem. <strong>A channel with an unusual return rate
+has a promise problem</strong>, and that is the finding worth having: it usually means the campaign is
+overselling, and the return rate is the cost of a conversion rate somebody is being congratulated
+for.</p>
+
+<h2>Designing the Policy Around the Category</h2>
+
+<p>A generous returns policy raises conversion and raises returns. Which effect dominates depends on
+the category, and copying another retailer's policy is how you import their economics without their
+cost base.</p>
+<p><strong>High-consideration, high-margin goods</strong> generally benefit from generosity: the
+conversion lift on an uncertain purchase outweighs the return cost, and the customer who keeps the
+item is worth a lot.</p>
+<p><strong>Low-margin, high-bulk goods</strong> often cannot support free returns at all, because the
+reverse logistics cost approaches the item's margin. The honest answer here is usually to fix the
+reason for returns rather than to subsidise them.</p>
+<p><strong>Fashion</strong> is its own problem, because bracketing — ordering several sizes intending
+to keep one — is rational customer behaviour that the policy itself created. Better size guidance,
+fit data and honest imagery reduce returns more than restrictive terms do, and without the conversion
+penalty.</p>
+<p>Whatever you choose, <strong>state it plainly and early</strong>. A policy discovered at checkout
+costs a conversion; a policy discovered after delivery costs a customer.</p>
+
 </div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/ecommerce/ecommerce-marketing-fundamentals/">E-commerce Fundamentals</a></li><li><a href="/codex/ecommerce/customer-lifetime-value-ecommerce/">Customer Lifetime Value</a></li><li><a href="/codex/analytics-cro/cro-framework/">Conversion Rate Optimisation</a></li></ul></div>
