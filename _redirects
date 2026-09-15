@@ -1,16 +1,15 @@
 # Clarigital _redirects
-# Cloudflare enforces a ceiling of 100 rules here regardless of type,
-# despite the documented 2,000 static / 100 dynamic. A 273-rule file
-# failed the deploy at rule 101 with a misleading 'dynamic limit' error.
+# Cloudflare enforces ~100 rules here regardless of type, and rejects
+# duplicate source paths and self-redirects. This file is validated for
+# all three. Keep it under 100 rules.
 #
-# The 240 legacy '/path/page.html -> /path/page/ 301' rules that used to
-# live here are now handled by ONE dashboard Redirect Rule. Do not paste
-# them back in. Anything added below must keep this file under 100 rules.
+# The 240 legacy '/path/page.html -> /path/page/ 301' rules live in a
+# single dashboard Redirect Rule instead. Do not paste them back.
 
 # --- dynamic ---
 /wsp/*  /csp/:splat  301
 
-# --- one-off URL changes (not the .html pattern) ---
+# --- one-off URL changes ---
 /home.html  /  301
 /codex/analytics-cro/user-experience-research/  /codex/analytics-cro/heatmaps-session-recording/  301
 /codex/analytics-cro/conversion-rate-optimisation/  /codex/analytics-cro/cro-framework/  301
@@ -24,8 +23,8 @@
 /codex/content-marketing/content-strategy/  /codex/content-marketing/content-strategy-framework/  301
 /codex/seo/fundamentals/how-google-crawls-the-web/  /codex/seo/fundamentals/how-google-search-works/  301
 /codex/seo/fundamentals/keyword-research/  /codex/seo/on-page/keyword-research/  301
-/codex/seo/technical/crawlability-indexation/  /codex/seo/technical/crawlability-indexability/  301
-/codex/seo/technical/crawlability-indexability/  /codex/seo/technical/crawlability-indexability/  301
+/codex/seo/technical/crawlability-indexation/  /codex/seo/fundamentals/crawlability-indexation/  301
+/codex/seo/technical/crawlability-indexability/  /codex/seo/fundamentals/crawlability-indexation/  301
 /codex/social-media/social-media-strategy/  /codex/social-media/  301
 /codex/social-media/instagram-marketing/  /codex/social-media/instagram-content-strategy/  301
 /codex/sem/google-ads/google-ads-bidding-strategies/  /codex/sem/google-ads/bidding-strategies/  301
@@ -40,6 +39,3 @@
 /codex/disclaimer/  /disclaimer/  301
 /codex/about/  /about/  301
 /codex/sem/google-ads-overview/  /codex/sem/google-ads/overview/  301
-/codex/seo/technical/crawlability-indexability/  /codex/seo/fundamentals/crawlability-indexation/  301
-/codex/seo/technical/crawlability-indexation/  /codex/seo/fundamentals/crawlability-indexation/  301
-/codex/sem/google-ads/google-ads-bidding-strategies/  /codex/sem/google-ads/bidding-strategies/  301
