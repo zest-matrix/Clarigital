@@ -1,0 +1,30 @@
+# What Cloudflare must NOT publish. Gitignore syntax.
+# Added after a deploy log showed .git/, _build/ and the master document
+# being uploaded as public assets from assets.directory = "."
+
+# Repository internals. .git can NEVER be gitignored, so this file is the
+# only thing standing between your commit history and the public internet.
+.git/
+.github/
+.gitignore
+
+# Build system and internal working documents
+_build/
+CLARIGITAL-MASTER.md
+*.bak
+*.tmp
+
+# Wrangler working files
+.wrangler/
+wrangler.jsonc
+wrangler.toml
+
+# OS and editor droppings
+.DS_Store
+**/.DS_Store
+__MACOSX/
+Thumbs.db
+desktop.ini
+__pycache__/
+**/__pycache__/
+*.pyc
