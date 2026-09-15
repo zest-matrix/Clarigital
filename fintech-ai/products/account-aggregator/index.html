@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Account Aggregator: How to Build It | Clarigital</title>
+<meta name="description" content="Build an Account Aggregator integration step by step: the eight stages, your options at each one, how to connect them, and the module everyone forgets.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/account-aggregator/">
+<meta property="og:type" content="article"><meta property="og:title" content="Account Aggregator: How to Build It">
+<meta property="og:description" content="Build an Account Aggregator integration step by step: the eight stages, your options at each one, how to connect them, and the module everyone forgets."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/account-aggregator/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Account Aggregator: How to Build It">
+<meta name="twitter:description" content="Build an Account Aggregator integration step by step: the eight stages, your options at each one, how to connect them, and the module everyone forgets."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Account Aggregator: How to Build It", "description": "Build an Account Aggregator integration step by step: the eight stages, your options at each one, how to connect them, and the module everyone forgets.", "url": "https://www.clarigital.com/fintech-ai/products/account-aggregator/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-13"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Account Aggregator: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/account-aggregator/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>Account Aggregator: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 04</div>
+  <div class="ft-tag">Fintech AI</div><h1>Account Aggregator: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building an Account Aggregator integration. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What Account Aggregator actually is</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 and 2 — eligibility, and the module everyone forgets</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Can you even be an FIU?</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Scope both modules</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 3 and 4 — choosing an AA and writing the consent</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; Pick your AA</a><a class="sub" href="#s-indigo-s4">Step 4 &mdash; Write the consent request</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 5 and 6 — the handoff and the fetch</a><a class="sub" href="#s-indigo-s5">Steps 5 and 6 &mdash; The handoff and the fetch</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>Steps 7 and 8 — purpose, revocation and deletion</a><a class="sub" href="#s-indigo-s7">Step 7 &mdash; Use it, only for what you said</a><a class="sub" href="#s-indigo-s8">Step 8 &mdash; Revocation and expiry</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">The starting version</a><a class="sub" href="#s-amber-proper">The proper version</a><a class="sub" href="#s-amber-big">Becoming the AA</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main id="main-content" class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one product, start to finish. This one is a
+<em>capability</em> rather than a customer-facing product: it is how you get a customer's financial
+data, with their permission, from institutions that are not you.</p>
+<p>It feeds almost everything else &mdash; underwriting, wealth advice, personal finance, income
+verification.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The budget warning first, because it is the single most useful thing on this page.</strong> A lender planning a one-directional &ldquo;pull bank statements for underwriting&rdquo; integration is actually scoping <strong>two modules</strong>. Since an RBI circular of October 2023, a regulated entity joining as a data <em>consumer</em> must also join as a data <em>provider</em> if it holds financial information. You will build the side that fetches, <strong>and the side that serves your own loan data to competitors who ask with valid consent</strong>. Budgets built on the first module alone are <strong>wrong by roughly half</strong>.</p></div>
+<h2 id="s-green-1">What Account Aggregator actually is</h2>
+
+<p>Account Aggregator is India's consented financial data rail. Three roles:</p>
+<table>
+<tr><th>Role</th><th>Who</th><th>What they do</th></tr>
+<tr><td><strong>FIP</strong></td><td>Banks, NBFCs, insurers, depositories, GSTN, NPS record-keepers, CCIL</td><td><strong>Holds</strong> the customer's data.</td></tr>
+<tr><td><strong>AA</strong></td><td>An RBI-licensed NBFC</td><td><strong>Moves</strong> the data. Cannot read it.</td></tr>
+<tr><td><strong>FIU</strong></td><td>You</td><td><strong>Consumes</strong> the data for a stated purpose.</td></tr>
+</table>
+<p>The design principle that makes the whole thing work: <strong>the AA is a data-blind pipe</strong>.
+Data is encrypted end to end between FIP and FIU, and the AA does not hold the decryption key. It
+brokers consent; it never sees the money.</p>
+<div class="note"><span class="note-lbl">Note</span><p>This matters when you evaluate AAs. Because they are data-blind, <strong>they cannot differentiate on the data</strong> &mdash; every AA delivers the same bytes. They differentiate on <strong>consent success rate, FIP coverage and uptime</strong>, and those are the only three things worth measuring in a trial.</p></div>
+<p><strong>The scale, as of 31 December 2025:</strong> around <strong>2.61 billion</strong> accounts
+enabled for sharing, <strong>252.9 million</strong> users with linked accounts, <strong>126</strong>
+institutions live as both FIP and FIU, and another <strong>50</strong> as FIP only. This is not a
+pilot.</p>
+<p><strong>What it is not:</strong></p>
+<ul>
+<li><strong>Not screen scraping.</strong> No credentials, ever. If your flow asks for a net-banking
+password, you have built the thing AA exists to replace.</li>
+<li><strong>Not a data purchase.</strong> You get what the customer consented to, for as long as they
+consented, for the purpose you named.</li>
+<li><strong>Not open to everyone.</strong> See step 1.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Can you even be an FIU?</strong></td><td>You must be regulated by RBI, SEBI, IRDAI or PFRDA. Most startups cannot.</td></tr>
+<tr><td>2</td><td><strong>Scope both modules</strong></td><td>Fetching and serving. This is the half everyone forgets.</td></tr>
+<tr><td>3</td><td><strong>Pick your AA, or several</strong></td><td>Coverage and consent success rate, not price.</td></tr>
+<tr><td>4</td><td><strong>Write the consent request</strong></td><td>Purpose, scope, duration, frequency. This is a legal document in JSON.</td></tr>
+<tr><td>5</td><td><strong>Hand over to the AA</strong></td><td>The customer consents in the AA's app, not yours. Design for the handoff.</td></tr>
+<tr><td>6</td><td><strong>Fetch and decrypt</strong></td><td>The part that is genuinely just engineering.</td></tr>
+<tr><td>7</td><td><strong>Use it &mdash; only for what you said</strong></td><td>Purpose limitation is not a suggestion.</td></tr>
+<tr><td>8</td><td><strong>Revocation and expiry</strong></td><td>What you delete, and when, and how you prove it.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>Steps 1, 2 and 8 are where the money and the risk are. Steps 4 to 6 are a solved commodity on the happy path &mdash; the ReBIT specification is published, the calls are named, and a competent team gets a fetch working in a fortnight.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 and 2 — eligibility, and the module everyone forgets</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Can you even be an FIU?</h3>
+<p><strong>You must be registered with and regulated by RBI, SEBI, IRDAI or PFRDA.</strong> A fintech
+with no NBFC licence, no lending licence and no adviser registration cannot be an FIU. There is no
+partial route.</p>
+<table>
+<tr><th>Route</th><th>What it means</th></tr>
+<tr><td><strong>Get regulated</strong></td><td>NBFC, investment adviser, insurer, whatever fits the business. Months, and a permanent compliance function.</td></tr>
+<tr><td><strong>Partner with a regulated entity</strong></td><td>They are the FIU; you build the product layer. Fast, and the data-use decisions are theirs.</td></tr>
+<tr><td><strong>Become an AA yourself</strong></td><td>An RBI-licensed NBFC-AA: <strong>&#8377;2 crore Net Owned Fund</strong> before the certificate, no storage or caching of financial data, tested DR and business continuity, three board committees, periodic IS audits.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p>If you are considering the third row: the commonly cited reasons applications stall are <strong>incomplete technical documentation, not reaching the &#8377;2 crore Net Owned Fund before the certificate is issued, a poor consent-revocation interface, and skipped IS audits or DR drills</strong>. Three of those four are engineering problems that arrive disguised as paperwork.</p></div>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Scope both modules</h3>
+<p><strong>What it does:</strong> the part of the project that doubles the estimate.</p>
+<p>Since October 2023, a regulated entity joining as an FIU <strong>must also join as an FIP</strong>
+if it holds financial information. The rule exists to stop free-riding: you cannot take from the
+ecosystem without contributing to it.</p>
+<table>
+<tr><th>Module</th><th>What it does</th><th>Usually estimated?</th></tr>
+<tr><td><strong>FIU side</strong></td><td>Request consent, fetch, decrypt, use.</td><td>Yes. This is what people mean by &ldquo;AA integration&rdquo;.</td></tr>
+<tr><td><strong>FIP side</strong></td><td>Receive consent artefacts, <strong>validate their signatures</strong>, and serve <em>your</em> data to whoever asks with valid consent &mdash; including competitors.</td><td><strong>No.</strong> And it has harder availability requirements, because now you are the dependency.</td></tr>
+</table>
+<p>The FIP side is the more demanding build. As an FIU, a slow response is your problem. As an FIP,
+<strong>a slow response is someone else's customer failing to get a loan</strong>, and your uptime
+becomes an ecosystem metric.</p>
+
+<h2 id="s-indigo-1">Steps 3 and 4 — choosing an AA and writing the consent</h2>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; Pick your AA</h3>
+<p>Because every AA is data-blind, they all deliver identical bytes. There are exactly three things
+worth measuring, and none of them is the per-fetch price.</p>
+<table>
+<tr><th>Measure</th><th>Why it decides the product</th></tr>
+<tr><td><strong>FIP coverage</strong></td><td>Which banks your actual customers use. A 95% coverage figure is meaningless if the missing 5% is where your segment banks.</td></tr>
+<tr><td><strong>Consent success rate</strong></td><td>The share of started journeys that end in delivered data. <strong>This is the number.</strong> It moves conversion more than anything you control.</td></tr>
+<tr><td><strong>Uptime, and FIP-level uptime</strong></td><td>An AA that is up while a major FIP is down is still a failed fetch for your customer. Ask for the breakdown, not the headline.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>Use more than one AA. They cost little to run in parallel, coverage differs, and consent success rate differs by AA <em>and</em> by FIP. Routing a customer to the AA with the best success rate for <em>their</em> bank is a real conversion gain and it is invisible if you only integrated one.</p></div>
+
+<h3 id="s-indigo-s4">Step 4 &mdash; Write the consent request</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 4, the consent artefact, which is a legal document in JSON</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import datetime, timedelta, timezone
+IST = timezone(timedelta(hours=5, minutes=30))
+
+# Everything you are allowed to do with this data is decided HERE, before the
+# customer sees anything. Over-ask and they decline. Under-ask and you go back
+# for a second consent, which they will also decline.
+
+def build_consent_request(customer, use_case):
+    now = datetime.now(IST)
+    return {
+        # WHY. Must be a permitted purpose code, and it binds you at step 7.
+        &quot;Purpose&quot;: {
+            &quot;code&quot;: use_case[&quot;purpose_code&quot;],       # e.g. &quot;101&quot; wealth, &quot;103&quot; lending
+            &quot;text&quot;: use_case[&quot;purpose_text&quot;],       # shown to the customer, in plain words
+            &quot;refUri&quot;: use_case[&quot;policy_url&quot;],
+        },
+        # WHAT. Narrow it. &quot;All accounts, all history&quot; reads as a fishing trip.
+        &quot;fiTypes&quot;: use_case[&quot;fi_types&quot;],            # [&quot;DEPOSIT&quot;] not everything
+        &quot;consentTypes&quot;: [&quot;TRANSACTIONS&quot;, &quot;PROFILE&quot;, &quot;SUMMARY&quot;],
+
+        # HOW FAR BACK. Ask for what your model uses, not what it might use.
+        &quot;FIDataRange&quot;: {
+            &quot;from&quot;: (now - timedelta(days=use_case[&quot;lookback_days&quot;])).isoformat(),
+            &quot;to&quot;:   now.isoformat(),
+        },
+        # HOW LONG, and HOW OFTEN. A one-off underwriting pull is ONE fetch.
+        # A monitoring use case is recurring -- and needs saying out loud.
+        &quot;consentStart&quot;: now.isoformat(),
+        &quot;consentExpiry&quot;: (now + timedelta(days=use_case[&quot;consent_days&quot;])).isoformat(),
+        &quot;fetchType&quot;: use_case[&quot;fetch_type&quot;],        # &quot;ONETIME&quot; | &quot;PERIODIC&quot;
+        &quot;Frequency&quot;: use_case.get(&quot;frequency&quot;),     # only if PERIODIC
+        &quot;DataLife&quot;:  {&quot;unit&quot;: &quot;MONTH&quot;, &quot;value&quot;: use_case[&quot;retain_months&quot;]},
+        &quot;DataFilter&quot;: use_case.get(&quot;filters&quot;, []),
+
+        &quot;customerId&quot;: customer[&quot;aa_handle&quot;],        # name@aa, not your user id
+    }
+
+# WHAT TO CHECK
+# [ ] ONETIME vs PERIODIC is a product decision, not a default. A periodic
+#     consent for a one-off underwriting decision is over-collection and it is
+#     the first thing a reviewer will ask about
+# [ ] DataLife is how long you may KEEP it, separate from how long the consent
+#     runs. Two different clocks, two different obligations
+# [ ] lookback_days matches what your model actually consumes. Asking 24 months
+#     to use 6 is over-collection you cannot justify
+# [ ] purpose_text is written for a human, not copied from the code table. The
+#     customer reads this in the AA app and decides there
+# [ ] store the SIGNED ARTEFACT you received, not your request. The artefact is
+#     the permission; your request was a proposal
+# [ ] one consent per purpose. Bundling lending and marketing into one request
+#     is how a whole ecosystem loses consent success rate
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> two clocks. <code>consentExpiry</code> is how long
+your permission to <em>fetch</em> lasts. <code>DataLife</code> is how long you may <em>keep</em> what
+you already fetched. Teams set one and assume it governs both, then either delete data they were
+entitled to retain, or &mdash; much worse &mdash; retain data whose life expired months ago.
+<strong>Model them as two independent timers from the start</strong>, because retrofitting a
+retention clock onto a warehouse is genuinely painful.</p>
+
+<h2 id="s-indigo-2">Steps 5 and 6 — the handoff and the fetch</h2>
+
+<h3 id="s-indigo-s5">Steps 5 and 6 &mdash; The handoff and the fetch</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 5 and 6, the handoff and the fetch</span><button class="cb-copy" type="button">Copy</button></div><pre><code># STEP 5. The customer leaves your app, consents inside the AA&#x27;s app, and comes
+# back. That redirect is where most drop-off happens, and it is the part you can
+# actually influence.
+
+def start_consent_journey(consent_request, aa_client, session):
+    art = aa_client.create_consent(consent_request)     # returns consentHandle
+    return {
+        &quot;redirect_url&quot;: art[&quot;redirectUrl&quot;],
+        &quot;consent_handle&quot;: art[&quot;consentHandle&quot;],
+        # Save EVERYTHING you will need when they come back. They may return on
+        # a different device, an hour later, or not at all.
+        &quot;resume_token&quot;: persist_session(session, art[&quot;consentHandle&quot;]),
+        # Tell them what is about to happen. An unexplained redirect to an
+        # unfamiliar brand is the single biggest cause of abandonment here.
+        &quot;explain&quot;: &quot;You&#x27;ll approve this with your Account Aggregator, then come &quot;
+                   &quot;straight back. We never see your banking password.&quot;,
+    }
+
+# STEP 6. Poll for the artefact, then fetch, then decrypt.
+def fetch_when_ready(consent_handle, aa_client, keys):
+    status = aa_client.consent_status(consent_handle)
+    if status[&quot;status&quot;] == &quot;PENDING&quot;:
+        return {&quot;state&quot;: &quot;waiting&quot;}                     # customer still deciding
+    if status[&quot;status&quot;] in (&quot;REJECTED&quot;, &quot;EXPIRED&quot;):
+        return {&quot;state&quot;: &quot;no_consent&quot;, &quot;reason&quot;: status[&quot;status&quot;]}
+
+    artefact = aa_client.get_consent(status[&quot;consentId&quot;])
+    verify_signature(artefact)                          # NOT optional
+    store_artefact(artefact)                            # the permission itself
+
+    sess = aa_client.create_fi_request(artefact, keys[&quot;public&quot;])
+    data = aa_client.fetch_fi(sess[&quot;sessionId&quot;])        # encrypted payload
+    return {&quot;state&quot;: &quot;ready&quot;,
+            &quot;records&quot;: [decrypt(d, keys[&quot;private&quot;]) for d in data[&quot;FI&quot;]]}
+
+# WHAT TO CHECK
+# [ ] VERIFY THE ARTEFACT SIGNATURE. It is the only thing proving the customer
+#     actually consented. Skipping it because &quot;it came from the AA&quot; removes the
+#     entire security property of the framework
+# [ ] the redirect explains itself BEFORE it happens, and names the AA. An
+#     unexplained jump to an unknown brand is the main drop-off cause
+# [ ] resume works on a different device and after a delay. Consent journeys are
+#     abandoned and resumed hours later far more often than teams assume
+# [ ] PENDING is normal and can last minutes. Poll with backoff; never block a
+#     user-facing request on it
+# [ ] private keys live in a KMS or HSM, never in application config. You are
+#     holding the only thing standing between an encrypted payload and a breach
+# [ ] a failed fetch is reported to the customer in plain words, with a retry.
+#     &quot;Something went wrong&quot; after they just approved data sharing reads as a
+#     betrayal of the trust they extended thirty seconds ago
+# [ ] log every step with the consent handle. Disputes are reconstructed from it
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> the redirect is the product. Everything else on this
+page is compliance and engineering; the moment a customer leaves your app for an unfamiliar
+third-party brand is where the conversion actually happens or does not. <strong>Explain what is about
+to occur, name the AA, and say explicitly that you never see their banking password</strong> &mdash;
+because a meaningful share of people assume you will, and abandon for exactly that reason.</p>
+
+<h2 id="s-indigo-3">Steps 7 and 8 — purpose, revocation and deletion</h2>
+
+<h3 id="s-indigo-s7">Step 7 &mdash; Use it, only for what you said</h3>
+<p><strong>Purpose limitation is enforceable.</strong> You named a purpose in the consent, the
+customer approved <em>that</em>, and using the data for something else is a breach of the consent and
+a DPDP problem at the same time.</p>
+<p>Three rules that keep this simple:</p>
+<ul>
+<li><strong>Tag every record with the consent id it arrived under.</strong> Then &ldquo;may we use
+this for X&rdquo; is a query, not a meeting.</li>
+<li><strong>A new purpose needs a new consent.</strong> Not a wider one next time &mdash; a separate
+one, for the new thing.</li>
+<li><strong>Derived data inherits the purpose.</strong> A score computed from AA data is AA data. This
+is the same rule as embeddings inheriting residency in
+<a href="/fintech-ai/infrastructure/build-sheet/">Build Sheet 08</a>, and it is missed for the same
+reason: the derived artefact does not look like the source.</li>
+</ul>
+
+<h3 id="s-indigo-s8">Step 8 &mdash; Revocation and expiry</h3>
+<p><strong>The customer can revoke at any time.</strong> Your system must handle that arriving
+without warning, for a customer mid-journey, on a Sunday.</p>
+<table>
+<tr><th>Event</th><th>What must happen</th></tr>
+<tr><td><strong>Revoked</strong></td><td>Stop fetching immediately. Existing data is governed by <code>DataLife</code>, not deleted on the spot &mdash; but no new fetches, ever, under that consent.</td></tr>
+<tr><td><strong>Consent expired</strong></td><td>Same. Fetching on an expired consent is the clearest possible breach.</td></tr>
+<tr><td><strong>DataLife expired</strong></td><td><strong>Delete.</strong> Including from backups, derived tables and any model training set it reached.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>&ldquo;Delete&rdquo; is the hardest word on this page.</strong> Financial data fetched for underwriting typically lands in a warehouse, a feature store, a model training set and a backup within its first hour. A retention clock that only deletes the primary record has deleted almost nothing. <strong>Decide, before your first fetch, where AA data is allowed to go</strong> &mdash; and keep that list short, because every destination is a place you will have to delete from later and prove that you did.</p></div>
+<h2 id="s-indigo-4">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>Account Aggregator &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Being an FIU<span class="pill p-direct">direct</span></div><div class="d">The licence you already hold, or a partnership. <strong>The regulatory status is the entry cost</strong>, not the integration.</div></div><div class="reg-row"><div class="n">Per fetch<span class="pill p-direct">direct</span></div><div class="d">AAs charge per successful data fetch, commercially negotiated and modest at volume. <strong>Not the number that decides anything</strong> &mdash; consent success rate moves your economics far more than per-fetch price.</div></div><div class="reg-row"><div class="n">The FIU module<span class="pill p-direct">direct</span></div><div class="d">Consent, fetch, decrypt, store. Weeks for a competent team. ReBIT specifications are published and the calls are named, so the happy path is a solved commodity.</div></div><div class="reg-row"><div class="n">The FIP module<span class="pill p-direct">direct</span></div><div class="d"><strong>The half that is missed.</strong> Receive and validate artefacts, serve your own data on demand, with availability that matters to other firms' customers. <strong>Budget roughly the same again as the FIU side</strong>, plus ongoing uptime obligations.</div></div><div class="reg-row"><div class="n">Becoming an AA<span class="pill p-direct">direct</span></div><div class="d"><strong>&#8377;2 crore Net Owned Fund</strong> before the certificate, three board committees, periodic IS audits, tested DR, and a no-storage architecture. A licensed business, not a feature.</div></div><div class="reg-row"><div class="n">Certification and membership<span class="pill p-direct">direct</span></div><div class="d">Certification by a Sahamati-empanelled auditor, plus ecosystem membership fees by category. Small next to the build, and a gating item on timelines.</div></div><div class="reg-row"><div class="n">Retention and deletion<span class="pill p-direct">direct</span></div><div class="d"><strong>Quietly the expensive one.</strong> Every destination AA data reaches is somewhere you must later delete from and evidence the deletion. This is engineering time, not licence cost.</div></div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The number to optimise is consent success rate, and almost nobody instruments it.</strong> Measure it per AA, per FIP and per step of the journey &mdash; started, redirected, approved, delivered. A 10-point improvement there is worth more than any price negotiation you will have, and it is entirely within your control at the redirect.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">The starting version</h3>
+<p><strong>Build:</strong> partner with a regulated entity as FIU &rarr; one AA &rarr; a single
+narrow consent for one purpose &rarr; a clearly explained redirect &rarr; fetch, decrypt, store with
+the consent id attached &rarr; a manual revocation process.</p>
+<p><strong>It breaks when:</strong> you need a bank the AA does not cover, or a second purpose.</p>
+
+<h3 id="s-amber-proper">The proper version</h3>
+<p><strong>Build:</strong> everything above, plus &mdash; <strong>two or three AAs with routing by FIP
+coverage and success rate</strong> &rarr; both modules, FIU and FIP, scoped from day one &rarr;
+consent and DataLife as separate enforced timers &rarr; every record tagged with its consent id
+&rarr; a written list of permitted destinations for AA data &rarr; automated deletion covering
+warehouse, features and backups &rarr; consent success rate instrumented per AA, per FIP, per step.</p>
+<p><strong>Trade:</strong> the deletion machinery is real work for a benefit nobody sees until it is
+needed. Build it early anyway, because it is far harder to add once data has spread.</p>
+
+<h3 id="s-amber-big">Becoming the AA</h3>
+<p><strong>Build:</strong> an RBI-licensed NBFC-AA. A different business with a different balance
+sheet, board committees and audit regime.</p>
+<p><strong>Use when:</strong> consent management <em>is</em> your product. Not because you want better
+terms on fetches.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>scope the FIP module in your first estimate.</strong> It is the half that is forgotten, it is the harder half, and discovering it mid-project is how an eight-week integration becomes a quarter.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>The estimate is half the work</strong></td><td>Only the FIU module was scoped.</td><td>FIP module from day one.</td></tr>
+<tr><td><strong>Consent success rate is poor</strong></td><td>The redirect is unexplained.</td><td>Say what happens next and name the AA before you send them.</td></tr>
+<tr><td><strong>Signature never verified</strong></td><td>&ldquo;It came from the AA, so it is fine.&rdquo;</td><td>Verify. It is the whole security property.</td></tr>
+<tr><td><strong>Data retained past DataLife</strong></td><td>Only consent expiry was modelled.</td><td>Two independent clocks.</td></tr>
+<tr><td><strong>Deletion misses the warehouse</strong></td><td>The retention job deletes the primary record only.</td><td>A written destination list, enforced.</td></tr>
+<tr><td><strong>A score outlives its consent</strong></td><td>Derived data was not treated as AA data.</td><td>Derived inherits purpose and retention.</td></tr>
+<tr><td><strong>Coverage gap for your segment</strong></td><td>A headline coverage number was accepted.</td><td>Test with your own customers' banks.</td></tr>
+<tr><td><strong>One consent bundles several purposes</strong></td><td>It seemed efficient.</td><td>One consent per purpose.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/credit-underwriting/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 02</div><h3>Credit &amp; Underwriting</h3><p>What you do with the bank statements once they arrive, and the hybrid architecture around the model.</p></a>
+<a href="/fintech-ai/products/bnpl-checkout/" class="mod-card"><div class="mod-num">GUIDE 03</div><h3>BNPL Checkout</h3><p>Where an AA fetch runs at checkout latency, on every transaction rather than every application.</p></a>
+<a href="/fintech-ai/wealth-advisory/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 07</div><h3>Wealth &amp; Advisory</h3><p>AA as the route to a real fact find, rather than a self-reported one.</p></a>
+<a href="/fintech-ai/infrastructure/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 08</div><h3>Infrastructure</h3><p>Residency, key management, and why derived data inherits the restrictions of its source.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. The Account Aggregator framework is RBI-regulated and consented financial data carries obligations under both the framework and the DPDP Act. Nothing here is legal advice. Have your consent wording, retention design and deletion process reviewed by qualified counsel before your first real fetch.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI Master Direction — NBFC-Account Aggregator (2 September 2016, as amended)</strong> &mdash; the AA licence, the data-blind architecture, the no-storage requirement and the ₹2 crore Net Owned Fund. Amended to add GSTN (2022), NPS record-keepers (2023) and CCIL (2024) as FIPs. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI circular, October 2023</strong> &mdash; the bilateral mandate — a regulated entity joining as an FIU must also join as an FIP if it holds financial information. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>ReBIT technical specifications</strong> &mdash; the consent artefact structure, the API sequence and the encryption scheme every party implements. <a href="https://api.rebit.org.in" target="_blank" rel="noopener">api.rebit.org.in</a></li><li><span class="src-k src-official">official</span><strong>Sahamati</strong> &mdash; ecosystem participant lists, the live metrics quoted here, certification and membership categories. RBI recognised Sahamati as the AA self-regulatory organisation on 5 June 2026. <a href="https://sahamati.org.in" target="_blank" rel="noopener">sahamati.org.in</a></li><li><span class="src-k src-official">official</span><strong>DPDP Act, 2023</strong> &mdash; consent, purpose limitation and erasure obligations that sit alongside the AA framework rather than replacing it. <a href="https://www.meity.gov.in" target="_blank" rel="noopener">www.meity.gov.in</a></li><li><span class="src-k src-industry">industry</span><strong>Ecosystem scale figures (31 December 2025)</strong> &mdash; 2.61 billion accounts enabled, 252.9 million users with linked accounts, 126 institutions as both FIP and FIU, 50 FIP-only. Published ecosystem metrics; check the current dashboard before quoting.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Ecosystem figures move monthly; the date is part of the claim.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Recurring Payments: How to Build It | Clarigital</title>
+<meta name="description" content="Build recurring e-mandate collections step by step: the eight stages, the 2026 limits, how to connect them, and the exception everyone gets wrong.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/recurring-payments/">
+<meta property="og:type" content="article"><meta property="og:title" content="Recurring Payments: How to Build It">
+<meta property="og:description" content="Build recurring e-mandate collections step by step: the eight stages, the 2026 limits, how to connect them, and the exception everyone gets wrong."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/recurring-payments/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Recurring Payments: How to Build It">
+<meta name="twitter:description" content="Build recurring e-mandate collections step by step: the eight stages, the 2026 limits, how to connect them, and the exception everyone gets wrong."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Recurring Payments: How to Build It", "description": "Build recurring e-mandate collections step by step: the eight stages, the 2026 limits, how to connect them, and the exception everyone gets wrong.", "url": "https://www.clarigital.com/fintech-ai/products/recurring-payments/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-13"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Recurring Payments: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/recurring-payments/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>Recurring Payments: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 05</div>
+  <div class="ft-tag">Fintech AI</div><h1>Recurring Payments: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building recurring payments on e-mandates in India. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What an e-mandate actually is</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 to 3 — rails, registration and limits</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Pick the rail</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Register the mandate</a><a class="sub" href="#s-indigo-s3">Steps 3 and 5 &mdash; What you may debit</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Step 4 — the notification that is a gate</a><a class="sub" href="#s-indigo-s4">Step 4 &mdash; Notify, 24 hours before</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 6 to 8 — failure, confirmation and control</a><a class="sub" href="#s-indigo-s6">Step 6 &mdash; When it fails</a><a class="sub" href="#s-indigo-s7">Step 7 &mdash; Confirm, after</a><a class="sub" href="#s-indigo-s8">Step 8 &mdash; Modify, pause, revoke, reissue</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">The starting version</a><a class="sub" href="#s-amber-proper">The proper version</a><a class="sub" href="#s-amber-big">The version at scale</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main id="main-content" class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one capability, start to finish: charging a customer
+repeatedly, automatically, with their permission. Subscriptions, SIPs, insurance premiums, loan
+instalments.</p>
+<p>It feeds every product that bills more than once.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The rules changed on 21 April 2026 and most published guidance is out of date.</strong> The RBI's <strong>Digital Payments &mdash; E-mandate Framework, 2026</strong> (Circular RBI/DPSS/2026-27/396) <strong>consolidated eight earlier circulars into one rulebook</strong>, effective immediately. If you are reading an integration guide that cites the 2019 or 2021 circulars as current, it is describing a framework that no longer exists.</p></div>
+<h2 id="s-green-1">What an e-mandate actually is</h2>
+
+<p>An e-mandate is a standing permission: the customer authenticates <strong>once</strong>, and you
+may then debit them repeatedly within agreed limits, without asking again each time.</p>
+<p>The 2026 framework covers <strong>credit cards, debit cards, prepaid instruments and UPI</strong>,
+for <strong>domestic and cross-border</strong> recurring transactions. Three rails, one rulebook.</p>
+<table>
+<tr><th>Rail</th><th>What it is</th><th>Best for</th></tr>
+<tr><td><strong>Card e-mandate</strong></td><td>Standing instruction against a card.</td><td>Subscriptions, international customers, higher ticket sizes.</td></tr>
+<tr><td><strong>UPI AutoPay</strong></td><td>Mandate against a UPI ID, approved in the customer's UPI app.</td><td>Consumer India. Highest reach, lowest friction to register.</td></tr>
+<tr><td><strong>eNACH</strong></td><td>Standing instruction registered directly against a bank account.</td><td>Loan EMIs, larger amounts, customers without cards.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>UPI AutoPay runs under the same framework as card mandates.</strong> The pre-debit notification requirement and the AFA thresholds apply identically. The payment instrument changes; the compliance obligation does not. That matters when you build &mdash; one set of rules, three integrations, and it is tempting to build three different rule implementations by accident.</p></div>
+<p><strong>What it is not:</strong></p>
+<ul>
+<li><strong>Not a stored card.</strong> A saved card you charge is not a mandate, and charging one
+recurringly without a registered mandate is the thing this framework exists to stop.</li>
+<li><strong>Not permanent.</strong> Every mandate has a validity period the customer can change.</li>
+<li><strong>Not retryable like a normal decline.</strong> See step 6 &mdash; this is the part teams
+get most wrong.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Pick the rail</strong></td><td>Card, UPI AutoPay, or eNACH. Often more than one.</td></tr>
+<tr><td>2</td><td><strong>Register the mandate</strong></td><td>One authentication, up front. Get this right or nothing else runs.</td></tr>
+<tr><td>3</td><td><strong>Store what you may debit</strong></td><td>Amount, cap, frequency, validity. This is your permission, in a row.</td></tr>
+<tr><td>4</td><td><strong>Notify, 24 hours before</strong></td><td>Mandatory. Amount, date, merchant name.</td></tr>
+<tr><td>5</td><td><strong>Present the debit</strong></td><td>With or without AFA, depending on amount and category.</td></tr>
+<tr><td>6</td><td><strong>When it fails</strong></td><td>Diagnose the mode. Do not send everyone the same email.</td></tr>
+<tr><td>7</td><td><strong>Confirm, after</strong></td><td>Post-debit notification, with the grievance route on it.</td></tr>
+<tr><td>8</td><td><strong>Modify, pause, revoke, reissue</strong></td><td>The customer is in control, and cards get replaced.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>Steps 4, 6 and 7 are where the money is. Registration is a one-off engineering problem; <strong>collection is an operational one you will run forever</strong>, and the difference between a good and a bad implementation of step 6 is worth more than everything else on this page combined.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 to 3 — rails, registration and limits</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Pick the rail</h3>
+<p>Most products end up on two. Cards for reach and international, UPI AutoPay for Indian consumer
+volume, eNACH for larger recurring amounts and customers without cards.</p>
+<p><strong>The useful design decision:</strong> build the rails behind one internal mandate model, so
+your business logic never branches on rail. The framework treats them identically; your code should
+too. Teams that build three separate implementations end up with three slightly different
+interpretations of the same rule, and the differences surface as compliance gaps rather than bugs.</p>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Register the mandate</h3>
+<p><strong>One AFA, up front.</strong> A 3DS flow on cards, a UPI PIN in the customer's UPI app, or
+the bank's flow for eNACH.</p>
+<p>Two things worth building properly at registration, because retrofitting them is painful:</p>
+<ul>
+<li><strong>Capture the customer's preferred notification channel.</strong> They choose SMS or email,
+and you owe them a notification before every debit. Ask once, at registration.</li>
+<li><strong>Set the variable-amount cap explicitly.</strong> If the amount can change, the customer
+sets an upper limit. Make that a deliberate field in your flow rather than a default you chose.</li>
+</ul>
+
+<h3 id="s-indigo-s3">Steps 3 and 5 &mdash; What you may debit</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 3 and 5, the limits, and the exception everyone gets wrong</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from decimal import Decimal
+
+# AFA (Additional Factor of Authentication -- usually OTP or UPI PIN) is
+# ALWAYS required for: registration, modification, withdrawal, the FIRST
+# transaction, a customer opt-out, and any debit above the threshold.
+#
+# After registration, recurring debits run without AFA UP TO A LIMIT.
+
+GENERAL_LIMIT = Decimal(&quot;15000&quot;)      # per recurring transaction
+
+# The higher limit applies to EXACTLY THREE CATEGORIES. This is the most
+# misreported rule in the whole framework.
+ENHANCED_LIMIT = Decimal(&quot;100000&quot;)
+ENHANCED_CATEGORIES = {
+    &quot;INSURANCE_PREMIUM&quot;,
+    &quot;MUTUAL_FUND_SIP&quot;,
+    &quot;CREDIT_CARD_BILL&quot;,
+}
+# NOT INCLUDED: loan EMIs. Not personal loans, not BNPL instalments, not auto
+# loans. An EMI above Rs 15,000 needs AFA on every single debit, and a lending
+# product built on the assumption of Rs 1 lakh headroom will fail at collection
+# for exactly the customers whose instalments matter most.
+
+def needs_afa(mandate, amount: Decimal, is_first: bool) -&gt; dict:
+    if is_first:
+        return {&quot;afa&quot;: True, &quot;why&quot;: &quot;first_transaction&quot;}
+    limit = (ENHANCED_LIMIT if mandate[&quot;category&quot;] in ENHANCED_CATEGORIES
+             else GENERAL_LIMIT)
+    if amount &gt; limit:
+        return {&quot;afa&quot;: True, &quot;why&quot;: &quot;above_threshold&quot;, &quot;limit&quot;: limit}
+    if amount &gt; mandate[&quot;max_amount&quot;]:
+        # The CUSTOMER&#x27;s own cap, set at registration for variable amounts.
+        # Separate from the regulatory limit and often lower.
+        return {&quot;afa&quot;: False, &quot;blocked&quot;: True, &quot;why&quot;: &quot;exceeds_customer_cap&quot;}
+    return {&quot;afa&quot;: False}
+
+# WHAT TO CHECK
+# [ ] ENHANCED_CATEGORIES is a closed set in code, not a config someone can
+#     widen. Adding &quot;LOAN_EMI&quot; to it is a one-line compliance breach
+# [ ] the customer&#x27;s own cap is enforced separately from the regulatory limit,
+#     and a debit exceeding it is BLOCKED, not escalated to AFA
+# [ ] amounts in Decimal or integer paise. Never float
+# [ ] &quot;first transaction&quot; means first under THIS mandate, not first ever for
+#     this customer. A re-registered mandate has a new first transaction
+# [ ] validity period is stored and enforced. A debit after expiry is
+#     unauthorised, and customer liability rules then apply to you
+# [ ] issuers may NOT charge the customer for the e-mandate facility. If a fee
+#     appears anywhere in your flow, it is yours to absorb, not theirs
+</code></pre></div>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The &#8377;1 lakh exception covers insurance premiums, mutual fund subscriptions and credit card bills. It does NOT cover EMIs.</strong> This is the single most misreported line in the framework, and it is repeated confidently in a lot of published guidance. <strong>A loan instalment above &#8377;15,000 requires AFA on every debit.</strong> If you are building lending collections on the assumption of &#8377;1 lakh of headroom, your collection rate will fall off a cliff at exactly the ticket sizes that matter most to the book.</p></div>
+<h2 id="s-indigo-1">Step 4 — the notification that is a gate</h2>
+
+<h3 id="s-indigo-s4">Step 4 &mdash; Notify, 24 hours before</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 4, the notification that is a hard gate</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import datetime, timedelta, timezone
+IST = timezone(timedelta(hours=5, minutes=30))
+
+# 24 hours before EVERY debit. Not a courtesy -- a condition of debiting.
+# It must carry the amount, the debit date and the merchant name, and it goes
+# on the channel the customer chose at registration.
+
+NOTIFY_LEAD = timedelta(hours=24)
+# The only carve-out: auto-replenishment of FASTag and NCMC balances.
+EXEMPT = {&quot;FASTAG_REPLENISH&quot;, &quot;NCMC_REPLENISH&quot;}
+
+def schedule_pre_debit(mandate, instalment):
+    if mandate[&quot;category&quot;] in EXEMPT:
+        return {&quot;required&quot;: False}
+    send_at = instalment[&quot;debit_at&quot;] - NOTIFY_LEAD
+    return {
+        &quot;required&quot;: True,
+        &quot;send_at&quot;: send_at,
+        &quot;channel&quot;: mandate[&quot;notify_channel&quot;],        # chosen at registration
+        &quot;content&quot;: {
+            &quot;amount&quot;: instalment[&quot;amount&quot;],
+            &quot;debit_date&quot;: instalment[&quot;debit_at&quot;].astimezone(IST).date().isoformat(),
+            &quot;merchant_name&quot;: mandate[&quot;merchant_display_name&quot;],
+            &quot;opt_out_url&quot;: opt_out_link(mandate, instalment),   # AFA-protected
+        },
+    }
+
+def may_debit(instalment) -&gt; dict:
+    # The gate. A debit whose notification did not go out 24h earlier is not
+    # a debit you are entitled to present.
+    n = instalment.get(&quot;pre_debit_notification&quot;)
+    if instalment[&quot;category&quot;] in EXEMPT:
+        return {&quot;allow&quot;: True}
+    if not n or n[&quot;status&quot;] != &quot;delivered&quot;:
+        return {&quot;allow&quot;: False, &quot;why&quot;: &quot;pre_debit_notification_not_delivered&quot;}
+    if instalment[&quot;debit_at&quot;] - n[&quot;delivered_at&quot;] &lt; NOTIFY_LEAD:
+        return {&quot;allow&quot;: False, &quot;why&quot;: &quot;notification_too_late&quot;}
+    if instalment.get(&quot;customer_opted_out&quot;):
+        return {&quot;allow&quot;: False, &quot;why&quot;: &quot;opted_out_for_this_debit&quot;}
+    return {&quot;allow&quot;: True}
+
+# WHAT TO CHECK
+# [ ] may_debit() runs at PRESENTATION time, not at scheduling time. A
+#     notification that failed to deliver overnight must stop the debit
+# [ ] &quot;delivered&quot;, not &quot;sent&quot;. A queued SMS is not a notification
+# [ ] the opt-out link is AFA-protected and works for a SINGLE debit as well as
+#     the whole mandate. Both are required and teams usually build only the second
+# [ ] the merchant name in the notification is the name the customer RECOGNISES,
+#     not your legal entity. Unrecognised names drive chargebacks and complaints
+# [ ] a moved debit date needs a fresh 24-hour notification. Rescheduling does
+#     not inherit the old one
+# [ ] notification delivery is logged per instalment. In a dispute this is the
+#     evidence that you were entitled to debit at all
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> the notification is a <em>gate</em>, not a message.
+Teams build it as a fire-and-forget alert on the scheduler and never wire the result back into the
+debit decision. If the SMS bounced, the number changed, or the queue backed up overnight, the debit
+should not go out &mdash; and in a dispute the delivery log is what proves you were entitled to
+present it. <strong>Check delivery at presentation time, not at scheduling time.</strong></p>
+
+<h2 id="s-indigo-2">Steps 6 to 8 — failure, confirmation and control</h2>
+
+<h3 id="s-indigo-s6">Step 6 &mdash; When it fails</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 6, the part that decides your recovery rate</span><button class="cb-copy" type="button">Copy</button></div><pre><code># A mandate failure is NOT a retryable soft decline. Retrying it is pointless:
+# the mandate itself is the problem, and only the customer can fix it.
+#
+# THREE FAILURE MODES, THREE DIFFERENT CUSTOMER ACTIONS. Sending the same
+# &quot;update your payment method&quot; email to all three routes people to the wrong
+# action and collapses recovery.
+
+RECOVERY = {
+    &quot;mandate_missing_or_cancelled&quot;: {
+        &quot;customer_action&quot;: &quot;re-register the mandate&quot;,
+        &quot;how&quot;: {&quot;CARD&quot;: &quot;3DS authentication&quot;, &quot;UPI&quot;: &quot;approve in your UPI app&quot;,
+                &quot;ENACH&quot;: &quot;re-authorise with your bank&quot;},
+        &quot;retryable_without_customer&quot;: False,
+    },
+    &quot;above_threshold&quot;: {
+        &quot;customer_action&quot;: &quot;approve this one payment&quot;,
+        &quot;how&quot;: {&quot;CARD&quot;: &quot;OTP for this transaction&quot;, &quot;UPI&quot;: &quot;UPI PIN for this transaction&quot;,
+                &quot;ENACH&quot;: &quot;authorise this debit&quot;},
+        &quot;retryable_without_customer&quot;: False,
+        &quot;note&quot;: &quot;the mandate is fine; this single amount needs AFA&quot;,
+    },
+    &quot;pre_debit_notification_failed&quot;: {
+        &quot;customer_action&quot;: &quot;confirm in your banking app before the next attempt&quot;,
+        &quot;retryable_without_customer&quot;: False,
+    },
+    &quot;insufficient_funds&quot;: {
+        &quot;customer_action&quot;: &quot;add funds&quot;,
+        &quot;retryable_without_customer&quot;: True,        # the ONLY genuinely retryable one
+        &quot;retry_after_days&quot;: 3,
+    },
+}
+
+def recovery_plan(failure, mandate):
+    plan = RECOVERY.get(failure[&quot;code&quot;])
+    if not plan:
+        return {&quot;path&quot;: &quot;human_review&quot;, &quot;code&quot;: failure[&quot;code&quot;]}
+    msg = plan[&quot;customer_action&quot;]
+    how = plan.get(&quot;how&quot;, {}).get(mandate[&quot;rail&quot;])
+    return {&quot;tell_customer&quot;: f&quot;{msg}&quot; + (f&quot; — {how}&quot; if how else &quot;&quot;),
+            &quot;auto_retry&quot;: plan[&quot;retryable_without_customer&quot;],
+            # If card re-registration goes unanswered, offer UPI AutoPay. It is
+            # a lower-friction registration and recovers subscribers that a
+            # second 3DS attempt will not.
+            &quot;fallback_rail&quot;: &quot;UPI&quot; if mandate[&quot;rail&quot;] == &quot;CARD&quot; else None}
+
+# WHAT TO CHECK
+# [ ] mandate failures are a DISTINCT failure class in your dunning logic, not
+#     lumped in with card declines. They behave nothing alike
+# [ ] the message names the specific action. &quot;Update your payment method&quot; is
+#     wrong for two of the three modes
+# [ ] auto-retry ONLY on insufficient funds, and with notice before re-presenting
+# [ ] offer UPI AutoPay as a fallback when card re-registration goes unanswered.
+#     Different friction, different success rate, same framework
+# [ ] measure recovery rate PER FAILURE MODE. A blended number hides that one of
+#     the three is broken
+# [ ] a failure never silently stops the subscription. It starts a defined
+#     sequence with an end state
+</code></pre></div>
+<p><strong>The gotcha nobody documents, and the most expensive one on this page:</strong> a mandate
+failure is not a soft decline. Ordinary card declines are retryable &mdash; the issuer might approve
+tomorrow. A mandate failure means the <em>permission</em> is broken, and no number of retries will
+fix it. Only the customer can, and <strong>the action they must take is different in each of the
+three modes</strong>. Most billing systems send one generic email to all of them, which routes people
+to the wrong action and quietly destroys the recovery rate. Splitting that one message into three is
+probably the highest-return change available in this entire product area.</p>
+
+<h3 id="s-indigo-s7">Step 7 &mdash; Confirm, after</h3>
+<p>A post-debit notification after <strong>every</strong> automated collection, carrying the
+grievance redressal route. The framework is explicit that the grievance mechanism must be
+<em>disclosed in the notification</em> and must actually work for recurring-transaction disputes
+&mdash; not a generic support link.</p>
+<p>The RBI's customer-liability rules for unauthorised transactions apply here too. A debit the
+customer did not authorise is not a billing dispute; it is an unauthorised transaction with clocks
+attached.</p>
+
+<h3 id="s-indigo-s8">Step 8 &mdash; Modify, pause, revoke, reissue</h3>
+<table>
+<tr><th>Event</th><th>What must be possible</th></tr>
+<tr><td><strong>Modify</strong></td><td>Amount cap or validity period, by the customer, with AFA.</td></tr>
+<tr><td><strong>Pause</strong></td><td>Without cancelling. Build it; customers who cannot pause, cancel.</td></tr>
+<tr><td><strong>Revoke</strong></td><td>At any point, with AFA. Immediate effect on the next debit.</td></tr>
+<tr><td><strong>Opt out of one debit</strong></td><td>A single skipped payment, not the whole mandate. Frequently missed.</td></tr>
+<tr><td><strong>Card reissued</strong></td><td>Issuers may map existing card e-mandates to the reissued card &mdash; which removes the old problem of every mandate silently lapsing when a card expired.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Card reissue mapping is quietly one of the most valuable changes in the 2026 framework.</strong> Mandate churn on card expiry used to be a large, invisible source of involuntary subscriber loss &mdash; the customer never chose to leave, the card simply expired. Ask your acquirer whether they support the mapping, because it is the difference between losing a cohort every three years and not.</p></div>
+<h2 id="s-indigo-3">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>Recurring payments &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">The facility, to the customer<span class="pill p-direct">direct</span></div><div class="d"><strong>Nothing. Issuers are prohibited from charging customers</strong> for using an e-mandate. If a fee exists in your flow, you absorb it.</div></div><div class="reg-row"><div class="n">Per transaction<span class="pill p-direct">direct</span></div><div class="d">Ordinary payment processing, per successful debit. See <a href="/fintech-ai/payments-reconciliation/build-sheet/">Build Sheet 05</a> for the rails and their rates.</div></div><div class="reg-row"><div class="n">Mandate registration<span class="pill p-direct">direct</span></div><div class="d">Sometimes a separate small fee per registered mandate, sometimes bundled. Worth asking, because a high-churn product registers far more mandates than a stable one.</div></div><div class="reg-row"><div class="n">Notifications<span class="pill p-direct">direct</span></div><div class="d"><strong>Two per debit cycle, minimum</strong> &mdash; one 24 hours before, one after. On SMS at scale this is a real line, and it is proportional to your billing frequency rather than your revenue.</div></div><div class="reg-row"><div class="n">Failure handling<span class="pill p-direct">direct</span></div><div class="d"><strong>The line that decides the economics.</strong> Recovery is customer-action-dependent in three of four failure modes, so it costs communication and time rather than compute. Getting it right is worth more than any per-transaction saving.</div></div><div class="reg-row"><div class="n">Building three rails<span class="pill p-direct">direct</span></div><div class="d">Card, UPI AutoPay and eNACH are three integrations under one rulebook. <strong>Budget three integrations and one rule engine</strong> &mdash; not three of each.</div></div></div><div class="warn"><span class="note-lbl">Watch out</span><p><strong>Model involuntary churn, not just failed debits.</strong> A failed instalment that is never recovered is a lost customer who did not choose to leave. Measure <em>recovery rate per failure mode</em> and <em>involuntary churn</em> separately from voluntary cancellation &mdash; most billing dashboards collapse all three into &ldquo;churn&rdquo; and hide the one you can actually fix.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">The starting version</h3>
+<p><strong>Build:</strong> one rail, usually UPI AutoPay &rarr; registration with AFA &rarr; a mandate
+row storing category, cap, frequency and validity &rarr; a 24-hour notification job with delivery
+checked at presentation &rarr; post-debit confirmation with the grievance route &rarr; three distinct
+failure messages.</p>
+<p><strong>It breaks when:</strong> customers arrive without UPI, or ticket sizes cross
+&#8377;15,000 in a category without the exception.</p>
+
+<h3 id="s-amber-proper">The proper version</h3>
+<p><strong>Build:</strong> everything above, plus &mdash; <strong>two or three rails behind one
+internal mandate model</strong> &rarr; the enhanced-category list as a closed set in code &rarr; the
+customer cap enforced separately from the regulatory limit &rarr; single-debit opt-out as well as
+full revocation &rarr; pause without cancel &rarr; card-reissue mapping confirmed with your acquirer
+&rarr; recovery rate measured <em>per failure mode</em> &rarr; UPI AutoPay offered as a fallback when
+card re-registration goes unanswered.</p>
+<p><strong>Trade:</strong> the rule engine is the asset. Three rails is three integrations; three
+interpretations of the rules is a compliance gap waiting to be found.</p>
+
+<h3 id="s-amber-big">The version at scale</h3>
+<p><strong>Build:</strong> everything above, plus &mdash; intelligent retry timing on the one
+genuinely retryable mode &rarr; notification channel optimisation &rarr; cohort-level involuntary
+churn reporting &rarr; a dunning sequence that escalates across rails rather than repeating on one.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>split your dunning message into three.</strong> Cancelled mandate, above-threshold, and notification failure need three different customer actions, and one generic email serves none of them. It is a week of work and it moves recovery more than any other change available here.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>EMI collections fail above &#8377;15,000</strong></td><td>The &#8377;1 lakh exception was assumed to cover loans.</td><td>It covers insurance, mutual funds and credit card bills only.</td></tr>
+<tr><td><strong>Recovery rate is poor</strong></td><td>One generic dunning email for three different failure modes.</td><td>Three messages, three actions.</td></tr>
+<tr><td><strong>Debits presented without notification</strong></td><td>The notification is fire-and-forget on the scheduler.</td><td>Check delivery at presentation time.</td></tr>
+<tr><td><strong>Chargebacks from unrecognised names</strong></td><td>The legal entity name in the notification.</td><td>Use the name the customer recognises.</td></tr>
+<tr><td><strong>Mandates lapse on card expiry</strong></td><td>Reissue mapping not enabled.</td><td>Ask the acquirer. It is supported now.</td></tr>
+<tr><td><strong>Customers cancel instead of pausing</strong></td><td>There is no pause.</td><td>Build pause. Cancelling is a decision they cannot undo easily.</td></tr>
+<tr><td><strong>Three rails, three rule implementations</strong></td><td>Each integration was built by itself.</td><td>One mandate model, three adapters.</td></tr>
+<tr><td><strong>A debit after expiry</strong></td><td>Validity stored but not enforced.</td><td>Enforce it. It is an unauthorised transaction.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/products/bnpl-checkout/" class="mod-card"><div class="mod-num">GUIDE 03</div><h3>BNPL Checkout</h3><p>Where these mandates collect the instalments — and where the EMI exception bites hardest.</p></a>
+<a href="/fintech-ai/payments-reconciliation/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 05</div><h3>Payments &amp; Reconciliation</h3><p>The rails underneath, settlement timing, and matching collections to the ledger.</p></a>
+<a href="/fintech-ai/customer-operations/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 06</div><h3>Customer Operations</h3><p>Dunning is customer communication, and the contact window applies to it.</p></a>
+<a href="/fintech-ai/products/account-aggregator/" class="mod-card"><div class="mod-num">GUIDE 04</div><h3>Account Aggregator</h3><p>How you knew they could afford the instalment before you set the mandate up.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. Recurring debits move customer money on a standing permission, and presenting one you are not entitled to is an unauthorised transaction rather than a billing error. Nothing here is legal advice. Have your mandate model, notification logic and dunning sequence reviewed by qualified counsel and your payment partner before the first live debit.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI — Digital Payments – E-mandate Framework, 2026 (Circular RBI/DPSS/2026-27/396, 21 April 2026)</strong> &mdash; the consolidated rulebook replacing eight earlier circulars: AFA triggers, the ₹15,000 general limit, the ₹1 lakh enhanced limit and its three categories, the 24-hour pre-debit notification, post-debit confirmation, revocation, the prohibition on customer charges, card-reissue mapping, and acquirer responsibility for merchant compliance. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI — customer liability in unauthorised electronic transactions</strong> &mdash; the liability framework that applies to recurring debits the customer did not authorise. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>NPCI — UPI AutoPay</strong> &mdash; the UPI mandate rail, registration in the customer’s UPI app, and the mandate lifecycle. <a href="https://www.npci.org.in" target="_blank" rel="noopener">www.npci.org.in</a></li><li><span class="src-k src-official">official</span><strong>NPCI — NACH</strong> &mdash; the eNACH rail for bank-account standing instructions. <a href="https://www.npci.org.in" target="_blank" rel="noopener">www.npci.org.in</a></li><li><span class="src-k src-industry">industry</span><strong>Payment provider and billing-platform reporting</strong> &mdash; the failure-mode taxonomy and recovery guidance in step 6, and the observation that a single generic dunning message collapses recovery. Practitioner-sourced; test against your own cohort.</li><li><span class="src-k src-industry">industry</span><strong>Framework commentary, April–June 2026</strong> &mdash; summaries of the 2026 framework used to cross-check the limits and exemptions. Verify any specific figure against the circular before relying on it.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. This framework was rewritten in April 2026; the date is part of the claim.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

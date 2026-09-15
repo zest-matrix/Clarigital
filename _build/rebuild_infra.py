@@ -5,6 +5,12 @@ BASE="https://www.clarigital.com"
 # date on all 850 pages. Derived from the clock now.
 TODAY=datetime.date.today().isoformat()
 allh=glob.glob('**/*.html',recursive=True)
+# Session 77: a noindex page (404.html) must not be advertised in the sitemap.
+allh = [f for f in allh
+        if not re.search(r'<meta[^>]+name="robots"[^>]+content="[^"]*noindex',
+                         open(f, errors='ignore').read())]
+# NOTE: match the META TAG, not the string. A guide ABOUT indexation
+# contains the word noindex in its body text.
 entries=[]
 for f in allh:
     if f.endswith('index.html'):
@@ -42,7 +48,16 @@ for u,f in entries:
 open('llms-full.txt','w').write('\n'.join(lines)+'\n')
 mf=json.load(open('manifest.json'))
 mf.update({'total_pages':len(allh),'last_updated':TODAY})
+# Session 67: codex_guides counted every index.html under codex/, which
+# includes 31 section HUBS and 2 utility pages. That over-counted guides by
+# 33 and the wrong number was published on the hub and in all-guides.
+def _leaf_pages(prefix):
+    import os as _o
+    allp=glob.glob(prefix+'**/index.html',recursive=True)
+    dirs={_o.path.dirname(x) for x in allp}
+    leaves=[x for x in allp if not any(d!=_o.path.dirname(x) and d.startswith(_o.path.dirname(x)+'/') for d in dirs)]
+    return [x for x in leaves if _o.path.dirname(x) not in {'codex/all-guides','codex/glossary'}]
 for k,p in [('codex_guides','codex/'),('ai_atlas','ai-atlas/'),('ai_kids','ai-kids/'),('courses','courses/')]:
-    mf['sections'][k]=len([1 for u,f in entries if f.startswith(p)])
+    mf['sections'][k]=len(_leaf_pages(p)) if k=='codex_guides' else len([1 for u,f in entries if f.startswith(p)])
 json.dump(mf,open('manifest.json','w'),indent=2)
 print(f"✅ sitemap {len(rows)} | search-index {len(idx)} (+{new}) | llms-full {len(lines)-4} | codex {mf['sections']['codex_guides']}")

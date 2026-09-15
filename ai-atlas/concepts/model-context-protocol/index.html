@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>What is MCP (Model Context Protocol)? | Clarigital AI Atlas</title>
 <meta name="description" content="The open standard for connecting AI assistants to tools and data sources — what MCP is, how servers and clients work, and why it matters.">
-<link rel="canonical" href="/ai-atlas/concepts/model-context-protocol/">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/concepts/model-context-protocol/">>
 <meta property="og:type" content="article"><meta property="og:title" content="What is MCP (Model Context Protocol)?">
 <meta property="og:description" content="The open standard for connecting AI assistants to tools and data sources — what MCP is, how servers and clients work, and why it matters."><meta property="og:url" content="https://www.clarigital.com/ai-atlas/concepts/model-context-protocol/">
 <meta property="og:site_name" content="Clarigital">
@@ -78,7 +78,7 @@ p{line-height:1.75;color:var(--muted)}
 @media(max-width:768px){.art-layout{grid-template-columns:1fr}}
 .art-sidebar{display:flex;flex-direction:column;gap:16px}
 .sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
-.sidebar-card h4{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
 .sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
 .sidebar-link:last-child{border-bottom:none}
 .sidebar-link:hover{color:var(--fg)}
@@ -121,12 +121,15 @@ p{line-height:1.75;color:var(--muted)}
 @media(max-width:420px){.ft-grid{grid-template-columns:1fr}}
 .ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;margin-top:10px}
 .ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.ft-col h5{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.ft-col .ft-h{font-size:.75rem;font-weight:700;color:var(--fg);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
 .ft-col ul{list-style:none}
 .ft-col li{margin-bottom:6px}
 .ft-col a{font-size:.81rem;color:var(--muted);transition:color .18s}
 .ft-col a:hover{color:var(--blue)}
 .ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid var(--border2);font-size:.75rem;color:var(--faint)}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
@@ -135,6 +138,7 @@ p{line-height:1.75;color:var(--muted)}
 <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <nav class="site-nav" role="navigation">
   <div class="nav-in">
     <a href="/" class="nav-logo">
@@ -188,7 +192,7 @@ p{line-height:1.75;color:var(--muted)}
 </div>
 <div class="wrap">
   <div class="art-layout">
-    <main style="min-width:0">
+    <main id="main-content" style="min-width:0">
 <h2>The Problem MCP Addresses</h2>
 <p>An AI assistant is far more useful when it can reach real systems — files, databases, ticketing, calendars, code repositories.</p><p>Before a standard existed, every combination required its own integration. Ten AI applications and ten data sources meant a hundred bespoke connectors, each maintained separately.</p><p>MCP defines one protocol. A data source implements an MCP server once, and any MCP-capable client can use it. The integration problem becomes additive rather than multiplicative.</p>
 <h2>Servers, Clients and Hosts</h2>
@@ -220,20 +224,20 @@ p{line-height:1.75;color:var(--muted)}
         <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
         <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
       </div>
-      <div class="ft-col"><h5>Frameworks</h5><ul>
+      <div class="ft-col"><div class="ft-h">Frameworks</div><ul>
         <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/">All Frameworks</a></li>
         <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/langchain/">LangChain</a></li>
         <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/crewai/">CrewAI</a></li>
         <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/autogen/">AutoGen</a></li>
         <li><a href="/ai-atlas/specialist-tools/agentic-frameworks/llamaindex/">LlamaIndex</a></li>
       </ul></div>
-      <div class="ft-col"><h5>AI Atlas</h5><ul>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
         <li><a href="/ai-atlas/">Hub</a></li>
         <li><a href="/ai-atlas/agentic-ai/">Agentic AI</a></li>
         <li><a href="/ai-atlas/specialist-tools/">Specialist Tools</a></li>
         <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
       </ul></div>
-      <div class="ft-col"><h5>Clarigital</h5><ul>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
         <li><a href="/codex/">The Codex</a></li>
         <li><a href="/sources/">Sources</a></li>
         <li><a href="/about/">About</a></li>

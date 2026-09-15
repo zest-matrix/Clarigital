@@ -1,6 +1,6 @@
 # Clarigital.com — Master Project File
-**Last updated: Monday 14 September 2026, 5:00 PM IST**
-**Current deploy zip: `clarigital-v59.zip`**
+**Last updated: Tuesday 15 September 2026, 11:15 AM IST**
+**Current deploy zip: `clarigital-v69.zip`**
 **Live site:** https://www.clarigital.com
 **Hosted on:** Cloudflare Pages (static, zero server-side functions)
 
@@ -10,10 +10,14 @@
 
 ```bash
 cd /home/claude/audit
-unzip -q /mnt/user-data/uploads/clarigital-v59.zip
+unzip -q /mnt/user-data/uploads/clarigital-v69.zip
 cd clarigital-v*/          # folder is named for the version
 cp _build/*.py /tmp/          # scripts live in the zip, not in /tmp
-python3 /tmp/audit.py         # confirm 23/23 at zero before changing anything
+python3 /tmp/audit.py         # confirm 26/26 at zero before changing anything
+
+# AND after building any page, BEFORE the audit:
+python3 /tmp/newpage_check.py --changed    # 33 page-level SOP checks, exit 1 on blockers
+# and read _build/QA-SOP.md — every check, and what is NOT covered
 ```
 
 All build and verification scripts are bundled at `_build/` inside the zip. `_build/README.md`
@@ -38,7 +42,7 @@ lists what each one does. **They are not in /tmp in a fresh session — copy the
 
 | Metric | Value |
 |---|---|
-| Total HTML pages | **870** |
+| Total HTML pages | **875** |
 | Codex guides | **364** |
 | AI Atlas pages | **158** |
 | AI Kids pages | **117** |
@@ -46,8 +50,8 @@ lists what each one does. **They are not in /tmp in a fresh session — copy the
 | CSP pages | **107** |
 | Curriculum pages | **5** |
 | Definition + policy + other | **10** |
-| Sitemap URLs | **870** (1:1 with pages) |
-| Search index entries | **870** |
+| Sitemap URLs | **875** (1:1 with pages) |
+| Search index entries | **875** |
 | 301 redirect rules in `_redirects` | **272** |
 
 **Note on the Codex count.** It reads 313, not 534. Session 23 deleted 240 duplicate flat `.html`
@@ -82,6 +86,932 @@ lost — the old 534 double-counted. Unique Codex guides actually rose by 33 in 
 | Invalid JSON-LD | 0 ✅ |
 | Titles over 65 chars | 0 ✅ |
 | Broken course lesson links | 0 of 1,020 ✅ |
+
+---
+
+### Session 80 — PRODUCT GUIDE 08: Invoice Discounting / TReDS (DONE, 15 Sep 2026)
+
+`/fintech-ai/products/invoice-discounting/` — 3,500 words, 2 code blocks, 6 sources.
+**33/33 on `newpage_check`, first run.** Site 877 → **878**.
+
+#### The framework is three months old
+
+**RBI (Trade Receivables Discounting System) Directions, 2026** — **RBI/DPSS/2026-27/406, 23 June
+2026**, effective immediately. Replaces the **2014** TReDS Guidelines and the 2023 scope circular —
+eight years of scattered instructions into one Master Direction. Draft was 8 April 2026.
+
+| Change | Why it matters |
+|---|---|
+| **Seller due diligence REMOVED at onboarding** | The barrier that kept small suppliers off the platform |
+| **Re-discounting permitted** | A financier can sell on before maturity — the market is no longer capped by individual balance sheets |
+| **Credit guarantee from any GoI-notified fund trust** | Widens who will bid, and on whom |
+| **Insurance companies recognised** | **Premium may NOT be passed to the MSME seller** |
+| **CERSAI registration expressly required** | Double-discounting becomes detectable, not discoverable |
+| **Accepted units carry instrument enforceability** | An accepted factoring unit has the standing of a physical instrument |
+| **₹25 crore operator net worth** | Aligned with non-bank PSOs; existing operators have until **31 March 2028** |
+
+#### The inversion that defines the product
+
+**The financier takes exposure on the BUYER, not the seller.** A small supplier with no credit history
+accesses finance at a large buyer's risk profile, because the buyer has already accepted the invoice.
+
+That is *why* seller-side due diligence was removed — asking a small supplier for financials in order
+to access finance secured on someone else's credit was a barrier with **no risk purpose**. The control
+that replaces it: **funds credit only to the seller's own verified account.**
+
+#### THE finding — time to acceptance is the product metric, and nobody measures it
+
+Platforms report volumes financed and rates achieved. Neither tells an MSME the thing that matters:
+**how long does this buyer take to accept.**
+
+**A buyer with a 14-day median acceptance on a 45-day invoice has removed two thirds of the benefit
+before a financier has even seen it.** It is entirely computable from data every platform already
+holds, appears on no rate card, and is not a fee — which is precisely why it goes unmeasured.
+The page's single takeaway: **measure it per buyer, publish it to sellers, and use it in buyer
+onboarding.**
+
+#### Other gotchas
+
+1. **"Without recourse" must be enforced in the COLLECTIONS SYSTEM, not just the contract.** On buyer
+   default a generic dunning workflow will contact the party it has a number for — the MSME seller.
+   That is the exact harm the structure prevents, it destroys the trust the product depends on, and
+   **it is a code path, not a policy question.**
+2. **Check CERSAI before funding, register after, never fund unregistered.** A receivable assigned
+   twice is a fraud discovered at maturity.
+3. **Re-discounting must update the CERSAI assignee** — a stale record weakens the new financier's
+   claim exactly when it matters.
+4. **Escalate acceptance to a NAMED AP contact** agreed at buyer onboarding. A generic inbox is where
+   acceptance requests go to die.
+5. **Deduplicate on buyer + invoice number + amount + date.**
+6. **Compare the discount against the alternative, not against zero** — an MSME's alternative is an
+   overdraft, a supplier delay, or a missed order.
+
+**Eight product guides, eight distinct problem shapes.**
+
+**Site: 26/26 at zero · 878 pages · linkcheck 0.**
+
+---
+
+### ★ Session 79 — QA #5: CODEX (DONE, 15 Sep 2026)
+
+**Nothing built.** Fifth scheduled health check, rotated to Codex — 331 guides, the largest section,
+never inspected.
+
+#### Trend
+
+| | QA #1 | QA #2 | QA #3 | QA #4 | QA #5 |
+|---|---|---|---|---|---|
+| Pages | 857 | 870 | 870 | 874 | **877** |
+| Hard checks | 20/20 | 22/22 | 24/24 | 24/24 | **26/26** |
+| `<script>` blocks | 2,313 | 2,339 | 2,339 | 2,351 | **2,358** — 0 fail |
+| Inline handlers | 10,677 | 10,689 | 10,689 | 10,689 | **10,689** — 0 fail |
+| JSON-LD blocks | 1,813 | 1,839 | 1,839 | 1,847 | **1,851** — 0 fail |
+| Clean-room builders | 5/5 | 5/5 | 5/5 | 5/5 | **5/5** |
+| *heading skips* | — | — | — | 438 | **101** |
+
+#### The result: heading skips 438 → 101
+
+Session 77 left these as "each needs its own decision". Inspecting them properly showed that
+**437 of 438 came from just five template elements**, each a card heading inside a container — so the
+level was free to change, because the styling is keyed to the container class, not the tag.
+
+| Template | Was | Now | Pages |
+|---|---|---|---|
+| `.lb-head` — "What You Will Learn" | h3 under h1 | **h2** | 256 |
+| `.sidebar-card` — "Related guides" | h4 under h2 | **h3** | 181 |
+| `.gc-body` — hub card titles | h3 under h1 | **h2** | 79 |
+| `.prog-learns` | h4 under h1 | **h2** | 1 |
+| *(Session 77: `registry()` h4, `.ft-col h5`)* | | | 457 |
+
+**676 pages corrected across two passes**, CSS selectors moved with the tags, and **six generators
+patched** (`guide_builder`, `tool_builder`, `cons_atlas2`, `codex_style`, `atlas_style`,
+`tool_style`) so no rebuild reintroduces them. Rule 4 honoured.
+
+**The lesson worth keeping:** *"each needs its own decision"* was the right call in Session 77 —
+**and the decision turned out to be easy once I looked.** Deferring a sweep is not the same as
+deferring the work. Going back and looking is what turned an accepted 438 into 101.
+
+The remaining 101 are scattered individual cases with no shared cause. **Left as a metric.**
+
+#### Codex, otherwise clean
+
+364 pages · **0** missing viewport · **0** fixed widths >380px · **0** images without alt ·
+**1** page over 150 KB (`codex/index.html`, 157 KB). Orphan classes here are the known dead hooks
+from the old design — `.guide-hero`, `.guide-article`, `.sidebar-link` — which inline styles and
+`.art-layout` already cover.
+
+**Site: 26/26 at zero · 877 pages · linkcheck 0.**
+
+---
+
+### Session 78 — PRODUCT GUIDE 07: Co-Lending (DONE, 15 Sep 2026)
+
+`/fintech-ai/products/co-lending/` — 3,300 words, 2 code blocks, 6 sources.
+**First page built under the new two-loop process: `newpage_check` returned 33/33 clean on the
+first run.**
+
+#### The framework was replaced, effective 1 January 2026
+
+**RBI (Co-Lending Arrangements) Directions, 2025** — issued **6 August 2025**
+(RBI/DOR/2025-26/139 · DOR.STR.REC.44/13.07.010/2025-26), effective **1 Jan 2026**, **repealing the
+2020 circular**. Three changes invalidate most existing designs:
+
+| Item | 2020 model | 2025 Directions |
+|---|---|---|
+| Scope | Priority sector only | **All lending** |
+| Retention | NBFC 20% | **10% each, BOTH sides, per individual loan** |
+| Bank's choice | **Could reject after sourcing** | **Irrevocable back-to-back commitment — discretion abolished** |
+| Pricing | Hurdle rate, priced separately | **One blended rate to the borrower** |
+| Transfer | Loose | **15 CALENDAR days** |
+
+Eligible: commercial banks, AIFIs, NBFCs incl. HFCs. **Excluded: SFBs, RRBs, LABs.**
+
+#### The two findings with real consequences
+
+**1. The business case may be gone, by design.** Under the hurdle-rate model an NBFC could price the
+borrower above its own cost and keep the spread created by the bank's cheaper funds. **A single
+weighted-average rate removes that margin entirely.** If a co-lending P&L rested on it, it no longer
+works — and that is the purpose of the rule.
+
+**2. The bank's second look is abolished, which is an ARCHITECTURAL change.** Selective or
+post-disbursement acquisition now falls under the **Transfer of Loan Exposures Directions** — a
+different regime. **Every stack built as "source, then send to the bank for approval" must become
+"apply the agreed policy, then both fund automatically".** The credit policy moves into the CLA,
+before origination. That is a rebuild, not a configuration change.
+
+#### Gotchas documented
+
+1. **The blended rate is a FUNCTION, not a constant.** Either partner repricing changes the
+   borrower's rate, the schedule, and owes a fresh KFS. Most implementations compute it once at
+   origination — a defect that surfaces at the first repricing, across thousands of loans.
+2. **The 10% floor is per INDIVIDUAL LOAN**, not per portfolio.
+3. **Unified borrower-level asset classification** — the same borrower cannot be standard at the bank
+   and NPA at the NBFC. The Directions require one answer but **do not resolve the two institutions'
+   differing SMA/NPA norms.** If the CLA does not state how disagreement is settled, it gets settled
+   by email while a borrower's bureau file is wrong. Write the rule in, implement it, **log every
+   disagreement**.
+4. **One common reference number** across both lenders' separate accounts — without it the bureau
+   sees two unrelated loans to one person.
+5. **15 calendar days**, not business days — wrong by up to five in a month with holidays.
+6. **One customer interface**, named in the loan agreement, borrower told in advance of any change.
+7. Escrow routing for all RE–borrower transactions; **DLG between partners capped at 5%**; NBFCs must
+   **list co-lending partners publicly** and disclose volumes, rates, fees, performance and guarantees.
+
+**Seven product guides, seven distinct problem shapes.**
+
+**Site: 26/26 at zero · 877 pages · linkcheck 0.**
+
+---
+
+### Session 77 — ACCESSIBILITY PASS (DONE, 15 Sep 2026)
+
+First time accessibility has been examined on this project. It was the weakest area in the SOP.
+
+| Gap | Before | After |
+|---|---|---|
+| **Skip-to-content link** | **842 pages had none** | **876 / 876**, each with exactly one target |
+| **Heading level skips** | 566 pages | **438** |
+| **404 page** | did not exist | built from the site shell, noindex, excluded from sitemap |
+| **`security.txt`** | missing | present |
+
+#### The skip link, and why the target matters
+
+842 pages meant a keyboard or screen-reader user traversed the entire navigation **on every page, on
+every page**. Added site-wide, first focusable element in the document, visually hidden until
+focused.
+
+**`id="main-content"` placed after the nav, never before it** — a skip link that lands on the nav
+skips nothing. 107 `csp/` pages needed a different anchor because they use a `topbar` rather than a
+`<nav>`, so the target is resolved by walking to the first container *after* the topbar closes.
+
+**CHECK #26 requires BOTH the link and exactly one target.** *A skip link pointing at nothing is
+worse than none, because it looks handled.*
+
+#### Heading order: 566 → 438, and why not to zero
+
+Two systematic causes fixed:
+
+1. **`registry()` emitted `<h4>` under an `<h2>`** — every build sheet since Session 44, plus every
+   module with a cost block. Fixed in the builder and on 24 pages, `.reg-head h4` CSS selector
+   updated on 32 so the styling survived.
+2. **`.ft-col h5` footer column labels** — 433 pages. Converted to `<div class="ft-h">`. **A footer
+   column label is a label, not document structure**, so this is more honest than renumbering it.
+
+The remaining 438 are `h1→h3` and `h2→h4` **inside content templates where the level carries
+meaning**. Each needs its own decision. **Left as a metric rather than swept** — Rule 5.
+
+#### Two false positives in my own tooling, both caught
+
+1. **`newpage_check` reported the 404 had no skip link.** It searched only the first 4,000 characters,
+   and the 404's link sits after a large style block. Fixed and **promoted from INFO to BLOCK**.
+2. **The sitemap exclusion removed a legitimate page.** I filtered on the string `content="noindex"` —
+   and `codex/seo/fundamentals/crawlability-indexation/` is *a guide about indexation* that contains
+   the word in its body. Narrowed to the actual `<meta name="robots">` tag.
+
+**Eighth and ninth tooling false alarm.** Both caught by reading the output instead of trusting the
+count, which is now the habit rather than the exception.
+
+#### SOP updated in the same session
+
+Per the maintenance rule: F4 moved GAP → **AUTO**, F3 GAP → **METRIC**, B9 and M3 → **DONE**.
+
+**Still GAP in section F:** colour contrast, keyboard/focus order, ARIA coverage, screen-reader pass.
+All four need a browser. **They stay written down.**
+
+**Site: 26/26 at zero · 876 pages · 874 in sitemap (2 noindex) · linkcheck 0.**
+
+---
+
+### Session 76b — THE SOP MADE OPERATIONAL (15 Sep 2026)
+
+User's point: the SOP must be **continuously updated** and **always checked against everything new**.
+A document alone does neither. So there are now **two enforcement loops**, not one.
+
+| Loop | When | What |
+|---|---|---|
+| **1. `newpage_check.py`** | **Every page, at creation** | **33 page-level checks** from SOP sections A, B, C, D, E, F, H, I, K. Exit code 1 on any BLOCK, so it gates a build script |
+| **2. QA session** | Every fifth session | Whole site, plus the MANUAL and rotating SCRIPTED items Loop 1 cannot do |
+
+Three severity levels so the output stays readable: **BLOCK** stops the build · **WARN** needs a
+reason · **INFO** is a known site-wide gap not solvable on one page.
+
+**New ritual step, before the audit:** `python3 /tmp/newpage_check.py --changed`
+
+#### It found a defect on its first run
+
+Every one of the six product guides reported an **h2 &rarr; h4 heading skip**. The cause was in
+`registry()`, which emitted `<h4>` for the cost-block title directly under an `<h2>` &mdash; so
+**every build sheet has carried an accessibility defect since the template was written in Session
+44**, and every module with a registry too.
+
+Fixed in the builder and on **24 pages**, with the `.reg-head h4` CSS selector updated on **32** so
+the styling survived. **Rule 4 honoured: builder and pages in the same session.**
+
+**That is the argument for Loop 1 in one example.** The defect was systematic, template-level, and
+invisible to all 25 site-wide checks &mdash; because heading order was a documented **GAP**, not a
+check. Writing the gap down is what made it findable; running the check at creation is what will
+stop the next one shipping.
+
+#### The maintenance rule, now in the SOP
+
+**When any session finds a defect, add a row to the SOP in the same session** &mdash; with its status
+tag, and if a new check was written, **what that check does not cover**. Every AUTO row in the
+document started life as a defect nobody was looking for.
+
+**Site: 25/25 at zero &middot; 875 pages &middot; linkcheck 0 &middot; 33 per-page checks available.**
+
+---
+
+### Session 76 — THE QA SOP, AND THREE DEFECTS FOUND WRITING IT (DONE, 15 Sep 2026)
+
+User asked what a QA actually checks, and whether a full SOP would help. **Yes** &mdash; and writing
+it honestly surfaced three real defects nobody was looking for.
+
+**`_build/QA-SOP.md`** &mdash; 13 categories, ~80 line items, each tagged **AUTO / METRIC / SCRIPTED
+/ MANUAL / GAP**. The **GAP** rows are the point: a checklist that pretends everything is covered
+stops people looking.
+
+#### ⚠ DEFECT 1 &mdash; another article's metadata on three pages
+
+`linkedin-ads`, `pinterest-ads` and `whatsapp-marketing` carried **`og:title`, `og:description`,
+`og:url`, `og:site_name` AND the `<h1>` of a completely different guide** (`linkedin-algorithm`).
+Social shares showed the wrong article and `og:url` contradicted the canonical.
+
+**All 24 checks passed.** og:image existed, the title was unique, the meta description was right.
+**Nothing compared og:\* against the page's own title and canonical.** Same three pages that had
+unclosed `<main>`/`<section>` in Session 56 &mdash; residual contamination from one bad build.
+
+#### ⚠ DEFECT 2 &mdash; 853 relative canonicals
+
+The house rule says canonical must be **absolute**. **853 pages had `href="/path/"`.** Never checked.
+
+#### ⚠ DEFECT 3 &mdash; 119 og:url pointing at dead paths
+
+Pre-restructure URLs (`/codex/seo/core-web-vitals/` for a page now at
+`/codex/seo/fundamentals/core-web-vitals/`). Same stale-path family as the 269 broken absolute links
+in Session 56. All realigned to canonical.
+
+**CHECK #25 &mdash; "Social/canonical metadata":** canonical absolute &middot; og:url == canonical
+&middot; og:title not *unrelated* to title &middot; exactly one `<h1>`.
+
+*First version flagged 444 pages* by requiring og:title == title. **That is wrong** &mdash; they may
+legitimately differ, one is for social and one for the SERP. Narrowed to the leak case: no shared
+words at all. **A check that fires on correct behaviour is worse than no check.**
+
+#### ⚠ I BROKE 850 PAGES AND RESTORED FROM THE ZIP
+
+Intending to fix three pages, I wrote a sweep whose condition matched **850**, and copied the
+*relative* canonical into `og:url` &mdash; destroying a correct absolute value site-wide.
+
+**Caught by inspecting a sample page instead of trusting the &ldquo;fixed&rdquo; count.** Working
+tree restored from `clarigital-v68.zip`, then redone narrowly: 3 pages de-leaked, 853 canonicals made
+absolute, 119 og:urls realigned.
+
+**This is the second broad-sweep failure in ten sessions** (S67 broke `case-studies` the same way).
+**Rule 5 of the SOP now reads: never run a broad regex sweep across pages that mean different
+things.** And the reason recovery was possible: **the packaged zip is a restore point.** Package
+before risky work.
+
+#### Newly quantified GAPS &mdash; written down so they stop being invisible
+
+| Gap | Scale |
+|---|---|
+| **Skip-to-content link** | **872 pages have none** |
+| **Heading level skips** (h2 &rarr; h4) | **566 pages** |
+| **No `404.html`** | site-wide |
+| Colour contrast &middot; keyboard nav &middot; screen reader | **never measured** |
+| Security headers &middot; `security.txt` | never audited |
+| Real Core Web Vitals &middot; rendering on a phone | needs a browser |
+| Largest page | **434 KB** (`sources/`), median 41 KB |
+
+**Accessibility is the weakest area of the entire site** and was, until today, entirely unexamined.
+
+**Site: 25/25 at zero &middot; 875 pages &middot; linkcheck 0.**
+
+---
+
+### Session 75 — PRODUCT GUIDE 06: Cross-Border Payments (DONE, 15 Sep 2026)
+
+`/fintech-ai/products/cross-border-payments/` — 3,394 words, 2 code blocks, 6 sources.
+Site 874 → **875**. **Six guides, six distinct problem shapes.**
+
+#### The regime everyone still describes is dead
+
+**OPGSP** — imports capped at **$2,000**, exports at **$10,000** per transaction, **services excluded
+entirely** — was withdrawn by the RBI circular of **31 October 2023**. Replaced by **PA-CB**, then
+consolidated into the **Master Direction on Regulation of Payment Aggregators, 15 September 2025**
+(the same Direction as Build Sheet 05). Guidance citing OPGSP limits as live is describing a regime
+that no longer exists, and a lot of it does.
+
+| Item | Position |
+|---|---|
+| Categories | **Export · Import · Both**, by direction of flow |
+| Net worth | **₹15 crore** at application → **₹25 crore** by 31 March 2026 |
+| **Cap** | **₹25 lakh PER UNIT** of goods/services — *not per transaction* |
+| Enhanced due diligence | above **₹2.5 lakh per unit** |
+| Accounts | **Separate import and export collection accounts** with an AD Category-I bank, never commingled |
+| FIU-IND | **Registration mandatory** — a Delhi HC ruling (July 2023) confirmed these operators are payment system operators under the PMLA |
+| AD bank duty | Must ensure FEMA compliance including **EDPMS / IDPMS** reporting and reconciliation |
+
+#### Two gotchas worth the page on their own
+
+**1. "In-principle approval" is not authorisation.** Several well-known names have held in-principle
+PA-CB approval for extended periods while final authorisation remained pending. In-principle means
+the RBI is *minded* to approve, subject to conditions — **it does not mean the entity may process
+your cross-border payments yet.** *"We are RBI regulated"* answers neither question. **Ask two
+things in writing: is the authorisation FINAL, and which CATEGORY does it cover.** An export-only
+provider cannot process your supplier payments, and you find that out at the moment you need to pay
+someone.
+
+**2. The cap is PER UNIT and "unit" is undefined.** A deliberate change from OPGSP's per-transaction
+limit, and the RBI has not defined measurement precisely — practitioners have been asking since 2023.
+For a physical good it is intuitive; for a **₹35 lakh consulting engagement** it is not. **Splitting
+the invoice to fit is exactly the behaviour an AML system is built to flag.** The correct answer
+above the cap is a **different route — an AD bank** — not a smaller invoice. Write down your
+interpretation of "unit", agree it with provider and bank **in writing**, and apply it identically
+every time.
+
+#### The cost finding
+
+**The headline fee is the visible part and usually the smaller one.** A provider quoting 1% may apply
+a rate 2–3% off the interbank mid. Build Sheet 05 already recorded all-in cross-border cost commonly
+at **5–7% against a ~3% headline** — the difference is almost entirely FX spread, plus correspondent
+and beneficiary charges deducted by banks you never chose.
+
+**The page's single takeaway: store the FX rate applied on every transaction, from the first one.**
+One column. Without it you cannot audit a provider, compare two honestly, or explain a shortfall to a
+merchant — and it cannot be reconstructed later. The effective all-in rate is then computable:
+*(sent − received) ÷ sent*, against the mid at that timestamp.
+
+#### The compliance debt nobody budgets
+
+**EDPMS and IDPMS entries stay open until somebody closes them.** The payment settles, the money
+lands, everyone moves on — and an entry waits for documentation. It resurfaces months later as **a
+bank declining your next transaction until the backlog clears**, by which point the invoices are hard
+to find and the people who raised them have moved on. Track closure as a queue with an owner and an
+age, from the first transaction.
+
+Also: **EDD above ₹2.5 lakh per unit is low enough to be the normal case** for most B2B exporters —
+build it into the flow, not as an escalation.
+
+**Site: 24/24 at zero · 875 pages · linkcheck 0.**
+
+---
+
+### ★ Session 74 — QA #4: AI KIDS (DONE, 15 Sep 2026)
+
+**Nothing built.** Fourth scheduled health check, rotated to AI Kids &mdash; including the 13 Money
+Explorer pages, which had never been inspected under a QA lens.
+
+#### Trend
+
+| | QA #1 | QA #2 | QA #3 | QA #4 |
+|---|---|---|---|---|
+| Pages | 857 | 870 | 870 | **874** |
+| Hard checks | 20/20 | 22/22 | 24/24 | **24/24** |
+| `<script>` blocks | 2,313 | 2,339 | 2,339 | **2,351** &mdash; 0 fail |
+| Inline handlers | 10,677 | 10,689 | 10,689 | **10,689** &mdash; 0 fail |
+| JSON-LD blocks | 1,813 | 1,839 | 1,839 | **1,847** &mdash; 0 fail |
+| Clean-room builders | 5/5 | 5/5 | 5/5 | **5/5** |
+| *thin pages* | 217 | 217 | 217 | 217 |
+| *orphan classes* | 46 | 46 | 42 | 42 |
+
+#### The safety audit &mdash; the reason this section gets its own QA
+
+| Check | Result |
+|---|---|
+| Pages mentioning a parent or adult | **130 / 130** |
+| Pages linking the Safety guide | **130 / 130** |
+| Money sessions stating &ldquo;Parent present&rdquo; | **12 / 12** |
+| Index warns session 7 must not be skipped | ✅ |
+| Index states &ldquo;no real money&rdquo; | ✅ |
+| Session 7 carries a safety block | ✅ |
+| External domains linked from the whole section | **1** |
+| Missing viewport &middot; fixed widths >380px | **0 &middot; 0** |
+
+**The single external link** is on `ai-kids/parents/` &mdash; the adult-facing page &mdash; to a
+WhatsApp reminder service, with `target="_blank" rel="noopener"`. Not a defect. **Recorded as
+something to re-confirm periodically**, because a dead or repurposed domain linked from a children's
+section is a real risk that no automated check will ever catch.
+
+**Functional test:** the parent-notes toggle was exercised against a DOM stub &mdash; opens, closes,
+arrow flips both ways.
+
+#### ⚠ SEVENTH VERIFICATION-SCRIPT FALSE ALARM, AND THE MOST ALARMING ONE
+
+My QA script reported **`toggleParent: NOT DEFINED`** on all 13 Money pages, which would have meant
+the parent notes could never open.
+
+**It is defined.** The behaviour script is minified onto one line, and my pattern
+`function toggleParent.*?\n\}` required a newline before the closing brace.
+
+Had I trusted it, I would have injected a **duplicate definition** of a working function into 13
+pages &mdash; creating a real bug while &ldquo;fixing&rdquo; an imaginary one. Exactly the Session 69
+pattern, one session later.
+
+**Note what saved it: `handler_check` (check #5) said 0.** Two checks disagreed, and the one that was
+wrong was the ad-hoc one I wrote for this session, not the standing one. **The standing checks are
+now more trustworthy than my improvised ones**, which is a reassuring finding about the suite and an
+unflattering one about me.
+
+**Rule reinforced, and it has now earned its place seven times:** *when a check and a check disagree,
+neither is evidence until one is read.* The corollary added this session: **prefer the standing check
+over the one you just wrote.**
+
+#### Open, unchanged
+
+- **15 stylesheet generations in AI Atlas** &mdash; needs a deliberate consolidation by diff.
+- **Theme-block coverage uneven:** 54 of 158 Atlas pages carry `[data-theme]`; **0** in Codex, Fintech
+  or Courses. Still a question for the owner rather than an assumed defect.
+- **42 orphan classes**, triaged as dead hooks.
+
+**Still cannot open a browser.** Four QAs, three real bugs found structurally, and now two imaginary
+ones avoided by reading rather than trusting. The standing request holds: **two or three pages on a
+phone per QA.** Next rotation: **Codex** &mdash; 331 guides never inspected.
+
+**Site: 24/24 at zero &middot; 874 pages &middot; linkcheck 0.**
+
+---
+
+### Session 73 — PRODUCT GUIDE 05: Recurring Payments (DONE, 15 Sep 2026)
+
+`/fintech-ai/products/recurring-payments/` — 3,532 words, 3 code blocks, 6 sources. Site 873 → **874**.
+**Five product guides. Five distinct problem shapes. The eight-step frame has now held five times.**
+
+#### ⚠ THE FRAMEWORK WAS REWRITTEN ON 21 APRIL 2026
+
+**RBI Digital Payments — E-mandate Framework, 2026** (Circular RBI/DPSS/2026-27/396), effective
+immediately, **consolidating EIGHT earlier circulars into one rulebook**. Covers **cards, PPIs and
+UPI**, domestic **and cross-border**. Any integration guide citing the 2019 or 2021 circulars is
+describing a framework that no longer exists.
+
+| Rule | Position |
+|---|---|
+| AFA required for | registration · modification · withdrawal · **first transaction** · customer opt-out · above-threshold debits |
+| General no-AFA limit | **₹15,000** per recurring transaction |
+| **Enhanced limit** | **₹1 lakh — insurance premiums, mutual fund/SIP subscriptions, credit card bills ONLY** |
+| Pre-debit notification | **24 hours**, with amount, debit date, merchant name, on the customer's chosen channel. Exempt: FASTag and NCMC replenishment |
+| Post-debit | Confirmation after **every** collection, carrying the grievance route |
+| Customer control | Modify, pause, revoke, **and opt out of a single debit**, all with AFA |
+| Charges | **Issuers may NOT charge customers** for the facility |
+| Card reissue | Issuers **may map existing mandates to a reissued card** |
+| Responsibility | **Acquirers/PAs must ensure merchant compliance** — both parties liable |
+
+#### ⚠ THE MOST MISREPORTED LINE IN INDIAN PAYMENTS RIGHT NOW
+
+**The ₹1 lakh exception does NOT cover EMIs.** Not personal loans, not BNPL instalments, not auto
+loans. Only insurance, mutual funds and credit card bills.
+
+**A loan instalment above ₹15,000 requires AFA on every single debit.** Published guidance repeats
+the ₹1 lakh figure confidently without the category restriction, and a lending product built on the
+assumption of that headroom **fails at collection precisely at the ticket sizes that matter most to
+the book.** The page states it twice and puts `ENHANCED_CATEGORIES` in code as a closed set, with a
+comment that adding `LOAN_EMI` is a one-line compliance breach.
+
+#### THE highest-return finding — a mandate failure is not a soft decline
+
+Ordinary card declines are retryable; the issuer might approve tomorrow. **A mandate failure means
+the PERMISSION is broken**, and no number of retries fixes it. Only the customer can — and the action
+differs by mode:
+
+| Failure | What the customer must do | Auto-retryable? |
+|---|---|---|
+| Mandate missing/cancelled | **Re-register** (3DS · UPI PIN · bank re-authorisation) | No |
+| Above threshold | **Approve this one payment** — the mandate is fine | No |
+| Pre-debit notification failed | **Confirm in the banking app** before the next attempt | No |
+| Insufficient funds | Add funds | **Yes** — the only one |
+
+**Most billing systems send one generic "update your payment method" email to all four.** That routes
+people to the wrong action and collapses recovery. *Splitting that message into three is a week of
+work and the highest-return change available in this product area.*
+
+Also recorded: **offer UPI AutoPay as a fallback when card re-registration goes unanswered** —
+different friction, different success rate, same framework.
+
+#### Other gotchas
+
+1. **The notification is a GATE, not a message.** Built as fire-and-forget on the scheduler, the
+   result never returns to the debit decision. **Check DELIVERY at presentation time** — a bounced
+   SMS should stop the debit, and the delivery log is the evidence you were entitled to present.
+2. **"Delivered", not "sent".** A queued SMS is not a notification.
+3. **Single-debit opt-out** is required as well as full revocation. Teams build only the second.
+4. **Card-reissue mapping** ends the old involuntary-churn-on-expiry problem. Ask the acquirer —
+   it is the difference between losing a cohort every three years and not.
+5. **Build pause.** Customers who cannot pause, cancel.
+6. **One mandate model, three adapters.** Three rails built separately produce three interpretations
+   of one rulebook, and the differences surface as compliance gaps rather than bugs.
+7. **Model involuntary churn separately from voluntary.** Most dashboards collapse both into "churn"
+   and hide the one you can fix.
+
+**Site: 24/24 at zero · 874 pages · linkcheck 0.**
+
+---
+
+### Session 72 — PRODUCT GUIDE 04: Account Aggregator (DONE, 15 Sep 2026)
+
+`/fintech-ai/products/account-aggregator/` — 3,647 words, 2 code blocks, 6 sources. Site 872 → **873**.
+
+#### ⚠ THE FINDING — most AA estimates are wrong by half
+
+Since an **RBI circular of October 2023**, a regulated entity joining as an **FIU must also join as
+an FIP** if it holds financial information. A bilateral mandate, designed to stop free-riding.
+
+So a lender scoping *"pull bank statements for underwriting"* is actually scoping **two modules**:
+
+| Module | What it does | Usually estimated? |
+|---|---|---|
+| **FIU side** | Request consent, fetch, decrypt, use | Yes — this is what people mean by "AA integration" |
+| **FIP side** | Receive consent artefacts, **validate signatures**, and **serve your own loan data to competitors who ask with valid consent** | **No** |
+
+**The FIP side is the harder build.** As an FIU a slow response is your problem; as an FIP **it is
+someone else's customer failing to get a loan**, and your uptime becomes an ecosystem metric.
+*Budgets built on the FIU module alone are wrong by roughly half.*
+
+#### The framework, current
+
+- **Master Direction on NBFC-AA, 2 September 2016**, amended repeatedly — **GSTN added 2022, NPS
+  record-keepers 2023, CCIL 2024.** Each expansion is a new integration surface.
+- **The AA is a data-blind pipe** — end-to-end encrypted FIP→FIU, and the AA does not hold the key.
+- **FIU eligibility is closed:** you must be regulated by **RBI, SEBI, IRDAI or PFRDA**. A fintech
+  with no licence cannot be an FIU — get regulated, or partner with someone who is.
+- **ReBIT** publishes the specs; **RBI recognised Sahamati as the AA self-regulatory organisation on
+  5 June 2026**, which does not change the APIs teams build against.
+- Scale at **31 Dec 2025**: ~**2.61 bn** accounts enabled · **252.9 m** users with linked accounts ·
+  **126** institutions as both FIP and FIU · **50** FIP-only. Not a pilot.
+- To *be* an AA: **₹2 crore NOF before the certificate**, no storage or caching, tested DR/BCP,
+  three board committees, periodic IS audits.
+
+#### Gotchas documented
+
+1. **Two clocks.** `consentExpiry` governs how long you may *fetch*; `DataLife` governs how long you
+   may *keep*. Teams set one and assume it covers both — then either delete data they were entitled
+   to hold, or retain data whose life expired months ago. **Model them as independent timers from
+   the start.**
+2. **The redirect IS the product.** Everything else is compliance and engineering; the moment the
+   customer leaves your app for an unfamiliar brand is where conversion happens or does not.
+   **Explain it, name the AA, and say you never see their banking password** — a meaningful share
+   assume you will and abandon for that reason.
+3. **Verify the artefact signature.** "It came from the AA so it is fine" removes the entire
+   security property of the framework.
+4. **Derived data inherits the purpose.** A score computed from AA data *is* AA data — the same rule
+   as embeddings inheriting residency in Build Sheet 08, missed for the same reason: the derived
+   artefact does not look like the source.
+5. **"Delete" is the hardest word on the page.** AA data reaches warehouse, feature store, training
+   set and backup within its first hour. A retention job that clears the primary record has cleared
+   almost nothing. **Decide where AA data may go before the first fetch, and keep the list short.**
+6. **Because AAs are data-blind they cannot differentiate on data** — every AA delivers identical
+   bytes. The only three things worth measuring are **FIP coverage, consent success rate and
+   FIP-level uptime**. Per-fetch price decides nothing.
+7. **Instrument consent success rate** per AA, per FIP, per journey step. A 10-point gain there beats
+   any price negotiation and is entirely within your control at the redirect.
+
+**Format note: fourth product guide, fourth distinct problem shape** — document pipeline, live
+regulated session, money-flow-and-conduct, and now a consent-and-data-rights integration. The
+eight-step frame has held four times.
+
+**Site: 24/24 at zero · 873 pages · linkcheck 0.**
+
+---
+
+### Session 71 — PRODUCT GUIDE 03: BNPL Checkout (DONE, 14 Sep 2026)
+
+`/fintech-ai/products/bnpl-checkout/` — 4,013 words, 4 code blocks, 6 sources. Site 871 → **872**.
+
+#### ⚠ THE PRODUCT MOST PEOPLE IMAGINE IS NOT PERMITTED IN INDIA
+
+A credit line, loaded into a wallet, spent at checkout. **That model was ended by two rules
+together:**
+
+1. The **PPI credit-line restriction (2022)** — prepaid instruments may be loaded with cash, bank
+   debits and cards, **not credit lines**.
+2. The digital lending rules — **no pass-through of disbursal or repayment** through the platform
+   account or any intermediary account.
+
+Firms operating that model pivoted or shut down. **What is permitted is a fresh loan, sanctioned per
+transaction, disbursed directly.** The page opens on this, because every later step follows from it.
+
+#### The current rulebook
+
+**RBI Digital Lending Directions, 2025 — issued 8 May 2025** — a single consolidated framework that
+replaced the September 2022 guidelines, the default loss guarantee framework **and** the
+digital-channel outsourcing instructions. Anything citing the 2022 circular as current is out of date.
+
+| Item | Position |
+|---|---|
+| Structure | **NBFC** (Net Owned Fund **₹2 crore**) **or LSP** for a regulated entity |
+| **DLG / FLDG** | **Capped at 5%** of outstanding portfolio · cash, bank guarantee or **lien-marked FD** only · **corporate guarantees NOT eligible** · board-approved policy at the RE · borrower told no service depends on it |
+| **DLG in ECL** | **February 2026 — RBI allowed NBFCs to recognise DLG in Expected Credit Loss again**, provided it is *integral to the loan structure* rather than bolted on, with ECL recomputed when used or invoked |
+| KFS | Before sanction. Every fee in it. **The KFS APR is the binding figure** |
+| Cooling-off | Exit on **principal + proportionate APR**, no prepayment penalty |
+| Money flow | Borrower's bank account ↔ regulated entity. **No platform account** |
+| Permissions | Camera, mic, location **with explicit consent**. **Contacts, call logs, media files PROHIBITED** |
+| Data | Stored **exclusively in India**. DPDP penalties to ₹250 crore |
+
+#### Gotchas documented
+
+1. **The word on the button is a compliance artefact.** *"Pre-approved"* implies a sanction not yet
+   made; a declined customer has then been told two different things by one company. **"Eligible to
+   apply"** is supportable at every stage. **Get it signed off, and do not let it be A/B tested into
+   something stronger.**
+2. **Store the RENDERED KFS, not the inputs.** Teams plan to regenerate it; six months later the fee
+   table and template have changed and the regenerated document is not what the customer saw. *The
+   question is always "what did they see."*
+3. **The pool account.** Almost every payments architecture has one because it eases reconciliation —
+   and in digital lending it is the specifically prohibited thing, usually added by an engineer
+   solving a real problem without knowing it is a regulated boundary. **Assert against it in code on
+   day one.**
+4. **The sanction runs at checkout latency, per transaction.** That is the main engineering
+   difference from ordinary lending — and a sanction timeout is an *unknown*, not a failure, same
+   rule as payouts in Build Sheet 05.
+5. **Cooling-off that requires calling support does not exist.** And a retained processing fee is
+   exactly what the window was meant to prevent.
+6. **The contact window covers SMS, WhatsApp and push**, not just the dialler — the scheduler is
+   where it is usually missing.
+7. **Model unit economics on a COHORT, not a transaction.** Profitable at sale, loss-making at
+   cohort maturity is *the* recurring BNPL failure pattern in every market it has existed in.
+
+**Format note:** third product guide, third genuinely different shape of problem — document
+pipeline, regulated live session, and now a money-flow-and-conduct product. **The eight-step frame
+has held three times.**
+
+**Site: 24/24 at zero · 872 pages · linkcheck 0.**
+
+---
+
+### Session 70 — PRODUCT GUIDE 02: Video KYC (DONE, 14 Sep 2026)
+
+`/fintech-ai/products/video-kyc/` — 4,069 words, 3 code blocks, 6 sources. Site 870 → **871**.
+**The product-guide format held on a second, very different product** — which was the open question
+from Session 52.
+
+#### The eight steps
+
+`1. Can they even start? · 2. Consent, on the record · 3. Capture the documents ·
+4. Prove a real person is there · 5. Match the face · 6. The conversation ·
+7. Decide · 8. Audit, then activate`
+
+**Steps 1, 2 and 8 are the skipped ones**, and they are what an inspection looks at. A build that
+does 3–6 beautifully and skips 8 is a video call with face matching, not a V-CIP product.
+
+**Step 3 is Product Guide 01 nested inside Product Guide 02** — document reading is its own eight
+steps. That cross-reference is the format proving it composes.
+
+#### Regulatory spine (Verified September 2026)
+
+- **28 November 2025: sector-specific KYC Master Directions** across **ten institution types**,
+  replacing the 2016 Direction entirely. **Payment aggregators now in scope.**
+- V-CIP is **one of only three onboarding modes counting as face-to-face** — hence **full CDD, no EDD
+  classification, and none of the ₹1 lakh cap** that applies to OTP eKYC. That is the commercial
+  reason it exists.
+- **Hard requirements:** proprietary application (**Zoom/Teams explicitly out**) · infrastructure in
+  the RE's own premises · end-to-end encryption · live recording with timestamps and officer
+  credentials · **live GPS geotagging inside the recording** · **foreign-IP rejection and spoof
+  detection** (Jan 2024) · trained official of the RE · randomised questions · **concurrent audit by
+  a separate team before activation** · India-resident storage · **Aadhaar redacted in records** ·
+  Aadhaar XML/QR **no older than three days**.
+
+#### THE finding — injection, not liveness
+
+Liveness has three generations and most products are stuck in the first two:
+
+| | Question it answers | Beaten by |
+|---|---|---|
+| 2019 | Is this a photo? | Playing a video |
+| 2021 | Is this a video replay? | A deepfake |
+| **2026** | **Did these frames come from a camera at all?** | — |
+
+An attacker does not hold a screen to the lens; they **replace the camera feed with a virtual camera
+driver**. Every pixel-level check passes because the pixels are perfect. Defence is driver trust,
+frame-timing variance and sensor noise — not a better face model.
+
+**The procurement question, verbatim: *"do you detect virtual-camera injection?"*** The answer tells
+you whether you are buying a 2021 product or a 2026 one. **iBeta PAD certification does not cover
+it** — Level 1 is photos and screens, Level 2 is masks; injection is separate.
+
+#### Other gotchas documented
+
+1. **Do NOT gate on blinking or smiling.** RBI FAQ Q20: specific facial gestures are not mandatory
+   and accommodation is required. A gesture-gated flow **excludes disabled customers** — an
+   accessibility failure and a conduct problem.
+2. **You cannot un-record.** Teams capture a clean Aadhaar frame into the video, then find the
+   recording itself holds the full number for the retention period. **Decide redaction before the
+   first frame.**
+3. **"Alteration-proof" usually means "we have no edit feature."** That will not survive an auditor.
+   Hash at close, store the hash where the video pipeline cannot write, **re-verify at audit time**.
+4. **The concurrent audit is a CAPACITY CONSTRAINT, not a feature.** One independent person per N
+   sessions, and no amount of infrastructure moves it. **It is the hard ceiling on onboarding volume
+   and almost nobody finds it until launch week.** The page's single takeaway: work out your audit
+   rate in week one.
+5. **Model cost per COMPLETED onboarding, not per session** — failed sessions still consume officer
+   and auditor time.
+6. **Randomised questions as DATA, not a script**, with the drawn set recorded. Then "were they
+   randomised" has an answer.
+
+**Site: 24/24 at zero · 871 pages · linkcheck 0.**
+
+---
+
+### ★ Session 69 — QA #3: AI ATLAS (DONE, 14 Sep 2026)
+
+**Nothing built.** Third scheduled health check, rotated to AI Atlas.
+
+#### Trend
+
+| | QA #1 | QA #2 | QA #3 |
+|---|---|---|---|
+| Pages | 857 | 870 | 870 |
+| Hard checks | 20/20 | 22/22 | **24/24** |
+| `<script>` blocks | 2,313 | 2,339 | 2,339 &mdash; 0 fail |
+| Inline handlers | 10,677 | 10,689 | 10,689 &mdash; 0 fail |
+| JSON-LD blocks | 1,813 | 1,839 | 1,839 &mdash; 0 fail |
+| Clean-room builders | 5/5 | 5/5 | 5/5 |
+| *orphan classes* | 46 | 46 | **42** |
+
+#### The find: 8 pages with invisible prompt boxes
+
+`.prompt-box`, `.prompt-label`, `.prompt-text` and `.prompt-copy` are used on **102** Atlas pages and
+were **undefined on 8** of them &mdash; all under `specialist-tools/voice-audio/`. A prompt box with
+no background, border or padding renders as unstyled text, and the copy button as a bare word.
+
+**Exactly the dangerous-orphan category from the QA #1 triage rule** &mdash; elements that need
+styling *to exist at all*, as opposed to dead hooks that inline styles already cover. Rules lifted
+from a page that has them and applied to the 8. Orphan metric **46 &rarr; 42**.
+
+#### Two things I nearly &ldquo;fixed&rdquo; that were not broken
+
+1. **&ldquo;15 distinct stylesheets across 158 Atlas pages&rdquo;** &mdash; real, and worse than the
+   12 recorded in Session 48. But the variants differ by 2&ndash;3 variables, not by layout.
+2. **&ldquo;42 pages have a different background&rdquo;** &mdash; **false alarm of my own making.**
+   My variable extractor built a dict from every `--x: y` pair in the file and kept the *last*, so it
+   read `--bg:#0A0F1E` from inside a `[data-theme="dark"]` override block. Actual `--bg` is
+   **`#0F172A` on all 158 Atlas pages, and on all 363 Codex, 27 Fintech and 69 Courses pages.**
+
+Had I trusted the first reading I would have rewritten a legitimate theme override across 42 pages
+and introduced a real bug to fix an imaginary one. **Sixth verification-script error in six
+sessions.** The rule holds: *a checker is code, and untested code is wrong until read.*
+
+#### Open, recorded rather than rushed
+
+- **15 stylesheet generations in AI Atlas.** Needs a deliberate consolidation like Session 43, not a
+  sweep. The variants are close enough that merging is safe and far enough apart that it must be
+  done by diff, not by regex.
+- **Theme-block coverage is uneven** across sections. Recorded as a question, not assumed to be a
+  defect &mdash; a section may legitimately not offer a toggle.
+
+**Still cannot open a browser.** Three QAs, three real bugs found structurally &mdash; but the
+standing request stands: **two or three pages on a phone per QA.** Next rotation: **AI Kids**.
+
+**Site: 24/24 at zero &middot; 870 pages &middot; linkcheck 0.**
+
+---
+
+### Session 68 — EVERY PUBLISHED COUNT NOW DERIVED (DONE, 14 Sep 2026)
+
+**13 of 15 Codex section hubs published a wrong guide count.** Not slightly wrong:
+
+| Section | Claimed | Actual |
+|---|---|---|
+| SEO | 39 | **57** |
+| Paid advertising | 24 | **42** |
+| Social media | 14 | **30** |
+| Affiliate marketing | 6 | **14** |
+| Programmatic | 8 | **15** |
+| E-commerce | 8 | **15** |
+| **Case studies** | **331** | **15** |
+
+Only `history` (8) and `tools-resources` (7) were right.
+
+#### ⚠ I CAUSED THE WORST ONE
+
+`case-studies` read **331** because **my own Session 67 regex sweep** replaced a legitimate SECTION
+count with the GLOBAL count. The pattern was `\b\d{3}\b(?=\s*guides)` applied site-wide; it had no
+way to know that a three-digit number next to &ldquo;guides&rdquo; on a section hub meant something
+different from the same string on the homepage.
+
+**That is the argument against broad regex sweeps, in one line.** The sweep fixed 1,071 genuine
+occurrences and broke one, and the broken one was invisible until this session compared claims
+against the filesystem.
+
+#### `_build/gen_counts.py` — every count derived
+
+Section hub lead paragraphs &middot; the 13 discipline cards on the Codex hub &middot; the homepage
+chip &middot; the AI Atlas figure quoted in the student programme. All read from leaf-page counts.
+**Verified: 0 mismatches across 14 hubs and 13 cards.**
+
+Also corrected: the student programme advertised **&ldquo;33 guides on AI tools&rdquo;** against
+**140** actual AI Atlas pages.
+
+#### CHECK #24 — "Published count drift"
+
+Compares every published *&ldquo;N guides&rdquo;* claim against the filesystem, per section and on
+the hub cards. **Eighth stale-count incident; the last one that can happen silently.**
+
+Per the Session 56 rule, the docstring states what it does **not** cover: counts phrased in prose
+(&ldquo;over 300&rdquo;, &ldquo;hundreds of&rdquo;), and the curated track sizes in `codex/learn/`,
+which describe a *track* rather than a directory and are legitimately hand-set.
+
+#### The rule, now enforced rather than written down
+
+> **Any number describing the site is derived at build time, or it is deleted.**
+
+Three sessions running have found stale counts. The difference now is that a check fails instead of a
+reader noticing.
+
+**Site: 24/24 at zero &middot; 870 pages &middot; linkcheck 0.**
+
+---
+
+### Session 67 — ALL-GUIDES REGENERATED, AND THE SITE HAD BEEN OVER-COUNTING ITSELF (DONE, 14 Sep 2026)
+
+`/codex/all-guides/` is now **generated from the filesystem** (`_build/gen_all_guides.py`), not
+hand-maintained. **331 guides in 30 groups, every one linked**, titles read from each page's own
+`<h1>`, and the headline count derived. Both of its failure modes &mdash; missing entries and a stale
+count &mdash; are now structurally impossible.
+
+#### ⚠ THE SITE HAD BEEN OVER-COUNTING ITS OWN GUIDES BY 33
+
+The published figure was **364**. That is every `index.html` under `codex/`, which includes:
+
+| | |
+|---|---|
+| Actual guide pages | **331** |
+| Section **hubs** (`/codex/seo/`, `/codex/analytics-cro/` &hellip;) | **31** |
+| Utility pages (`all-guides`, `glossary`) | **2** |
+| **Published as &ldquo;guides&rdquo;** | **364** |
+
+**A section landing page is not a guide.** The number appeared on the Codex hub, in the homepage
+chips, in meta descriptions, og and twitter cards, and in the manifest.
+
+**`rebuild_infra.py` now derives `codex_guides` from LEAF pages**, so the manifest cannot drift again.
+**1,071 occurrences normalised across 364 pages.**
+
+A second count was wrong in the other direction: the homepage advertised **&ldquo;80 AI Guides&rdquo;**
+and **&ldquo;127 AI guides&rdquo;** in two different places, against **140** actual AI Atlas leaf
+pages. **The site was underselling one section and overselling another, simultaneously.**
+
+#### Two of my own tools were wrong again this session
+
+1. **Region boundary by `rfind('</div></div>')`** lost a closing tag and produced `div 70/69`. Replaced
+   with a balanced extraction of every `ag-group` block plus an assertion that **nothing but
+   whitespace sits between them** &mdash; so the replacement cannot swallow unrelated content.
+2. **A loose count-detector reported 363 &ldquo;remaining stale counts&rdquo;** that were mostly a
+   *different, legitimate* count (`127 AI guides`) and outright false positives (`600`, `249`).
+   Tightened to match only counts adjacent to the word.
+
+Fourth and fifth instance of a verification script producing a confident wrong answer. **The
+standing rule now reads: a checker is code, and untested code is wrong until read.**
+
+#### ⚠ STILL OPEN &mdash; 28 hardcoded counts on 12 pages
+
+Per-discipline chips on the Codex section hubs (`SEO &middot; 39 guides`, and similar). **Not fixed**
+&mdash; they need the same derive-at-build treatment as `codex_guides`, which means a small generator
+for the section hubs, not a regex sweep. Quantified precisely so it cannot be hand-waved:
+**28 occurrences, 12 pages.**
+
+**This is the seventh time a hardcoded count has gone stale on this project.** The rule is now
+unavoidable: **any number describing the site is derived at build time, or it is deleted.**
+
+**Site: 23/23 at zero &middot; 870 pages &middot; linkcheck 0.**
 
 ---
 
@@ -1031,51 +1961,42 @@ any other section's palette, list what each colour currently signals and find th
 
 ---
 
-## THE FULL ROADMAP — 42 SESSIONS, WITH A HEALTH CHECK EVERY FIFTH
+## THE ROADMAP — rebuilt Session 78 (the old table had a row duplicated 4x)
 
-Committed. No compromise. **Every 5th session is a QA session** — nothing new is built, the whole
-site is verified and whatever is broken gets fixed.
+Sessions 47–78 are **done**. Remaining work, renumbered honestly against what has actually shipped:
 
 | Session | Work |
 |---|---|
-| ~~54~~ | ~~Fintech visual identity~~ **DONE** |
-| ~~55~~ | ~~Fix the 25 nesting-error pages~~ **DONE** — check #19 now gates |
-| ~~56~~ | ~~224 pages outside the nav system~~ **DONE** — plus 269 invisible broken links; check #20 |
-| ~~57~~ | ~~Build Sheet 08 — Infrastructure~~ **DONE** |
-| ~~58~~ | ~~Build Sheet 09 — Governance~~ **DONE — ALL NINE BUILD SHEETS COMPLETE** |
-| ~~**59**~~ | ~~**★ QA #1**~~ **DONE** — found the unstyled progress bar on 65 pages |
-| ~~60~~ | ~~AI Kids Money Explorer track — 8 sessions + index~~ **DONE** |
-| ~~61~~ | ~~Money Explorer extended to 12 sessions~~ **DONE** |
-| ~~62~~ | ~~Fintech theme~~ **DONE** — section menu still outstanding |
-| ~~63~~ | ~~Sources pass part 1 — 9 build sheets + product guide~~ **DONE**, check #22 |
-| ~~64~~ | ~~**★ QA #2** — Courses~~ **DONE** — found the progress bar never updated |
-| ~~65~~ | ~~Sources pass part 2 — all 26 fintech pages~~ **DONE**, check #22 widened |
-| ~~66~~ | ~~Housekeeping~~ **DONE** — dead domain in canonicals, check #23, metric corrected |
-| 67 | Regenerate `all-guides` from the filesystem (lists 236 of 364) |
-| ~~62~~ | ~~Fintech theme~~ **DONE** — section menu still outstanding |
-| ~~63~~ | ~~Sources pass part 1 — 9 build sheets + product guide~~ **DONE**, check #22 |
-| ~~64~~ | ~~**★ QA #2** — Courses~~ **DONE** — found the progress bar never updated |
-| ~~65~~ | ~~Sources pass part 2 — all 26 fintech pages~~ **DONE**, check #22 widened |
-| ~~66~~ | ~~Housekeeping~~ **DONE** — dead domain in canonicals, check #23, metric corrected |
-| 67 | Regenerate `all-guides` from the filesystem (lists 236 of 364) |
-| **64** | **★ QA** |
-| 65 | Housekeeping — 108 stale stamps, Codex hub 220 cards vs 364 guides |
-| 66–68 | Product guides 02–04 |
-| **69** | **★ QA** |
-| 70–73 | Product guides 05–08 |
-| **74** | **★ QA** |
-| 75–78 | Product guides 09–12 |
-| **79** | **★ QA** |
-| 80–81 | Product guides 13–14 |
-| 82 | Re-scope content remediation — classify the 217 (≈70 are hubs where short is CORRECT) |
-| 83 | Content remediation 1 |
-| **84** | **★ QA** |
-| 85–88 | Content remediation 2–5 |
-| **89** | **★ QA** |
-| 90–93 | Content remediation 6–9 |
-| **94** | **★ QA** |
-| 95–98 | Content remediation 10–13 |
-| **99** | **★ QA — final** |
+| ~~**79**~~ | ~~**★ QA #5** — Codex~~ **DONE** — heading skips 438 → 101 |
+| ~~80~~ | ~~Product Guide 08 — Invoice Discounting~~ **DONE** |
+| 81–82 | Product guides 09–10 |
+| **84** | **★ QA #6** — rotate to Fintech |
+| 83, 85–86 | Product guides 11–13 |
+| 87 | **Re-scope content remediation** — classify the 217 (≈70 are hubs where short is CORRECT) |
+| 88 | Content remediation 1 |
+| **89** | **★ QA #7** |
+| 90–93 | Content remediation 2–5 |
+| **94** | **★ QA #8** |
+| 95–98 | Content remediation 6–9 |
+| **99** | **★ QA #9** |
+| 100–103 | Content remediation 10–13 |
+| **104** | **★ QA #10 — final** |
+
+**≈ 26 sessions remaining.** Composed of: **6 product guides** (7 of ~13 in-scope products done;
+soundboxes/POS and payroll SaaS remain out of scope pending a decision) · **1 re-scope** ·
+**13 content remediation** · **6 QA sessions** at the every-fifth cadence.
+
+**Open items carried, not forgotten:**
+
+- **438 pages with heading skips** — `h1→h3` and `h2→h4` inside content templates, each needing its
+  own decision rather than a sweep.
+- **SOP section F GAPs** — colour contrast, keyboard/focus order, ARIA coverage, screen-reader pass.
+  All four need a browser.
+- **15 stylesheet generations in AI Atlas** — needs a deliberate consolidation by diff.
+- **Theme-block coverage** — 54 of 158 Atlas pages carry `[data-theme]`; 0 elsewhere. A question for
+  the owner, not an assumed defect.
+- **42 orphan CSS classes** — triaged as dead hooks.
+- **151 pages** with an old verification stamp next to a decaying figure.
 
 ### ★ THE QA SESSION — what it must do
 

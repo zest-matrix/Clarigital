@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Video KYC: How to Build It | Clarigital</title>
+<meta name="description" content="Build a video KYC product step by step: the eight stages, your options at each one, how to connect them, and what RBI actually requires.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/video-kyc/">
+<meta property="og:type" content="article"><meta property="og:title" content="Video KYC: How to Build It">
+<meta property="og:description" content="Build a video KYC product step by step: the eight stages, your options at each one, how to connect them, and what RBI actually requires."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/video-kyc/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Video KYC: How to Build It">
+<meta name="twitter:description" content="Build a video KYC product step by step: the eight stages, your options at each one, how to connect them, and what RBI actually requires."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Video KYC: How to Build It", "description": "Build a video KYC product step by step: the eight stages, your options at each one, how to connect them, and what RBI actually requires.", "url": "https://www.clarigital.com/fintech-ai/products/video-kyc/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-13"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Video KYC: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/video-kyc/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>Video KYC: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 02</div>
+  <div class="ft-tag">Fintech AI</div><h1>Video KYC: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building a V-CIP video KYC product. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What Video KYC actually is</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 and 2 — can they start, and consent</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Can they even start?</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Consent, on the record</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 3 and 4 — documents, and proving a real person</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; Capture the documents</a><a class="sub" href="#s-indigo-s4">Step 4 &mdash; Prove a real person is there</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 5 and 6 — face match and the conversation</a><a class="sub" href="#s-indigo-s5">Step 5 &mdash; Match the face to the document</a><a class="sub" href="#s-indigo-s6">Step 6 &mdash; The conversation</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>Steps 7 and 8 — decide, audit, activate</a><a class="sub" href="#s-indigo-s7">Steps 7 and 8 &mdash; Decide, audit, then activate</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">The two-week version</a><a class="sub" href="#s-amber-proper">The proper version &mdash; start here if you are serious</a><a class="sub" href="#s-amber-big">The enterprise version</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main id="main-content" class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one product, start to finish. The
+<a href="/fintech-ai/identity-onboarding/">Identity module</a> explains why verification is hard. The
+<a href="/fintech-ai/identity-onboarding/build-sheet/">build sheet</a> lists every tool with prices.
+This page tells you which eight steps there are and how to connect them.</p>
+<p>It is written for someone who has not built this before.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Read this before anything else.</strong> Video KYC in India is not a video call with some checks bolted on. It is a <strong>regulated process</strong> where the <em>product</em> is the compliance. Build the video first and the controls later and you will rebuild it. Several of the requirements below &mdash; a proprietary app, infrastructure in your own premises, a concurrent audit before activation &mdash; are architecture decisions, not features.</p></div>
+<h2 id="s-green-1">What Video KYC actually is</h2>
+
+<p>Video KYC lets you open an account for someone who never walks into a branch. A trained officer of
+your firm talks to the customer on a live video call, software reads their documents, matches their
+face, and confirms a real person is present.</p>
+<p>In India it is called <strong>V-CIP</strong> &mdash; Video-based Customer Identification Process
+&mdash; and it sits in <strong>Para 19</strong> of the RBI KYC Master Direction.</p>
+<p><strong>Why it matters commercially:</strong> a compliant V-CIP session is treated as
+<strong>face-to-face</strong>. That is only true of three things &mdash; a physical meeting, digital
+KYC with a physical meet, and V-CIP. It means <strong>full CDD, no enhanced-due-diligence
+classification, and none of the transaction caps</strong> that apply to OTP-based eKYC.</p>
+<p><strong>What it is not:</strong></p>
+<ul>
+<li><strong>Not a Zoom call.</strong> The application must be proprietary. Zoom, Teams and Meet are
+explicitly out.</li>
+<li><strong>Not a liveness check with video attached.</strong> The human officer is a required
+control, not a cost to be automated away.</li>
+<li><strong>Not finished when the call ends.</strong> A separate team must audit the session
+<em>before</em> the account is activated.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<p>Eight steps. Read this once and the rest is detail.</p>
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Can they even start?</strong></td><td>Right device, in India, real connection. Check before you waste an officer's time.</td></tr>
+<tr><td>2</td><td><strong>Get consent, on the record</strong></td><td>Recorded, timestamped, and impossible to alter later.</td></tr>
+<tr><td>3</td><td><strong>Capture the documents</strong></td><td>Live capture. An uploaded scan does not count.</td></tr>
+<tr><td>4</td><td><strong>Prove a real person is there</strong></td><td>Not a photo, not a video, not a deepfake, not a virtual camera.</td></tr>
+<tr><td>5</td><td><strong>Match the face to the document</strong></td><td>Is the person on the call the person on the ID?</td></tr>
+<tr><td>6</td><td><strong>The conversation</strong></td><td>A trained officer asks questions that cannot be rehearsed.</td></tr>
+<tr><td>7</td><td><strong>Decide</strong></td><td>Approve, re-do, or refuse. Three outcomes, never two.</td></tr>
+<tr><td>8</td><td><strong>Audit, then activate</strong></td><td>A different team checks the session. Only then does the account open.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>Steps 1, 2 and 8 are the ones teams skip, and they are the ones an inspection looks at. A build that does 3&ndash;6 beautifully and skips 8 is not a video KYC product &mdash; it is a video call with face matching.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 and 2 — can they start, and consent</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Can they even start?</h3>
+<p><strong>What it does:</strong> confirms the customer is in India, on a real connection, with a
+working camera, before anyone joins the call.</p>
+<table>
+<tr><th>Option</th><th>What it is</th><th>Effort</th><th>Pick this when</th></tr>
+<tr><td><strong>A. Browser APIs only</strong></td><td>Geolocation API plus a getUserMedia test.</td><td>A day</td><td>Start here. It catches the honest failures, which are most of them.</td></tr>
+<tr><td><strong>B. Add IP intelligence</strong></td><td>A lookup service that tells you country, ASN, and whether the IP is VPN, proxy or hosting.</td><td>Days, small per-lookup fee</td><td>As soon as you are live. Required to detect spoofing.</td></tr>
+<tr><td><strong>C. Full device intelligence</strong></td><td>Device fingerprint, emulator detection, rooted-device checks.</td><td>Weeks, licensed</td><td>Volume is high enough that organised attempts are worth defending against.</td></tr>
+</table>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 1, the pre-flight gate</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from ipaddress import ip_address
+
+# RBI requires the customer to be IN INDIA, the app to reject foreign IPs, and
+# to detect IP spoofing. Check all of it BEFORE an officer joins the call --
+# an officer&#x27;s time is the most expensive thing in this pipeline.
+
+def preflight(session):
+    fail = []
+
+    # 1. GEOTAG. Live GPS from the device, not an IP-derived guess.
+    gps = session.get(&quot;gps&quot;)
+    if not gps:
+        fail.append(&quot;no_gps&quot;)                    # permission denied or spoofed
+    elif not (6.0 &lt;= gps[&quot;lat&quot;] &lt;= 37.5 and 68.0 &lt;= gps[&quot;lon&quot;] &lt;= 97.5):
+        fail.append(&quot;outside_india&quot;)             # rough India bounding box
+
+    # 2. IP. Must resolve to India, and must not look like a tunnel.
+    ip = session.get(&quot;ip&quot;)
+    if not ip or session[&quot;ip_country&quot;] != &quot;IN&quot;:
+        fail.append(&quot;foreign_ip&quot;)
+    if session.get(&quot;is_vpn&quot;) or session.get(&quot;is_proxy&quot;) or session.get(&quot;is_hosting&quot;):
+        fail.append(&quot;ip_spoof_suspected&quot;)        # datacentre ASN on a phone = no
+
+    # 3. DO THE TWO AGREE? GPS in Mumbai and IP in Frankfurt is the
+    #    interesting case, and it is the one a spoofer produces.
+    if &quot;outside_india&quot; not in fail and &quot;foreign_ip&quot; not in fail:
+        if session.get(&quot;ip_distance_km&quot;, 0) &gt; 500:
+            fail.append(&quot;gps_ip_mismatch&quot;)
+
+    # 4. Can the call actually work? A session that dies at step 6 wastes the
+    #    officer AND the customer, and they rarely come back.
+    if session.get(&quot;bandwidth_kbps&quot;, 0) &lt; 400: fail.append(&quot;bandwidth_too_low&quot;)
+    if not session.get(&quot;camera_ok&quot;): fail.append(&quot;no_camera&quot;)
+    if not session.get(&quot;mic_ok&quot;): fail.append(&quot;no_mic&quot;)
+
+    return {&quot;proceed&quot;: not fail, &quot;reasons&quot;: fail}
+
+# WHAT TO CHECK
+# [ ] GPS is captured live at the START and recorded INTO the video, not read
+#     once and stored beside it. The recording itself must carry the coordinates
+# [ ] tell the customer WHICH check failed, in plain words. &quot;Please enable
+#     location&quot; gets you a session; &quot;Verification failed&quot; gets you a complaint
+# [ ] a bounding box is a coarse first filter, not a border. Use it to reject
+#     obvious cases fast, and a proper geocoder for the record
+# [ ] datacentre and hosting ASNs on a consumer session are the strongest
+#     spoofing signal you get. Treat hosting-provider IPs as disqualifying
+# [ ] failures are LOGGED with the reason. The distribution tells you whether
+#     you have a fraud problem or a UX problem, and they look identical in a
+#     total
+# [ ] never let a failed pre-flight silently fall back to a different KYC route.
+#     That decision is a compliance decision, not an error handler
+</code></pre></div>
+<p><strong>Connect it to step 2:</strong> a session that passes gets a session id and a recording
+handle. Everything after this writes into that one recording &mdash; consent, documents, face, the
+conversation. One file, one timeline, one set of timestamps.</p>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Consent, on the record</h3>
+<p><strong>What it does:</strong> captures the customer agreeing, in a form you cannot later be
+accused of editing.</p>
+<p>The requirement has three parts and teams usually build one: consent must be
+<strong>recorded</strong>, <strong>auditable</strong>, and <strong>alteration-proof</strong>.</p>
+<table>
+<tr><th>Option</th><th>What it is</th><th>Pick this when</th></tr>
+<tr><td><strong>A. Spoken, inside the recording</strong></td><td>The officer asks, the customer says yes, it is in the video.</td><td>Always. This is the baseline and it satisfies &ldquo;recorded&rdquo;.</td></tr>
+<tr><td><strong>B. Hash the recording</strong></td><td>Store a cryptographic hash of the file when the session closes.</td><td>Always. This is what makes &ldquo;alteration-proof&rdquo; a fact rather than a claim.</td></tr>
+<tr><td><strong>C. External timestamping</strong></td><td>A trusted timestamp authority signs the hash.</td><td>When you need to prove the file existed at a time, not just that it is unchanged.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The gotcha nobody documents:</strong> &ldquo;alteration-proof&rdquo; is usually implemented as <em>we do not have a feature that edits it</em>. That is not the same thing and it will not survive a question from an auditor. <strong>Hash the file on close, store the hash somewhere the video pipeline cannot write to, and re-verify it on retrieval.</strong> It costs almost nothing and it converts a policy claim into arithmetic.</p></div>
+<h2 id="s-indigo-1">Steps 3 and 4 — documents, and proving a real person</h2>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; Capture the documents</h3>
+<p><strong>What it does:</strong> gets the identity documents into the session, live.</p>
+<p><strong>Live capture is mandatory.</strong> An uploaded scan does not meet the standard, however
+clear it is. The document has to be shown to the camera during the session.</p>
+<table>
+<tr><th>Route</th><th>What it gives you</th><th>Note</th></tr>
+<tr><td><strong>DigiLocker / offline Aadhaar XML</strong></td><td>The issued record, already verified.</td><td>XML or QR must be <strong>no older than three days</strong>.</td></tr>
+<tr><td><strong>Live PAN capture</strong></td><td>An image verified against the authorised database.</td><td>Verification against the database, not just a reading of the card.</td></tr>
+<tr><td><strong>Other OVD via live capture</strong></td><td>For customers without the above.</td><td>Reading and structuring is <a href="/fintech-ai/products/document-ai/">Document AI</a> &mdash; the same eight steps, inside this one.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The Aadhaar number must be redacted in your records.</strong> Not masked in the UI &mdash; redacted in what you store. Teams capture a clean frame of the Aadhaar card into the video recording and then discover the recording itself now contains the full number, retained for years. <strong>Decide where redaction happens before you record anything</strong>, because you cannot un-record.</p></div>
+
+<h3 id="s-indigo-s4">Step 4 &mdash; Prove a real person is there</h3>
+<p><strong>What it does:</strong> confirms the face on the call belongs to a living human who is
+actually present.</p>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 4, and the question that dates your whole build</span><button class="cb-copy" type="button">Copy</button></div><pre><code># Liveness has three generations, and most products are stuck in the first two.
+#
+#   2019: is this a PHOTO?          -- beaten by playing a video
+#   2021: is this a VIDEO REPLAY?   -- beaten by a deepfake
+#   2026: is this a DEEPFAKE, and is it even coming from the CAMERA?
+#
+# The 2026 question is INJECTION. An attacker does not hold a screen up to the
+# lens -- they replace the camera feed with a virtual camera driver and send a
+# synthetic face straight into your app. Every pixel-level liveness check in the
+# world passes, because the pixels are perfect.
+
+def assess_liveness(signals):
+    checks = {
+        # presentation attack: something held up to a real camera
+        &quot;pad_score&quot;:        signals[&quot;pad_score&quot;] &gt;= 0.90,
+        # injection attack: the frames never came from a camera at all
+        &quot;camera_is_real&quot;:   signals[&quot;virtual_camera_detected&quot;] is False,
+        &quot;driver_signed&quot;:    signals[&quot;camera_driver_trusted&quot;],
+        &quot;frame_timing_ok&quot;:  signals[&quot;frame_interval_variance&quot;] &gt; 0.0001,
+        # a synthetic stream is often TOO regular. Real cameras jitter.
+        &quot;sensor_noise_ok&quot;:  signals[&quot;sensor_noise_present&quot;],
+    }
+    failed = [k for k, v in checks.items() if not v]
+    if &quot;camera_is_real&quot; in failed or &quot;driver_signed&quot; in failed:
+        return {&quot;outcome&quot;: &quot;reject_hard&quot;, &quot;reason&quot;: &quot;injection_suspected&quot;,
+                &quot;escalate&quot;: True}
+    if failed:
+        return {&quot;outcome&quot;: &quot;retry&quot;, &quot;reason&quot;: failed, &quot;attempts_allowed&quot;: 2}
+    return {&quot;outcome&quot;: &quot;pass&quot;}
+
+# WHAT TO CHECK
+# [ ] ASK EVERY VENDOR: &quot;do you detect virtual-camera injection?&quot; The answer
+#     tells you whether you are buying a 2021 product or a 2026 one. It is the
+#     single most useful question in this whole procurement
+# [ ] ask for iBeta PAD certification and the LEVEL. Level 1 is photos and
+#     screens; Level 2 is masks. Neither covers injection -- that is separate
+# [ ] DO NOT require blinking or smiling. RBI&#x27;s FAQ (Q20) says specific facial
+#     gestures are not mandatory, and accommodation is required for customers
+#     who cannot perform them. A gesture-gated flow excludes disabled customers
+#     and is a conduct problem as well as an accessibility one
+# [ ] an injection signal is a HARD reject and an escalation, not a retry. A
+#     retry just tells the attacker which check fired
+# [ ] log the raw scores, not the verdict. Thresholds change; the evidence of
+#     what you saw should not have to be recomputed
+# [ ] rehearse a failure. If your liveness vendor is down, what happens? The
+#     answer must not be &quot;approve anyway&quot;
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> injection. Every liveness product sold before about
+2023 answers the question <em>&ldquo;does this look like a real face?&rdquo;</em>. A virtual camera
+makes that question meaningless, because the synthetic face is a perfect one. The question that
+matters in 2026 is <em>&ldquo;did these frames come from a physical camera on this device?&rdquo;</em>
+&mdash; and it is answered with driver checks, frame-timing analysis and sensor-noise detection, not
+with a better face model.</p>
+
+<h2 id="s-indigo-2">Steps 5 and 6 — face match and the conversation</h2>
+
+<h3 id="s-indigo-s5">Step 5 &mdash; Match the face to the document</h3>
+<p><strong>What it does:</strong> compares the live face with the photo on the identity document.</p>
+<table>
+<tr><th>Option</th><th>What it is</th><th>Pick this when</th></tr>
+<tr><td><strong>A. Vendor API</strong></td><td>Send both images, get a similarity score.</td><td>Almost always. This is a commodity and not where your effort belongs.</td></tr>
+<tr><td><strong>B. Self-hosted model</strong></td><td>Run face matching on your own infrastructure.</td><td>Residency rules make sending faces out impossible, or volume justifies it.</td></tr>
+</table>
+<p>The technical work is small. The <em>policy</em> work is not, and it is yours:</p>
+<ul>
+<li><strong>Set the threshold deliberately, and write down why.</strong> It trades false accepts
+against false rejects and both are harms.</li>
+<li><strong>Test on your own population.</strong> Face matching accuracy varies by skin tone, age and
+gender across every published evaluation. A threshold tuned on a vendor's demo set is a threshold
+tuned on somebody else's customers.</li>
+<li><strong>A low score is a human decision, not an automatic refusal.</strong> The officer is on the
+call already. That is the point of them.</li>
+</ul>
+
+<h3 id="s-indigo-s6">Step 6 &mdash; The conversation</h3>
+<p><strong>What it does:</strong> a trained officer of your firm talks to the customer and forms a
+judgement.</p>
+<p>This step cannot be automated away. The officer must be <strong>your</strong> trained official,
+must run a <strong>randomised</strong> set of questions so nothing can be pre-rehearsed, and must be
+able to act on anything that looks wrong.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Design the question bank as data, not as a script in someone's head.</strong> A pool of questions, drawn at random, with the drawn set recorded against the session. Then &ldquo;were the questions randomised&rdquo; has an answer you can produce, and a coached applicant cannot be fed the list. This is cheap to build on day one and awkward to retrofit.</p></div>
+<p>Give the officer a single screen with everything already on it: the document reading, the face
+match score, the liveness result, the pre-flight signals. An officer hunting through tabs during a
+live call is the most common cause of a rushed judgement.</p>
+
+<h2 id="s-indigo-3">Steps 7 and 8 — decide, audit, activate</h2>
+
+<h3 id="s-indigo-s7">Steps 7 and 8 &mdash; Decide, audit, then activate</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 7 and 8, and the one nobody budgets for</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import datetime, timedelta, timezone
+IST = timezone(timedelta(hours=5, minutes=30))
+
+# THREE OUTCOMES. A two-outcome system either rejects good customers or
+# approves bad sessions, and usually both.
+
+def officer_decision(session, checks, officer):
+    if checks[&quot;liveness&quot;][&quot;outcome&quot;] == &quot;reject_hard&quot;:
+        return {&quot;outcome&quot;: &quot;reject&quot;, &quot;reason&quot;: &quot;injection_suspected&quot;,
+                &quot;reviewable&quot;: True}       # a person can still overturn it
+    if not checks[&quot;documents_valid&quot;] or checks[&quot;face_match&quot;] &lt; session[&quot;threshold&quot;]:
+        return {&quot;outcome&quot;: &quot;redo&quot;, &quot;reason&quot;: &quot;quality_or_match&quot;,
+                &quot;guidance&quot;: &quot;explain WHICH part, in plain words&quot;}
+    return {&quot;outcome&quot;: &quot;recommend_approve&quot;, &quot;by&quot;: officer[&quot;id&quot;],
+            &quot;at&quot;: datetime.now(IST).isoformat()}
+
+# STEP 8. The officer RECOMMENDS. A DIFFERENT team approves. The account does
+# not exist until that second team has looked. This is a hard requirement and
+# it is the step product teams discover three weeks before launch.
+
+def concurrent_audit(session, auditor):
+    assert auditor[&quot;team&quot;] != session[&quot;officer_team&quot;], &quot;auditor must be independent&quot;
+    findings = []
+    for need in (&quot;recording_present&quot;, &quot;gps_in_recording&quot;, &quot;timestamps_present&quot;,
+                 &quot;consent_captured&quot;, &quot;officer_credentials_recorded&quot;,
+                 &quot;questions_randomised&quot;, &quot;aadhaar_redacted&quot;, &quot;hash_matches&quot;):
+        if not session.get(need):
+            findings.append(need)
+    return {&quot;activate&quot;: not findings, &quot;findings&quot;: findings,
+            &quot;auditor&quot;: auditor[&quot;id&quot;], &quot;at&quot;: datetime.now(IST).isoformat()}
+
+# WHAT TO CHECK
+# [ ] the auditor is a DIFFERENT TEAM. Asserted in code, not in a policy
+#     document. This is the most commonly faked control in the whole process
+# [ ] account activation is gated on the audit result. If an account can exist
+#     before the audit, the audit is decorative
+# [ ] &quot;redo&quot; tells the customer which part failed. A blank retry produces the
+#     same failure and then an abandoned application
+# [ ] the hash from step 2 is re-verified HERE, at audit time. Checking it only
+#     at write time proves nothing about the intervening days
+# [ ] audit capacity is planned as a number. It is a person per N sessions and
+#     it does not scale by deploying more servers -- this is the line that
+#     silently caps your onboarding volume
+# [ ] measure the audit FAILURE rate weekly. Near zero means the audit is a
+#     rubber stamp; rising means something upstream broke
+# [ ] rejections are reviewable by a human on request. &quot;The system said no&quot; is
+#     not an answer you can give a customer about their bank account
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> the concurrent audit is a
+<strong>capacity constraint, not a feature</strong>. Every session must be reviewed by an independent
+team before the account activates. That is a person, reviewing recordings, at some rate per hour.
+Your onboarding throughput is capped by that number and no amount of infrastructure changes it.
+Teams model gateway costs and liveness costs carefully and then discover the ceiling on launch week.
+<strong>Work out your audit rate before you forecast volume.</strong></p>
+
+<h2 id="s-indigo-4">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>Video KYC &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">V-CIP platform, per verification<span class="pill p-direct">direct</span></div><div class="d">Published entry pricing from around <strong>&#8377;10 per verification</strong> for an API covering V-CIP, liveness, PAN, Aadhaar XML and DigiLocker. Enterprise deals are negotiated per volume and usually bundle the components.</div></div><div class="reg-row"><div class="n">Liveness and injection detection<span class="pill p-direct">direct</span></div><div class="d">Sometimes bundled, sometimes a separate meter. <strong>Ask whether injection detection is included or an add-on</strong> &mdash; the ones that charge separately are often the ones that actually have it.</div></div><div class="reg-row"><div class="n">Document reading<span class="pill p-direct">direct</span></div><div class="d">See <a href="/fintech-ai/products/document-ai/">Document AI</a>. Plain OCR is about $1.50 per 1,000 pages; identity-document APIs are $10&ndash;25.</div></div><div class="reg-row"><div class="n">IP intelligence<span class="pill p-direct">direct</span></div><div class="d">Per-lookup, small. Required rather than optional &mdash; foreign-IP rejection and spoof detection are explicit requirements.</div></div><div class="reg-row"><div class="n">The officer<span class="pill p-direct">direct</span></div><div class="d">A trained employee of <em>your</em> firm, on a live call, for the length of the session. <strong>Not outsourceable in the way a contact centre is</strong>, because the training and the judgement are regulatory requirements.</div></div><div class="reg-row"><div class="n">The concurrent auditor<span class="pill p-direct">direct</span></div><div class="d"><strong>A second person, on a different team, for every single session.</strong> The line nobody budgets and the one that caps throughput.</div></div><div class="reg-row"><div class="n">Storage<span class="pill p-direct">direct</span></div><div class="d">Encrypted video, retained, <strong>in India</strong>, with tamper evidence. Video is large and retention is long; this grows quietly and is rarely in the first model.</div></div></div><div class="warn"><span class="note-lbl">Watch out</span><p><strong>Model cost per COMPLETED onboarding, not per session.</strong> Sessions fail &mdash; bad connections, failed liveness, documents that will not read, customers who drop. If 30% of sessions do not complete, your real cost per customer is the session cost divided by 0.7, plus the officer and auditor time spent on the ones that failed. That is a very different number from the vendor's per-verification rate.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">The two-week version</h3>
+<p><strong>Build:</strong> browser pre-flight &rarr; a bought V-CIP platform that handles video,
+liveness, capture and face match &rarr; your own officer console &rarr; a simple audit queue &rarr;
+Postgres for the evidence record.</p>
+<p><strong>You get:</strong> something compliant enough to test with real customers under supervision.</p>
+<p><strong>It breaks when:</strong> volume passes what one auditor can review in a day.</p>
+
+<h3 id="s-amber-proper">The proper version &mdash; start here if you are serious</h3>
+<p><strong>Build:</strong> everything above, plus &mdash; IP intelligence with spoof detection &rarr;
+injection detection confirmed with the vendor <em>in writing</em> &rarr; a randomised question bank
+as data &rarr; hashing at session close and re-verification at audit &rarr; an officer console with
+every signal on one screen &rarr; audit capacity modelled as a number &rarr; weekly metrics on
+completion rate, audit failure rate and reason distribution.</p>
+<p><strong>Trade:</strong> you own the orchestration, the evidence and the thresholds. That is the
+right trade &mdash; those three are what an inspection examines, and none of them is something a
+vendor can hold for you.</p>
+
+<h3 id="s-amber-big">The enterprise version</h3>
+<p><strong>Build:</strong> everything above, plus &mdash; self-hosted face match and liveness for
+residency &rarr; device intelligence &rarr; a dedicated audit function with its own tooling &rarr;
+full model governance on the matching thresholds.</p>
+<p><strong>It breaks when:</strong> you build it before you have run a thousand real sessions and
+learned where your own failures actually are.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>work out your concurrent-audit rate in week one.</strong> Everything else on this page can be bought, tuned or fixed later. That number is a hard ceiling on how many customers you can onboard per day, it is set by people rather than technology, and almost nobody discovers it until they need the capacity.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>Liveness passes a deepfake</strong></td><td>The product answers &ldquo;is this a real face&rdquo;, not &ldquo;did this come from a camera&rdquo;.</td><td>Injection detection. Ask the vendor the question directly.</td></tr>
+<tr><td><strong>The recording contains an un-redacted Aadhaar</strong></td><td>Redaction was designed for the UI, not for the stored video.</td><td>Decide redaction before you record. You cannot un-record.</td></tr>
+<tr><td><strong>Onboarding volume hits a wall</strong></td><td>The concurrent audit is one person per N sessions.</td><td>Model audit capacity before forecasting volume.</td></tr>
+<tr><td><strong>Disabled customers cannot complete</strong></td><td>The flow requires blinking or smiling.</td><td>Not mandatory per the RBI FAQ. Remove the gesture gate.</td></tr>
+<tr><td><strong>&ldquo;Alteration-proof&rdquo; cannot be demonstrated</strong></td><td>It meant &ldquo;we have no edit feature&rdquo;.</td><td>Hash on close, store it out of reach, re-verify at audit.</td></tr>
+<tr><td><strong>Sessions die at step 6</strong></td><td>No bandwidth check at step 1.</td><td>Pre-flight. The officer's time is the expensive part.</td></tr>
+<tr><td><strong>Audit failure rate is near zero</strong></td><td>It is a rubber stamp.</td><td>Sample and re-review. A control nobody fails is not a control.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/products/document-ai/" class="mod-card"><div class="mod-num">GUIDE 01</div><h3>Document AI</h3><p>Step 3 of this page is that whole product, nested inside this one. Eight steps, same shape.</p></a>
+<a href="/fintech-ai/identity-onboarding/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 01</div><h3>Identity &amp; Onboarding</h3><p>Every tool with prices, including the face-match and liveness vendors.</p></a>
+<a href="/fintech-ai/aml-compliance/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 04</div><h3>AML &amp; Compliance</h3><p>Screening runs on the name this process captured. Wrong name in, wrong screen out.</p></a>
+<a href="/fintech-ai/regulation-india/" class="mod-card"><div class="mod-num">REFERENCE</div><h3>India regulation</h3><p>The KYC Master Direction, retention rules and what counts as face-to-face.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. V-CIP is a regulated process and a non-compliant onboarding is a supervisory matter, not a bug. Nothing here is legal advice. Have your flow, your retention and your audit process reviewed by qualified counsel and your compliance officer before a real customer joins a call.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI KYC Master Direction, Para 19</strong> &mdash; the V-CIP framework: trained official, live recording, geo-tagging, liveness, IP control, concurrent audit and the face-to-face equivalence. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI sector-specific KYC Master Directions, 28 November 2025</strong> &mdash; the replacement of the 2016 Direction and the extension of V-CIP to ten institution types including payment aggregators. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI KYC FAQs</strong> &mdash; Q20 — specific facial gestures such as blinking or smiling are not mandatory for the liveness check, with accommodation required. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>UIDAI</strong> &mdash; offline Aadhaar XML and QR, the three-day freshness limit, and the redaction requirement. <a href="https://uidai.gov.in" target="_blank" rel="noopener">uidai.gov.in</a></li><li><span class="src-k src-official">official</span><strong>DigiLocker</strong> &mdash; issued-document retrieval as an OVD route inside the session. <a href="https://www.digilocker.gov.in" target="_blank" rel="noopener">www.digilocker.gov.in</a></li><li><span class="src-k src-industry">industry</span><strong>V-CIP platform pricing and capability reporting</strong> &mdash; the ~₹10 per verification entry point, iBeta PAD levels, and the injection-detection question. Vendor-published and third-party compiled; confirm in writing.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. V-CIP rules changed materially in 2025; the date is part of the claim.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

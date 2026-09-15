@@ -64,8 +64,8 @@ def mk(path, title, meta, intro, sections, related, crumb_label, crumb_url):
   <div class="wrap guide-body">
     <div class="guide-content">{body}</div>
     <aside class="guide-sidebar">
-      <div class="sidebar-card"><h4>Related guides</h4><ul class="sidebar-list">{rel}</ul></div>
-      <div class="sidebar-card"><h4>This section</h4><a href="{crumb_url}" class="sidebar-link">{crumb_label} overview &rarr;</a></div>
+      <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list">{rel}</ul></div>
+      <div class="sidebar-card"><h3>This section</h3><a href="{crumb_url}" class="sidebar-link">{crumb_label} overview &rarr;</a></div>
     </aside>
   </div>
 </article>

@@ -89,7 +89,7 @@ h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;l
 /* registry */
 .reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
 .reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
-.reg-head h4{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
 .reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
 .reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
 .reg-row:last-child{border-bottom:none}
@@ -206,7 +206,7 @@ def prompt(body):
 def registry(title,rows,verified=None):
     verified = verified or VERIFIED
     out=''.join(f'<div class="reg-row"><div class="n">{n}<span class="pill p-{k}">{k}</span></div><div class="d">{d}</div></div>' for n,k,d in rows)
-    return (f'<div class="reg"><div class="reg-head"><h4>{title}</h4>'
+    return (f'<div class="reg"><div class="reg-head"><h3>{title}</h3>'
       f'<span class="reg-date">Verified {verified}</span></div>{out}</div>')
 
 def note(t,lbl='Note'): return f'<div class="note"><span class="note-lbl">{lbl}</span><p>{t}</p></div>'

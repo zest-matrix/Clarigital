@@ -94,7 +94,7 @@ def T(path,name,title,meta,lead,crumbs,tags,site_url,site_label,facts,green,indi
 </div>
 <div class="art-sidebar">
   <div class="sidebar-card">
-    <h4>Quick facts</h4>
+    <h3>Quick facts</h3>
     <div style="font-size:.82rem;color:var(--muted);line-height:1.7">{fx}</div>
   </div>
   <div class="sidebar-card">
@@ -102,7 +102,7 @@ def T(path,name,title,meta,lead,crumbs,tags,site_url,site_label,facts,green,indi
     <a href="{site_url}" target="_blank" rel="noopener" class="sidebar-link">{site_label} &#8599;</a>
   </div>
   <div class="sidebar-card">
-    <h4>Related</h4>
+    <h3>Related</h3>
     {rel}
   </div>
 </div>

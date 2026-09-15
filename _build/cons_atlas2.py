@@ -59,7 +59,7 @@ def go(path):
 
     # 3. TOC card at top of sidebar
     if toc:
-        out='<div class="sidebar-card"><h4>On this page</h4><div class="pg-toc">'
+        out='<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc">'
         last=None
         for k,sid,t in toc:
             if k!=last:

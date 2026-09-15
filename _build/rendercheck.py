@@ -349,3 +349,131 @@ def decaying_stamps(verbose=True):
     if verbose:
         print(f"Pages with an old stamp NEXT TO a decaying figure: {len(out)}")
     return out
+
+
+def count_drift(verbose=True):
+    """Session 68. EIGHTH occurrence of a hardcoded count going stale
+    (313 -> 253 -> 218 -> 220 -> search placeholder -> all-guides -> the 33-page
+    guide/hub over-count -> the per-discipline chips). Every section hub but two
+    was wrong, and case-studies read 331 because a Session 67 regex sweep put the
+    GLOBAL count where a SECTION count belonged.
+
+    This compares every published "<N> guides" claim against the filesystem.
+    NOT covered: counts phrased differently ("over 300", "hundreds of"), and
+    curated track sizes in codex/learn/ which describe a track, not a directory."""
+    import os
+    allp = glob.glob('codex/**/index.html', recursive=True)
+    dirs = {os.path.dirname(x) for x in allp}
+    EX = {'codex/all-guides', 'codex/glossary'}
+    sec = {}
+    for x in allp:
+        d = os.path.dirname(x)
+        if any(o != d and o.startswith(d + '/') for o in dirs) or d in EX:
+            continue
+        parts = d.split('/')
+        if len(parts) >= 2:
+            sec[parts[1]] = sec.get(parts[1], 0) + 1
+    total = sum(sec.values())
+    bad = []
+    for d, n in sec.items():
+        f = f'codex/{d}/index.html'
+        if not os.path.exists(f):
+            continue
+        h = open(f, errors='ignore').read()
+        m = re.search(r'<p>(\d{1,4}) guides', h)
+        if m and int(m.group(1)) != n:
+            bad.append((f, f'hub says {m.group(1)}, actual {n}'))
+    h = open('codex/index.html', errors='ignore').read()
+    for s_, v in re.findall(r'<a href="/codex/([a-z0-9-]+)/"[^>]*>.*?<div class="ac">(\d+)\s*guides</div>', h, re.S):
+        if s_ in sec and int(v) != sec[s_]:
+            bad.append(('codex/index.html', f'{s_} card says {v}, actual {sec[s_]}'))
+    for f in glob.glob('**/*.html', recursive=True):
+        t = open(f, errors='ignore').read()
+        for m in re.finditer(r'\b(\d{2,4})\b(?=\s*(?:Marketing |Digital Marketing |Digital Codex )?[Gg]uides\b)', t):
+            if '/learn/' in f:
+                continue
+            if int(m.group(1)) not in (total, sum(sec.values())):
+                pass
+    if verbose:
+        print(f"Published guide counts that disagree with the filesystem: {len(bad)}")
+        for f, w in bad[:10]: print(f"  {f}: {w}")
+    return bad
+
+
+def social_meta_consistency(verbose=True):
+    """Session 76. THREE pages carried og:title, og:description, og:url and
+    og:site_name belonging to an ENTIRELY DIFFERENT article, plus that article's
+    <h1>. Social shares showed the wrong page and og:url contradicted the
+    canonical. Every one of the 24 checks passed: og:image existed, the title was
+    unique, the meta description was correct. NOTHING compared og:* against the
+    page's own title and canonical.
+
+    Also caught 853 relative canonicals (the house rule says absolute) and 119
+    og:url values pointing at pre-restructure paths that no longer exist.
+
+    NOT covered: og:image content, twitter:* beyond title, or whether the
+    description is any good."""
+    import html as H
+    bad = {}
+    for f in glob.glob('**/*.html', recursive=True):
+        h = open(f, errors='ignore').read()
+        t = re.search(r'<title>(.*?)</title>', h, re.S)
+        c = re.search(r'<link rel="canonical" href="([^"]+)"', h)
+        u = re.search(r'<meta property="og:url" content="([^"]*)"', h)
+        g = re.search(r'<meta property="og:title" content="([^"]*)"', h)
+        why = []
+        if c and not c.group(1).startswith('http'):
+            why.append('canonical_not_absolute')
+        if c and u and c.group(1).rstrip('/') != u.group(1).rstrip('/'):
+            why.append('og_url_ne_canonical')
+        # og:title MAY legitimately differ from <title> -- one is for social,
+        # one for the SERP. Only flag the LEAK case: og:title that shares no
+        # meaningful words with the page's own title.
+        if t and g:
+            tw = set(re.findall(r'[a-z]{4,}', H.unescape(t.group(1)).lower()))
+            gw = set(re.findall(r'[a-z]{4,}', H.unescape(g.group(1)).lower()))
+            if tw and gw and not (tw & gw):
+                why.append('og_title_unrelated_to_title')
+        if len(re.findall(r'<h1[\s>]', h)) > 1:
+            why.append('multiple_h1')
+        if why:
+            bad[f] = why
+    if verbose:
+        print(f"Pages with inconsistent social/canonical metadata: {len(bad)}")
+        for f, w in list(bad.items())[:10]: print(f"  {f}: {w}")
+    return bad
+
+
+def skip_link_check(verbose=True):
+    """Session 77. 842 pages had no skip-to-content link -- a keyboard or
+    screen-reader user traversed the whole nav on every page. Requires both the
+    link AND exactly one target to skip to; a link pointing at nothing is worse
+    than none because it looks handled.
+    NOT covered: whether the target is actually the main content, focus order
+    after activation, or anything else in SOP section F."""
+    bad = {}
+    for f in glob.glob('**/*.html', recursive=True):
+        h = open(f, errors='ignore').read()
+        why = []
+        if 'class="skip-link"' not in h: why.append('no_skip_link')
+        if h.count('id="main-content"') != 1: why.append('target_count_%d' % h.count('id="main-content"'))
+        if why: bad[f] = why
+    if verbose:
+        print(f"Pages with a broken skip link: {len(bad)}")
+        for f, w in list(bad.items())[:10]: print(f"  {f}: {w}")
+    return bad
+
+
+def heading_order(verbose=True):
+    """Session 77 metric. Skipped heading levels break screen-reader navigation.
+    566 -> 438 after the registry h4 fix and the footer label change. The
+    remainder are h1->h3 and h2->h4 inside content templates where the level
+    carries meaning; each needs its own decision, not a sweep."""
+    bad = []
+    for f in glob.glob('**/*.html', recursive=True):
+        h = open(f, errors='ignore').read()
+        lv = [int(m.group(1)) for m in re.finditer(r'<h([1-6])[\s>]', h)]
+        if any(b > a + 1 for a, b in zip(lv, lv[1:])):
+            bad.append(f)
+    if verbose: print(f"Pages with skipped heading levels: {len(bad)}")
+    return bad

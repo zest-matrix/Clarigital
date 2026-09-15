@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Digital Codex">
 <meta name="description" content="How to use server access logs to understand Googlebot crawl behaviour, crawl budget, crawl frequency by URL type, and discover indexing problems before...">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="/codex/seo/technical/log-file-analysis/">
+<link rel="canonical" href="https://www.clarigital.com/codex/seo/technical/log-file-analysis/">>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Log File Analysis for SEO: The Complete Guide","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-04","articleSection":"Technical SEO"}</script>
 <style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -89,7 +89,7 @@ td{padding:11px 14px;border-bottom:1px solid var(--g100);color:var(--g700);font-
 article h2{scroll-margin-top:116px}.chapter{margin-bottom:44px;scroll-margin-top:116px}
 .chap-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}.chap-hdr h2{margin:0;border:none;padding:0}
 .learn-box{background:var(--w);border:1px solid var(--g200);border-radius:var(--r);overflow:hidden;margin-bottom:28px}
-.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h3{font-size:.86rem;margin:0;font-weight:700}
+.lb-head{padding:14px 18px;background:var(--g50);border-bottom:1px solid var(--g200)}.lb-head h2{font-size:.86rem;margin:0;font-weight:700}
 .lb-body{padding:14px 18px}.lb-body ul{list-style:none;margin:0;padding:0}
 .lb-body li{display:flex;gap:10px;align-items:flex-start;padding:5px 0;font-size:.86rem;border-bottom:1px solid var(--g100)}.lb-body li:last-child{border-bottom:none}
 .lb-body li::before{content:'checkmark';font-weight:700;color:var(--green);flex-shrink:0;margin-top:1px}
@@ -132,7 +132,7 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .site-footer{background:var(--g900);padding:52px 0 28px;border-top:1px solid rgba(255,255,255,.06)}
 .ft-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
 .ft-brand p{font-size:.8rem;line-height:1.72;margin-top:12px;color:rgba(255,255,255,.4)}
-.ft-col h5{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
+.ft-col .ft-h{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.32);margin-bottom:12px}
 .ft-col ul{list-style:none}.ft-col li{margin-bottom:7px}.ft-col a{font-size:.8rem;color:rgba(255,255,255,.52);text-decoration:none;transition:color var(--t)}.ft-col a:hover{color:#fff}
 .ft-bot{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;font-size:.74rem;color:rgba(255,255,255,.25);display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px}
 @media(max-width:860px){.ft-grid{grid-template-columns:1fr 1fr}.cta-in{flex-direction:column;text-align:center}.cta-btns{justify-content:center}}
@@ -152,7 +152,10 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .breadcrumb{}
 .page-hero .breadcrumb a{color:rgba(255,255,255,.45)}
 .page-hero .breadcrumb .sep{color:rgba(255,255,255,.2)}
-.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}</style></style>
+.logo-mark{width:32px;height:32px;background:#3B82F6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}.nav-logo-name{font-size:.93rem;font-weight:700;color:#1D4ED8;letter-spacing:-.01em}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style></style>
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -172,6 +175,7 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 3, "name": "Seo", "item": "https://www.clarigital.com/codex/seo/"}, {"@type": "ListItem", "position": 4, "name": "Technical", "item": "https://www.clarigital.com/codex/seo/technical/"}, {"@type": "ListItem", "position": 5, "name": "Log File Analysis for SEO: The Complete Guide", "item": "https://www.clarigital.com/codex/seo/technical/log-file-analysis/"}]}</script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 <header><div class="clarigital-back" style="background:#0F172A;border-bottom:1px solid rgba(96,165,250,.15);padding:6px 0;text-align:center"><div style="max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:8px"><a href="/" style="font-size:.72rem;color:rgba(96,165,250,.7);text-decoration:none;font-weight:600;letter-spacing:.03em">&#8592; Clarigital</a><span style="font-size:.72rem;color:rgba(248,250,252,.2)">&#183;</span><span style="font-size:.72rem;color:rgba(248,250,252,.25)">Clarity in Digital Marketing</span></div></div>
 
 <nav class="site-nav"><div class="nav-in">
@@ -187,7 +191,7 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 </div></div>
 </header>
 <nav class="chap-nav"><div class="chap-nav-in"><a class="cnl on" href="#what-are-logs">What Are Access Logs</a><a class="cnl" href="#googlebot-detection">Googlebot Detection</a><a class="cnl" href="#crawl-budget">Crawl Budget</a><a class="cnl" href="#what-to-measure">What to Measure</a><a class="cnl" href="#common-findings">Common Findings</a><a class="cnl" href="#tools">Analysis Tools</a><a class="cnl" href="#action">Taking Action</a><a class="cnl" href="#sources">Sources</a></div></nav>
-<main>
+<main id="main-content">
 <section class="page-hero"><div class="wrap">
   <nav class="breadcrumb"><a href="/codex/">Home</a><span class="sep">/</span><a href="/codex/seo/">SEO</a><span class="sep">/</span><a href="/codex/seo/">Technical SEO</a><span class="sep">/</span><span class="cur">Log File Analysis for SEO</span></nav>
   <span class="label-tag">Technical SEO &#183; Session 2, Guide 10</span>
@@ -201,7 +205,7 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <section><div class="wrap"><div class="art-layout">
 <article>
 
-<div class="learn-box"><div class="lb-head"><h3>What You Will Learn</h3></div><div class="lb-body"><ul>
+<div class="learn-box"><div class="lb-head"><h2>What You Will Learn</h2></div><div class="lb-body"><ul>
   <li>What server access logs contain and how to obtain them from your hosting environment</li>
   <li>How to correctly identify genuine Googlebot requests (and filter out fakes)</li>
   <li>What crawl budget is, what influences it, and how to optimise it</li>
@@ -320,14 +324,14 @@ host crawl-66-249-66-1.googlebot.com
 </div></div></section>
 </main>
 <section class="cta-strip"><div class="wrap"><div class="cta-in">
-  <div><h2>600 guides. All authentic sources.</h2><p>Official documentation and academic research only.</p></div>
+  <div><h2>331 guides. All authentic sources.</h2><p>Official documentation and academic research only.</p></div>
   <div class="cta-btns"><a href="/codex/all-guides/" class="btn btn-primary btn-lg">Browse All Guides</a><a href="/codex/glossary/" class="btn btn-outline-w btn-lg">A&#8211;Z Glossary</a></div>
 </div></div></section>
 <footer class="site-footer"><div class="wrap"><div class="ft-grid">
-  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>600 guides on digital marketing. Official sources only.</p></div>
-  <div class="ft-col"><h5>Technical SEO</h5><ul><li><a href="/codex/seo/technical/lcp-optimisation/">LCP</a></li><li><a href="/codex/seo/technical/inp-optimisation/">INP</a></li><li><a href="/codex/seo/technical/cls-optimisation/">CLS</a></li><li><a href="/codex/seo/technical/schema-markup/">Schema</a></li><li><a href="/codex/seo/technical/hreflang/">Hreflang</a></li></ul></div>
-  <div class="ft-col"><h5>SEO</h5><ul><li><a href="/codex/seo/fundamentals/core-web-vitals/">Core Web Vitals</a></li><li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability</a></li></ul></div>
-  <div class="ft-col"><h5>Resources</h5><ul><li><a href="/codex/all-guides/">All 600 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
+  <div class="ft-brand"><div style="display:flex;align-items:center;gap:9px"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div><p>331 guides on digital marketing. Official sources only.</p></div>
+  <div class="ft-col"><div class="ft-h">Technical SEO</div><ul><li><a href="/codex/seo/technical/lcp-optimisation/">LCP</a></li><li><a href="/codex/seo/technical/inp-optimisation/">INP</a></li><li><a href="/codex/seo/technical/cls-optimisation/">CLS</a></li><li><a href="/codex/seo/technical/schema-markup/">Schema</a></li><li><a href="/codex/seo/technical/hreflang/">Hreflang</a></li></ul></div>
+  <div class="ft-col"><div class="ft-h">SEO</div><ul><li><a href="/codex/seo/fundamentals/core-web-vitals/">Core Web Vitals</a></li><li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability</a></li></ul></div>
+  <div class="ft-col"><div class="ft-h">Resources</div><ul><li><a href="/codex/all-guides/">All 331 Guides</a></li><li><a href="/codex/glossary/">A&#8211;Z Glossary</a></li></ul></div>
 </div><div class="ft-bot"><span>&#169; 2026 Digital Codex.</span><span>Authentic sources only &#183; No affiliate links</span></div></div></footer>
 <script>
 (function(){var h=document.getElementById('navHam'),d=document.getElementById('navDrawer'),c=document.getElementById('navClose');function o(){d.classList.add('open');h.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}function s(){d.classList.remove('open');h.setAttribute('aria-expanded','false');document.body.style.overflow='';}if(h)h.addEventListener('click',o);if(c)c.addEventListener('click',s);if(d)d.addEventListener('click',function(e){if(e.target===d)s();});})();

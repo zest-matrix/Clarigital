@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cross-Border Payments: How to Build It | Clarigital</title>
+<meta name="description" content="Build cross-border payments step by step: the eight stages, the PA-CB rules, how to connect them, and where the FX cost actually hides.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/cross-border-payments/">
+<meta property="og:type" content="article"><meta property="og:title" content="Cross-Border Payments: How to Build It">
+<meta property="og:description" content="Build cross-border payments step by step: the eight stages, the PA-CB rules, how to connect them, and where the FX cost actually hides."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/cross-border-payments/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Cross-Border Payments: How to Build It">
+<meta name="twitter:description" content="Build cross-border payments step by step: the eight stages, the PA-CB rules, how to connect them, and where the FX cost actually hides."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cross-Border Payments: How to Build It", "description": "Build cross-border payments step by step: the eight stages, the PA-CB rules, how to connect them, and where the FX cost actually hides.", "url": "https://www.clarigital.com/fintech-ai/products/cross-border-payments/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-13"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Cross-Border Payments: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/cross-border-payments/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>Cross-Border Payments: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 06</div>
+  <div class="ft-tag">Fintech AI</div><h1>Cross-Border Payments: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building cross-border payments from India. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What cross-border payments actually are</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 to 3 — direction, route and authorisation</a><a class="sub" href="#s-indigo-s1">Steps 1 and 2 &mdash; Direction, then route</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; Verify the authorisation</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 4 to 6 — onboarding, the cap and the paperwork</a><a class="sub" href="#s-indigo-s4">Step 4 &mdash; Onboard the merchant</a><a class="sub" href="#s-indigo-s5">Step 5 &mdash; Move it, inside the cap</a><a class="sub" href="#s-indigo-s6">Step 6 &mdash; Document it</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 7 and 8 — FX, reconciliation and reporting</a><a class="sub" href="#s-indigo-s7">Step 7 &mdash; The FX</a><a class="sub" href="#s-indigo-s8">Step 8 &mdash; Reconcile and report</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">The starting version</a><a class="sub" href="#s-amber-proper">The proper version</a><a class="sub" href="#s-amber-big">Becoming the PA-CB</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main id="main-content" class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one capability: moving money across India's border, legally,
+for goods or services. Receiving from overseas customers, paying overseas suppliers, or both.</p>
+<p>It is the capability behind every Indian SaaS company, exporter, freelancer platform and
+marketplace that touches a foreign currency.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The framework changed completely and the old one is still widely described as current.</strong> The <strong>OPGSP</strong> regime &mdash; imports capped at <strong>$2,000</strong>, exports at <strong>$10,000</strong> per transaction, and <strong>services excluded entirely</strong> &mdash; was withdrawn by the RBI circular of <strong>31 October 2023</strong>. It was replaced by <strong>PA-CB</strong>, then consolidated into the <strong>Master Direction on Regulation of Payment Aggregators of 15 September 2025</strong>. Anything describing OPGSP limits as live is describing a regime that no longer exists.</p></div>
+<h2 id="s-green-1">What cross-border payments actually are</h2>
+
+<p>Cross-border payments in India sit on three legal layers at once, and you cannot ignore any of
+them:</p>
+<table>
+<tr><th>Layer</th><th>What it governs</th></tr>
+<tr><td><strong>FEMA, 1999</strong></td><td>Whether the money may cross the border at all, and for what purpose.</td></tr>
+<tr><td><strong>RBI payment regulation</strong></td><td>Who is allowed to move it &mdash; AD banks, and now authorised PA-CBs.</td></tr>
+<tr><td><strong>PMLA / FIU-IND</strong></td><td>Reporting obligations. A Delhi High Court ruling in July 2023 confirmed these operators are reporting entities.</td></tr>
+</table>
+<p><strong>The three PA-CB categories, by direction of flow:</strong></p>
+<table>
+<tr><th>Category</th><th>Direction</th><th>Who needs it</th></tr>
+<tr><td><strong>Export</strong></td><td>Money coming <em>in</em> from overseas buyers</td><td>SaaS, IT services, freelancers, exporters.</td></tr>
+<tr><td><strong>Import</strong></td><td>Money going <em>out</em> to overseas sellers</td><td>Businesses buying foreign goods, software or services.</td></tr>
+<tr><td><strong>Both</strong></td><td>Two-way</td><td>Marketplaces, and anyone who both earns and spends abroad.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Match the category to your flow before you sign anything.</strong> A provider authorised for export-only cannot process your outbound supplier payments, and you will find that out at the moment you need to pay someone. If you do both, you need a provider covering both &mdash; or two providers.</p></div>
+<p><strong>What it is not:</strong></p>
+<ul>
+<li><strong>Not a wire transfer with an API.</strong> The documentation obligations are the product.</li>
+<li><strong>Not unlimited.</strong> See step 5.</li>
+<li><strong>Not something you can route around.</strong> Using unauthorised channels is a FEMA
+violation, with penalties running to criminal prosecution for wilful breaches.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Which direction?</strong></td><td>In, out, or both. It decides everything after.</td></tr>
+<tr><td>2</td><td><strong>Pick your route</strong></td><td>AD bank, a PA-CB provider, or become one.</td></tr>
+<tr><td>3</td><td><strong>Verify the authorisation</strong></td><td>Final, not in-principle. And the right category.</td></tr>
+<tr><td>4</td><td><strong>Onboard the merchant</strong></td><td>KYC, plus the FEMA purpose of the money.</td></tr>
+<tr><td>5</td><td><strong>Move it &mdash; inside the cap</strong></td><td>&#8377;25 lakh per unit, and the word &ldquo;unit&rdquo; is doing work.</td></tr>
+<tr><td>6</td><td><strong>Document it</strong></td><td>Purpose code, FIRA, EDPMS or IDPMS. This is what makes it legal, not just successful.</td></tr>
+<tr><td>7</td><td><strong>The FX</strong></td><td>Where the real cost lives, and where it is hidden.</td></tr>
+<tr><td>8</td><td><strong>Reconcile and report</strong></td><td>Including the FIU-IND obligation that surprises people.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p>Step 6 is the one that separates a working integration from a compliant one. A payment can settle perfectly and still leave you with an open entry in a monitoring system that someone has to close, months later, without the paperwork.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 to 3 — direction, route and authorisation</h2>
+
+<h3 id="s-indigo-s1">Steps 1 and 2 &mdash; Direction, then route</h3>
+<table>
+<tr><th>Route</th><th>What it means</th><th>When it fits</th></tr>
+<tr><td><strong>AD Category-I bank directly</strong></td><td>Your bank handles the remittance and the documentation.</td><td>Low volume, large tickets, or anything above the PA-CB cap.</td></tr>
+<tr><td><strong>An authorised PA-CB</strong></td><td>A provider handles collection, conversion and paperwork.</td><td>Most businesses. Better rates, better developer experience, and the documentation largely handled.</td></tr>
+<tr><td><strong>Become a PA-CB</strong></td><td><strong>&#8377;15 crore net worth at application, rising to &#8377;25 crore</strong>, plus authorisation, FIU-IND registration and FEMA obligations.</td><td>Cross-border payments <em>are</em> your product.</td></tr>
+</table>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; Verify the authorisation</h3>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The procurement trap: &ldquo;in-principle approval&rdquo; is not authorisation.</strong> Several well-known names have held in-principle PA-CB approval for extended periods while their final authorisation remained pending. In-principle means the RBI is minded to approve, subject to conditions. It does not mean the entity may yet process your cross-border payments. <strong>Ask two questions and get written answers: is the authorisation final, and which category does it cover?</strong> &ldquo;We are RBI regulated&rdquo; answers neither.</p></div>
+<p>The same check applies to the accounts underneath. A PA-CB maintains separate collection accounts
+with an AD Category-I bank &mdash; <strong>one for imports, one for exports</strong> &mdash; and they
+must not be commingled, with each other or with the provider's own money. That separation is what
+keeps your export documentation intact, so your purpose codes and reconciliation continue to work.
+It is worth asking a provider to describe their account structure; a vague answer is informative.</p>
+
+<h2 id="s-indigo-1">Steps 4 to 6 — onboarding, the cap and the paperwork</h2>
+
+<h3 id="s-indigo-s4">Step 4 &mdash; Onboard the merchant</h3>
+<p>Standard KYC under the Master Direction, plus one thing domestic onboarding does not have:
+<strong>the FEMA purpose</strong>. You are not just establishing who they are, you are establishing
+what the money is <em>for</em>, because that determines whether it may cross the border at all.</p>
+<p>Ongoing due diligence applies, and enhanced due diligence kicks in above
+<strong>&#8377;2.5 lakh per unit</strong>. That is low enough that for most B2B exporters it is the
+normal case rather than the exception &mdash; build it into the flow rather than treating it as an
+escalation.</p>
+
+<h3 id="s-indigo-s5">Step 5 &mdash; Move it, inside the cap</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 5, the cap, and the word doing all the work</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from decimal import Decimal
+
+# Per-unit cap on goods and services processed through a PA-CB.
+PER_UNIT_CAP = Decimal(&quot;2500000&quot;)      # Rs 25 lakh
+EDD_THRESHOLD = Decimal(&quot;250000&quot;)      # Rs 2.5 lakh -&gt; enhanced due diligence
+
+# NOTE THE WORD. The OPGSP limit it replaced was PER TRANSACTION. This one is
+# PER UNIT of goods or services, and how a &quot;unit&quot; is measured is genuinely
+# ambiguous -- the RBI has not defined it precisely and practitioners have been
+# asking since the 2023 circular.
+#
+# Practical consequence: a Rs 35 lakh consulting engagement is NOT solved by
+# splitting it into two payments. If it is one unit of service, it is one unit.
+# Structuring invoices to duck the cap is the thing that looks like structuring.
+
+def check_transaction(txn) -&gt; dict:
+    flags = []
+    if txn[&quot;value_inr&quot;] &gt; PER_UNIT_CAP:
+        flags.append({
+            &quot;block&quot;: True, &quot;why&quot;: &quot;exceeds_per_unit_cap&quot;,
+            &quot;action&quot;: &quot;route via an AD bank directly, not by splitting the invoice&quot;,
+        })
+    if txn[&quot;value_inr&quot;] &gt; EDD_THRESHOLD:
+        flags.append({&quot;block&quot;: False, &quot;why&quot;: &quot;enhanced_due_diligence_required&quot;,
+                      &quot;action&quot;: &quot;EDD on the counterparty before processing&quot;})
+    if not txn.get(&quot;purpose_code&quot;):
+        flags.append({&quot;block&quot;: True, &quot;why&quot;: &quot;no_purpose_code&quot;,
+                      &quot;action&quot;: &quot;a payment without a FEMA purpose is not a payment you can make&quot;})
+    if txn[&quot;direction&quot;] not in txn[&quot;provider_categories&quot;]:
+        flags.append({&quot;block&quot;: True, &quot;why&quot;: &quot;provider_not_authorised_for_direction&quot;,
+                      &quot;action&quot;: &quot;export-only cannot process imports&quot;})
+    return {&quot;allow&quot;: not any(f[&quot;block&quot;] for f in flags), &quot;flags&quot;: flags}
+
+# WHAT TO CHECK
+# [ ] above the cap, the answer is a DIFFERENT ROUTE, not a smaller invoice.
+#     An AD bank can handle what a PA-CB cannot. Splitting to fit is the
+#     pattern every AML system is built to notice
+# [ ] &quot;unit&quot; is ambiguous. Write down YOUR interpretation, get it agreed with
+#     your provider and your bank IN WRITING, and apply it consistently. An
+#     inconsistent interpretation is worse than a conservative one
+# [ ] EDD above Rs 2.5 lakh is on the COUNTERPARTY, and it takes time. Build it
+#     into the flow, not as a blocking surprise at payment
+# [ ] the purpose code is chosen from the RBI list at the point of the payment,
+#     not guessed later by finance from the narration
+# [ ] provider category is checked in code against the direction. It is a
+#     one-line check and it prevents a whole class of failed payment
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> the cap is <strong>per unit</strong>, not per
+transaction &mdash; a deliberate change from the OPGSP regime it replaced, and the RBI has not
+defined precisely what a &ldquo;unit&rdquo; is. For a physical good it is intuitive. For a
+&#8377;35 lakh consulting engagement it is not, and <strong>splitting the invoice is exactly the
+behaviour an AML system is designed to flag</strong>. The correct answer above the cap is a different
+route &mdash; an AD bank &mdash; not a smaller invoice. Write down your interpretation of
+&ldquo;unit&rdquo;, agree it with your provider and your bank in writing, and apply it the same way
+every time.</p>
+
+<h3 id="s-indigo-s6">Step 6 &mdash; Document it</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 6, the documentation that makes it legal</span><button class="cb-copy" type="button">Copy</button></div><pre><code># A payment that settles is not the same as a payment that is compliant. The
+# money arriving is the easy part; closing the regulatory entry is the work.
+
+PURPOSE_CODES = {          # illustrative -- use the current RBI list
+    &quot;P0802&quot;: &quot;software consultancy / implementation&quot;,
+    &quot;P0807&quot;: &quot;business and management consultancy&quot;,
+    &quot;P1006&quot;: &quot;advertising and market research&quot;,
+    &quot;P0103&quot;: &quot;export of goods&quot;,
+}
+
+def remittance_record(txn, merchant):
+    rec = {
+        &quot;direction&quot;: txn[&quot;direction&quot;],               # INWARD | OUTWARD
+        &quot;purpose_code&quot;: txn[&quot;purpose_code&quot;],          # chosen at payment time
+        &quot;amount_fcy&quot;: txn[&quot;amount_fcy&quot;],
+        &quot;currency&quot;: txn[&quot;currency&quot;],
+        &quot;amount_inr&quot;: txn[&quot;amount_inr&quot;],
+        &quot;fx_rate_applied&quot;: txn[&quot;fx_rate&quot;],
+        &quot;value_date&quot;: txn[&quot;value_date&quot;],
+        &quot;counterparty&quot;: txn[&quot;counterparty&quot;],
+        &quot;invoice_ref&quot;: txn[&quot;invoice_ref&quot;],
+        &quot;contract_ref&quot;: txn.get(&quot;contract_ref&quot;),
+    }
+    if txn[&quot;direction&quot;] == &quot;INWARD&quot;:
+        # Export of services or goods. The AD bank reports into EDPMS, and the
+        # entry stays OPEN until it is matched and closed. An unclosed entry is
+        # a compliance item with your name on it, months later.
+        rec[&quot;fira_required&quot;] = True                  # Foreign Inward Remittance Advice
+        rec[&quot;edpms_entry&quot;] = &quot;expected&quot;
+        rec[&quot;close_by&quot;] = txn[&quot;value_date&quot;] + realisation_window(merchant)
+    else:
+        # Import. Reported into IDPMS, and the entry closes against evidence
+        # that you actually received what you paid for.
+        rec[&quot;idpms_entry&quot;] = &quot;expected&quot;
+        rec[&quot;evidence_required&quot;] = [&quot;bill_of_entry&quot; if txn[&quot;is_goods&quot;]
+                                    else &quot;service_completion_evidence&quot;]
+    return rec
+
+# WHAT TO CHECK
+# [ ] FIRA is requested and STORED per inward remittance. It is the evidence
+#     the money is export proceeds and not something else, and clients,
+#     auditors and the tax authority all ask for it eventually
+# [ ] EDPMS / IDPMS entries are TRACKED TO CLOSURE, not assumed closed. An open
+#     entry is the single most common cross-border compliance debt, and it
+#     surfaces as a bank refusing your next transaction
+# [ ] the purpose code is picked at payment time from the current RBI list.
+#     Reverse-engineering it from a bank narration months later is guesswork
+# [ ] store the FX RATE APPLIED, not just the INR amount. Without it you cannot
+#     audit the spread in step 7
+# [ ] invoice and contract references are captured with the payment, because
+#     closing an EDPMS entry needs the documents, not the payment record
+# [ ] outward payments need evidence you received the thing. A bill of entry
+#     for goods; something defensible for services
+</code></pre></div>
+<p><strong>The gotcha nobody documents:</strong> <strong>EDPMS and IDPMS entries stay open until
+somebody closes them.</strong> The payment succeeds, the money is in the account, everyone moves on
+&mdash; and an entry sits in a monitoring system waiting for documentation. It surfaces months later
+as a bank declining your next transaction until the backlog is cleared. <strong>Track entries to
+closure as a first-class part of the product</strong>, not as something finance will sort out at year
+end, because by then the invoices are hard to find and the people who raised them have moved on.</p>
+
+<h2 id="s-indigo-2">Steps 7 and 8 — FX, reconciliation and reporting</h2>
+
+<h3 id="s-indigo-s7">Step 7 &mdash; The FX</h3>
+<p><strong>This is where the money goes, and it is almost never on the pricing page.</strong></p>
+<p>A provider quoting &ldquo;1% fee&rdquo; may be applying an exchange rate two or three percent away
+from the interbank rate. The fee is visible and the spread is not, and the spread is usually the
+larger number. <a href="/fintech-ai/payments-reconciliation/build-sheet/">Build Sheet 05</a> records
+that all-in cross-border costs are frequently reported in the <strong>5&ndash;7%</strong> range
+against a <strong>3%</strong> headline, and the difference is almost entirely FX.</p>
+<table>
+<tr><th>Ask this</th><th>Why</th></tr>
+<tr><td><strong>&ldquo;What is your markup over the interbank mid-rate?&rdquo;</strong></td><td>The only question that gets a comparable number. &ldquo;Competitive rates&rdquo; is not an answer.</td></tr>
+<tr><td><strong>&ldquo;Show me the rate you applied on my last ten transactions, against the mid at that timestamp.&rdquo;</strong></td><td>Turns a claim into arithmetic. Store the applied rate per transaction and you can compute this yourself.</td></tr>
+<tr><td><strong>&ldquo;Who else takes a cut before it lands?&rdquo;</strong></td><td>Correspondent bank charges, beneficiary bank charges, and lifting fees are real and often undisclosed.</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Store the FX rate applied, per transaction, from day one.</strong> Without it you cannot audit your provider, cannot compare two providers honestly, and cannot answer a merchant asking why they received less than they expected. It is one column, and adding it later means the historical comparison you actually want is impossible.</p></div>
+
+<h3 id="s-indigo-s8">Step 8 &mdash; Reconcile and report</h3>
+<p>Three obligations that arrive together and are usually owned by nobody:</p>
+<ul>
+<li><strong>Reconciliation.</strong> Foreign currency in, INR out, at a rate, on a date, with fees
+deducted somewhere. See <a href="/fintech-ai/payments-reconciliation/build-sheet/">Build Sheet 05</a>
+&mdash; the control-total discipline applies identically, with an FX leg added.</li>
+<li><strong>EDPMS / IDPMS closure</strong>, tracked as a queue with an owner and an age.</li>
+<li><strong>FIU-IND.</strong> Cross-border payment operators are reporting entities under the PMLA.
+Registration and reporting obligations follow, and
+<a href="/fintech-ai/aml-compliance/build-sheet/">Build Sheet 04</a> covers the mechanics.</li>
+</ul>
+
+<h2 id="s-indigo-3">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>Cross-border payments &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Headline provider fee<span class="pill p-direct">direct</span></div><div class="d">Commonly quoted around <strong>1&ndash;3%</strong>. <strong>This is the visible part and usually the smaller one.</strong></div></div><div class="reg-row"><div class="n">FX spread<span class="pill p-direct">direct</span></div><div class="d"><strong>Where the money actually goes.</strong> Markup over the interbank mid-rate, rarely disclosed as a number. All-in cross-border cost is frequently reported at <strong>5&ndash;7%</strong> against a 3% headline.</div></div><div class="reg-row"><div class="n">Correspondent and beneficiary bank charges<span class="pill p-direct">direct</span></div><div class="d">Deducted in transit by banks you never chose. Ask who takes a cut before the money lands &mdash; the answer is often more than one party.</div></div><div class="reg-row"><div class="n">Becoming a PA-CB<span class="pill p-direct">direct</span></div><div class="d"><strong>&#8377;15 crore net worth at application, rising to &#8377;25 crore.</strong> Plus authorisation, FIU-IND registration, separate import and export collection accounts with an AD Category-I bank, and FEMA reporting. A licensed business, not a feature.</div></div><div class="reg-row"><div class="n">Enhanced due diligence<span class="pill p-direct">direct</span></div><div class="d">Required above <strong>&#8377;2.5 lakh per unit</strong> &mdash; low enough that for most B2B exporters it is the normal case. Analyst time, not licence cost.</div></div><div class="reg-row"><div class="n">EDPMS / IDPMS closure<span class="pill p-direct">direct</span></div><div class="d"><strong>The cost nobody budgets.</strong> Someone must chase documents and close entries. Left alone it accumulates until a bank stops processing your transactions, and then it is urgent.</div></div></div><div class="note"><span class="note-lbl">Note</span><p><strong>Compute your effective all-in rate yourself, per transaction:</strong> <em>(amount the counterparty sent &minus; amount that reached the account) &divide; amount sent</em>. Compare it to the interbank mid at that timestamp. That single number makes every provider comparable and it is the one nobody will quote you.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">The starting version</h3>
+<p><strong>Build:</strong> one authorised PA-CB provider matching your direction &rarr; purpose code
+captured at payment time &rarr; FIRA requested and stored per inward remittance &rarr; FX rate stored
+per transaction &rarr; a spreadsheet tracking EDPMS entries to closure.</p>
+<p><strong>It breaks when:</strong> a transaction exceeds the per-unit cap, or you start paying
+outward and your provider is export-only.</p>
+
+<h3 id="s-amber-proper">The proper version</h3>
+<p><strong>Build:</strong> everything above, plus &mdash; an AD bank relationship for above-cap
+transactions &rarr; provider category checked in code against direction &rarr; EDD built into the
+flow above &#8377;2.5 lakh &rarr; a written, agreed interpretation of &ldquo;unit&rdquo; &rarr; an
+EDPMS/IDPMS closure queue with an owner and an age report &rarr; effective all-in rate computed per
+transaction and reviewed monthly.</p>
+<p><strong>Trade:</strong> the documentation machinery is real work that produces nothing visible
+until the day it is needed, and then it is the only thing that matters.</p>
+
+<h3 id="s-amber-big">Becoming the PA-CB</h3>
+<p><strong>Build:</strong> authorisation, &#8377;25 crore net worth, separate collection accounts,
+FEMA and FIU-IND reporting, merchant due diligence at scale.</p>
+<p><strong>Use when:</strong> cross-border payments are the product. Not to save on FX.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>store the FX rate applied on every single transaction, starting with the first one.</strong> It is one column. Without it you cannot audit your provider, compare alternatives honestly, or explain a shortfall to a merchant &mdash; and it cannot be reconstructed later.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>Provider cannot process your payment</strong></td><td>Export-only authorisation, outbound payment.</td><td>Check category against direction, in code.</td></tr>
+<tr><td><strong>&ldquo;RBI regulated&rdquo; turns out to be in-principle</strong></td><td>Nobody asked whether authorisation was final.</td><td>Two written questions: final, and which category.</td></tr>
+<tr><td><strong>An invoice is split to fit the cap</strong></td><td>It seemed like the obvious workaround.</td><td>Route above-cap transactions through an AD bank.</td></tr>
+<tr><td><strong>The bank stops processing</strong></td><td>A backlog of open EDPMS entries.</td><td>Track closure as a queue from the first transaction.</td></tr>
+<tr><td><strong>The merchant received less than expected</strong></td><td>Spread plus correspondent charges, neither visible.</td><td>Store the applied rate; compute all-in cost per transaction.</td></tr>
+<tr><td><strong>Purpose code guessed at year end</strong></td><td>Not captured at payment time.</td><td>Pick it from the current RBI list, at payment.</td></tr>
+<tr><td><strong>No FIRA when a client asks</strong></td><td>Never requested.</td><td>Request and store per inward remittance.</td></tr>
+<tr><td><strong>EDD blocks a payment unexpectedly</strong></td><td>Treated as an escalation, not a step.</td><td>Above &#8377;2.5 lakh it is the normal path.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/payments-reconciliation/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 05</div><h3>Payments &amp; Reconciliation</h3><p>Control totals, the FX leg, and the PA Directions that govern the accounts underneath.</p></a>
+<a href="/fintech-ai/aml-compliance/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 04</div><h3>AML &amp; Compliance</h3><p>FIU-IND registration and reporting, and why splitting an invoice looks like structuring.</p></a>
+<a href="/fintech-ai/products/recurring-payments/" class="mod-card"><div class="mod-num">GUIDE 05</div><h3>Recurring Payments</h3><p>The 2026 e-mandate framework covers cross-border recurring transactions too.</p></a>
+<a href="/fintech-ai/regulation-india/" class="mod-card"><div class="mod-num">REFERENCE</div><h3>India regulation</h3><p>FEMA, the PA Directions and the PMLA obligations in one place.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. Cross-border payments are governed by FEMA, and using an unauthorised channel is a statutory violation rather than a commercial mistake. Nothing here is legal advice. Have your route, your purpose-code mapping and your documentation process reviewed by qualified counsel and your AD bank before the first transaction.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI Master Direction on Regulation of Payment Aggregators (15 September 2025)</strong> &mdash; the consolidated framework including PA-CB: the three categories, net worth, the separate import and export collection accounts with AD Category-I banks, and the prohibition on commingling. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI circular on Regulation of PA-CBs (31 October 2023)</strong> &mdash; the creation of the PA-CB framework, the withdrawal of OPGSP, the ₹25 lakh per-unit cap and the ₹2.5 lakh enhanced due diligence threshold. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>Foreign Exchange Management Act, 1999 and RBI purpose codes</strong> &mdash; whether money may cross the border and under which purpose, plus the EDPMS and IDPMS monitoring systems. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>FIU-IND</strong> &mdash; the reporting-entity obligation that attaches to cross-border payment operators under the PMLA. <a href="https://fiuindia.gov.in" target="_blank" rel="noopener">fiuindia.gov.in</a></li><li><span class="src-k src-industry">industry</span><strong>PA-CB practitioner commentary</strong> &mdash; the OPGSP limits it replaced ($2,000 imports, $10,000 exports, services excluded), the ambiguity in the word "unit", and the in-principle-versus-final authorisation distinction. Practitioner-sourced; verify current authorisation status directly with the provider.</li><li><span class="src-k src-industry">industry</span><strong>Cross-border cost reporting</strong> &mdash; the 5–7% all-in figure against a ~3% headline, and the composition of correspondent and beneficiary charges. Compute your own effective rate rather than relying on any published range.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Authorisation status changes; verify with the provider before routing money.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>
