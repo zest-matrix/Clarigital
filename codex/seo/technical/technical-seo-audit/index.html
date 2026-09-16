@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,42 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Score each issue on impact and effort. Rough tiers:</p><ul><li><strong>Critical</strong> — anything blocking indexation of commercially important pages; fix immediately</li><li><strong>High</strong> — duplicate content splitting signals, broken internal links at scale, severe mobile performance problems</li><li><strong>Medium</strong> — missing structured data, suboptimal internal linking, minor speed gains</li><li><strong>Low</strong> — cosmetic issues with no demonstrable ranking or user impact</li></ul><p>Deliver the critical and high items as a short actionable list. Put the rest in an appendix.</p>
 <h2>Audit Cadence</h2>
 <p>A full audit annually, or before and after any significant site change. A lighter monthly check on Search Console coverage, Core Web Vitals and broken links catches regressions early.</p><p>Migrations, replatforming and redesigns warrant an audit before launch, not after. Problems found on a staging site cost a fraction of the same problems found in production after traffic has dropped.</p>
-</div>
+<h2>Writing the Audit So It Gets Implemented</h2>
+
+<p>Most technical audits fail after delivery, not during. A hundred-item document arrives, nobody can
+start, and it is still open a year later.</p>
+<p>What changes that:</p>
+<p><strong>Order by impact against effort, not by category.</strong> A section headed
+<em>Crawlability</em> is organised for the auditor. A list headed <em>Do these four things first</em>
+is organised for the person implementing.</p>
+<p><strong>State the business consequence, not the violation.</strong> <em>"No canonical on paginated
+URLs"</em> is a finding. <em>"Product pages beyond page one are not being indexed, so roughly a third
+of the catalogue cannot be found in search"</em> is a reason to schedule work.</p>
+<p><strong>Name the owner and the system for each item.</strong> Developer, CMS, server configuration,
+DNS. An audit that does not say who can fix a thing goes to whoever commissioned it and stops.</p>
+<p><strong>Separate the one-offs from the standing rules.</strong> Some items are fixes; others are
+things the next template must not do again. Only the second kind prevents recurrence.</p>
+<p><strong>And cap the first round at ten items.</strong> Ten done beats a hundred documented.</p>
+
+<h2>Verifying That a Fix Actually Landed</h2>
+
+<p>The step almost always skipped: confirming that what was deployed matches what was asked for.</p>
+<p><strong>Re-crawl the affected URLs specifically</strong>, not the whole site, and check the exact
+attribute you asked to change. Fixes are frequently applied to a template that covers fewer pages than
+you assumed.</p>
+<p><strong>Check the rendered HTML, not the source</strong>, where the change is JavaScript-dependent.
+A tag present in the source and absent after rendering has not landed.</p>
+<p><strong>Watch index coverage over the following weeks</strong> rather than the day after. Crawling
+and reprocessing take time, and declaring a fix failed after 48 hours is the most common false
+negative in technical SEO.</p>
+<p><strong>Keep a log of what changed and when.</strong> When rankings move two months later, the only
+way to connect cause and effect is a dated record — and the alternative is an argument nobody can
+settle.</p>
+<p>Re-audit cadence: <strong>a full pass annually, a focused pass after any migration, template change
+or platform upgrade</strong>, and a standing crawl monthly to catch drift. The monthly crawl is what
+finds the problem before it is a project.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; crawl diagnostics, index coverage reporting and the rendering behaviour an audit works from <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability and Indexability</a></li><li><a href="/codex/seo/technical/log-file-analysis/">Log File Analysis</a></li><li><a href="/codex/seo/technical/duplicate-content-canonicalisation/">Duplicate Content</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Technical SEO" class="sidebar-link">/codex/seo/technical/ overview &rarr;</a></div>

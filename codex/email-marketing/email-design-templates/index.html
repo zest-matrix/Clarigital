@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,42 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>A growing share of recipients read in dark mode, where clients invert colours with varying degrees of competence. Logos with white backgrounds become visible boxes, dark text on transparent backgrounds disappears, and brand colours shift.</p><p>Mitigations: use transparent PNGs with strokes that work on both backgrounds, avoid pure white and pure black, and test explicitly in dark mode rather than assuming it will work.</p>
 <h2>Accessibility</h2>
 <p>Accessible email is also better email: semantic heading structure, sufficient colour contrast, descriptive link text rather than "click here", alt text on every image, and a single-column layout that reflows on small screens.</p><p>Font size below fourteen pixels is difficult to read on mobile and is a common cause of immediate deletion.</p>
-</div>
+<h2>Testing Across Clients Without Losing a Week</h2>
+
+<p>Email rendering is inconsistent enough that testing is not optional, and thorough testing is
+expensive. The compromise is a tiered approach.</p>
+<p><strong>Tier one — test every send.</strong> The two or three clients that account for most of your
+list. Look at your own analytics rather than industry figures; the distribution varies enormously by
+audience.</p>
+<p><strong>Tier two — test on template change.</strong> The next several clients, plus dark mode, plus
+one narrow mobile viewport.</p>
+<p><strong>Tier three — accept degradation.</strong> Old desktop clients with known limitations. Make
+sure the email is readable there, not that it is beautiful.</p>
+<p>Two habits that prevent most problems. <strong>Build from a template you have already
+tested</strong> rather than designing fresh each time — the failures come from new structures, not new
+copy. And <strong>send a real test to real accounts</strong> on the main clients, because a rendering
+preview and an actual inbox differ in ways that matter, particularly around image blocking and
+clipping on long emails.</p>
+
+<h2>Accessibility, Which Also Fixes Deliverability</h2>
+
+<p>Accessible email is better email for reasons that have nothing to do with compliance, and the
+overlap with deliverability is large enough to be the practical argument.</p>
+<p><strong>Real text, not text in images.</strong> Screen readers cannot read an image of text, image
+blocking hides it, and an image-only email is a recognised spam pattern. One change solves three
+problems.</p>
+<p><strong>Semantic structure</strong> — actual headings rather than large bold paragraphs — so the
+email can be navigated rather than only read top to bottom.</p>
+<p><strong>Alt text on every image</strong>, describing function rather than appearance. This is also
+what a recipient with images blocked sees, which is a large share of your list.</p>
+<p><strong>Sufficient contrast</strong>, checked rather than eyeballed, and tested in dark mode where
+many clients invert colours unpredictably.</p>
+<p><strong>Descriptive link text.</strong> <em>Read the pricing guide</em> rather than <em>click
+here</em>, which is unusable out of context and is also the pattern filters associate with bulk mail.</p>
+<p><strong>And a real text-to-image ratio.</strong> Not a myth exactly, but the underlying point is
+sound: an email that is one large image is worse on every axis at once.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>WCAG 2.2 and the email accessibility guidance derived from it</strong> &mdash; contrast ratios, semantic structure and the alt-text requirements described here <a href="https://w3.org" rel="noopener" target="_blank">w3.org</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/email-marketing/subject-line-best-practices/">Subject Line Best Practices</a></li><li><a href="/codex/email-marketing/how-email-deliverability-works/">Email Deliverability</a></li><li><a href="/codex/email-marketing/newsletter-campaigns/">Newsletter Campaigns</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Email Marketing" class="sidebar-link">/codex/email-marketing/ overview &rarr;</a></div>

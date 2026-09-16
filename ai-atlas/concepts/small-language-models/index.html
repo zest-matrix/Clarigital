@@ -202,7 +202,41 @@ p{line-height:1.75;color:var(--muted)}
 <h2>Where They Do Not</h2>
 <p>Complex multi-step reasoning. Long context. Open-ended generation requiring nuance. Anything where the range of possible inputs is wide and unpredictable.</p><p>Small models also fail less gracefully — they are more likely to produce confidently wrong output rather than acknowledging uncertainty.</p>
 <h2>The Practical Pattern</h2>
-<p>The architecture that works for most production systems is a cascade. A small model handles the majority of requests. A confidence check or a classifier routes the difficult minority to a larger model.</p><p>This typically cuts cost by a large multiple while preserving quality on the cases that matter, because most requests in most applications are not hard.</p>
+<p>The architecture that works for most production systems is a cascade. A small model handles the majority of requests. A confidence check or a classifier routes the difficult minority to a larger model.</p><p>This typically cuts cost by a large multiple while preserving quality on the cases that matter, because most requests in most applications are not hard.</p><h2>Choosing a Size by the Failure You Can Tolerate</h2>
+
+<p>Model selection is usually framed as a capability question and is better framed as a failure
+question: <strong>what happens when this gets it wrong, and how often can you afford that?</strong></p>
+<p>Small models fail differently from large ones. They are <strong>more likely to fail obviously</strong>
+— producing something malformed, off-topic or incomplete — which is easier to catch automatically.
+Large models fail <strong>more plausibly</strong>, producing fluent, confident, wrong output that
+passes a superficial review.</p>
+<p>That changes the calculation. For a task where <strong>a wrong answer is caught downstream</strong>
+— a classification that gets validated, an extraction checked against a schema, a draft a human edits —
+a small model's higher error rate may cost almost nothing, and the latency and price advantage is real.</p>
+<p>For a task where <strong>a wrong answer reaches someone and is believed</strong>, the plausible
+failure of a larger model is the more dangerous one, and neither size removes the need for the check.</p>
+<p>The practical sequence: <strong>define the acceptable error rate first, measure both on your own
+data, and choose the cheapest one that clears the bar.</strong> Almost nobody does it in that order.</p>
+
+<h2>What Running One Actually Involves</h2>
+
+<p>The appeal of a small model is usually cost or control, and both come with work that the comparison
+tables omit.</p>
+<p><strong>Self-hosting is an operational commitment</strong>, not a one-off saving: serving
+infrastructure, capacity for peaks rather than averages, monitoring, and someone who can debug it at
+two in the morning. Below a certain volume, an API is cheaper once that is costed honestly.</p>
+<p><strong>The evaluation burden shifts to you.</strong> With a hosted frontier model you inherit the
+vendor's testing; with a small or distilled model on your task, you own the question of whether it is
+good enough, which means building an evaluation set before you deploy rather than after.</p>
+<p><strong>Updates are yours to manage.</strong> A hosted model improves without your involvement — and
+changes without your involvement, which cuts both ways. A self-hosted one stays exactly as it is until
+you do the work, which is a genuine advantage for reproducibility and a genuine cost in capability.</p>
+<p><strong>And on-device is a different discipline again</strong>: memory limits, battery, thermal
+throttling, and the fact that you cannot patch a model on a device the user has not updated.</p>
+<p>The honest summary: <strong>small models win on latency, unit cost and data residency, and lose on
+the amount of engineering you have to supply yourself.</strong></p>
+
+
 
     </main>
     <aside class="art-sidebar">

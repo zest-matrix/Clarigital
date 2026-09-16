@@ -202,7 +202,41 @@ p{line-height:1.75;color:var(--muted)}
 <h2>Where They Do Not</h2>
 <p>No meaningful advantage on: creative writing, summarisation, translation, simple factual retrieval, formatting and most conversational tasks.</p><p>For these, reasoning models cost several times more, respond several times slower, and produce output of similar quality. Using one as a general default is an expensive habit.</p><p>They also cannot reason their way to facts they do not have. Extended thinking about a question requiring current information produces elaborate, well-structured wrongness.</p>
 <h2>Practical Use</h2>
-<p>Route by task rather than standardising on one model. A fast standard model for the majority of requests, a reasoning model for the subset that genuinely needs it.</p><p>Where the model exposes its reasoning, read it when the answer surprises you — the chain of thought usually shows exactly where an incorrect assumption entered.</p>
+<p>Route by task rather than standardising on one model. A fast standard model for the majority of requests, a reasoning model for the subset that genuinely needs it.</p><p>Where the model exposes its reasoning, read it when the answer surprises you — the chain of thought usually shows exactly where an incorrect assumption entered.</p><h2>Deciding When the Extra Compute Is Worth Paying For</h2>
+
+<p>Reasoning models cost more and take longer, so the useful question is which tasks repay it.</p>
+<p><strong>They repay it when the task has a verifiable answer and multiple steps.</strong>
+Mathematics, code that must run, logic puzzles, planning with constraints, and analysis where an
+intermediate mistake invalidates the conclusion. The extra compute is spent checking and revising, and
+checking only helps when there is something to check against.</p>
+<p><strong>They do not repay it on tasks with no single right answer.</strong> Drafting, summarising,
+rewriting, tone work, brainstorming — here additional deliberation produces something more laboured
+rather than more correct, and occasionally worse, because the model reasons its way out of a good first
+instinct.</p>
+<p><strong>They do not repay it on simple retrieval or classification</strong>, where you are paying a
+premium for deliberation on a task that needs none.</p>
+<p>The practical rule: <strong>if you cannot describe how you would check the answer, the extra compute
+is unlikely to be buying you accuracy.</strong> Route by task type rather than defaulting everything to
+the most capable option.</p>
+
+<h2>What the Visible Reasoning Is and Is Not</h2>
+
+<p>Many reasoning models expose a chain of intermediate steps, and it is easy to over-read.</p>
+<p><strong>It is not a guaranteed causal account of how the answer was produced.</strong> It is
+generated text, and a model can produce a plausible chain that does not correspond to the computation
+that determined its output. Treating it as an audit trail is a mistake — particularly in a regulated
+setting, where explainability means something specific and stricter.</p>
+<p><strong>It is still genuinely useful</strong>, for three practical purposes: spotting where an
+assumption was introduced, seeing which interpretation of an ambiguous question was taken, and finding
+the step where a long calculation went wrong.</p>
+<p><strong>Read it for those, and verify the answer independently.</strong></p>
+<p>Two operational notes. <strong>Latency changes the product</strong>: a response taking tens of
+seconds needs a different interface from one taking two, and designing for the fast case then switching
+models breaks the experience. And <strong>cost scales with deliberation</strong>, so a task routed to a
+reasoning model by default will be a great deal more expensive at volume than the headline token price
+suggests.</p>
+
+
 
     </main>
     <aside class="art-sidebar">

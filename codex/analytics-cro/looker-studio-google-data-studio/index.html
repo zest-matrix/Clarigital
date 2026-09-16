@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,45 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Start from the question the reader needs answered, not from the data available. A weekly performance dashboard for a marketing lead answers different questions from a channel dashboard for a specialist.</p><p>Practical rules: one clear message per page, most important metric top left, comparison to previous period on every number, and a short text note explaining anomalies. Charts without context get misread.</p><p>Fewer metrics presented clearly beats comprehensive coverage. If a chart has never prompted a decision, remove it.</p>
 <h2>Performance and Maintenance</h2>
 <p>Dashboards querying large date ranges across multiple blended sources become slow. Use data extracts for static historical data, limit default date ranges, and avoid unnecessary blends.</p><p>Set expectations on refresh. Looker Studio caches aggressively; users seeing yesterday's numbers and assuming they are live is a recurring source of confusion.</p>
-</div>
+<h2>Why Dashboards Get Slow, and the Fixes That Work</h2>
+
+<p>Looker Studio reports degrade predictably as they grow, and the causes are structural rather than
+incidental.</p>
+<p><strong>Live connectors query on every load.</strong> A report with eight charts against a live
+source issues queries each time someone opens it, and against a large dataset or a rate-limited API
+that is the whole problem.</p>
+<p><strong>Blends are computed at query time</strong> and are the single most expensive element in
+most slow reports. A report with several blends across large sources will be slow regardless of what
+else you do.</p>
+<p><strong>Calculated fields run per row, per query</strong>, and complex nested logic multiplies
+across every chart using it.</p>
+<p>What actually helps, in order: <strong>use extracts</strong> for data that does not need to be live,
+which converts a repeated query into a scheduled one; <strong>pre-aggregate upstream</strong> in the
+warehouse or a scheduled table so the report reads a small, purpose-built dataset;
+<strong>move calculated fields upstream</strong> into that table; and <strong>split large reports into
+pages</strong>, since only the visible page executes.</p>
+<p>Ask first whether the data genuinely needs to be live. Most dashboards presented as real-time are
+read once a day.</p>
+
+<h2>Dashboards People Actually Open</h2>
+
+<p>The common failure is not technical. It is a report that answers no particular question, so nobody
+returns to it after the launch email.</p>
+<p><strong>Start from the decision.</strong> Ask what the reader will do differently depending on what
+the dashboard says. If there is no answer, the report is a data display and it will be abandoned —
+the same test that governs a segmentation.</p>
+<p><strong>One question per page</strong>, with the answer in the top left where the eye lands first.
+A page that requires interpretation before it communicates has failed.</p>
+<p><strong>Include the comparison in the chart.</strong> A number without a benchmark, a target or a
+prior period is not information. This single habit removes most of the follow-up questions a dashboard
+generates.</p>
+<p><strong>Date the data and name the owner</strong> on the report itself. Reports outlive the people
+who build them, and an undated dashboard silently showing stale data is worse than no dashboard —
+which is the same failure this site records for stale published counts, in a different medium.</p>
+<p>And <strong>retire reports deliberately.</strong> A workspace with forty dashboards has perhaps six
+that are trusted, and the other thirty-four make those six harder to find.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Looker Studio help documentation</strong> &mdash; connector behaviour, data blending limits and extract/refresh mechanics described here <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/ga4-setup-configuration/">Google Analytics 4</a></li><li><a href="/codex/analytics-cro/business-metrics-kpis/">Business Metrics and KPIs</a></li><li><a href="/codex/tools-resources/google-analytics-tools/">Google Analytics Tools</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Analytics & CRO" class="sidebar-link">/codex/analytics-cro/ overview &rarr;</a></div>

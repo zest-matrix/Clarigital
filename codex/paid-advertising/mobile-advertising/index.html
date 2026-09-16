@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,45 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>App attribution does not work like web attribution. Mobile measurement partners such as AppsFlyer and Adjust sit between ad networks and the app to resolve which click or impression produced an install.</p><p>Apple's App Tracking Transparency changed this substantially on iOS. Without user permission, deterministic attribution is unavailable and SKAdNetwork provides aggregated, delayed and limited data instead. Android retains more granular measurement, though Privacy Sandbox is moving in a similar direction.</p>
 <h2>Fraud in Mobile Advertising</h2>
 <p>Install fraud is significant and takes recognisable forms: click injection, click spamming to claim credit for organic installs, SDK spoofing, and device farms.</p><p>Signals worth monitoring: implausibly short click-to-install times, abnormal concentration of installs from few devices or IPs, and installs that never generate any in-app activity.</p><p>Use a measurement partner with fraud detection, and treat any source with excellent install volume and no downstream engagement as suspect.</p>
-</div>
+<h2>Attribution After the Identifier Changes</h2>
+
+<p>Mobile attribution was built on a stable per-device advertising identifier. That assumption no
+longer holds, and the practical consequences are larger than the policy summaries suggest.</p>
+<p>On iOS, access to the identifier requires user permission through the app tracking prompt, and
+consent rates are well below universal. On Android the identifier can be reset or withheld. So a
+material share of installs cannot be deterministically matched to a click.</p>
+<p>What replaces it is <strong>aggregated, delayed and privacy-constrained</strong>: postback
+frameworks that report conversions in coarse buckets after a delay, with thresholds below which
+nothing is reported at all. The operational consequences are what matter —
+<strong>small campaigns can fall below reporting thresholds and appear to produce nothing</strong>;
+<strong>optimisation windows lengthen</strong>, so fast iteration on creative becomes unreliable; and
+<strong>post-install event data is limited</strong>, which weakens the value-based bidding that mobile
+campaigns depend on.</p>
+<p>Plan for fewer, larger, longer campaigns rather than many small fast ones. The measurement
+environment now rewards that shape.</p>
+
+<h2>Mobile Fraud, and What Actually Reduces It</h2>
+
+<p>App install advertising carries a distinctive fraud problem because the payable event — an install
+— is cheap to fabricate.</p>
+<p>The recognisable forms. <strong>Click injection</strong>, where an app on the device detects an
+install beginning and fires a click moments before completion to claim attribution.
+<strong>Click flooding</strong>, sending enormous volumes of clicks so that some organic installs
+attribute by chance. <strong>Install farms</strong>, real devices installing at scale.
+<strong>SDK spoofing</strong>, fabricating the install signal without an install happening at all.</p>
+<p>The signals that expose them are distributional. <strong>Click-to-install time</strong> clustered
+near zero indicates injection; a very long flat tail indicates flooding.
+<strong>Conversion rate far above the network norm</strong> is a finding, not a success.
+<strong>Post-install engagement near zero</strong> is the clearest signal of all — fraudulent installs
+do not open the app twice.</p>
+<p>What reduces exposure: <strong>pay on a post-install event</strong> rather than the install itself,
+which removes most of the economic incentive at a stroke; <strong>use a measurement partner's
+fraud filtering</strong> and understand what it does and does not catch;
+<strong>agree rejection terms in the insertion order</strong> before spending; and
+<strong>cap and monitor by sub-publisher</strong>, since fraud concentrates in a small number of
+sources that a network-level view averages away.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Apple App Store and Google Play policy documentation on advertising identifiers</strong> &mdash; the ATT consent requirement and the advertising ID behaviour that mobile attribution now works within <a href="https://developer.apple.com" rel="noopener" target="_blank">developer.apple.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/media-buying-fundamentals/">Media Buying Fundamentals</a></li><li><a href="/codex/seo/technical/mobile-seo/">Mobile SEO</a></li><li><a href="/codex/programmatic/programmatic-measurement-viewability/">Measurement and Viewability</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

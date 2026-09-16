@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,42 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Beyond the certificate, several response headers improve security posture:</p><ul><li><strong>HSTS</strong> — instructs browsers to use HTTPS automatically, removing the initial insecure request</li><li><strong>Content-Security-Policy</strong> — restricts which resources may load, mitigating injection attacks</li><li><strong>X-Content-Type-Options: nosniff</strong> — prevents MIME type guessing</li><li><strong>Referrer-Policy</strong> — controls what referrer data is sent to other sites</li></ul><p>These are not ranking factors. They reduce the chance of the compromise that would cost you rankings.</p>
 <h2>Hacked Site Recovery</h2>
 <p>A compromised site can be flagged in Search Console and shown with a warning in results, which removes effectively all traffic.</p><p>Recovery: identify and close the vulnerability, remove injected content and any spam pages created, check for backdoor files left behind, then request review in Search Console. Restoring from a backup without patching the vulnerability results in immediate reinfection.</p>
-</div>
+<h2>The Migration Checklist, in Order</h2>
+
+<p>An HTTPS migration loses rankings when steps are done out of sequence, not when they are skipped.
+The order matters more than the completeness.</p>
+<ol>
+<li><strong>Install and test the certificate</strong> on staging. Confirm the full chain serves, not
+just the leaf — an incomplete chain validates in some browsers and fails in others.</li>
+<li><strong>Fix mixed content first.</strong> Every image, script, stylesheet and iframe must load
+over HTTPS. A single insecure asset breaks the padlock on the whole page.</li>
+<li><strong>Update internal links and canonicals</strong> to the HTTPS versions. Relying on redirects
+for your own links leaves every internal hop going through a redirect.</li>
+<li><strong>301 redirect HTTP to HTTPS</strong>, page for page. Never to the homepage.</li>
+<li><strong>Add the HTTPS property in Search Console</strong> — it is a separate property, and
+forgetting it means your data appears to stop.</li>
+<li><strong>Submit the updated sitemap</strong> with HTTPS URLs.</li>
+<li><strong>Only then enable HSTS.</strong> It is deliberately hard to reverse; enabling it before
+everything above is verified turns a mistake into a long one.</li>
+</ol>
+
+<h2>Headers Worth Setting, and What Each Actually Prevents</h2>
+
+<p>Security headers are cheap to add and easy to add wrongly. Each one prevents a specific thing, and
+knowing which is the difference between configuration and cargo cult.</p>
+<table>
+<tr><th>Header</th><th>What it prevents</th><th>Caution</th></tr>
+<tr><td><strong>HSTS</strong></td><td>Downgrade to HTTP after the first visit</td><td>Hard to undo. Start with a short max-age, raise it once stable</td></tr>
+<tr><td><strong>Content-Security-Policy</strong></td><td>Injected scripts executing</td><td>The one most likely to break your site. Deploy report-only first</td></tr>
+<tr><td><strong>X-Content-Type-Options</strong></td><td>Browsers guessing a file's type and executing it</td><td>Safe. Set it and forget it</td></tr>
+<tr><td><strong>Referrer-Policy</strong></td><td>Leaking full URLs to third parties</td><td>Too strict and you lose referrer data in your own analytics</td></tr>
+<tr><td><strong>X-Frame-Options</strong></td><td>Your pages being framed for clickjacking</td><td>Breaks legitimate embedding if you have any</td></tr>
+</table>
+<p><strong>Content-Security-Policy is worth the effort and is not a one-line addition.</strong> Run it
+in report-only mode for a fortnight, collect what it would have blocked, and only then enforce.
+Enforcing first is how a site loses its own analytics, its fonts, or its checkout.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; mobile-first indexing, HTTPS as a ranking signal, migration guidance and hacked-site recovery <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li><li><span class="src-k src-official">official</span><strong>MDN Web Docs on HTTP security headers</strong> &mdash; the behaviour of HSTS, Content-Security-Policy, X-Content-Type-Options and Referrer-Policy <a href="https://developer.mozilla.org" rel="noopener" target="_blank">developer.mozilla.org</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability and Indexability</a></li><li><a href="/codex/seo/technical/technical-seo-audit/">Technical SEO Audit</a></li><li><a href="/codex/seo/fundamentals/ranking-factors/">Ranking Factors</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Technical SEO" class="sidebar-link">/codex/seo/technical/ overview &rarr;</a></div>

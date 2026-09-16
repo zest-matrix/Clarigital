@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,45 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Scheduled recurring imports keep the accounts aligned, which sounds efficient and creates a specific problem: any manual optimisation you make in Microsoft can be overwritten by the next sync.</p><p>Decide deliberately. Either treat Microsoft as a mirror and manage everything in Google, or run a one-time import and manage Microsoft independently thereafter. The half-way position — syncing while also optimising manually — produces work that silently disappears.</p>
 <h2>What to Do Immediately After Import</h2>
 <ol><li>Install the UET tag and verify it fires</li><li>Create conversion goals and confirm they record</li><li>Reset all budgets to Microsoft-appropriate levels</li><li>Reset bids, or switch to manual CPC until there is enough conversion data for automated bidding</li><li>Review imported ad copy for anything Google-specific that reads oddly elsewhere</li><li>Pause campaign types that do not exist or do not perform on Microsoft</li></ol><p>Skipping the first two steps is the most common cause of a Microsoft account that spends without ever optimising.</p>
-</div>
+<h2>The Checklist for the First Week After Import</h2>
+
+<p>An import lands a working account and an inherited set of assumptions. The first week is about
+separating the two.</p>
+<ul>
+<li><strong>Re-check every bid strategy.</strong> Automated strategies imported from an account with
+far more conversion data will behave differently on thinner volume. Manual or enhanced bidding is
+frequently the right starting point until the account has its own history.</li>
+<li><strong>Halve the budgets, then watch.</strong> Search volume is lower, so imported budgets tend
+to be wrong in the same direction across every campaign.</li>
+<li><strong>Verify conversion tracking end to end</strong> with a real test conversion. The import
+does not bring your tag, and an account optimising against a conversion that never fires will spend
+the budget and report nothing.</li>
+<li><strong>Review negative keyword lists</strong>, which import inconsistently and are the most
+expensive thing to be missing.</li>
+<li><strong>Check ad extensions</strong> individually rather than assuming they came across.</li>
+<li><strong>Turn off the Audience Network initially</strong> so you can read search performance on its
+own, then add it as a separate campaign.</li>
+</ul>
+
+<h2>The Sync Trap, and How to Avoid It</h2>
+
+<p>Scheduled sync is the feature that causes the most damage, because it is helpful right up until it
+is not.</p>
+<p>The mechanism: a recurring import keeps the Microsoft account aligned with the Google one. The
+problem is that <strong>it can overwrite the platform-specific optimisation you have been doing</strong>
+— the bids you adjusted for lower volume, the negatives you added for different query patterns, the
+budgets you rebalanced — and it does so silently, on a schedule, without a record anyone reads.</p>
+<p>Three workable positions, in order of how much work they are:</p>
+<p><strong>Sync off.</strong> Manage the account independently and accept the duplication. Correct for
+any account you are actively optimising.</p>
+<p><strong>Sync new items only</strong>, where the option exists — new campaigns and ads come across,
+existing settings are left alone. The usual compromise.</p>
+<p><strong>Full sync</strong> only where Microsoft is a low-effort mirror nobody optimises, which is a
+legitimate choice if stated rather than a default nobody decided.</p>
+<p><strong>Whichever you choose, write it down in the account notes</strong>, because the person who
+inherits this account will not be able to tell a sync overwrite from a mistake.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Microsoft Advertising import documentation</strong> &mdash; what the Google Ads import carries across, what it does not, and how scheduled sync behaves <a href="https://about.ads.microsoft.com" rel="noopener" target="_blank">about.ads.microsoft.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/microsoft-ads/microsoft-ads-fundamentals/">Microsoft Advertising Fundamentals</a></li><li><a href="/codex/sem/google-ads/search-campaign-setup/">Google Ads Campaign Structure</a></li><li><a href="/codex/analytics-cro/ga4-events-conversions/">Conversion Tracking</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

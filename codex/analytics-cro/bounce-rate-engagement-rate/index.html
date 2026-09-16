@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,39 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Context determines what a good figure looks like. A high engagement rate on a checkout page is expected; a high engagement rate on a contact page that should resolve in one visit may indicate confusion.</p><p>Compare like with like. Segment by landing page, by channel, and by device before drawing conclusions. Paid social traffic will almost always show lower engagement than direct traffic, which reflects intent rather than page quality.</p>
 <h2>When These Metrics Signal a Real Problem</h2>
 <p>Low engagement is worth investigating when it appears suddenly on a page that previously performed, when it differs sharply between similar pages, or when it correlates with a drop in conversions.</p><p>Common underlying causes: slow load times on mobile, a mismatch between the ad or search snippet and the page content, an intrusive interstitial, or a broken element preventing interaction.</p><p>Pair the metric with a session recording. Quantitative data identifies where to look; qualitative data explains what you find.</p>
-</div>
+<h2>Why the Old Metric Misled So Consistently</h2>
+
+<p>Bounce rate was defined as a session with a single interaction, and that definition broke in a
+specific and predictable way: <strong>it could not distinguish a satisfied visitor from a
+disappointed one.</strong></p>
+<p>Someone who searched for your opening hours, found them, and left had an entirely successful
+visit and was recorded identically to someone who arrived, saw the wrong thing, and left in two
+seconds.</p>
+<p>Worse, it was <strong>trivially manipulable</strong>. Firing any additional event — a scroll
+tracker, a timer — ended the bounce, so a site could improve the metric by changing its tracking and
+nothing else. Comparisons between sites, or between a site before and after a tracking change, were
+meaningless.</p>
+<p>The replacement inverts it and adds time and depth: a session counts as engaged if it lasts beyond
+a threshold, or has multiple page views, or includes a conversion. <strong>It is a better metric
+because it has more than one way to succeed</strong>, not because the threshold is well chosen.</p>
+
+<h2>Using It Without Being Misled Again</h2>
+
+<p>The new metric is an improvement and it is still a proxy. Three habits keep it honest.</p>
+<p><strong>Never compare it across page types.</strong> A reference page answering one question and a
+category page that exists to send people onward should have very different engagement rates, and the
+reference page being lower is correct rather than a problem.</p>
+<p><strong>Compare a page against itself over time.</strong> A drop after a change is a signal; a
+number in isolation is not. This is the only comparison the metric reliably supports.</p>
+<p><strong>Check the engagement threshold before interpreting anything.</strong> It is configurable,
+so the same content can produce different engagement rates in two properties. If someone changed it,
+your trend line moved for a reason unrelated to your content.</p>
+<p>And be specific about what would count as a problem: <strong>a page with high entries, low
+engagement and no onward path</strong> is worth investigating. A low engagement rate on a page that
+answers the question and offers nothing further is the page working. <strong>The metric measures
+behaviour, not satisfaction, and the two diverge most on exactly the pages that serve people best.</strong></p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Analytics 4 documentation</strong> &mdash; the UTM parameter handling, session definition and engaged-session criteria described here <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/web-analytics-fundamentals/">Web Analytics Fundamentals</a></li><li><a href="/codex/analytics-cro/ga4-setup-configuration/">Google Analytics 4</a></li><li><a href="/codex/analytics-cro/heatmaps-session-recording/">Heatmaps and Session Recording</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Analytics & CRO" class="sidebar-link">/codex/analytics-cro/ overview &rarr;</a></div>

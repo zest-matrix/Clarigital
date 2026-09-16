@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Sources that reflect genuine local language:</p><ul><li>Google autocomplete, searched from the target location</li><li>The search terms report in Google Ads, if you run local campaigns — this is real query data</li><li>Google Business Profile performance data, which shows the queries that surfaced your profile</li><li>Call logs and enquiry forms — how customers describe what they want</li><li>Competitor location pages and the terms they target</li></ul>
 <h2>Mapping Terms to Pages</h2>
 <p>One page per service per location is the general rule, once you have enough genuinely distinct content to justify each. Thin duplicated location pages with the city name swapped are a well-known pattern and are treated accordingly.</p><p>For a single-location business, the homepage typically targets the primary service plus city, with individual service pages targeting their own service plus city. For multi-location businesses, each location gets a proper page with genuine local detail — staff, parking, area served, local landmarks.</p>
-</div>
+<h2>Building the Term List From Real Sources</h2>
+
+<p>Local keyword tools report thin and unreliable volumes, so the list has to come from elsewhere.
+Four sources, in order of usefulness:</p>
+<p><strong>Your own search query data.</strong> Search Console and any paid search account show what
+people actually typed to reach you, with local variants you would not have guessed.</p>
+<p><strong>Your own inbound calls and enquiries.</strong> What customers say on the phone is what they
+type. Ask the people answering to note recurring phrasings for a fortnight.</p>
+<p><strong>Autocomplete and related searches</strong>, checked from the target area rather than from
+your office, because suggestions are location-influenced.</p>
+<p><strong>Competitor pages that rank</strong>, read for the terms they use rather than run through a
+tool.</p>
+<p>Then add the variants tools systematically miss: <strong>neighbourhood and landmark names</strong>
+that locals use and maps do not, <strong>colloquial and transliterated spellings</strong>, and
+<strong>the "near me" family</strong>, which reports as one term and behaves as hundreds depending on
+where the searcher stands.</p>
+
+<h2>Why Rank Tracking Misleads Locally</h2>
+
+<p>A local rank is not a property of a page. It is a property of a page, a query and <em>a
+location</em>, and the third one is usually missing from the report.</p>
+<p>Two searchers a few kilometres apart see materially different local results for the same query.
+So <strong>a rank report showing position three is meaningless unless it states where it was
+measured from</strong>, and a tool defaulting to a city centre will flatter a business located there
+and punish one in the suburbs.</p>
+<p>What to do instead: <strong>track from several points across your service area</strong>, using a
+tool that supports geographic grid tracking, and read the shape rather than the number. The useful
+output is a map of where you are visible and where you are not.</p>
+<p><strong>And treat proximity as a constraint you cannot optimise away.</strong> A business will not
+rank in the local pack far from its address no matter how good its optimisation, which is why
+multi-location businesses need pages and profiles per location rather than one page working harder.</p>
+<p>The honest metric for local is <strong>calls, direction requests and enquiries by area</strong>,
+not average position.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Business Profile and Google Search Central local guidance</strong> &mdash; the local pack behaviour and proximity effects that make local keyword volume data misleading <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/local/local-seo-fundamentals/">Local SEO Fundamentals</a></li><li><a href="/codex/seo/on-page/keyword-research/">Keyword Research</a></li><li><a href="/codex/seo/local/google-business-profile/">Google Business Profile</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="SEO" class="sidebar-link">/codex/seo/ overview &rarr;</a></div>

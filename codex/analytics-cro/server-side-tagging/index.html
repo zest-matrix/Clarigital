@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Worth it when: tracking prevention is measurably costing you conversion data, page performance is a genuine problem attributable to tags, you have compliance requirements around what data leaves your systems, or your traffic volume makes small measurement improvements financially significant.</p><p>Not worth it when: the site has modest traffic, the current setup works, or nobody on the team can maintain it. Server-side tagging implemented and then abandoned is worse than client-side tagging maintained.</p>
 <h2>Server-Side Is Not a Consent Workaround</h2>
 <p>An important clarification. Server-side tagging does not remove consent obligations. If you are processing personal data, consent requirements apply regardless of where the tag executes.</p><p>Vendors occasionally market it as a way to "recover" data from users who declined tracking. Doing so is a compliance problem, not a technical feature.</p>
-</div>
+<h2>What Actually Breaks When You Move Server-Side</h2>
+
+<p>Server-side tagging is presented as a relocation and is closer to a rebuild. Several things that
+worked client-side stop working, and discovering them after migration is the usual experience.</p>
+<p><strong>Anything reading the browser stops reading the browser.</strong> Screen dimensions, the
+referrer, page scroll, time on page, click targets — these exist in the browser and must be
+explicitly collected and forwarded. A server container receives what you send it and nothing else.</p>
+<p><strong>Third-party tags that expect a page context often cannot move at all.</strong> Chat
+widgets, session recorders, heatmaps and A/B testing tools need to run in the page. Server-side is for
+measurement, not for everything in your container.</p>
+<p><strong>Cookie behaviour changes.</strong> Setting first-party cookies from your own domain is one
+of the main reasons to do this, and it requires the server container to be on a genuine subdomain of
+your site rather than a vendor domain. Getting that DNS and certificate arrangement right is most of
+the setup.</p>
+<p><strong>And debugging gets harder.</strong> You lose the browser network tab as the source of
+truth; you now need server-container logging and the discipline to use it.</p>
+
+<h2>The Consent Question, Answered Plainly</h2>
+
+<p>The most common reason teams are sold server-side tagging is the least defensible one:
+<strong>it does not remove the need for consent.</strong></p>
+<p>Consent attaches to the <strong>processing of personal data</strong>, not to the mechanism that
+transports it. Moving the collection point from a browser to your own server changes who makes the
+request and changes nothing about whether you were permitted to collect and process the data. Under a
+consent-based regime — and India's DPDP framework is one, with <strong>no legitimate-interest
+basis</strong> — the obligation is identical.</p>
+<p>What server-side genuinely improves: <strong>page performance</strong>, because fewer third-party
+scripts execute in the browser; <strong>data control</strong>, since you decide what leaves your
+server and can redact before forwarding; <strong>resilience</strong> to client-side blocking of
+measurement you are entitled to collect; and <strong>first-party cookie longevity</strong>.</p>
+<p>Those are real and they justify the cost on their own. <strong>If the business case rests on
+collecting data you could not otherwise collect, the business case is the problem</strong>, and the
+architecture will not fix it.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Analytics 4 and Google Tag Manager server-side documentation</strong> &mdash; server container behaviour, transport URLs and the consent-mode interaction described here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li><li><span class="src-k src-official">official</span><strong>Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025</strong> &mdash; the consent basis that server-side tagging does not remove <a href="https://meity.gov.in" rel="noopener" target="_blank">meity.gov.in</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/google-tag-manager/">Google Tag Manager</a></li><li><a href="/codex/analytics-cro/consent-mode-v2/">Consent Mode v2</a></li><li><a href="/codex/analytics-cro/privacy-first-analytics/">Privacy-First Analytics</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Analytics & CRO" class="sidebar-link">/codex/analytics-cro/ overview &rarr;</a></div>

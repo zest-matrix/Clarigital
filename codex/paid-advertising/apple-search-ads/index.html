@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,42 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Apple Search Ads operates inside Apple's own privacy framework and does not depend on the App Tracking Transparency prompt for its core attribution, since both the ad and the install occur within Apple's systems.</p><p>This gives it a measurement advantage over third-party app install channels, which lost deterministic attribution on iOS. Post-install behaviour still requires your own analytics to connect.</p>
 <h2>ASA and App Store Optimisation</h2>
 <p>The two reinforce each other. Ads drive installs, installs contribute to ranking signals, and better organic ranking reduces reliance on paid.</p><p>Search Ads data is also the best available keyword research for ASO — the search term reports show real App Store queries with real volume, which no third-party tool can match.</p><p>Use paid to discover which terms convert, then optimise the listing to rank organically for them.</p>
-</div>
+<h2>Structuring the Account So the Data Is Usable</h2>
+
+<p>The standard structure separates what you know from what you are discovering, and accounts that
+skip it cannot tell which is which.</p>
+<p><strong>A brand campaign</strong> on your own app name, exact match. Defensive, cheap, and it stops
+competitors owning your name. Ignore the argument that you would rank organically anyway — the ad slot
+sits above the organic result.</p>
+<p><strong>A competitor campaign</strong> on rival app names, if the category permits it. High intent,
+higher cost, and worth testing rather than assuming.</p>
+<p><strong>A category campaign</strong> on generic terms describing what the app does.</p>
+<p><strong>A discovery campaign</strong> on broad match with search match enabled, whose only job is
+to find terms. <strong>Mine it weekly</strong>: anything converting moves into an exact-match
+campaign, anything wasting becomes a negative. Discovery is a research tool, not a performance
+campaign, and judging it on cost per install misreads what it is for.</p>
+<p>Without that separation, a good brand CPA hides a bad discovery CPA and the account looks healthier
+than it is.</p>
+
+<h2>What the Privacy Environment Changes</h2>
+
+<p>The platform has an unusual advantage and a matching constraint, and both follow from the same
+place.</p>
+<p><strong>The advantage:</strong> attribution to install happens inside the App Store, so the
+click-to-install measurement is direct rather than inferred. That is cleaner than most mobile
+advertising.</p>
+<p><strong>The constraint:</strong> everything <em>after</em> the install depends on what the user
+consented to. Without tracking permission, connecting an install to later in-app behaviour is limited,
+so <strong>optimising toward a post-install value event is harder here than the install numbers
+suggest</strong>.</p>
+<p>Practical consequences. <strong>Measure cost per install and separately measure cohort
+behaviour</strong> from your own in-app analytics, rather than expecting one system to join them.
+<strong>Expect slower, coarser signal</strong> on anything downstream, which rewards fewer and larger
+campaigns over many small fast ones. And <strong>treat the consent prompt as part of the funnel</strong>
+— when and how you ask materially affects the share who agree, and therefore how much of your
+measurement works at all.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Apple Search Ads and App Store Connect documentation</strong> &mdash; campaign types, the Today tab and search-results placements, and the attribution behaviour described here <a href="https://searchads.apple.com" rel="noopener" target="_blank">searchads.apple.com</a></li><li><span class="src-k src-official">official</span><strong>Apple App Tracking Transparency policy</strong> &mdash; the consent requirement that constrains attribution and audience targeting in the App Store environment <a href="https://developer.apple.com" rel="noopener" target="_blank">developer.apple.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/mobile-advertising/">Mobile and App Advertising</a></li><li><a href="/codex/seo/technical/mobile-seo/">Mobile SEO</a></li><li><a href="/codex/paid-advertising/media-buying-fundamentals/">Media Buying Fundamentals</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

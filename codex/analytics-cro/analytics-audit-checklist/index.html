@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,44 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>With consent management in place, verify what happens in each state: consent granted, consent denied, no choice made. Test each path and confirm the data behaves as expected.</p><p>Check that consent mode is correctly configured rather than simply blocking tags outright, and that modelled conversions — if relied upon — are actually being generated.</p>
 <h2>Documenting the Setup</h2>
 <p>The audit output should include a measurement plan document: what is tracked, why, how each event fires, and who owns it. Most accounts have none, which is why the same problems recur after every staff change.</p>
-</div>
+<h2>The Checks That Find the Most Damage</h2>
+
+<p>Some analytics faults distort everything downstream and are invisible in a dashboard. These are the
+ones worth checking first.</p>
+<ul>
+<li><strong>Duplicate tags.</strong> The same tag firing twice halves bounce and doubles pageviews.
+Check the network requests on a few pages rather than trusting the container.</li>
+<li><strong>Internal traffic not excluded.</strong> Your own team, your agency, your office. On a
+low-traffic site this is a large share of everything.</li>
+<li><strong>Self-referrals.</strong> Your own domain appearing as a traffic source means session
+continuity is breaking, usually across a subdomain or a payment redirect — which also means
+conversions are being credited to the wrong source.</li>
+<li><strong>Data retention set to the minimum</strong>, silently limiting historical analysis. Check
+it; the default is not what most people want.</li>
+<li><strong>Conversions counting the wrong event</strong>, or counting one event multiple times per
+session.</li>
+<li><strong>Filters applied to the only data view</strong>, with no unfiltered copy. Filtered data is
+not recoverable.</li>
+</ul>
+
+<h2>Consent, and Why the Numbers Moved</h2>
+
+<p>The most common analytics mystery — <em>traffic dropped and nothing changed</em> — is usually consent, and
+it is worth checking before investigating anything else.</p>
+<p><strong>Confirm what happens before a user consents.</strong> Whether tags fire, in what mode, and
+whether that behaviour changed when the banner was last updated. A consent tool updated by a
+compliance team frequently moves analytics numbers, and nobody connects the two.</p>
+<p><strong>Understand what modelled data is.</strong> Where consent mode is active, some of what you
+see is estimated rather than observed, and the modelled share varies by region and by traffic volume.
+That is not wrong, but <strong>it means a year-on-year comparison spanning a consent change is
+comparing two different things.</strong></p>
+<p><strong>Check region-specific behaviour</strong> if you have European or other regulated traffic,
+where the default should be more restrictive.</p>
+<p>And <strong>document the consent configuration alongside the analytics configuration.</strong> They
+are usually owned by different people, changed independently, and together they determine every number
+the business runs on — which is precisely why nobody notices when one moves.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Analytics 4 documentation</strong> &mdash; data retention settings, internal traffic filters, conversion configuration and consent mode behaviour <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/web-analytics-fundamentals/">Web Analytics Fundamentals</a></li><li><a href="/codex/analytics-cro/google-tag-manager/">Google Tag Manager</a></li><li><a href="/codex/analytics-cro/privacy-first-analytics/">Privacy-First Analytics</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Analytics & CRO" class="sidebar-link">/codex/analytics-cro/ overview &rarr;</a></div>

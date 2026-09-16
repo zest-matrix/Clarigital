@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,39 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Broad consumer direct response, where Meta and TikTok are usually more efficient. Visual-first categories, where the format is weaker. And any campaign requiring large stable reach, given audience volatility.</p>
 <h2>Brand Safety</h2>
 <p>Content moderation and adjacency on X have been a live concern for advertisers, and several large brands have reduced or paused spend over it.</p><p>Take the question seriously rather than dismissing it either way. Use available adjacency controls, review placement reporting, and make an explicit decision about acceptable risk rather than arriving at one by default. For some brands the audience access justifies the risk; for others it does not.</p>
-</div>
+<h2>Building the Campaign So the Data Is Readable</h2>
+
+<p>X campaigns fail diagnosis more often than they fail outright, because the structure mixes signals
+that should be separated.</p>
+<p><strong>Split by targeting type, not by creative.</strong> Keyword, follower-lookalike, interest
+and retargeting behave so differently on cost and intent that combining them into one ad group
+produces an average that describes none of them. Separate them and the losing method is obvious in
+days rather than weeks.</p>
+<p><strong>Set a conversion window you can defend.</strong> The platform's default attribution is
+generous, and a long post-view window on a high-reach platform will credit purchases that were
+happening anyway. Shorten it, then compare against your own analytics rather than accepting the
+platform's figure.</p>
+<p><strong>Give creative a real rotation.</strong> Fatigue arrives quickly on a feed with high
+refresh, and performance decay is frequently read as audience exhaustion when it is creative
+exhaustion. Change the creative before concluding the audience is spent.</p>
+
+<h2>Brand Safety as an Operational Position</h2>
+
+<p>Advertiser caution about X is about adjacency — what appears next to the ad in a live, fast-moving
+feed — and it is not a question you settle once.</p>
+<p>What is actually available: <strong>keyword and conversation exclusions</strong>, which work on
+text you can anticipate and not on what you cannot; <strong>inventory filter settings</strong> that
+trade reach against conservatism; <strong>account block lists</strong>, useful and endless; and
+<strong>third-party verification</strong>, which reports after the fact rather than preventing.</p>
+<p>What none of them solves is that adjacency on a real-time feed is probabilistic. <strong>The
+honest position is a documented risk tolerance rather than an assurance</strong> — decide in advance
+what an acceptable rate of poor adjacency looks like, who reviews it, and what triggers a pause.</p>
+<p>Two practical consequences. <strong>Write the escalation path before you launch</strong>, because
+the moment you need it is the moment there is no time to design it. And <strong>keep spend
+proportionate to the reputational exposure</strong>: a channel where the tail risk is a screenshot is
+a channel to size deliberately rather than to scale by performance alone.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>X Ads Help Center</strong> &mdash; the campaign objectives, ad formats and targeting options described here <a href="https://business.x.com" rel="noopener" target="_blank">business.x.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/social-media/twitter-x-algorithm/">X (Twitter) Algorithm</a></li><li><a href="/codex/paid-advertising/media-buying-fundamentals/">Media Buying Fundamentals</a></li><li><a href="/codex/paid-advertising/reddit-ads/">Reddit Ads</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

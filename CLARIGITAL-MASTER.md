@@ -90,6 +90,492 @@ lost — the old 534 double-counted. Unique Codex guides actually rose by 33 in 
 
 ---
 
+### Session 97 — CONTENT REMEDIATION 6 (DONE, 16 Sep 2026)
+
+**Thirteen pages, +5,072 words.** Eleven Codex and — for the first time in the remediation programme —
+**two AI Atlas pages**, which is where the session found its defect.
+
+| | S95 | S96 | **S97** |
+|---|---|---|---|
+| **WRITE** | 74 | 61 | **48** |
+| NEARLY (finished) | 41 | 47 | **50** |
+| thin pages | 209 | 202 | **192** |
+
+**Ten pages crossed 800 this session**, the most of any batch. **Six batches: 73 pages, 28,263 words.**
+
+#### ⚠ AN ASSUMPTION CAUGHT BY ITS OWN ASSERTION
+
+The script docstring said the Atlas pages *"use the same guide-* template so the splice anchor is
+identical — asserted per page, not assumed."*
+
+**They do not.** Codex uses `<aside class="guide-sidebar">` inside a `guide-content` div; AI Atlas uses
+`<aside class="art-sidebar">` after a `</main>`. The anchor count came back **0** and the script
+stopped, having written the nine Codex pages and **nothing to Atlas**.
+
+*The sentence in the docstring was wrong and the assertion next to it was right.* That is the whole
+argument for asserting the thing you have just told yourself is true — writing it down did not make it
+so, and the check cost one line.
+
+Fixed by giving the script **both anchors** and requiring exactly one to match, compiled before
+writing (the S96 L10 rule, applied rather than re-learned). The four remaining pages then went in
+clean, and the two Atlas pages verified structurally afterwards: one `<h1>`, balanced `<main>`,
+balanced `<aside>`, balanced divs.
+
+#### The C10 check now runs at source
+
+`cx_expand_06.py` asserts that no markdown reaches the page **before splicing**, rather than relying on
+`newpage_check` to catch it afterwards. A check that runs where the defect is created beats one that
+runs where it is discovered — the same argument that put `newpage_check` into every build script in
+the first place.
+
+#### What the additions were
+
+The theme is **claims that do not survive checking**:
+
+- **Server-side tagging** — the plain answer to the reason it is usually sold: **it does not remove
+  the need for consent.** Consent attaches to the processing, not the transport, and under a
+  consent-based regime with no legitimate-interest basis the obligation is identical. *If the business
+  case rests on collecting data you could not otherwise collect, the business case is the problem.*
+- **Reasoning models** — the visible chain of steps **is not a guaranteed causal account** of how the
+  answer was produced. Useful for spotting where an assumption entered; not an audit trail, and
+  especially not in a regulated setting. And: *if you cannot describe how you would check the answer,
+  the extra compute is unlikely to be buying you accuracy.*
+- **Small language models** — choose by the failure you can tolerate. Small models fail **obviously**,
+  large ones fail **plausibly**, and plausible failure is the more dangerous one when the output
+  reaches someone who believes it.
+- **Reviews** — **review gating is explicitly prohibited** and is the most common violation because it
+  feels reasonable. And the audience for a review response is not the reviewer; it is the next
+  prospective customer.
+- **Brand measurement** — **never compare brand spend to performance spend on last-click ROI**. The
+  measurement system is structurally unable to make that comparison fairly, and it is the argument
+  that defunds brand investment in most organisations.
+- **Web analytics** — two tools will never agree, and why. *Pick one system of record per question and
+  stop reconciling.*
+- **Service-area SEO** — build area pages only where you have something true to say. **Four
+  substantial pages outperform forty templated ones, and forty can attract a manual action.**
+- **Crisis management** — get the holding statement approved by legal in advance, because *the
+  approval is the slow part*. And afterwards, the question nobody asks: **was this a crisis, or did we
+  make it one?**
+
+Eight of thirteen carry typed sources; five are methodological.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 192.**
+
+---
+
+### Session 96 — CONTENT REMEDIATION 5 (DONE, 16 Sep 2026)
+
+**Thirteen pages, +5,006 words**, and a defect class nobody had ever looked for.
+
+| | S93 | S95 | **S96** |
+|---|---|---|---|
+| **WRITE** | 87 | 74 | **61** |
+| NEARLY (finished) | 30 | 41 | **47** |
+| thin pages | 211 | 209 | **202** |
+
+**Seven pages crossed 800 this session**, the most of any batch. **Five batches: 60 pages, 23,191
+words.**
+
+#### ⚠ MARKDOWN LEAKED INTO THE HTML — AND NOTHING WAS LOOKING FOR IT
+
+While reviewing this batch I found `**Stop responding and escalate**` sitting in a paragraph, rendering
+as literal asterisks. A site-wide scan found **9 instances across 5 pages**, spread over batches 1 to 5.
+
+All of them mine — writing emphasis in markdown habit while composing HTML.
+
+**Every check passed on every one of those pages.** It is valid HTML, the divs balance, the headings
+are right, the sources are typed. *A check only sees what its pattern matches*, and nothing on this
+project had ever matched a literal asterisk.
+
+Fixed to `<em>` and `<strong>`; site-wide remaining **0**. The one exclusion is `*|FNAME|*` on the
+email-personalisation page, which is a merge tag and is meant to be literal.
+
+**New check C10 in `newpage_check`**, WARN level, and tested both directions: silent on the corrected
+page, flagging on a mutated one — **with the mutation asserted to have actually changed something**,
+which is the Session 94 lesson applied rather than re-learned.
+
+#### ⚠ AND I BROKE `newpage_check.py` WHILE ADDING THE CHECK
+
+The patch inserted code at the wrong indentation, **wrote the file, and only then ran `py_compile`**.
+The verification was in the right script and in the wrong order, so the gate that runs after every
+build sat broken on disk until I reverted it.
+
+Correct pattern, now used: build the candidate string, `compile()` it, **write only if it passes**.
+New SOP row **L10**, sibling of L9.
+
+*Two sessions running, the failure has been a tooling patch rather than the content.*
+
+#### What the additions were
+
+The theme is **commitments that outlast the enthusiasm**:
+
+- **Choosing platforms** — cost the recurring commitment, not the reach, and run the counterfactual:
+  *what would the same hours produce on the platform you are already on?* Plus how to leave properly —
+  **do not delete the account**, because a dormant handle you control is a defence.
+- **Discord/Telegram** — four questions that mostly say don't. *Do members have a reason to talk to
+  each other, not just to you?* If not, it is a support channel with extra steps. And the obligation
+  nobody plans for: **if minors may be present, that changes what you are responsible for.**
+- **Community management** — escalation tiers written before you need them, and **moderate behaviour,
+  not opinion**. Deleting legitimate criticism is the most reliable way to escalate it; the screenshot
+  outlives the comment.
+- **UGC** — **a hashtag is not a licence**, and organic permission does not cover paid use. Anything of
+  value makes content an endorsement, including a repost to a large audience.
+- **Content ROI** — **monthly reporting on a compounding asset systematically recommends cancelling
+  it.** Report by publication cohort instead. And be explicit that some content is a depreciating
+  asset and should not be defended as though it compounds.
+- **Microsoft import** — the sync trap: scheduled sync silently overwrites the platform-specific
+  optimisation you have been doing, on a schedule, with no record anyone reads.
+- **Local keyword research** — a local rank is a property of a page, a query **and a location**, so a
+  report that does not say where it measured from is meaningless.
+- **Reddit** — the threads about your brand rank whether you participate or not, and **monitoring is
+  the minimum engagement**. Replying to old negative threads revives them.
+
+Eight of thirteen carry typed sources; five are methodological and carry none.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 202.**
+
+---
+
+### Session 95 — CONTENT REMEDIATION 4 (DONE, 16 Sep 2026)
+
+**Thirteen pages, +4,893 words.** 355 to 369 words each. Analytics ×3 · paid ×3 · SEO ×3 ·
+social ×2 · business strategy ×2.
+
+| | S92 | S93 | **S95** |
+|---|---|---|---|
+| **WRITE** | 99 | 87 | **74** |
+| NEARLY (finished) | 23 | 30 | **41** |
+| thin pages | 216 | 211 | **209** |
+
+**Four batches: 47 pages, 18,185 words.** `newpage_check` clean on all 47, first run every time.
+
+#### What the additions were
+
+The theme in this batch is **metrics and tags that describe the instrument rather than the world**:
+
+- **UTM parameters** — *never tag internal links*. A UTM on a link between two of your own pages
+  starts a new session and re-attributes an existing visitor to the campaign. **Inflates it and
+  destroys the original source**, and every report downstream is wrong in a way that looks like
+  success. Plus: UTMs answer *which link did they arrive on*, not *what caused the sale*.
+- **Bounce vs engagement rate** — the old metric could not tell a satisfied visitor from a
+  disappointed one, and was **trivially manipulable**: firing any extra event ended the bounce, so a
+  site could improve it by changing its tracking and nothing else. The replacement is better because
+  it has **more than one way to succeed**, not because the threshold is well chosen. And: *the metric
+  measures behaviour, not satisfaction, and the two diverge most on exactly the pages that serve
+  people best.*
+- **Social listening** — tools see public posts on platforms that permit access. **Private and
+  semi-private spaces are invisible**, which for many Indian consumer categories is where most word of
+  mouth happens. Sentiment scores to two decimal places are false precision about a biased sample.
+- **Data clean rooms** — **ask for the match rate before the contract.** A low match rate does not
+  produce a weaker answer, it produces a confidently wrong one about a skewed, more-logged-in group.
+- **Media buying** — frequency caps only work *within* a platform, so three campaigns capped at three
+  can deliver nine and none reports a problem. And ask for the **distribution**, not the mean: an
+  average of four can mean everyone saw it four times or that a few saw it twenty.
+- **Local citations** — **audit for duplicates first.** Two listings for one location split reviews
+  and signals and are worse than a single inconsistent one. Nobody starts there.
+- **HTTPS** — the migration checklist is ordered, and **HSTS goes last**, because it is deliberately
+  hard to reverse. CSP in report-only mode for a fortnight before enforcing.
+- **Brand voice** — paired examples, not adjectives, because *a guide that cannot resolve an argument
+  between two writers is decoration*. Including a section on voice when the copy is generated: the
+  reliable tell is not the phrasing, it is **the absence of anything only your organisation could
+  say**.
+
+Nine of thirteen carry typed sources. Four are methodological — brand voice, market research, clean
+rooms, social listening — and carry none, on the same reasoning as every previous batch.
+
+#### Nothing broke, and the new checks were exercised
+
+`redirects_check.py` ran as part of the session for the first time outside its own QA: **PASS, 0
+blockers, 0 warnings**. `rebuild_infra.py` regenerated the derived indexes as its last step, which is
+the S94 structural fix doing its job unprompted.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 209.**
+
+---
+
+### ★ Session 94 — QA #8: AI ATLAS (DONE, 16 Sep 2026)
+
+**Nothing built. Three defects found and fixed, two of them mine, and the cleanest C6 result yet.**
+
+#### Trend
+
+| | QA #5 | QA #6 | QA #7 | **QA #8** |
+|---|---|---|---|---|
+| Pages | 877 | 881 | 883 | **883** |
+| Hard checks | 26/26 | 26/26 | 26/26 | **26/26** |
+| `<script>` blocks | 2,358 | 2,370 | 2,376 | **2,376** — 0 fail |
+| Inline handlers | 10,689 | 10,689 | 10,689 | **10,689** — 0 fail |
+| JSON-LD | 1,851 | 1,859 | 1,863 | **1,863** — 0 fail |
+| *thin pages* | 217 | 217 | 217 | **211** |
+| *orphan classes* | 42 | 42 | 42 | **35** |
+| *heading skips* | 101 | 101 | 101 | **101** |
+| **deployment** | — | — | — | **PASS** (section N, first QA) |
+
+#### ⚠ DEFECT 1 — `all-guides` was stale again, and it was my fault
+
+The generator-idempotency check caught it for the **second consecutive QA**, which makes it the
+highest-yield check in the whole session.
+
+`/codex/all-guides/` still listed the paid-advertising hub as *"Facebook & Instagram Ads Guides"*.
+**I did that in Session 89**: I regenerated `all-guides` and *then* retitled the hub, in the same
+session — **in the same session in which I wrote down that fixing a source page does not fix an index
+built from it.**
+
+Knowing the rule did not produce the right order. So the order is now structural:
+**`rebuild_infra.py` runs `gen_all_guides.py` and `gen_counts.py` as its last step**, after content.
+The session-end ritual already runs `rebuild_infra`, so the derived indexes can no longer be left
+behind by a session that forgets.
+
+#### ⚠ DEFECT 2 — 172 external links opening new tabs without `rel="noopener"`
+
+The M1 check was **narrowed in QA #7** because it was firing on correct behaviour — links with no
+`target="_blank"`, where `window.opener` exposure cannot arise. The narrowed version immediately
+earned itself: **172 genuine cases across 24 AI Atlas pages**, every one with `target="_blank"` and
+no `rel` attribute at all.
+
+Low severity — current browsers imply `noopener` for new-tab links — but it is the house rule and it
+costs nothing. Fixed with per-page assertions on anchor count, div count and exact length delta.
+**Site-wide remaining: 0.**
+
+*A check narrowed for precision found real defects in the next section it was pointed at. That is the
+argument for narrowing rather than deleting.*
+
+#### ⚠ DEFECT 3 — a BLOCK-level false positive in the gate run after every build
+
+`newpage_check --changed` reported **`BLOCK I3 handlers defined — copyPrompt`** while `audit.py`
+reported 26/26. Two checks disagreeing, so neither was evidence until one was read.
+
+**The audit was right.** `copyPrompt` is defined on all **139** Atlas pages that call it — as
+`window.copyPrompt=function(btn){`. `newpage_check`'s copy of I3 matched only `function NAME(`, so it
+blocked 139 correct pages. `audit.py`'s `handler_check` recognises both forms, which is why the site
+stayed green.
+
+**A BLOCK-level false positive in the gate that runs after every build is the worst kind of wrong
+check** — it is precisely the SOP's *"a check that ships red is a check people learn to ignore"*,
+sitting in the loop that gates every page. It only surfaced because this session touched 24 Atlas
+pages; the section pre-dates `newpage_check`, so it had never been run against them.
+
+Broadened to accept assignment and object-literal forms, and **negative-tested**.
+
+#### ⚠ AND THE NEGATIVE TEST WAS A NO-OP THAT REPORTED PASS
+
+First attempt mutated `copyPrompt = ` — with spaces. The file contains `copyPrompt=`. **Nothing
+changed, the check passed, and the green result proved nothing.** I nearly accepted it as validation
+of the fix.
+
+Redone with a verified mutation: **0 definitions, 21 calls, correctly BLOCKs.**
+
+***A test that does not modify what it claims to modify always passes.*** Thirteenth false alarm, and
+the second this session. Recorded in the SOP's rule 2.
+
+#### C6 across AI Atlas — the cleanest result of the three
+
+158 pages on a shared template, and the section most likely to duplicate.
+
+**Zero pairs share even four long sentences.** Not low — none.
+
+| Section | Max pairwise overlap |
+|---|---|
+| Fintech | 6.4%, all boilerplate |
+| Codex, 333 leaf guides | 7.8%, all boilerplate |
+| **AI Atlas, 158 pages** | **no pair reaches the threshold** |
+
+#### THE OPEN QUESTION FROM S87, SETTLED
+
+*Are the routing pages thin as well as short?* Carried open for seven sessions. Measured:
+
+**19 of the 45 HUB pages are under 200 content words.** `codex/history` routes to **8 children on 105
+words**. `codex/analytics-cro` routes to **24 children on 130**.
+
+So the S87 classification was right that short is *correct* for a hub, and incomplete in treating
+that as the end of the question. **A hub can list without orienting.** Not a correctness defect and
+not in the WRITE backlog — it is a new, smaller, well-defined queue of 19 pages. **New SOP row C9**,
+which also records that the 49 SYLLABUS pages have not been measured the same way.
+
+#### AI Atlas section, otherwise
+
+158 pages · **0** failures on lang, alt, viewport, fixed widths, table overflow, skip links, GA4 ·
+median **35 KB**, **0** over 150 KB · **20 pages with heading skips**, contributing to the site-wide
+101.
+
+**Stylesheet generations: 16, not the 15 this file has carried.** Three variants cover 112 of 158
+pages; the tail includes two single-page variants a few characters apart from a larger group. Still
+**not consolidated** — it needs a diff-by-diff pass, never a sweep, and that is a session rather than
+a QA item.
+
+#### Still open
+
+**19 thin hubs** (new) · **16 stylesheet generations** in Atlas · **101 heading skips**, 20 of them
+Atlas · **35 orphan classes** · **151 decaying stamps** · **section F GAPs** — contrast, keyboard
+order, ARIA, screen reader, all needing a browser · **section N GAPs** — `_headers` unvalidated, the
+dashboard Redirect Rules invisible from the repo, and nothing comparing live against package.
+
+**Eighth time of asking for two or three phone screenshots.** Most useful now: any AI Atlas tool page,
+since 24 of them changed today.
+
+Next rotation: **Courses**, QA #9 at Session 99.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS.**
+
+---
+
+### ⚠ Session 93b — THE DEPLOYMENT WAS NEVER CHECKED BY ANYTHING (DONE, 16 Sep 2026)
+
+Unplanned. Two Cloudflare deploys failed in succession and the diagnosis turned up **a live infinite
+redirect loop and a publicly readable copy of this document.**
+
+**The site had been at 26/26 for eleven sessions throughout.** Every one of those checks validates the
+*site*. **Nothing validated the deployment** — not the redirect file, not the headers file, not what
+the host was told to publish.
+
+#### Defect 1 — a redirect that pointed a page at itself
+
+```
+/codex/seo/technical/crawlability-indexability/
+  -> /codex/seo/technical/crawlability-indexability/   301
+```
+
+An infinite loop. Live, for an unknown length of time, and **invisible to all 26 hard checks** because
+`linkcheck` reads links in HTML and nothing had ever read `_redirects`.
+
+It surfaced only in sequence: the file had **273 rules**, Cloudflare rejected it at rule **101**, and
+once that was fixed the deploy got far enough to report three duplicate source paths — one of which
+was the self-redirect. **The first error was hiding the second.**
+
+Both `/codex/seo/technical/crawlability-indexability/` and `.../crawlability-indexation/` turned out
+to be dead URLs; the real page is `/codex/seo/fundamentals/crawlability-indexation/`. So the *later*
+duplicate was the correct one and **keeping the first of each pair — the obvious dedupe — would have
+kept the broken rules.**
+
+#### Defect 2 — `CLARIGITAL-MASTER.md` was publicly readable
+
+The host was configured with `assets.directory = "."` and no exclusion file, so the deploy published
+the **entire repository folder**: `_build/` scripts, `QA-SOP.md`, `thin-pages.md`, `.DS_Store` files,
+and **this document at the site root**, where it loaded as plain text.
+
+**And the `.git` directory**, which is the part that could not have been fixed with git. `git add .`
+never put it there — the host *clones* the repo onto its build machine, which creates `.git`
+physically, and then uploads the whole folder. **`.git` can never be gitignored**, so only a host-side
+exclusion file stops it. Had either failed deploy succeeded, the full commit history would have been
+reconstructable from `clarigital.com/.git/`.
+
+It was **not** in the sitemap, `llms.txt` or `llms-full.txt`, so nothing advertised it. `robots.txt`
+says `Allow: /` to every crawler including GPTBot, ClaudeBot and CCBot. Reachable, never pointed at.
+
+#### The ceiling is not what the documentation says
+
+Cloudflare documents **2,000 static + 100 dynamic** redirects. Observed: **272 static + 1 dynamic
+rejected at rule 101**, under an error message naming the *dynamic* limit. A community report
+describes the same 100-rule cutoff silently dropping rules on Pages. **The enforced ceiling is ~100
+total, whatever the type, and the error text misdirects.**
+
+`_redirects` went **273 → 30**. The 240 legacy `.html → directory` rules were one uniform pattern and
+now live in a single dashboard Redirect Rule.
+
+#### ⚠ ELEVENTH FALSE ALARM, AND THE SHARPEST ONE YET
+
+My loop-detector reported **no loops**. It built a `{source: target}` dict — and because the file
+contained **duplicate sources, the second entry silently overwrote the first**, erasing the
+self-redirect from the very check written to find it.
+
+***The duplicates concealed themselves from the duplicate check.*** I only found the loop because
+Cloudflare's error named the line numbers. Rebuilt to count occurrences in a list rather than a map.
+
+#### `_build/redirects_check.py`, and it was tested against a known-bad input
+
+Six checks: rule count, duplicate sources, self-redirects, chains, targets that resist, and
+`.assetsignore` coverage. **Run against the fixed files: PASS, 0 blockers, 0 warnings. Run against the
+original file: 5 blockers and 11 warnings, including the self-redirect.**
+
+Proving a checker catches the defect it was written for is the standard this file has demanded since
+Session 47b and has not always met.
+
+#### New SOP section N, nine rows — and three of them are GAPs
+
+`_headers` is not validated at all. **The 240 dashboard Redirect Rules are invisible from the
+repository** and nothing in this project can see or verify them. And **nothing compares what is live
+against what is in the package** — which is precisely why a publicly readable master document went
+unnoticed.
+
+#### The lesson
+
+**A green audit describes the artefact, not the delivery.** Eleven sessions at 26/26 sat on top of an
+infinite redirect loop and a published internal document, and neither was a failure of the checks —
+both were outside what the checks were pointed at.
+
+*Every AUTO row in the SOP began as a defect nobody was looking for. Section N is nine more.*
+
+#### Also
+
+- `.assetsignore`, `wrangler.jsonc` and the corrected `_redirects` are now **in the package**, so the
+  deployment config travels with the site instead of living only in the repo.
+- Deploy confirmed working.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · `redirects_check` PASS.**
+
+---
+
+### Session 93 — CONTENT REMEDIATION 3 (DONE, 15 Sep 2026)
+
+**Twelve pages, +4,885 words.** The next shortest in the WRITE bucket — 336 to 351 words each.
+Paid advertising ×5 · affiliate ×2 · SEO ×2 · programmatic · social · analytics.
+
+| | S91 | S92 | **S93** |
+|---|---|---|---|
+| **WRITE** | 110 | 99 | **87** |
+| NEARLY (finished) | 13 | 23 | **30** |
+| **thin pages** | 217 | 216 | **211** |
+
+**Five pages crossed 800 on their own merits this session**, against one last session. The metric is
+now moving without being aimed at, which is the outcome the Session 91 decision was betting on.
+
+**Three batches: 34 pages, 13,292 words.** `newpage_check` clean on all 34, first run each time.
+
+#### What the additions were
+
+The same two-section pattern, and the recurring theme across this batch is **measurement that
+flatters the seller**:
+
+- **Viewability** — two vendors measuring one campaign will disagree, and the fix is not to find the
+  correct vendor but to **designate one as the system of record for billing** and use the rest
+  directionally. And always read **measurability alongside viewability**: 70% viewable on 50%
+  measured is a much weaker claim than the headline, and reporting that omits the denominator is
+  omitting the part that qualifies it.
+- **Mobile** — attribution after the identifier change is aggregated, delayed and threshold-bound, so
+  **small campaigns can fall below reporting thresholds and appear to produce nothing**. Plan for
+  fewer, larger, longer campaigns; the measurement environment now rewards that shape.
+- **Mobile fraud** — pay on a **post-install event** rather than the install, which removes most of
+  the economic incentive at a stroke. Post-install engagement near zero is the clearest signal there
+  is: fraudulent installs do not open the app twice.
+- **Coupon affiliate** — the whole argument is an incrementality question and it is **testable**. A
+  holdout answers it; and a visible promo-code field prompts the code search that creates the
+  commission, so the interface is often generating the cost it is being paid for.
+- **E-commerce SEO** — a decision table for products that come and go, resting on one rule: **a URL
+  with links and history is an asset, and deleting it spends that asset to save a database row.**
+- **Looker Studio** — start from the decision, one question per page, the comparison inside the
+  chart, and **date the data and name the owner**, because an undated dashboard silently showing
+  stale data is the same failure this file records for stale published counts, in a different medium.
+- **Employee advocacy** — the disclosure question nobody asks first. Employment is a material
+  connection; incentives make it stricter; and central copy distributed verbatim removes the exact
+  property that made advocacy work.
+- **Site architecture** — **expect a dip** on a migration, and note that the common mistake is
+  reversing course inside the recovery window on a fortnight's data, turning one disruption into two.
+
+Typed sources on all twelve — Media Rating Council and IAB/MRC, TAG, Google Search Central, Looker
+Studio, Microsoft Advertising, X Ads, Snapchat Ads Manager, Apple and Google identifier policy, FTC
+and ASCI. **First batch where every page had a real primary source to cite.**
+
+#### Nothing broke
+
+`newpage_check --changed` 12/12 clean with no warnings at all — the first batch with none, because
+these pages already carried the `.srcs` CSS from the S92 fix and the `guide-*` layout from S91. The
+two repairs from the previous sessions are now doing their job silently, which is what a repair
+should look like.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · orphan classes 35 · thin 211.**
+
+---
+
 ### Session 92 — CONTENT REMEDIATION 2 (DONE, 15 Sep 2026)
 
 **Eleven pages, +4,379 words.** The next shortest in the WRITE bucket — 310 to 336 words each — taken
@@ -3357,18 +3843,24 @@ Sessions 47–78 are **done**. Remaining work, renumbered honestly against what 
 | ~~90~~ | ~~WRITE backlog 1~~ **DONE** — 10 pages +4,028 words; the `guide-*` template has no CSS |
 | ~~91~~ | ~~Decisions + template CSS~~ **DONE** — guide-* layout shipped; 800 is not the target |
 | ~~92~~ | ~~WRITE backlog 2~~ **DONE** — 11 pages +4,379 words; WRITE 110 → 99 |
-| 93 | **WRITE backlog, codex** |
-| **94** | **★ QA #8** |
-| 95–98 | **WRITE backlog, codex**, continued |
+| ~~93~~ | ~~WRITE backlog 3~~ **DONE** — 12 pages +4,885 words; WRITE 99 → 87; thin 216 → 211 |
+| ~~93b~~ | ~~**Deployment**~~ **DONE, unplanned** — live redirect loop; MASTER.md was public; SOP section N |
+| ~~**94**~~ | ~~**★ QA #8** — AI Atlas~~ **DONE** — 3 defects; C6 Atlas clean; 19 thin hubs found |
+| ~~95~~ | ~~WRITE backlog 4~~ **DONE** — 13 pages +4,893 words; WRITE 87 → 74 |
+| ~~96~~ | ~~WRITE backlog 5~~ **DONE** — 13 pages +5,006 words; WRITE 74 → 61; markdown leak found |
+| ~~97~~ | ~~WRITE backlog 6~~ **DONE** — 13 pages +5,072 words; WRITE 61 → 48; two templates found |
+| 98 | **WRITE backlog**, continued |
 | **99** | **★ QA #9** |
 | 100–103 | **WRITE backlog, AI Atlas** (29 pages) + the 3 NEARLY tool guides = 32 |
 | **104** | **★ QA #10 — final** |
 
-**12 sessions remaining (93–104).** Composed of: **8 content remediation** (93, 95–98, 100–103)
-· **3 QA sessions** (94, 99, 104), with session 104 the final QA.
+**7 sessions remaining (98–104).** Composed of: **5 content remediation** (98, 100–103, one of them for
+the thin hubs) · **2 QA sessions** (99, 104), with session 104 the final QA.
 
-**Backlog: 99 WRITE pages across 8 writing sessions ≈ 12 a session.** NEARLY is a finished state
-(S91 decision), so 23 are done.
+**Backlog: 48 WRITE pages, plus 19 thin hubs from QA #8.**
+
+**Backlog: 87 WRITE pages across 7 writing sessions ≈ 13 a session.** NEARLY is a finished state
+(S91 decision), so 30 are done. **34 pages and 13,292 words remediated across three batches.**
 
 **The backlog, counted and then corrected:** **120 WRITE + 3 NEARLY = 123 pages across 12 working
 sessions ≈ 10 a session.** 94 of the original 217 are routing pages where short is correct.
@@ -3376,17 +3868,18 @@ sessions ≈ 10 a session.** 94 of the original 217 are routing pages where shor
 **The product-guide programme is finished.** Thirteen built, four regulators, soundboxes/POS and
 payroll SaaS deliberately out of scope.
 
-**★ SESSION 93 — WRITE BACKLOG 3.** Same pattern, eleven more from `_build/thin-pages.md` shortest
-first. **99 remain.** Two `<h2>` sections — how you actually set it up, what goes wrong — plus typed
-sources only where a real primary source exists. Bundle as `cx_expand_03.py`, re-run `rescope.py`.
-**Session 94 is QA #8, rotating to AI Atlas**, so 93 is the last writing session before it.
+**★ SESSION 98 — WRITE BACKLOG 7.** Thirteen more from `_build/thin-pages.md` shortest first;
+**48 remain**. Bundle as `cx_expand_07.py`. **Note the two templates**: Codex splices before
+`<aside class="guide-sidebar">`, AI Atlas before `<aside class="art-sidebar">` after a `</main>`.
+`cx_expand_06.py` handles both — copy its anchor logic rather than rewriting it.
+**Session 99 is QA #9, rotating to Courses**, so 98 is the last writing session before it.
 
-**Still worth a screenshot when convenient:** `/codex/programmatic/programmatic-direct/` carries a hero
-band, a sticky sidebar above 861px and a typed sources block, none of which I have seen.
+**Queued from QA #8, not yet scheduled:** **19 HUB pages under 200 content words** — they route
+correctly and explain nothing. Worth one session, probably 100 or 101.
 
-**Open, not done:** the **45 HUB** and **49 SYLLABUS** pages were classified as *routing*, which is not
-the same as *adequate*. `codex/sem/google-ads/youtube/` routes to two children on 171 words.
-**Nobody has checked the routing pages for being thin as well as short.**
+**Also carried:** the **16 stylesheet generations** in AI Atlas need a diff-by-diff consolidation
+session, never a sweep. AI Atlas holds 16 of those
+hubs, so QA #8 is the natural place to settle it.
 
 **After Session 86 the product-guide programme is finished** and the remaining 18 sessions are
 content remediation, its re-scope, and QA.

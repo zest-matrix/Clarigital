@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,38 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Options include demographics, interests, behaviours, custom audiences from your own data, and lookalikes. Also available is targeting by interaction with specific content categories or creators.</p><p>Broad targeting generally outperforms narrow targeting on TikTok, because the algorithm finds responsive users faster when given room. Over-constraining audiences starves delivery and raises costs.</p><p>Give the system creative variety and conversion signal rather than trying to define the audience yourself.</p>
 <h2>Measurement Realities</h2>
 <p>TikTok drives behaviour that is difficult to attribute. Users discover a product on TikTok and then search for it, or buy later on another device. Last-click measurement systematically undercredits the channel.</p><p>Use the TikTok pixel and Events API for what can be tracked directly, and supplement with post-purchase survey questions asking how customers heard of you, and with holdout tests where budget allows.</p>
-</div>
+<h2>Setting Up So the Learning Phase Completes</h2>
+
+<p>The most common cause of a failed TikTok test is a structure that prevents any ad group from
+gathering enough data to optimise.</p>
+<p><strong>Fewer ad groups, more budget each.</strong> Splitting a modest budget across six audiences
+means none exits the learning phase, and six inconclusive results read as the platform not working.</p>
+<p><strong>Do not edit during learning.</strong> Changing the budget, the bid, the audience or the
+creative restarts it. The instinct to fix a slow start is exactly what prevents the recovery.</p>
+<p><strong>Optimise toward an event that happens often enough.</strong> A conversion occurring a
+handful of times a week cannot train a bid strategy. Optimise for a more frequent upstream event and
+measure the rare one separately.</p>
+<p><strong>Give it a fortnight before judging.</strong> Shorter reads are dominated by learning-phase
+volatility, and the decisions made from them are usually wrong in both directions.</p>
+<p>Instrument before launching: the pixel or events API firing, the events you care about defined, and
+where available a server-side connection, because the browser-side signal is the weakest link.</p>
+
+<h2>Reading Attribution Honestly</h2>
+
+<p>Platform-reported performance is measured by the party selling the inventory, and on a high-reach
+video platform the standard settings are generous in a specific direction.</p>
+<p><strong>Separate click-through from view-through</strong> in every report. Blended, a view-through
+window on a platform with this much reach credits purchases that were already happening.</p>
+<p><strong>Shorten the default windows</strong> and compare against your own analytics. The gap between
+platform-reported conversions and what your own system sees is the number to understand, not to
+eliminate — they are measuring different things and both are internally consistent.</p>
+<p><strong>Watch total revenue, not attributed revenue.</strong> If platform-attributed sales rise
+while total sales do not, the channel is reallocating credit rather than creating demand.</p>
+<p><strong>And run a holdout for anything material.</strong> A geographic or audience holdout over a
+defined period is the only method that answers the incrementality question directly. It costs real
+sales and it is the only evidence that survives a sceptical finance review.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>TikTok Ads Manager documentation</strong> &mdash; campaign structure, Spark Ads mechanics and the attribution settings described here <a href="https://ads.tiktok.com" rel="noopener" target="_blank">ads.tiktok.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/tiktok-ads/tiktok-creative-best-practices/">TikTok Creative Best Practices</a></li><li><a href="/codex/social-media/tiktok-content-strategy/">TikTok Content Strategy</a></li><li><a href="/codex/social-media/influencer-marketing/">Influencer Marketing</a></li><li><a href="/codex/paid-advertising/video-advertising/">Video Advertising</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

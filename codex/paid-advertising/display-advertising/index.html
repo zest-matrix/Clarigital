@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,42 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Display creative is seen peripherally for a fraction of a second. It must communicate one idea.</p><p>What holds up: a clear brand identifier, one benefit or offer, a single call to action, and strong contrast. What fails: multiple messages, small text, and creative designed to be read rather than glanced at.</p><p>Responsive display ads assemble combinations from supplied assets. Provide the maximum number of headlines, descriptions and images and let the system test, but review the asset performance report — weak assets drag the whole set.</p>
 <h2>Measurement</h2>
 <p>Track view-through conversions alongside click-through, while treating view-through with appropriate scepticism — an impression served below the fold to a disinterested user is not causally responsible for a later purchase.</p><p>The most honest measurement is a holdout test: withhold display from a matched segment and compare outcomes. It is the only method that isolates genuine incremental effect.</p>
-</div>
+<h2>Making Display Accountable</h2>
+
+<p>Display carries a reputation for being unaccountable, and most of that is a measurement choice
+rather than a property of the channel.</p>
+<p><strong>Separate view-through from click-through conversions in every report.</strong> Blended,
+they overstate the channel; separated, both numbers are usable. This single change alters most display
+debates.</p>
+<p><strong>Set a view-through window you can defend.</strong> The defaults are generous, and a long
+window on a high-reach channel credits purchases that would have happened regardless.</p>
+<p><strong>Exclude your own converters and recent visitors</strong> from prospecting campaigns, or
+prospecting quietly becomes remarketing with a prospecting label and excellent-looking numbers.</p>
+<p><strong>Run a holdout for anything substantial.</strong> A matched-region test is the only method
+that answers whether display created demand rather than observed it.</p>
+<p>Done that way, display is a legitimate upper-funnel channel with honest numbers. Done the default
+way, it produces impressive reports that fall apart the first time anyone tests them.</p>
+
+<h2>Placement Hygiene as a Standing Task</h2>
+
+<p>The largest source of wasted display spend is inventory nobody chose. Automatic placement
+expansion will find cheap impressions, and cheap impressions are cheap for reasons.</p>
+<p>A routine that works, run monthly rather than at launch:</p>
+<ul>
+<li><strong>Sort the placement report by spend</strong> and exclude anything that has spent
+meaningfully with no conversions and no engagement.</li>
+<li><strong>Exclude app inventory unless you deliberately want it.</strong> A large share of accidental
+display spend is mobile games, where the click is usually a mis-tap.</li>
+<li><strong>Check content categories</strong>, not just individual sites — the blunt category
+exclusions catch what a site-by-site list never will.</li>
+<li><strong>Look at the distribution, not the average.</strong> A handful of placements consuming most
+of the budget is normal; the question is whether they are the ones you would have picked.</li>
+</ul>
+<p>And treat a placement that performs implausibly well as something to investigate rather than to
+scale. <strong>The cheapest, best-performing inventory in the report is where to look first for
+invalid traffic.</strong></p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Ads Help documentation</strong> &mdash; Display Network targeting types, placement controls and the reporting behaviour described here <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li><li><span class="src-k src-official">official</span><strong>IAB Tech Lab specifications and the seller authorisation files</strong> &mdash; the supply-path and seller-verification mechanics referenced here <a href="https://iabtechlab.com" rel="noopener" target="_blank">iabtechlab.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/media-buying-fundamentals/">Media Buying Fundamentals</a></li><li><a href="/codex/programmatic/programmatic-advertising-fundamentals/">Programmatic Fundamentals</a></li><li><a href="/codex/sem/">Google Display Network</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

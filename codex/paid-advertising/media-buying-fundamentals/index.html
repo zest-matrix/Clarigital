@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,38 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Reach is how many distinct people saw the ad. Frequency is how often each saw it. Impressions are the product of the two, which is why impressions alone tell you little.</p><p>Effective frequency — enough exposure to register, not so much that it irritates — sits around three to ten exposures per period depending on category and creative. Uncapped campaigns routinely deliver forty or more to a small segment while missing most of the target.</p><p>Set frequency caps deliberately. Uncapped delivery is the most common and most invisible source of waste.</p>
 <h2>Building a Media Plan</h2>
 <p>Start from the objective and the audience, not from the channels you already use. Then allocate by the role each channel plays: some build reach, some capture demand, some retarget.</p><p>Budget allocation heuristics worth knowing: do not spread so thin that no channel reaches minimum effective frequency, reserve roughly ten to twenty percent for testing, and set flight lengths long enough to escape the learning phase on algorithmic platforms.</p>
-</div>
+<h2>Reading What You Are Actually Paying For</h2>
+
+<p>The headline rate is rarely the cost. What sits between the rate and the outcome is the part worth
+reading.</p>
+<p><strong>Ask what share of your budget reaches the publisher.</strong> Between you and the inventory
+there may be an agency, a DSP, an exchange and an SSP, each taking a margin. The difference between
+gross and working media is frequently large and rarely volunteered.</p>
+<p><strong>Establish whose numbers bill.</strong> Buyer and publisher count differently; agree the
+system of record and the acceptable discrepancy before the flight rather than during it.</p>
+<p><strong>Read the make-good terms.</strong> What happens on under-delivery, on invalid traffic, on a
+brand-safety incident — and whether the remedy is a refund or more of the same inventory.</p>
+<p><strong>Check the cancellation window.</strong> A campaign you cannot pause is a fixed cost, and on
+a direct buy that window can be long.</p>
+<p>None of this is adversarial. It is the difference between buying a rate and buying an outcome.</p>
+
+<h2>Frequency, Waste, and the Number Nobody Sets</h2>
+
+<p>Reach and frequency are planned and then not managed, and the gap between the plan and the
+delivery is where most media waste lives.</p>
+<p><strong>Frequency caps only work within a platform.</strong> Three campaigns each capped at three
+impressions can deliver nine to the same person, and none of the three reports a problem. If you buy
+one audience across several platforms, <strong>the effective cap is the sum</strong>, and the only
+controls are consolidating buying or setting each cap materially lower.</p>
+<p><strong>Distribution matters more than average frequency.</strong> An average of four can mean
+everyone saw it four times, or that most saw it once and a few saw it twenty. Those are different
+campaigns with the same number. Ask for the frequency distribution, not the mean.</p>
+<p><strong>Diminishing returns arrive earlier than plans assume</strong>, and past a point additional
+exposure produces irritation rather than recall — a cost that does not appear in any report.</p>
+<p>The practical discipline: <strong>decide the frequency you intend before buying, measure the
+distribution you got, and treat a long tail as budget to reallocate</strong> rather than as reach.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>IAB Tech Lab specifications and the seller authorisation files</strong> &mdash; the supply-path and seller-verification mechanics referenced here <a href="https://iabtechlab.com" rel="noopener" target="_blank">iabtechlab.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/display-advertising/">Display Advertising</a></li><li><a href="/codex/programmatic/programmatic-advertising-fundamentals/">Programmatic Fundamentals</a></li><li><a href="/codex/business-strategy/marketing-budget-allocation/">Budget Allocation</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

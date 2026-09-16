@@ -153,6 +153,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:type" content="article">
@@ -194,7 +207,43 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <h2>Advertiser Strategies</h2>
 <p>Advertisers manage coupon site exposure through several mechanisms: excluding coupon and deal sites from their programme entirely, offering lower commission rates to coupon sites, implementing multi-touch attribution models that distribute commission across all contributing affiliates, or using coupon codes that only work when arriving via specific affiliate links.</p><p>For advertisers, the key question is whether coupon sites are acquiring genuinely new customers or simply capturing commission on sales that would have happened anyway — and what the net effect on margin is after accounting for the discount itself and the affiliate commission.</p>
 
-    </div>
+    <h2>Testing Whether Coupon Partners Add Anything</h2>
+
+<p>The argument about coupon affiliates is an incrementality argument, and it is testable rather than
+a matter of opinion.</p>
+<p><strong>The cleanest test is a holdout.</strong> Suspend coupon partners for a defined period and
+watch total revenue, not attributed revenue. If total holds while attributed coupon revenue
+disappears, the partners were intercepting demand you already had. If total falls, they were bringing
+something.</p>
+<p><strong>A softer test</strong> is to look at new versus returning customers by partner. A coupon
+partner delivering mostly new customers is doing acquisition; one delivering mostly returning
+customers at the final step is being paid for a conversion that was already happening.</p>
+<p><strong>The signal you can read without a test</strong> is the checkout behaviour: a visible
+promo-code field prompts a search for a code, and the resulting commission is created by your own
+interface rather than by the partner. Hiding or collapsing the field is a one-line change that
+frequently moves the number.</p>
+<p>Whatever the outcome, decide it on your own data. <strong>The category performs very differently by
+market, margin and brand strength</strong>, and general advice about coupon affiliates is unusually
+unreliable.</p>
+
+<h2>Structuring the Relationship Once You Know</h2>
+
+<p>If the test says the partners add something, the answer is rarely a flat rate for everyone.</p>
+<p><strong>Commission tiering by partner type</strong> is the standard instrument: a lower rate for
+last-click coupon conversions than for content partners who introduce the customer. This is not a
+punishment; it prices the different work honestly, and good partners understand it.</p>
+<p><strong>New-customer bonuses</strong> pay more for genuine acquisition and less for a discount
+applied to a returning buyer, which aligns payment with the thing you actually want.</p>
+<p><strong>Exclusive codes</strong> are worth more than public ones, because they are trackable,
+attributable to one partner and controllable in value — and they stop your discount leaking onto
+aggregators you never approved.</p>
+<p><strong>Code hygiene is a real operational task.</strong> Expired codes circulating on aggregator
+sites produce failed checkouts and support contacts, and the customer blames you rather than the site.
+Audit what is live against what should be, periodically.</p>
+<p>And the disclosure obligation applies here as everywhere: a page recommending a retailer for a
+commission is a paid recommendation, whether the mechanism is a link or a code.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>FTC Endorsement Guides</strong> &mdash; the disclosure obligations attaching to affiliate relationships in the United States <a href="https://ftc.gov" rel="noopener" target="_blank">ftc.gov</a></li><li><span class="src-k src-official">official</span><strong>ASCI Guidelines for Influencer Advertising in Digital Media</strong> &mdash; the disclosure obligations for affiliate content aimed at Indian audiences <a href="https://ascionline.in" rel="noopener" target="_blank">ascionline.in</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card">
         <h3>Related guides</h3>

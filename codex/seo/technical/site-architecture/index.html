@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,40 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>A well-formed hierarchy has a homepage linking to section hubs, hubs linking to subsections or individual pages, and individual pages linking laterally to related content.</p><p>Hub pages do real work. They consolidate topical authority, give crawlers an efficient path to related content, and often rank for broader head terms that individual pages cannot.</p>
 <h2>Internal Linking as Architecture</h2>
 <p>Internal links are the mechanism through which architecture actually functions. Pages with many internal links pointing at them are treated as more important.</p><p>Deliberate practices: link from high-authority pages to pages you want to promote, use descriptive anchor text rather than "click here", link contextually within body content rather than only in navigation, and audit periodically for orphan pages with no internal links at all.</p>
-</div>
+<h2>Diagnosing an Architecture You Inherited</h2>
+
+<p>Most architecture work is done on a site that already exists, and the useful first step is
+measurement rather than redesign.</p>
+<p><strong>Crawl the site and plot click depth from the homepage.</strong> Anything beyond three or
+four clicks is a candidate for promotion. The distribution matters more than any single page: a long
+tail at depth six usually means a category layer is missing.</p>
+<p><strong>Compare the crawl against the sitemap and against your analytics.</strong> Three sets
+worth looking at: URLs in the crawl but not the sitemap, URLs in the sitemap but not reachable by
+crawling, and URLs receiving traffic that appear in neither. Each set is a different defect.</p>
+<p><strong>Look at log files if you can get them.</strong> They show what search engines actually
+requested rather than what you think is important, and the gap between the two is usually the finding.</p>
+<p><strong>Count internal links per page.</strong> Pages with one inbound internal link are relying
+entirely on the sitemap, which is a weak signal and a fragile one.</p>
+
+<h2>Changing It Without Losing What Works</h2>
+
+<p>Restructuring is the highest-risk routine SEO work because the downside is immediate and the
+upside is gradual.</p>
+<p>The sequence that limits the damage: <strong>map every current URL to its destination before
+touching anything</strong>, including the ones you intend to retire, and decide for each whether it
+redirects, stays, or returns a gone status. A redirect map built after launch is built from server
+errors.</p>
+<p><strong>Redirect to the closest equivalent, not to the homepage.</strong> Bulk redirects to the
+root are treated as soft errors and discard the signal you were trying to preserve.</p>
+<p><strong>Update internal links to point at final destinations</strong> rather than relying on the
+redirects. Chains dilute, slow crawling and accumulate.</p>
+<p><strong>Keep the old sitemap available for a period</strong> so the redirects are discovered
+promptly, then retire it.</p>
+<p><strong>Expect a dip.</strong> Recovery on a well-executed migration typically takes weeks, and the
+most common mistake is reversing course inside that window on the basis of a fortnight's data —
+turning one disruption into two.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; crawl budget, faceted navigation handling and the internal linking guidance referenced here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/on-page/internal-linking/">Internal Linking</a></li><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability and Indexability</a></li><li><a href="/codex/seo/fundamentals/how-google-search-works/">How Google Crawls the Web</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Technical SEO" class="sidebar-link">/codex/seo/technical/ overview &rarr;</a></div>

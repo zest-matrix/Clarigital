@@ -153,6 +153,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:type" content="article">
@@ -190,7 +203,45 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Category pages are often the highest-traffic pages on e-commerce sites, ranking for broad commercial queries ("running shoes," "office chairs"). They need both SEO-optimised content and strong product listings — a combination many sites get wrong by prioritising one at the expense of the other.</p><p>Category page SEO content should be genuinely useful, not SEO boilerplate. Buying guides, filtering guidance, and product comparison information serve both search engines and users. Thin content written purely for keyword density is easily identified by both.</p>
 <h2>Faceted Navigation and Crawl Budget</h2>
 <p>Faceted navigation (filtering by colour, size, price, brand) creates exponential URL variations — each filter combination potentially creates a new URL. For a site with 10 colour options and 8 size options across 500 products, this could generate millions of URLs, most containing duplicate or thin content.</p><p>Managing faceted navigation for SEO requires canonical tags (pointing filter variants to the canonical category or product URL), robots.txt or noindex for low-value filter combinations, and in some cases, URL parameter handling in Google Search Console. The goal: ensure crawl budget is spent on pages that can rank, not infinite filter variations.</p>
-</div>
+<h2>Products That Come and Go</h2>
+
+<p>The problem unique to e-commerce SEO is that the catalogue changes underneath the site. Products
+sell out, get discontinued, come back seasonally, and get replaced by a successor — and each case
+needs a different answer.</p>
+<table>
+<tr><th>Situation</th><th>Do this</th></tr>
+<tr><td>Temporarily out of stock</td><td><strong>Keep the page live</strong>, say so plainly, offer alternatives and a back-in-stock notification. Never remove it</td></tr>
+<tr><td>Permanently discontinued, direct successor</td><td><strong>301</strong> to the successor</td></tr>
+<tr><td>Permanently discontinued, no successor</td><td><strong>Keep it</strong> if it has links or traffic, with alternatives on the page; otherwise return <strong>410</strong></td></tr>
+<tr><td>Seasonal</td><td><strong>Keep the URL permanently</strong> and change the content. Rebuilding an equity-carrying page every year discards it</td></tr>
+<tr><td>Variant sold out, product live</td><td>Nothing — handle it in the page, not in the URL</td></tr>
+</table>
+<p>The rule behind the table: <strong>a URL that has accumulated links and history is an asset, and
+deleting it spends that asset to save a database row.</strong> The default should be to keep and
+repurpose.</p>
+
+<h2>Facets: Deciding What Deserves to Exist</h2>
+
+<p>Faceted navigation generates near-unlimited URLs and is the largest crawl-budget problem most
+catalogues have. The answer is not to block everything — some facet combinations are exactly what
+people search for.</p>
+<p>Decide per facet, deliberately, and write the decision down:</p>
+<ul>
+<li><strong>Indexable</strong> — facets with genuine search demand and enough inventory to make a
+useful page. Often brand, category and sometimes colour or size. Give them clean URLs, unique titles
+and real copy.</li>
+<li><strong>Crawlable, not indexable</strong> — useful for users, no search demand. Let them be
+reached, keep them out of the index.</li>
+<li><strong>Neither</strong> — sort orders, view toggles, session parameters, and multi-facet
+combinations. These should not generate crawlable links at all.</li>
+</ul>
+<p>Two practical rules. <strong>Cap the number of facets that can combine into an indexable URL</strong>
+— two is usually the limit beyond which the pages are thin and near-duplicate. And
+<strong>check that an indexable facet page has enough products to be worth landing on</strong>: a
+facet page with three items is a poor result, and serving many of them is how a catalogue acquires a
+quality problem it cannot see.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; crawl budget, faceted navigation handling and the internal linking guidance referenced here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Technical SEO</a></li><li><a href="/codex/ecommerce/ecommerce-marketing-fundamentals/">E-commerce Fundamentals</a></li><li><a href="/codex/seo/on-page/keyword-clustering/">Keyword Clustering</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="/codex/ecommerce/" class="sidebar-link">E-commerce overview →</a></div>

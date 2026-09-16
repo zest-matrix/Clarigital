@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,43 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>A metric is useful if a change in it would cause you to do something differently.</p><p>Pageviews rising tells you little on its own. Conversion rate by landing page, revenue per session by channel, or the drop-off rate at a specific checkout step all point at a decision.</p><p>The most common error is optimising a proxy metric until it decouples from the outcome it was meant to represent — driving low-quality traffic that improves session counts while revenue stays flat.</p>
 <h2>Building a Measurement Plan</h2>
 <p>Before configuring anything, write down the business objectives, the user actions that indicate progress toward them, and the metrics that quantify those actions. Only then decide what to track.</p><p>Sites instrumented without this step end up with hundreds of events nobody reads and no clear answer to whether the site is working. A short list of well-defined conversions beats exhaustive tracking.</p>
-</div>
+<h2>Where the Numbers Come From, and Why Two Tools Disagree</h2>
+
+<p>Two analytics tools will never agree, and knowing why prevents a great deal of wasted
+reconciliation.</p>
+<p><strong>Different session definitions.</strong> How long a gap ends a session, whether a new
+campaign starts a new one, and what happens at midnight all differ between tools.</p>
+<p><strong>Different collection points.</strong> A tag firing on page load, a tag firing after consent,
+and a server log capture three different populations of the same traffic.</p>
+<p><strong>Different bot filtering.</strong> Each vendor removes automated traffic on its own rules,
+before you see any of it.</p>
+<p><strong>Different attribution.</strong> One tool's last-click and another's data-driven model will
+allocate the same conversion differently, and both are internally consistent.</p>
+<p>The practical rule: <strong>pick one system of record per question and stop reconciling.</strong>
+Use the ad platform's numbers for optimising the ad platform, your analytics for on-site behaviour, and
+your own database for revenue. Trying to make three systems agree consumes analyst time and produces
+nothing, because they are measuring different things by design.</p>
+
+<h2>A Measurement Plan That Fits on One Page</h2>
+
+<p>Most analytics implementations begin with tools and end with a dashboard nobody uses. The order
+should be the reverse.</p>
+<p>The one-page structure that works:</p>
+<ol>
+<li><strong>The business objective</strong>, in a sentence. Not <em>grow</em> — what specifically.</li>
+<li><strong>The two or three questions</strong> you need answered to steer towards it.</li>
+<li><strong>For each question, the metric that answers it</strong>, and the comparison that makes it
+meaningful — against last period, a target, or a segment.</li>
+<li><strong>For each metric, where it comes from</strong> and who owns it.</li>
+<li><strong>What you will do differently</strong> depending on what it says.</li>
+</ol>
+<p><strong>Step five is the one that gets skipped and the one that matters.</strong> A metric with no
+decision attached is a number you will report monthly for two years and never act on — the same test
+that governs a segmentation, a dashboard and a clean room.</p>
+<p>Write it before configuring anything. <strong>The plan determines what you need to track; the tool
+does not determine what you need to know.</strong></p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Analytics 4 and Google Tag Manager server-side documentation</strong> &mdash; server container behaviour, transport URLs and the consent-mode interaction described here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/ga4-setup-configuration/">Google Analytics 4</a></li><li><a href="/codex/analytics-cro/business-metrics-kpis/">Business Metrics and KPIs</a></li><li><a href="/codex/analytics-cro/bounce-rate-engagement-rate/">Bounce Rate vs Engagement Rate</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Analytics & CRO" class="sidebar-link">/codex/analytics-cro/ overview &rarr;</a></div>

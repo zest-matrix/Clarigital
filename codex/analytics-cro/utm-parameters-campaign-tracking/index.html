@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p><strong>Tagging internal links.</strong> Adding UTMs to links between pages on your own site starts a new session and destroys original attribution. Never do this.</p><p><strong>Double-tagging paid ads.</strong> Google Ads auto-tagging with GCLID is more accurate than manual UTMs. Adding both can cause conflicts. Use auto-tagging where available.</p><p><strong>Inconsistent medium values.</strong> Using <code>ppc</code> on some links and <code>cpc</code> on others splits paid traffic across two channel groupings.</p><p><strong>Leaving UTMs on shared links.</strong> A tagged link shared onward attributes organic word-of-mouth traffic to the original campaign.</p>
 <h2>Tracking Offline and Hard-to-Attribute Channels</h2>
 <p>UTMs work anywhere a URL can be placed — QR codes on print, links in podcast show notes, vanity URLs that redirect to a tagged destination.</p><p>For channels where links cannot be tagged at all, a vanity URL with a redirect carrying the parameters is the standard workaround. It also gives you a clean, memorable URL for the offline medium.</p>
-</div>
+<h2>Governing Tags Across a Team</h2>
+
+<p>UTM tagging fails at the organisational level rather than the technical one. The parameters are
+trivial; getting four people in two agencies to write them identically is not.</p>
+<p><strong>A spreadsheet is not governance.</strong> What works is a single builder — a form that
+constructs the URL from controlled dropdowns rather than free text — so the values cannot drift. Free
+text guarantees <code>facebook</code>, <code>Facebook</code>, <code>fb</code> and <code>FB</code> in
+the same report.</p>
+<p>Three rules worth enforcing in the builder itself. <strong>Lowercase everything</strong>, because
+the parameters are case-sensitive and analytics will treat variants as separate sources.
+<strong>No spaces</strong>, which become <code>%20</code> and look like different values.
+<strong>Never tag internal links</strong> — a UTM on a link between two pages of your own site starts
+a new session and re-attributes an existing visitor to the campaign, inflating it and destroying the
+original source.</p>
+<p>That last one is the most damaging and the most common. If your own navigation carries UTMs,
+every report downstream of it is wrong in a way that looks like success.</p>
+
+<h2>What the Tags Cannot Tell You</h2>
+
+<p>UTMs record what the link said, not what happened. Several gaps follow from that and each one
+misleads in a predictable direction.</p>
+<p><strong>They are trivially editable.</strong> A user can change the parameters, and bots do. Traffic
+arriving with malformed or nonsensical campaign values is usually spam rather than a tagging error.</p>
+<p><strong>They are lost on redirect chains</strong> if any hop drops the query string, which turns a
+tagged visit into direct traffic.</p>
+<p><strong>They cannot see dark social.</strong> A link shared in a private message or a group chat
+arrives untagged regardless of what you built, which is a large share of what gets recorded as direct.</p>
+<p><strong>They describe the click, not the journey.</strong> UTMs feed last-click attribution by
+default, so a campaign that introduced a customer and a campaign that closed them look identical, and
+only one gets credit.</p>
+<p>The practical consequence: <strong>use UTMs to answer "which link did they arrive on", not "what
+caused the sale".</strong> The second question needs a holdout or a model, and treating tag data as
+though it answers it is how channels get defunded for work they actually did.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Analytics 4 documentation</strong> &mdash; the UTM parameter handling, session definition and engaged-session criteria described here <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/ga4-setup-configuration/">Google Analytics 4</a></li><li><a href="/codex/analytics-cro/attribution-modelling/">Attribution Modelling</a></li><li><a href="/codex/analytics-cro/google-tag-manager/">Google Tag Manager</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Analytics & CRO" class="sidebar-link">/codex/analytics-cro/ overview &rarr;</a></div>

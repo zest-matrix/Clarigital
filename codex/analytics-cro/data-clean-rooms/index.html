@@ -191,6 +191,38 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Aggregation thresholds mean small segments return no results, which frustrates granular analysis.</p><p>Query restrictions prevent many analyses you might want to run, and the restrictions differ by provider.</p><p>Match rates are rarely complete — matching depends on shared identifiers, and a meaningful proportion of records fail to match.</p><p>Walled garden clean rooms answer questions about that garden only. They cannot tell you whether Google or Meta deserved the credit.</p>
 <h2>Who Should Consider Them</h2>
 <p>Clean rooms suit large advertisers with substantial first-party data and media budgets big enough to justify the operational cost. They require data engineering capability and are not a self-service marketing tool.</p><p>For most organisations, improving first-party data collection and running incrementality tests delivers more measurement value per unit of effort than a clean room implementation.</p>
+<h2>What Makes One Work in Practice</h2>
+
+<p>Clean rooms fail on the unglamorous parts, not on the privacy technology.</p>
+<p><strong>Match rate decides everything.</strong> If only a minority of your customers can be matched
+to the partner's data, the analysis describes that minority — which is systematically the more
+digitally engaged, more frequently logged-in part of your base. A clean room with a low match rate
+does not produce a weaker answer; it produces a confidently wrong one about a skewed group.
+<strong>Ask for the match rate before the contract, not after the first analysis.</strong></p>
+<p><strong>Your own data has to be ready.</strong> Identifiers normalised, hashed in the agreed way,
+deduplicated, and reflecting a consistent definition of a customer. Most of the effort in a clean-room
+project is this, before anything joins.</p>
+<p><strong>Somebody has to be able to write the query.</strong> The interfaces are SQL-shaped and
+constrained by aggregation thresholds, so a team with no analyst will buy access and not use it.</p>
+
+<h2>The Limits That Decide Whether It Is Worth It</h2>
+
+<p>The constraints that make a clean room private also make it awkward, and they are what determine
+whether one earns its cost.</p>
+<p><strong>Aggregation thresholds mean small segments return nothing.</strong> Queries below a minimum
+audience size are suppressed, so the narrow, high-value analyses people most want are often exactly
+the ones that cannot be run.</p>
+<p><strong>You cannot export the joined data.</strong> Outputs are aggregates. Anything you want to
+use downstream has to be expressible as an aggregate.</p>
+<p><strong>Each partner is a separate room.</strong> Cross-platform measurement — the reason most
+people want one — usually means several rooms with incompatible outputs, which is the problem you
+started with in a more expensive form.</p>
+<p><strong>And the costs are ongoing</strong>: the licence, the engineering to keep data flowing, and
+the analyst time to use it.</p>
+<p>The honest test: <strong>name the specific decision the clean room will settle, and what you will
+do differently depending on the answer.</strong> If that is vague, the project will produce interesting
+charts and no decisions — the same test that governs a segmentation or a dashboard.</p>
+
 </div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/attribution-modelling/">Attribution Modelling</a></li><li><a href="/codex/analytics-cro/customer-data-platforms/">Customer Data Platforms</a></li><li><a href="/codex/analytics-cro/privacy-first-analytics/">Privacy-First Analytics</a></li></ul></div>

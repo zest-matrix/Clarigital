@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,42 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Performs relatively well for B2B given the LinkedIn layer and the workplace-skewed audience, for higher-consideration consumer purchases, and as a remarketing channel reaching people who will not see your Google display ads.</p><p>Performs poorly as a direct-response channel expected to convert on first exposure, and in categories where creative cannot be made to feel native.</p>
 <h2>Managing It Properly</h2>
 <p>Two controls matter most. Set a frequency cap — native inventory can deliver heavy repetition to a small audience. And review the placement report regularly, excluding partner sites that deliver clicks without engagement.</p><p>Keep Audience Network campaigns separate from search campaigns. Mixing them in one campaign makes performance impossible to read and budget impossible to control.</p>
-</div>
+<h2>Controlling Placement Quality</h2>
+
+<p>The Audience Network's recurring complaint is placement quality: the ads appear somewhere the
+advertiser did not expect and performance data becomes hard to read. The controls exist and most
+accounts never touch them.</p>
+<p><strong>Website exclusions</strong> are the first lever. Run the placement report after the first
+fortnight, sort by spend, and exclude anything that has spent meaningfully without converting. This is
+maintenance, not a one-off, because the inventory pool changes.</p>
+<p><strong>Separate the campaign from search.</strong> Audience Network can be enabled inside a search
+campaign, which mixes two very different intent profiles into one set of numbers and one bid strategy.
+Running it as its own campaign costs nothing and makes both readable.</p>
+<p><strong>Bid adjustments by placement</strong> let you retain the network at a lower price rather
+than switching it off entirely, which is usually the better trade for a channel that works at the
+right CPC and not at the wrong one.</p>
+<p>Judge it on <strong>incremental</strong> conversions rather than last-click. This is upper-funnel
+inventory and last-click attribution will systematically undervalue it — the same way it undervalues
+display everywhere.</p>
+
+<h2>The LinkedIn Signal, and Its Limits</h2>
+
+<p>The genuine differentiator is profile targeting derived from LinkedIn — company, industry and job
+function — available in a self-serve search-adjacent platform rather than only inside LinkedIn's own
+ad products. For B2B that is a real advantage and it is why the network is worth testing at all.</p>
+<p>Three limits to plan around. <strong>Coverage is partial</strong>: the signal is available for the
+share of users who can be matched, so a campaign restricted to profile targeting addresses a fraction
+of the network's reach and will under-deliver against a naive forecast.
+<strong>Company targeting is not account-based marketing</strong> — it is a broad firmographic filter,
+not a named-account list with the precision that implies.
+<strong>Job function is coarse</strong>, and mapping it onto your actual buying committee takes work
+that a category label hides.</p>
+<p>The practical approach is to <strong>layer profile targeting onto an intent signal</strong> —
+remarketing, or a customer match list — rather than relying on it alone. Used as the sole targeting
+input it behaves like broad display with a professional gloss. Used as a qualifier on people who have
+already shown interest, it does something the other networks cannot.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Microsoft Advertising documentation</strong> &mdash; Audience Network placement behaviour, LinkedIn profile targeting and the campaign settings described here <a href="https://about.ads.microsoft.com" rel="noopener" target="_blank">about.ads.microsoft.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/microsoft-ads/microsoft-ads-fundamentals/">Microsoft Advertising Fundamentals</a></li><li><a href="/codex/paid-advertising/display-advertising/">Display Advertising</a></li><li><a href="/codex/paid-advertising/linkedin-ads/">LinkedIn Ads</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

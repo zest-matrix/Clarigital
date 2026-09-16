@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -189,7 +202,39 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Bluesky's audience skews toward technology, journalism, academia, open-source, arts and politically engaged users — a substantial share of whom migrated from X.</p><p>It is considerably smaller than the major platforms. Assess it on audience fit rather than scale: for some categories it reaches exactly the right people, for most consumer categories it does not reach enough of them.</p>
 <h2>What Works and What Does Not</h2>
 <p>The culture is conversational and notably hostile to overt marketing. Accounts that post promotional content are ignored or mocked.</p><p>What works: individuals posting with expertise and personality, genuine participation in conversation, building or curating a feed, and transparency about who you are.</p><p>What fails: corporate accounts broadcasting, automated cross-posting, and engagement-bait formats imported from X.</p><p>Treat Bluesky as a place to be present as people rather than as a brand, or do not be there at all.</p>
-</div>
+<h2>Verification by Domain, and Why It Matters More Here</h2>
+
+<p>Bluesky lets an account set its handle to a domain it controls, so a brand can appear as
+<code>@yourcompany.com</code> rather than a username. This is done by publishing a DNS record or
+serving a file at a well-known path on the site.</p>
+<p>It is worth doing early for a reason specific to the platform: <strong>there is no blue tick to
+apply for.</strong> Domain control is the verification mechanism, and it is self-serve. An account
+that has not done it is indistinguishable from an impersonator, and impersonation is easy on an open
+network where anyone can register any username.</p>
+<p>Two practical notes. <strong>Changing the handle does not break the account</strong> — followers
+and posts persist, because identity is held separately from the handle. And <strong>a subdomain
+works</strong>, so a team account can be <code>@news.yourcompany.com</code> without touching the
+apex record.</p>
+<p>Do this before posting anything, not after the first impersonation report.</p>
+
+<h2>Building for Feeds Rather Than an Algorithm</h2>
+
+<p>The platform's defining feature for marketers is that <strong>the feed is not one algorithm you
+optimise against.</strong> Users subscribe to custom feeds, many of them community-built and
+topic-specific, each with its own inclusion rules.</p>
+<p>That changes the work. Instead of guessing at ranking signals, you <strong>find the feeds your
+audience actually reads and understand what puts a post into them</strong> — usually a keyword, a
+hashtag, or membership of a curated list. Getting into three relevant topic feeds is worth more than
+any amount of general optimisation.</p>
+<p>It also changes the risk. <strong>Feeds are built and maintained by individuals</strong>, so one
+can change its rules or disappear without notice, and distribution built on a single feed is fragile
+in a way that distribution on a platform algorithm is not.</p>
+<p>The honest scale assessment: this is a smaller audience than the established networks, skewed to
+technology, media and academia. <strong>Judge it on the quality of the conversation and on reaching a
+specific professional community, not on reach.</strong> Treated as a volume channel it will
+disappoint; treated as a place to be present where a particular audience talks, it is cheap.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Bluesky and AT Protocol documentation</strong> &mdash; custom feed mechanics, handle verification via domain, and account portability <a href="https://docs.bsky.app" rel="noopener" target="_blank">docs.bsky.app</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/social-media/threads-marketing/">Threads Marketing</a></li><li><a href="/codex/social-media/choosing-social-media-platforms/">Choosing the Right Platforms</a></li><li><a href="/codex/social-media/twitter-x-algorithm/">X (Twitter) Algorithm</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Social Media" class="sidebar-link">/codex/social-media/ overview &rarr;</a></div>
