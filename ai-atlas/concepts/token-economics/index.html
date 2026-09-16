@@ -202,7 +202,45 @@ p{line-height:1.75;color:var(--muted)}
 <h2>Prompt Caching</h2>
 <p>Most providers now offer caching for repeated prompt prefixes. Where a long system prompt or document is sent identically across many requests, the cached portion is charged at a large discount.</p><p>Structuring prompts so the stable content comes first and the variable content last is what makes caching effective. It is one of the highest-return optimisations available and is frequently overlooked.</p>
 <h2>Controlling Spend</h2>
-<ul><li><strong>Route by task.</strong> Use a small cheap model for classification and routing, reserve the expensive model for work that needs it.</li><li><strong>Cap output length</strong> explicitly rather than relying on the model to be brief.</li><li><strong>Trim conversation history</strong> — summarise older turns instead of resending them.</li><li><strong>Tune retrieval</strong> — fewer, better chunks beat many mediocre ones on both cost and quality.</li><li><strong>Batch</strong> where latency permits; batch APIs are typically discounted substantially.</li><li><strong>Monitor per-feature cost</strong>, not just total. Aggregate spend hides the one feature consuming most of it.</li></ul>
+<ul><li><strong>Route by task.</strong> Use a small cheap model for classification and routing, reserve the expensive model for work that needs it.</li><li><strong>Cap output length</strong> explicitly rather than relying on the model to be brief.</li><li><strong>Trim conversation history</strong> — summarise older turns instead of resending them.</li><li><strong>Tune retrieval</strong> — fewer, better chunks beat many mediocre ones on both cost and quality.</li><li><strong>Batch</strong> where latency permits; batch APIs are typically discounted substantially.</li><li><strong>Monitor per-feature cost</strong>, not just total. Aggregate spend hides the one feature consuming most of it.</li></ul><h2>Where the Bill Comes From, and Why Estimates Are Wrong</h2>
+
+<p>Cost forecasts for a language-model feature are usually wrong in the same direction, because the
+estimate is built from the visible request and the bill is driven by what surrounds it.</p>
+<p>The components people forget:</p>
+<p><strong>The system prompt is charged on every call.</strong> A long instruction block is a fixed
+cost per request, multiplied by volume. Halving it is frequently the largest single saving available
+and nobody looks there.</p>
+<p><strong>Conversation history is resent.</strong> Models are stateless, so a ten-turn conversation
+sends the preceding nine turns again on the tenth call. Cost grows with the square of conversation
+length unless you truncate or summarise.</p>
+<p><strong>Retrieved context dominates.</strong> Where documents are injected, the retrieved passages
+typically outweigh everything else, so retrieval precision is a cost decision as much as a quality one.</p>
+<p><strong>Retries and failures are billed.</strong> A malformed response that triggers a retry costs
+twice.</p>
+<p><strong>And reasoning output is billed as output</strong>, so a model that deliberates at length
+costs materially more than its headline price implies.</p>
+
+<h2>Reducing It Without Making the Product Worse</h2>
+
+<p>The levers, in rough order of saving against effort:</p>
+<p><strong>Route by task.</strong> Most requests in most applications are not hard. Sending everything
+to the most capable model is the single largest and most common overspend — classification, extraction
+and formatting rarely need the top tier.</p>
+<p><strong>Shorten the system prompt.</strong> Fixed cost, every call, and usually accumulated by
+addition over months without anyone removing anything.</p>
+<p><strong>Cache the stable prefix.</strong> Where the provider supports it, the unchanging front of a
+prompt can be reused across calls at reduced cost — the highest-return change for applications with a
+long fixed preamble, and it requires putting the stable part first, which is a code change rather than
+a setting.</p>
+<p><strong>Cap output length deliberately</strong>, and ask for the format you need rather than trimming
+prose afterwards.</p>
+<p><strong>Manage the conversation window</strong>: summarise old turns instead of resending them.</p>
+<p><strong>And instrument before optimising.</strong> Log tokens per request by feature and by user
+before changing anything, because the intuition about where the spend sits is wrong more often than it
+is right — <strong>and a cost programme that starts with guesses usually optimises the wrong
+call.</strong></p>
+
+
 
     </main>
     <aside class="art-sidebar">

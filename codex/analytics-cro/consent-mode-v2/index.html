@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,46 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Where consent is declined, Google estimates the conversions that likely occurred using observed patterns from consenting users with similar characteristics.</p><p>Modelled conversions appear in reporting without being labelled separately in most views, which matters when reconciling platform figures against your own back-end data. The gap between Google-reported conversions and CRM-recorded conversions is frequently modelling rather than tracking failure.</p><p>Modelling requires threshold volumes. Small accounts may see no modelling at all, and therefore a genuine reduction in reported conversions.</p>
 <h2>Implementation and Verification</h2>
 <p>Consent Mode is configured through a certified CMP or manually through Google Tag Manager. The default state must be set before any tag fires — a common implementation error is setting defaults too late, so tags fire in an unconsented state.</p><p>Verify with Tag Assistant and the browser network tab: confirm the consent parameters appear on requests, confirm they change when consent is granted, and test all three states — granted, denied, and no interaction.</p>
-</div>
+<h2>Choosing Between Basic and Advanced, Honestly</h2>
+
+<p>The choice is presented as a technical setting and is really a policy decision, because the two
+modes behave differently before a user has answered the banner.</p>
+<p><strong>Basic</strong> holds the tags back entirely until consent is given. Nothing is sent, nothing
+is collected, and an unconsented visitor is invisible. It is the more conservative reading and the
+easier one to defend.</p>
+<p><strong>Advanced</strong> loads the tags immediately and sends <strong>cookieless pings</strong>
+carrying no identifiers, which is what feeds the modelling. More data, more complexity, and a position
+you have to be able to justify — because something did leave the browser before the user answered.</p>
+<p>Two things decide it. <strong>What your legal advice says</strong> about transmitting anything
+pre-consent in your jurisdictions. And <strong>whether you have the volume for modelling to work at
+all</strong> — below the platform's thresholds you get the complexity of advanced mode and none of the
+benefit, which is the most common wasted implementation.</p>
+<p><strong>India is not a lighter-touch case.</strong> The DPDP framework is consent-based with
+<strong>no legitimate-interest basis</strong>, so a configuration built for a market with one does not
+transfer.</p>
+
+<h2>Verifying It Rather Than Assuming It</h2>
+
+<p>Consent mode fails silently. The banner appears, the tags fire, the dashboard fills, and nothing
+tells you the signals are wrong.</p>
+<p>The checks worth running, in order:</p>
+<ul>
+<li><strong>Watch the network requests before and after consenting.</strong> Confirm what is sent in
+each state, and that the consent parameters actually change.</li>
+<li><strong>Check the default state is denied</strong>, and that it is set <em>before</em> any tag
+loads. A default of granted, or one applied too late, is the most common and most serious
+misconfiguration.</li>
+<li><strong>Test a decline, not just an accept.</strong> Almost nobody does, and the decline path is
+the one that carries the risk.</li>
+<li><strong>Verify the update fires</strong> when consent changes, including when a user later
+withdraws it.</li>
+<li><strong>Check region-specific defaults</strong> if you serve multiple jurisdictions.</li>
+</ul>
+<p>And <strong>document the configuration next to the analytics documentation.</strong> They are owned
+by different people, changed independently, and together they determine every number the business
+runs on.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Consent Mode and Google Tag documentation</strong> &mdash; the four consent signals, basic versus advanced behaviour, and the conversion-modelling thresholds described here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li><li><span class="src-k src-official">official</span><strong>Digital Personal Data Protection Act, 2023 and the DPDP Rules, 2025</strong> &mdash; the consent standard that applies in India and the absence of a legitimate-interest basis <a href="https://meity.gov.in" rel="noopener" target="_blank">meity.gov.in</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/privacy-first-analytics/">Privacy-First Analytics</a></li><li><a href="/codex/analytics-cro/google-tag-manager/">Google Tag Manager</a></li><li><a href="/codex/analytics-cro/analytics-audit-checklist/">Analytics Audit Checklist</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Analytics & CRO" class="sidebar-link">/codex/analytics-cro/ overview &rarr;</a></div>

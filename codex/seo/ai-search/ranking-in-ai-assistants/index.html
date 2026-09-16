@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,40 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>There is no analytics dashboard for this yet, so test manually and systematically.</p><p>Build a list of the 20 to 30 questions a prospective customer might ask an assistant in your category. Run them across ChatGPT, Perplexity, Copilot and Gemini. Record whether you are mentioned, whether the description is accurate, whether you are cited with a link, and who is named instead of you.</p><p>Repeat quarterly. The absolute results matter less than the direction of travel and than which competitors consistently appear.</p>
 <h2>Correcting Misrepresentation</h2>
 <p>If assistants describe you inaccurately, the cause is usually inaccurate or outdated source material on the web rather than a fault in the model.</p><p>Fix it at source: update your own site so the correct description is unambiguous, correct third-party profiles and directory listings, and get accurate coverage published where it will be retrieved. Retrieval-based assistants will reflect the correction within days. Parametric recall will not update until the next training cycle.</p>
-</div>
+<h2>What You Can Control, and What You Cannot</h2>
+
+<p>Visibility in an assistant is not a ranking you can optimise in the way a search result is, and
+being precise about the boundary saves a great deal of wasted effort.</p>
+<p><strong>What you can influence:</strong> whether your content is crawlable by the relevant agents;
+whether it is structured so an answer can be extracted without the surrounding page; whether your
+claims are specific and checkable rather than hedged; and whether other sources that assistants rely on
+— reference sites, industry publications, community discussions — say accurate things about you.</p>
+<p><strong>What you cannot:</strong> which sources a given assistant draws on, how it weights them,
+whether it cites at all, and what it says about you when it does not cite. Different assistants make
+different choices and change them without notice.</p>
+<p><strong>The practical consequence</strong> is that the durable work is the same work that makes a
+page good: accurate, specific, structured and current. <strong>A team being sold assistant
+optimisation as a distinct practice with distinct tooling should ask which part is not already in
+their content brief.</strong></p>
+
+<h2>Monitoring Without a Rank Tracker</h2>
+
+<p>There is no console for this, so monitoring is manual and should be treated as a scheduled task
+rather than a tool purchase.</p>
+<p><strong>Write down twenty questions</strong> a prospective customer would actually ask in your
+category, including your brand name and your competitors'.</p>
+<p><strong>Ask them across the assistants your audience uses</strong>, monthly, from a clean session so
+personalisation does not colour the result.</p>
+<p><strong>Record three things:</strong> whether you appeared, whether what was said was accurate, and
+who was cited instead.</p>
+<p>That third column is the useful one. <strong>It tells you which sources the assistants trust in your
+category</strong>, and being accurately represented on those sources is more tractable than trying to
+influence the assistant directly.</p>
+<p><strong>Correct inaccuracies at the source.</strong> If an assistant repeats something wrong about
+your pricing or your product, the fix is usually a stale page somewhere — yours or a third party's —
+rather than anything to do with the assistant.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; crawler access, structured data eligibility and the AI feature guidance referenced here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/ai-search/generative-engine-optimisation/">Generative Engine Optimisation</a></li><li><a href="/codex/seo/ai-search/llms-txt-seo/">llms.txt and AI Crawler Access</a></li><li><a href="/codex/business-strategy/brand-strategy/">Brand Strategy</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="SEO" class="sidebar-link">/codex/seo/ overview &rarr;</a></div>

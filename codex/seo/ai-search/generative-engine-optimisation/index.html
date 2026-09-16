@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,37 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Generative systems favour sources they can attribute confidently. That means content with clear authorship, a dated update, visible credentials where relevant, and claims that are specific enough to check.</p><p>Original material carries disproportionate weight — proprietary data, first-hand testing, documented methodology. Content that restates what is already in the training data adds nothing a generative system needs to retrieve.</p>
 <h2>What Has Not Changed</h2>
 <p>GEO is an extension of SEO, not a replacement. Crawlability, indexability, site performance, internal linking and topical authority all still determine whether your content is in the candidate pool at all.</p><p>Treat GEO as a layer applied to technically sound content. Applied to a site that cannot be crawled properly, it achieves nothing.</p>
-</div>
+<h2>Separating the Practice From the Marketing</h2>
+
+<p>GEO is sold as a new discipline and is mostly an old one with a new acronym. The honest split is
+worth making before anyone buys tooling.</p>
+<p><strong>Genuinely different:</strong> the unit of success is a citation rather than a click;
+extraction matters more than ranking, so structure carries more weight than it used to; and
+measurement is manual because there is no console.</p>
+<p><strong>Not different at all:</strong> being crawlable, being accurate, being specific, being
+current, being well structured, and being cited by other credible sources. That is the entire
+substance of most GEO advice and it was in the SEO brief already.</p>
+<p><strong>The test for any GEO recommendation:</strong> would this have been good advice three years
+ago? If yes, it is SEO. If it involves stuffing a page with phrases meant for a model rather than a
+reader, it is the 2010s keyword density argument wearing new clothes, and it will age the same way.</p>
+
+<h2>The Business Model Question Nobody Raises First</h2>
+
+<p>Before optimising to be the source of an answer, establish whether being that source is worth
+anything to you.</p>
+<p><strong>If your revenue depends on pageviews</strong> — advertising, affiliate, anything monetised
+per visit — then succeeding at GEO on informational content means your material is used and your visit
+is not. That is optimising against yourself, and it is worth saying out loud in the strategy meeting
+rather than discovering in the traffic report.</p>
+<p><strong>If your revenue depends on being chosen later</strong> — software, services, considered
+purchases — then a citation at the moment of a question is genuinely valuable even with no click,
+because it puts you in the consideration set.</p>
+<p>So the strategic move differs by model. <strong>Publishers should be shifting effort toward content
+that cannot be answered in a box</strong> — judgement, comparison, tools, anything requiring trust in a
+named source. <strong>Everyone else should be making sure that what the assistants say about them is
+accurate</strong>, which is a different and more tractable objective than visibility.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; crawler access, structured data eligibility and the AI feature guidance referenced here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/ai-search/ai-overviews-optimisation/">AI Overviews Optimisation</a></li><li><a href="/codex/seo/ai-search/ranking-in-ai-assistants/">Ranking in AI Assistants</a></li><li><a href="/codex/seo/technical/schema-markup/">Schema Markup</a></li><li><a href="/codex/seo/on-page/keyword-clustering/">Keyword Clustering</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="SEO" class="sidebar-link">/codex/seo/ overview &rarr;</a></div>

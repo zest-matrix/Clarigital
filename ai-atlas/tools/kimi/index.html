@@ -250,10 +250,48 @@ p{line-height:1.75;color:var(--muted)}
 <p>As with any China-hosted API, requests to Moonshot's service are processed under Chinese jurisdiction. For many organisations this rules out the hosted API regardless of capability.</p><p>Self-hosting or Western-hosted inference removes the issue. The weights themselves carry no connection back to the provider.</p>
 <h2 id="s-red-1">Agentic capability</h2>
 <p>Recent releases position Kimi as an agentic model — able to invoke tools, browse, and execute multi-step plans.</p><p>Agentic capability raises the same security considerations as any tool-using model: least privilege, human confirmation on consequential actions, and treating retrieved content as untrusted.</p>
+<h2 id="s-red-2">Placing It Against the Alternatives</h2>
+
+<p>Model choice is a routing decision rather than a ranking one, and the useful question is which part
+of your traffic this is right for.</p>
+<p><strong>Route by task, not by preference.</strong> Most requests in most applications are not hard.
+Classification, extraction and formatting rarely need the most capable available option, and sending
+everything to the top tier is the largest and most common overspend.</p>
+<p><strong>Test on your own evaluation set</strong>, not on published benchmarks. A benchmark measures a
+task that is not yours, and the ordering between models frequently reverses on specific work.</p>
+<p><strong>Weigh the things that are not capability.</strong> Where the data goes and under whose terms.
+Latency at your percentile, not the average. Whether the model can change underneath you, and whether
+that matters for reproducibility. Rate limits at your peak rather than your mean.</p>
+<p><strong>Assume you will move.</strong> Keep the provider behind an interface, keep prompts in
+version control, and keep an evaluation set that runs against any of them. The cost of switching is
+paid once at design time or repeatedly afterwards.</p>
+<p><strong>And re-check on a schedule.</strong> This ordering changes faster than any procurement cycle,
+so a decision made a year ago and never revisited is a decision that has quietly expired.</p>
+
+<h2 id="s-red-3">Evaluating It Against Your Own Work</h2>
+
+<p>Vendor demonstrations are built on material the tool handles well, so the only evaluation that
+predicts anything is one run on your own inputs.</p>
+<p><strong>Assemble twenty real examples before the trial starts</strong>, including the awkward ones —
+the messy input, the edge case, the one that went wrong last month. A set of clean examples measures a
+situation you do not have.</p>
+<p><strong>Define what good looks like in writing</strong>, before you see any output. Deciding
+afterwards is choosing the answer rather than measuring it, and it is what makes most tool trials
+inconclusive.</p>
+<p><strong>Time the whole task, not the tool.</strong> A tool that halves the generation step and adds
+a verification step has not saved anything. Measure the end-to-end time including checking and
+correction, because that is the number your team experiences.</p>
+<p><strong>Have two people run the same examples.</strong> Tolerance for a given failure varies more
+between people than between tools, and a decision made by one enthusiast rarely survives contact with
+the team.</p>
+<p><strong>And price the failure, not just the licence.</strong> What does a wrong output cost here —
+a correction, an apology, a customer? That number decides how much checking you need, which is usually
+the real cost of adoption.</p>
+
 </div>
 </div>
 <div class="art-sidebar">
-<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Kimi?</a><a href="#s-green-1">What it is useful for</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Long context in practice</a><a href="#s-indigo-1">Open weights</a><a href="#s-indigo-2">Where it fits</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">The same data residency question</a><a href="#s-red-1">Agentic capability</a></div></div>
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Kimi?</a><a href="#s-green-1">What it is useful for</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Long context in practice</a><a href="#s-indigo-1">Open weights</a><a href="#s-indigo-2">Where it fits</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">The same data residency question</a><a href="#s-red-1">Agentic capability</a><a href="#s-red-2">Placing It Against the Alternatives</a><a href="#s-red-3">Evaluating It Against Your Own Work</a></div></div>
   <div class="sidebar-card">
     <h3>Quick facts</h3>
     <div style="font-size:.82rem;color:var(--muted);line-height:1.7"><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">Moonshot AI (Beijing)</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Known for</span><span style="color:var(--fg);font-weight:500">Very long context</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Licence</span><span style="color:var(--fg);font-weight:500">Open weights on recent releases</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Access</span><span style="color:var(--fg);font-weight:500">Web app + API</span></div></div>

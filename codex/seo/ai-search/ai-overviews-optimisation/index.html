@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,40 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>AI Overviews reduce clicks on the queries where they appear. This is not disputable and it is the honest starting point for any strategy discussion.</p><p>Two things soften it. First, the clicks that do occur tend to be from users who wanted more than the summary gave them, which is a more qualified visitor. Second, citation itself has brand value — appearing as a named source in an answer millions of people see is a visibility asset even without the click.</p><p>What this argues for is shifting effort toward queries where a summary cannot substitute for the page: anything requiring a tool, a calculator, a download, a demonstration, pricing, or a decision that depends on the user's specific situation.</p>
 <h2>Measuring It</h2>
 <p>Search Console does not separate AI Overview impressions from standard impressions, which makes direct measurement awkward. Workable proxies:</p><ul><li>Track a fixed set of target queries manually or with a rank tracker that records Overview presence</li><li>Watch for the signature pattern — impressions flat or rising while clicks fall on informational queries</li><li>Segment performance by query intent; informational and transactional queries should be trending differently</li></ul><p>Do not diagnose a general ranking problem from a change that is actually confined to Overview-triggering queries. Segment before concluding.</p>
-</div>
+<h2>Reading the Traffic Change Correctly</h2>
+
+<p>The pattern reported most often is impressions holding while clicks fall, and interpreting it
+correctly determines whether you respond usefully or expensively.</p>
+<p><strong>Segment before concluding anything.</strong> The effect is heavily concentrated in
+informational queries with short factual answers. Transactional and navigational performance is often
+unchanged, and a blended figure conceals both.</p>
+<p><strong>Compare query by query, not in aggregate.</strong> Identify the specific queries where an
+overview now appears and measure those against themselves over time. That is the only comparison that
+isolates the cause.</p>
+<p><strong>Do not respond by rewriting titles.</strong> A falling CTR on a query whose answer is now
+displayed is not a title problem, and title work is where teams spend the first month for no return.</p>
+<p><strong>Watch branded search and direct traffic</strong> as the indirect signal that appearing
+without a click still does something.</p>
+<p>And be honest in the reporting: <strong>some of this traffic is not coming back</strong>, and a plan
+built on recovering it will keep failing.</p>
+
+<h2>Where the Effort Actually Pays</h2>
+
+<p>Two responses have evidence behind them and one does not.</p>
+<p><strong>Be extractable.</strong> Answer in the first sentence under a heading, keep paragraphs
+self-contained, state definitions plainly, and use specific checkable claims. This is what gets a page
+used as a source, and it is better writing regardless.</p>
+<p><strong>Shift the content mix.</strong> Toward questions that cannot be answered in a box —
+comparisons with trade-offs, judgement calls, tools that need the user's own numbers, anything where
+currency matters and a cached answer may be stale. This is the strategic response and it is slower than
+anyone wants.</p>
+<p><strong>What does not pay:</strong> trying to be excluded. Blocking the feature generally means
+losing the organic result alongside it, which trades a reduced click rate for none.</p>
+<p><strong>And measure the right thing.</strong> If you are being cited without being visited, the
+metric that matters is whether people arrive later by name — so branded search volume and direct
+traffic become the scoreboard, not sessions on the page.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; crawler access, structured data eligibility and the AI feature guidance referenced here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/ai-search/generative-engine-optimisation/">Generative Engine Optimisation</a></li><li><a href="/codex/seo/ai-search/zero-click-search/">Zero-Click Search</a></li><li><a href="/codex/seo/fundamentals/serp-features/">SERP Features</a></li><li><a href="/codex/seo/fundamentals/search-intent/">Search Intent</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="SEO" class="sidebar-link">/codex/seo/ overview &rarr;</a></div>

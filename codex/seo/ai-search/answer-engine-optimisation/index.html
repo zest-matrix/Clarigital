@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,44 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Sources of real questions, in rough order of usefulness: the People Also Ask boxes on your target queries, Search Console queries phrased as questions, the search terms report from paid campaigns, customer support tickets and sales call notes, and community threads where people ask in their own words.</p><p>Customer-facing staff are consistently the most underused source. They hear the actual phrasing daily.</p>
 <h2>Where AEO Is Worth It</h2>
 <p>AEO earns its effort on informational content where you can genuinely answer better than the current occupant, and on questions that sit early in a purchase journey you want to influence.</p><p>It is worth less on queries where the answer fully satisfies the need and no further action follows. Winning a snippet for a definition nobody acts on is a vanity result.</p>
-</div>
+<h2>Writing So a Machine Can Lift the Answer</h2>
+
+<p>The structural requirement is the same across every answer surface: <strong>the answer must be
+extractable without the surrounding page.</strong> A paragraph that only makes sense after three
+paragraphs of context cannot be quoted.</p>
+<p>What that looks like in practice:</p>
+<ul>
+<li><strong>Answer in the first sentence under the heading</strong>, then elaborate. The inverted
+pyramid, applied per section rather than per article.</li>
+<li><strong>One question per heading</strong>, phrased as the question is actually asked.</li>
+<li><strong>Self-contained paragraphs</strong> that carry their own subject — no opening
+<em>"this means that"</em> pointing at something above.</li>
+<li><strong>Definitions stated plainly</strong> and early, not built up to.</li>
+<li><strong>Specific, checkable claims</strong> with figures and dates, because a hedged generality is
+not worth extracting.</li>
+</ul>
+<p>The counter-intuitive part: <strong>this is also better writing for humans.</strong> The discipline
+of making each section stand alone produces pages people can scan and use, which is why AEO rarely
+requires a trade-off against quality — and why pages written to game it read badly to both audiences.</p>
+
+<h2>Being Honest About What It Returns</h2>
+
+<p>AEO is worth doing and is frequently oversold, and the gap is about what success looks like.</p>
+<p><strong>The realistic outcome is being cited, not being visited.</strong> An answer surface that
+uses your page may send no click at all. If your business model depends on pageviews, optimising to be
+the source of an answer that replaces the visit is optimising against yourself — worth saying plainly
+before the strategy is adopted.</p>
+<p><strong>The value is real where the citation itself is the win</strong>: brand presence at the
+moment of a question, credibility with a professional audience, and being the reference a buyer
+already half-trusts when they eventually do click.</p>
+<p><strong>Measurement is genuinely hard.</strong> Referral data from assistant surfaces is
+inconsistent, so the workable signals are indirect — branded search volume, direct traffic, and
+periodically asking the assistants your own questions and recording who they cite.</p>
+<p><strong>And it is not a separate discipline.</strong> Almost everything that makes a page extractable
+is standard structure, clarity and substance. A team being sold AEO as a new practice requiring new
+tooling should ask which part is not already in their SEO brief.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; structured data eligibility, snippet controls and the AI feature guidance referenced here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/fundamentals/serp-features/">SERP Features</a></li><li><a href="/codex/seo/ai-search/ai-overviews-optimisation/">AI Overviews Optimisation</a></li><li><a href="/codex/seo/on-page/keyword-research/">Keyword Research</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="SEO" class="sidebar-link">/codex/seo/ overview &rarr;</a></div>

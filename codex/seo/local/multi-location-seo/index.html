@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Locations close together compete with each other for the same queries. Two branches in the same city will split signals for "service + city".</p><p>Mitigations: target neighbourhood-level rather than city-level terms for closely spaced branches, differentiate by the specific services or specialisms each location offers, and accept that for very close locations Google will pick one and filter the other from the map pack.</p>
 <h2>Reporting Across Locations</h2>
 <p>Aggregate reporting hides everything that matters. A chain average conceals that a quarter of locations are invisible.</p><p>Report at location level with a clear ranking of performance, then investigate the tail. Underperforming locations almost always have a specific fixable cause — an unclaimed profile, a wrong category, a suspended listing, or a run of unanswered negative reviews.</p>
-</div>
+<h2>Operating Profiles at Scale Without Losing Control</h2>
+
+<p>Beyond a handful of locations, profile management stops being a marketing task and becomes an
+operations one, and the failure is usually governance rather than optimisation.</p>
+<p><strong>Use a location group</strong> so ownership sits with the organisation rather than with
+whichever manager claimed the listing first. Profiles claimed on personal accounts by departed staff
+are the single most common blocker in a multi-location audit, and recovering them is slow.</p>
+<p><strong>Decide centrally what is local and what is not.</strong> Name, category, hours, description
+and photographs should follow one standard; replies to reviews and posts benefit from a local voice.
+Getting this backwards — central review replies, local categories — produces both inconsistency and
+blandness.</p>
+<p><strong>Bulk verification</strong> is available above a threshold of locations and is worth pursuing
+early, because verifying individually does not scale.</p>
+<p><strong>And audit for duplicates on a schedule.</strong> At scale, duplicates appear continuously —
+from a franchisee, an aggregator, an old listing resurfacing — and each one splits reviews and signals
+for that branch.</p>
+
+<h2>Reporting So a Regional Manager Can Act</h2>
+
+<p>Multi-location reporting fails when it aggregates. A national average conceals every location that
+needs help and every one that is working.</p>
+<p><strong>Report by location, ranked</strong>, on the actions rather than the rankings: calls,
+direction requests, enquiries. The ranked list is what makes the conversation possible.</p>
+<p><strong>Compare each location against itself over time</strong>, not against other locations.
+Catchment density, competition and category differ enough that cross-location comparison mostly
+measures geography.</p>
+<p><strong>Segment by cause where you can.</strong> A location underperforming with strong reviews and
+a complete profile has a competition or catchment problem; one with thin reviews has a process problem
+the branch can fix. Those need different conversations.</p>
+<p><strong>And watch the profile-edit log per location</strong>, because public suggested edits change
+information branch by branch and nobody notices centrally.</p>
+<p>The reporting test: <strong>can a regional manager open this and know which three branches to ring
+on Monday?</strong> If not, it is a dashboard rather than a report.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Business Profile guidelines</strong> &mdash; bulk verification, location group management and the name and address rules referenced here <a href="https://support.google.com" rel="noopener" target="_blank">support.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/local/local-seo-fundamentals/">Local SEO Fundamentals</a></li><li><a href="/codex/seo/local/google-business-profile/">Google Business Profile</a></li><li><a href="/codex/seo/local/service-area-businesses/">Service Area Businesses</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="SEO" class="sidebar-link">/codex/seo/ overview &rarr;</a></div>

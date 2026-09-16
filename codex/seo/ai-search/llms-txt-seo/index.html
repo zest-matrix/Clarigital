@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>The format is plain markdown: an H1 with the site name, a short blockquote summary, then sections of annotated links. Keep it curated rather than exhaustive — a full sitemap defeats the purpose.</p><p>Some sites also publish <code>llms-full.txt</code> containing the actual content rather than links, for cases where a model can ingest the whole corpus.</p><p>Neither replaces <code>sitemap.xml</code> or <code>robots.txt</code>. They are additive.</p>
 <h2>Making the Decision</h2>
 <p>Arguments for allowing AI crawlers: visibility in AI answers, citation-driven brand awareness, referral traffic from retrieval, and presence in the tools people increasingly start with.</p><p>Arguments against: content used without compensation, potential substitution for visits, and loss of control over how material is represented.</p><p>Most publishers whose business depends on being found conclude that retrieval access is worth permitting. Publishers whose business is the content itself — subscription journalism, paid research — more often restrict. There is no universally correct answer, and the decision should be made deliberately rather than by default.</p>
-</div>
+<h2>Deciding Your Crawler Policy Deliberately</h2>
+
+<p>Crawler access is a business decision presented as a technical one, and most sites have not made it
+— they have inherited a default.</p>
+<p>The positions available, and who each suits:</p>
+<p><strong>Open to everything.</strong> Maximum visibility, no control over training use. Suits anyone
+whose content is marketing rather than product.</p>
+<p><strong>Allow retrieval, block training</strong>, where the distinction is respected. Several
+crawlers are separable — one fetches to answer a live question, another collects for training — and
+allowing the first while blocking the second is a coherent position. It depends on voluntary
+compliance.</p>
+<p><strong>Block everything.</strong> Protects the material and removes you from the answers, including
+the ones where being named would have helped.</p>
+<p><strong>The decision belongs to whoever owns the commercial model</strong>, not to whoever edits
+`robots.txt`. Write down what you chose and why, because the person who inherits the file cannot infer
+the intent from the syntax.</p>
+
+<h2>What llms.txt Is and Is Not</h2>
+
+<p>The proposal is a plain-text file at the site root that points to the pages you consider
+authoritative, in a form easy to read without rendering.</p>
+<p><strong>What it is:</strong> a curation signal — here is the canonical version, here is the current
+documentation, ignore the archived variants. For a site with a large surface and a small authoritative
+core, that is a genuinely useful thing to state.</p>
+<p><strong>What it is not:</strong> a standard anyone is obliged to honour, a ranking mechanism, or a
+substitute for `robots.txt`. It grants no access and removes none; it is advisory to whoever chooses
+to read it.</p>
+<p><strong>Is it worth doing?</strong> It costs an afternoon, it cannot hurt, and adoption is uneven
+enough that the honest expectation is little measurable effect. That is a reasonable basis for doing
+it and a poor basis for a project plan.</p>
+<p><strong>The one caution:</strong> like every other derived file on a site, it goes stale. An
+`llms.txt` pointing at pages that have moved is worse than none — so generate it rather than writing
+it, and regenerate it when the site changes.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Google Search Central documentation</strong> &mdash; crawler access, structured data eligibility and the AI feature guidance referenced here <a href="https://developers.google.com" rel="noopener" target="_blank">developers.google.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/seo/fundamentals/crawlability-indexation/">Crawlability and Indexation</a></li><li><a href="/codex/seo/off-page/xml-sitemaps-robots-txt/">XML Sitemaps and robots.txt</a></li><li><a href="/codex/seo/ai-search/ranking-in-ai-assistants/">Ranking in AI Assistants</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="SEO" class="sidebar-link">/codex/seo/ overview &rarr;</a></div>

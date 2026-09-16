@@ -252,10 +252,48 @@ p{line-height:1.75;color:var(--muted)}
 <p>Cursor and Cline offer visual diffs and a more approachable experience. Aider offers speed, scriptability and terminal-native workflow.</p><p>Neither is better in general. The choice follows where you already work.</p>
 <h2 id="s-red-1">Cost behaviour</h2>
 <p>Because Aider sends a repository map rather than full files, cost per request is generally lower than naive approaches.</p><p>Still, agentic editing consumes tokens. Use caching where the model supports it, and keep the added-file set small.</p>
+<h2 id="s-red-2">Working With a Coding Agent Without Losing the Thread</h2>
+
+<p>The failure mode is not bad code. It is a large volume of plausible code that nobody has
+understood, arriving faster than it can be reviewed.</p>
+<p><strong>Keep the unit of work small.</strong> One change, one purpose, reviewable in a sitting. An
+agent asked for a large refactor returns something you will approve because reading it properly costs
+more than the work saved — which is how unreviewed code enters a codebase.</p>
+<p><strong>Make the tests the specification.</strong> An agent working against a failing test has an
+objective definition of done; one working against a description has your interpretation of its
+interpretation.</p>
+<p><strong>Commit in small steps and keep the history clean.</strong> The ability to bisect is what
+makes an agent's output safe to accept, and it is the first thing lost when a session produces one
+enormous commit.</p>
+<p><strong>Read the diff, not the summary.</strong> The summary is generated from the same process that
+produced the change, and it is confident about both.</p>
+<p><strong>And watch the dependency additions.</strong> An agent will reach for a library to solve a
+problem, and a new dependency is a decision with a long tail that nobody made deliberately.</p>
+
+<h2 id="s-red-3">Evaluating It Against Your Own Work</h2>
+
+<p>Vendor demonstrations are built on material the tool handles well, so the only evaluation that
+predicts anything is one run on your own inputs.</p>
+<p><strong>Assemble twenty real examples before the trial starts</strong>, including the awkward ones —
+the messy input, the edge case, the one that went wrong last month. A set of clean examples measures a
+situation you do not have.</p>
+<p><strong>Define what good looks like in writing</strong>, before you see any output. Deciding
+afterwards is choosing the answer rather than measuring it, and it is what makes most tool trials
+inconclusive.</p>
+<p><strong>Time the whole task, not the tool.</strong> A tool that halves the generation step and adds
+a verification step has not saved anything. Measure the end-to-end time including checking and
+correction, because that is the number your team experiences.</p>
+<p><strong>Have two people run the same examples.</strong> Tolerance for a given failure varies more
+between people than between tools, and a decision made by one enthusiast rarely survives contact with
+the team.</p>
+<p><strong>And price the failure, not just the licence.</strong> What does a wrong output cost here —
+a correction, an apology, a customer? That number decides how much checking you need, which is usually
+the real cost of adoption.</p>
+
 </div>
 </div>
 <div class="art-sidebar">
-<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Aider?</a><a href="#s-green-1">Why the git integration matters</a><a href="#s-green-2">Who it suits</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Repository mapping</a><a href="#s-indigo-1">Working effectively with it</a><a href="#s-indigo-2">Model choice</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Against GUI tools</a><a href="#s-red-1">Cost behaviour</a></div></div>
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What is Aider?</a><a href="#s-green-1">Why the git integration matters</a><a href="#s-green-2">Who it suits</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Repository mapping</a><a href="#s-indigo-1">Working effectively with it</a><a href="#s-indigo-2">Model choice</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Against GUI tools</a><a href="#s-red-1">Cost behaviour</a><a href="#s-red-2">Working With a Coding Agent Without Losing the Thread</a><a href="#s-red-3">Evaluating It Against Your Own Work</a></div></div>
   <div class="sidebar-card">
     <h3>Quick facts</h3>
     <div style="font-size:.82rem;color:var(--muted);line-height:1.7"><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">Aider (open source)</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Interface</span><span style="color:var(--fg);font-weight:500">Command line</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Models</span><span style="color:var(--fg);font-weight:500">Any — Claude, GPT, local</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Signature feature</span><span style="color:var(--fg);font-weight:500">Automatic git commits</span></div></div>

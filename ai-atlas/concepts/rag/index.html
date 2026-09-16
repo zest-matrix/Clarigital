@@ -202,7 +202,39 @@ p{line-height:1.75;color:var(--muted)}
 <h2>RAG Versus Fine-Tuning</h2>
 <p>They solve different problems and are frequently confused.</p><p><strong>RAG</strong> gives the model access to information. Use it when the model needs to know facts it was not trained on, when that information changes, or when you need citations back to sources.</p><p><strong>Fine-tuning</strong> changes how the model behaves — tone, format, domain vocabulary, task-specific patterns. Use it when the model knows enough but does not respond the way you need.</p><p>Wanting the model to answer questions about your documents is a RAG problem. Wanting it to write in your house style is a fine-tuning problem. Many production systems use both.</p>
 <h2>What RAG Does Not Fix</h2>
-<p>RAG reduces hallucination substantially; it does not eliminate it. A model can still misread a retrieved passage or blend it with training knowledge incorrectly.</p><p>It also cannot answer questions requiring reasoning across the whole corpus — "what are the three most common themes across these 400 documents" is not a retrieval problem, because no small set of chunks contains the answer.</p><p>And it inherits the quality of your documents. RAG over outdated or contradictory internal documentation produces confidently outdated or contradictory answers.</p>
+<p>RAG reduces hallucination substantially; it does not eliminate it. A model can still misread a retrieved passage or blend it with training knowledge incorrectly.</p><p>It also cannot answer questions requiring reasoning across the whole corpus — "what are the three most common themes across these 400 documents" is not a retrieval problem, because no small set of chunks contains the answer.</p><p>And it inherits the quality of your documents. RAG over outdated or contradictory internal documentation produces confidently outdated or contradictory answers.</p><h2>Diagnosing a RAG System That Answers Badly</h2>
+
+<p>When a retrieval system gives a poor answer there are three distinct failure points, and fixing the
+wrong one is the usual outcome.</p>
+<p><strong>The document was never retrieved.</strong> Check first, always: search the index manually
+for the passage that should have answered it. If it is not in the results, the problem is retrieval —
+chunking, embedding, or the query — and no prompt change will fix it.</p>
+<p><strong>It was retrieved and ignored.</strong> The passage is in the context and the answer
+contradicts it. This is a prompting or model problem, and often a position problem — material in the
+middle of a long context is used less reliably than material at either end.</p>
+<p><strong>It was retrieved, used, and the source was wrong.</strong> The system worked perfectly and
+the corpus was stale. <strong>This is the most dangerous failure because it is invisible</strong> — the
+answer is confident, well-sourced and wrong, and the citation makes it more believable.</p>
+<p><strong>Always check in that order.</strong> Teams routinely rewrite prompts for a retrieval problem
+and re-tune retrieval for a stale-document problem.</p>
+
+<h2>The Corpus Is the Product</h2>
+
+<p>Most RAG effort goes into the pipeline and most of the quality comes from the documents. The ratio
+should be closer to the reverse.</p>
+<p><strong>Decide what is authoritative</strong> and index only that. Indexing everything means
+indexing three superseded versions of the policy, and the system has no way to prefer the current one.</p>
+<p><strong>Remove rather than add.</strong> The highest-return maintenance in most deployments is
+deleting outdated documents, and it is never anyone's job.</p>
+<p><strong>Date everything and surface the date in the answer</strong>, so a reader can judge currency
+themselves.</p>
+<p><strong>Cite to a location a person can open.</strong> A citation that cannot be checked is
+decoration, and it increases trust without increasing reliability — the worst combination.</p>
+<p><strong>And close the loop.</strong> When a user reports a bad answer, the question is which of the
+three failure points it was, and the answer should change either the corpus or the pipeline. A system
+with no feedback path degrades silently as the documents age around it.</p>
+
+
 
     </main>
     <aside class="art-sidebar">

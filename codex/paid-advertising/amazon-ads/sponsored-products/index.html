@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,43 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>The most neglected lever. Without negatives, campaigns spend on search terms that will never convert — wrong size, wrong compatibility, wrong intent, competitor brand names you cannot win.</p><p>Review the search term report weekly and add negatives for anything with clicks and no sales at a meaningful threshold. This single habit does more for ACOS than most bid adjustments.</p>
 <h2>Bid Management</h2>
 <p>Amazon offers dynamic bidding — down only, up and down, or fixed — plus placement-level modifiers for top-of-search and product pages.</p><p>Start with dynamic down-only, which reduces bids when conversion is unlikely and cannot overspend. Move to up-and-down only once the campaign has consistent conversion data, since it will bid above your base for promising impressions.</p><p>Top-of-search placement typically converts best and costs most. Use the placement modifier deliberately rather than raising the base bid, which raises cost everywhere.</p>
-</div>
+<h2>The Harvest Loop That Runs the Account</h2>
+
+<p>A working Sponsored Products account is a loop rather than a setup, and the loop is the same every
+week.</p>
+<ol>
+<li><strong>Automatic campaigns discover terms</strong> you would not have guessed. Their job is
+research, not performance, and judging them on ACOS misreads what they are for.</li>
+<li><strong>Pull the search term report</strong> and find terms that converted.</li>
+<li><strong>Promote those into an exact-match manual campaign</strong> where you control the bid.</li>
+<li><strong>Add them as negatives in the automatic campaign</strong>, so the two stop competing for the
+same query and you stop paying twice to learn the same thing.</li>
+<li><strong>Negate the spenders that never convert</strong>, which is where most wasted budget goes.</li>
+</ol>
+<p><strong>The step almost everyone skips is four.</strong> Without it, the automatic campaign keeps
+bidding on terms you have already graduated, and the account's own campaigns bid against each other —
+visible as rising cost on terms whose conversion rate has not changed.</p>
+<p>Run it weekly at first, then fortnightly. The discovery slows but never stops, because the
+catalogue and the competition both keep moving.</p>
+
+<h2>Why the Listing Constrains the Advertising</h2>
+
+<p>Advertising on a retail platform is unusual in that <strong>the landing page is the product listing
+and you cannot design it freely.</strong> Everything downstream of the click is governed by the
+listing, which means ad performance is capped by things that are not the ad.</p>
+<p>What actually determines whether the click converts: <strong>the main image</strong>, which must
+meet the platform specification and carries most of the decision; <strong>price relative to visible
+alternatives</strong>, since competitors appear on your own page; <strong>reviews and rating</strong>,
+which no bid adjustment can compensate for; <strong>availability</strong>, because an out-of-stock item
+should not be advertised at all and frequently is; and <strong>the fulfilment badge</strong>, which
+shifts conversion more than most creative changes.</p>
+<p>The practical rule: <strong>fix the listing before raising the bid.</strong> A poor listing with a
+high bid buys expensive traffic that does not convert, and the reporting will describe it as a
+keyword problem.</p>
+<p>And <strong>check the placement report</strong>. Top-of-search usually converts better and costs
+more; a placement adjustment is often a cleaner lever than a keyword-level bid change.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Amazon Advertising and Seller Central documentation</strong> &mdash; campaign types, match-type behaviour, product targeting and the placement reporting described here <a href="https://advertising.amazon.com" rel="noopener" target="_blank">advertising.amazon.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/amazon-ads/amazon-ads-fundamentals/">Amazon Advertising Fundamentals</a></li><li><a href="/codex/ecommerce/ecommerce-seo/">E-commerce SEO</a></li><li><a href="/codex/ecommerce/product-page-optimisation/">Product Page Optimisation</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

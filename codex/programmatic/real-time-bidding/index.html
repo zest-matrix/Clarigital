@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,42 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Bid price is the primary factor, but not the only one. Also relevant: whether your creative meets the publisher's technical and category requirements, whether you can identify the user well enough to value the impression, latency of your bid response, and any publisher floor price.</p><p>Low win rates with high bids usually indicate a technical or eligibility problem rather than a pricing one — creative rejection, failed targeting match, or timeout.</p>
 <h2>Why Impressions Cost What They Cost</h2>
 <p>The same ad slot varies enormously in price depending on what is known about the user. An impression with rich audience data on a premium publisher may clear at many times the price of an anonymous impression on long-tail inventory.</p><p>As third-party identifiers decline, the spread between identified and anonymous inventory has widened, which is the commercial driver behind first-party data and contextual targeting investment.</p>
-</div>
+<h2>Where the Latency Budget Actually Goes</h2>
+
+<p>The whole auction completes in roughly the time it takes a page element to render, and that budget
+is the constraint shaping every decision in the chain.</p>
+<p>The exchange sets a timeout — typically in the low hundreds of milliseconds — and
+<strong>a bidder that does not respond in time is simply excluded</strong>. Not penalised, not logged
+as a loss you can analyse: absent. This produces a failure mode buyers routinely misdiagnose as poor
+inventory or weak targeting.</p>
+<p>What consumes the budget: the network round trip, which is physics and is why bidders run
+infrastructure close to the exchanges; the bidder's own decisioning, including any model inference;
+and any external lookup — a user data call, a frequency check, a brand-safety score.</p>
+<p>The practical consequences. <strong>Every enrichment you add to the bid path costs win
+rate</strong>, so the question for each is whether its lift exceeds the impressions it loses.
+<strong>Timeout rate is a metric worth watching</strong> and almost nobody does; a bidder timing out on
+a share of requests has a capacity problem wearing a performance costume. And
+<strong>geography matters</strong> — bidding into a distant exchange means part of the budget is spent
+before any decision is made.</p>
+
+<h2>Reading a Win-Rate Problem Correctly</h2>
+
+<p>Low win rate is the most common complaint and has several unrelated causes that look identical in
+a dashboard.</p>
+<table>
+<tr><th>Symptom</th><th>Likely cause</th></tr>
+<tr><td>Few bid requests reaching you at all</td><td>A supply problem, not a bidding one. Check your integrations and targeting breadth before your bids</td></tr>
+<tr><td>Bidding often, winning rarely, clearing price far above your bid</td><td>Genuinely outbid. The inventory is more valuable to someone else</td></tr>
+<tr><td>Bidding often, winning rarely, clearing price close to your bid</td><td>A bid-shading or pacing issue. Small increases may move a lot</td></tr>
+<tr><td>Winning almost everything you bid on</td><td><strong>Usually bad news.</strong> You are probably overpaying, or the inventory nobody else wants</td></tr>
+<tr><td>High timeout rate</td><td>Infrastructure. No bid adjustment fixes it</td></tr>
+</table>
+<p>The line worth remembering: <strong>an unusually high win rate is a finding to investigate, not a
+result to celebrate.</strong> In a competitive auction, winning most of what you bid on means either
+your bids are too high or you are the only buyer interested — and the second is rarely a compliment to
+the inventory.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>IAB Tech Lab OpenRTB specification and seller authorisation files</strong> &mdash; the bid request sequence, auction mechanics and supply-chain verification described here <a href="https://iabtechlab.com" rel="noopener" target="_blank">iabtechlab.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/programmatic/programmatic-advertising-fundamentals/">Programmatic Fundamentals</a></li><li><a href="/codex/programmatic/demand-side-platforms/">Demand-Side Platforms</a></li><li><a href="/codex/programmatic/header-bidding-explained/">Header Bidding</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Programmatic" class="sidebar-link">/codex/programmatic/ overview &rarr;</a></div>

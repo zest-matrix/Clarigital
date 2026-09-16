@@ -202,7 +202,47 @@ p{line-height:1.75;color:var(--muted)}
 <h2>When Open Models Win</h2>
 <p>Data cannot leave your infrastructure. Volume is high enough that per-token pricing dominates cost. You need the model to be stable and not change beneath you. You want to fine-tune deeply. You need to run offline or at the edge.</p>
 <h2>When Closed Models Win</h2>
-<p>You need maximum capability on hard problems. You do not want to operate inference infrastructure. Volume is low enough that API pricing is cheaper than running hardware. You want the newest capabilities without a migration.</p><p>For most organisations starting out, closed APIs are the pragmatic choice, with open models evaluated once volume, privacy requirements or cost make the calculation change.</p>
+<p>You need maximum capability on hard problems. You do not want to operate inference infrastructure. Volume is low enough that API pricing is cheaper than running hardware. You want the newest capabilities without a migration.</p><p>For most organisations starting out, closed APIs are the pragmatic choice, with open models evaluated once volume, privacy requirements or cost make the calculation change.</p><h2>Reading the Licence Before the Benchmark</h2>
+
+<p>The word <em>open</em> covers licences that differ enormously, and the differences bite after deployment
+rather than during evaluation.</p>
+<p>What to check, in order of how often it causes a problem:</p>
+<ul>
+<li><strong>Commercial use.</strong> Some weights are released for research only. This is the most
+basic check and is skipped surprisingly often.</li>
+<li><strong>Scale thresholds.</strong> Several licences impose additional terms above a user or
+revenue threshold, so a licence that is free today is negotiable at the point you succeed.</li>
+<li><strong>Acceptable-use restrictions</strong>, which limit application domains regardless of the
+technical capability.</li>
+<li><strong>Whether outputs may train another model</strong>, which matters if distillation is part of
+your plan.</li>
+<li><strong>Attribution and naming</strong> obligations in your product.</li>
+<li><strong>Whether the licence is revocable</strong>, and what happens to deployments if it is.</li>
+</ul>
+<p><strong>Open weights is not open source.</strong> Open source has a specific meaning about freedom
+to use, modify and redistribute for any purpose, and most released model weights do not meet it. Using
+the terms interchangeably is how procurement approves something on the wrong basis.</p>
+
+<h2>Choosing on Constraints Rather Than Ideology</h2>
+
+<p>The choice is usually argued as a philosophy and decided by four practical constraints.</p>
+<p><strong>Where the data may go.</strong> If it cannot leave your infrastructure or your jurisdiction,
+that settles it before capability enters the discussion — and it is the most common genuine reason to
+self-host.</p>
+<p><strong>Whether the model may change underneath you.</strong> A hosted model is updated by its
+provider; that is an advantage for capability and a problem for reproducibility. If you need the same
+input to give the same output a year from now, you need a version you control.</p>
+<p><strong>What you can operate.</strong> Self-hosting is a standing commitment — serving, capacity for
+peaks, monitoring, and someone on call. Below a certain volume an API is cheaper once that is costed
+honestly.</p>
+<p><strong>How close to the frontier the task needs to be.</strong> For many production tasks the gap
+between tiers is irrelevant; for the hardest reasoning work it is decisive.</p>
+<p>The common answer in practice is <strong>both</strong>: a hosted frontier model for the hard,
+low-volume path and a smaller self-hosted or cheaper model for the high-volume routine one.
+<strong>Treating it as a single binary decision is what produces the wrong answer for most of the
+traffic.</strong></p>
+
+
 
     </main>
     <aside class="art-sidebar">

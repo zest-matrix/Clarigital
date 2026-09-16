@@ -202,7 +202,43 @@ p{line-height:1.75;color:var(--muted)}
 <h2>The Tools</h2>
 <p><strong>Ollama</strong> — the simplest route. One command downloads and runs a model, with an API compatible with common client libraries. The default recommendation.</p><p><strong>LM Studio</strong> — a graphical application with model browsing and a chat interface. Easiest for non-technical users.</p><p><strong>llama.cpp</strong> — the inference engine underneath much of the ecosystem. Maximum control, most effort.</p>
 <h2>The Honest Trade-Off</h2>
-<p>A model you can run on a laptop is meaningfully less capable than a frontier API model. It will be worse at complex reasoning, long context, code generation and instruction-following.</p><p>For summarising documents, drafting routine text, classification, extraction and simple conversation, the gap is often small enough not to matter. For hard problems it is large.</p><p>Many organisations end up with both: local models for high-volume routine work on sensitive data, API models for the tasks that genuinely need frontier capability.</p>
+<p>A model you can run on a laptop is meaningfully less capable than a frontier API model. It will be worse at complex reasoning, long context, code generation and instruction-following.</p><p>For summarising documents, drafting routine text, classification, extraction and simple conversation, the gap is often small enough not to matter. For hard problems it is large.</p><p>Many organisations end up with both: local models for high-volume routine work on sensitive data, API models for the tasks that genuinely need frontier capability.</p><h2>What the Hardware Actually Decides</h2>
+
+<p>The constraint on running a model locally is memory before it is speed, and the arithmetic is
+simple enough to do before buying anything.</p>
+<p><strong>A model needs roughly its parameter count in memory, scaled by the precision of its
+weights.</strong> Full precision needs about two bytes per parameter; common quantisations bring that
+to roughly one byte, or a half, or less. So the same model can need several times more or less memory
+depending only on how it was compressed.</p>
+<p><strong>Then add the context.</strong> The working memory for the conversation grows with how much
+text is in play, and a long context can require as much again as the weights.</p>
+<p><strong>Unified memory changes the calculation.</strong> On machines where the processor and
+graphics share one pool, the usable ceiling is much higher than a discrete graphics card of similar
+price, which is why some laptops run models that desktops cannot.</p>
+<p>The practical sequence: <strong>work out your memory ceiling, subtract what the operating system
+needs, and that determines the size and quantisation you can run.</strong> Everything else is a
+consequence of that number.</p>
+
+<h2>The Honest Trade, Stated Plainly</h2>
+
+<p>Local models are frequently recommended for the wrong reason and dismissed for the wrong reason.</p>
+<p><strong>The genuine advantages:</strong> data never leaves the machine, which for confidential or
+regulated material can be the entire argument; no per-token cost, so high-volume repetitive work is
+effectively free once the hardware exists; it works without a connection; and the model does not change
+underneath you.</p>
+<p><strong>The genuine costs:</strong> a capability gap against frontier hosted models that is real
+and, for hard reasoning tasks, large; slower generation on consumer hardware; setup and maintenance
+that is a hobby for some people and an obstacle for most; and quantisation degrading quality in ways
+that are not visible until a specific task exposes them.</p>
+<p><strong>Where it clearly wins:</strong> sensitive documents, bulk repetitive processing,
+experimentation without a bill, offline use, and learning how these systems behave.</p>
+<p><strong>Where it clearly does not:</strong> anything needing the current frontier of capability,
+anything where your time is worth more than the token cost, and any production system where somebody
+other than you depends on it staying up.</p>
+<p><strong>Most people who try it settle on both</strong>, and that is the correct answer rather than a
+failure to commit.</p>
+
+
 
     </main>
     <aside class="art-sidebar">

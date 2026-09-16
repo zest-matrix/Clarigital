@@ -252,10 +252,46 @@ p{line-height:1.75;color:var(--muted)}
 <p>An agent with shell access, repository write access and a browser has significant capability. The same prompt injection considerations apply — content it reads while researching can contain instructions.</p><p>Sensible practice: isolated environments, no production credentials, pull-request review before merge, and scoped repository permissions.</p>
 <h2 id="s-red-1">Against in-editor assistants</h2>
 <p>Cursor, Copilot and Claude Code keep a human in the loop continuously, which catches errors early and is better for exploratory work.</p><p>Devin optimises for the opposite: tasks you would rather not think about. Most teams that use both apply them to different classes of work rather than choosing one.</p>
+<h2 id="s-red-2">Working With a Coding Agent Without Losing the Thread</h2>
+
+<p>The failure mode is not bad code. It is a large volume of plausible code that nobody has
+understood, arriving faster than it can be reviewed.</p>
+<p><strong>Keep the unit of work small.</strong> One change, one purpose, reviewable in a sitting. An
+agent asked for a large refactor returns something you will approve because reading it properly costs
+more than the work saved — which is how unreviewed code enters a codebase.</p>
+<p><strong>Make the tests the specification.</strong> An agent working against a failing test has an
+objective definition of done; one working against a description has your interpretation of its
+interpretation.</p>
+<p><strong>Commit in small steps and keep the history clean.</strong> The ability to bisect is what
+makes an agent's output safe to accept, and it is the first thing lost when a session produces one
+enormous commit.</p>
+<p><strong>Read the diff, not the summary.</strong> The summary is generated from the same process that
+produced the change, and it is confident about both.</p>
+<p><strong>And watch the dependency additions.</strong> An agent will reach for a library to solve a
+problem, and a new dependency is a decision with a long tail that nobody made deliberately.</p>
+
+<h2 id="s-red-3">Adoption, Which Is Where Tools Fail</h2>
+
+<p>Most tool decisions are made on capability and lost on adoption. The pattern is consistent enough to
+plan around.</p>
+<p><strong>Name an owner.</strong> Not a committee and not "the team" — one person responsible for the
+configuration, the questions, and whether it is still earning its licence in six months. Tools without
+an owner decay into a subscription nobody cancels.</p>
+<p><strong>Start with one workflow, not the whole team.</strong> A narrow deployment that works spreads
+on its own; a broad one that half-works produces a reputation the tool never recovers from.</p>
+<p><strong>Write down what it is not for.</strong> The boundary matters more than the capability,
+because the damage comes from use outside the intended case — and nobody is told where that edge is
+unless someone writes it down.</p>
+<p><strong>Keep the manual path working.</strong> For at least one cycle. A team that cannot fall back
+is a team that cannot report a problem honestly.</p>
+<p><strong>Review it on a date you set in advance.</strong> Three months, against the criteria you
+wrote at the start. <strong>A tool nobody has reviewed is a tool nobody has decided to keep</strong> —
+and the review is the only thing that ever removes one.</p>
+
 </div>
 </div>
 <div class="art-sidebar">
-<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What makes Devin different</a><a href="#s-green-1">What it does well</a><a href="#s-green-2">What it does not do</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">How to brief it</a><a href="#s-indigo-1">Reviewing its output</a><a href="#s-indigo-2">Where it fits economically</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Autonomous agents and security</a><a href="#s-red-1">Against in-editor assistants</a></div></div>
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What makes Devin different</a><a href="#s-green-1">What it does well</a><a href="#s-green-2">What it does not do</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">How to brief it</a><a href="#s-indigo-1">Reviewing its output</a><a href="#s-indigo-2">Where it fits economically</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Autonomous agents and security</a><a href="#s-red-1">Against in-editor assistants</a><a href="#s-red-2">Working With a Coding Agent Without Losing the Thread</a><a href="#s-red-3">Adoption, Which Is Where Tools Fail</a></div></div>
   <div class="sidebar-card">
     <h3>Quick facts</h3>
     <div style="font-size:.82rem;color:var(--muted);line-height:1.7"><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">Cognition</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Model</span><span style="color:var(--fg);font-weight:500">Autonomous agent, async</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Environment</span><span style="color:var(--fg);font-weight:500">Own sandbox with shell, editor, browser</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Best for</span><span style="color:var(--fg);font-weight:500">Well-scoped repetitive tasks</span></div></div>

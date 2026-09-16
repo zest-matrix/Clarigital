@@ -160,6 +160,19 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 .guide-body{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:40px;align-items:start}
 .guide-sidebar{margin-top:0;position:sticky;top:96px}
 }
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-codex.png">
@@ -191,7 +204,41 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Retail media sits awkwardly between marketing and trade. Budgets often come from trade spend rather than marketing, and retailers frequently link advertising participation to listing decisions and promotional support.</p><p>This creates pressure to spend for commercial relationship reasons rather than on performance grounds. Brands should measure retail media on incrementality like any other channel, while being realistic that the negotiation is not purely performance-driven.</p>
 <h2>Evaluating Retail Media Fairly</h2>
 <p>The central question is incrementality: did the ad produce a sale that would not otherwise have happened, or did it take credit for one already coming?</p><p>Retailer-reported ROAS systematically flatters, because a shopper already in the aisle for your category was likely to buy regardless. Where the retailer supports holdout testing, use it. Where they do not, treat reported figures as directional and watch total category share rather than attributed sales alone.</p>
-</div>
+<h2>Separating the Advertising Decision From the Trade Decision</h2>
+
+<p>The structural problem with retail media is that the entity selling you advertising also controls
+your shelf, your search ranking and your terms — so the negotiation is never purely about media
+performance.</p>
+<p>What that produces in practice: <strong>budget requested as a condition of something else</strong>
+— a promotion, a listing, favourable placement — and an advertiser unable to tell whether the spend
+performed or merely preserved the relationship.</p>
+<p>The discipline that helps is separation, in three parts. <strong>Measure the media on media
+terms</strong>, with the same incrementality standard you would apply to any other channel.
+<strong>Account for trade spend separately</strong> from advertising spend, even when the same person
+negotiates both, so neither hides in the other. And <strong>write down, before the conversation, the
+performance level at which you would reduce the budget</strong> — because deciding that during a
+negotiation is not deciding it.</p>
+<p>None of this is adversarial. It is the only way to know whether a retail media programme is working,
+and the answer matters most precisely where the relationship makes it hardest to ask.</p>
+
+<h2>Measuring It Without the Platform Marking Its Own Work</h2>
+
+<p>Retail media has a genuine measurement advantage — the platform sees the purchase — and that same
+closeness is why its reported numbers need handling carefully.</p>
+<p><strong>Distinguish new-to-brand from total.</strong> The most useful metric these platforms offer
+is whether a buyer was new to your brand. A programme delivering strong returns entirely from existing
+customers is capturing demand rather than creating it, which may still be worth doing, but is a
+different business case.</p>
+<p><strong>Watch total category sales, not attributed sales.</strong> If attributed sales rise while
+your total sales on the platform do not, the advertising is reallocating credit.</p>
+<p><strong>Treat branded-keyword returns sceptically.</strong> Advertising against your own brand name
+on a retailer where you already rank produces excellent-looking numbers and frequently buys clicks you
+had. Test it by pausing, which is cheap and unpopular.</p>
+<p><strong>And run an off-platform check.</strong> Retail media influences search and consideration
+beyond the retailer, so a purely on-platform view under-reports the good and over-reports the
+attributed — in opposite directions at once.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Amazon Advertising and Seller Central documentation</strong> &mdash; campaign types, match-type behaviour, product targeting and the placement reporting described here <a href="https://advertising.amazon.com" rel="noopener" target="_blank">advertising.amazon.com</a></li></ol></div></div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/paid-advertising/amazon-ads/amazon-ads-fundamentals/">Amazon Advertising Fundamentals</a></li><li><a href="/codex/ecommerce/quick-commerce/">Quick Commerce</a></li><li><a href="/codex/ecommerce/ecommerce-marketplace-strategy/">Marketplace Strategy</a></li><li><a href="/codex/analytics-cro/attribution-modelling/">Attribution Modelling</a></li></ul></div>
       <div class="sidebar-card"><h3>This section</h3><a href="Paid Advertising" class="sidebar-link">/codex/paid-advertising/ overview &rarr;</a></div>

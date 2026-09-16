@@ -130,6 +130,19 @@ p{line-height:1.75;color:var(--muted)}
 
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
@@ -202,7 +215,40 @@ p{line-height:1.75;color:var(--muted)}
 <h2>Mitigations That Actually Help</h2>
 <p>None of these fully solve it. Together they reduce exposure substantially.</p><ul><li><strong>Least privilege.</strong> Give the model the narrowest tool access the task requires. Read-only where possible.</li><li><strong>Human confirmation</strong> for consequential actions — anything that sends, deletes, pays or publishes.</li><li><strong>Treat all retrieved content as untrusted.</strong> Web pages, documents and emails are attacker-controlled in the threat model.</li><li><strong>Separate privilege from content.</strong> Do not let the same context that processes untrusted data also hold high-privilege capability.</li><li><strong>Output filtering</strong> on anything leaving the system, especially URLs, which are a common exfiltration route.</li><li><strong>Logging and review</strong> of tool calls, so unexpected behaviour is detectable after the fact.</li></ul>
 <h2>What Does Not Work</h2>
-<p>Instructing the model to ignore injected instructions. Attackers simply write more persuasive instructions, and the model has no way to adjudicate.</p><p>Keyword filtering for injection attempts. Injections can be arbitrarily phrased, encoded, or written in another language.</p><p>Assuming a more capable model is immune. Capability and susceptibility are largely independent.</p><p>Design on the assumption that injection will succeed at some point, and limit what that means.</p>
+<p>Instructing the model to ignore injected instructions. Attackers simply write more persuasive instructions, and the model has no way to adjudicate.</p><p>Keyword filtering for injection attempts. Injections can be arbitrarily phrased, encoded, or written in another language.</p><p>Assuming a more capable model is immune. Capability and susceptibility are largely independent.</p><p>Design on the assumption that injection will succeed at some point, and limit what that means.</p><h2>Designing Around It Rather Than Filtering For It</h2>
+
+<p>Prompt injection is not reliably solvable by detection, because the attack is written in the same
+language as the legitimate input. The defences that work are architectural.</p>
+<p><strong>Separate the privilege from the content.</strong> The component that reads untrusted text
+should not be the component that holds credentials or can act. A model summarising a document does not
+need the ability to send email.</p>
+<p><strong>Give every tool the narrowest possible scope.</strong> Read-only where read-only will do;
+a specific resource rather than an account; a rate limit and a spend cap on anything that costs money.</p>
+<p><strong>Put a human in front of consequential actions</strong> — sending, deleting, paying,
+publishing, sharing — with the actual action described rather than a summary of intent.</p>
+<p><strong>Validate outputs against a schema</strong> before acting on them, so a malformed or
+unexpected instruction fails closed.</p>
+<p><strong>And log everything with arguments.</strong> When something does go wrong, the log is the
+only way to establish what happened, and it is invariably missing.</p>
+
+<h2>What Does Not Work, and Why It Keeps Being Tried</h2>
+
+<p>Several defences are intuitive, widely recommended and insufficient. Knowing why saves the effort of
+discovering it.</p>
+<p><strong>Instructing the model to ignore injected instructions.</strong> This raises the bar slightly
+and is not a boundary. An instruction can always be phrased to outrank a previous instruction, and the
+model has no reliable way to distinguish the two.</p>
+<p><strong>Keyword and pattern filtering.</strong> The attack is natural language, so the space of
+phrasings is unbounded. Filters catch the obvious cases and produce false confidence about the rest.</p>
+<p><strong>Delimiters around untrusted content.</strong> Useful as structure, defeated by content that
+includes the delimiter or describes it.</p>
+<p><strong>A second model checking the first.</strong> Better than nothing and subject to the same
+class of attack, since the checker also reads attacker-influenced text.</p>
+<p>The reason these keep being tried is that they are cheap and feel like security.
+<strong>The reliable position is to assume injection will succeed and to limit what succeeding
+achieves</strong> — which is a design constraint rather than a control you can add afterwards.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>OWASP Top 10 for Large Language Model Applications</strong> &mdash; the prompt-injection categories and the mitigation guidance referenced here <a href="https://owasp.org" rel="noopener" target="_blank">owasp.org</a></li></ol></div>
 
     </main>
     <aside class="art-sidebar">

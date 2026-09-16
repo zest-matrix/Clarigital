@@ -90,6 +90,709 @@ lost — the old 534 double-counted. Unique Codex guides actually rose by 33 in 
 
 ---
 
+## PHASE 2 — THE FINTECH WORLD (Sessions 105+)
+
+### Session 105 — PHASE 0: FOUNDATIONS (DONE, 16 Sep 2026)
+
+**A new programme opens, and it opens by correcting something I told the owner wrongly.**
+
+#### ⚠ FIFTEENTH FALSE ALARM — I said the fintech pages carried no verification stamp
+
+They all do. **39 of 39** render `Verified September 2026` in the `art-meta` block, and the product
+guides additionally close with *"Checked September 2026"* above the sources.
+
+My check searched for the literal string **`Last verified:`** — which is the **AI Atlas** format. The
+Fintech section uses `Verified <Month> <Year>`. **Two formats, one regex, a confident wrong
+conclusion**, reported to the owner as a gap in the site.
+
+*The pattern is the oldest one in this file: a check only sees what its pattern matches.* The
+difference this time is that the wrong answer left the building before it was caught.
+
+**What is actually true:** the section is stamped, consistently, and correctly. The real inconsistency
+is that **the site uses two stamp formats across sections** — `Verified September 2026` in Fintech,
+`Last verified: April 2026` in Atlas. Worth unifying eventually; not a gap, and **not the multi-page
+job Phase 0 was scoped for.** Phase 0 shrinks to one item.
+
+#### THE REAL DEFECT — the finance course never learned the guides exist
+
+`courses/ai-finance/` has 15 lessons across three tracks, pointing at the nine modules, the two
+playbook pages and the regulation pages. **Not one points at any of the 13 product guides.** The
+course was built before they existed and nothing re-pointed it.
+
+**Same derived-artefact class as the `all-guides` defect (QA #7) and the paid-advertising hub
+(QA #7) — in a place neither QA looked, because the QA rotation covers sections and this is a
+cross-section dependency.**
+
+#### The fix: add, do not restructure
+
+The 15 lessons are a coherent progression — orientation and regulation, then the five core modules,
+then the remaining modules and the playbook. Rewriting them would break the progress bars, the quiz
+ids and the completion state stored in visitors' browsers.
+
+So `gen_course_finance.py` **appends a closing section** — *"Then build one"* — listing every product
+guide, **derived from the filesystem** and ordered by the `Product Guide NN` label each page carries,
+exactly as `gen_fintech_hub.py` does. A fourteenth guide will appear there automatically.
+
+Idempotent: second run reports *"already current"*. Verified afterwards that the three quizzes, all
+16 lesson handlers and the div balance are untouched.
+
+#### ⚠ AND I CREATED TWO ORPHAN CLASSES DOING IT
+
+The first version wrapped the block in `.track-section` and `.track-head`. **Neither exists in the
+page's CSS.** `newpage_check` I7 caught it, and checking against the packaged original confirmed I had
+introduced them rather than inherited them.
+
+**The I7 failure shape, self-inflicted, in the same session the SOP row describing it was re-read.**
+
+Rewritten to use only classes the page already styles — `depth-band`, `depth-badge`, `depth-note`,
+`lessons-list`, `lesson*`. `.track-panel` was available and **deliberately rejected**: it is a
+JS-controlled tab panel, and this block must be visible on all three tracks rather than one.
+
+#### ⚠ AND THEN THE AUDIT WENT TO 25/26 — MY THIRD SELF-INFLICTED DEFECT THIS SESSION
+
+The rewritten block used `.depth-band`, which is styled and was therefore safe by the I7 test. It is
+not safe by the **render** test: `rendercheck` asserts **one `depth-band` per `track-panel`** on a
+course page, and per `lane-section` on a lane page. My block made it **four bands on three tracks**.
+
+`Render/JS problems 1 ❌` — the first red check in this file since Session 79.
+
+**The standing check was right and the reasoning behind it is correct**: a depth band labels a depth
+level, and a fourth one on a three-track course is a genuine inconsistency, not a false positive.
+Replaced with inline flex styling and the two already-styled spans. Back to **26/26**.
+
+*Three self-inflicted defects in one session — a false alarm reported to the owner, two orphan
+classes, and a red audit check — all three caught by standing checks or by comparing against the
+packaged original.* **That is the machinery working. It is also a reminder that opening a new
+programme does not come with a fresh start on care.**
+
+#### What Phase 0 leaves open
+
+- **67 other course syllabi were not audited** for the same cross-section staleness. This generator
+  covers one course. *Recording that rather than implying the class is closed.*
+- **Two stamp formats** across sections, unified nowhere.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS.**
+
+---
+
+### ★ Session 104 — QA #10: AI KIDS — **THE FINAL SESSION** (DONE, 16 Sep 2026)
+
+**Nothing built. One defect found and fixed. The programme closes here.**
+
+#### Trend, QA #1 to QA #10
+
+| | QA #1 | QA #5 | QA #8 | **QA #10** |
+|---|---|---|---|---|
+| Pages | 857 | 877 | 883 | **883** |
+| Hard checks | 20/20 | 26/26 | 26/26 | **26/26** |
+| `<script>` blocks | 2,313 | 2,358 | 2,376 | **2,376** — 0 fail |
+| Inline handlers | 10,677 | 10,689 | 10,689 | **10,689** — 0 fail |
+| JSON-LD | 1,813 | 1,851 | 1,863 | **1,863** — 0 fail |
+| Clean-room builders | 5/5 | 5/5 | 5/5 | **5/5** |
+| **thin pages** | 217 | 217 | 211 | **144** |
+| **heading skips** | — | 101 | 101 | **36** |
+| **orphan classes** | 46 | 42 | 35 | **35** |
+| decaying stamps | — | 151 | 151 | **151** |
+| deployment | — | — | PASS | **PASS** |
+
+#### ⚠ THE FINDING — a table clipped rather than scrollable, on the AI Kids landing page
+
+`ai-kids/index.html` carried a three-column comparison table inside a wrapper styled
+`overflow:hidden` — there for the border radius. On a narrow screen that does not produce a scrollbar;
+**it clips the table**, on the landing page of the section aimed at children and their parents.
+
+H3 has been SCRIPTED since Session 56 and had returned zero every time, because it checks for
+`overflow-x` in the page CSS and the clipping came from a *different* property on an inline style.
+
+Fixed with `.compare-table-wrap{overflow-x:auto}` and a `min-width:480px` guard so the columns stay
+readable rather than compressing into unreadability. **SOP H3 updated with what it still cannot see:
+the rendered result.**
+
+#### C6 — ALL FIVE SECTIONS MEASURED, ALL CLEAN
+
+The last section, and the last open measurement on the list.
+
+| Section | Pages | Max pairwise overlap |
+|---|---|---|
+| Fintech | 37 | **6.4%**, all boilerplate |
+| Codex | 333 leaf guides | **7.8%**, all boilerplate |
+| AI Atlas | 158 | **zero pairs** |
+| Courses | 69 | **zero pairs** |
+| **AI Kids** | **130** | **zero pairs** |
+
+**No substantive duplication anywhere on 883 pages.** The Session 52 anti-duplication rule held across
+the entire site, measured rather than asserted.
+
+#### AI Kids, otherwise
+
+130 pages · **0** failures on lang, alt, viewport, fixed widths, `noopener`, skip links, GA4, markdown ·
+**K6 clean**: parent framing and a safety reference on every page · **2 heading skips**, the section's
+whole contribution to the site-wide 36 · median **18 KB**, none over 150 KB.
+
+**The two external links** are both on `/ai-kids/parents/`, both to a declared WhatsApp platform
+partner, both carrying `rel="noopener"`, and both attributed in the sentence that contains them. Not a
+defect. **B8 remains a GAP** — nothing has ever checked whether an outbound target still resolves, and
+that is still true today.
+
+#### Generator idempotency clean, second QA running
+
+`gen_all_guides`, `gen_counts` and `gen_fintech_hub` all re-ran byte-identical. This check found a real
+defect in QA #7 and QA #8 and nothing in QA #9 or #10, because **S94 wired the regeneration into
+`rebuild_infra.py` as its last step.** The structural fix is doing the remembering, which is what it
+was for.
+
+---
+
+## THE PROGRAMME, CLOSED
+
+**Sessions 80 to 104. 883 pages. 26/26 hard checks at zero throughout.**
+
+### What was built
+
+| | |
+|---|---|
+| **Product guides** | **13**, complete — the programme finished at Session 86 |
+| Regulators covered | **RBI · SEBI · IRDAI**, plus NPCI, which is not a regulator and the pages say so |
+| **Pages remediated** | **121**, across nine batches |
+| **Words added** | **≈47,600** in remediation, plus 13 product guides |
+| Site total | **883 pages · ≈1,253,000 body words** |
+| Typed source entries | **303 across 111 pages** |
+| Bundled build scripts | **54** |
+
+### What was fixed that nobody was looking for
+
+- A **live infinite redirect loop** and **this document publicly readable**, both invisible to 26 green
+  checks, because *nothing validated the deployment*.
+- **68 of 101 heading skips** in one generator line, after a previous QA declared the remainder
+  scattered.
+- `all-guides` showing **one guide's title on three others**, residual Session 76 contamination in a
+  derived page nobody re-ran.
+- The **paid-advertising hub wearing its own sub-hub's identity** in seven places.
+- The entire **`guide-*` template with no CSS**, across 104 pages.
+- **172 external links** opening new tabs without `rel="noopener"`.
+- **Markdown rendering as literal asterisks** on five pages — mine.
+
+### What was reclassified rather than fixed
+
+- **"~70 hubs where short is correct"** — actually **94**, after a wrong intermediate answer of 45.
+- **49 course syllabi** counted as a content backlog were routing pages.
+- **"16 stylesheet generations"**, carried since Session 53, were **mostly legitimate page-specific
+  CSS**. Consolidating them would have been a regression.
+
+### The number that matters most
+
+**Fourteen times a check of mine returned a confident wrong answer**, and **every one was caught before
+it changed the site** — by an assertion, by a control comparison, or by reading the output instead of
+the count. Twice the guard caught the *previous* session's work. Once the honest response was to delete
+the check rather than repair it.
+
+*That ratio, not the page count, is what this project actually produced.*
+
+### What the next person needs to know
+
+1. **The SOP's GAP rows are the real inventory.** Section F (contrast, keyboard order, ARIA, screen
+   reader) and H5 (a real phone) need a browser and have never been done. **Ten QA sessions asked for
+   two phone screenshots and got none** — it remains the highest-yield unavailable check.
+2. **Section N is three sessions old.** `_headers` is unvalidated, the 240 dashboard Redirect Rules are
+   invisible from the repository, and nothing compares what is live against what is packaged.
+3. **`.assetsignore` is load-bearing.** Removing it republishes `.git`, `_build/` and this file.
+4. **151 decaying stamps** never moved. It is the one metric this programme did not touch.
+5. **Three page templates**, not one. `cx_expand_09.py` carries the anchor logic for all three.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 144 · heading skips 36 ·
+orphan classes 35 · C6 clean across all five sections.**
+
+---
+
+### Session 103 — THE STYLESHEET GENERATIONS: MOSTLY NOT A DEFECT (DONE, 16 Sep 2026)
+
+**The last item on the original open list, closed — and closed differently from how it was framed.**
+
+This file has carried *"15 stylesheet generations in AI Atlas"* as an open item since **Session 53**,
+on the assumption it was accumulated drift needing consolidation. It is **17**, and the assumption was
+mostly wrong.
+
+#### What the diff actually showed
+
+| Variant | Pages |
+|---|---|
+| `fec6d16e` | 52 |
+| `8fe80db3` | 42 |
+| `f08437ac` | 16 |
+| `147ce471` | 15 |
+| `8603d794` | 12 |
+| `7cbda27b` | 8 |
+| 11 further variants | 1–3 each |
+
+Diffing the singletons against their nearest group produced two distinct kinds of difference:
+
+**1. Page-specific component rules** — `.agent-card`, `.prompt-box`, `.prompt-label`, `.callout-red`.
+These are used by the pages that carry them. **Merging the stylesheets would delete rules those
+elements need in order to exist** — which is the I7 failure shape, performed deliberately, across a
+section.
+
+**2. Genuine drift in a shared rule** — `.nav-logo` existing in two forms.
+
+**So the consolidation this file has been asking for since Session 53 would have been a regression.**
+The variation is mostly the template doing its job: pages that use a component carry its CSS and pages
+that do not, do not.
+
+#### The genuine defect, and it was three pages
+
+`.nav-logo` in two forms across 158 pages:
+
+- **155 pages** carry `letter-spacing:-.01em` — matching **both** `_build/atlas_style.txt` and
+  `_build/tool_style.txt`.
+- **3 pages** had lost it: `agentic-frameworks/autogen`, `agentic-frameworks/llamaindex`,
+  `use-cases/studying`.
+
+**The templates are the authority and were confirmed as such before any page was touched.** Three
+pages normalised, remaining drift 0. Not a sweep — three pages, one rule, matching the bundled source.
+
+**Variant count is still 17 and that is the correct outcome**, which is the point of the session.
+
+#### ⚠ A classifier of mine was wrong and was discarded rather than refined
+
+To separate "component rule" from "unused drift" I wrote a check comparing each selector against
+whether its class appears in the page markup. It reported `.lane-tab` and `.lane-section p` as unused
+on 156 pages, which is plainly false — **it mishandled descendant and pseudo selectors**, testing only
+the first class token.
+
+**I stopped rather than refining it.** With the diff evidence already sufficient to make the decision,
+a better classifier would have produced a more precise version of an answer I already had — and the
+risk was that a plausible number from a broken check would have justified a merge the diffs said not to
+make.
+
+*Fourteenth time a check of mine has returned a confident wrong answer on this project. The first time
+the response has been to delete the check rather than fix it.*
+
+#### New SOP row I9
+
+Records the measurement, the reason the variants are legitimate, the three-page fix, and what the
+discarded classifier could not establish — **whether every page-specific rule is still used by the page
+that carries it.** That remains genuinely unknown and is written down as unknown rather than assumed.
+
+#### The original open list is now empty
+
+Every item carried into this programme has been closed or reclassified:
+
+| Item | Outcome |
+|---|---|
+| 217 thin pages | **144**, WRITE backlog cleared, 121 pages rewritten |
+| 19 thin hubs | **All given orienting copy**, under-200 down to 6 |
+| 438 → 101 heading skips | **36**, after 68 traced to one generator line |
+| 46 orphan classes | **35**, after the `guide-*` template got its CSS |
+| 15 "stylesheet generations" | **Closed as mostly legitimate**, 3-page drift fixed |
+| No deployment checking | **SOP section N**, 9 rows, `redirects_check.py` |
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 144 · heading skips 36 ·
+orphan classes 35.**
+
+---
+
+### Session 102 — THE 19 THIN HUBS (DONE, 16 Sep 2026)
+
+**All 19 given orienting copy. HUB pages under 200 content words: 19 → 6.**
+
+Not a word-count exercise. QA #8 found these route correctly and **explain nothing** —
+`codex/analytics-cro` listed 24 children in 130 words, `codex/history` 8 children in 105. Each got one
+to three paragraphs answering what the area covers, who it is for, and where to start. **Additions
+ranged 54 to 90 words. None of these will or should cross 800** — short is correct for a hub (SOP C9)
+and the defect was orientation, not length.
+
+**Six remain under 200 content words.** They now orient; they are simply short pages with short
+additions. *Recording that rather than padding them to clear a threshold the S91 decision already said
+is not the target.*
+
+#### The Rule 4 check, done before writing rather than after
+
+`gen_counts.py` writes the `<p>NN guides ...</p>` lead on the Codex section hubs, matching
+`(<p>)\d{1,4}(\s+guides\b)` **with count=1**. Inserting a paragraph *before* it would have captured
+the wrong `<p>` and **corrupted every published count on the site**.
+
+Every insertion goes after. Verified afterwards: `gen_counts` re-ran clean, **Published count drift
+0**.
+
+#### Three shapes, anchors resolved per page and asserted
+
+| Shape | Pages | Anchor |
+|---|---|---|
+| Codex section hubs | 11 | after the derived count paragraph |
+| Codex sub-hubs | 3 | the `guide-*` template anchor |
+| AI Atlas hubs | 5 | `after-hero`, and one `after-art-meta` |
+
+`ai-atlas/specialist-tools/data-analysis` matched none of the first three and **the resolver raised
+rather than guessing**, which is the behaviour wanted. Its structure has no `page-hero`; the anchor is
+the `art-meta` block. Added, compiled before writing, per L10.
+
+#### ⚠ A DUPLICATE GUARD THAT SKIPPED A PAGE IT SHOULD HAVE WRITTEN
+
+`codex/paid-advertising` reported **"already done"** and had not been touched.
+
+The guard searched for the first forty characters of the new paragraph in the page text — **and the
+page text included the JSON-LD block.** That page's schema description, which I rewrote in QA #7,
+begins *"Paid advertising across every major platform…"*, the same words as the new opening sentence.
+
+**The guard matched its own prior work in a script tag and silently skipped the page.** Caught only
+because 18 of 19 was an odd number to finish on. Fixed to read the visible body only.
+
+*A skip is the quietest failure a batch script has: it prints a line that looks like success.*
+
+#### What the hubs now say
+
+A few worth keeping:
+
+- **History** — *most digital marketing advice is a snapshot presented as a principle. Knowing why a
+  rule exists tells you when it stops applying.*
+- **Case studies** — read them for **the constraint each company was under**, not the tactic. Copying
+  from a business with different economics is how a case study becomes an expensive quarter.
+- **Analytics & CRO** — *a metric with no decision attached is a number you will report for two years
+  and never act on.*
+- **Programmatic** — *the cheapest, best-performing inventory in your report is where to look first for
+  a problem, not where to scale.*
+- **Social media** — the worst ratio of effort to measurable return of any channel here, and still
+  worth doing for reasons that do not appear in a dashboard. **Both halves said out loud.**
+- **Affiliate** — disclosure obligations attach to the relationship, not the link type, **and they are
+  yours as much as your partners'.**
+- **Data analysis** — the guides assume you will check the output. *A tool that saves an hour and
+  produces one wrong number has not saved anything.*
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 144 · heading skips 36.**
+
+---
+
+### Session 101 — CONTENT REMEDIATION 9: **THE WRITE BACKLOG IS CLEARED** (DONE, 16 Sep 2026)
+
+**Twenty-four pages, +9,701 words. WRITE 24 → 0.**
+
+| | S99 | S100 | **S101** |
+|---|---|---|---|
+| **WRITE** | 35 | 24 | **0** |
+| thin pages | 179 | 168 | **144** |
+| NEARLY (finished) | 50 | 50 | **50** |
+
+**Nine batches: 121 pages, 47,572 words**, `newpage_check` clean on every one.
+
+#### The session changed shape as soon as the list was read
+
+Listing the remaining 24 showed **18 of them on the third template** — the one deferred in S100. So
+the backlog was **a template problem, not a content one**, and doing the six easy pages would have
+left eighteen for a session that does not exist.
+
+#### Solving the third template properly
+
+`splice_toc_atlas()` does three things in one operation, because doing any two of them is worse than
+doing none:
+
+1. **Appends the sections to the end of the red lane** with ids continuing the per-lane numbering
+   (`s-red-2`, `s-red-3`), placed inside the `lane-section` rather than after it.
+2. **Inserts matching links after the last red TOC entry.**
+3. **Asserts that every `<h2>` id on the page appears in the `pg-toc`.**
+
+**That third step is the point.** It is exactly the check the deferred defect would have failed, and
+it is now enforced on every write rather than remembered.
+
+Verified afterwards across **all 124 TOC-atlas pages on the site**: **zero have an h2 missing from
+their table of contents.** The two S100 deferrals were completed from the prose already written and
+parked in `cx_expand_08.py`, which is why they cost no rewriting.
+
+#### An assertion of mine was wrong, and said so
+
+The h2-delta check asserted `+2` per page. The sources block emits its own `<h2 id="sources">`, so
+pages with sources gain **three**. It passed on all 18 tool pages — which carry no sources block — and
+failed on the first Codex page.
+
+**Wrong assertion, correct behaviour, caught at the boundary between two populations.** Corrected to
+`2 + (1 if sources else 0)` and compiled before writing, per L10.
+
+#### On what the tool pages were given
+
+The 18 tool guides received sections about **using a tool of that kind well** — evaluation against your
+own inputs, adoption, what goes wrong — rather than feature claims.
+
+That is a deliberate limit and the script says so. **Feature detail on fast-moving AI tools goes stale
+between sessions and cannot be verified from here.** The existing pages already carry that material
+and are dated. Writing more of it would have meant asserting specifics I could not check, which this
+project has a rule against. Durable, category-level material is the honest contribution.
+
+Eight distinct section pairs across the eighteen: transcription accuracy, coding agents, meeting
+recorders, video automation, model routing, voice agents, enterprise search, and GTM enrichment.
+
+#### Positions worth keeping from the Codex six
+
+- **GEO** — *would this have been good advice three years ago? If yes, it is SEO.* And the question
+  nobody raises first: **if your revenue depends on pageviews, succeeding at GEO on informational
+  content means your material is used and your visit is not.**
+- **AI Overviews** — do not respond by rewriting titles. And say plainly in the reporting that
+  **some of this traffic is not coming back**.
+- **llms.txt** — costs an afternoon, cannot hurt, adoption uneven; *a reasonable basis for doing it and
+  a poor basis for a project plan.* Generate it rather than writing it, because it goes stale like
+  every other derived file.
+- **Crawler policy** — a business decision presented as a technical one, and **it belongs to whoever
+  owns the commercial model, not to whoever edits `robots.txt`.**
+- **RAG** — three failure points, checked in order. The dangerous one is *retrieved, used, and the
+  source was stale*, because the answer is confident, cited, and wrong — **and the citation makes it
+  more believable.**
+- **Content affiliate** — **recommend against something.** A comparison where every option is excellent
+  for somebody has made no decision.
+
+#### What is left
+
+**WRITE is empty.** Remaining: **19 thin hubs** (S102), **16 AI Atlas stylesheet generations** (S103),
+then **QA #10** (S104). The 50 NEARLY pages are a finished state by the S91 decision.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 144 · heading skips 36.**
+
+---
+
+### Session 100 — CONTENT REMEDIATION 8 (DONE, 16 Sep 2026)
+
+**Eleven pages, +4,226 words. Two deferred deliberately.** Six Codex, five AI Atlas.
+
+| | S98 | **S100** |
+|---|---|---|
+| **WRITE** | 35 | **24** |
+| thin pages | 179 | **168** |
+| heading skips | 36 | **36** |
+
+**Eight batches: 97 pages, 37,871 words.**
+
+#### ⚠ A THIRD TEMPLATE, AND THE RIGHT ANSWER WAS TO STOP
+
+The two-anchor logic from S97 matched **zero** anchors on
+`ai-atlas/specialist-tools/images-design/krea`. The assertion stopped the run after one page.
+
+There is a third template. Not the Codex `guide-*` one, not the Atlas concept `art-*` one, but an
+`art-body` div of lane-sections with a **`pg-toc` sidebar whose links are keyed to h2 ids in a lane
+colour scheme** — `#s-green-N`, `#s-indigo-N`, `#s-red-N`. Every h2 on the page carries an id and
+appears in that table of contents.
+
+**Splicing two sections in would have produced a page whose own table of contents omits two of its
+sections** — which is precisely the derived-artefact defect class QA #7 and QA #8 both found, created
+deliberately this time.
+
+**So I stopped rather than splicing.** Doing it correctly needs ids allocated in the lane scheme, the
+sections placed inside the right `lane-section` and `depth-band`, and two TOC entries added. That is a
+job, not a splice.
+
+**The written content for both pages is kept in `cx_expand_08.py`, unused**, with the reason recorded
+in the script, so session 102 or 103 completes them without rewriting the prose.
+
+*Three batches running, the assertion has caught an assumption about templates. Each time the cost was
+one stopped run; the alternative each time was a silent defect.*
+
+#### What the additions were
+
+The theme is **the number that is not the number you are shown**:
+
+- **Amazon fundamentals** — **TACOS**, measured against all sales rather than attributed ones, is the
+  only metric that shows whether advertising is building organic performance. A falling TACOS at
+  constant spend is the outcome you want and ACOS cannot see it. And *a break-even ACOS is a
+  calculation, not a benchmark*.
+- **Subscription commerce** — **track retention by joining cohort, not in aggregate**, because
+  aggregate retention is flattered by growth. A business with worsening retention can show improving
+  headline numbers while it is acquiring. And a meaningful share of churn is an expired card rather
+  than a decision.
+- **Consent Mode** — the basic/advanced choice is a policy decision wearing a technical setting, and
+  **below the modelling thresholds you get the complexity of advanced mode and none of the benefit**.
+  Test the *decline* path; almost nobody does.
+- **Prompt injection** — detection does not work, because the attack is written in the same language
+  as the input. **Assume injection will succeed and limit what succeeding achieves**, which is a design
+  constraint rather than a control you add afterwards.
+- **Embeddings** — when retrieval disappoints: **fix chunking, add keyword search, add reranking, and
+  only then consider a different embedding model.** Most teams do that list backwards.
+- **MCP** — anything a server returns is **data, not instruction**, and the protocol does not prevent
+  that and is not supposed to.
+- **D2C** — the retailer's margin paid for acquisition, fulfilment, service, payments and fraud. *A
+  brand with a healthy gross margin can be loss-making direct at any volume*, and that usually becomes
+  visible after the warehouse is leased.
+- **Multi-location** — the reporting test: *can a regional manager open this and know which three
+  branches to ring on Monday?*
+
+Nine of eleven carry typed sources.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 168.**
+
+---
+
+### ★ Session 99 — QA #9: COURSES (DONE, 16 Sep 2026)
+
+**Nothing built. One defect found, and it overturns a conclusion this file has carried since
+Session 79.**
+
+#### Trend
+
+| | QA #6 | QA #7 | QA #8 | **QA #9** |
+|---|---|---|---|---|
+| Pages | 881 | 883 | 883 | **883** |
+| Hard checks | 26/26 | 26/26 | 26/26 | **26/26** |
+| `<script>` blocks | 2,370 | 2,376 | 2,376 | **2,376** — 0 fail |
+| Inline handlers | 10,689 | 10,689 | 10,689 | **10,689** — 0 fail |
+| JSON-LD | 1,859 | 1,863 | 1,863 | **1,863** — 0 fail |
+| *thin pages* | 217 | 217 | 211 | **179** |
+| *orphan classes* | 42 | 42 | 35 | **35** |
+| ***heading skips*** | 101 | 101 | 101 | **36** |
+| deployment | — | — | PASS | **PASS** |
+
+#### ⚠ 68 OF THE 101 HEADING SKIPS WERE ONE LINE IN ONE GENERATOR
+
+**Session 79 reduced heading skips from 438 to 101 and concluded the remainder were "scattered
+individual cases, not a pattern". That conclusion was wrong.**
+
+Measured by section this session: **courses 68 · ai-atlas 20 · csp 6 · codex 5 · ai-kids 2**.
+Sixty-eight of a hundred and one in one place, with one cause:
+
+```python
+f'<h3>Test your understanding</h3><span class="qt-arrow">&#9660;</span></button>'
+```
+
+`course_builder_v3.py` emits an `<h1>` and then three `<h3>` quiz headings, with **no `<h2>` anywhere
+on the page.** Every course page has had an `h1 → h3` skip since the builder was written, and
+**68 of 69 are identical.**
+
+Fixed in three places together, because two of them alone would have been worse than none: the
+**generator** (compiled before writing, per L10), the **68 pages**, and the **`.quiz-toggle h3` CSS
+selector** in `_build/c_style.txt` — which would otherwise have left 68 headings unstyled, the I7
+failure shape.
+
+**Heading skips 101 → 36.** Verified 0 pages carry the new `h2` without a matching CSS rule.
+
+**Why S79 got it wrong is the useful part.** It counted the total and inspected a sample; it did not
+*group by section*. A single `collections.Counter` on the directory would have shown 68 in one place.
+*The metric was right and the conclusion drawn from it was not, because nobody asked where the
+remainder was.*
+
+#### C6 across Courses — fourth section, fourth clean result
+
+69 pages from one builder, the section I predicted in the QA #8 brief was **most likely to duplicate**.
+
+**Zero pairs share even four long sentences.**
+
+| Section | Max pairwise overlap |
+|---|---|
+| Fintech | 6.4%, all boilerplate |
+| Codex, 333 leaf guides | 7.8%, all boilerplate |
+| AI Atlas, 158 pages | no pair reaches the threshold |
+| **Courses, 69 pages** | **no pair reaches the threshold** |
+
+Four of five sections measured. **No substantive duplication found anywhere on the site.**
+
+#### THE C9 QUESTION, NOW ANSWERED IN BOTH HALVES
+
+QA #8 found **19 of 45 HUB pages under 200 content words**. The 49 SYLLABUS pages had never been
+measured the same way. Now they have:
+
+**Zero of 49 are under 400 content words. Median 725.** They carry fifteen lesson descriptions each
+and are substantial pages.
+
+So the S87 classification holds without caveat for syllabi and **with a real caveat for hubs** — and
+the thin-hub queue stays at 19 rather than growing to 68. *A question carried open across five
+sessions, closed with a number.*
+
+#### Idempotency clean for the first time in three QAs
+
+`gen_all_guides`, `gen_counts` and `gen_fintech_hub` all re-ran **byte-identical**. It caught a real
+defect in QA #7 and QA #8; this time nothing, because **S94 wired the derived-index regeneration into
+`rebuild_infra.py` as its last step.** The structural fix is doing the remembering.
+
+#### Courses section, otherwise
+
+69 pages · **0** failures on lang, alt, viewport, fixed widths, table overflow, `noopener`, skip
+links, GA4 — **and 0 on the new C10 markdown check** · median **41 KB**, none over 150 KB · six-hop
+journey resolves with one `<h1>` and nav on every page.
+
+#### Still open
+
+**19 thin hubs** · **36 heading skips**, now ai-atlas 20 / csp 6 / codex 5 / ai-kids 2 / courses 1 —
+**and this file will not repeat that they are scattered without grouping them first** · **16
+stylesheet generations** in AI Atlas · **35 orphan classes** · **151 decaying stamps** · **section F
+GAPs** needing a browser · **section N GAPs**: `_headers` unvalidated, dashboard Redirect Rules
+invisible from the repo, nothing comparing live against package.
+
+**Ninth time of asking for two or three phone screenshots.** Most useful now: any course page, where
+68 headings changed tag today.
+
+Next rotation: **AI Kids**, QA #10 at Session 104 — the final session.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · heading skips 36.**
+
+---
+
+### Session 98 — CONTENT REMEDIATION 7 (DONE, 16 Sep 2026)
+
+**Thirteen pages, +5,382 words.** Eight Codex, five AI Atlas.
+
+| | S96 | S97 | **S98** |
+|---|---|---|---|
+| **WRITE** | 61 | 48 | **35** |
+| NEARLY (finished) | 47 | 50 | **50** |
+| thin pages | 202 | 192 | **179** |
+
+**All thirteen crossed 800.** First batch where every page did. **Seven batches: 86 pages, 33,645
+words.**
+
+#### ✅ THE C10 CHECK CAUGHT MY OWN WRITING, ONE SESSION AFTER I ADDED IT
+
+`cx_expand_07.py` asserts that no markdown reaches the page **before splicing**. It fired on page four
+with `*"our number is wrong on Google"*`, stopped the run, and left three pages written and ten
+untouched.
+
+A second instance — `*open*` in the open-vs-closed-models page — was found by the same scan.
+
+**Session 96 added that check because I had leaked markdown onto five pages across five batches.
+Session 97 moved it to run at source. Session 98 it caught me doing it again, before a single
+character reached a page.** That is the two-loop design working as designed rather than as argued.
+
+#### THE FINDING — the EU AI Act timeline moved and most published guidance is stale
+
+Verified before writing, and it changed the page substantially. **Regulation (EU) 2026/1744, the
+Digital Omnibus on AI** — Parliament **16 June 2026**, Council **29 June**, Official Journal
+**24 July**, in force **27 July 2026**, *six days before the original high-risk deadline*.
+
+| Obligation | Position |
+|---|---|
+| Prohibited practices, AI literacy | In force since **2 Feb 2025**. Not deferred |
+| GPAI model obligations | In force since **2 Aug 2025**. Pre-existing models comply by **2 Aug 2027** |
+| **Article 50 transparency** | **Applied 2 August 2026 as scheduled.** Catches every chatbot and synthetic-content system |
+| High-risk, Annex III standalone | Deferred to **2 December 2027** |
+| High-risk, Annex I embedded | Deferred to **2 August 2028** |
+| National sandboxes | Deferred to **2 August 2027** |
+
+**Neither high-risk date is conditional** — the mechanism tying them to published standards was
+dropped from the final text. Penalties **&euro;35m or 7% of global turnover**. Systemic-risk threshold
+**10²⁵ FLOPs**, and an open-source model crossing it carries every obligation regardless of licence.
+
+The page also carries the trap: **a deployer becomes a provider** by putting their name on a system,
+substantially modifying it, or using it beyond its intended purpose — so a company fine-tuning a model
+and shipping it as a feature has probably crossed the line. And the reach is extraterritorial: an
+Indian company serving European users is in scope.
+
+#### Other additions
+
+- **RTB** — every enrichment on the bid path costs win rate, and **an unusually high win rate is a
+  finding, not a result**: in a competitive auction, winning most of what you bid on means your bids
+  are too high or nobody else wants the inventory.
+- **CDPs** — the question that decides it: *what will you do with a unified profile that you cannot do
+  now?* And probabilistic identity matching merges two people into one profile, which makes a subject
+  access request genuinely awkward to answer.
+- **Token economics** — the system prompt is charged on **every call**, conversation cost grows with
+  the **square** of length, and reasoning output is billed as output. *A cost programme that starts
+  with guesses usually optimises the wrong call.*
+- **Evals** — fifty real examples beat every public benchmark; **keep the set private and version it**,
+  because a changed set is the most common way a team convinces itself a model improved.
+- **Retail media** — the entity selling you advertising also controls your shelf. Write down the
+  performance level at which you would cut the budget **before** the negotiation.
+- **Zero-click** — stop using CTR as a health measure on informational queries, and be honest that a
+  business model funded by pageviews on informational content is under genuine pressure that no
+  optimisation resolves.
+- **Local SEO** — proximity is structural. *You will not appear in the map pack far from your address,
+  however well optimised*, and the honest answers are a second location, paid search, or accepting the
+  catchment.
+
+**Site: 26/26 at zero · 883 pages · linkcheck 0 · redirects_check PASS · thin 179.**
+
+---
+
 ### Session 97 — CONTENT REMEDIATION 6 (DONE, 16 Sep 2026)
 
 **Thirteen pages, +5,072 words.** Eleven Codex and — for the first time in the remediation programme —
@@ -3849,15 +4552,40 @@ Sessions 47–78 are **done**. Remaining work, renumbered honestly against what 
 | ~~95~~ | ~~WRITE backlog 4~~ **DONE** — 13 pages +4,893 words; WRITE 87 → 74 |
 | ~~96~~ | ~~WRITE backlog 5~~ **DONE** — 13 pages +5,006 words; WRITE 74 → 61; markdown leak found |
 | ~~97~~ | ~~WRITE backlog 6~~ **DONE** — 13 pages +5,072 words; WRITE 61 → 48; two templates found |
-| 98 | **WRITE backlog**, continued |
-| **99** | **★ QA #9** |
-| 100–103 | **WRITE backlog, AI Atlas** (29 pages) + the 3 NEARLY tool guides = 32 |
-| **104** | **★ QA #10 — final** |
+| ~~98~~ | ~~WRITE backlog 7~~ **DONE** — 13 pages +5,382 words; WRITE 48 → 35; all 13 crossed 800 |
+| ~~**99**~~ | ~~**★ QA #9** — Courses~~ **DONE** — heading skips 101 → 36 from one generator line |
+| ~~100~~ | ~~WRITE backlog 8~~ **DONE** — 11 pages +4,226 words; WRITE 35 → 24; third template found |
+| ~~101~~ | ~~WRITE backlog 9~~ **DONE** — 24 pages +9,701 words; **WRITE 24 → 0**; third template solved |
+| ~~102~~ | ~~19 thin hubs~~ **DONE** — all 19 given orienting copy; under-200 hubs 19 → 6 |
+| ~~103~~ | ~~16 stylesheet generations~~ **DONE** — mostly legitimate, not drift; 3-page fix |
+| ~~**104**~~ | ~~**★ QA #10** — AI Kids~~ **DONE** — clipped table fixed; C6 clean across all five sections |
 
-**7 sessions remaining (98–104).** Composed of: **5 content remediation** (98, 100–103, one of them for
-the thin hubs) · **2 QA sessions** (99, 104), with session 104 the final QA.
+**Sessions 80–104 are complete.** A second programme opened at Session 105.
 
-**Backlog: 48 WRITE pages, plus 19 thin hubs from QA #8.**
+### PHASE 2 ROADMAP — THE FINTECH WORLD
+
+| Phase | Sessions | Work |
+|---|---|---|
+| ~~0~~ | ~~1~~ | ~~**Foundations**~~ **DONE (105)** — finance course re-pointed; the stamp gap was a false alarm |
+| **1** | **3** | **Close the screenshot gap** — ID Masking · Cheque Reading · Collections & Recovery |
+| 2 | 3 | **Complete the map** — Merchant Onboarding · AML & Transaction Monitoring · Agentic Payments (draft) |
+| 3 | 2 | **A world, not a list** — products front door with a decision tree, plus a regulator map (RBI · SEBI · IRDAI · NPCI) |
+| 4 | 2 | **The regulatory changelog** — derived, dated, across all 19 guides. *The asset that compounds* |
+| 5 | 1 | Re-scope and verification pass across the section |
+| 6 | 2 | **"Ask about this page"** widget — five assistants, text labels not logos, wired into all five builders |
+| QA | 3 | Every fifth session, standing cadence |
+
+**16 planned, 18 budgeted.** Across sessions 80–104 roughly one session in five went somewhere nobody
+scheduled — one unplanned deployment session, one cancelled premise, four QAs with real fixes. A plan
+without that buffer is wrong by session six.
+
+**★ SESSION 106 — PRODUCT GUIDE 14: GOVERNMENT ID MASKING.** The strongest of the three. Spine:
+UIDAI's 2018 circular, RBI's May 2019 KYC Master Direction amendment (first eight digits **and** the
+QR code, before storing), IRDAI January 2019, SEBI April 2020. **The finding:** it is not image
+blurring — under the **Aadhaar Data Vault** specification the number must be tokenised to a Reference
+Key and must never appear in application databases, logs or audit trails. **The first guide about
+destroying data rather than collecting it**, and it cross-links to Video KYC, where Aadhaar visible in
+stored frames must also be redacted.
 
 **Backlog: 87 WRITE pages across 7 writing sessions ≈ 13 a session.** NEARLY is a finished state
 (S91 decision), so 30 are done. **34 pages and 13,292 words remediated across three batches.**
@@ -3868,11 +4596,13 @@ sessions ≈ 10 a session.** 94 of the original 217 are routing pages where shor
 **The product-guide programme is finished.** Thirteen built, four regulators, soundboxes/POS and
 payroll SaaS deliberately out of scope.
 
-**★ SESSION 98 — WRITE BACKLOG 7.** Thirteen more from `_build/thin-pages.md` shortest first;
-**48 remain**. Bundle as `cx_expand_07.py`. **Note the two templates**: Codex splices before
-`<aside class="guide-sidebar">`, AI Atlas before `<aside class="art-sidebar">` after a `</main>`.
-`cx_expand_06.py` handles both — copy its anchor logic rather than rewriting it.
-**Session 99 is QA #9, rotating to Courses**, so 98 is the last writing session before it.
+**★ THE PROGRAMME IS COMPLETE.** Sessions 80–104 are done and every item carried into it is closed
+or reclassified. The closing summary is in the Session 104 entry above: what was built, what was fixed
+that nobody was looking for, what was reclassified rather than fixed, and the five things the next
+person needs to know.
+
+**If work resumes,** start from the SOP's GAP rows rather than from this file — they are the honest
+inventory of what has never been checked.
 
 **Queued from QA #8, not yet scheduled:** **19 HUB pages under 200 content words** — they route
 correctly and explain nothing. Worth one session, probably 100 or 101.

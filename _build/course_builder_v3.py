@@ -43,7 +43,7 @@ def _quiz(tid,qs):
         btns=''.join(f'<button class="quiz-opt" onclick="checkAnswer(this,{str(j==cor).lower()})">{o}</button>' for j,o in enumerate(opts))
         out+=f'<div class="quiz-q"><p class="qtext">{q}</p><div class="quiz-opts">{btns}</div><div class="quiz-feedback"></div></div>'
     return (f'<div class="quiz-section"><button class="quiz-toggle" onclick="toggleQuiz(\'{tid}-quiz\')">'
-      f'<h3>Test your understanding</h3><span class="qt-arrow">&#9660;</span></button>'
+      f'<h2>Test your understanding</h2><span class="qt-arrow">&#9660;</span></button>'
       f'<div class="quiz-body" id="{tid}-quiz">{out}</div></div>')
 
 def build(slug,title,subtitle,outcomes,bl,il,al,bq,iq,aq):

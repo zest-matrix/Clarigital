@@ -252,10 +252,49 @@ p{line-height:1.75;color:var(--muted)}
 <p>Whisper is free to self-host and accurate, with no analysis layer. Deepgram is fastest for live use. AssemblyAI is strongest where you want analysis without building it.</p><p>The economics differ too: self-hosted Whisper trades per-minute cost for infrastructure cost, which changes the calculation at volume.</p>
 <h2 id="s-red-1">Practical accuracy work</h2>
 <p>Custom vocabulary boosting for domain terms produces the largest single accuracy improvement in most deployments.</p><p>Also account for audio quality at source — improving the recording usually beats improving the model.</p>
+<h2 id="s-red-2">What Determines Transcription Accuracy in Practice</h2>
+
+<p>Accuracy figures quoted for speech models are measured on clean benchmark audio. Your accuracy is
+determined mostly by things upstream of the model.</p>
+<p><strong>Audio quality dominates.</strong> A single good microphone per speaker beats any model
+improvement. Room echo, overlapping speech and a laptop microphone across a table cost more accuracy
+than the gap between any two vendors.</p>
+<p><strong>Domain vocabulary is the second factor.</strong> Product names, drug names, place names,
+acronyms and people's names are where errors concentrate, and they are exactly the words that matter.
+Most systems accept a custom vocabulary or keyword boost — supplying one is the highest-return
+configuration step and it is routinely skipped.</p>
+<p><strong>Accent and code-switching matter more than vendors admit</strong>, and in Indian contexts
+particularly, where a single meeting may move between languages mid-sentence. Test on your own
+speakers rather than on a demo.</p>
+<p><strong>Speaker separation degrades faster than the words do.</strong> A transcript with accurate
+text and wrong attribution is worse than a slightly less accurate one that knows who spoke.</p>
+<p><strong>Measure on your own recordings and count the errors that matter</strong> — a misheard filler
+word is not the same defect as a misheard figure.</p>
+
+<h2 id="s-red-3">Evaluating It Against Your Own Work</h2>
+
+<p>Vendor demonstrations are built on material the tool handles well, so the only evaluation that
+predicts anything is one run on your own inputs.</p>
+<p><strong>Assemble twenty real examples before the trial starts</strong>, including the awkward ones —
+the messy input, the edge case, the one that went wrong last month. A set of clean examples measures a
+situation you do not have.</p>
+<p><strong>Define what good looks like in writing</strong>, before you see any output. Deciding
+afterwards is choosing the answer rather than measuring it, and it is what makes most tool trials
+inconclusive.</p>
+<p><strong>Time the whole task, not the tool.</strong> A tool that halves the generation step and adds
+a verification step has not saved anything. Measure the end-to-end time including checking and
+correction, because that is the number your team experiences.</p>
+<p><strong>Have two people run the same examples.</strong> Tolerance for a given failure varies more
+between people than between tools, and a decision made by one enthusiast rarely survives contact with
+the team.</p>
+<p><strong>And price the failure, not just the licence.</strong> What does a wrong output cost here —
+a correction, an apology, a customer? That number decides how much checking you need, which is usually
+the real cost of adoption.</p>
+
 </div>
 </div>
 <div class="art-sidebar">
-<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What it does</a><a href="#s-green-1">Where it is used</a><a href="#s-green-2">Redaction</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Audio intelligence features</a><a href="#s-indigo-1">Speaker diarisation and multi-channel</a><a href="#s-indigo-2">LLM integration</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Against Whisper and Deepgram</a><a href="#s-red-1">Practical accuracy work</a></div></div>
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What it does</a><a href="#s-green-1">Where it is used</a><a href="#s-green-2">Redaction</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Audio intelligence features</a><a href="#s-indigo-1">Speaker diarisation and multi-channel</a><a href="#s-indigo-2">LLM integration</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Against Whisper and Deepgram</a><a href="#s-red-1">Practical accuracy work</a><a href="#s-red-2">What Determines Transcription Accuracy in Practice</a><a href="#s-red-3">Evaluating It Against Your Own Work</a></div></div>
   <div class="sidebar-card">
     <h3>Quick facts</h3>
     <div style="font-size:.82rem;color:var(--muted);line-height:1.7"><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">AssemblyAI</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Type</span><span style="color:var(--fg);font-weight:500">Speech API + audio analysis</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Strength</span><span style="color:var(--fg);font-weight:500">Analysis layered on transcription</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Best for</span><span style="color:var(--fg);font-weight:500">Call analytics, media, compliance</span></div></div>

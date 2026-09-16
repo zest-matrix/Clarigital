@@ -254,10 +254,48 @@ p{line-height:1.75;color:var(--muted)}
 <p>Track completion rate, escalation rate, caller satisfaction and the downstream outcome — not call volume handled.</p><p>An agent that completes many calls while producing poor outcomes is cheaper than a human and worse than one, and aggregate volume metrics hide that.</p>
 <h2 id="s-red-2">Against Vapi and Retell</h2>
 <p>All three occupy the same space with different balances of abstraction and control. Vapi and Retell expose more of the underlying stack; Bland packages more of it.</p><p>Prototype on the same use case across platforms before committing — differences show in latency and interruption handling rather than in feature lists.</p>
+<h2 id="s-red-3">Designing a Voice Agent People Do Not Hang Up On</h2>
+
+<p>Voice removes every affordance text gives you. There is no scrollback, no visible options, and no
+way to skim — so the design constraints are different in kind, not degree.</p>
+<p><strong>Say what it is in the first sentence.</strong> That the caller is speaking to an automated
+system, and what it can do. Concealing it produces the complaint, and in several jurisdictions
+disclosure is a requirement rather than a courtesy.</p>
+<p><strong>Give a route to a human immediately and repeatedly.</strong> The single largest source of
+anger with voice systems is the feeling of being trapped. An easy exit reduces escalations rather than
+increasing them, which is the opposite of what most deployments assume.</p>
+<p><strong>Handle interruption.</strong> People talk over systems; an agent that cannot be interrupted
+feels broken within two turns.</p>
+<p><strong>Keep turns short.</strong> A paragraph of speech is unlistenable. One idea, then stop.</p>
+<p><strong>Confirm before acting</strong>, reading back anything consequential — an amount, a date, an
+address — because a misheard digit in voice has no visible correction step.</p>
+<p><strong>And measure abandonment and transfer rate, not containment.</strong> Containment rewards
+trapping people, which is exactly the behaviour to avoid.</p>
+
+<h2 id="s-red-4">Evaluating It Against Your Own Work</h2>
+
+<p>Vendor demonstrations are built on material the tool handles well, so the only evaluation that
+predicts anything is one run on your own inputs.</p>
+<p><strong>Assemble twenty real examples before the trial starts</strong>, including the awkward ones —
+the messy input, the edge case, the one that went wrong last month. A set of clean examples measures a
+situation you do not have.</p>
+<p><strong>Define what good looks like in writing</strong>, before you see any output. Deciding
+afterwards is choosing the answer rather than measuring it, and it is what makes most tool trials
+inconclusive.</p>
+<p><strong>Time the whole task, not the tool.</strong> A tool that halves the generation step and adds
+a verification step has not saved anything. Measure the end-to-end time including checking and
+correction, because that is the number your team experiences.</p>
+<p><strong>Have two people run the same examples.</strong> Tolerance for a given failure varies more
+between people than between tools, and a decision made by one enthusiast rarely survives contact with
+the team.</p>
+<p><strong>And price the failure, not just the licence.</strong> What does a wrong output cost here —
+a correction, an apology, a customer? That number decides how much checking you need, which is usually
+the real cost of adoption.</p>
+
 </div>
 </div>
 <div class="art-sidebar">
-<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What it does</a><a href="#s-green-1">Common use cases</a><a href="#s-green-2">What it handles badly</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Designing the conversation</a><a href="#s-indigo-1">Latency is the experience</a><a href="#s-indigo-2">Integration</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Disclosure and law</a><a href="#s-red-1">Measuring honestly</a><a href="#s-red-2">Against Vapi and Retell</a></div></div>
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What it does</a><a href="#s-green-1">Common use cases</a><a href="#s-green-2">What it handles badly</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">Designing the conversation</a><a href="#s-indigo-1">Latency is the experience</a><a href="#s-indigo-2">Integration</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Disclosure and law</a><a href="#s-red-1">Measuring honestly</a><a href="#s-red-2">Against Vapi and Retell</a><a href="#s-red-3">Designing a Voice Agent People Do Not Hang Up On</a><a href="#s-red-4">Evaluating It Against Your Own Work</a></div></div>
   <div class="sidebar-card">
     <h3>Quick facts</h3>
     <div style="font-size:.82rem;color:var(--muted);line-height:1.7"><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">Bland AI</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Type</span><span style="color:var(--fg);font-weight:500">AI phone agent platform</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Handles</span><span style="color:var(--fg);font-weight:500">Telephony, STT, LLM, TTS</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Use cases</span><span style="color:var(--fg);font-weight:500">Qualification, booking, support triage</span></div></div>

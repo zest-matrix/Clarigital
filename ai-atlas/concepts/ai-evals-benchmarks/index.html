@@ -202,7 +202,41 @@ p{line-height:1.75;color:var(--muted)}
 <h2>What to Measure Beyond Accuracy</h2>
 <p>Latency, because a better answer that arrives too late is not better. Cost per request at realistic volume. Consistency — run the same input several times and see how much the answer varies. Failure mode — when the model is wrong, is it obviously wrong or plausibly wrong? Plausible wrongness is far more dangerous.</p>
 <h2>Running Evals Continuously</h2>
-<p>Model providers update models. A prompt tuned six months ago may behave differently today, silently.</p><p>Run the eval set on a schedule and on every change to prompts, models or retrieval. Treat a drop in eval score the way you would treat a failing test, because that is what it is.</p>
+<p>Model providers update models. A prompt tuned six months ago may behave differently today, silently.</p><p>Run the eval set on a schedule and on every change to prompts, models or retrieval. Treat a drop in eval score the way you would treat a failing test, because that is what it is.</p><h2>Building an Eval Set That Is Worth Trusting</h2>
+
+<p>A private eval set on your own task is worth more than every public benchmark combined, and
+building one is less work than it sounds.</p>
+<p><strong>Start with fifty real examples.</strong> Drawn from actual usage, not invented, and
+including the awkward ones — the ambiguous request, the badly-typed input, the case with no good
+answer. A set of clean examples measures a situation you do not have.</p>
+<p><strong>Include known failures deliberately.</strong> Every time something goes wrong in production,
+that example joins the set. This is what makes an eval set improve over time rather than decay.</p>
+<p><strong>Write the expected outcome, not the expected wording.</strong> For most tasks there are many
+acceptable answers, so define what must be true of a good response rather than fixing its text.</p>
+<p><strong>Keep it private and keep it out of prompts.</strong> An eval set that leaks into training
+data or into a system prompt stops measuring anything.</p>
+<p><strong>And version it.</strong> When the set changes, the scores are not comparable to last
+month's — which is the most common way a team convinces itself a model got better.</p>
+
+<h2>What to Measure Besides Whether It Was Right</h2>
+
+<p>Accuracy is one dimension and rarely the one that determines whether a feature survives contact
+with users.</p>
+<p><strong>Consistency.</strong> Run the same input several times. A model that is right on average
+and varies wildly is unusable in a workflow where someone expects the same answer twice.</p>
+<p><strong>Failure mode.</strong> When it is wrong, is it obviously wrong or plausibly wrong? A system
+that fails visibly is safer than one with a better score that fails convincingly — the same argument
+that governs the choice between model sizes.</p>
+<p><strong>Refusal behaviour</strong> at both ends: refusing things it should do is as damaging as
+attempting things it should not.</p>
+<p><strong>Latency distribution, not the average.</strong> The slow tail is what users experience as
+broken.</p>
+<p><strong>Cost per successful outcome</strong>, which is the only cost figure that compares options
+fairly — a cheaper model needing two attempts is not cheaper.</p>
+<p><strong>And drift.</strong> Re-run the set on a schedule against a hosted model, because it changes
+without notifying you, and the first sign is usually a user complaint rather than a metric.</p>
+
+
 
     </main>
     <aside class="art-sidebar">

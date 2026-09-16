@@ -130,6 +130,19 @@ p{line-height:1.75;color:var(--muted)}
 
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
@@ -202,7 +215,40 @@ p{line-height:1.75;color:var(--muted)}
 <h2>Why It Matters</h2>
 <p>For developers, integrations built once work across every compatible client, which removes a great deal of duplicated effort.</p><p>For organisations, it means internal systems can be exposed to AI assistants through a consistent, auditable interface rather than through ad hoc scripts.</p><p>For the wider ecosystem, it is the difference between every AI vendor building a closed integration garden and a shared layer any application can use. Adoption across major AI products has been rapid enough that it is now the default assumption for tool connectivity.</p>
 <h2>Security Considerations</h2>
-<p>MCP gives a model the ability to act. That deserves the same scrutiny as any other automated access to production systems.</p><p>The specific risks: an MCP server exposing more than intended, prompt injection in retrieved content causing unintended tool calls, and tools with destructive side effects invoked on a misunderstanding.</p><p>Sensible practice: least-privilege access on every server, human confirmation for destructive actions, treating all retrieved content as untrusted input, and auditing what tools are actually available to a given assistant.</p>
+<p>MCP gives a model the ability to act. That deserves the same scrutiny as any other automated access to production systems.</p><p>The specific risks: an MCP server exposing more than intended, prompt injection in retrieved content causing unintended tool calls, and tools with destructive side effects invoked on a misunderstanding.</p><p>Sensible practice: least-privilege access on every server, human confirmation for destructive actions, treating all retrieved content as untrusted input, and auditing what tools are actually available to a given assistant.</p><h2>Deciding Whether to Build a Server</h2>
+
+<p>The appeal is obvious and the work is larger than a wrapper, so the decision is worth making
+deliberately.</p>
+<p><strong>It is worth building when</strong> several different assistants or clients need the same
+capability, so one server replaces several bespoke integrations; when the capability is stable enough
+to have an interface; or when you are exposing something to people outside your team who should not
+need your internals.</p>
+<p><strong>It is not worth it when</strong> one application needs one integration — a direct API call
+is simpler and has fewer moving parts; or when the underlying thing changes weekly, because you are
+now maintaining an interface over a moving target.</p>
+<p>What building one actually involves beyond the protocol: <strong>deciding what to expose and what to
+withhold</strong>, which is the real design work; <strong>authentication and authorisation</strong>,
+which the protocol does not solve for you; <strong>error behaviour</strong> that a model can act on
+rather than a stack trace; and <strong>versioning</strong>, because a client built against your server
+will break when you change it.</p>
+
+<h2>Treating a Server as an Untrusted Boundary</h2>
+
+<p>The security position that matters: <strong>anything a server returns is data, not instruction</strong>,
+and a model reading tool output is reading content someone else may control.</p>
+<p>That produces concrete requirements. <strong>Scope credentials to the minimum</strong> — a server
+with broad write access is a broad write capability handed to whatever text arrives.
+<strong>Require confirmation for consequential actions</strong>: sending, deleting, paying,
+publishing. <strong>Log every call with its arguments</strong>, because reconstructing what an agent
+did without that is close to impossible.
+<strong>And treat third-party servers as third-party code</strong>, because that is what they are —
+read what it does before connecting it to anything holding your data.</p>
+<p>The failure mode to picture: a server returns a document containing text addressed to the model
+rather than to you, the model treats it as an instruction, and the next tool call does something you
+did not ask for. <strong>The protocol does not prevent this and is not supposed to.</strong> The
+boundary is yours to enforce — covered in full on the prompt-injection page.</p>
+
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Model Context Protocol specification</strong> &mdash; the host, client and server roles, the transport options and the capability model described here <a href="https://modelcontextprotocol.io" rel="noopener" target="_blank">modelcontextprotocol.io</a></li></ol></div>
 
     </main>
     <aside class="art-sidebar">

@@ -189,6 +189,39 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
 <p>Traditional CDPs store a copy of your data in the vendor's system. Composable CDPs sit on top of your existing warehouse, running identity resolution and activation without duplicating storage.</p><p>For organisations that already have a warehouse, composable approaches avoid maintaining two copies of the same data and keep governance in one place. This has become the dominant direction of travel.</p>
 <h2>Do You Actually Need One</h2>
 <p>The honest answer for many organisations is no.</p><p>A CDP earns its cost when you have genuinely fragmented data across many systems, enough customer volume for segmentation to matter, and marketing sophisticated enough to act on unified profiles.</p><p>It does not help when the underlying data is poor, when the organisation has no capacity to act on segments, or when the real problem is that two teams will not agree on definitions. A CDP implemented onto those problems produces an expensive version of the same problems.</p><p>Fix data collection quality first. Most of the value attributed to CDPs comes from the data hygiene work done during implementation rather than from the platform.</p>
+<h2>The Question That Decides Whether You Need One</h2>
+
+<p>CDP projects fail more often than they succeed, and the failures are visible in advance from one
+question: <strong>what will you do with a unified profile that you cannot do now?</strong></p>
+<p>If the answer is a specific activation — suppress existing customers from acquisition campaigns,
+trigger a message when behaviour across two systems combines, give support the purchase history at the
+moment of a call — the project has a destination. If the answer is *"have a single view of the
+customer"*, it does not, and the platform will be bought, populated, and left.</p>
+<p>Three conditions that make one genuinely worth it: <strong>customer data genuinely scattered</strong>
+across systems that cannot talk to each other; <strong>a marketing team that needs to build audiences
+without engineering help</strong>, which is the honest core of the value proposition; and
+<strong>identity resolution that actually matters</strong> to your business, meaning the same person
+appears under different identifiers often enough to distort decisions.</p>
+<p>Without at least two of those, a data warehouse and a scheduled export will do the same job for a
+fraction of the cost and effort.</p>
+
+<h2>Identity Resolution, and the Damage It Can Do</h2>
+
+<p>Identity resolution is what a CDP is really selling, and it is where the risk sits.</p>
+<p><strong>Deterministic matching</strong> — joining records that share a verified identifier such as
+an email or account ID — is reliable and limited to the customers who have given you one.</p>
+<p><strong>Probabilistic matching</strong> — inferring that two devices are the same person from
+behaviour, network and timing — extends coverage and <strong>is wrong some of the time in both
+directions</strong>. It merges two people into one profile and splits one person into two.</p>
+<p>The consequences of a wrong merge are worse than most teams anticipate: <strong>one household
+member sees another's recommendations</strong>, a support agent reads the wrong purchase history, and
+in a regulated context you have combined two people's personal data. <strong>A subject access request
+against a probabilistically merged profile is a genuinely awkward thing to answer.</strong></p>
+<p>The defensible position: <strong>deterministic matching for anything a customer sees or that
+affects a decision about them; probabilistic only for aggregate analysis</strong>, clearly labelled as
+an estimate. And under a consent-based regime, be able to say which basis covers the joining itself —
+not just the collection of each part.</p>
+
 </div>
     <aside class="guide-sidebar">
       <div class="sidebar-card"><h3>Related guides</h3><ul class="sidebar-list"><li><a href="/codex/analytics-cro/web-analytics-fundamentals/">Web Analytics Fundamentals</a></li><li><a href="/codex/analytics-cro/data-clean-rooms/">Data Clean Rooms</a></li><li><a href="/codex/analytics-cro/attribution-modelling/">Attribution Modelling</a></li></ul></div>

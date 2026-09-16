@@ -130,6 +130,19 @@ p{line-height:1.75;color:var(--muted)}
 
 .skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
 .skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
 </style>
 
 <meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
@@ -202,7 +215,43 @@ p{line-height:1.75;color:var(--muted)}
 <h2>Extraterritorial Reach</h2>
 <p>The Act applies to providers placing systems on the EU market and to deployers established in the EU, and also where output is used in the EU regardless of where the provider sits.</p><p>An organisation outside Europe serving European users is in scope. This mirrors GDPR's reach and has the same practical consequence: it sets the effective global floor for many companies.</p>
 <h2>The Wider Landscape</h2>
-<p>Approaches differ markedly. The EU regulates comprehensively and prescriptively. The UK has favoured sector regulators applying existing powers. The US has moved through executive action and state-level law rather than comprehensive federal legislation, producing a patchwork. China regulates specific applications with a focus on content and algorithmic recommendation.</p><p>This is a fast-moving area and any summary dates quickly. Verify the current position for your jurisdiction and use case rather than relying on a general description — including this one.</p>
+<p>Approaches differ markedly. The EU regulates comprehensively and prescriptively. The UK has favoured sector regulators applying existing powers. The US has moved through executive action and state-level law rather than comprehensive federal legislation, producing a patchwork. China regulates specific applications with a focus on content and algorithmic recommendation.</p><p>This is a fast-moving area and any summary dates quickly. Verify the current position for your jurisdiction and use case rather than relying on a general description — including this one.</p><h2>The Timeline Moved in 2026, and Only Part of It</h2>
+
+<p>The EU AI Act's high-risk deadline was widely expected in August 2026 and did not arrive. Anyone
+working from a plan written before mid-2026 is working from the wrong dates.</p>
+<p><strong>Regulation (EU) 2026/1744 — the Digital Omnibus on AI</strong> — was adopted by Parliament
+on <strong>16 June 2026</strong>, approved by Council on <strong>29 June</strong>, published in the
+Official Journal on <strong>24 July</strong> and entered into force on <strong>27 July 2026</strong>,
+six days before the original deadline.</p>
+<table>
+<tr><th>Obligation</th><th>Position</th></tr>
+<tr><td>Prohibited practices, AI literacy</td><td><strong>In force since 2 February 2025.</strong> Not deferred</td></tr>
+<tr><td>GPAI model obligations</td><td><strong>In force since 2 August 2025.</strong> Not deferred. Models on the market before that date must comply by <strong>2 August 2027</strong></td></tr>
+<tr><td><strong>Article 50 transparency</strong></td><td><strong>Applied 2 August 2026 as scheduled.</strong> Catches chatbots and synthetic content</td></tr>
+<tr><td>High-risk, Annex III standalone</td><td>Deferred to <strong>2 December 2027</strong> — hiring, credit scoring, education, critical infrastructure</td></tr>
+<tr><td>High-risk, Annex I embedded</td><td>Deferred to <strong>2 August 2028</strong> — medical devices, machinery, toys</td></tr>
+<tr><td>National regulatory sandboxes</td><td>Deferred to <strong>2 August 2027</strong></td></tr>
+</table>
+<p><strong>Neither high-risk date is conditional on further decisions</strong> — the earlier mechanism
+tying them to the publication of standards was dropped from the final text. Penalties reach
+<strong>&euro;35 million or 7% of global turnover</strong>.</p>
+
+<h2>Working Out Which Role You Are In</h2>
+
+<p>The Act allocates obligations by role, and the same organisation can hold several. Establishing
+which you are in is the first compliance task and the one most often skipped.</p>
+<p><strong>Provider</strong> — you develop an AI system or model and place it on the market under your
+name. The heaviest obligations.</p>
+<p><strong>Deployer</strong> — you use an AI system in a professional capacity. Lighter, and not
+nothing: human oversight, using it as intended, and in several cases informing the people affected.</p>
+<p><strong>The trap:</strong> a deployer can <em>become</em> a provider by putting their own name on a
+system, substantially modifying it, or using it for a purpose the original provider did not intend. A
+company fine-tuning a model and shipping it as a feature has probably crossed that line.</p>
+<p><strong>Extraterritorial reach is wide.</strong> The Act applies where the output is used in the
+Union, regardless of where you are established — so an Indian company serving European users is in
+scope, and a plan that treats this as a European problem is mistaken.</p>
+<p><strong>Two practical notes.</strong> Free and open-source GPAI models are exempt from most transparency and documentation duties but must still comply with copyright rules and publish a training-data summary — and if a model crosses the <strong>systemic-risk threshold of 10<sup>25</sup> FLOPs</strong>, all obligations apply regardless of licence. And <strong>high-risk documentation describes design decisions being taken now</strong>: reconstructing it in 2027 from systems already in production costs several times more than recording it as you go, which is the argument for not treating the deferral as a reason to stop.</p>
+<h2 id="sources">Sources</h2><p>What each claim on this page rests on. Entries are typed so you can see which are primary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Regulation (EU) 2024/1689 (AI Act) and Regulation (EU) 2026/1744 (Digital Omnibus on AI)</strong> &mdash; the risk tiers, the deferred high-risk dates, the Article 50 transparency duties, the GPAI systemic-risk threshold and the penalty ceiling. The Omnibus was adopted by Parliament on 16 June 2026, approved by Council on 29 June, published in the Official Journal on 24 July and entered into force on 27 July 2026 <a href="https://eur-lex.europa.eu" rel="noopener" target="_blank">eur-lex.europa.eu</a></li><li><span class="src-k src-official">official</span><strong>European Commission — Navigating the AI Act</strong> &mdash; the Commission's own account of why the high-risk timeline moved and what was not deferred <a href="https://digital-strategy.ec.europa.eu" rel="noopener" target="_blank">digital-strategy.ec.europa.eu</a></li></ol></div>
 
     </main>
     <aside class="art-sidebar">

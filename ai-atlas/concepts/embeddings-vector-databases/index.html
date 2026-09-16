@@ -202,7 +202,42 @@ p{line-height:1.75;color:var(--muted)}
 <h2>Choosing and Using an Embedding Model</h2>
 <p>Embedding models differ in dimensionality, cost, speed and domain suitability. Larger is not automatically better — higher dimensionality increases storage and search cost for sometimes marginal accuracy gain.</p><p>The critical rule: index and query must use the same embedding model. Changing the model means re-embedding the entire corpus. Choose deliberately, because migration is expensive.</p><p>General-purpose models work well for general text and noticeably less well for specialised domains with distinctive vocabulary — legal, medical, scientific. Domain-specific models exist and are worth evaluating for those cases.</p>
 <h2>Where Embeddings Are Used Beyond RAG</h2>
-<p><strong>Semantic search</strong> on a website, returning results that match meaning rather than keywords.</p><p><strong>Recommendation</strong> — finding items similar to what a user engaged with.</p><p><strong>Deduplication and clustering</strong> — grouping near-identical support tickets, reviews or documents.</p><p><strong>Classification</strong> — assigning categories by similarity to labelled examples, often more robustly than keyword rules.</p>
+<p><strong>Semantic search</strong> on a website, returning results that match meaning rather than keywords.</p><p><strong>Recommendation</strong> — finding items similar to what a user engaged with.</p><p><strong>Deduplication and clustering</strong> — grouping near-identical support tickets, reviews or documents.</p><p><strong>Classification</strong> — assigning categories by similarity to labelled examples, often more robustly than keyword rules.</p><h2>Chunking, Which Decides More Than the Model Does</h2>
+
+<p>Retrieval quality is determined more by how documents are split than by which embedding model
+produced the vectors, and chunking is where most effort should go.</p>
+<p><strong>Too small</strong> and a chunk loses the context that made it meaningful — a sentence
+referring to something defined two paragraphs earlier retrieves without its subject.
+<strong>Too large</strong> and the relevant passage is diluted by surrounding text, so the match is
+weaker and the model receives more to ignore.</p>
+<p>What works better than a fixed size: <strong>split on structure</strong> — headings, sections,
+list items — so chunks correspond to units of meaning rather than counts of characters.
+<strong>Overlap adjacent chunks</strong> so a passage spanning a boundary appears whole somewhere.
+<strong>Keep the heading with the chunk</strong>, which is the cheapest single improvement most
+systems are missing. And <strong>store the source and position</strong> so the answer can be cited back
+to a location a person can check.</p>
+<p><strong>Test chunking changes against a fixed question set</strong>, because it is easy to improve
+one query and quietly worsen ten.</p>
+
+<h2>Why Pure Similarity Search Disappoints</h2>
+
+<p>Semantic search finds text that means something similar, which is not always text that answers the
+question — and the gap shows up in predictable places.</p>
+<p><strong>Exact terms.</strong> A product code, an error number, a person's name. Embeddings are poor
+at exactness, and a keyword index is better at it. <strong>Hybrid search</strong> — combining semantic
+and keyword scoring — is the standard answer and fixes most complaints about retrieval quality.</p>
+<p><strong>Negation and comparison.</strong> <em>Which of these does not support X</em> is close in
+embedding space to text saying it does.</p>
+<p><strong>Recency and filtering.</strong> Similarity has no opinion about dates or permissions, so
+filter on metadata before or alongside the search rather than hoping the ranking handles it.</p>
+<p><strong>Reranking</strong> — passing the top results through a more expensive model that scores them
+directly against the query — usually improves quality more than changing the embedding model, and is
+the second thing to try after hybrid search.</p>
+<p>The practical sequence when retrieval disappoints: <strong>fix chunking, add keyword search, add
+reranking, and only then consider a different embedding model.</strong> Most teams do that list
+backwards.</p>
+
+
 
     </main>
     <aside class="art-sidebar">

@@ -252,10 +252,44 @@ p{line-height:1.75;color:var(--muted)}
 <p>The components are available — embeddings, a vector database, a model. Teams routinely underestimate the permission-mapping problem, which is where most internal RAG projects stall.</p><p>Mapping and continuously syncing per-document ACLs across a dozen systems is the genuinely hard engineering, not the retrieval.</p>
 <h2 id="s-red-1">Against Microsoft and Google alternatives</h2>
 <p>Microsoft Copilot and Gemini for Workspace do this well within their own ecosystems. Glean's argument is neutrality — most organisations use tools from several vendors.</p><p>If your estate is entirely Microsoft or entirely Google, the native option is usually simpler and cheaper.</p>
+<h2 id="s-red-2">Why Enterprise Search Projects Disappoint</h2>
+
+<p>The technology is rarely the problem. Three organisational conditions decide the outcome and none of
+them is on the vendor's checklist.</p>
+<p><strong>Permissions have to be right first.</strong> A search tool that respects your existing access
+controls will faithfully expose whatever they already got wrong — and the discovery that a shared drive
+was open to everyone usually arrives via search results. Audit before connecting, not after.</p>
+<p><strong>The corpus has to be worth searching.</strong> Indexing five years of outdated documents
+produces confident answers from superseded material. <strong>A good answer from a stale document is
+worse than no answer</strong>, because it is believed. Decide what is authoritative and index that.</p>
+<p><strong>Someone has to own the gaps.</strong> Search reveals what is not written down, which is
+valuable and actionable only if a person is responsible for acting on it.</p>
+<p><strong>And measure it on questions answered, not queries run.</strong> Query volume rises when
+search works badly. Sample real queries, check whether the answer was right, and track that — it is
+manual, it is the only honest measure, and it is what nobody does.</p>
+
+<h2 id="s-red-3">Adoption, Which Is Where Tools Fail</h2>
+
+<p>Most tool decisions are made on capability and lost on adoption. The pattern is consistent enough to
+plan around.</p>
+<p><strong>Name an owner.</strong> Not a committee and not "the team" — one person responsible for the
+configuration, the questions, and whether it is still earning its licence in six months. Tools without
+an owner decay into a subscription nobody cancels.</p>
+<p><strong>Start with one workflow, not the whole team.</strong> A narrow deployment that works spreads
+on its own; a broad one that half-works produces a reputation the tool never recovers from.</p>
+<p><strong>Write down what it is not for.</strong> The boundary matters more than the capability,
+because the damage comes from use outside the intended case — and nobody is told where that edge is
+unless someone writes it down.</p>
+<p><strong>Keep the manual path working.</strong> For at least one cycle. A team that cannot fall back
+is a team that cannot report a problem honestly.</p>
+<p><strong>Review it on a date you set in advance.</strong> Three months, against the criteria you
+wrote at the start. <strong>A tool nobody has reviewed is a tool nobody has decided to keep</strong> —
+and the review is the only thing that ever removes one.</p>
+
 </div>
 </div>
 <div class="art-sidebar">
-<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What problem it solves</a><a href="#s-green-1">Why permissions matter</a><a href="#s-green-2">Who it is for</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">How it works</a><a href="#s-indigo-1">The knowledge graph</a><a href="#s-indigo-2">Deployment realities</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Against building it yourself</a><a href="#s-red-1">Against Microsoft and Google alternatives</a></div></div>
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><div class="th" style="color:var(--green)">Simple</div><a href="#s-green-0">What problem it solves</a><a href="#s-green-1">Why permissions matter</a><a href="#s-green-2">Who it is for</a><div class="th" style="color:var(--indigo)">Working</div><a href="#s-indigo-0">How it works</a><a href="#s-indigo-1">The knowledge graph</a><a href="#s-indigo-2">Deployment realities</a><div class="th" style="color:var(--red)">Deep</div><a href="#s-red-0">Against building it yourself</a><a href="#s-red-1">Against Microsoft and Google alternatives</a><a href="#s-red-2">Why Enterprise Search Projects Disappoint</a><a href="#s-red-3">Adoption, Which Is Where Tools Fail</a></div></div>
   <div class="sidebar-card">
     <h3>Quick facts</h3>
     <div style="font-size:.82rem;color:var(--muted);line-height:1.7"><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Made by</span><span style="color:var(--fg);font-weight:500">Glean</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Type</span><span style="color:var(--fg);font-weight:500">Enterprise search + assistant</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Connects to</span><span style="color:var(--fg);font-weight:500">Slack, Drive, Confluence, Jira, Salesforce, more</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Key feature</span><span style="color:var(--fg);font-weight:500">Permission-aware answers</span></div></div>
