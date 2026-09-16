@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Collections and Recovery: How to Build It | Clarigital</title>
+<meta name="description" content="Build a collections system step by step: the contact rules as code, constraining an automated caller, and what the August 2026 Directions change.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/collections-recovery/">
+<meta property="og:type" content="article"><meta property="og:title" content="Collections and Recovery: How to Build It">
+<meta property="og:description" content="Build a collections system step by step: the contact rules as code, constraining an automated caller, and what the August 2026 Directions change."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/collections-recovery/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Collections and Recovery: How to Build It">
+<meta name="twitter:description" content="Build a collections system step by step: the contact rules as code, constraining an automated caller, and what the August 2026 Directions change."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Collections and Recovery: How to Build It", "description": "Build a collections system step by step: the contact rules as code, constraining an automated caller, and what the August 2026 Directions change.", "url": "https://www.clarigital.com/fintech-ai/products/collections-recovery/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Collections and Recovery: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/collections-recovery/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero" id="main-content"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>Collections and Recovery: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 16</div>
+  <div class="ft-tag">Fintech AI</div><h1>Collections and Recovery: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building loan collections and recovery in India. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What you are actually building</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 to 3 — segment, gate, script</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Segment by reason, not by days past due</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Contact rules belong in code</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; What gets said, and what may never be said</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 2 to 5 — the gate, and the machine that speaks</a><a class="sub" href="#s-indigo-s4">Steps 2 to 5 &mdash; The gate, and the machine that speaks</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 6 to 8 — resolve, escalate, answer for it</a><a class="sub" href="#s-indigo-s6">Step 6 &mdash; Offer a way out</a><a class="sub" href="#s-indigo-s7">Step 7 &mdash; Escalation, and what changed in August</a><a class="sub" href="#s-indigo-s8">Step 8 &mdash; Record it, and answer for it</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">Reminders and self-serve</a><a class="sub" href="#s-amber-proper">Segmented treatment with human calling</a><a class="sub" href="#s-amber-big">Automated voice at scale</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one thing: the system that contacts a borrower who has missed
+a payment, and decides what to say, when, and how many times.</p>
+<p><strong>Every other product guide on this site regulates a transaction. This one regulates a
+conversation.</strong> The rules govern the hour you may call, the words you may use, who you may
+mention it to, and what evidence you must keep &mdash; and they were written for a human agent at a
+time when the agent is increasingly a machine.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The rulebook was rewritten six weeks ago and it commences on 1 January 2027.</strong> After two rounds of consultation &mdash; a first draft in February 2026 and a revised draft on 20 May 2026 &mdash; the RBI notified the <strong>Reserve Bank of India (Commercial Banks &mdash; Responsible Business Conduct) Fourth Amendment Directions, 2026</strong> on <strong>6 August 2026</strong>, with parallel circulars for NBFCs. <strong>Nine circulars, one commencement date: 1 January 2027.</strong> Until then the existing instructions continue to apply unchanged. Anything you read describing the February or May drafts is describing a text that was superseded before it took effect.</p></div>
+<h2 id="s-green-1">What you are actually building</h2>
+
+<p>Collections is a sequence of decisions, and the regulated part is the contact rather than the
+decision. What you are building:</p>
+<table>
+<tr><th>Layer</th><th>What it decides</th><th>Regulated?</th></tr>
+<tr><td><strong>Prioritisation</strong></td><td>Which accounts to work, in what order</td><td>Indirectly &mdash; through the model rules</td></tr>
+<tr><td><strong>Treatment</strong></td><td>Reminder, call, restructure offer, field visit</td><td>Partly</td></tr>
+<tr><td><strong>Contact</strong></td><td>When, how often, by what channel, in what words</td><td><strong>Heavily, and specifically</strong></td></tr>
+<tr><td><strong>Settlement</strong></td><td>What you will accept and on what terms</td><td>By your own board-approved policy</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>The standing rules, in force today and unchanged until January.</strong> The <strong>Fair Practices Code</strong> restricts contact to <strong>8 AM to 7 PM</strong>, across every channel &mdash; call, SMS, messaging app, email and visit &mdash; and prohibits contacting relatives, employers, neighbours or colleagues to apply pressure. The recovery agents circular of <strong>12 August 2022</strong> reinforced this across regulated entities. And throughout, <strong>the lender remains liable for the conduct of anyone recovering on its behalf.</strong> Outsourcing the calling does not outsource the answerability.</p></div>
+<p><strong>What this is not:</strong></p>
+<ul>
+<li><strong>Not a dialler project.</strong> The hard part is deciding who not to call and when to
+stop.</li>
+<li><strong>Not a place to deploy autonomy.</strong> See step 5.</li>
+<li><strong>Not device locking.</strong> That category shrank sharply in August. Step 7.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Segment by reason, not by days past due</strong></td><td>Forgot, cannot, will not. Three different problems.</td></tr>
+<tr><td>2</td><td><strong>Build the contact rules as code</strong></td><td>Hours, frequency, channel, consent. Not as a policy document.</td></tr>
+<tr><td>3</td><td><strong>Write what gets said</strong></td><td>And what may never be said.</td></tr>
+<tr><td>4</td><td><strong>Decide the channel</strong></td><td>Self-serve first. A call is expensive in more than money.</td></tr>
+<tr><td>5</td><td><strong>If a machine speaks, constrain it</strong></td><td><strong>The step with no settled rulebook.</strong></td></tr>
+<tr><td>6</td><td><strong>Offer a way out</strong></td><td>Restructure, settle, pause. The point of the exercise.</td></tr>
+<tr><td>7</td><td><strong>Escalate lawfully</strong></td><td>Agents, visits, devices &mdash; all newly constrained.</td></tr>
+<tr><td>8</td><td><strong>Record and answer for it</strong></td><td>Recordings, complaints, the Ombudsman clock.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 5 and 8 are the ones that get skipped.</strong> Steps 2 to 4 are what a collections platform sells you. <strong>Nobody sells you the segmentation by reason, the constraint on the machine, or the evidence trail</strong> &mdash; and those three decide whether the system recovers money or generates complaints.</p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 to 3 — segment, gate, script</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Segment by reason, not by days past due</h3>
+<p>Almost every collections system buckets accounts by how late they are. Days past due is a
+measure of <em>how long</em>, and tells you nothing about <em>why</em> &mdash; which is the only thing
+that determines what works.</p>
+<table>
+<tr><th>Reason</th><th>What actually works</th></tr>
+<tr><td><strong>Forgot</strong> &mdash; a failed mandate, an expired card, a changed account</td><td>A reminder and a one-tap fix. <strong>A call here is a cost and an irritation</strong></td></tr>
+<tr><td><strong>Cannot</strong> &mdash; income shock, illness, job loss</td><td>A restructure conversation. Pressure produces nothing and costs the relationship</td></tr>
+<tr><td><strong>Will not</strong> &mdash; dispute, dissatisfaction, refusal</td><td>Resolution of the dispute, or lawful escalation. Not more reminders</td></tr>
+</table>
+<p><strong>The first bucket is usually the largest and the cheapest to fix</strong>, and treating it
+with the same intensity as the third is how collections programmes generate complaints while
+recovering money they would have recovered anyway.</p>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Contact rules belong in code</h3>
+<p>A policy document saying <em>we call between 8 and 7</em> is not a control. The control is a
+function that refuses to place the call.</p>
+<p>What has to be enforced, not documented: the <strong>8 AM to 7 PM window across every channel</strong>,
+in the borrower's local time; a frequency cap per day and per week; a rule that a promise to pay
+suppresses contact until the promised date; that a registered dispute suppresses collections contact
+entirely; and that <strong>nobody other than the borrower and a guarantor is contacted about the
+debt.</strong></p>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; What gets said, and what may never be said</h3>
+<p>Script the permitted messages, and script them narrowly. More usefully, enumerate the prohibited
+ones, because that list is short, specific and the one that generates complaints:</p>
+<ul>
+<li><strong>Any threat</strong>, including implied &mdash; arrest, criminal proceedings, seizure
+without an order, damage to a person's standing.</li>
+<li><strong>Abusive, obscene or intimidating language.</strong></li>
+<li><strong>Disclosing the debt to anyone else</strong>, including by leaving a message with a family
+member or writing it on a visible envelope.</li>
+<li><strong>Misrepresenting who you are</strong> or what authority you hold.</li>
+<li><strong>Claiming legal consequences that do not exist.</strong> For an unsecured loan, no asset is
+seized without a court order.</li>
+</ul>
+
+<h2 id="s-indigo-1">Steps 2 to 5 — the gate, and the machine that speaks</h2>
+
+<h3 id="s-indigo-s4">Steps 2 to 5 &mdash; The gate, and the machine that speaks</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 2 to 5, the rules as a gate, and constraining a machine that speaks</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import datetime, time, timedelta
+
+# STEP 2. THE GATE. Nothing reaches a borrower except through this.
+WINDOW = (time(8, 0), time(19, 0))      # Fair Practices Code: 8 AM to 7 PM
+
+def may_contact(account, now_local, channel, history, flags):
+    &quot;&quot;&quot;Returns (allowed, reason). A policy document does not stop a call.
+    This does.&quot;&quot;&quot;
+    if not (WINDOW[0] &lt;= now_local.time() &lt; WINDOW[1]):
+        return False, &quot;outside_permitted_hours&quot;        # every channel, not just voice
+    if flags[&quot;dispute_registered&quot;]:
+        return False, &quot;dispute_open&quot;
+    if flags[&quot;promise_to_pay_until&quot;] and now_local.date() &lt;= flags[&quot;promise_to_pay_until&quot;]:
+        return False, &quot;promise_to_pay_active&quot;
+    if history.contacts_today(account) &gt;= flags[&quot;daily_cap&quot;]:
+        return False, &quot;daily_cap_reached&quot;
+    if history.contacts_this_week(account) &gt;= flags[&quot;weekly_cap&quot;]:
+        return False, &quot;weekly_cap_reached&quot;
+    if flags[&quot;vulnerability_hold&quot;]:
+        return False, &quot;vulnerability_hold&quot;             # see step 5
+    return True, &quot;ok&quot;
+
+def permitted_recipients(account):
+    # Nobody else. Not a relative, an employer, a neighbour or a colleague.
+    return [account[&quot;borrower&quot;]] + account.get(&quot;guarantors&quot;, [])
+
+# STEP 5. IF A MACHINE DOES THE SPEAKING.
+# There is no settled rulebook for an automated voice agent in collections.
+# The conduct rules were written for a person, they apply to the lender
+# regardless of who or what makes the call, and the gap is yours to fill.
+
+AGENT_CONSTRAINTS = {
+    &quot;identifies_as_automated_up_front&quot;: True,
+    &quot;states_the_lender_by_name&quot;: True,
+    &quot;route_to_human_offered_every_turn&quot;: True,
+    &quot;may_negotiate&quot;: False,          # it presents options; it does not deal
+    &quot;may_threaten&quot;: False,           # not expressible, not merely disallowed
+    &quot;max_turns_before_human&quot;: 6,
+    &quot;recording_disclosed_before_it_starts&quot;: True,
+}
+
+# The thing an automated caller cannot do is notice.
+DISTRESS_MARKERS = (&quot;hospital&quot;, &quot;died&quot;, &quot;passed away&quot;, &quot;lost my job&quot;,
+                    &quot;cannot cope&quot;, &quot;harassing me&quot;, &quot;legal notice&quot;)
+
+def supervise(turn, agent_constraints):
+    if any(m in turn[&quot;transcript&quot;].lower() for m in DISTRESS_MARKERS):
+        # Not a branch in the script. Leave the automation entirely.
+        return {&quot;action&quot;: &quot;hand_to_human_now&quot;, &quot;suppress_further_automation&quot;: True,
+                &quot;set_vulnerability_hold&quot;: True}
+    if turn[&quot;index&quot;] &gt;= agent_constraints[&quot;max_turns_before_human&quot;]:
+        return {&quot;action&quot;: &quot;offer_human&quot;}
+    return {&quot;action&quot;: &quot;continue&quot;}
+
+# WHAT TO CHECK
+# [ ] the gate is the ONLY path to a borrower. A campaign tool that can
+#     bypass it is the whole control gone
+# [ ] the hour test uses the BORROWER&#x27;s local time, not your server&#x27;s
+# [ ] the window applies to SMS and messaging apps too. An automated message
+#     at 10pm is the same violation as a call
+# [ ] a promise to pay suppresses contact. Calling someone who has already
+#     told you when they will pay is the most common avoidable complaint
+# [ ] distress markers exit the automation rather than branch inside it
+# [ ] the agent cannot express a threat. Not &quot;is instructed not to&quot; -- the
+#     phrasing is not in its permitted output at all
+# [ ] every suppression is logged with its reason. &quot;We did not call&quot; is
+#     evidence only if it is recorded
+</code></pre></div>
+<p><strong>THE finding, and it is the reason this page is different from the other fifteen:</strong>
+<strong>the conduct rules describe how a person should behave, they bind the lender regardless of who
+or what places the call, and nothing yet describes how an automated caller should behave. The gap is
+yours to fill and it will be filled later, by somebody else, retrospectively.</strong></p>
+<p>An automated dialler complies with the 8 AM to 7 PM window trivially &mdash; better than a human
+team does. What it cannot do is <strong>notice</strong>. A person hearing <em>"my father is in
+hospital"</em> stops. A script hears an unmatched intent and asks about the payment again, and the
+second question is the one that becomes a complaint, a screenshot and an Ombudsman case.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Design the exit, not the branch.</strong> The instinct is to add distress handling as a path inside the conversation. That is the wrong shape: a machine that responds to <em>&ldquo;I lost my job&rdquo;</em> with a scripted empathy line and then returns to collection has produced something worse than silence. <strong>Distress should end the automation entirely</strong> &mdash; hand to a human, suppress further automated contact, and set a hold. It costs conversion on a small number of calls and it is the difference between a system that is defensible and one that is not.</p></div>
+<p>Two further positions worth taking before anyone requires them. <strong>Say it is automated, up
+front.</strong> There is no Indian rule presently compelling that disclosure in collections, and a
+borrower who discovers mid-call that they have been arguing with a machine about their debt is a
+complaint you created. <strong>And never let it negotiate.</strong> It may present options your policy
+has already approved; it may not agree terms, because an agreement reached with a machine is an
+argument about what was agreed.</p>
+
+<h2 id="s-indigo-2">Steps 6 to 8 — resolve, escalate, answer for it</h2>
+
+<h3 id="s-indigo-s6">Step 6 &mdash; Offer a way out</h3>
+<p>The purpose of collections is recovery, and the highest-recovery action for the <em>cannot pay</em>
+segment is almost always a restructure rather than pressure. Build the options into the first contact
+rather than holding them back as a concession: a revised schedule, a short pause, a part-payment
+arrangement, a settlement where the account warrants it.</p>
+<p><strong>Make them self-serve.</strong> A borrower who can restructure at eleven at night without
+speaking to anyone will do it. The same borrower, asked to call during office hours to discuss it,
+frequently does not.</p>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 6 to 8, resolution, escalation and the evidence you will be asked for</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import date, timedelta
+
+# STEP 6. THE WAY OUT, OFFERED EARLY RATHER THAN CONCEDED LATE.
+def resolution_options(account, policy):
+    &quot;&quot;&quot;Present what your policy already approves. Do not hold options back as
+    a negotiating position -- the segment that needs them is the segment that
+    does not respond to pressure.&quot;&quot;&quot;
+    opts = []
+    if policy[&quot;allow_reschedule&quot;]:
+        opts.append({&quot;type&quot;: &quot;reschedule&quot;, &quot;self_serve&quot;: True})
+    if account[&quot;hardship_flag&quot;] and policy[&quot;allow_pause&quot;]:
+        opts.append({&quot;type&quot;: &quot;pause&quot;, &quot;months&quot;: policy[&quot;max_pause_months&quot;],
+                     &quot;self_serve&quot;: True})
+    if account[&quot;days_past_due&quot;] &gt; policy[&quot;settlement_after_days&quot;]:
+        opts.append({&quot;type&quot;: &quot;settlement&quot;, &quot;self_serve&quot;: False})   # needs approval
+    # Self-serve at 11pm converts. The same option behind a daytime phone
+    # call frequently does not.
+    return opts
+
+# STEP 7. ESCALATION. EACH STEP HAS A PRECONDITION, NOT A DAY COUNT.
+def may_escalate(account, step, agents, now):
+    if step == &quot;field_visit&quot;:
+        # Fourth Amendment Directions, from 1 Jan 2027: notice first.
+        return account[&quot;visit_notice_sent_on&quot;] is not None and \
+               now.date() &gt;= account[&quot;visit_notice_sent_on&quot;] + timedelta(days=1)
+    if step == &quot;assign_agency&quot;:
+        # Certified, background-verified, publicly listed, borrower informed.
+        a = agents.assigned(account)
+        return all([a[&quot;iibf_certified&quot;], a[&quot;background_verified&quot;],
+                    a[&quot;published_on_website&quot;], account[&quot;borrower_informed_in_writing&quot;]])
+    if step == &quot;restrict_device&quot;:
+        # Baseline is prohibition. Only a device this loan financed.
+        return account[&quot;device_was_financed_by_this_loan&quot;] and \
+               account[&quot;days_past_due&quot;] &gt;= policy_min_days() and \
+               account[&quot;graduated_restriction_only&quot;]
+    return False
+
+# STEP 8. THE EVIDENCE, AND THE CLOCK THAT RUNS WITHOUT YOU.
+def complaint_sla(received_on):
+    &quot;&quot;&quot;RB-IOS 2026: no reply within 30 days, or an unsatisfactory one, and the
+    borrower may go to the Ombudsman. Set your own clock shorter.&quot;&quot;&quot;
+    return {&quot;internal_target&quot;: received_on + timedelta(days=14),
+            &quot;ombudsman_eligible_from&quot;: received_on + timedelta(days=30)}
+
+def evidence_pack(account, store):
+    # What a complaint is answered with. Assemble it now, not later.
+    return {
+        &quot;contact_log&quot;: store.contacts(account),        # incl. SUPPRESSED, with reason
+        &quot;recordings&quot;: store.recordings(account),       # prior intimation given
+        &quot;transcripts&quot;: store.transcripts(account),
+        &quot;who_called&quot;: store.actor(account),            # human or agent, named
+        &quot;options_offered&quot;: store.offers(account),
+        &quot;notices_sent&quot;: store.notices(account),
+    }
+
+# WHAT TO CHECK
+# [ ] report complaint AGE, not complaint volume. The oldest open complaint
+#     predicts escalation; the count does not
+# [ ] log suppressed contacts with their reason. &quot;We did not call&quot; is
+#     evidence only if it was recorded at the time
+# [ ] every escalation step checks a PRECONDITION, not a day counter
+# [ ] the actor on every contact is identifiable -- which human, or which
+#     automated agent and which version of it
+# [ ] test retrieval of a recording from six months ago before you need one
+# [ ] run the SLA clock in IST against calendar days, not working days. The
+#     Ombudsman&#x27;s 30 days do not pause for your weekend
+</code></pre></div>
+
+<h3 id="s-indigo-s7">Step 7 &mdash; Escalation, and what changed in August</h3>
+<p>The <strong>Fourth Amendment Directions</strong> of <strong>6 August 2026</strong>, in force from
+<strong>1 January 2027</strong> and issued under sections 21 and 35A of the Banking Regulation Act,
+convert a scattered set of expectations into a detailed and enforceable code. What they add:</p>
+<table>
+<tr><th>Requirement</th><th>Detail</th></tr>
+<tr><td><strong>Agent certification</strong></td><td>Background verification, and certification through <strong>IIBF</strong> or a similar institution</td></tr>
+<tr><td><strong>Public disclosure</strong></td><td>An updated list of empanelled recovery agencies on the website and digital platforms</td></tr>
+<tr><td><strong>Notice before a visit</strong></td><td><strong>At least one day's prior notice</strong> of any recovery-related visit</td></tr>
+<tr><td><strong>Notice of change</strong></td><td>Borrowers told when an agency is assigned, changed or removed</td></tr>
+<tr><td><strong>Call recording</strong></td><td>Recovery interactions recorded, <strong>with prior intimation</strong></td></tr>
+<tr><td><strong>Board-approved policy</strong></td><td>Monitoring, escalation, due diligence, and compensation linked to complaints</td></tr>
+<tr><td><strong>Scope</strong></td><td>Recovery agencies and agents defined; <strong>Business Correspondents handling collections are in</strong></td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>Device locking: the baseline is now prohibition.</strong> The revised framework permits only <strong>graduated restriction of functions on a device the loan financed</strong>, after a defined period of missed payments, and creates a <strong>compensation mechanism for borrowers subjected to wrongful recovery action</strong>. Outside device finance, remote locking is not a recovery tool. <strong>If your collections roadmap contains a device-control feature, that feature has a deadline rather than a launch date</strong>, and the compensation exposure attaches to getting it wrong.</p></div>
+
+<h3 id="s-indigo-s8">Step 8 &mdash; Record it, and answer for it</h3>
+<p>Two clocks matter. Internally, a complaint must be capable of being answered with what was actually
+said &mdash; which means the recording, the transcript, the contact log with its suppression reasons,
+and the identity of whoever or whatever made the call.</p>
+<p>Externally, the <strong>Reserve Bank Integrated Ombudsman Scheme, 2026</strong>, effective
+<strong>1 July 2026</strong>, sets the path: the complainant approaches the regulated entity first,
+and may escalate to the Ombudsman if there is no reply within <strong>30 days</strong> or the reply is
+unsatisfactory, within <strong>90 days</strong> of that period expiring.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>That timeline is your real service level.</strong> A complaint that sits unanswered for thirty days becomes an Ombudsman case automatically, whatever its merits. <strong>Route collections complaints to a named owner with a shorter internal clock than thirty days</strong>, and track age rather than volume &mdash; the metric that predicts escalation is how long the oldest open complaint has been open, and almost nobody reports it.</p></div>
+<h2 id="s-indigo-3">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>Collections and recovery &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">The contact gate<span class="pill p-direct">direct</span></div><div class="d">Small to build, and the highest-value component here. <strong>Every route to a borrower must pass through it</strong>; a campaign tool that can bypass it removes the control entirely.</div></div><div class="reg-row"><div class="n">Self-serve resolution<span class="pill p-direct">direct</span></div><div class="d">Restructure, pause and part-payment without a conversation. <strong>Usually the highest-return investment in the whole programme</strong>, because the largest segment simply forgot and the second largest needs terms rather than pressure.</div></div><div class="reg-row"><div class="n">Voice automation<span class="pill p-direct">direct</span></div><div class="d">Per minute or per conversation, and cheap against an agent. <strong>Price the supervision alongside it</strong> &mdash; transcript monitoring, distress detection, human handover capacity &mdash; because the unsupervised version is the one that produces the complaint.</div></div><div class="reg-row"><div class="n">Agent certification<span class="pill p-direct">direct</span></div><div class="d"><strong>From 1 January 2027</strong>: background verification and certification through IIBF or similar, for every agent interacting with borrowers. Recurring, and it applies to outsourced agencies as much as employees.</div></div><div class="reg-row"><div class="n">Recording and retention<span class="pill p-direct">direct</span></div><div class="d">Recovery interactions recorded with prior intimation, stored, and retrievable when a complaint arrives months later. <strong>Retrievability is the requirement</strong>, not storage.</div></div><div class="reg-row"><div class="n">Complaint handling<span class="pill p-direct">direct</span></div><div class="d">A named owner and an internal clock <strong>shorter than the Ombudsman's 30 days</strong>. Understaffing this converts ordinary complaints into regulatory ones.</div></div><div class="reg-row"><div class="n">Getting it wrong<span class="pill p-indirect">indirect</span></div><div class="d">The lender is liable for agent conduct and cannot outsource it. Penalties in the <strong>crores</strong> have been imposed for recovery-agent harassment, and the new framework adds a <strong>quantified compensation mechanism</strong> for wrongful recovery action.</div></div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The number worth computing first: what share of your overdue accounts are in the &lsquo;forgot&rsquo; bucket?</strong> In most portfolios it is the majority, it is recoverable with a reminder and a working payment link, and every rupee of collections intensity spent on it is spent generating irritation for money you were going to get. <strong>That figure decides the size of everything else on this list.</strong></p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">Reminders and self-serve</h3>
+<p><strong>Build:</strong> failed-mandate detection &rarr; a reminder inside permitted hours &rarr; a
+one-tap payment link &rarr; self-serve restructure.</p>
+<p><strong>You get:</strong> most of the recoverable balance, almost no conduct exposure, and no
+recovery agents. <strong>For many lenders this is the whole product</strong>, and the reason it is not
+built first is that it does not look like collections.</p>
+
+<h3 id="s-amber-proper">Segmented treatment with human calling</h3>
+<p><strong>Build:</strong> the above, plus segmentation by reason &rarr; the contact gate enforcing
+hours, caps, promises and disputes &rarr; scripted treatments with a prohibited list &rarr; human
+calling for the <em>cannot pay</em> segment &rarr; complaints to a named owner.</p>
+<p><strong>Trade:</strong> people cost money and exercise judgement. <strong>The judgement is what you
+are buying</strong>, not the throughput.</p>
+
+<h3 id="s-amber-big">Automated voice at scale</h3>
+<p><strong>Build:</strong> the above, plus an automated caller that <strong>identifies itself</strong>,
+<strong>cannot express a threat</strong>, <strong>cannot negotiate</strong>, offers a human every turn,
+and <strong>exits entirely on any distress marker</strong> &mdash; with transcript supervision and a
+human handover capacity sized for the exits.</p>
+<p><strong>It breaks when:</strong> the exit is built as a branch inside the conversation rather than
+an exit from it. <strong>A machine that acknowledges a bereavement and then asks about the payment
+again has produced the worst available outcome</strong>, and it will be a screenshot before it is a
+metric.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>put distress handling outside the automation, not inside it.</strong> Every other control here is a rule a machine can follow. Noticing that something has changed is the one thing it cannot do, and the whole defensibility of an automated collections system rests on how quickly it stops.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>SMS at 10pm</strong></td><td>The window was applied to voice only.</td><td>Every channel. An automated message is a contact.</td></tr>
+<tr><td><strong>Call in the wrong time zone</strong></td><td>Server time, not borrower time.</td><td>Evaluate the window in the borrower's local time.</td></tr>
+<tr><td><strong>Calling after a promise to pay</strong></td><td>The promise was logged, not enforced.</td><td>Suppress until the promised date.</td></tr>
+<tr><td><strong>Contacting a relative</strong></td><td>Treated as a way to reach the borrower.</td><td>Borrower and guarantors only. Nobody else.</td></tr>
+<tr><td><strong>Campaign tool bypasses the gate</strong></td><td>A second route to the customer existed.</td><td>One path. Everything else is the control removed.</td></tr>
+<tr><td><strong>Machine keeps collecting after a bereavement</strong></td><td>Distress built as a branch.</td><td>Exit the automation. Hold further contact.</td></tr>
+<tr><td><strong>Borrower discovers mid-call it is a bot</strong></td><td>Disclosure not required, so not given.</td><td>Say it up front anyway.</td></tr>
+<tr><td><strong>Machine agreed terms</strong></td><td>Negotiation left open.</td><td>It presents approved options. It does not deal.</td></tr>
+<tr><td><strong>Field visit with no notice</strong></td><td>Old practice.</td><td>One day's prior notice, from 1 January 2027.</td></tr>
+<tr><td><strong>Device locked outside device finance</strong></td><td>It worked, so it stayed.</td><td>Baseline is prohibition, with compensation exposure.</td></tr>
+<tr><td><strong>Complaint sits 30 days</strong></td><td>Tracked by volume, not age.</td><td>Internal clock shorter than the Ombudsman's. Track the oldest.</td></tr>
+<tr><td><strong>Cannot say what was said</strong></td><td>Recording absent or unretrievable.</td><td>Record with prior intimation; test retrieval.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/products/alternative-credit-scoring/" class="mod-card"><div class="mod-num">GUIDE 10</div><h3>Alternative Credit Scoring</h3><p>Model governance, and why a collections score is a model too.</p></a>
+<a href="/fintech-ai/products/embedded-insurance/" class="mod-card"><div class="mod-num">GUIDE 09</div><h3>Embedded Insurance</h3><p>The other RBC Directions commencing the same day.</p></a>
+<a href="/fintech-ai/customer-operations/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 06</div><h3>Customer Operations</h3><p>Grievance handling, contact windows and the conduct stack.</p></a>
+<a href="/fintech-ai/products/bnpl-checkout/" class="mod-card"><div class="mod-num">GUIDE 03</div><h3>BNPL Checkout</h3><p>The digital lending rulebook, including what a platform may never access.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. Recovery conduct is regulated in detail, the framework was notified on 6 August 2026 and commences on 1 January 2027, and automated calling sits in a gap the rules do not yet describe. Nothing here is legal advice. Have your contact rules, your scripts, your automation constraints and your outsourcing contracts reviewed by qualified counsel before a single call is placed.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Reserve Bank of India (Commercial Banks — Responsible Business Conduct) Fourth Amendment Directions, 2026</strong> &mdash; notified 6 August 2026 with parallel circulars for NBFCs — nine circulars sharing a commencement date of 1 January 2027, issued under sections 21 and 35A of the Banking Regulation Act, 1949. Recovery agent background verification and IIBF certification, public disclosure of empanelled agencies, at least one day&rsquo;s notice before a recovery visit, notification when an agency is assigned or changed, recording of recovery interactions with prior intimation, a board-approved recovery policy covering monitoring, escalation, due diligence and compensation, the restriction of device functionality to financed devices only after a defined period of default, and a compensation mechanism for wrongful recovery action. Existing instructions continue to apply until 1 January 2027. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI Fair Practices Code — conduct in recovery</strong> &mdash; the restriction of borrower contact to between 8 AM and 7 PM across all channels, the prohibition on contacting relatives, employers, neighbours or colleagues to apply pressure, the prohibition on threatening or abusive conduct, and the principle that the lender remains responsible for the conduct of agents acting on its behalf. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI circular on engagement of recovery agents, 12 August 2022</strong> &mdash; the reinforcement and extension of recovery conduct requirements across regulated entities, including in relation to digital lending applications and tele-calling. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI draft Amendment Directions of February 2026 and the revised draft of 20 May 2026</strong> &mdash; the two consultation rounds preceding the notified text, with proposed commencement dates of 1 July 2026 and then 1 October 2026 respectively. Both were superseded by the 6 August 2026 notification. Recorded here because a great deal of published commentary still describes the drafts. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>Reserve Bank Integrated Ombudsman Scheme, 2026</strong> &mdash; effective 1 July 2026. The complainant approaches the regulated entity first and may escalate to the Ombudsman where there is no reply within 30 days or the reply is unsatisfactory, within 90 days of that period expiring. <a href="https://rbi.org.in" target="_blank" rel="noopener">rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI Master Direction on Outsourcing of Financial Services</strong> &mdash; the framework under which a regulated entity remains accountable for functions it outsources, including collections, and must exercise due diligence and oversight over service providers. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI Responsible Business Conduct (Second Amendment) Directions, 2026</strong> &mdash; notified 15 June 2026 and also commencing 1 January 2027, extending responsibility to DSAs, DMAs, sub-agents and third-party service provider representatives and requiring published lists of empanelled agents. Covered in full on the Embedded Insurance guide. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-industry">industry</span><strong>Reporting on recovery-agent enforcement and complaint volumes</strong> &mdash; penalties in the crores imposed for recovery-agent harassment, and reporting that loan and credit-card matters form the largest share of grievances. Directional; confirm any figure against the order before relying on it.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. <strong>The Fourth Amendment Directions are notified but not yet in force</strong> &mdash; they commence 1 January 2027, and until then the existing instructions apply. Verify against the notified text rather than against the February or May drafts, which were superseded.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>

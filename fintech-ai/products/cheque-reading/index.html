@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cheque Reading: How to Build It | Clarigital</title>
+<meta name="description" content="Build cheque data extraction step by step: the CTS image specification, why the words govern the figures, Positive Pay, and the clock that changed in 2025.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/cheque-reading/">
+<meta property="og:type" content="article"><meta property="og:title" content="Cheque Reading: How to Build It">
+<meta property="og:description" content="Build cheque data extraction step by step: the CTS image specification, why the words govern the figures, Positive Pay, and the clock that changed in 2025."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/cheque-reading/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Cheque Reading: How to Build It">
+<meta name="twitter:description" content="Build cheque data extraction step by step: the CTS image specification, why the words govern the figures, Positive Pay, and the clock that changed in 2025."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cheque Reading: How to Build It", "description": "Build cheque data extraction step by step: the CTS image specification, why the words govern the figures, Positive Pay, and the clock that changed in 2025.", "url": "https://www.clarigital.com/fintech-ai/products/cheque-reading/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Cheque Reading: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/cheque-reading/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero" id="main-content"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>Cheque Reading: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 15</div>
+  <div class="ft-tag">Fintech AI</div><h1>Cheque Reading: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to reading cheques inside India's Cheque Truncation System. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. Written for someone who has not built this before.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>What a cheque image actually is</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Steps 1 to 3 — side, capture, MICR</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; Which side are you on?</a><a class="sub" href="#s-indigo-s2">Step 2 &mdash; Capture</a><a class="sub" href="#s-indigo-s3">Step 3 &mdash; The MICR band</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 4 to 6 — read, reconcile, match</a><a class="sub" href="#s-indigo-s4">Steps 4 to 6 &mdash; Read, reconcile, match</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 7 and 8 — present, and returns</a><a class="sub" href="#s-indigo-s7">Step 7 &mdash; Present, and the clock that changed</a><a class="sub" href="#s-indigo-s8">Step 8 &mdash; Returns</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">Reconcile what you banked</a><a class="sub" href="#s-amber-proper">Presenting-bank capture</a><a class="sub" href="#s-amber-big">Drawee-bank decisioning</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one thing: turning a paper cheque into structured data a
+banking system can act on, inside the rules of India's <strong>Cheque Truncation System</strong>.</p>
+<p>Cheques are widely assumed to be dying. RBI still classifies paper clearing as a
+<strong>System-Wide Important Payment System</strong>, which is the same category as the rails you
+would never call obsolete. The volumes are falling and the values are not.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The clock changed eleven months ago and most published guidance predates it.</strong> RBI circular <strong>RBI/2025-26/73 of 13 August 2025</strong> introduced <strong>Continuous Clearing and Settlement on Realisation</strong> in CTS with effect from <strong>4 October 2025</strong>. Cheques presented during the day now settle in hourly cycles with realisation by the evening of the same working day, replacing the two batch sessions that had governed cheque clearing for decades. <strong>Anything you read that describes a next-working-day cycle is describing the old system.</strong></p></div>
+<h2 id="s-green-1">What a cheque image actually is</h2>
+
+<p>The first thing to be precise about: <strong>you are not reading a photograph of a cheque.</strong>
+CTS defines exactly what a cheque image is, and a pipeline built for arbitrary document photos is
+solving a different problem.</p>
+<table>
+<tr><th>Image view</th><th>Specification</th><th>What it is for</th></tr>
+<tr><td><strong>Front, greyscale</strong></td><td>Minimum <strong>100 DPI</strong>, JFIF/JPEG, <strong>8 bits per pixel</strong> (256 levels)</td><td>Handwriting &mdash; the amount, the payee, the signature</td></tr>
+<tr><td><strong>Front, black and white</strong></td><td>Minimum <strong>200 DPI</strong>, TIFF, CCITT G4</td><td>Contrast, archival, machine reading</td></tr>
+<tr><td><strong>Rear, black and white</strong></td><td>Minimum <strong>200 DPI</strong>, TIFF, CCITT G4</td><td>Endorsements and stamps</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>The image is signed, and it is signed at the point of capture.</strong> It is mandatory for the presenting bank to digitally sign the image and data <strong>from the point of origin</strong>, and image and data remain secured by PKI through the whole cycle &mdash; capture system, presenting bank, clearing house, drawee bank. The system is built to be compliant with the <strong>IT Act, 2000</strong>. <strong>A pipeline that re-encodes, crops or enhances an image after capture breaks the signature</strong>, and therefore breaks the instrument. Any enhancement you do for your own reading happens on a copy.</p></div>
+<p><strong>Who you are changes the whole build:</strong></p>
+<table>
+<tr><th>You are</th><th>Your problem</th></tr>
+<tr><td><strong>The presenting bank</strong></td><td>Capture, sign, extract, present into clearing. The full build.</td></tr>
+<tr><td><strong>The drawee bank</strong></td><td>Verify against the account, match Positive Pay, pay or return &mdash; <strong>within the hour</strong>.</td></tr>
+<tr><td><strong>A corporate depositor</strong></td><td>Reconciling what you banked against what cleared. No CTS integration at all.</td></tr>
+<tr><td><strong>A vendor</strong></td><td>You sell into one of the first two. Their constraints are your specification.</td></tr>
+</table>
+<p><strong>What this is not:</strong></p>
+<ul>
+<li><strong>Not an OCR benchmark.</strong> Accuracy on a public handwriting dataset predicts very
+little here. Step 5.</li>
+<li><strong>Not a legacy project.</strong> The clearing cycle was rebuilt in 2025.</li>
+<li><strong>Not finished at extraction.</strong> The extraction has to agree with something the drawer
+already declared. Step 6.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Establish which side you are on</strong></td><td>Presenting, drawee, depositor or vendor.</td></tr>
+<tr><td>2</td><td><strong>Capture the image triple</strong></td><td>To specification, signed at origin.</td></tr>
+<tr><td>3</td><td><strong>Read the MICR band</strong></td><td>The easy, reliable, machine-printed part.</td></tr>
+<tr><td>4</td><td><strong>Read CAR and LAR</strong></td><td>Amount in figures, amount in words. Handwritten.</td></tr>
+<tr><td>5</td><td><strong>Reconcile the two</strong></td><td><strong>The law already decided which one wins.</strong></td></tr>
+<tr><td>6</td><td><strong>Match Positive Pay</strong></td><td>Against what the drawer declared in advance.</td></tr>
+<tr><td>7</td><td><strong>Present, and watch the clock</strong></td><td>Hourly cycles, same-day realisation.</td></tr>
+<tr><td>8</td><td><strong>Handle returns</strong></td><td>Reasons, timelines, and the customer.</td></tr>
+</table>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Steps 5, 6 and 7 are where this differs from every other document-AI build</strong>, and they are the three that a vendor demonstration skips. Steps 2 to 4 are the part that looks like the product. <strong>An extraction engine that is excellent at 4 and silent on 5 and 6 has automated the easy half.</strong></p></div>
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Steps 1 to 3 — side, capture, MICR</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; Which side are you on?</h3>
+<p>Answer this before anything else, because the three builds share almost no code.</p>
+<p>The <strong>presenting bank</strong> captures, signs and presents; its risk is a bad capture
+entering clearing. The <strong>drawee bank</strong> receives an image and must decide to pay or
+return; its risk is paying something it should have stopped, and its constraint is now time. A
+<strong>corporate depositor</strong> has no CTS integration at all and a genuine reconciliation
+problem: what was banked, what cleared, what bounced, and which invoice each one settles.</p>
+<p><strong>The corporate case is the largest addressable one and the least discussed</strong>, because
+it needs no bank integration and no clearing membership &mdash; it is an internal reconciliation
+product that happens to start with a cheque image.</p>
+
+<h3 id="s-indigo-s2">Step 2 &mdash; Capture</h3>
+<p>Two rules that override anything a scanner vendor tells you. <strong>Capture to the CTS
+specification, not to what your model prefers.</strong> And <strong>sign at origin, then never touch
+the original again</strong> &mdash; every enhancement, deskew, crop or contrast adjustment happens on
+a working copy.</p>
+<p>What ruins a capture, in order of frequency: a rubber stamp overlapping the date, payee, amount or
+signature; light-coloured ink; alterations, which CTS does not accept at all except for date
+validation; and a cheque that is not CTS-2010 compliant, which has been out of clearing since
+<strong>31 December 2018</strong>.</p>
+
+<h3 id="s-indigo-s3">Step 3 &mdash; The MICR band</h3>
+<p>The MICR line is machine-printed in magnetic ink to a fixed specification, and it is the only field
+on the cheque you should expect near-perfect accuracy on. It carries the cheque number, the MICR code
+identifying the branch, the account number and the transaction code.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Read the MICR band magnetically where you can, optically only as a fallback, and reconcile the two.</strong> Magnetic reading is immune to the things that defeat vision &mdash; a stamp across the band, a fold, a photocopy &mdash; and a disagreement between the magnetic and optical reads is one of the cheapest fraud signals available. <strong>It is also the only field where a mismatch means something unambiguous</strong>, which is why it is worth the extra hardware.</p></div>
+<h2 id="s-indigo-1">Steps 4 to 6 — read, reconcile, match</h2>
+
+<h3 id="s-indigo-s4">Steps 4 to 6 &mdash; Read, reconcile, match</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 4 to 6, read the amounts, reconcile them, match Positive Pay</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from decimal import Decimal
+
+# STEP 4. TWO AMOUNTS, BOTH HANDWRITTEN, ON THE SAME CHEQUE.
+#   CAR — Courtesy Amount Recognition — the amount in FIGURES
+#   LAR — Legal Amount Recognition   — the amount in WORDS
+# Read them independently. Never derive one from the other: an engine that
+# parses the figures and &quot;confirms&quot; the words has one reading and a
+# rationalisation, which is exactly the check you needed.
+
+def read_amounts(grey_image):
+    car = read_car(grey_image)      # {&quot;value&quot;: Decimal, &quot;confidence&quot;: float}
+    lar = read_lar(grey_image)      # {&quot;value&quot;: Decimal, &quot;confidence&quot;: float}
+    assert car[&quot;source_region&quot;] != lar[&quot;source_region&quot;], &quot;same region read twice&quot;
+    return car, lar
+
+# STEP 5. WHEN THEY DISAGREE. THE LAW ALREADY DECIDED THIS.
+# Negotiable Instruments Act, 1881, section 18: where the amount is stated
+# differently in figures and in words, THE AMOUNT IN WORDS is the amount
+# ordered to be paid.
+#
+# So the words are not a check on the figures. The words ARE the amount, and
+# the figures are the check. Most pipelines are built the other way round
+# because figures are easier to read.
+
+def resolve_amount(car, lar, policy):
+    if car[&quot;value&quot;] == lar[&quot;value&quot;]:
+        return {&quot;amount&quot;: car[&quot;value&quot;], &quot;route&quot;: &quot;auto&quot;, &quot;agreed&quot;: True}
+    # A disagreement is not an error to resolve with a confidence score.
+    # It is a legal question with an answer, and a human should see it.
+    return {
+        &quot;amount&quot;: lar[&quot;value&quot;],          # section 18: words govern
+        &quot;route&quot;: &quot;manual_review&quot;,        # do not auto-pay a disagreement
+        &quot;agreed&quot;: False,
+        &quot;car&quot;: car[&quot;value&quot;], &quot;lar&quot;: lar[&quot;value&quot;],
+        &quot;why&quot;: &quot;figures and words differ; words govern, review before paying&quot;,
+    }
+
+# Confidence thresholds are a business decision, not a model setting.
+def route(car, lar, policy):
+    if min(car[&quot;confidence&quot;], lar[&quot;confidence&quot;]) &lt; policy[&quot;min_confidence&quot;]:
+        return &quot;manual_review&quot;
+    if car[&quot;value&quot;] &gt;= policy[&quot;always_review_above&quot;]:
+        return &quot;manual_review&quot;           # value, not confidence
+    return &quot;auto&quot;
+
+# STEP 6. POSITIVE PAY. THE DRAWER ALREADY TOLD THE BANK WHAT THIS SAYS.
+# For cheques of Rs 50,000 and above the issuer submits the date, the payee
+# and the amount to their bank in advance. CTS cross-checks the presented
+# cheque against that declaration and flags any discrepancy to both banks.
+
+def positive_pay_check(extracted, declared):
+    if declared is None:
+        return {&quot;status&quot;: &quot;no_declaration&quot;, &quot;action&quot;: &quot;follow_bank_policy&quot;}
+    mismatches = [f for f in (&quot;date&quot;, &quot;payee&quot;, &quot;amount&quot;)
+                  if normalise(extracted[f]) != normalise(declared[f])]
+    return {&quot;status&quot;: &quot;match&quot; if not mismatches else &quot;mismatch&quot;,
+            &quot;fields&quot;: mismatches,
+            # A payee mismatch is the alteration case Positive Pay exists for.
+            &quot;action&quot;: &quot;pay&quot; if not mismatches else &quot;flag_to_both_banks&quot;}
+
+# WHAT TO CHECK
+# [ ] CAR and LAR read INDEPENDENTLY, from different regions, by paths that
+#     cannot see each other&#x27;s output
+# [ ] a disagreement routes to a human. Never auto-resolve by confidence
+# [ ] where you must act on one, act on the WORDS. Section 18 is not a
+#     preference
+# [ ] normalise before comparing payee names, or Positive Pay flags every
+#     cheque over a full stop
+# [ ] a value threshold for manual review, independent of confidence. A
+#     confident wrong reading on a large cheque is the expensive failure
+# [ ] reconcile magnetic and optical MICR reads and treat disagreement as a
+#     fraud signal, not a retry
+</code></pre></div>
+<p><strong>THE finding:</strong> <strong>the extraction is the easy half. The hard half is that your
+reading has to agree with something the drawer already declared &mdash; and now inside an
+hour.</strong></p>
+<p>Under the <strong>Positive Pay System</strong>, the issuer of a cheque submits the date, the payee
+name and the amount to their own bank in advance, through SMS, the mobile app, internet banking or an
+ATM. CTS cross-checks the presented instrument against that declaration and flags any discrepancy to
+both the drawee and the presenting bank. Banks enable it for cheques of <strong>&#8377;50,000 and
+above</strong>, and may make it mandatory above <strong>&#8377;5 lakh</strong>.</p>
+<p>That changes what accuracy means. <strong>Your engine is not trying to be right in the abstract; it
+is trying to agree with a specific prior statement.</strong> A reading that is objectively correct and
+disagrees with the declaration still stops the cheque &mdash; and it should.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The comparison is where this goes wrong, not the reading.</strong> <em>M/s Sharma Traders</em> against <em>Sharma Traders Pvt Ltd</em>. A trailing full stop. An initial with and without a space. <strong>Normalise aggressively before comparing, or Positive Pay will flag a large share of perfectly good cheques</strong> &mdash; and a system that flags everything is a system a bank switches off. The payee field is where the value is, because payee alteration is precisely the fraud Positive Pay was introduced to catch.</p></div>
+<h2 id="s-indigo-2">Steps 7 and 8 — present, and returns</h2>
+
+<h3 id="s-indigo-s7">Step 7 &mdash; Present, and the clock that changed</h3>
+<p>Until October 2025, cheque clearing ran in two batch sessions and the beneficiary typically waited
+until the next working day. <strong>RBI circular RBI/2025-26/73 of 13 August 2025</strong> replaced
+that with <strong>continuous clearing and settlement on realisation</strong>, effective
+<strong>4 October 2025</strong>.</p>
+<table>
+<tr><th>Then</th><th>Now</th></tr>
+<tr><td>Two fixed batch sessions</td><td><strong>Continuous presentation through the working day</strong></td></tr>
+<tr><td>Settlement at session close</td><td><strong>Hourly settlement on realisation</strong></td></tr>
+<tr><td>Credit typically next working day</td><td><strong>Credit the same working day</strong> once the paying bank confirms</td></tr>
+<tr><td>A confirmation window measured in hours</td><td>A confirmation window measured in <strong>the hour</strong>, bounded by the <strong>Item Expiry Time</strong></td></tr>
+</table>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 7 and 8, the hourly cycle and the return path</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import datetime, timedelta
+
+# STEP 7. CONTINUOUS CLEARING. THE DEADLINE IS NOW PER ITEM, NOT PER DAY.
+# Before 4 October 2025 an item joined a batch and the batch had a deadline.
+# Now each item has its own confirmation window, bounded by the Item Expiry
+# Time. A review that used to &quot;make today&#x27;s cut-off&quot; now has to make an hour.
+
+def review_deadline(presented_at, cutoffs):
+    &quot;&quot;&quot;When this specific item stops being yours to decide.&quot;&quot;&quot;
+    return min(presented_at + cutoffs[&quot;confirmation_window&quot;],
+               cutoffs[&quot;item_expiry_time_for&quot;](presented_at))
+
+def route_with_clock(item, policy, staffing):
+    decision = route(item[&quot;car&quot;], item[&quot;lar&quot;], policy)   # auto | manual_review
+    if decision == &quot;auto&quot;:
+        return {&quot;action&quot;: &quot;auto&quot;, &quot;by&quot;: None}
+    due = review_deadline(item[&quot;presented_at&quot;], policy[&quot;cutoffs&quot;])
+    # The question is not &quot;is a human available&quot; but &quot;is one available BEFORE
+    # this item expires&quot;. A queue drained at day end answers the first.
+    if not staffing.reviewer_available_before(due):
+        # Do not let it expire silently. An expiry is a return the customer
+        # did not earn and nobody decided.
+        return {&quot;action&quot;: &quot;escalate_now&quot;, &quot;due_ist&quot;: due, &quot;why&quot;: &quot;no reviewer in window&quot;}
+    return {&quot;action&quot;: &quot;manual_review&quot;, &quot;due_ist&quot;: due}
+
+# STEP 8. RETURNS.
+def handle_return(item, reason_code, store):
+    # Keep the evidence WITH the return. The dispute arrives later and the
+    # question is always what the instrument actually said.
+    store.attach(item[&quot;id&quot;], images=item[&quot;image_triple&quot;],
+                 extraction=item[&quot;extraction&quot;], positive_pay=item[&quot;pp_result&quot;])
+    return {
+        &quot;reason_code&quot;: reason_code,
+        # Plain language reaches the customer; the code reaches the system.
+        &quot;customer_message&quot;: PLAIN[reason_code],
+        &quot;at_ist&quot;: now_ist(),
+    }
+
+def return_rate_by_reason(window, baseline):
+    &quot;&quot;&quot;A rising &#x27;signature differs&#x27; rate is a capture or model problem wearing
+    a customer-behaviour costume. Nothing else in the reporting shows it.&quot;&quot;&quot;
+    rates = group(window, &quot;reason_code&quot;)
+    return {r: {&quot;rate&quot;: v, &quot;drifted&quot;: v &gt; baseline[r] * 1.5} for r, v in rates.items()}
+
+# WHAT TO CHECK
+# [ ] compute the deadline PER ITEM, not per session. The batch mental model
+#     is the single biggest carry-over risk from the old cycle
+# [ ] alert when no reviewer is available before an item expires, rather
+#     than discovering it in the return file
+# [ ] never let an item expire silently into a return. That is a decision
+#     nobody made, reaching a customer who did not earn it
+# [ ] attach the images and the extraction to every return. The dispute is
+#     later and the evidence is not reconstructable
+# [ ] track return rate BY REASON against a baseline, and treat a jump in a
+#     capture-sensitive reason as a pipeline alert
+# [ ] every timestamp in IST against the clearing calendar, never a UTC day
+</code></pre></div><div class="warn"><span class="note-lbl">Watch out</span><p><strong>For a drawee bank this is the change that matters and it is an operations change, not a technology one.</strong> The decision to pay or return used to have most of a day behind it, with a queue of exceptions worked through by people. It now has to be made inside an hourly cycle. <strong>Anything that routes to manual review needs a reviewer available during clearing hours, not a queue drained at four o'clock.</strong> A pipeline that auto-approves 95% and leaves 5% for a team that works batch-style will miss the window on the 5% that mattered enough to flag.</p></div>
+
+<h3 id="s-indigo-s8">Step 8 &mdash; Returns</h3>
+<p>A returned cheque is not an error state in your pipeline &mdash; it is a normal outcome with a
+reason code, a customer on the other end, and in some cases legal consequences under the Negotiable
+Instruments Act.</p>
+<p>Three things to build properly. <strong>Carry the reason through to the customer in plain
+language</strong>: <em>insufficient funds</em>, <em>signature differs</em>, <em>alteration requires
+drawer confirmation</em>, <em>Positive Pay mismatch</em>. Second, <strong>keep the image and the
+extraction against the return</strong>, because the dispute arrives later and the question is always
+what the instrument actually said. Third, <strong>track your return rate by reason</strong> &mdash; a
+rising <em>signature differs</em> rate is a model or capture problem wearing a customer-behaviour
+costume, and nothing else in your reporting will tell you that.</p>
+
+<h2 id="s-indigo-3">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>Cheque reading &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Capture hardware<span class="pill p-direct">direct</span></div><div class="d">Scanners meeting the CTS image specification, with <strong>magnetic MICR reading</strong> rather than optical alone. The magnetic read is worth the hardware: it is immune to stamps, folds and photocopies, and disagreement with the optical read is a free fraud signal.</div></div><div class="reg-row"><div class="n">Extraction<span class="pill p-direct">direct</span></div><div class="d">Per document or a licence. <strong>Cheaper than it looks and less decisive than it is sold as</strong> &mdash; the MICR band is reliable, and CAR and LAR are the only genuinely hard fields.</div></div><div class="reg-row"><div class="n">Manual review capacity<span class="pill p-direct">direct</span></div><div class="d"><strong>The line that decides whether the system works.</strong> Since continuous clearing, reviewers must be available <em>during</em> clearing hours rather than draining a queue at day end. This is a staffing model, not a headcount.</div></div><div class="reg-row"><div class="n">Positive Pay integration<span class="pill p-direct">direct</span></div><div class="d">Matching against the drawer's declaration, with the normalisation work that stops it flagging good cheques. <strong>Budget the normalisation, not the match</strong> &mdash; the match is trivial and the normalisation is the product.</div></div><div class="reg-row"><div class="n">Archival<span class="pill p-direct">direct</span></div><div class="d">Signed images retained to specification, retrievable years later when a dispute arrives. Storage is cheap; <strong>retrievability under a legal request is the requirement</strong>.</div></div><div class="reg-row"><div class="n">Getting it wrong<span class="pill p-indirect">indirect</span></div><div class="d">Paying an altered cheque is a loss the bank absorbs and a customer relationship it does not. On the other side, <strong>a false-positive rate high enough to be annoying gets the system switched off</strong>, which is the more common failure and the harder one to recover from.</div></div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The number to compute first: what share of cheques by VALUE currently needs a human, and could a human reach them inside an hour?</strong> Not the volume share &mdash; the value share. That single figure tells you whether continuous clearing is a timing problem you can staff or an architecture problem you cannot, and it is answerable from last quarter's data in an afternoon.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">Reconcile what you banked</h3>
+<p><strong>Build:</strong> photograph or scan on deposit &rarr; read MICR and CAR &rarr; match against
+your receivables ledger &rarr; reconcile against the bank statement when it clears.</p>
+<p><strong>You get:</strong> the corporate depositor product. <strong>No CTS integration, no clearing
+membership, no regulator</strong> &mdash; and it solves a real reconciliation problem that most
+finance teams still do by hand.</p>
+
+<h3 id="s-amber-proper">Presenting-bank capture</h3>
+<p><strong>Build:</strong> capture to the CTS image specification &rarr; sign at origin &rarr;
+magnetic MICR with optical reconciliation &rarr; independent CAR and LAR &rarr; disagreement routes to
+a human &rarr; present into the continuous cycle.</p>
+<p><strong>Trade:</strong> real hardware and real clearing-house integration. <strong>The enhancement
+rule bites here</strong> &mdash; the signed original is the instrument, and everything you do to read
+it happens on a copy.</p>
+
+<h3 id="s-amber-big">Drawee-bank decisioning</h3>
+<p><strong>Build:</strong> the above, plus Positive Pay matching with proper normalisation, signature
+verification against specimens, account-level checks, a review queue staffed <em>during</em> clearing
+hours, and return handling with reasons carried through to the customer.</p>
+<p><strong>It breaks when:</strong> the review queue is designed for the old batch rhythm. <strong>The
+technology was never the constraint; the hour is.</strong></p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>read the amount in words independently, and when it disagrees with the figures, the words govern.</strong> Section 18 of the Negotiable Instruments Act settled that in 1881. Most pipelines treat the figures as the answer and the words as a check, because figures are easier to read &mdash; which is exactly backwards.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>Signature broken by enhancement</strong></td><td>Deskew or contrast applied to the original.</td><td>Sign at origin. Enhance a copy.</td></tr>
+<tr><td><strong>LAR derived from CAR</strong></td><td>The words are hard; the figures are easy.</td><td>Independent reads, or you have one reading and a rationalisation.</td></tr>
+<tr><td><strong>Disagreement auto-resolved by confidence</strong></td><td>Treated as a model problem.</td><td>It is a legal question. Words govern; a human sees it.</td></tr>
+<tr><td><strong>Positive Pay flags good cheques</strong></td><td>Payee compared without normalisation.</td><td>Normalise aggressively. A system that flags everything gets switched off.</td></tr>
+<tr><td><strong>Confident wrong reading on a large cheque</strong></td><td>Routing by confidence only.</td><td>A value threshold as well, independent of confidence.</td></tr>
+<tr><td><strong>MICR misread on a stamped band</strong></td><td>Optical reading only.</td><td>Magnetic read; treat disagreement as a fraud signal.</td></tr>
+<tr><td><strong>Review queue misses the cycle</strong></td><td>Designed for two batch sessions.</td><td>Reviewers available during clearing hours.</td></tr>
+<tr><td><strong>Non-CTS-2010 cheque in the pipeline</strong></td><td>Still valid as an instrument, not in clearing.</td><td>Detect and route to another collection mode.</td></tr>
+<tr><td><strong>Alteration accepted</strong></td><td>Treated as a low-confidence read.</td><td>CTS does not accept alterations except date validation. Return it.</td></tr>
+<tr><td><strong>Return reason not carried to the customer</strong></td><td>Reason code stays in the system.</td><td>Plain language, and keep the image against the return.</td></tr>
+<tr><td><strong>Rising "signature differs" rate unexplained</strong></td><td>Read as customer behaviour.</td><td>It is usually capture or model drift. Track returns by reason.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/products/document-ai/" class="mod-card"><div class="mod-num">GUIDE 01</div><h3>Document AI</h3><p>Extraction, classification and confidence routing, in general.</p></a>
+<a href="/fintech-ai/products/sme-treasury/" class="mod-card"><div class="mod-num">GUIDE 13</div><h3>SME Treasury</h3><p>The corporate side — reconciling what you banked against what cleared.</p></a>
+<a href="/fintech-ai/payments-reconciliation/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 05</div><h3>Payments &amp; Reconciliation</h3><p>Control totals, full outer joins, and settlement you do not control.</p></a>
+<a href="/fintech-ai/fraud-risk/" class="mod-card"><div class="mod-num">MODULE 04</div><h3>Fraud and Risk</h3><p>Where alteration detection and signature verification belong.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification. CTS participation is governed by RBI circulars and NPCI procedural documents that are revised regularly, and the clearing cycle itself changed in October 2025. Nothing here is legal advice. Build from the current NPCI specification your clearing membership gives you, and confirm every image and timing parameter against it.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry reporting.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>RBI circular RBI/2025-26/73 dated 13 August 2025 — Continuous Clearing and Settlement on Realisation in CTS</strong> &mdash; the replacement of two batch clearing sessions with continuous presentation and hourly settlement from 4 October 2025, same-working-day realisation once the paying bank confirms, and the Item Expiry Time that bounds the confirmation window. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>NPCI — Cheque Truncation System documentation and FAQs</strong> &mdash; CTS as an image-based clearing system operated by NPCI under the amended Negotiable Instruments Act 1881, RBI&rsquo;s classification of paper clearing as a System-Wide Important Payment System, retention of the physical instrument at the presenting bank, and the clearing-house interface behaviour including duplicate detection. <a href="https://www.npci.org.in" target="_blank" rel="noopener">www.npci.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI / NPCI CTS image and interface specification</strong> &mdash; the three image views per instrument — front greyscale at a minimum of 100 DPI in JFIF/JPEG at 8 bits per pixel, and front and rear black and white at a minimum of 200 DPI in TIFF with CCITT G4 compression — the mandatory digital signature applied by the presenting bank from the point of origin, PKI protection across the whole cycle, and compliance with the IT Act, 2000. <a href="https://www.npci.org.in" target="_blank" rel="noopener">www.npci.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI — CTS-2010 Standard for cheque forms</strong> &mdash; the security features required of a compliant instrument, including micro-lettering, bleeding ink, security thread and the UV band over the legal amount, courtesy amount, signature and beneficiary fields; and the discontinuation of separate clearing for non-CTS-2010 instruments from 31 December 2018. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>RBI — Positive Pay System for CTS</strong> &mdash; the requirement that banks enable Positive Pay for cheques of ₹50,000 and above, with discretion to mandate it above ₹5 lakh; the drawer&rsquo;s advance submission of date, payee and amount through SMS, mobile app, internet banking or ATM; and the cross-check by CTS with discrepancies flagged to both the drawee and presenting banks. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>Negotiable Instruments Act, 1881 — section 18</strong> &mdash; that where the amount is stated differently in figures and in words, the amount stated in words is the amount ordered to be paid. Also the basis, as amended, for truncation replacing the physical instrument with its image and MICR data. <a href="https://www.indiacode.nic.in" target="_blank" rel="noopener">www.indiacode.nic.in</a></li><li><span class="src-k src-official">official</span><strong>RBI guidance to customers on cheque preparation</strong> &mdash; the use of image-friendly dark ink, care with rubber stamps so they do not overshadow the date, payee, amount or signature, and that cheques carrying alterations other than date validation are not accepted under CTS. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-industry">industry</span><strong>Implementation commentary on CTS capture and clearing</strong> &mdash; the practitioner read on capture-system architecture, magnetic versus optical MICR reading, and operational staffing under the continuous cycle. Directional; confirm every specification against the notified NPCI document before building to it.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. The clearing cycle changed on 4 October 2025 &mdash; treat any guidance describing next-working-day clearing as out of date, including anything published before then.</p></div>
+</div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>
