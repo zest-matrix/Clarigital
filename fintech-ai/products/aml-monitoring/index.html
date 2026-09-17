@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AML Monitoring Systems: How to Build It | Clarigital</title>
+<meta name="description" content="Build transaction monitoring step by step: the customer risk rating, the data model, named scenarios, and the timestamp the 7-day clock runs from.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/aml-monitoring/">
+<meta property="og:type" content="article"><meta property="og:title" content="AML Monitoring Systems: How to Build It">
+<meta property="og:description" content="Build transaction monitoring step by step: the customer risk rating, the data model, named scenarios, and the timestamp the 7-day clock runs from."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/aml-monitoring/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AML Monitoring Systems: How to Build It">
+<meta name="twitter:description" content="Build transaction monitoring step by step: the customer risk rating, the data model, named scenarios, and the timestamp the 7-day clock runs from."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AML Monitoring Systems: How to Build It", "description": "Build transaction monitoring step by step: the customer risk rating, the data model, named scenarios, and the timestamp the 7-day clock runs from.", "url": "https://www.clarigital.com/fintech-ai/products/aml-monitoring/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "AML Monitoring Systems: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/aml-monitoring/"}]}</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-foot{border-top:1px solid var(--border2);margin-top:12px;padding-top:11px;font-size:.8rem;color:var(--muted);line-height:1.6}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+.ask-ai{border-top:1px solid var(--border2);margin-top:30px;padding-top:20px}
+.ask-ai h2{font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:6px}
+.ask-ai p{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:12px;max-width:62ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:8px}
+.ask-btn{display:inline-block;font-size:.82rem;font-weight:600;color:var(--fg);background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:7px 13px;text-decoration:none;line-height:1.3}
+.ask-btn:hover{border-color:var(--indigo);color:var(--indigo)}
+.ask-note{font-size:.72rem;color:var(--faint);margin-top:10px}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero" id="main-content"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>AML Monitoring Systems: How to Build It</span></nav>
+  <div class="label-tag">Product Guide 18</div>
+  <div class="ft-tag">Fintech AI</div><h1>AML Monitoring Systems: How to Build It</h1>
+  <p class="hero-lead">A step-by-step guide to building AML transaction monitoring in India. Eight stages, the options at each one, exactly how each step connects to the next, real costs, and what breaks. The obligations are covered in the AML module; this is the system.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>How to use this page</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>Four layers, and the clock</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>The whole journey, in one table</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Step 1 — the customer risk rating</a><a class="sub" href="#s-indigo-s1">Step 1 &mdash; the customer risk rating, which is the whole system's input</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Steps 2 to 4 — data model, scenarios, tuning</a><a class="sub" href="#s-indigo-s2">Steps 2 to 4 &mdash; the data model, the scenarios, and tuning</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Steps 5 to 7 — cases, filing, feedback</a><a class="sub" href="#s-indigo-s5">Step 5 &mdash; alerts become cases, and the timestamp that matters</a><a class="sub" href="#s-indigo-s6">Step 6 &mdash; filing, and the two clocks</a><a class="sub" href="#s-indigo-s7">Step 7 &mdash; feed the outcome back</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>What it costs</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>Three versions you could build</a><a class="sub" href="#s-amber-week">Deterministic, and honest about it</a><a class="sub" href="#s-amber-proper">Risk-rated and tuned</a><a class="sub" href="#s-amber-big">With a model, carefully placed</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>What goes wrong</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a></div></div>
+  </aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">How to use this page</h2>
+
+<p>This page walks you through building one thing: the system that watches accounts after onboarding
+and decides which activity a human needs to look at.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>This guide is deliberately narrow, and the scoping is worth stating.</strong> The <a href="/fintech-ai/aml-compliance/"><strong>AML and Compliance module</strong></a> already covers sanctions screening, the layered matching cascade, threshold sensitivity methodology, SAR narratives and the five statutory reports; the <a href="/fintech-ai/aml-compliance/build-sheet/"><strong>build sheet</strong></a> covers lists, engines and costs. <strong>This page does not repeat any of that.</strong> It covers the part neither does: <strong>the system</strong> &mdash; the customer risk rating that drives everything, the data model, how a scenario becomes an alert, how an alert becomes a case, and how a case becomes a filing on the clock.</p></div>
+<p>Read the module for <em>what the obligations are</em>. Read this for <em>what you have to
+build</em>.</p>
+
+<h2 id="s-green-1">Four layers, and the clock</h2>
+
+<p>Four layers, and the first is the one almost nobody builds properly:</p>
+<table>
+<tr><th>Layer</th><th>What it produces</th><th>Usually</th></tr>
+<tr><td><strong>Customer risk rating</strong></td><td>A band that changes how everything below behaves</td><td><strong>A field set at onboarding and never recomputed</strong></td></tr>
+<tr><td><strong>Scenario engine</strong></td><td>Alerts, from named patterns</td><td>Bought, then left at defaults</td></tr>
+<tr><td><strong>Case management</strong></td><td>A decision, with a reason and a timestamp</td><td>A spreadsheet</td></tr>
+<tr><td><strong>Reporting</strong></td><td>A filing, inside a deadline</td><td>Manual, and late</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The clock most systems cannot answer for.</strong> A Suspicious Transaction Report must be filed with FIU-IND <strong>within 7 working days of forming the suspicion</strong> &mdash; and the obligation arises <strong>when the suspicion is formed, not when the transaction occurred</strong>, which may have been months earlier. That is an <em>architectural</em> requirement, not a policy one: your system has to record <strong>the moment an analyst formed suspicion</strong>, distinctly from when the alert fired and when the case was opened. <strong>Most case-management implementations record neither, and that timestamp is exactly what an examiner asks for.</strong></p></div>
+<p><strong>What this is not:</strong></p>
+<ul>
+<li><strong>Not sanctions screening.</strong> Screening looks at <em>who</em>. This looks at
+<em>what they do</em>. The module covers screening.</li>
+<li><strong>Not a vendor comparison.</strong> The build sheet does that.</li>
+<li><strong>Not a model.</strong> Step 3 explains why the first version should not be one.</li>
+</ul>
+
+<h2 id="s-green-2">The whole journey, in one table</h2>
+
+<table>
+<tr><th>#</th><th>Step</th><th>In plain words</th></tr>
+<tr><td>1</td><td><strong>Build the risk rating first</strong></td><td>Everything below inherits it.</td></tr>
+<tr><td>2</td><td><strong>Get the data model right</strong></td><td>Aggregates, not rows. The thing you cannot retrofit.</td></tr>
+<tr><td>3</td><td><strong>Write named scenarios</strong></td><td>Not a score. Explainability is the requirement.</td></tr>
+<tr><td>4</td><td><strong>Tune before you launch</strong></td><td>Against history, with the volume you can staff.</td></tr>
+<tr><td>5</td><td><strong>Turn alerts into cases</strong></td><td>And record <strong>when suspicion formed</strong>.</td></tr>
+<tr><td>6</td><td><strong>File on the clock</strong></td><td>7 working days, 15th of the month, FINnet 2.0.</td></tr>
+<tr><td>7</td><td><strong>Feed it back</strong></td><td>Outcomes change the rating. The loop nobody closes.</td></tr>
+<tr><td>8</td><td><strong>Keep the record</strong></td><td>Five years, and the decision trail, not just the filing.</td></tr>
+</table>
+
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Step 1 — the customer risk rating</h2>
+
+<h3 id="s-indigo-s1">Step 1 &mdash; the customer risk rating, which is the whole system's input</h3>
+<p>The RBI framework rests on four pillars &mdash; customer acceptance policy, customer identification,
+<strong>monitoring of transactions</strong>, and <strong>risk management</strong> &mdash; and a
+risk-based programme means the monitoring behaves differently for different customers.</p>
+<p>In practice, most implementations set a risk band at onboarding, store it in a column, and never
+compute it again. <strong>That is not a risk-based programme; it is a label.</strong></p>
+<p>What the rating should be built from: the customer's <strong>type and business</strong>, their
+<strong>geography</strong>, the <strong>products</strong> they hold, their <strong>expected activity
+profile</strong>, their <strong>PEP and adverse-media status</strong>, and &mdash; the part that is
+usually missing &mdash; <strong>their own behaviour since onboarding.</strong></p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>The rating must be recomputed on events, not only on a calendar.</strong> The periodic review cycle differs by risk band, but a <strong>material change &mdash; in beneficial ownership, in transaction pattern, in address &mdash; should trigger a review regardless of where the schedule stands.</strong> A rating that only moves at its annual refresh is describing a customer who no longer exists.</p></div>
+<h2 id="s-indigo-1">Steps 2 to 4 — data model, scenarios, tuning</h2>
+
+<h3 id="s-indigo-s2">Steps 2 to 4 &mdash; the data model, the scenarios, and tuning</h3>
+<div class="cb"><div class="cb-head"><span class="cb-lang">Python and SQL — steps 2 to 4, the data model, named scenarios, and tuning</span><button class="cb-copy" type="button">Copy</button></div><pre><code># STEP 2. THE DATA MODEL. THE PART YOU CANNOT RETROFIT.
+# Monitoring asks questions about BEHAVIOUR OVER TIME. A transactions table
+# alone forces every scenario into a full scan, and the system becomes too
+# slow to run daily -- at which point someone quietly reduces the frequency.
+
+AGGREGATES = {
+    # Maintain these incrementally, per customer, per window.
+    &quot;windows&quot;: [&quot;1d&quot;, &quot;7d&quot;, &quot;30d&quot;, &quot;90d&quot;, &quot;365d&quot;],
+    &quot;per_window&quot;: [
+        &quot;credit_count&quot;, &quot;credit_value&quot;, &quot;debit_count&quot;, &quot;debit_value&quot;,
+        &quot;cash_credit_value&quot;,          # CTR aggregation runs off this
+        &quot;distinct_counterparties&quot;,
+        &quot;distinct_geographies&quot;,
+        &quot;max_single_value&quot;,
+        &quot;round_amount_count&quot;,         # structuring signal
+    ],
+    # Store the BASELINE the customer declared, and the OBSERVED baseline.
+    # A scenario compares against both; they diverge, and the divergence is
+    # itself the finding.
+    &quot;baselines&quot;: [&quot;declared_at_onboarding&quot;, &quot;observed_trailing_180d&quot;],
+}
+
+# STEP 3. NAMED SCENARIOS, NOT A SCORE.
+# You must be able to tell an examiner WHY an alert fired. A gradient-boosted
+# score cannot answer that, and an unexplainable alert is worse than none.
+# Start deterministic. Add a model LATER, to RANK the queue, never to raise
+# the alert -- ranking makes no decision, so it needs no defence.
+
+SCENARIOS = {
+    &quot;structuring&quot;: &quot;cash credits clustering just under Rs 10 lakh across a &quot;
+                   &quot;rolling calendar month&quot;,
+    &quot;rapid_movement&quot;: &quot;credits followed by near-total debits within 24-48h, &quot;
+                      &quot;with little balance retained&quot;,
+    &quot;profile_departure&quot;: &quot;value or volume materially above the declared AND &quot;
+                         &quot;observed baseline&quot;,
+    &quot;unexpected_geography&quot;: &quot;counterparties outside the declared markets&quot;,
+    &quot;dormant_reactivation&quot;: &quot;a long-dormant account resuming at volume&quot;,
+    &quot;round_amounts&quot;: &quot;repeated exact round figures, which real trade rarely &quot;
+                     &quot;produces&quot;,
+}
+
+# STEP 4. TUNE BEFORE LAUNCH, AGAINST HISTORY AND AGAINST YOUR STAFFING.
+def tune(scenario, history, analysts_per_day, minutes_per_alert):
+    capacity = analysts_per_day * 60 * 7.5 / minutes_per_alert
+    out = []
+    for t in scenario[&quot;threshold_range&quot;]:
+        alerts = history.replay(scenario, threshold=t)
+        out.append({
+            &quot;threshold&quot;: t,
+            &quot;alerts_per_day&quot;: alerts.per_day,
+            # The number that decides it. A threshold generating more alerts
+            # than you can clear is not a sensitive threshold -- it is an
+            # unreviewed backlog with a compliance failure inside it.
+            &quot;within_capacity&quot;: alerts.per_day &lt;= capacity,
+            &quot;known_cases_caught&quot;: alerts.recall_against(history.confirmed_cases),
+        })
+    return out   # record this table. The RATIONALE is the deliverable.
+
+# WHAT TO CHECK
+# [ ] aggregates are maintained incrementally, not computed on read
+# [ ] both baselines are stored -- what they declared and what they do
+# [ ] every scenario has a NAME and a sentence a non-engineer understands
+# [ ] no model raises an alert. Ranking only
+# [ ] tuning is replayed against real history, not reasoned about
+# [ ] the chosen threshold is within the volume you can actually clear
+# [ ] the tuning table is SAVED. &quot;Why this threshold&quot; is the most common
+#     examination question and the most common thing nobody kept
+</code></pre></div>
+<p><strong>THE second finding, and it is the one that sinks most programmes:</strong> the practitioner
+complaint about transaction monitoring is not that it misses things. It is that it is
+<strong>so alert-heavy it generates more noise than signal</strong>, and nobody can clear the
+queue.</p>
+<p>That is a tuning failure with a specific shape: <strong>thresholds chosen for sensitivity without
+reference to review capacity.</strong> A threshold producing four hundred alerts a day, given to a
+team that can clear sixty, does not produce more safety. It produces a backlog, and the backlog is
+itself the compliance failure &mdash; alerts that were raised, never reviewed, and are on the record
+as raised.</p>
+<div class="note"><span class="note-lbl">Note</span><p><strong>Tune against two numbers, not one: detection and capacity.</strong> And <strong>save the table.</strong> The most common examination finding in this area is not that thresholds were wrong &mdash; it is that nobody could explain how they were chosen. The <a href="/fintech-ai/aml-compliance/">module</a> covers the sensitivity-analysis methodology; what this page adds is that <strong>the capacity column belongs in the same table</strong>, because a threshold you cannot staff is not a threshold you have chosen.</p></div>
+<h2 id="s-indigo-2">Steps 5 to 7 — cases, filing, feedback</h2>
+
+<h3 id="s-indigo-s5">Step 5 &mdash; alerts become cases, and the timestamp that matters</h3>
+<p>An alert is a machine output. A case is a human process. The transition is where the regulatory
+clock starts, and it is almost always modelled wrongly.</p>
+<p>Four distinct moments, and a system that collapses them cannot answer an examiner:</p>
+<table>
+<tr><th>Moment</th><th>What it is</th></tr>
+<tr><td><strong>Alert raised</strong></td><td>The scenario fired. A machine timestamp</td></tr>
+<tr><td><strong>Case opened</strong></td><td>An analyst picked it up</td></tr>
+<tr><td><strong>Suspicion formed</strong></td><td><strong>The clock starts here.</strong> A human judgement, on a date</td></tr>
+<tr><td><strong>Report filed</strong></td><td>Within <strong>7 working days</strong> of the moment above</td></tr>
+</table>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>&ldquo;Suspicion formed&rdquo; is a field, and it is a field an analyst sets deliberately.</strong> It is not the alert date and not the case-open date. A system that has no such field will, under examination, be read as having formed suspicion at the earliest plausible moment &mdash; which is the alert &mdash; and every filing will look late. <strong>Build the field, require a reason with it, and make it un-editable after the fact.</strong></p></div><div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 5 to 7, the four timestamps, the two clocks, the loop</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import date, timedelta
+
+# STEP 5. FOUR TIMESTAMPS. A SYSTEM THAT COLLAPSES THEM CANNOT ANSWER.
+CASE_TIMESTAMPS = (
+    &quot;alert_raised_at&quot;,      # machine. The scenario fired
+    &quot;case_opened_at&quot;,       # an analyst picked it up
+    &quot;suspicion_formed_on&quot;,  # HUMAN JUDGEMENT. The 7-working-day clock
+    &quot;report_filed_at&quot;,      # the filing
+)
+
+def form_suspicion(case, analyst, reason, store):
+    # Deliberate, attributed, reasoned -- and not editable afterwards.
+    assert case[&quot;suspicion_formed_on&quot;] is None, &quot;already formed; do not backdate&quot;
+    assert reason and len(reason.split()) &gt;= 10, &quot;a reason, not a checkbox&quot;
+    store.set_immutable(case[&quot;id&quot;], &quot;suspicion_formed_on&quot;, today_ist(),
+                        by=analyst, reason=reason)
+    # Without this field an examiner reads suspicion as forming at the ALERT,
+    # and every filing you have ever made looks late.
+    return str_due(today_ist())
+
+def str_due(formed_on, holidays):
+    # 7 WORKING days. Not 7 calendar days.
+    d, left = formed_on, 7
+    while left:
+        d += timedelta(days=1)
+        if d.weekday() &lt; 5 and d not in holidays:
+            left -= 1
+    return d
+
+# STEP 6. TWO CLOCKS, TWO MECHANISMS. DO NOT BUILD THEM AS ONE.
+def ctr_batch(month, ledger):
+    # A QUERY, not a judgement. Cash above Rs 10 lakh in a calendar month,
+    # aggregated across RELATED transactions. Due the 15th of the next month.
+    rows = ledger.cash_credits_by_customer(month)          # related, not single
+    return [r for r in rows if r.total &gt; 1_000_000]
+
+# STEP 7. FEED THE OUTCOME BACK. THE LOOP NOBODY CLOSES.
+def close_case(case, outcome, rating, stats):
+    assert outcome in (&quot;cleared&quot;, &quot;filed&quot;)
+    # A cleared case and a filed case should move the rating differently.
+    rating.apply_outcome(case[&quot;customer_id&quot;], outcome)
+    # And both change what you know about the scenario that raised it.
+    stats.record(case[&quot;scenario&quot;], outcome)
+    return stats.precision(case[&quot;scenario&quot;], window=&quot;180d&quot;)
+
+# WHAT TO CHECK
+# [ ] suspicion_formed_on exists, is set by a named analyst with a reason,
+#     and cannot be edited after the fact
+# [ ] the STR clock counts WORKING days against the actual holiday calendar
+# [ ] CTR aggregates RELATED cash transactions across the month, and runs
+#     automatically. An analyst noticing it is not a control
+# [ ] case outcomes feed both the customer rating and scenario precision
+# [ ] scenario precision is reported on a rolling window, so drift is
+#     visible before an examiner finds it
+# [ ] every timestamp in IST. A UTC filing date near a month boundary is
+#     a deadline argument you will lose</code></pre></div>
+
+<h3 id="s-indigo-s6">Step 6 &mdash; filing, and the two clocks</h3>
+<p>Two different mechanisms, frequently conflated:</p>
+<ul>
+<li><strong>STR &mdash; Suspicious Transaction Report.</strong> No value threshold. Filed within
+<strong>7 working days</strong> of suspicion being formed.</li>
+<li><strong>CTR &mdash; Cash Transaction Report.</strong> Threshold-based: cash above
+<strong>&#8377;10 lakh</strong> in a calendar month, whether in one transaction or several related
+ones. Filed by the <strong>15th of the following month</strong>.</li>
+</ul>
+<p>Both go to FIU-IND through <strong>FINnet 2.0</strong>. The module covers the full set of five
+statutory reports; what matters architecturally is that <strong>CTR is an aggregation job and STR is a
+workflow</strong>. Building them as one thing is why CTR filings get missed: a monthly aggregate over
+<em>related</em> cash transactions is a query your core system must run automatically, not something an
+analyst notices.</p>
+
+<h3 id="s-indigo-s7">Step 7 &mdash; feed the outcome back</h3>
+<p>The loop nobody closes: <strong>a case that was cleared and a case that became a filing should
+change the customer's risk rating differently</strong>, and both should change the scenario's
+precision statistics.</p>
+<p>Without that feedback, tuning is a one-off exercise performed before launch against data that is
+now old, and the system's precision drifts silently in whichever direction your customer mix moves.</p>
+
+<h2 id="s-indigo-3">What it costs</h2>
+<div class="reg"><div class="reg-head"><h3>AML monitoring systems &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">The data model<span class="pill p-indirect">indirect</span></div><div class="d">Incremental aggregates per customer per window. <strong>Engineering, not licensing, and the one component you cannot retrofit cheaply</strong> &mdash; a monitoring system built on full scans is rebuilt rather than optimised.</div></div><div class="reg-row"><div class="n">The scenario engine<span class="pill p-direct">direct</span></div><div class="d">Bought or built. See the <a href="/fintech-ai/aml-compliance/build-sheet/">build sheet</a> for vendors and unit costs. <strong>The engine is rarely the problem</strong>; the defaults it ships with usually are.</div></div><div class="reg-row"><div class="n">Analyst capacity<span class="pill p-direct">direct</span></div><div class="d"><strong>Most of the cost of an AML programme, and the number that should set your thresholds.</strong> Alerts per day divided by minutes per alert. Everything upstream should be tuned to it.</div></div><div class="reg-row"><div class="n">Case management<span class="pill p-direct">direct</span></div><div class="d">Bought or built, and the specification is narrow: four distinct timestamps, an immutable <em>suspicion formed</em> field with a reason, and a full evidence trail per case.</div></div><div class="reg-row"><div class="n">Filing<span class="pill p-direct">direct</span></div><div class="d">FINnet 2.0 integration. <strong>CTR should be automatic</strong> &mdash; a monthly aggregation over related cash transactions is a query, not a judgement.</div></div><div class="reg-row"><div class="n">Retention<span class="pill p-direct">direct</span></div><div class="d"><strong>Five years</strong>, and for identification records five years from the <em>end of the relationship</em> rather than from the transaction. Retrievability is the requirement.</div></div><div class="reg-row"><div class="n">Getting it wrong<span class="pill p-indirect">indirect</span></div><div class="d">Regulators consistently find that <strong>institutions with adequate technology and inadequate governance fail reviews as often as those with technology gaps</strong>. An unreviewed alert backlog is worse than a narrower threshold, because the alerts are on the record as raised.</div></div><div class="reg-foot">Where to buy these: <a href="/fintech-ai/aml-compliance/build-sheet/"><strong>Aml Compliance Build Sheet</strong></a> names every tool with its unit cost. <a href="/fintech-ai/build-playbook/getting-access/"><strong>Getting Access</strong></a> covers which ones you can sign up for today, which need a sales call, and which are licensed.</div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The number to compute before choosing any threshold: alerts your team can actually clear per day.</strong> Analysts &times; hours &times; 60, divided by minutes per alert. Every tuning decision should be checked against it, and a system tuned without it will be either blind or buried &mdash; and buried looks like working right up until an examination.</p></div>
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">Three versions you could build</h2>
+
+<h3 id="s-amber-week">Deterministic, and honest about it</h3>
+<p><strong>Build:</strong> incremental aggregates &rarr; four or five named scenarios &rarr; thresholds
+tuned against history and capacity &rarr; a case record with four timestamps &rarr; manual filing.</p>
+<p><strong>You get:</strong> a programme you can explain completely. <strong>For a small book this is
+not a compromise, it is the right answer</strong> &mdash; and it is what an examiner would rather see
+than a model nobody can account for.</p>
+
+<h3 id="s-amber-proper">Risk-rated and tuned</h3>
+<p><strong>Build:</strong> the above, plus a customer risk rating recomputed on events &rarr; thresholds
+that differ by risk band &rarr; automatic CTR aggregation &rarr; outcome feedback into both the rating
+and the scenario statistics.</p>
+<p><strong>Trade:</strong> real engineering in the data layer, against a queue your team can clear and
+a rationale you can produce.</p>
+
+<h3 id="s-amber-big">With a model, carefully placed</h3>
+<p><strong>Build:</strong> the above, plus a model that <strong>ranks the queue</strong> so analysts
+see likely true positives first &mdash; and <strong>never raises an alert.</strong></p>
+<p><strong>It breaks when:</strong> the model moves upstream into detection. <strong>Ranking makes no
+decision and needs no defence; raising an alert is a decision and needs one.</strong> That distinction
+is the whole of where AI belongs here.</p>
+<div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>record the moment suspicion was formed, as its own field, set by a named analyst, with a reason, and immutable afterwards.</strong> It is the field the 7-working-day clock runs from, it is the first thing an examiner asks for, and almost no case-management implementation has it.</p></div>
+<h2 id="s-amber-1">What goes wrong</h2>
+
+<table>
+<tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
+<tr><td><strong>Risk rating set once at onboarding</strong></td><td>Stored as a column.</td><td>Recompute on events, not only on a calendar.</td></tr>
+<tr><td><strong>Monitoring runs on full scans</strong></td><td>No aggregate layer.</td><td>Incremental aggregates per customer per window.</td></tr>
+<tr><td><strong>Daily run quietly becomes weekly</strong></td><td>It got too slow.</td><td>Fix the data model. The frequency reduction is the symptom.</td></tr>
+<tr><td><strong>A score raises alerts</strong></td><td>Better recall in testing.</td><td>Named scenarios raise. A model ranks.</td></tr>
+<tr><td><strong>Alert backlog</strong></td><td>Tuned for sensitivity, not capacity.</td><td>Capacity belongs in the tuning table.</td></tr>
+<tr><td><strong>Nobody can explain a threshold</strong></td><td>The analysis was not saved.</td><td>The tuning table is the deliverable.</td></tr>
+<tr><td><strong>Every filing looks late</strong></td><td>No <em>suspicion formed</em> field.</td><td>Build it, require a reason, make it immutable.</td></tr>
+<tr><td><strong>CTR missed</strong></td><td>Treated as an analyst task.</td><td>Monthly aggregation over related cash transactions. A query.</td></tr>
+<tr><td><strong>Precision drifts</strong></td><td>Tuned once, before launch.</td><td>Feed case outcomes back into the statistics.</td></tr>
+<tr><td><strong>Records kept from the wrong date</strong></td><td>Retention keyed to the transaction.</td><td>Identification records run from the END of the relationship.</td></tr>
+</table>
+
+<h2 id="s-amber-2">Where to go next</h2>
+
+<div class="mod-grid">
+<a href="/fintech-ai/aml-compliance/" class="mod-card"><div class="mod-num">MODULE 05</div><h3>AML and Compliance</h3><p>Screening, the matching cascade, the five reports, SAR narratives. Start here.</p></a>
+<a href="/fintech-ai/aml-compliance/build-sheet/" class="mod-card"><div class="mod-num">BUILD SHEET 05</div><h3>AML and Sanctions</h3><p>Lists, engines, platforms, cost per unit, three builds.</p></a>
+<a href="/fintech-ai/products/merchant-onboarding/" class="mod-card"><div class="mod-num">GUIDE 17</div><h3>Merchant Onboarding</h3><p>Where the business profile this monitors against gets captured.</p></a>
+<a href="/fintech-ai/products/alternative-credit-scoring/" class="mod-card"><div class="mod-num">GUIDE 10</div><h3>Alternative Credit Scoring</h3><p>Model governance, and why an unexplainable model is a problem here too.</p></a>
+</div>
+<div class="warn"><span class="note-lbl">Watch out</span><p>This page is a guide, not a specification, and it deliberately does not restate the obligations &mdash; read the AML module for those. Reporting thresholds and timelines are set by FIU-IND and amended by notification. Nothing here is legal advice. Have your scenario set, your thresholds and your filing workflow reviewed by your Principal Officer and by qualified counsel.</p></div><h2 id="sources">Sources</h2><p>Every figure, rule and date on this page, and where to check it. Entries are typed so you can see which are primary-sourced and which are industry commentary.</p><div class="srcs"><ol><li><span class="src-k src-official">official</span><strong>Prevention of Money Laundering Act, 2002 and the PML (Maintenance of Records) Rules</strong> &mdash; section 12 obligations on reporting entities to maintain records of transactions, monitor accounts, and furnish reports; and the record-retention periods of five years, running from the date of the transaction for transaction records and from the end of the customer relationship for identification records. <a href="https://www.indiacode.nic.in" target="_blank" rel="noopener">www.indiacode.nic.in</a></li><li><span class="src-k src-official">official</span><strong>FIU-IND — reporting obligations and the FINnet platform</strong> &mdash; the Suspicious Transaction Report filed within 7 working days of suspicion being formed, with no value threshold; the Cash Transaction Report for cash above ₹10 lakh in a calendar month whether in one transaction or several related ones, filed by the 15th of the following month; and submission through FINnet 2.0. <a href="https://fiuindia.gov.in" target="_blank" rel="noopener">fiuindia.gov.in</a></li><li><span class="src-k src-official">official</span><strong>RBI Master Direction — Know Your Customer, 2016 as amended</strong> &mdash; the four pillars of customer acceptance policy, customer identification procedures, monitoring of transactions and risk management; the risk-based approach requiring monitoring to differ by customer risk category; and periodic review requirements with material changes triggering review regardless of the scheduled cycle. <a href="https://www.rbi.org.in" target="_blank" rel="noopener">www.rbi.org.in</a></li><li><span class="src-k src-official">official</span><strong>FIU-IND AML and CFT Guidelines for reporting entities providing services related to Virtual Digital Assets</strong> &mdash; issued 8 January 2026, bringing virtual digital asset service providers to the same compliance standard as other regulated financial institutions. Relevant if any part of your book touches VDAs. <a href="https://fiuindia.gov.in" target="_blank" rel="noopener">fiuindia.gov.in</a></li><li><span class="src-k src-official">official</span><strong>FATF Recommendations and the APG mutual evaluation framework</strong> &mdash; the international standard the Indian framework implements. As at February 2026 India was not on any FATF increased-monitoring list. <a href="https://www.fatf-gafi.org" target="_blank" rel="noopener">www.fatf-gafi.org</a></li><li><span class="src-k src-research">research</span><strong>Federal Reserve SR 11-7 — Guidance on Model Risk Management</strong> &mdash; the model validation and governance standard widely used as a reference for monitoring models, and the basis for the position on this page that an unexplainable model should not raise an alert. <a href="https://www.federalreserve.gov" target="_blank" rel="noopener">www.federalreserve.gov</a></li><li><span class="src-k src-industry">industry</span><strong>Practitioner commentary on ongoing monitoring in India</strong> &mdash; the recurring finding that onboarding verification is well built while ongoing surveillance is fragmented or so alert-heavy that it generates more noise than signal, and that institutions with adequate technology but inadequate governance fail reviews as often as those with technology gaps. Interpretation and industry reporting, not a regulatory instrument.</li><li><span class="src-k src-industry">industry</span><strong>Vendor and certification material on FIU-IND reporting</strong> &mdash; thresholds, timelines and the five statutory report types as summarised for practitioners and examinations. Directional; confirm every figure against the current FIU-IND guidance before building to it.</li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. Thresholds and filing timelines are set by FIU-IND and change by notification &mdash; confirm the current figures before building to any of them.</p></div>
+</div><div class="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22AML%20Monitoring%20Systems%3A%20How%20to%20Build%20It%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Fproducts%2Faml-monitoring%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22AML%20Monitoring%20Systems%3A%20How%20to%20Build%20It%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Fproducts%2Faml-monitoring%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22AML%20Monitoring%20Systems%3A%20How%20to%20Build%20It%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Fproducts%2Faml-monitoring%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22AML%20Monitoring%20Systems%3A%20How%20to%20Build%20It%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Fproducts%2Faml-monitoring%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22AML%20Monitoring%20Systems%3A%20How%20to%20Build%20It%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Fproducts%2Faml-monitoring%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>
