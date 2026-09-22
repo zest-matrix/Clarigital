@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>How an AI Chip Is Made: Sand to Server | Clarigital</title>
+<meta name="description" content="Every step from sand to a working AI rack: silicon, wafers, EUV, packaging, stacked memory and racks, and who does each. Simple to expert, all sourced.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/how-a-chip-is-made/">
+<meta property="og:title" content="How an AI Chip Is Made: Sand to Server">
+<meta property="og:description" content="Every step from sand to a working AI rack: silicon, wafers, EUV, packaging, stacked memory and racks, and who does each. Simple to expert, all sourced.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/how-a-chip-is-made/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v3*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v3*//end
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How an AI Chip Is Made: From Sand to Server", "description": "Every step from sand to a working AI rack: silicon, wafers, EUV, packaging, stacked memory and racks, and who does each. Simple to expert, all sourced.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/how-a-chip-is-made/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/how-a-chip-is-made/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "citation": ["https://download.intel.com/newsroom/kits/chipmaking/pdfs/Sand-to-Silicon_32nm-Version.pdf", "https://www.wacker.com/cms/en-us/products/insights/pure-purer-wacker-poly.html", "https://www.tokuyama.co.jp/eng/products/electronic_materials/polysilicon.html", "https://www.sumcosi.com/english/products/process/step_01.html", "https://www.sumcosi.com/english/products/process/", "https://www.intc.com/news-events/press-releases/detail/165/inside-an-intel-chip-fab-one-of-the-cleanest-conference", "https://cdn.standards.iteh.ai/samples/53394/b5d9892aab0b4683bfb17888f661d555/ISO-14644-1-2015.pdf", "https://semiconductor.samsung.com/support/tools-resources/dictionary/semiconductors-101-part-7-all-about-the-fab-the-birthplace-of-semiconductor-chips/", "https://www.asml.com/en/technology/lithography-principles/light-and-lasers", "https://ourbrand.asml.com/m/6ea363f69344ebd4/original/asml-2025-annual-report-based-on-ifrs.pdf", "https://ourbrand.asml.com/m/357ac625bd5732c/original/ASML-Transcript-video-Q3-2024.pdf", "https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf", "https://www.asml.com/en/news/stories/2024/5-things-high-na-euv", "https://www.asml.com/en/products/euv-lithography-systems", "https://www.semiconductors.org/chipmakers-are-ramping-up-production-to-address-semiconductor-shortage-heres-why-that-takes-time/", "https://www.asml.com/en/en/technology/all-about-microchips/how-microchips-are-made", "https://www.asml.com/news/stories/2021/semiconductor-manufacturing-process-steps", "https://www.appliedmaterials.com/us/en/semiconductor/products/processes/cmp.html", "https://research.ibm.com/blog/how-ai-is-improving-chip-design-and-production", "https://ir.kla.com/news-events/press-releases/detail/121/kla-tencor-introduces-comprehensive-wafer-inspection-and", "https://www.nasdaq.com/press-release/intel-accelerates-process-and-packaging-innovations-2021-07-26", "https://www.tsmc.com/english/dedicatedFoundry/technology/logic/l_2nm", "https://investor.tsmc.com/static/annualReports/2025/english/pdf/2025_tsmc_ar_e_ch1.pdf", "https://www.tsmc.com/english/dedicatedFoundry/technology/logic", "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/a80d7933be643644081584087731f73b22ea5a2c/2Q26%20EarningsRelease.pdf", "https://spectrum.ieee.org/a-better-way-to-measure-progress-in-semiconductors", "https://www.formfactor.com/blog/2026/how-ai-and-hbm-are-redefining-semiconductor-test/", "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm", "https://www.disco.co.jp/eg/solution/library/laser/stealth.html", "https://amkor.com/test-services/", "https://www.tsmc.com/english/dedicatedFoundry/technology/platform_HPC_tech_WLSI", "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-08/5122725a56670882d777a8e8bfe0ed247cc55330/TSMC%202Q24%20Transcript.pdf", "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-10/6860312f04fd291d0f26b46c1234f84e6332717e/TSMC%203Q25%20Transcript.pdf", "https://pr.tsmc.com/english/news/3033", "https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs", "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm", "https://news.skhynix.com/en/tech-note-series-ep2/", "https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing", "https://news.skhynix.com/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/", "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing", "https://investors.micron.com/news/press-release/2026/Micron-in-High-Volume-Production-of-HBM4-Designed-for-NVIDIA-Vera-Rubin-PCIe-Gen6-SSD-and-SOCAMM2-03-16-2026/default.aspx", "https://news.skhynix.com/en/q2-2026-business-results/", "https://news.skhynix.com/en/sk-hynix-announces-3q25-financial-results/", "https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf", "https://www.foxconn.com/en-us/press-center/press-releases/latest-news/2095", "https://www.wistron.com/en/Newsroom/2026-07-22", "https://nvidianews.nvidia.com/news/nvidia-mgx-server-specification", "https://developer.nvidia.com/blog/nvidia-contributes-nvidia-gb200-nvl72-designs-to-open-compute-project", "https://blogs.nvidia.com/blog/gigawatt-ai-factories-ocp-vera-rubin", "https://www.vertiv.com/en-us/insights/articles/educational-articles/understanding-direct-to-chip-cooling-in-hpc-infrastructure-a-deep-dive-into-liquid-cooling/", "https://www.semiconductors.org/global-annual-semiconductor-sales-increase-25-6-to-791-7-billion-in-2025/", "https://www.asml.com/en/news/press-releases/2026/q4-2025-financial-results", "https://ourbrand.asml.com/m/3136300aa4999bc1/original/2026_01_28_Presentation-Investor-Relations-Q4-2025.pdf", "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf", "https://pr.tsmc.com/english/news/3210", "https://www.commerce.gov/news/press-releases/2024/12/biden-harris-administration-announces-chips-incentives-award-amkor", "https://www.nist.gov/chips/amkor-technology-inc-arizona-peoria", "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-breaks-ground-new-semiconductor-advanced", "https://pr.tsmc.com/english/news/3174", "https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "How a chip is made: sand to server", "item": "https://www.clarigital.com/ai-atlas/ai-chips/how-a-chip-is-made/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>How a chip is made: sand to server</span></nav>
+    <span class="label-tag">AI Chips · Explainer</span>
+    <h1>How an AI Chip Is Made: From Sand to Server</h1>
+    <p class="hero-lead">Every step from a handful of sand to a working AI rack: purifying silicon, growing crystals, printing patterns with light, stacking memory, packaging, testing and building the rack. Who does each step, where, and what it costs.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Explainer</span>
+      <span class="meta-tag mt-gray">10 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">60 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where only a company’s own claim exists, the text says so.</div>
+<section class="chip-sec" id="sand" aria-labelledby="h-sand">
+<h2 id="h-sand"><span>1.</span>From sand to pure silicon</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Every chip starts as sand. Silicon is about a quarter of the Earth's crust by weight, second only to oxygen <a class="cite" href="https://download.intel.com/newsroom/kits/chipmaking/pdfs/Sand-to-Silicon_32nm-Version.pdf" target="_blank" rel="noopener" title="Intel: From Sand to Silicon: the making of a chip (32 nm-era kit, c. 2009)">1</a>. But chip silicon must be astonishingly pure: electronic-grade silicon may contain only one foreign atom per billion silicon atoms <a class="cite" href="https://download.intel.com/newsroom/kits/chipmaking/pdfs/Sand-to-Silicon_32nm-Version.pdf" target="_blank" rel="noopener" title="Intel: From Sand to Silicon: the making of a chip (32 nm-era kit, c. 2009)">1</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>First, quartz is turned into metallurgical-grade silicon that is 98–99% pure. That is converted into a liquid chemical (trichlorosilane), distilled, and deposited back onto thin silicon rods at over 1,000 °C in what is called the Siemens process <a class="cite" href="https://www.wacker.com/cms/en-us/products/insights/pure-purer-wacker-poly.html" target="_blank" rel="noopener" title="Wacker Chemie: Pure, purer, Wacker poly">2</a>. The rods are crushed into chunks, cleaned in acid and ultrapure water, and packed in cleanrooms for wafer makers <a class="cite" href="https://www.wacker.com/cms/en-us/products/insights/pure-purer-wacker-poly.html" target="_blank" rel="noopener" title="Wacker Chemie: Pure, purer, Wacker poly">2</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Purity is quoted in "nines". Tokuyama describes semiconductor-grade polysilicon as 99.999999999% pure (eleven nines) <a class="cite" href="https://www.tokuyama.co.jp/eng/products/electronic_materials/polysilicon.html" target="_blank" rel="noopener" title="Tokuyama: Polysilicon">3</a>; Wacker specifies twelve nines for semiconductor use <a class="cite" href="https://www.wacker.com/cms/en-us/products/insights/pure-purer-wacker-poly.html" target="_blank" rel="noopener" title="Wacker Chemie: Pure, purer, Wacker poly">2</a>; SUMCO says metal impurities are held to no more than a few parts per billion <a class="cite" href="https://www.sumcosi.com/english/products/process/step_01.html" target="_blank" rel="noopener" title="SUMCO: Manufacturing process: polysilicon and crystal growth">4</a>. Intel's older educational kit quotes 99.9999999% for the finished crystal <a class="cite" href="https://download.intel.com/newsroom/kits/chipmaking/pdfs/Sand-to-Silicon_32nm-Version.pdf" target="_blank" rel="noopener" title="Intel: From Sand to Silicon: the making of a chip (32 nm-era kit, c. 2009)">1</a>. The figures differ because they measure different stages and impurities; all are far beyond almost any other manufactured material.</p>
+</div>
+</section>
+<section class="chip-sec" id="wafer" aria-labelledby="h-wafer">
+<h2 id="h-wafer"><span>2.</span>Growing the crystal and slicing wafers</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>The pure silicon is melted and a single perfect crystal is slowly pulled out of the melt, like drawing a candle from wax. That crystal, called an ingot, is sliced into thin discs called <b>wafers</b>. Today's chips are made on wafers 300 mm (about 12 inches) across <a class="cite" href="https://download.intel.com/newsroom/kits/chipmaking/pdfs/Sand-to-Silicon_32nm-Version.pdf" target="_blank" rel="noopener" title="Intel: From Sand to Silicon: the making of a chip (32 nm-era kit, c. 2009)">1</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The method is called Czochralski growth: polysilicon is melted at about 1,420 °C in a crucible, a small seed crystal is dipped in and slowly rotated and pulled upward, and the silicon freezes onto it in one continuous crystal <a class="cite" href="https://www.sumcosi.com/english/products/process/step_01.html" target="_blank" rel="noopener" title="SUMCO: Manufacturing process: polysilicon and crystal growth">4</a>. Intel's older kit put a finished ingot at about 100 kg <a class="cite" href="https://download.intel.com/newsroom/kits/chipmaking/pdfs/Sand-to-Silicon_32nm-Version.pdf" target="_blank" rel="noopener" title="Intel: From Sand to Silicon: the making of a chip (32 nm-era kit, c. 2009)">1</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Turning an ingot into a usable wafer takes several more steps: slicing into roughly 1 mm slices with a wire or diamond saw, lapping flat with an abrasive, chemically etching away the damage, mirror-polishing, then cleaning and inspection <a class="cite" href="https://www.sumcosi.com/english/products/process/" target="_blank" rel="noopener" title="SUMCO: Silicon wafer manufacturing process">5</a>. Wafer flatness matters because later steps print features only nanometres wide across the whole surface.</p>
+</div>
+</section>
+<section class="chip-sec" id="cleanroom" aria-labelledby="h-cleanroom">
+<h2 id="h-cleanroom"><span>3.</span>The cleanroom</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Chips are made in <b>cleanrooms</b>, because a single speck of dust can ruin a chip. Intel says the air in its fab cleanrooms has 1,000 times fewer particles than a hospital operating room <a class="cite" href="https://www.intc.com/news-events/press-releases/detail/165/inside-an-intel-chip-fab-one-of-the-cleanest-conference" target="_blank" rel="noopener" title="Intel: Inside an Intel chip fab: one of the cleanest places on Earth (2018)">6</a>. Workers wear full "bunny suits", and even paper and pencils are banned because they shed dust <a class="cite" href="https://www.intc.com/news-events/press-releases/detail/165/inside-an-intel-chip-fab-one-of-the-cleanest-conference" target="_blank" rel="noopener" title="Intel: Inside an Intel chip fab: one of the cleanest places on Earth (2018)">6</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Cleanrooms are graded by how many particles are allowed. The international standard, ISO 14644-1, runs from ISO Class 1, allowing at most 10 particles of 0.1 micrometre or larger per cubic metre, to ISO 9 <a class="cite" href="https://cdn.standards.iteh.ai/samples/53394/b5d9892aab0b4683bfb17888f661d555/ISO-14644-1-2015.pdf" target="_blank" rel="noopener" title="ISO: ISO 14644-1:2015 cleanroom classification (sample)">7</a>. Air flows from ceiling to floor through filters to sweep particles away <a class="cite" href="https://semiconductor.samsung.com/support/tools-resources/dictionary/semiconductors-101-part-7-all-about-the-fab-the-birthplace-of-semiconductor-chips/" target="_blank" rel="noopener" title="Samsung Semiconductor: Semiconductors 101, part 7: all about the fab">8</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Modern fabs keep wafers away from people altogether. Wafers travel in sealed pods (FOUPs) carried by robot vehicles running on ceiling rails <a class="cite" href="https://semiconductor.samsung.com/support/tools-resources/dictionary/semiconductors-101-part-7-all-about-the-fab-the-birthplace-of-semiconductor-chips/" target="_blank" rel="noopener" title="Samsung Semiconductor: Semiconductors 101, part 7: all about the fab">8</a>, so the cleanest air only needs to be inside the pods and machines. Intel said in 2018 that its D1X fab in Oregon covered roughly four football fields <a class="cite" href="https://www.intc.com/news-events/press-releases/detail/165/inside-an-intel-chip-fab-one-of-the-cleanest-conference" target="_blank" rel="noopener" title="Intel: Inside an Intel chip fab: one of the cleanest places on Earth (2018)">6</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="litho" aria-labelledby="h-litho">
+<h2 id="h-litho"><span>4.</span>Printing the pattern: lithography and EUV</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A chip's circuits are printed onto the wafer with light, like a photographic negative. The most advanced machines use extreme ultraviolet (<b>EUV</b>) light with a wavelength of just 13.5 nanometres <a class="cite" href="https://www.asml.com/en/technology/lithography-principles/light-and-lasers" target="_blank" rel="noopener" title="ASML: Lithography principles: light and lasers">9</a>. Only one company in the world makes EUV machines: ASML, in the Netherlands <a class="cite" href="https://ourbrand.asml.com/m/6ea363f69344ebd4/original/asml-2025-annual-report-based-on-ifrs.pdf" target="_blank" rel="noopener" title="ASML: Annual Report 2025">10</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>EUV light is made by firing lasers at tiny droplets of molten tin, about 25 micrometres across, travelling at 70 metres per second. Each droplet is hit twice, first to flatten it and then to vaporise it into a glowing plasma that emits EUV light, and this happens 50,000 times a second <a class="cite" href="https://www.asml.com/en/technology/lithography-principles/light-and-lasers" target="_blank" rel="noopener" title="ASML: Lithography principles: light and lasers">9</a>. ASML says its NXE:3800E machine reached 220 wafers an hour in its own factory tests <a class="cite" href="https://ourbrand.asml.com/m/357ac625bd5732c/original/ASML-Transcript-video-Q3-2024.pdf" target="_blank" rel="noopener" title="ASML: Q3 2024 results video transcript">11</a>.</p>
+<p>Intel described an EUV machine in 2021 as weighing nearly 200 tonnes with about 100,000 parts, shipped in 40 freight containers on 20 trucks and three Boeing 747 cargo planes <a class="cite" href="https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf" target="_blank" rel="noopener" title="Intel: EUV: the most precise, complex machine at Intel (Dec 2021)">12</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The next step is <b>High-NA</b> EUV. It raises the lens system's numerical aperture from 0.33 to 0.55, letting it print finer features; ASML's EXE:5000 has 8 nm resolution and can print more than 185 wafers an hour <a class="cite" href="https://www.asml.com/en/news/stories/2024/5-things-high-na-euv" target="_blank" rel="noopener" title="ASML: 5 things you should know about High-NA EUV (2024)">13</a>. ASML says its EXE:5200B is designed for volume production of chips beyond 2 nm <a class="cite" href="https://www.asml.com/en/products/euv-lithography-systems" target="_blank" rel="noopener" title="ASML: EUV lithography systems">14</a>, and that by the end of 2025 customers had run more than 400,000 wafers on High-NA machines <a class="cite" href="https://ourbrand.asml.com/m/6ea363f69344ebd4/original/asml-2025-annual-report-based-on-ifrs.pdf" target="_blank" rel="noopener" title="ASML: Annual Report 2025">10</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="steps" aria-labelledby="h-steps">
+<h2 id="h-steps"><span>5.</span>Hundreds of steps, layer by layer</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A chip is built up layer by layer, like a tiny city with many floors. Each layer goes through the same cycle: coat, print with light, etch away, add material, flatten. The US chip industry association says wafer making can take up to 1,400 steps <a class="cite" href="https://www.semiconductors.org/chipmakers-are-ramping-up-production-to-address-semiconductor-shortage-heres-why-that-takes-time/" target="_blank" rel="noopener" title="Semiconductor Industry Association: Chipmakers are ramping up production: here is why that takes time">15</a>, and ASML says modern chips can have up to 100 layers that must line up to within nanometres <a class="cite" href="https://www.asml.com/en/en/technology/all-about-microchips/how-microchips-are-made" target="_blank" rel="noopener" title="ASML: How microchips are made">16</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>ASML lists the core steps as depositing thin films, coating with light-sensitive resist, exposing through a patterned mask, etching, and ion implantation, which fires charged atoms into the silicon to change how it conducts electricity <a class="cite" href="https://www.asml.com/news/stories/2021/semiconductor-manufacturing-process-steps" target="_blank" rel="noopener" title="ASML: Six crucial steps in semiconductor manufacturing (2021)">17</a>. Between layers, chemical-mechanical planarization presses the wafer against a spinning pad to leave a perfectly flat surface for the next layer <a class="cite" href="https://www.appliedmaterials.com/us/en/semiconductor/products/processes/cmp.html" target="_blank" rel="noopener" title="Applied Materials: Chemical mechanical planarization (CMP)">18</a>. IBM Research notes that about a dozen process types are each repeated 40 to 100 times, which is how a chip reaches 1,000 or more steps <a class="cite" href="https://research.ibm.com/blog/how-ai-is-improving-chip-design-and-production" target="_blank" rel="noopener" title="IBM Research: How AI is improving chip design and production">19</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Time is the hidden constraint. The Semiconductor Industry Association says wafer fabrication takes about 12 weeks on average and 14 to 20 weeks for advanced processes, and a finished chip can take up to 26 weeks including about 6 weeks of assembly, test and packaging <a class="cite" href="https://www.semiconductors.org/chipmakers-are-ramping-up-production-to-address-semiconductor-shortage-heres-why-that-takes-time/" target="_blank" rel="noopener" title="Semiconductor Industry Association: Chipmakers are ramping up production: here is why that takes time">15</a>. Defects can arise months before a wafer's final measurement, which is why inspection happens throughout the line, not just at the end <a class="cite" href="https://research.ibm.com/blog/how-ai-is-improving-chip-design-and-production" target="_blank" rel="noopener" title="IBM Research: How AI is improving chip design and production">19</a> <a class="cite" href="https://ir.kla.com/news-events/press-releases/detail/121/kla-tencor-introduces-comprehensive-wafer-inspection-and" target="_blank" rel="noopener" title="KLA: KLA-Tencor introduces comprehensive wafer inspection and review portfolio">20</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="nodes" aria-labelledby="h-nodes">
+<h2 id="h-nodes"><span>6.</span>What &quot;2 nanometre&quot; really means</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>You will hear chips described as "3 nanometre" or "2 nanometre". Those names are labels for a generation of manufacturing, not a measurement of anything on the chip. Intel says the names stopped matching real transistor sizes in 1997 <a class="cite" href="https://www.nasdaq.com/press-release/intel-accelerates-process-and-packaging-innovations-2021-07-26" target="_blank" rel="noopener" title="Intel (via Nasdaq): Intel accelerates process and packaging innovations (26 Jul 2021)">21</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>TSMC started volume production of its 2 nm process (N2) in the last quarter of 2025, using a new "nanosheet" transistor design <a class="cite" href="https://www.tsmc.com/english/dedicatedFoundry/technology/logic/l_2nm" target="_blank" rel="noopener" title="TSMC: 2nm technology">22</a>. Its next steps, N2P and A16 (which adds power wiring on the back of the chip), are scheduled for volume production in the second half of 2026 <a class="cite" href="https://investor.tsmc.com/static/annualReports/2025/english/pdf/2025_tsmc_ar_e_ch1.pdf" target="_blank" rel="noopener" title="TSMC: Annual Report 2025, chapter 1">23</a>. TSMC was first to put 3 nm into volume production, in 2022 <a class="cite" href="https://www.tsmc.com/english/dedicatedFoundry/technology/logic" target="_blank" rel="noopener" title="TSMC: Logic technology">24</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>How fast the industry moves to new nodes shows in TSMC's revenue: processes of 7 nm and below were 74% of its wafer revenue in 2025, up from 69% in 2024 <a class="cite" href="https://investor.tsmc.com/static/annualReports/2025/english/pdf/2025_tsmc_ar_e_ch1.pdf" target="_blank" rel="noopener" title="TSMC: Annual Report 2025, chapter 1">23</a>. In the second quarter of 2026, 3 nm was 30% of wafer revenue, 5 nm 33% and 2 nm already 3% <a class="cite" href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/a80d7933be643644081584087731f73b22ea5a2c/2Q26%20EarningsRelease.pdf" target="_blank" rel="noopener" title="TSMC: 2Q26 earnings release (Jul 2026)">25</a>. IEEE Spectrum has argued for replacing node names with density measures because the critical features of a "7 nm" transistor are considerably larger than 7 nm <a class="cite" href="https://spectrum.ieee.org/a-better-way-to-measure-progress-in-semiconductors" target="_blank" rel="noopener" title="IEEE Spectrum (press): A better way to measure progress in semiconductors">26</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="package" aria-labelledby="h-package">
+<h2 id="h-package"><span>7.</span>Testing, cutting and packaging</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A finished wafer holds hundreds of chips. Each one is tested while still on the wafer, then the wafer is cut apart. Only the good chips (the industry calls them "known good dies") go on to be packaged, so money is not wasted packaging bad ones <a class="cite" href="https://www.formfactor.com/blog/2026/how-ai-and-hbm-are-redefining-semiconductor-test/" target="_blank" rel="noopener" title="FormFactor: How AI and HBM are redefining semiconductor test (2026)">27</a>.</p>
+<p>For AI chips, packaging is a big deal: the processor and its memory stacks are mounted side by side on a shared base, so they can talk very fast. TSMC's version of this is called <b>CoWoS</b> <a class="cite" href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm" target="_blank" rel="noopener" title="TSMC 3DFabric: CoWoS">28</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Wafers can be cut with a laser focused inside the silicon, which weakens it along a line so a stretching tape can then split the chips apart cleanly <a class="cite" href="https://www.disco.co.jp/eg/solution/library/laser/stealth.html" target="_blank" rel="noopener" title="DISCO: Stealth Dicing">29</a>. After packaging, chips are tested again, and can be run hot under load ("burn-in") to catch early failures <a class="cite" href="https://amkor.com/test-services/" target="_blank" rel="noopener" title="Amkor Technology: Test services">30</a>.</p>
+<p>TSMC's CoWoS comes in three types: CoWoS-S with a silicon base up to 3.3 times the size a lithography machine can print in one exposure; CoWoS-R with a base made of wiring layers; and CoWoS-L, which mixes the two and was in volume production at 3.5 times that size from 2024 <a class="cite" href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm" target="_blank" rel="noopener" title="TSMC 3DFabric: CoWoS">28</a>. TSMC certified a 5.5-times version in 2025, with volume production starting in 2026 <a class="cite" href="https://www.tsmc.com/english/dedicatedFoundry/technology/platform_HPC_tech_WLSI" target="_blank" rel="noopener" title="TSMC: HPC technology platform: wafer-level system integration">31</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Packaging has become a bottleneck in its own right. In July 2024 TSMC's CEO said CoWoS supply would stay very tight probably through 2025, and that capacity would more than double again from 2024 to 2025 <a class="cite" href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-08/5122725a56670882d777a8e8bfe0ed247cc55330/TSMC%202Q24%20Transcript.pdf" target="_blank" rel="noopener" title="TSMC: 2Q24 earnings call transcript (Jul 2024)">32</a>. By October 2025 TSMC said advanced packaging was slightly over 10% of its revenue and capacity was still very tight <a class="cite" href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-10/6860312f04fd291d0f26b46c1234f84e6332717e/TSMC%203Q25%20Transcript.pdf" target="_blank" rel="noopener" title="TSMC: 3Q25 earnings call transcript (Oct 2025)">33</a>. Its largest packaging plant, Advanced Backend Fab 6 in Zhunan, opened in June 2023 and handles over a million 12-inch wafer equivalents of 3D packaging a year <a class="cite" href="https://pr.tsmc.com/english/news/3033" target="_blank" rel="noopener" title="TSMC: TSMC opens Advanced Backend Fab 6 (June 2023)">34</a>. All five of the packaging fabs TSMC lists are in Taiwan <a class="cite" href="https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs" target="_blank" rel="noopener" title="TSMC: TSMC fabs">35</a>; it has announced two in Arizona <a class="cite" href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-10/6860312f04fd291d0f26b46c1234f84e6332717e/TSMC%203Q25%20Transcript.pdf" target="_blank" rel="noopener" title="TSMC: 3Q25 earnings call transcript (Oct 2025)">33</a>.</p>
+<p>The next level is stacking chips directly on top of each other. TSMC's SoIC joins chips with connections spaced less than 10 micrometres apart, and its 3 nm chip stacking entered volume production in 2025 <a class="cite" href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm" target="_blank" rel="noopener" title="TSMC 3DFabric: TSMC-SoIC">36</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="hbm" aria-labelledby="h-hbm">
+<h2 id="h-hbm"><span>8.</span>Stacking the memory</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AI memory (HBM) is made by stacking memory chips on top of each other, 8, 12 or even 16 high, and drilling thousands of tiny vertical holes through them so signals can pass straight up and down <a class="cite" href="https://news.skhynix.com/en/tech-note-series-ep2/" target="_blank" rel="noopener" title="SK hynix Newsroom: Tech note episode 2: TSV, MR-MUF and hybrid bonding">37</a> <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JESD270-4 HBM4 standard (16 Apr 2025)">38</a>. If just one chip in a stack is faulty, the whole stack can be lost, so every layer is tested first <a class="cite" href="https://www.formfactor.com/blog/2026/how-ai-and-hbm-are-redefining-semiconductor-test/" target="_blank" rel="noopener" title="FormFactor: How AI and HBM are redefining semiconductor test (2026)">27</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Those vertical connections are called through-silicon vias (TSVs). SK hynix fills the gaps between layers with a liquid that is then hardened, a method it calls MR-MUF <a class="cite" href="https://news.skhynix.com/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix completes world-first HBM4 development (Sept 2025)">39</a>. The newest HBM4 has 2,048 connections per stack, twice the previous generation <a class="cite" href="https://news.skhynix.com/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix completes world-first HBM4 development (Sept 2025)">39</a>. Samsung began shipping HBM4 in February 2026 at up to 3.3 TB/s per stack <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">40</a>; Micron announced high-volume production of 12-high 36 GB HBM4 for NVIDIA's Vera Rubin in March 2026 <a class="cite" href="https://investors.micron.com/news/press-release/2026/Micron-in-High-Volume-Production-of-HBM4-Designed-for-NVIDIA-Vera-Rubin-PCIe-Gen6-SSD-and-SOCAMM2-03-16-2026/default.aspx" target="_blank" rel="noopener" title="Micron Investor Relations: Micron in high-volume production of HBM4 designed for NVIDIA Vera Rubin (16 Mar 2026)">41</a>; SK hynix began mass shipments in the second quarter of 2026 <a class="cite" href="https://news.skhynix.com/en/q2-2026-business-results/" target="_blank" rel="noopener" title="SK hynix Newsroom: Q2 2026 business results">42</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The next packaging method is hybrid bonding, which joins stacked chips copper-to-copper with no solder bumps, at spacings below 1 micrometre against about 20 for today's micro-bumps. SK hynix says full-scale hybrid bonding for HBM is most likely at HBM4E or HBM5, and that stack height rises from 720 to 775 micrometres under HBM4 <a class="cite" href="https://news.skhynix.com/en/tech-note-series-ep2/" target="_blank" rel="noopener" title="SK hynix Newsroom: Tech note episode 2: TSV, MR-MUF and hybrid bonding">37</a>.</p>
+<p>Demand outruns supply. SK hynix said in October 2025 that it had agreed HBM supply with key customers for 2026 and that its entire 2026 DRAM and NAND output was spoken for <a class="cite" href="https://news.skhynix.com/en/sk-hynix-announces-3q25-financial-results/" target="_blank" rel="noopener" title="SK hynix Newsroom: 3Q25 financial results">43</a>, and in July 2026 that customer demand exceeds its supply capability, with long-term agreements with about 10 customers <a class="cite" href="https://news.skhynix.com/en/q2-2026-business-results/" target="_blank" rel="noopener" title="SK hynix Newsroom: Q2 2026 business results">42</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="rack" aria-labelledby="h-rack">
+<h2 id="h-rack"><span>9.</span>From chip to rack to data centre</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>The packaged chips are mounted on boards, the boards go into trays, and the trays go into a rack. NVIDIA's GB200 NVL72 rack holds 18 compute trays, each with 4 GPUs and 2 processors, plus 9 trays of switches that link all 72 GPUs together <a class="cite" href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf" target="_blank" rel="noopener" title="NVIDIA Docs: DGX GB200 user guide">44</a>. The whole rack draws about 120 kilowatts and is cooled by liquid flowing through metal plates on each chip <a class="cite" href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf" target="_blank" rel="noopener" title="NVIDIA Docs: DGX GB200 user guide">44</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Racks are assembled by contract manufacturers. Foxconn said in August 2026 that it expected its AI rack shipments to more than double in 2026, with Vera Rubin racks entering mass production in the third quarter <a class="cite" href="https://www.foxconn.com/en-us/press-center/press-releases/latest-news/2095" target="_blank" rel="noopener" title="Foxconn: Press release, August 2026: Q2 2026 results and AI racks">45</a>; Wistron opened a plant in Fort Worth, Texas, in July 2026 to build NVIDIA systems <a class="cite" href="https://www.wistron.com/en/Newsroom/2026-07-22" target="_blank" rel="noopener" title="Wistron Newsroom: D1 AI smart facility, Fort Worth (22 Jul 2026)">46</a>. NVIDIA's MGX reference design lets system makers build more than 100 server variations from shared parts <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-mgx-server-specification" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA MGX server specification (May 2023)">47</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Inside the GB200 NVL72, four vertical cartridges carry more than 5,000 copper cables for the GPU links <a class="cite" href="https://developer.nvidia.com/blog/nvidia-contributes-nvidia-gb200-nvl72-designs-to-open-compute-project" target="_blank" rel="noopener" title="NVIDIA Technical Blog: NVIDIA contributes GB200 NVL72 designs to the Open Compute Project">48</a>. The power rises from here: NVIDIA is moving AI data centres to 800-volt DC power, which it says carries over 150% more power through the same copper, and its Vera Rubin compute tray is 100% liquid cooled with a circuit-board midplane replacing cables <a class="cite" href="https://blogs.nvidia.com/blog/gigawatt-ai-factories-ocp-vera-rubin" target="_blank" rel="noopener" title="NVIDIA Blog: Gigawatt AI factories, OCP and Vera Rubin (Oct 2025)">49</a>. Cooling maker Vertiv says air cooling reaches its limits as racks go past 20 kW and approach 50 kW <a class="cite" href="https://www.vertiv.com/en-us/insights/articles/educational-articles/understanding-direct-to-chip-cooling-in-hpc-infrastructure-a-deep-dive-into-liquid-cooling/" target="_blank" rel="noopener" title="Vertiv: Understanding direct-to-chip cooling in HPC infrastructure">50</a>, which is why the newest AI racks are liquid cooled.</p>
+</div>
+</section>
+<section class="chip-sec" id="money" aria-labelledby="h-money">
+<h2 id="h-money"><span>10.</span>Who does it, where, and what it costs</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>The world sold $791.7 billion of chips in 2025, up 25.6% on 2024, according to the Semiconductor Industry Association <a class="cite" href="https://www.semiconductors.org/global-annual-semiconductor-sales-increase-25-6-to-791-7-billion-in-2025/" target="_blank" rel="noopener" title="Semiconductor Industry Association: Global annual semiconductor sales increase 25.6% to $791.7 billion in 2025">51</a>. A handful of companies do the hardest steps: ASML makes all EUV machines <a class="cite" href="https://ourbrand.asml.com/m/6ea363f69344ebd4/original/asml-2025-annual-report-based-on-ifrs.pdf" target="_blank" rel="noopener" title="ASML: Annual Report 2025">10</a>; TSMC made chips for 534 customers in 2025 <a class="cite" href="https://investor.tsmc.com/static/annualReports/2025/english/pdf/2025_tsmc_ar_e_ch1.pdf" target="_blank" rel="noopener" title="TSMC: Annual Report 2025, chapter 1">23</a>; SK hynix, Samsung and Micron make the AI memory.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ul>
+<li><b>ASML:</b> €32.7 billion of sales in 2025 <a class="cite" href="https://www.asml.com/en/news/press-releases/2026/q4-2025-financial-results" target="_blank" rel="noopener" title="ASML: Q4 and full-year 2025 financial results">52</a>; it recognised revenue on 48 EUV systems, with EUV system sales of €11.6 billion <a class="cite" href="https://ourbrand.asml.com/m/3136300aa4999bc1/original/2026_01_28_Presentation-Investor-Relations-Q4-2025.pdf" target="_blank" rel="noopener" title="ASML: Investor presentation Q4 2025 (28 Jan 2026)">53</a>. ASML does not publish a price per machine; dividing one figure by the other gives about €242 million each on average (our calculation, not ASML's).</li>
+<li><b>TSMC:</b> $122 billion of revenue and $40.9 billion of capital spending in 2025, with 2026 capital spending guided at $52–56 billion in January 2026 <a class="cite" href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf" target="_blank" rel="noopener" title="TSMC: 4Q25 earnings call transcript (Jan 2026)">54</a>. It shipped 15.0 million 12-inch-equivalent wafers in 2025 <a class="cite" href="https://investor.tsmc.com/static/annualReports/2025/english/pdf/2025_tsmc_ar_e_ch1.pdf" target="_blank" rel="noopener" title="TSMC: Annual Report 2025, chapter 1">23</a>.</li>
+<li><b>TSMC in the US:</b> total planned US investment of $165 billion, covering six fabs, two advanced packaging plants and an R&amp;D centre <a class="cite" href="https://pr.tsmc.com/english/news/3210" target="_blank" rel="noopener" title="TSMC: TSMC intends to expand its investment in the US to US$165 billion (4 Mar 2025)">55</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Governments are paying to move packaging closer to chip design. The US Commerce Department awarded Amkor up to $407 million for an advanced packaging and test plant in Peoria, Arizona <a class="cite" href="https://www.commerce.gov/news/press-releases/2024/12/biden-harris-administration-announces-chips-incentives-award-amkor" target="_blank" rel="noopener" title="US Department of Commerce: CHIPS incentives award to Amkor (20 Dec 2024)">56</a>; NIST describes its focus as 2.5D packaging, "the final step in the manufacturing of GPUs and other AI chips" <a class="cite" href="https://www.nist.gov/chips/amkor-technology-inc-arizona-peoria" target="_blank" rel="noopener" title="NIST CHIPS for America: Amkor Technology, Peoria, Arizona">57</a>. Amkor later raised the campus investment to $7 billion, with production starting in early 2028 <a class="cite" href="https://ir.amkor.com/news-releases/news-release-details/amkor-technology-breaks-ground-new-semiconductor-advanced" target="_blank" rel="noopener" title="Amkor Technology: Amkor breaks ground on Arizona advanced packaging campus (Oct 2025)">58</a>, and TSMC agreed that Amkor would offer its CoWoS and InFO packaging there <a class="cite" href="https://pr.tsmc.com/english/news/3174" target="_blank" rel="noopener" title="TSMC: TSMC and Amkor MoU on advanced packaging in Arizona (Oct 2024)">59</a>. SK hynix received a $458 million award for an HBM packaging plant in West Lafayette, Indiana, with mass production planned for the second half of 2028 <a class="cite" href="https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette" target="_blank" rel="noopener" title="NIST CHIPS for America: SK hynix, West Lafayette, Indiana">60</a>. Until these open, every advanced packaging fab TSMC lists is in Taiwan <a class="cite" href="https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs" target="_blank" rel="noopener" title="TSMC: TSMC fabs">35</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>11.</span>Sources</h2>
+<p class="note">60 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator or an annual report; <b>Standard</b> = a published industry standard; <b>Paper</b> = a peer-reviewed or conference paper; <b>Research</b> = an independent research body; <b>Government</b> = a government page; <b>Press</b> = news coverage, used only where no official source exists.</p>
+<ol class="src-list">
+<li id="src-1"><b>Intel</b>: <a href="https://download.intel.com/newsroom/kits/chipmaking/pdfs/Sand-to-Silicon_32nm-Version.pdf" target="_blank" rel="noopener">From Sand to Silicon: the making of a chip (32 nm-era kit, c. 2009)</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>Wacker Chemie</b>: <a href="https://www.wacker.com/cms/en-us/products/insights/pure-purer-wacker-poly.html" target="_blank" rel="noopener">Pure, purer, Wacker poly</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>Tokuyama</b>: <a href="https://www.tokuyama.co.jp/eng/products/electronic_materials/polysilicon.html" target="_blank" rel="noopener">Polysilicon</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>SUMCO</b>: <a href="https://www.sumcosi.com/english/products/process/step_01.html" target="_blank" rel="noopener">Manufacturing process: polysilicon and crystal growth</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>SUMCO</b>: <a href="https://www.sumcosi.com/english/products/process/" target="_blank" rel="noopener">Silicon wafer manufacturing process</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>Intel</b>: <a href="https://www.intc.com/news-events/press-releases/detail/165/inside-an-intel-chip-fab-one-of-the-cleanest-conference" target="_blank" rel="noopener">Inside an Intel chip fab: one of the cleanest places on Earth (2018)</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>ISO</b>: <a href="https://cdn.standards.iteh.ai/samples/53394/b5d9892aab0b4683bfb17888f661d555/ISO-14644-1-2015.pdf" target="_blank" rel="noopener">ISO 14644-1:2015 cleanroom classification (sample)</a><span class="st st-standard">Standard</span></li>
+<li id="src-8"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/support/tools-resources/dictionary/semiconductors-101-part-7-all-about-the-fab-the-birthplace-of-semiconductor-chips/" target="_blank" rel="noopener">Semiconductors 101, part 7: all about the fab</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>ASML</b>: <a href="https://www.asml.com/en/technology/lithography-principles/light-and-lasers" target="_blank" rel="noopener">Lithography principles: light and lasers</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>ASML</b>: <a href="https://ourbrand.asml.com/m/6ea363f69344ebd4/original/asml-2025-annual-report-based-on-ifrs.pdf" target="_blank" rel="noopener">Annual Report 2025</a><span class="st st-filing">Filing</span></li>
+<li id="src-11"><b>ASML</b>: <a href="https://ourbrand.asml.com/m/357ac625bd5732c/original/ASML-Transcript-video-Q3-2024.pdf" target="_blank" rel="noopener">Q3 2024 results video transcript</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>Intel</b>: <a href="https://download.intel.com/newsroom/archive/2025/en-us-2021-12-21-euv-the-most-precise-complex-machine-at-intel.pdf" target="_blank" rel="noopener">EUV: the most precise, complex machine at Intel (Dec 2021)</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>ASML</b>: <a href="https://www.asml.com/en/news/stories/2024/5-things-high-na-euv" target="_blank" rel="noopener">5 things you should know about High-NA EUV (2024)</a><span class="st st-official">Official</span></li>
+<li id="src-14"><b>ASML</b>: <a href="https://www.asml.com/en/products/euv-lithography-systems" target="_blank" rel="noopener">EUV lithography systems</a><span class="st st-official">Official</span></li>
+<li id="src-15"><b>Semiconductor Industry Association</b>: <a href="https://www.semiconductors.org/chipmakers-are-ramping-up-production-to-address-semiconductor-shortage-heres-why-that-takes-time/" target="_blank" rel="noopener">Chipmakers are ramping up production: here is why that takes time</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>ASML</b>: <a href="https://www.asml.com/en/en/technology/all-about-microchips/how-microchips-are-made" target="_blank" rel="noopener">How microchips are made</a><span class="st st-official">Official</span></li>
+<li id="src-17"><b>ASML</b>: <a href="https://www.asml.com/news/stories/2021/semiconductor-manufacturing-process-steps" target="_blank" rel="noopener">Six crucial steps in semiconductor manufacturing (2021)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>Applied Materials</b>: <a href="https://www.appliedmaterials.com/us/en/semiconductor/products/processes/cmp.html" target="_blank" rel="noopener">Chemical mechanical planarization (CMP)</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>IBM Research</b>: <a href="https://research.ibm.com/blog/how-ai-is-improving-chip-design-and-production" target="_blank" rel="noopener">How AI is improving chip design and production</a><span class="st st-official">Official</span></li>
+<li id="src-20"><b>KLA</b>: <a href="https://ir.kla.com/news-events/press-releases/detail/121/kla-tencor-introduces-comprehensive-wafer-inspection-and" target="_blank" rel="noopener">KLA-Tencor introduces comprehensive wafer inspection and review portfolio</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>Intel (via Nasdaq)</b>: <a href="https://www.nasdaq.com/press-release/intel-accelerates-process-and-packaging-innovations-2021-07-26" target="_blank" rel="noopener">Intel accelerates process and packaging innovations (26 Jul 2021)</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>TSMC</b>: <a href="https://www.tsmc.com/english/dedicatedFoundry/technology/logic/l_2nm" target="_blank" rel="noopener">2nm technology</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>TSMC</b>: <a href="https://investor.tsmc.com/static/annualReports/2025/english/pdf/2025_tsmc_ar_e_ch1.pdf" target="_blank" rel="noopener">Annual Report 2025, chapter 1</a><span class="st st-filing">Filing</span></li>
+<li id="src-24"><b>TSMC</b>: <a href="https://www.tsmc.com/english/dedicatedFoundry/technology/logic" target="_blank" rel="noopener">Logic technology</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>TSMC</b>: <a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/a80d7933be643644081584087731f73b22ea5a2c/2Q26%20EarningsRelease.pdf" target="_blank" rel="noopener">2Q26 earnings release (Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>IEEE Spectrum (press)</b>: <a href="https://spectrum.ieee.org/a-better-way-to-measure-progress-in-semiconductors" target="_blank" rel="noopener">A better way to measure progress in semiconductors</a><span class="st st-press">Press</span></li>
+<li id="src-27"><b>FormFactor</b>: <a href="https://www.formfactor.com/blog/2026/how-ai-and-hbm-are-redefining-semiconductor-test/" target="_blank" rel="noopener">How AI and HBM are redefining semiconductor test (2026)</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>TSMC 3DFabric</b>: <a href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm" target="_blank" rel="noopener">CoWoS</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>DISCO</b>: <a href="https://www.disco.co.jp/eg/solution/library/laser/stealth.html" target="_blank" rel="noopener">Stealth Dicing</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>Amkor Technology</b>: <a href="https://amkor.com/test-services/" target="_blank" rel="noopener">Test services</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>TSMC</b>: <a href="https://www.tsmc.com/english/dedicatedFoundry/technology/platform_HPC_tech_WLSI" target="_blank" rel="noopener">HPC technology platform: wafer-level system integration</a><span class="st st-official">Official</span></li>
+<li id="src-32"><b>TSMC</b>: <a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2024-08/5122725a56670882d777a8e8bfe0ed247cc55330/TSMC%202Q24%20Transcript.pdf" target="_blank" rel="noopener">2Q24 earnings call transcript (Jul 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-33"><b>TSMC</b>: <a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-10/6860312f04fd291d0f26b46c1234f84e6332717e/TSMC%203Q25%20Transcript.pdf" target="_blank" rel="noopener">3Q25 earnings call transcript (Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-34"><b>TSMC</b>: <a href="https://pr.tsmc.com/english/news/3033" target="_blank" rel="noopener">TSMC opens Advanced Backend Fab 6 (June 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-35"><b>TSMC</b>: <a href="https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs" target="_blank" rel="noopener">TSMC fabs</a><span class="st st-official">Official</span></li>
+<li id="src-36"><b>TSMC 3DFabric</b>: <a href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/SoIC.htm" target="_blank" rel="noopener">TSMC-SoIC</a><span class="st st-official">Official</span></li>
+<li id="src-37"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/tech-note-series-ep2/" target="_blank" rel="noopener">Tech note episode 2: TSV, MR-MUF and hybrid bonding</a><span class="st st-official">Official</span></li>
+<li id="src-38"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener">JESD270-4 HBM4 standard (16 Apr 2025)</a><span class="st st-standard">Standard</span></li>
+<li id="src-39"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/" target="_blank" rel="noopener">SK hynix completes world-first HBM4 development (Sept 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-40"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener">Samsung ships industry-first commercial HBM4 (12 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-41"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news/press-release/2026/Micron-in-High-Volume-Production-of-HBM4-Designed-for-NVIDIA-Vera-Rubin-PCIe-Gen6-SSD-and-SOCAMM2-03-16-2026/default.aspx" target="_blank" rel="noopener">Micron in high-volume production of HBM4 designed for NVIDIA Vera Rubin (16 Mar 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-42"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/q2-2026-business-results/" target="_blank" rel="noopener">Q2 2026 business results</a><span class="st st-official">Official</span></li>
+<li id="src-43"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/sk-hynix-announces-3q25-financial-results/" target="_blank" rel="noopener">3Q25 financial results</a><span class="st st-official">Official</span></li>
+<li id="src-44"><b>NVIDIA Docs</b>: <a href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf" target="_blank" rel="noopener">DGX GB200 user guide</a><span class="st st-official">Official</span></li>
+<li id="src-45"><b>Foxconn</b>: <a href="https://www.foxconn.com/en-us/press-center/press-releases/latest-news/2095" target="_blank" rel="noopener">Press release, August 2026: Q2 2026 results and AI racks</a><span class="st st-official">Official</span></li>
+<li id="src-46"><b>Wistron Newsroom</b>: <a href="https://www.wistron.com/en/Newsroom/2026-07-22" target="_blank" rel="noopener">D1 AI smart facility, Fort Worth (22 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-47"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-mgx-server-specification" target="_blank" rel="noopener">NVIDIA MGX server specification (May 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-48"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/nvidia-contributes-nvidia-gb200-nvl72-designs-to-open-compute-project" target="_blank" rel="noopener">NVIDIA contributes GB200 NVL72 designs to the Open Compute Project</a><span class="st st-official">Official</span></li>
+<li id="src-49"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/gigawatt-ai-factories-ocp-vera-rubin" target="_blank" rel="noopener">Gigawatt AI factories, OCP and Vera Rubin (Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-50"><b>Vertiv</b>: <a href="https://www.vertiv.com/en-us/insights/articles/educational-articles/understanding-direct-to-chip-cooling-in-hpc-infrastructure-a-deep-dive-into-liquid-cooling/" target="_blank" rel="noopener">Understanding direct-to-chip cooling in HPC infrastructure</a><span class="st st-official">Official</span></li>
+<li id="src-51"><b>Semiconductor Industry Association</b>: <a href="https://www.semiconductors.org/global-annual-semiconductor-sales-increase-25-6-to-791-7-billion-in-2025/" target="_blank" rel="noopener">Global annual semiconductor sales increase 25.6% to $791.7 billion in 2025</a><span class="st st-official">Official</span></li>
+<li id="src-52"><b>ASML</b>: <a href="https://www.asml.com/en/news/press-releases/2026/q4-2025-financial-results" target="_blank" rel="noopener">Q4 and full-year 2025 financial results</a><span class="st st-official">Official</span></li>
+<li id="src-53"><b>ASML</b>: <a href="https://ourbrand.asml.com/m/3136300aa4999bc1/original/2026_01_28_Presentation-Investor-Relations-Q4-2025.pdf" target="_blank" rel="noopener">Investor presentation Q4 2025 (28 Jan 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-54"><b>TSMC</b>: <a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf" target="_blank" rel="noopener">4Q25 earnings call transcript (Jan 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-55"><b>TSMC</b>: <a href="https://pr.tsmc.com/english/news/3210" target="_blank" rel="noopener">TSMC intends to expand its investment in the US to US$165 billion (4 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-56"><b>US Department of Commerce</b>: <a href="https://www.commerce.gov/news/press-releases/2024/12/biden-harris-administration-announces-chips-incentives-award-amkor" target="_blank" rel="noopener">CHIPS incentives award to Amkor (20 Dec 2024)</a><span class="st st-government">Government</span></li>
+<li id="src-57"><b>NIST CHIPS for America</b>: <a href="https://www.nist.gov/chips/amkor-technology-inc-arizona-peoria" target="_blank" rel="noopener">Amkor Technology, Peoria, Arizona</a><span class="st st-government">Government</span></li>
+<li id="src-58"><b>Amkor Technology</b>: <a href="https://ir.amkor.com/news-releases/news-release-details/amkor-technology-breaks-ground-new-semiconductor-advanced" target="_blank" rel="noopener">Amkor breaks ground on Arizona advanced packaging campus (Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-59"><b>TSMC</b>: <a href="https://pr.tsmc.com/english/news/3174" target="_blank" rel="noopener">TSMC and Amkor MoU on advanced packaging in Arizona (Oct 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-60"><b>NIST CHIPS for America</b>: <a href="https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette" target="_blank" rel="noopener">SK hynix, West Lafayette, Indiana</a><span class="st st-government">Government</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#sand">1. From sand to pure silicon</a><a href="#wafer">2. Growing the crystal and slicing wafers</a><a href="#cleanroom">3. The cleanroom</a><a href="#litho">4. Printing the pattern: lithography and EUV</a><a href="#steps">5. Hundreds of steps, layer by layer</a><a href="#nodes">6. What &quot;2 nanometre&quot; really means</a><a href="#package">7. Testing, cutting and packaging</a><a href="#hbm">8. Stacking the memory</a><a href="#rack">9. From chip to rack to data centre</a><a href="#money">10. Who does it, where, and what it costs</a><a href="#sources">11. Sources</a></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip guides</a><a href="/ai-atlas/ai-chips/how-ai-chips-work/" class="sidebar-link">How AI chips work</a><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD guide</a><a href="/ai-atlas/ai-chips/nvidia/" class="sidebar-link">NVIDIA guide</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22How%20an%20AI%20Chip%20Is%20Made%3A%20From%20Sand%20to%20Server%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-a-chip-is-made%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22How%20an%20AI%20Chip%20Is%20Made%3A%20From%20Sand%20to%20Server%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-a-chip-is-made%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22How%20an%20AI%20Chip%20Is%20Made%3A%20From%20Sand%20to%20Server%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-a-chip-is-made%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22How%20an%20AI%20Chip%20Is%20Made%3A%20From%20Sand%20to%20Server%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-a-chip-is-made%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22How%20an%20AI%20Chip%20Is%20Made%3A%20From%20Sand%20to%20Server%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-a-chip-is-made%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

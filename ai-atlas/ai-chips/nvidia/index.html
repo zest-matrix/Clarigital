@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NVIDIA AI Chips: The Complete Guide | Clarigital</title>
+<meta name="description" content="How NVIDIA&#x27;s AI chips are made, where, what they cost to rent, and the facts buried in its filings. Simple to expert, every figure linked to its source.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/nvidia/">
+<meta property="og:title" content="NVIDIA AI Chips: The Complete Guide">
+<meta property="og:description" content="How NVIDIA&#x27;s AI chips are made, where, what they cost to rent, and the facts buried in its filings. Simple to expert, every figure linked to its source.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/nvidia/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v3*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v3*//end
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "NVIDIA AI Chips: The Complete Guide", "description": "How NVIDIA's AI chips are made, where, what they cost to rent, and the facts buried in its filings. Simple to expert, every figure linked to its source.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/nvidia/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/nvidia/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "about": {"@type": "Organization", "name": "NVIDIA Corporation", "url": "https://www.nvidia.com", "tickerSymbol": "NASDAQ: NVDA", "foundingDate": "1993-04-05", "founder": [{"@type": "Person", "name": "Jensen Huang"}, {"@type": "Person", "name": "Chris Malachowsky"}, {"@type": "Person", "name": "Curtis Priem"}], "address": {"@type": "PostalAddress", "streetAddress": "2788 San Tomas Expressway", "addressLocality": "Santa Clara", "addressRegion": "CA", "postalCode": "95051", "addressCountry": "US"}, "numberOfEmployees": {"@type": "QuantitativeValue", "value": 42000}}, "citation": ["https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm", "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027", "https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf", "https://www.nvidia.com/en-us/data-center/gb200-nvl72/", "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026", "https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/", "https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf", "https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf", "https://nvidianews.nvidia.com/news/nvidia-launches-world-s-first-deep-learning-supercomputer-6622436", "https://blogs.nvidia.com/blog/openai-nvidia/", "https://nvidianews.nvidia.com/news/nvidia-announces-hopper-architecture-the-next-generation-of-accelerated-computing", "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing", "https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-ai-factory-platform-paves-way-for-age-of-ai-reasoning", "https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer", "https://nvidianews.nvidia.com/news/nvidia-to-acquire-mellanox-for-6-9-billion", "https://nvidianews.nvidia.com/news/nvidia-completes-acquisition-of-mellanox-creating-major-force-driving-next-gen-data-centers", "https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform", "https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale", "https://nvidianews.nvidia.com/news/nvidia-supercharges-hopper-the-worlds-leading-ai-computing-platform", "https://nvidianews.nvidia.com/news/nvidia-unveils-rubin-cpx-a-new-class-of-gpu-designed-for-massive-context-inference", "https://nvidianews.nvidia.com/news/nvidia-dgx-spark-arrives-for-worlds-ai-developers", "https://www.nvidia.com/en-us/products/workstations/dgx-station/", "https://www.nvidia.com/en-au/data-center/hgx.html", "https://www.nvidia.com/en-us/data-center/dgx-b200/", "https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/", "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai", "https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/", "https://www.globenewswire.com/news-release/2025/03/18/3044997/14450/en/Micron-Innovates-From-the-Data-Center-to-the-Edge-With-NVIDIA.html", "https://investors.micron.com/news-releases/news-release-details/micron-high-volume-production-hbm4-designed-nvidia-vera-rubin", "https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026", "https://news.skhynix.com/en/skhynix-nvidia-partnership-2026/", "https://blogs.nvidia.com/blog/nvidia-manufacture-american-made-ai-supercomputers-us", "https://blogs.nvidia.com/blog/tsmc-blackwell-manufacturing/", "https://www.wistron.com/en/Newsroom/2026-07-22", "https://ir.amkor.com/news-releases/news-release-details/amkor-technology-breaks-ground-new-semiconductor-advanced", "https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs", "https://blogs.nvidia.com/blog/wistron-manufacturing-texas/", "https://www.foxconn.com/en-us/press-center/press-releases/latest-news/1867", "https://amkor.com/amkor-technology-arizona/", "https://www.aseglobal.com/press-room/spil-hosts-nvidia-founder-and-ceo-at-new-factory-site/", "https://www.skhynix.com/company/UI-FR-CP02/", "https://news.skhynix.com/en/sk-hynix-to-produce-dram-from-m15x-in-cheongju/", "https://www.micron.com/about/locations", "https://semiconductor.samsung.com/support/contact-info/global-network/korea/", "https://www.nvidia.com/en-in/contact/asia/", "https://www.nvidia.com/es-la/about-nvidia/contact-information-asia/", "https://www.nvidia.com/en-us/made-in-usa/", "https://www.nvidia.com/en-us/data-center/gb300-nvl72/", "https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era", "https://developer.nvidia.com/blog/nvidia-contributes-nvidia-gb200-nvl72-designs-to-open-compute-project", "https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf", "https://developer.nvidia.com/blog/scaling-ai-factories-with-co-packaged-optics-for-better-power-efficiency", "https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories", "https://www.nvidia.com/en-us/data-center/h100/", "https://www.nvidia.com/en-us/data-center/h200/", "https://www.nvidia.com/en-in/data-center/vera-rubin-nvl72/", "https://marketplace.nvidia.com/en-us/enterprise/data-center/where-to-buy/", "https://www.nvidia.com/en-us/data-center/get-dgx/", "https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713", "https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics", "https://nvidianews.nvidia.com/news/nvidia-blackwell-powered-jetson-thor-now-available-accelerating-the-age-of-general-robotics", "https://marketplace.nvidia.com/en-us/enterprise/robotics-edge/jetson-thor-developer-kit/", "https://marketplace.nvidia.com/en-us/enterprise/robotics-edge/jetson-orin-nano-super-developer-kit/", "https://docs.nvidia.com/ai-enterprise/planning-resource/licensing-guide/latest/pricing.html", "https://aws.amazon.com/ec2/capacityblocks/pricing/", "https://cloud.google.com/products/compute/pricing/accelerator-optimized", "https://cloud.google.com/products/dws/pricing", "https://aws.amazon.com/about-aws/whats-new/2025/06/pricing-usage-model-ec2-instances-nvidia-gpus/", "https://compute.indiaai.gov.in/indiaaipricecalculator", "https://www.e2enetworks.com/gpu-cloud", "https://shakticloud.ai/pricing/", "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097709", "https://nvidia.com/en-us/technologies/cuda-x", "https://nvidianews.nvidia.com/news/nvidia-nim-model-deployment-generative-ai-developers", "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Enters-Production-With-Dynamo-the-Broadly-Adopted-Inference-Operating-System-for-AI-Factories/default.aspx", "https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-and-Intel-to-Develop-AI-Infrastructure-and-Personal-Computing-Products/default.aspx", "https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems", "https://blogs.nvidia.com/blog/microsoft-nvidia-anthropic-announce-partnership", "https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia", "https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia", "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm", "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000082/nvda-20250409.htm", "https://blogs.nvidia.com/blog/2023/09/04/modi-huang-india", "https://nvidianews.nvidia.com/news/reliance-and-nvidia-partner-to-advance-ai-in-india-for-india", "https://investor.nvidia.com/news/press-release-details/2023/Tata-Partners-With-NVIDIA-to-Build-Large-Scale-AI-Infrastructure/default.aspx", "https://blogs.nvidia.com/blog/india-ai-infrastructure", "https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/", "https://blogs.nvidia.com/blog/gtc-2026-news/", "https://www.tweaktown.com/news/110521/nvidia-updates-roadmap-with-new-details-on-its-next-gen-gpu-feynman-coming-in-2028/index.html"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "NVIDIA", "item": "https://www.clarigital.com/ai-atlas/ai-chips/nvidia/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>NVIDIA</span></nav>
+    <span class="label-tag">AI Chips · Brand guide</span>
+    <h1>NVIDIA AI Chips: The Complete Guide</h1>
+    <p class="hero-lead">The company whose chips train and run most of the world&#x27;s AI. What it sells, how the chips are made and where, what they cost, and the facts buried in its own filings. Three reading levels in every section. Every number links to its source.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">NVIDIA</span>
+      <span class="meta-tag mt-gray">16 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">89 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Every brand in our AI Chips section uses the same 16 sections in the same order. Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where a company has not published something, we say so rather than estimate.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>NVIDIA designs the chips that most AI systems are trained and run on. It does not own a factory: it designs the chips and pays other companies, mainly TSMC in Taiwan and now Arizona, to make them <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. In its latest quarter it sold <b>$96.2 billion</b> of products, and <b>$89.0 billion</b> of that came from data centres, the buildings full of computers where AI lives <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Announces Financial Results for Second Quarter Fiscal 2027 (26 Aug 2026)">2</a>.</p>
+<div class="fact-grid">
+<div><b>What it sells</b>AI chips (GPUs), whole AI computer racks, networking and software</div>
+<div><b>Latest chip family</b>Vera Rubin, shipping from August 2026 <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a></div>
+<div><b>Who makes the chips</b>TSMC, with partners for packaging and assembly <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a></div>
+<div><b>Where you can rent one</b>AWS, Google Cloud, Microsoft Azure and Indian clouds (see Official pricing)</div>
+</div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Think of NVIDIA as a company that sells the whole engine room, not just one part. A single "chip" today is sold as part of a rack: 72 GPUs, 36 processors, the cables that connect them and the software that makes them act as one giant computer <a class="cite" href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/" target="_blank" rel="noopener" title="NVIDIA: GB200 NVL72 product page">4</a>. That is why its data centre business is about nine-tenths of all its revenue: $193.7 billion of $215.9 billion in fiscal 2026 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2026">5</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>NVIDIA's fiscal year ends in late January, so "fiscal 2027" is roughly February 2026 to January 2027. The quarter ended 26 July 2026 grew 106% year on year, Data Center grew 117%, and NVIDIA guided the next quarter to $108.0 billion, plus or minus 2% <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Announces Financial Results for Second Quarter Fiscal 2027 (26 Aug 2026)">2</a>. Management told investors that supply, not demand, is the limit "at least through the end of fiscal year 2028" <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="company" aria-labelledby="h-company">
+<h2 id="h-company"><span>2.</span>Company card</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>NVIDIA Corporation was founded on 5 April 1993 by Jensen Huang, Chris Malachowsky and Curtis Priem <a class="cite" href="https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/" target="_blank" rel="noopener" title="NVIDIA: Corporate timeline">6</a>. Jensen Huang is still President and Chief Executive Officer <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. Its shares trade on the Nasdaq under the symbol <b>NVDA</b> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</p>
+<table class="spec"><tbody>
+<tr><th>Legal name</th><td>NVIDIA Corporation <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a></td></tr>
+<tr><th>Headquarters</th><td>2788 San Tomas Expressway, Santa Clara, California 95051, USA <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a> (<a href="https://www.openstreetmap.org/search?query=2788%20San%20Tomas%20Expressway%20Santa%20Clara" target="_blank" rel="noopener">map</a>)</td></tr>
+<tr><th>Founded</th><td>5 April 1993 <a class="cite" href="https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/" target="_blank" rel="noopener" title="NVIDIA: Corporate timeline">6</a></td></tr>
+<tr><th>Chief Executive</th><td>Jensen Huang, co-founder <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a></td></tr>
+<tr><th>Employees</th><td>About 42,000 in 38 countries, 31,000 of them in research and development (end of fiscal 2026) <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a></td></tr>
+<tr><th>Stock</th><td>NVDA, Nasdaq Global Select Market <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a></td></tr>
+<tr><th>Investor site</th><td><a href="https://investor.nvidia.com" target="_blank" rel="noopener">investor.nvidia.com</a></td></tr>
+</tbody></table>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. Its financial year ends on the last Sunday of January; fiscal 2026 ended on 25 January 2026, and the annual report (Form 10-K) was filed on 25 February 2026 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Two documents answer most questions about NVIDIA: the annual 10-K, which describes the business and its risks, and the quarterly 10-Q, which updates the numbers. Both are free on the US Securities and Exchange Commission's site and on NVIDIA's investor site <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a> <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 26 July 2026 (investor site copy)">7</a>. NVIDIA also publishes a "CFO Commentary" each quarter, which is where the plain-language explanation of each number usually sits <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf" target="_blank" rel="noopener" title="NVIDIA: CFO Commentary on Second Quarter Fiscal 2027 Results">8</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>3.</span>The story</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul class="timeline">
+<li><b>1993</b> Founded by Jensen Huang, Chris Malachowsky and Curtis Priem <a class="cite" href="https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/" target="_blank" rel="noopener" title="NVIDIA: Corporate timeline">6</a>.</li>
+<li><b>1999</b> Says it invented the GPU, a chip built to do thousands of small calculations at once <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</li>
+<li><b>2006</b> Launches CUDA, software that lets anyone use a GPU for maths, not just graphics <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</li>
+<li><b>2012</b> Researchers train the AlexNet image model on NVIDIA GPUs, the start of modern AI <a class="cite" href="https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/" target="_blank" rel="noopener" title="NVIDIA: Corporate timeline">6</a>.</li>
+<li><b>2016</b> Launches DGX-1, its first "AI supercomputer in a box", and hands the first one to OpenAI <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-launches-world-s-first-deep-learning-supercomputer-6622436" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Launches World&#x27;s First Deep Learning Supercomputer (DGX-1, 5 Apr 2016)">9</a> <a class="cite" href="https://blogs.nvidia.com/blog/openai-nvidia/" target="_blank" rel="noopener" title="NVIDIA Blog: OpenAI and NVIDIA: from the first DGX to 10 gigawatts">10</a>.</li>
+<li><b>2022</b> Hopper architecture and the H100 chip <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-announces-hopper-architecture-the-next-generation-of-accelerated-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Announces Hopper Architecture (22 Mar 2022)">11</a>.</li>
+<li><b>2024</b> Blackwell, two chips joined into one <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Blackwell Platform Arrives (18 Mar 2024)">12</a>.</li>
+<li><b>2025</b> Blackwell Ultra <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-ai-factory-platform-paves-way-for-age-of-ai-reasoning" target="_blank" rel="noopener" title="NVIDIA Newsroom: Blackwell Ultra AI Factory Platform (18 Mar 2025)">13</a>.</li>
+<li><b>2026</b> Vera Rubin, in full production and shipping from August <a class="cite" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener" title="NVIDIA Newsroom: Rubin platform (CES, 5 Jan 2026)">14</a> <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The turning point was not a chip but software. Graphics chips were already good at doing many small sums in parallel, which is exactly what training a neural network needs. CUDA, launched in 2006, gave researchers a way to program them <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. When the AlexNet model won an image-recognition contest in 2012 using NVIDIA GPUs, the research world followed <a class="cite" href="https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/" target="_blank" rel="noopener" title="NVIDIA: Corporate timeline">6</a>. By the time AI demand exploded after 2022, NVIDIA had a decade's head start in both hardware and the tools people already knew.</p>
+<p>Networking was the second big bet. NVIDIA agreed to buy Mellanox, an Israeli networking company, in March 2019 for about $6.9 billion and completed the deal in April 2020 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-to-acquire-mellanox-for-6-9-billion" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA to Acquire Mellanox for $6.9 Billion (11 Mar 2019)">15</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-completes-acquisition-of-mellanox-creating-major-force-driving-next-gen-data-centers" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Completes Acquisition of Mellanox (27 Apr 2020)">16</a>. That is why NVIDIA can sell the cables and switches that join thousands of GPUs, not just the GPUs.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>NVIDIA's product rhythm is now one new platform a year: Hopper (announced March 2022), Blackwell (March 2024), Blackwell Ultra (March 2025), Rubin (unveiled January 2026 at CES and expanded at GTC in March 2026) <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-announces-hopper-architecture-the-next-generation-of-accelerated-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Announces Hopper Architecture (22 Mar 2022)">11</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Blackwell Platform Arrives (18 Mar 2024)">12</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-ai-factory-platform-paves-way-for-age-of-ai-reasoning" target="_blank" rel="noopener" title="NVIDIA Newsroom: Blackwell Ultra AI Factory Platform (18 Mar 2025)">13</a> <a class="cite" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener" title="NVIDIA Newsroom: Rubin platform (CES, 5 Jan 2026)">14</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Vera Rubin platform (GTC, 16 Mar 2026)">17</a>. Each is announced at GTC, NVIDIA's spring conference, and each changes the rack as well as the chip. In December 2025 NVIDIA took a non-exclusive licence to Groq's inference technology, and Groq's founder Jonathan Ross and president Sunny Madra joined NVIDIA <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">18</a>; a "Groq 3 LPU" is now one of the seven chips in the Vera Rubin platform <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Vera Rubin platform (GTC, 16 Mar 2026)">17</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineup" aria-labelledby="h-lineup">
+<h2 id="h-lineup"><span>4.</span>The lineup</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>NVIDIA sells AI chips at three sizes: single chips, 8-chip servers, and whole racks. Big companies mostly buy racks.</p>
+<table class="spec"><thead><tr><th>Name</th><th>What it is</th><th>Announced</th></tr></thead><tbody>
+<tr><td>H100 / H200 (Hopper)</td><td>The chip behind the first ChatGPT boom; H200 has more memory</td><td>Mar 2022 / Nov 2023 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-announces-hopper-architecture-the-next-generation-of-accelerated-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Announces Hopper Architecture (22 Mar 2022)">11</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-supercharges-hopper-the-worlds-leading-ai-computing-platform" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Supercharges Hopper (H200, 13 Nov 2023)">19</a></td></tr>
+<tr><td>B200 (Blackwell)</td><td>Two chips joined into one, sold in 8-GPU servers</td><td>Mar 2024 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Blackwell Platform Arrives (18 Mar 2024)">12</a></td></tr>
+<tr><td>GB200 NVL72</td><td>A rack of 72 Blackwell GPUs and 36 Grace processors that acts as one computer</td><td>Mar 2024 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Blackwell Platform Arrives (18 Mar 2024)">12</a></td></tr>
+<tr><td>B300 / GB300 NVL72 (Blackwell Ultra)</td><td>Faster Blackwell with more memory</td><td>Mar 2025 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-ai-factory-platform-paves-way-for-age-of-ai-reasoning" target="_blank" rel="noopener" title="NVIDIA Newsroom: Blackwell Ultra AI Factory Platform (18 Mar 2025)">13</a></td></tr>
+<tr><td>Vera Rubin NVL72</td><td>72 Rubin GPUs and 36 Vera processors per rack</td><td>Jan 2026 <a class="cite" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener" title="NVIDIA Newsroom: Rubin platform (CES, 5 Jan 2026)">14</a></td></tr>
+<tr><td>Rubin CPX</td><td>A GPU for reading very long inputs quickly</td><td>Sep 2025 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-unveils-rubin-cpx-a-new-class-of-gpu-designed-for-massive-context-inference" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Unveils Rubin CPX (9 Sep 2025)">20</a></td></tr>
+<tr><td>DGX Spark / DGX Station</td><td>Desktop AI computers for developers</td><td>Mar 2025 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-dgx-spark-arrives-for-worlds-ai-developers" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA DGX Spark Arrives for World&#x27;s AI Developers (13 Oct 2025)">21</a> <a class="cite" href="https://www.nvidia.com/en-us/products/workstations/dgx-station/" target="_blank" rel="noopener" title="NVIDIA: DGX Station product page">22</a></td></tr>
+</tbody></table>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The names follow a pattern. The architecture is named after a scientist (Hopper, Blackwell, Rubin). "B200" or "H100" is a single GPU. "HGX" is the 8-GPU board that server makers build around <a class="cite" href="https://www.nvidia.com/en-au/data-center/hgx.html" target="_blank" rel="noopener" title="NVIDIA: HGX platform page">23</a>; "DGX" is NVIDIA's own finished server <a class="cite" href="https://www.nvidia.com/en-us/data-center/dgx-b200/" target="_blank" rel="noopener" title="NVIDIA: DGX B200 product page">24</a>. "GB200" joins a Grace processor with Blackwell GPUs, and "NVL72" means 72 GPUs linked by NVLink in one rack <a class="cite" href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/" target="_blank" rel="noopener" title="NVIDIA: GB200 NVL72 product page">4</a>. Vera is the processor that replaces Grace in the Rubin generation <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform: Six New Chips, One AI Supercomputer">25</a>.</p>
+<p>Status as of September 2026: NVIDIA said in January 2026 that Rubin was in full production with partner products in the second half of 2026 <a class="cite" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener" title="NVIDIA Newsroom: Rubin platform (CES, 5 Jan 2026)">14</a>, and in August 2026 that production shipments of Vera Rubin had started <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>. Rubin CPX was expected at the end of 2026 when announced <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-unveils-rubin-cpx-a-new-class-of-gpu-designed-for-massive-context-inference" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Unveils Rubin CPX (9 Sep 2025)">20</a>. A Windows edition of DGX Station was announced for the fourth quarter of 2026 <a class="cite" href="https://www.nvidia.com/en-us/products/workstations/dgx-station/" target="_blank" rel="noopener" title="NVIDIA: DGX Station product page">22</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The Vera Rubin platform is described by NVIDIA as seven chips: Vera CPU, Rubin GPU, NVLink 6 Switch, ConnectX-9 SuperNIC, BlueField-4 DPU, Spectrum-6 Ethernet switch and the Groq 3 LPU <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Vera Rubin platform (GTC, 16 Mar 2026)">17</a>. The Groq 3 LPX system entered full production on 24 August 2026, with Nebius named as the first AI cloud to adopt it <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Groq 3 LPX Now in Full Production (24 Aug 2026)">26</a>. NVIDIA also sells a Vera CPU rack of 256 Vera processors for work that needs processors rather than GPUs <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Vera Rubin platform (GTC, 16 Mar 2026)">17</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>How it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>NVIDIA designs its chips and other companies make them. Its annual report calls this a "fabless" model and names who does what <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>:</p>
+<ol class="steps">
+<li><b>Design</b> by NVIDIA's own engineers; 31,000 of its 42,000 staff work in research and development <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</li>
+<li><b>Chip making (wafers)</b> by TSMC and Samsung <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. For Blackwell, NVIDIA says it uses a "custom-built TSMC 4NP process" <a class="cite" href="https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/" target="_blank" rel="noopener" title="NVIDIA: Blackwell architecture page">27</a>.</li>
+<li><b>Memory</b> from SK hynix, Micron and Samsung <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>, stacked right next to the chip.</li>
+<li><b>Packaging</b>, where the chip and memory are joined, using TSMC's CoWoS technology <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</li>
+<li><b>Assembly and test</b> into boards and racks by Foxconn (Hon Hai), Wistron and Fabrinet <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>A Blackwell GPU is two "reticle-limited" dies (each as big as a chip-making machine can print in one go) joined by a 10 terabytes-per-second link so software sees one GPU; together they hold 208 billion transistors <a class="cite" href="https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/" target="_blank" rel="noopener" title="NVIDIA: Blackwell architecture page">27</a>. The memory, called HBM, sits beside the dies on the same package. That packaging step is why the words "CoWoS" and "HBM" appear so often in NVIDIA's filings: they are the parts in shortest supply <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a> <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf" target="_blank" rel="noopener" title="NVIDIA: CFO Commentary on Second Quarter Fiscal 2027 Results">8</a>.</p>
+<p>Memory makers have said publicly which products they supply. Micron said its HBM3E 12-high 36 GB stacks were designed into the HGX B300 NVL16 and GB300 NVL72, and its 8-high 24 GB stacks were available for HGX B200 and GB200 NVL72 <a class="cite" href="https://www.globenewswire.com/news-release/2025/03/18/3044997/14450/en/Micron-Innovates-From-the-Data-Center-to-the-Edge-With-NVIDIA.html" target="_blank" rel="noopener" title="Micron (press release): Micron innovates from the data center to the edge with NVIDIA (18 Mar 2025)">28</a>. For Rubin, Micron and Samsung each announced HBM4 in production designed for Vera Rubin <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-high-volume-production-hbm4-designed-nvidia-vera-rubin" target="_blank" rel="noopener" title="Micron Investor Relations: High-volume production of HBM4 designed for NVIDIA Vera Rubin">29</a> <a class="cite" href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung at NVIDIA GTC 2026: HBM4 for Vera Rubin">30</a>, and SK hynix announced a partnership in which an SK Telecom AI factory will deploy Vera Rubin with SK hynix HBM4 <a class="cite" href="https://news.skhynix.com/en/skhynix-nvidia-partnership-2026/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix and NVIDIA partnership (2026)">31</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The supply chain is now moving partly to the US. In April 2025 NVIDIA said Blackwell chips would be produced at TSMC in Phoenix, packaged and tested by Amkor and SPIL in Arizona, and built into supercomputers by Foxconn in Houston and Wistron in Texas <a class="cite" href="https://blogs.nvidia.com/blog/nvidia-manufacture-american-made-ai-supercomputers-us" target="_blank" rel="noopener" title="NVIDIA Blog: NVIDIA to manufacture American-made AI supercomputers in the US (14 Apr 2025)">32</a>. The first Blackwell wafer made in the US came off TSMC's Phoenix line on 17 October 2025 <a class="cite" href="https://blogs.nvidia.com/blog/tsmc-blackwell-manufacturing/" target="_blank" rel="noopener" title="NVIDIA Blog: First Blackwell wafer produced in the US at TSMC Arizona (17 Oct 2025)">33</a>, and Wistron said the first US-built GB300 superchip was mass-produced at its Fort Worth plant in July 2026 <a class="cite" href="https://www.wistron.com/en/Newsroom/2026-07-22" target="_blank" rel="noopener" title="Wistron Newsroom: First US-built NVIDIA GB300 superchip at D1, Fort Worth (22 Jul 2026)">34</a>. Amkor's Arizona packaging campus is not expected to start production until early 2028 <a class="cite" href="https://ir.amkor.com/news-releases/news-release-details/amkor-technology-breaks-ground-new-semiconductor-advanced" target="_blank" rel="noopener" title="Amkor Technology: Amkor breaks ground on Arizona advanced packaging campus">35</a>, so advanced packaging still happens mainly in Taiwan today.</p>
+<p>NVIDIA has not said which process node Rubin uses; its technical blog gives 336 billion transistors and two compute dies but no node <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform: Six New Chips, One AI Supercomputer">25</a>. We do not repeat unofficial reports.</p>
+</div>
+</section>
+<section class="chip-sec" id="where" aria-labelledby="h-where">
+<h2 id="h-where"><span>6.</span>Where it’s made: factories and addresses</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>These are the sites NVIDIA or its partners have <b>officially</b> linked to NVIDIA chips. Addresses come from each operator's own website. Where a company gives only a city, we say so.</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Site</th><th>Operator</th><th>Address</th><th>What happens there</th></tr></thead><tbody>
+<tr><td>TSMC Arizona (Fab 21)</td><td>TSMC</td><td>5088 W. Innovation Circle, Phoenix, AZ 85083, USA <a class="cite" href="https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs" target="_blank" rel="noopener" title="TSMC: TSMC fabs and locations">36</a> (<a href="https://www.openstreetmap.org/search?query=5088%20W%20Innovation%20Circle%20Phoenix" target="_blank" rel="noopener">map</a>)</td><td>Wafers; first US-made Blackwell wafer, Oct 2025 <a class="cite" href="https://blogs.nvidia.com/blog/tsmc-blackwell-manufacturing/" target="_blank" rel="noopener" title="NVIDIA Blog: First Blackwell wafer produced in the US at TSMC Arizona (17 Oct 2025)">33</a></td></tr>
+<tr><td>Wistron D1</td><td>Wistron</td><td>Fort Worth, Texas (city only published) <a class="cite" href="https://www.wistron.com/en/Newsroom/2026-07-22" target="_blank" rel="noopener" title="Wistron Newsroom: First US-built NVIDIA GB300 superchip at D1, Fort Worth (22 Jul 2026)">34</a></td><td>Builds GB300 superchips; Vera Rubin planned <a class="cite" href="https://blogs.nvidia.com/blog/wistron-manufacturing-texas/" target="_blank" rel="noopener" title="NVIDIA Blog: Wistron manufacturing in Texas">37</a></td></tr>
+<tr><td>Foxconn Houston</td><td>Hon Hai (Foxconn)</td><td>Houston, Texas (city only published) <a class="cite" href="https://www.foxconn.com/en-us/press-center/press-releases/latest-news/1867" target="_blank" rel="noopener" title="Foxconn: Press release: AI server plant with NVIDIA in Houston">38</a></td><td>AI server manufacturing with NVIDIA <a class="cite" href="https://www.foxconn.com/en-us/press-center/press-releases/latest-news/1867" target="_blank" rel="noopener" title="Foxconn: Press release: AI server plant with NVIDIA in Houston">38</a></td></tr>
+<tr><td>Amkor Arizona</td><td>Amkor Technology</td><td>Peoria Innovation Core, north Peoria, Arizona <a class="cite" href="https://amkor.com/amkor-technology-arizona/" target="_blank" rel="noopener" title="Amkor Technology: Amkor Technology Arizona">39</a></td><td>Packaging and test; production expected early 2028 <a class="cite" href="https://ir.amkor.com/news-releases/news-release-details/amkor-technology-breaks-ground-new-semiconductor-advanced" target="_blank" rel="noopener" title="Amkor Technology: Amkor breaks ground on Arizona advanced packaging campus">35</a></td></tr>
+<tr><td>SPIL Arizona</td><td>SPIL (ASE Group)</td><td>Arizona; site not published</td><td>Packaging and test, announced by NVIDIA <a class="cite" href="https://blogs.nvidia.com/blog/nvidia-manufacture-american-made-ai-supercomputers-us" target="_blank" rel="noopener" title="NVIDIA Blog: NVIDIA to manufacture American-made AI supercomputers in the US (14 Apr 2025)">32</a></td></tr>
+<tr><td>SPIL Tan Ke plant</td><td>SPIL (ASE Group)</td><td>Taiwan; street address not published <a class="cite" href="https://www.aseglobal.com/press-room/spil-hosts-nvidia-founder-and-ceo-at-new-factory-site/" target="_blank" rel="noopener" title="ASE Group: SPIL hosts NVIDIA founder and CEO at new factory site (16 Jan 2025)">40</a></td><td>Assembly and test "designed to meet the growing demand for NVIDIA's accelerated computing" <a class="cite" href="https://www.aseglobal.com/press-room/spil-hosts-nvidia-founder-and-ceo-at-new-factory-site/" target="_blank" rel="noopener" title="ASE Group: SPIL hosts NVIDIA founder and CEO at new factory site (16 Jan 2025)">40</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>These sites belong to NVIDIA's suppliers but no company has said they make NVIDIA parts. We list them so you know where the capacity is, marked "not disclosed".</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Site</th><th>Address (operator's own site)</th><th>Role</th><th>Makes NVIDIA parts?</th></tr></thead><tbody>
+<tr><td>TSMC Fab 18</td><td>8, Beiyuan Rd. 2, Southern Taiwan Science Park, Tainan, Taiwan <a class="cite" href="https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs" target="_blank" rel="noopener" title="TSMC: TSMC fabs and locations">36</a></td><td>Advanced wafers</td><td>Not disclosed</td></tr>
+<tr><td>TSMC Advanced Backend Fab 5</td><td>5, Keya W. Rd., Central Taiwan Science Park, Taichung, Taiwan <a class="cite" href="https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs" target="_blank" rel="noopener" title="TSMC: TSMC fabs and locations">36</a></td><td>Advanced packaging</td><td>Not disclosed</td></tr>
+<tr><td>TSMC Advanced Backend Fab 6</td><td>Zhunan, Miaoli, Taiwan (street not listed) <a class="cite" href="https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs" target="_blank" rel="noopener" title="TSMC: TSMC fabs and locations">36</a></td><td>Advanced packaging</td><td>Not disclosed</td></tr>
+<tr><td>SK hynix Icheon</td><td>2091 Gyeongchung-daero, Bubal-eup, Icheon-si, Gyeonggi-do, Korea <a class="cite" href="https://www.skhynix.com/company/UI-FR-CP02/" target="_blank" rel="noopener" title="SK hynix: Company locations">41</a></td><td>HQ and memory fabs</td><td>Not disclosed</td></tr>
+<tr><td>SK hynix M15X</td><td>Cheongju, North Chungcheong (street not listed) <a class="cite" href="https://news.skhynix.com/en/sk-hynix-to-produce-dram-from-m15x-in-cheongju/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix to produce DRAM from M15X in Cheongju">42</a></td><td>New DRAM fab including HBM</td><td>Not disclosed</td></tr>
+<tr><td>Micron Hiroshima</td><td>7-10 Yoshikawakogyodanchi, Higashihiroshima, Hiroshima, Japan <a class="cite" href="https://www.micron.com/about/locations" target="_blank" rel="noopener" title="Micron: Micron locations">43</a></td><td>DRAM</td><td>Not disclosed</td></tr>
+<tr><td>Micron Taichung</td><td>No. 369, Sec. 4, Sanfeng Rd., Houli Dist., Taichung, Taiwan <a class="cite" href="https://www.micron.com/about/locations" target="_blank" rel="noopener" title="Micron: Micron locations">43</a></td><td>Memory</td><td>Not disclosed</td></tr>
+<tr><td>Samsung Hwaseong</td><td>1 Samsungjeonja-ro, Hwaseong-si, Gyeonggi-do, Korea <a class="cite" href="https://semiconductor.samsung.com/support/contact-info/global-network/korea/" target="_blank" rel="noopener" title="Samsung Semiconductor: Korea global network contacts">44</a></td><td>Chip R&amp;D and production</td><td>Not disclosed</td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>NVIDIA's own offices in India, from nvidia.com (the English India page lists the cities; the street addresses appear on its Asia contact page and may be older) <a class="cite" href="https://www.nvidia.com/en-in/contact/asia/" target="_blank" rel="noopener" title="NVIDIA: Contact NVIDIA, India">45</a> <a class="cite" href="https://www.nvidia.com/es-la/about-nvidia/contact-information-asia/" target="_blank" rel="noopener" title="NVIDIA: Contact information, Asia (office addresses)">46</a>:</p>
+<ul>
+<li><b>Bengaluru:</b> C-1 "Jacaranda", Wing-A, Manyata Embassy Business Park, Outer Ring Road, Bangalore 560045</li>
+<li><b>Hyderabad:</b> Plot 6A &amp; B, IT Park Layout, Nanakramguda, Serilingampally Mandal, Hyderabad 500046</li>
+<li><b>Pune:</b> Commerzone, Building No. 5, Samrat Ashok Path, off Airport Road, Yerwada, Pune 411006</li>
+<li><b>Mumbai:</b> CNB Square No. 127, Andheri Kurla Road, Chakala, Andheri East, Mumbai 400093</li>
+<li><b>Gurugram and New Delhi:</b> listed as NVIDIA office cities; street addresses not published on the pages we checked</li>
+</ul>
+<p>In the US, NVIDIA says partner facilities in 43 states are involved in its American manufacturing push <a class="cite" href="https://www.nvidia.com/en-us/made-in-usa/" target="_blank" rel="noopener" title="NVIDIA: Made in USA page">47</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="works" aria-labelledby="h-works">
+<h2 id="h-works"><span>7.</span>How it works</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A normal processor (CPU) is like a few brilliant workers doing one task after another. A GPU is like thousands of workers each doing one small sum at the same moment. Training an AI model is billions of small sums, so the GPU wins.</p>
+<p>Modern AI models are too big for one GPU, so NVIDIA links 72 of them with very fast cables (called NVLink) so they behave like one enormous GPU <a class="cite" href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/" target="_blank" rel="noopener" title="NVIDIA: GB200 NVL72 product page">4</a>. The rack is the product.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Three things decide how fast an AI chip is in practice:</p>
+<ul>
+<li><b>Compute:</b> how many sums per second. NVIDIA quotes this in petaflops (a thousand trillion operations per second) at low precision such as FP4 or FP8, because AI does not need many decimal places <a class="cite" href="https://www.nvidia.com/en-us/data-center/gb300-nvl72/" target="_blank" rel="noopener" title="NVIDIA: GB300 NVL72 product page">48</a>.</li>
+<li><b>Memory:</b> how much the chip can hold and how fast it can read it. A Blackwell Ultra GPU has 288 GB of HBM3E memory at 8 terabytes per second <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">49</a>.</li>
+<li><b>Links:</b> how fast GPUs talk to each other. Fifth-generation NVLink gives each Blackwell GPU 1.8 terabytes per second, and 130 terabytes per second across a GB200 NVL72 rack <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Blackwell Platform Arrives (18 Mar 2024)">12</a> <a class="cite" href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/" target="_blank" rel="noopener" title="NVIDIA: GB200 NVL72 product page">4</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>NVIDIA now designs at data-centre scale. A GB200 NVL72 rack has 18 compute trays and 9 NVLink switch trays joined by more than 5,000 copper cables, and was designed for 120 kW of cooling capacity <a class="cite" href="https://developer.nvidia.com/blog/nvidia-contributes-nvidia-gb200-nvl72-designs-to-open-compute-project" target="_blank" rel="noopener" title="NVIDIA Technical Blog: NVIDIA contributes GB200 NVL72 designs to the Open Compute Project">50</a>; NVIDIA's DGX GB200 user guide puts the rack's power draw at about 120 kW <a class="cite" href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf" target="_blank" rel="noopener" title="NVIDIA Docs: DGX GB200 user guide">51</a>. Copper is used inside the rack because optical links cost power: NVIDIA puts a pluggable optical transceiver at about 30 W per port against about 9 W for its co-packaged optics <a class="cite" href="https://developer.nvidia.com/blog/scaling-ai-factories-with-co-packaged-optics-for-better-power-efficiency" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Scaling AI factories with co-packaged optics">52</a>, which it began shipping in its Quantum-X and Spectrum-X photonics switches <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories" target="_blank" rel="noopener" title="NVIDIA Newsroom: Spectrum-X and Quantum-X co-packaged optics switches (18 Mar 2025)">53</a>.</p>
+<p>Low precision is the other lever. NVFP4, NVIDIA's 4-bit format, is how the headline numbers are quoted: a Blackwell Ultra GPU does 15 petaflops of dense NVFP4 against 10 for Blackwell <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">49</a>. "Sparse" figures assume half the numbers are zero and are often close to double the dense figure; always check which one is quoted.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>8.</span>Specs explained</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>The table uses NVIDIA's own figures. "Dense" and "sparse" are explained in the Expert row below.</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Chip</th><th>Transistors</th><th>Memory</th><th>Memory speed</th><th>AI compute (as NVIDIA states it)</th><th>Max power</th></tr></thead><tbody>
+<tr><td>H100 SXM</td><td>80 billion <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-announces-hopper-architecture-the-next-generation-of-accelerated-computing" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Announces Hopper Architecture (22 Mar 2022)">11</a></td><td>80 GB HBM3</td><td>3.35 TB/s</td><td>3,958 TFLOPS FP8, sparse</td><td>Up to 700 W <a class="cite" href="https://www.nvidia.com/en-us/data-center/h100/" target="_blank" rel="noopener" title="NVIDIA: H100 Tensor Core GPU product page">54</a></td></tr>
+<tr><td>H200 SXM</td><td>—</td><td>141 GB HBM3e</td><td>4.8 TB/s</td><td>3,958 TFLOPS FP8, sparse</td><td>Up to 700 W <a class="cite" href="https://www.nvidia.com/en-us/data-center/h200/" target="_blank" rel="noopener" title="NVIDIA: H200 Tensor Core GPU product page">55</a></td></tr>
+<tr><td>Blackwell (B200 class)</td><td>208 billion <a class="cite" href="https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/" target="_blank" rel="noopener" title="NVIDIA: Blackwell architecture page">27</a></td><td>192 GB HBM3e</td><td>—</td><td>10 PFLOPS NVFP4, dense</td><td>1,200 W <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">49</a></td></tr>
+<tr><td>Blackwell Ultra (B300 class)</td><td>208 billion</td><td>288 GB HBM3e</td><td>8 TB/s</td><td>15 PFLOPS NVFP4, dense</td><td>1,400 W <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">49</a></td></tr>
+<tr><td>Rubin</td><td>336 billion</td><td>288 GB HBM4</td><td>See note</td><td>50 PFLOPS NVFP4 (inference)</td><td>Not published <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform: Six New Chips, One AI Supercomputer">25</a></td></tr>
+</tbody></table></div>
+<p class="note">Rubin memory speed: NVIDIA's January 2026 technical blog said "up to 22 TB/s" <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform: Six New Chips, One AI Supercomputer">25</a>; its current Vera Rubin NVL72 product page lists 19.2 TB/s per GPU <a class="cite" href="https://www.nvidia.com/en-in/data-center/vera-rubin-nvl72/" target="_blank" rel="noopener" title="NVIDIA: Vera Rubin NVL72 product page">56</a>. We show both until NVIDIA's pages agree.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Rack-level figures, from NVIDIA's product pages:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Rack</th><th>GPUs + CPUs</th><th>GPU memory</th><th>NVLink across rack</th><th>FP4 compute</th></tr></thead><tbody>
+<tr><td>GB200 NVL72</td><td>72 + 36 Grace</td><td>13.4 TB HBM3E, 576 TB/s</td><td>130 TB/s</td><td>1,440 PFLOPS sparse / 720 dense <a class="cite" href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/" target="_blank" rel="noopener" title="NVIDIA: GB200 NVL72 product page">4</a></td></tr>
+<tr><td>GB300 NVL72</td><td>72 + 36 Grace</td><td>20 TB, up to 576 TB/s</td><td>130 TB/s</td><td>1,440 PFLOPS sparse / 1,080 dense <a class="cite" href="https://www.nvidia.com/en-us/data-center/gb300-nvl72/" target="_blank" rel="noopener" title="NVIDIA: GB300 NVL72 product page">48</a></td></tr>
+<tr><td>Vera Rubin NVL72</td><td>72 + 36 Vera</td><td>20.7 TB HBM4, 1,400 TB/s</td><td>216 TB/s on product page; 260 TB/s in launch release</td><td>3,600 PFLOPS inference (sparse) / 2,520 training (dense) <a class="cite" href="https://www.nvidia.com/en-in/data-center/vera-rubin-nvl72/" target="_blank" rel="noopener" title="NVIDIA: Vera Rubin NVL72 product page">56</a> <a class="cite" href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener" title="NVIDIA Newsroom: Rubin platform (CES, 5 Jan 2026)">14</a></td></tr>
+</tbody></table></div>
+<p>Servers: an 8-GPU DGX B200 has 1,440 GB of HBM3e and draws about 14.3 kW at most <a class="cite" href="https://www.nvidia.com/en-us/data-center/dgx-b200/" target="_blank" rel="noopener" title="NVIDIA: DGX B200 product page">24</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>How to read these numbers without being misled:</p>
+<ul>
+<li><b>Sparse vs dense.</b> Sparse assumes a model where half the weights are zero and can be skipped. Most real workloads are closer to the dense figure, which is often around half.</li>
+<li><b>Precision.</b> FP4 numbers are roughly double FP8 numbers on the same chip. Comparing an FP4 figure on one chip with an FP8 figure on another is the most common mistake in chip comparisons.</li>
+<li><b>Inference vs training.</b> NVIDIA quotes Rubin at 50 PFLOPS NVFP4 for inference and 35 for training <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform: Six New Chips, One AI Supercomputer">25</a>; the training figure is the fairer comparison with older chips' dense numbers.</li>
+<li><b>Memory bandwidth is often the real limit</b> for running large models, which is why each generation adds more HBM. Even US export rules have used memory bandwidth as the test: the April 2025 licence requirement covered the H20 and any chip reaching its memory bandwidth <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</li>
+</ul>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>9.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>NVIDIA does not publish prices for its data-centre chips or racks.</b> H100, H200, B200, B300 and the NVL72 racks are sold through partners and by quote <a class="cite" href="https://marketplace.nvidia.com/en-us/enterprise/data-center/where-to-buy/" target="_blank" rel="noopener" title="NVIDIA Marketplace: Buy NVIDIA data center solutions from NPN partners">57</a> <a class="cite" href="https://www.nvidia.com/en-us/data-center/get-dgx/" target="_blank" rel="noopener" title="NVIDIA: Get DGX">58</a>. We do not repeat unofficial estimates. What <i>is</i> published officially is below.</p>
+<h3>Prices NVIDIA publishes</h3>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Product</th><th>Price</th><th>Notes</th></tr></thead><tbody>
+<tr><td>DGX Spark (desktop AI computer)</td><td>$4,699</td><td>Raised from $3,999 in February 2026; NVIDIA says it applies in all regions <a class="cite" href="https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713" target="_blank" rel="noopener" title="NVIDIA Developer Forums: Price change announcement (NVIDIA staff post, 23 Feb 2026)">59</a></td></tr>
+<tr><td>GeForce RTX 5090</td><td>$1,999</td><td>Launch price, January 2025 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics" target="_blank" rel="noopener" title="NVIDIA Newsroom: GeForce RTX 50 Series (CES, Jan 2025)">60</a></td></tr>
+<tr><td>GeForce RTX 5080</td><td>$999</td><td>Launch price <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics" target="_blank" rel="noopener" title="NVIDIA Newsroom: GeForce RTX 50 Series (CES, Jan 2025)">60</a></td></tr>
+<tr><td>GeForce RTX 5070 Ti / 5070</td><td>$749 / $549</td><td>Launch prices <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics" target="_blank" rel="noopener" title="NVIDIA Newsroom: GeForce RTX 50 Series (CES, Jan 2025)">60</a></td></tr>
+<tr><td>Jetson Thor developer kit</td><td>$5,499 on NVIDIA Marketplace</td><td>Launched at $3,499 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-blackwell-powered-jetson-thor-now-available-accelerating-the-age-of-general-robotics" target="_blank" rel="noopener" title="NVIDIA Newsroom: Jetson Thor now available">61</a> <a class="cite" href="https://marketplace.nvidia.com/en-us/enterprise/robotics-edge/jetson-thor-developer-kit/" target="_blank" rel="noopener" title="NVIDIA Marketplace: Jetson Thor Developer Kit">62</a></td></tr>
+<tr><td>Jetson Orin Nano Super developer kit</td><td>$399 on NVIDIA Marketplace</td><td>Launched at $249 <a class="cite" href="https://marketplace.nvidia.com/en-us/enterprise/robotics-edge/jetson-orin-nano-super-developer-kit/" target="_blank" rel="noopener" title="NVIDIA Marketplace: Jetson Orin Nano Super Developer Kit">63</a></td></tr>
+<tr><td>NVIDIA AI Enterprise software</td><td>$4,500 per GPU per year</td><td>Also $1 per GPU per hour through cloud marketplaces <a class="cite" href="https://docs.nvidia.com/ai-enterprise/planning-resource/licensing-guide/latest/pricing.html" target="_blank" rel="noopener" title="NVIDIA Docs: NVIDIA AI Enterprise licensing guide: pricing">64</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<h3>What it costs to rent NVIDIA chips (cloud list prices)</h3>
+<p>Clouds publish these themselves. Per-GPU figures are our division of the published price by the number of GPUs in the machine.</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Cloud and machine</th><th>GPUs</th><th>Published price</th><th>Per GPU-hour</th><th>Type</th></tr></thead><tbody>
+<tr><td>AWS p5.48xlarge (H100), US East</td><td>8</td><td>$41.528 / hour</td><td>$5.19</td><td>Capacity Block <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: EC2 Capacity Blocks for ML pricing">65</a></td></tr>
+<tr><td>AWS p5.48xlarge (H100), Mumbai</td><td>8</td><td>$37.76 / hour</td><td>$4.72</td><td>Capacity Block <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: EC2 Capacity Blocks for ML pricing">65</a></td></tr>
+<tr><td>AWS p5en.48xlarge (H200), US East</td><td>8</td><td>$54.92 / hour</td><td>$6.87</td><td>Capacity Block <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: EC2 Capacity Blocks for ML pricing">65</a></td></tr>
+<tr><td>AWS p6-b200.48xlarge (B200), incl. Mumbai and Hyderabad</td><td>8</td><td>$98.84 / hour</td><td>$12.36</td><td>Capacity Block <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: EC2 Capacity Blocks for ML pricing">65</a></td></tr>
+<tr><td>AWS p6-b300.48xlarge (B300)</td><td>8</td><td>$112.32 / hour</td><td>$14.04</td><td>Capacity Block <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: EC2 Capacity Blocks for ML pricing">65</a></td></tr>
+<tr><td>AWS UltraServer (GB200 NVL72), Dallas Local Zone</td><td>72</td><td>$761.904 / hour</td><td>$10.58</td><td>Capacity Block <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: EC2 Capacity Blocks for ML pricing">65</a></td></tr>
+<tr><td>Google Cloud a3-highgpu-8g (H100), Iowa</td><td>8</td><td>$88.49 / hour</td><td>$11.06</td><td>On-demand <a class="cite" href="https://cloud.google.com/products/compute/pricing/accelerator-optimized" target="_blank" rel="noopener" title="Google Cloud: Accelerator-optimized VM pricing">66</a></td></tr>
+<tr><td>Google Cloud a3-ultragpu-8g (H200), Iowa</td><td>8</td><td>$84.81 / hour</td><td>$10.60</td><td>On-demand <a class="cite" href="https://cloud.google.com/products/compute/pricing/accelerator-optimized" target="_blank" rel="noopener" title="Google Cloud: Accelerator-optimized VM pricing">66</a></td></tr>
+<tr><td>Google Cloud a4-highgpu-8g (B200)</td><td>8</td><td>$64.44 / hour</td><td>$8.06</td><td>Flex-start (no on-demand price listed) <a class="cite" href="https://cloud.google.com/products/dws/pricing" target="_blank" rel="noopener" title="Google Cloud: Dynamic Workload Scheduler pricing">67</a></td></tr>
+</tbody></table></div>
+<p class="note">AWS on-demand rates and Microsoft Azure's ND-series prices are loaded by script on their pages and could not be read reliably, so they are not shown. AWS says Capacity Block prices are updated regularly <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: EC2 Capacity Blocks for ML pricing">65</a>; AWS also cut P5 on-demand prices by up to 45% in June 2025 <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/06/pricing-usage-model-ec2-instances-nvidia-gpus/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Pricing and usage model changes for EC2 instances with NVIDIA GPUs (June 2025)">68</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<h3>In India (rupees, per hour, before tax)</h3>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Provider</th><th>Chip</th><th>Price</th><th>Notes</th></tr></thead><tbody>
+<tr><td>IndiaAI Mission compute portal</td><td>H100 SXM, 1 GPU</td><td>₹153 on-demand; ₹117 with 12-month reservation</td><td>Listed price; the portal notes subsidies of up to 40% may be available; excluding GST <a class="cite" href="https://compute.indiaai.gov.in/indiaaipricecalculator" target="_blank" rel="noopener" title="IndiaAI Mission: Compute portal price calculator">69</a></td></tr>
+<tr><td>IndiaAI Mission compute portal</td><td>B200 SXM, 1 GPU</td><td>₹290.70 on-demand; ₹251.10 reserved</td><td>Same basis <a class="cite" href="https://compute.indiaai.gov.in/indiaaipricecalculator" target="_blank" rel="noopener" title="IndiaAI Mission: Compute portal price calculator">69</a></td></tr>
+<tr><td>IndiaAI Mission compute portal</td><td>B300 SXM, 1 GPU</td><td>₹351 on-demand; ₹319.50 reserved</td><td>Same basis <a class="cite" href="https://compute.indiaai.gov.in/indiaaipricecalculator" target="_blank" rel="noopener" title="IndiaAI Mission: Compute portal price calculator">69</a></td></tr>
+<tr><td>E2E Networks</td><td>H100 / H200 / B200</td><td>₹255.55 / ₹379.05 / ₹664.05</td><td>On-demand, excluding taxes <a class="cite" href="https://www.e2enetworks.com/gpu-cloud" target="_blank" rel="noopener" title="E2E Networks: GPU cloud pricing">70</a></td></tr>
+<tr><td>Yotta Shakti Cloud</td><td>H100 SXM (1 GPU VM)</td><td>₹356</td><td>On-demand <a class="cite" href="https://shakticloud.ai/pricing/" target="_blank" rel="noopener" title="Yotta Shakti Cloud: Pricing">71</a></td></tr>
+<tr><td>Yotta Shakti Cloud bare metal</td><td>8× HGX B200</td><td>₹473 per GPU-hour</td><td>Bare metal <a class="cite" href="https://shakticloud.ai/pricing/" target="_blank" rel="noopener" title="Yotta Shakti Cloud: Pricing">71</a></td></tr>
+</tbody></table></div>
+<p>The Government of India said in January 2025 that the average cost of IndiaAI common compute worked out to about ₹115.85 per GPU-hour before subsidy <a class="cite" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097709" target="_blank" rel="noopener" title="Press Information Bureau, Government of India: IndiaAI compute capacity and GPU cost (Jan 2025)">72</a>. The gap between the government portal and open-market Indian prices is one of the clearest effects of the IndiaAI Mission.</p>
+<p>A useful sense-check from NVIDIA itself: the software licence alone (AI Enterprise) lists at $4,500 per GPU per year, or $22,500 as a perpetual licence with five years of support <a class="cite" href="https://docs.nvidia.com/ai-enterprise/planning-resource/licensing-guide/latest/pricing.html" target="_blank" rel="noopener" title="NVIDIA Docs: NVIDIA AI Enterprise licensing guide: pricing">64</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="moat" aria-labelledby="h-moat">
+<h2 id="h-moat"><span>10.</span>The software lock-in</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>NVIDIA's biggest advantage is not a chip. It is <b>CUDA</b>, the software launched in 2006 that programmers use to run AI on its GPUs. NVIDIA says more than 7.5 million developers use it <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. Switching to another company's chip often means rewriting and retesting that software, which takes time and money.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Around CUDA sit layers that make switching harder still:</p>
+<ul>
+<li><b>CUDA-X:</b> what NVIDIA calls "hundreds" of ready-made libraries for maths, data and AI <a class="cite" href="https://nvidia.com/en-us/technologies/cuda-x" target="_blank" rel="noopener" title="NVIDIA: CUDA-X libraries">73</a>.</li>
+<li><b>NVLink:</b> NVIDIA's own GPU-to-GPU link, now in its sixth generation with Rubin at 3.6 TB/s per GPU <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform: Six New Chips, One AI Supercomputer">25</a>.</li>
+<li><b>Networking:</b> InfiniBand and Spectrum-X Ethernet, from the Mellanox purchase <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-completes-acquisition-of-mellanox-creating-major-force-driving-next-gen-data-centers" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Completes Acquisition of Mellanox (27 Apr 2020)">16</a>.</li>
+<li><b>NIM:</b> AI models packaged as ready-to-run containers, launched June 2024 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-nim-model-deployment-generative-ai-developers" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA NIM model deployment (2 Jun 2024)">74</a>.</li>
+<li><b>Dynamo:</b> open-source software for serving AI models at scale, in production since March 2026 and used by AWS, Azure, Google Cloud, Oracle and others <a class="cite" href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Enters-Production-With-Dynamo-the-Broadly-Adopted-Inference-Operating-System-for-AI-Factories/default.aspx" target="_blank" rel="noopener" title="NVIDIA Investor Relations: NVIDIA Enters Production With Dynamo (16 Mar 2026)">75</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>NVIDIA is also extending its link technology to other companies' processors. In September 2025 it agreed to invest $5 billion in Intel at $23.28 a share, with Intel building custom x86 processors that connect to NVIDIA GPUs over NVLink <a class="cite" href="https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-and-Intel-to-Develop-AI-Infrastructure-and-Personal-Computing-Products/default.aspx" target="_blank" rel="noopener" title="NVIDIA Investor Relations: NVIDIA and Intel to Develop AI Infrastructure and PC Products (18 Sep 2025)">76</a>. Networking is growing quickly: in the August 2026 quarter networking revenue rose 18% on the previous quarter and Spectrum-X Ethernet grew 2.6 times year on year <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>. The practical point for buyers: the lock-in increasingly sits in the rack and the network, not only in the programming model.</p>
+</div>
+</section>
+<section class="chip-sec" id="buyers" aria-labelledby="h-buyers">
+<h2 id="h-buyers"><span>11.</span>Who buys it and why</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Most of NVIDIA's chips go to a handful of very large buyers: cloud companies such as Microsoft, Amazon, Google and Oracle, big AI labs, and governments building national AI systems. In the August 2026 quarter, "hyperscale" customers accounted for $48.7 billion of the $89.0 billion data-centre revenue <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf" target="_blank" rel="noopener" title="NVIDIA: CFO Commentary on Second Quarter Fiscal 2027 Results">8</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Deals NVIDIA has announced itself:</p>
+<ul>
+<li><b>OpenAI (Sept 2025):</b> a letter of intent for at least 10 gigawatts of NVIDIA systems, with NVIDIA intending to invest up to $100 billion progressively <a class="cite" href="https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems" target="_blank" rel="noopener" title="NVIDIA Newsroom: OpenAI and NVIDIA announce strategic partnership to deploy 10 GW (22 Sep 2025)">77</a>.</li>
+<li><b>Anthropic with Microsoft (Nov 2025):</b> NVIDIA to invest up to $10 billion in Anthropic; Anthropic to use up to 1 gigawatt of Grace Blackwell and Vera Rubin systems <a class="cite" href="https://blogs.nvidia.com/blog/microsoft-nvidia-anthropic-announce-partnership" target="_blank" rel="noopener" title="NVIDIA Blog: Microsoft, NVIDIA and Anthropic announce partnership (18 Nov 2025)">78</a>.</li>
+<li><b>Meta (Feb 2026):</b> millions of Blackwell and Rubin GPUs, plus Grace processors and Spectrum-X networking <a class="cite" href="https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia" target="_blank" rel="noopener" title="NVIDIA Newsroom: Meta builds AI infrastructure with NVIDIA (17 Feb 2026)">79</a>.</li>
+<li><b>HUMAIN, Saudi Arabia (May 2025):</b> up to 500 MW, starting with 18,000 GB300 chips <a class="cite" href="https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia" target="_blank" rel="noopener" title="NVIDIA Newsroom: HUMAIN and NVIDIA strategic partnership (13 May 2025)">80</a>.</li>
+</ul>
+<p>Governments are a growing group: NVIDIA said sovereign AI revenue grew 35% on the previous quarter and more than tripled year on year in the August 2026 quarter <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>NVIDIA does not name its largest customers, but it reports how concentrated they are. In the quarter to 26 July 2026 one direct customer was 16% of total revenue; over the first half of fiscal 2027, three direct customers were 16%, 15% and 13% <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 26 July 2026 (investor site copy)">7</a>. Customers headquartered outside the US were 38% of revenue in the quarter <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 26 July 2026 (investor site copy)">7</a>. Note that NVIDIA reports geography by where the billed customer is based, not where the chips end up, so a country's share shows where the billed customer is based, not where the chips are finally used <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>12.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>These facts are all public, but they sit deep inside long filings and call transcripts. Each one links to the exact document.</p>
+<ol class="hidden-list">
+<li><b>Supply commitments more than doubled in three months</b>, from $119 billion to $279 billion, "primarily related to the procurement of memory" <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf" target="_blank" rel="noopener" title="NVIDIA: CFO Commentary on Second Quarter Fiscal 2027 Results">8</a>.</li>
+<li><b>Three customers made up 44% of revenue</b> in the first half of fiscal 2027 (16%, 15% and 13%) <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 26 July 2026 (investor site copy)">7</a>.</li>
+<li><b>NVIDIA holds $99 billion of equity investments</b> in other companies, with $25 billion more committed <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 26 July 2026 (investor site copy)">7</a>.</li>
+<li><b>It has guaranteed up to $105 billion</b> of land, power and building works for about 4.25 gigawatts at SB Energy's PORTS campus, on behalf of an affiliate of OpenAI <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 26 July 2026 (investor site copy)">7</a>.</li>
+<li><b>It rents cloud capacity back from its own customers:</b> $36 billion of multi-year cloud service agreements <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 26 July 2026 (investor site copy)">7</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ol class="hidden-list" start="6">
+<li><b>Revenue per gigawatt rises each generation:</b> about $18 billion with Hopper, $25 billion with Blackwell and $40 billion with Vera Rubin, according to the CFO <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>.</li>
+<li><b>Memory is squeezing margins:</b> the CFO said memory price increases "exceeded our prior expectations" and guided gross margin to bottom at 71% to 72% in the fourth quarter <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>.</li>
+<li><b>Lead times have run past a year:</b> "extended lead times of more than 12 months" <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</li>
+<li><b>Supply is expected to stay the bottleneck</b> "at least through the end of fiscal year 2028" <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>.</li>
+<li><b>Inventory jumped $5.8 billion in one quarter</b> to $31.6 billion as Vera Rubin approached <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf" target="_blank" rel="noopener" title="NVIDIA: CFO Commentary on Second Quarter Fiscal 2027 Results">8</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<ol class="hidden-list" start="11">
+<li><b>US export rules name whole racks, not just chips:</b> the October 2023 licensing requirements list products including H100, L40S, RTX 4090, GB200 NVL72 and B200 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>.</li>
+<li><b>The H20 rule was written around memory bandwidth</b>, covering the H20 and any chip that reaches its memory bandwidth <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. The resulting $4.5 billion charge split into $1.9 billion of inventory and $2.6 billion of purchase obligations <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 27 April 2025">81</a>.</li>
+<li><b>An NVL72 rack holds more than 5,000 copper cables</b> and was designed for 120 kW of cooling <a class="cite" href="https://developer.nvidia.com/blog/nvidia-contributes-nvidia-gb200-nvl72-designs-to-open-compute-project" target="_blank" rel="noopener" title="NVIDIA Technical Blog: NVIDIA contributes GB200 NVL72 designs to the Open Compute Project">50</a>.</li>
+<li><b>A pluggable optical port burns about 30 W</b>; NVIDIA's co-packaged optics about 9 W <a class="cite" href="https://developer.nvidia.com/blog/scaling-ai-factories-with-co-packaged-optics-for-better-power-efficiency" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Scaling AI factories with co-packaged optics">52</a>. Multiply by tens of thousands of ports and that is why optics moved onto the switch.</li>
+<li><b>Groq is now inside NVIDIA's platform:</b> after a December 2025 licence deal, a Groq 3 LPU is one of the seven Vera Rubin chips <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">18</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Vera Rubin platform (GTC, 16 Mar 2026)">17</a>.</li>
+</ol>
+</div>
+</section>
+<section class="chip-sec" id="weak" aria-labelledby="h-weak">
+<h2 id="h-weak"><span>13.</span>Weak spots</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>NVIDIA lists its own risks in its annual report. The biggest, in plain words <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>:</p>
+<ul>
+<li><b>Too few customers:</b> a small number of buyers account for a large share of sales.</li>
+<li><b>Customers building their own chips:</b> the same cloud companies that buy NVIDIA chips are designing alternatives.</li>
+<li><b>One main factory partner:</b> it relies on TSMC and a few packaging and memory suppliers.</li>
+<li><b>Power:</b> a shortage of data centres, energy or money to build them could slow sales.</li>
+<li><b>Export rules:</b> US licence requirements limit what it can sell to China.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>NVIDIA names its competitors: AMD, Huawei and Intel in computing, plus companies building custom chips; and AMD, Arista, Broadcom, Cisco, HPE, Huawei and Intel in networking <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. Export rules have already cost real money: the April 2025 H20 licence requirement led to a $4.5 billion charge <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581025000082/nvda-20250409.htm" target="_blank" rel="noopener" title="NVIDIA: Form 8-K, 9 April 2025 (H20 licence requirement)">82</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>, and a further $0.4 billion charge related to H200 in fiscal 2027 <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener" title="NVIDIA: Form 10-Q, quarter ended 26 July 2026 (investor site copy)">7</a>. NVIDIA's outlook for the current quarter assumes no data-centre compute revenue from China <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Announces Financial Results for Second Quarter Fiscal 2027 (26 Aug 2026)">2</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The supply chain is a risk in both directions. NVIDIA warns that long lead times force it to commit to supply before it knows demand, and that it may not be able to cut those commitments <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>; those commitments reached $279 billion in July 2026 <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf" target="_blank" rel="noopener" title="NVIDIA: CFO Commentary on Second Quarter Fiscal 2027 Results">8</a>. At the same time, memory prices rising faster than planned are expected to pull gross margin down from 75% to about 71–72% <a class="cite" href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf" target="_blank" rel="noopener" title="NVIDIA: CFO Commentary on Second Quarter Fiscal 2027 Results">8</a> <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>. The concentration of customers, suppliers and geography is the thread that runs through all of these.</p>
+</div>
+</section>
+<section class="chip-sec" id="india" aria-labelledby="h-india">
+<h2 id="h-india"><span>14.</span>India angle</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>NVIDIA has worked in India for about two decades and said in 2023 that it had more than 3,800 employees across engineering centres in Bengaluru, Hyderabad, Pune and Gurugram <a class="cite" href="https://blogs.nvidia.com/blog/2023/09/04/modi-huang-india" target="_blank" rel="noopener" title="NVIDIA Blog: Huang meets Modi; NVIDIA in India (4 Sep 2023)">83</a>. You can rent NVIDIA chips in India through the government's IndiaAI Mission portal and Indian clouds such as Yotta and E2E Networks (see Official pricing).</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ul>
+<li><b>Sept 2023:</b> partnerships with Reliance, with Jio as implementation partner, and with Tata Communications and TCS, which planned to upskill 600,000 staff <a class="cite" href="https://nvidianews.nvidia.com/news/reliance-and-nvidia-partner-to-advance-ai-in-india-for-india" target="_blank" rel="noopener" title="NVIDIA Newsroom: Reliance and NVIDIA partner to advance AI in India (8 Sep 2023)">84</a> <a class="cite" href="https://investor.nvidia.com/news/press-release-details/2023/Tata-Partners-With-NVIDIA-to-Build-Large-Scale-AI-Infrastructure/default.aspx" target="_blank" rel="noopener" title="NVIDIA Investor Relations: Tata partners with NVIDIA to build large-scale AI infrastructure (8 Sep 2023)">85</a>.</li>
+<li><b>Oct 2024, AI Summit India, Mumbai:</b> Yotta, Tata Communications, E2E Networks and Netweb said they were adding tens of thousands of Hopper GPUs <a class="cite" href="https://blogs.nvidia.com/blog/india-ai-infrastructure" target="_blank" rel="noopener" title="NVIDIA Blog: India AI infrastructure (AI Summit India, Oct 2024)">86</a>.</li>
+<li><b>Feb 2026, India AI Impact Summit:</b> Yotta announced sovereign infrastructure with more than 20,000 Blackwell Ultra GPUs, L&amp;T a gigawatt-scale AI factory, and NVIDIA said more than 4,000 Indian start-ups were in its Inception programme <a class="cite" href="https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/" target="_blank" rel="noopener" title="NVIDIA Blog: India AI Mission: infrastructure and models (18 Feb 2026)">87</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>In 2023 NVIDIA said India had about 60,000 experienced CUDA developers and around 40,000 CUDA downloads a month <a class="cite" href="https://blogs.nvidia.com/blog/2023/09/04/modi-huang-india" target="_blank" rel="noopener" title="NVIDIA Blog: Huang meets Modi; NVIDIA in India (4 Sep 2023)">83</a>. NVIDIA does not report India revenue separately in its filings <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener" title="NVIDIA: Form 10-K, fiscal year 2026 (filed 25 Feb 2026)">1</a>. For Indian buyers the practical numbers are the rental rates: the IndiaAI portal lists an H100 at ₹153 an hour on demand (subsidies of up to 40% may apply), against ₹255.55 at E2E Networks and ₹356 at Yotta <a class="cite" href="https://compute.indiaai.gov.in/indiaaipricecalculator" target="_blank" rel="noopener" title="IndiaAI Mission: Compute portal price calculator">69</a> <a class="cite" href="https://www.e2enetworks.com/gpu-cloud" target="_blank" rel="noopener" title="E2E Networks: GPU cloud pricing">70</a> <a class="cite" href="https://shakticloud.ai/pricing/" target="_blank" rel="noopener" title="Yotta Shakti Cloud: Pricing">71</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="next" aria-labelledby="h-next">
+<h2 id="h-next"><span>15.</span>What’s next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Only what NVIDIA has announced:</p>
+<ul>
+<li><b>Vera Rubin:</b> production shipments began in August 2026, and NVIDIA expects it to be "the fastest product ramp" in its history <a class="cite" href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener" title="NVIDIA: Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site">3</a>.</li>
+<li><b>Rubin CPX:</b> expected at the end of 2026, when announced <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-unveils-rubin-cpx-a-new-class-of-gpu-designed-for-massive-context-inference" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Unveils Rubin CPX (9 Sep 2025)">20</a>.</li>
+<li><b>DGX Station for Windows:</b> fourth quarter of 2026 <a class="cite" href="https://www.nvidia.com/en-us/products/workstations/dgx-station/" target="_blank" rel="noopener" title="NVIDIA: DGX Station product page">22</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>NVIDIA claims Vera Rubin NVL72 can train mixture-of-experts models with a quarter of the GPUs Blackwell needed, and deliver up to 10 times the inference throughput per watt at one-tenth the cost per token <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Vera Rubin platform (GTC, 16 Mar 2026)">17</a>. These are NVIDIA's own claims; independent benchmarks usually follow months after shipping.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>After Rubin, NVIDIA has named Rubin Ultra and then Feynman. NVIDIA's own GTC 2026 summary lists Feynman-generation parts, including a Rosa CPU, an LP40 LPU and BlueField-5, but gives no year <a class="cite" href="https://blogs.nvidia.com/blog/gtc-2026-news/" target="_blank" rel="noopener" title="NVIDIA Blog: GTC 2026 news">88</a>. Press coverage of the GTC 2026 roadmap slide reported Rubin Ultra for 2027 and Feynman for 2028 <a class="cite" href="https://www.tweaktown.com/news/110521/nvidia-updates-roadmap-with-new-details-on-its-next-gen-gpu-feynman-coming-in-2028/index.html" target="_blank" rel="noopener" title="TweakTown (press): NVIDIA updates roadmap: Feynman coming in 2028">89</a>; treat those years as reported, not confirmed by NVIDIA in writing.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>16.</span>Sources</h2>
+<p class="note">89 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator; <b>Press</b> = news coverage, used only where no official source exists and labelled in the text.</p>
+<ol class="src-list">
+<li id="src-1"><b>NVIDIA</b>: <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener">Form 10-K, fiscal year 2026 (filed 25 Feb 2026)</a><span class="st st-filing">Filing</span></li>
+<li id="src-2"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027" target="_blank" rel="noopener">NVIDIA Announces Financial Results for Second Quarter Fiscal 2027 (26 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>NVIDIA</b>: <a href="https://s201.q4cdn.com/141608511/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-Earnings-Call-26-August-2026-5_00-PM-ET.pdf" target="_blank" rel="noopener">Q2 fiscal 2027 earnings call transcript (26 Aug 2026), NVIDIA investor site</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/" target="_blank" rel="noopener">GB200 NVL72 product page</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026" target="_blank" rel="noopener">NVIDIA Announces Financial Results for Fourth Quarter and Fiscal 2026</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/about-nvidia/corporate-timeline/" target="_blank" rel="noopener">Corporate timeline</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>NVIDIA</b>: <a href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/NVDA-2027-Q2-10Q-Final-including-exhibits.pdf" target="_blank" rel="noopener">Form 10-Q, quarter ended 26 July 2026 (investor site copy)</a><span class="st st-filing">Filing</span></li>
+<li id="src-8"><b>NVIDIA</b>: <a href="https://s201.q4cdn.com/141608511/files/doc_financials/2027/Q227/Q2FY27-CFO-Commentary.pdf" target="_blank" rel="noopener">CFO Commentary on Second Quarter Fiscal 2027 Results</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-launches-world-s-first-deep-learning-supercomputer-6622436" target="_blank" rel="noopener">NVIDIA Launches World&#x27;s First Deep Learning Supercomputer (DGX-1, 5 Apr 2016)</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/openai-nvidia/" target="_blank" rel="noopener">OpenAI and NVIDIA: from the first DGX to 10 gigawatts</a><span class="st st-official">Official</span></li>
+<li id="src-11"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-announces-hopper-architecture-the-next-generation-of-accelerated-computing" target="_blank" rel="noopener">NVIDIA Announces Hopper Architecture (22 Mar 2022)</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing" target="_blank" rel="noopener">NVIDIA Blackwell Platform Arrives (18 Mar 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-blackwell-ultra-ai-factory-platform-paves-way-for-age-of-ai-reasoning" target="_blank" rel="noopener">Blackwell Ultra AI Factory Platform (18 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-14"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/rubin-platform-ai-supercomputer" target="_blank" rel="noopener">Rubin platform (CES, 5 Jan 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-15"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-to-acquire-mellanox-for-6-9-billion" target="_blank" rel="noopener">NVIDIA to Acquire Mellanox for $6.9 Billion (11 Mar 2019)</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-completes-acquisition-of-mellanox-creating-major-force-driving-next-gen-data-centers" target="_blank" rel="noopener">NVIDIA Completes Acquisition of Mellanox (27 Apr 2020)</a><span class="st st-official">Official</span></li>
+<li id="src-17"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-vera-rubin-platform" target="_blank" rel="noopener">NVIDIA Vera Rubin platform (GTC, 16 Mar 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener">Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-supercharges-hopper-the-worlds-leading-ai-computing-platform" target="_blank" rel="noopener">NVIDIA Supercharges Hopper (H200, 13 Nov 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-20"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-unveils-rubin-cpx-a-new-class-of-gpu-designed-for-massive-context-inference" target="_blank" rel="noopener">NVIDIA Unveils Rubin CPX (9 Sep 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-dgx-spark-arrives-for-worlds-ai-developers" target="_blank" rel="noopener">NVIDIA DGX Spark Arrives for World&#x27;s AI Developers (13 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/products/workstations/dgx-station/" target="_blank" rel="noopener">DGX Station product page</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-au/data-center/hgx.html" target="_blank" rel="noopener">HGX platform page</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/dgx-b200/" target="_blank" rel="noopener">DGX B200 product page</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener">Inside the NVIDIA Rubin Platform: Six New Chips, One AI Supercomputer</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener">NVIDIA Groq 3 LPX Now in Full Production (24 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/technologies/blackwell-architecture/" target="_blank" rel="noopener">Blackwell architecture page</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>Micron (press release)</b>: <a href="https://www.globenewswire.com/news-release/2025/03/18/3044997/14450/en/Micron-Innovates-From-the-Data-Center-to-the-Edge-With-NVIDIA.html" target="_blank" rel="noopener">Micron innovates from the data center to the edge with NVIDIA (18 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news-releases/news-release-details/micron-high-volume-production-hbm4-designed-nvidia-vera-rubin" target="_blank" rel="noopener">High-volume production of HBM4 designed for NVIDIA Vera Rubin</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener">Samsung at NVIDIA GTC 2026: HBM4 for Vera Rubin</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/skhynix-nvidia-partnership-2026/" target="_blank" rel="noopener">SK hynix and NVIDIA partnership (2026)</a><span class="st st-official">Official</span></li>
+<li id="src-32"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/nvidia-manufacture-american-made-ai-supercomputers-us" target="_blank" rel="noopener">NVIDIA to manufacture American-made AI supercomputers in the US (14 Apr 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-33"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/tsmc-blackwell-manufacturing/" target="_blank" rel="noopener">First Blackwell wafer produced in the US at TSMC Arizona (17 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-34"><b>Wistron Newsroom</b>: <a href="https://www.wistron.com/en/Newsroom/2026-07-22" target="_blank" rel="noopener">First US-built NVIDIA GB300 superchip at D1, Fort Worth (22 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-35"><b>Amkor Technology</b>: <a href="https://ir.amkor.com/news-releases/news-release-details/amkor-technology-breaks-ground-new-semiconductor-advanced" target="_blank" rel="noopener">Amkor breaks ground on Arizona advanced packaging campus</a><span class="st st-official">Official</span></li>
+<li id="src-36"><b>TSMC</b>: <a href="https://www.tsmc.com/english/aboutTSMC/TSMC_Fabs" target="_blank" rel="noopener">TSMC fabs and locations</a><span class="st st-official">Official</span></li>
+<li id="src-37"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/wistron-manufacturing-texas/" target="_blank" rel="noopener">Wistron manufacturing in Texas</a><span class="st st-official">Official</span></li>
+<li id="src-38"><b>Foxconn</b>: <a href="https://www.foxconn.com/en-us/press-center/press-releases/latest-news/1867" target="_blank" rel="noopener">Press release: AI server plant with NVIDIA in Houston</a><span class="st st-official">Official</span></li>
+<li id="src-39"><b>Amkor Technology</b>: <a href="https://amkor.com/amkor-technology-arizona/" target="_blank" rel="noopener">Amkor Technology Arizona</a><span class="st st-official">Official</span></li>
+<li id="src-40"><b>ASE Group</b>: <a href="https://www.aseglobal.com/press-room/spil-hosts-nvidia-founder-and-ceo-at-new-factory-site/" target="_blank" rel="noopener">SPIL hosts NVIDIA founder and CEO at new factory site (16 Jan 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-41"><b>SK hynix</b>: <a href="https://www.skhynix.com/company/UI-FR-CP02/" target="_blank" rel="noopener">Company locations</a><span class="st st-official">Official</span></li>
+<li id="src-42"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/sk-hynix-to-produce-dram-from-m15x-in-cheongju/" target="_blank" rel="noopener">SK hynix to produce DRAM from M15X in Cheongju</a><span class="st st-official">Official</span></li>
+<li id="src-43"><b>Micron</b>: <a href="https://www.micron.com/about/locations" target="_blank" rel="noopener">Micron locations</a><span class="st st-official">Official</span></li>
+<li id="src-44"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/support/contact-info/global-network/korea/" target="_blank" rel="noopener">Korea global network contacts</a><span class="st st-official">Official</span></li>
+<li id="src-45"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-in/contact/asia/" target="_blank" rel="noopener">Contact NVIDIA, India</a><span class="st st-official">Official</span></li>
+<li id="src-46"><b>NVIDIA</b>: <a href="https://www.nvidia.com/es-la/about-nvidia/contact-information-asia/" target="_blank" rel="noopener">Contact information, Asia (office addresses)</a><span class="st st-official">Official</span></li>
+<li id="src-47"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/made-in-usa/" target="_blank" rel="noopener">Made in USA page</a><span class="st st-official">Official</span></li>
+<li id="src-48"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/gb300-nvl72/" target="_blank" rel="noopener">GB300 NVL72 product page</a><span class="st st-official">Official</span></li>
+<li id="src-49"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener">Inside NVIDIA Blackwell Ultra</a><span class="st st-official">Official</span></li>
+<li id="src-50"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/nvidia-contributes-nvidia-gb200-nvl72-designs-to-open-compute-project" target="_blank" rel="noopener">NVIDIA contributes GB200 NVL72 designs to the Open Compute Project</a><span class="st st-official">Official</span></li>
+<li id="src-51"><b>NVIDIA Docs</b>: <a href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf" target="_blank" rel="noopener">DGX GB200 user guide</a><span class="st st-official">Official</span></li>
+<li id="src-52"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/scaling-ai-factories-with-co-packaged-optics-for-better-power-efficiency" target="_blank" rel="noopener">Scaling AI factories with co-packaged optics</a><span class="st st-official">Official</span></li>
+<li id="src-53"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories" target="_blank" rel="noopener">Spectrum-X and Quantum-X co-packaged optics switches (18 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-54"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/h100/" target="_blank" rel="noopener">H100 Tensor Core GPU product page</a><span class="st st-official">Official</span></li>
+<li id="src-55"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/h200/" target="_blank" rel="noopener">H200 Tensor Core GPU product page</a><span class="st st-official">Official</span></li>
+<li id="src-56"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-in/data-center/vera-rubin-nvl72/" target="_blank" rel="noopener">Vera Rubin NVL72 product page</a><span class="st st-official">Official</span></li>
+<li id="src-57"><b>NVIDIA Marketplace</b>: <a href="https://marketplace.nvidia.com/en-us/enterprise/data-center/where-to-buy/" target="_blank" rel="noopener">Buy NVIDIA data center solutions from NPN partners</a><span class="st st-official">Official</span></li>
+<li id="src-58"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/get-dgx/" target="_blank" rel="noopener">Get DGX</a><span class="st st-official">Official</span></li>
+<li id="src-59"><b>NVIDIA Developer Forums</b>: <a href="https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713" target="_blank" rel="noopener">Price change announcement (NVIDIA staff post, 23 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-60"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-blackwell-geforce-rtx-50-series-opens-new-world-of-ai-computer-graphics" target="_blank" rel="noopener">GeForce RTX 50 Series (CES, Jan 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-61"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-blackwell-powered-jetson-thor-now-available-accelerating-the-age-of-general-robotics" target="_blank" rel="noopener">Jetson Thor now available</a><span class="st st-official">Official</span></li>
+<li id="src-62"><b>NVIDIA Marketplace</b>: <a href="https://marketplace.nvidia.com/en-us/enterprise/robotics-edge/jetson-thor-developer-kit/" target="_blank" rel="noopener">Jetson Thor Developer Kit</a><span class="st st-official">Official</span></li>
+<li id="src-63"><b>NVIDIA Marketplace</b>: <a href="https://marketplace.nvidia.com/en-us/enterprise/robotics-edge/jetson-orin-nano-super-developer-kit/" target="_blank" rel="noopener">Jetson Orin Nano Super Developer Kit</a><span class="st st-official">Official</span></li>
+<li id="src-64"><b>NVIDIA Docs</b>: <a href="https://docs.nvidia.com/ai-enterprise/planning-resource/licensing-guide/latest/pricing.html" target="_blank" rel="noopener">NVIDIA AI Enterprise licensing guide: pricing</a><span class="st st-official">Official</span></li>
+<li id="src-65"><b>AWS</b>: <a href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener">EC2 Capacity Blocks for ML pricing</a><span class="st st-official">Official</span></li>
+<li id="src-66"><b>Google Cloud</b>: <a href="https://cloud.google.com/products/compute/pricing/accelerator-optimized" target="_blank" rel="noopener">Accelerator-optimized VM pricing</a><span class="st st-official">Official</span></li>
+<li id="src-67"><b>Google Cloud</b>: <a href="https://cloud.google.com/products/dws/pricing" target="_blank" rel="noopener">Dynamic Workload Scheduler pricing</a><span class="st st-official">Official</span></li>
+<li id="src-68"><b>AWS What&#x27;s New</b>: <a href="https://aws.amazon.com/about-aws/whats-new/2025/06/pricing-usage-model-ec2-instances-nvidia-gpus/" target="_blank" rel="noopener">Pricing and usage model changes for EC2 instances with NVIDIA GPUs (June 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-69"><b>IndiaAI Mission</b>: <a href="https://compute.indiaai.gov.in/indiaaipricecalculator" target="_blank" rel="noopener">Compute portal price calculator</a><span class="st st-official">Official</span></li>
+<li id="src-70"><b>E2E Networks</b>: <a href="https://www.e2enetworks.com/gpu-cloud" target="_blank" rel="noopener">GPU cloud pricing</a><span class="st st-official">Official</span></li>
+<li id="src-71"><b>Yotta Shakti Cloud</b>: <a href="https://shakticloud.ai/pricing/" target="_blank" rel="noopener">Pricing</a><span class="st st-official">Official</span></li>
+<li id="src-72"><b>Press Information Bureau, Government of India</b>: <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2097709" target="_blank" rel="noopener">IndiaAI compute capacity and GPU cost (Jan 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-73"><b>NVIDIA</b>: <a href="https://nvidia.com/en-us/technologies/cuda-x" target="_blank" rel="noopener">CUDA-X libraries</a><span class="st st-official">Official</span></li>
+<li id="src-74"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-nim-model-deployment-generative-ai-developers" target="_blank" rel="noopener">NVIDIA NIM model deployment (2 Jun 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-75"><b>NVIDIA Investor Relations</b>: <a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Enters-Production-With-Dynamo-the-Broadly-Adopted-Inference-Operating-System-for-AI-Factories/default.aspx" target="_blank" rel="noopener">NVIDIA Enters Production With Dynamo (16 Mar 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-76"><b>NVIDIA Investor Relations</b>: <a href="https://investor.nvidia.com/news/press-release-details/2025/NVIDIA-and-Intel-to-Develop-AI-Infrastructure-and-Personal-Computing-Products/default.aspx" target="_blank" rel="noopener">NVIDIA and Intel to Develop AI Infrastructure and PC Products (18 Sep 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-77"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/openai-and-nvidia-announce-strategic-partnership-to-deploy-10gw-of-nvidia-systems" target="_blank" rel="noopener">OpenAI and NVIDIA announce strategic partnership to deploy 10 GW (22 Sep 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-78"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/microsoft-nvidia-anthropic-announce-partnership" target="_blank" rel="noopener">Microsoft, NVIDIA and Anthropic announce partnership (18 Nov 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-79"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/meta-builds-ai-infrastructure-with-nvidia" target="_blank" rel="noopener">Meta builds AI infrastructure with NVIDIA (17 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-80"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/humain-and-nvidia-announce-strategic-partnership-to-build-ai-factories-of-the-future-in-saudi-arabia" target="_blank" rel="noopener">HUMAIN and NVIDIA strategic partnership (13 May 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-81"><b>NVIDIA</b>: <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581025000116/nvda-20250427.htm" target="_blank" rel="noopener">Form 10-Q, quarter ended 27 April 2025</a><span class="st st-filing">Filing</span></li>
+<li id="src-82"><b>NVIDIA</b>: <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581025000082/nvda-20250409.htm" target="_blank" rel="noopener">Form 8-K, 9 April 2025 (H20 licence requirement)</a><span class="st st-filing">Filing</span></li>
+<li id="src-83"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/2023/09/04/modi-huang-india" target="_blank" rel="noopener">Huang meets Modi; NVIDIA in India (4 Sep 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-84"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/reliance-and-nvidia-partner-to-advance-ai-in-india-for-india" target="_blank" rel="noopener">Reliance and NVIDIA partner to advance AI in India (8 Sep 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-85"><b>NVIDIA Investor Relations</b>: <a href="https://investor.nvidia.com/news/press-release-details/2023/Tata-Partners-With-NVIDIA-to-Build-Large-Scale-AI-Infrastructure/default.aspx" target="_blank" rel="noopener">Tata partners with NVIDIA to build large-scale AI infrastructure (8 Sep 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-86"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/india-ai-infrastructure" target="_blank" rel="noopener">India AI infrastructure (AI Summit India, Oct 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-87"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/india-ai-mission-infrastructure-models/" target="_blank" rel="noopener">India AI Mission: infrastructure and models (18 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-88"><b>NVIDIA Blog</b>: <a href="https://blogs.nvidia.com/blog/gtc-2026-news/" target="_blank" rel="noopener">GTC 2026 news</a><span class="st st-official">Official</span></li>
+<li id="src-89"><b>TweakTown (press)</b>: <a href="https://www.tweaktown.com/news/110521/nvidia-updates-roadmap-with-new-details-on-its-next-gen-gpu-feynman-coming-in-2028/index.html" target="_blank" rel="noopener">NVIDIA updates roadmap: Feynman coming in 2028</a><span class="st st-press">Press</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#company">2. Company card</a><a href="#story">3. The story</a><a href="#lineup">4. The lineup</a><a href="#made">5. How it’s made</a><a href="#where">6. Where it’s made: factories and addresses</a><a href="#works">7. How it works</a><a href="#specs">8. Specs explained</a><a href="#pricing">9. Official pricing</a><a href="#moat">10. The software lock-in</a><a href="#buyers">11. Who buys it and why</a><a href="#hidden">12. Hidden in plain sight</a><a href="#weak">13. Weak spots</a><a href="#india">14. India angle</a><a href="#next">15. What’s next</a><a href="#sources">16. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Headquarters</span><span style="color:var(--fg);font-weight:500;text-align:right">Santa Clara, California</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Founded</span><span style="color:var(--fg);font-weight:500;text-align:right">1993</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>CEO</span><span style="color:var(--fg);font-weight:500;text-align:right">Jensen Huang</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Makes its own chips?</span><span style="color:var(--fg);font-weight:500;text-align:right">No, designs them (fabless)</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Main chip factory</span><span style="color:var(--fg);font-weight:500;text-align:right">TSMC</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Latest quarter revenue</span><span style="color:var(--fg);font-weight:500;text-align:right">$96.2 billion</span></div></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip brands</a><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD</a><a href="/ai-atlas/ai-chips/how-a-chip-is-made/" class="sidebar-link">How a chip is made: sand to server</a><a href="/ai-atlas/ai-chips/how-ai-chips-work/" class="sidebar-link">How AI chips work</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22NVIDIA%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fnvidia%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22NVIDIA%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fnvidia%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22NVIDIA%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fnvidia%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22NVIDIA%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fnvidia%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22NVIDIA%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fnvidia%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

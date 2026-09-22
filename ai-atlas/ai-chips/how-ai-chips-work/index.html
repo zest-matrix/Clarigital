@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>How AI Chips Work: Simple to Expert | Clarigital</title>
+<meta name="description" content="Why AI needs special chips, what is inside one, why memory is the real limit and how chips are linked. Simple to expert, every figure sourced.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/how-ai-chips-work/">
+<meta property="og:title" content="How AI Chips Work: Simple to Expert">
+<meta property="og:description" content="Why AI needs special chips, what is inside one, why memory is the real limit and how chips are linked. Simple to expert, every figure sourced.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/how-ai-chips-work/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v3*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v3*//end
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How AI Chips Work", "description": "Why AI needs special chips, what is inside one, why memory is the real limit and how chips are linked. Simple to expert, every figure sourced.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/how-ai-chips-work/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/how-ai-chips-work/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "citation": ["https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html", "https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html", "https://download.intel.com/newsroom/2024/data-center/Fact-Sheet-Xeon-6-P-Core.pdf", "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/", "https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/", "https://www.nvidia.com/en-us/data-center/tensor-cores", "https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm", "https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era", "https://docs.cloud.google.com/tpu/docs/intro-to-tpu", "https://arxiv.org/abs/1704.04760", "https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus", "https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference", "https://www.opencompute.org/documents/ocp-microscaling-formats-mx-v1-0-spec-final-pdf", "https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing", "https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/", "https://arxiv.org/abs/2403.14123", "https://www.nvidia.com/en-us/data-center/gb200-nvl72/", "https://www.nvidia.com/en-us/data-center/nvlink/", "https://ualinkconsortium.org/wp-content/uploads/2025/04/UALink-1.0-Specification-PR_FINAL.pdf", "https://ultraethernet.org/ultra-ethernet-consortium-uec-launches-specification-1-0-transforming-ethernet-for-ai-and-hpc-at-scale/", "https://www.nvidia.com/en-us/glossary/ai-inference/", "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/", "https://groq.com/blog/the-groq-lpu-explained", "https://epoch.ai/blog/training-compute-of-frontier-ai-models-grows-by-4-5x-per-year", "https://epoch.ai/data-insights/models-over-1e25-flop", "https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine", "https://www.apple.com/newsroom/2024/05/apple-introduces-m4-chip/", "https://www.apple.com/newsroom/2025/10/apple-unleashes-m5-the-next-big-leap-in-ai-performance-for-apple-silicon/", "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2025-press-kit/day-2-/documents/SnapdragonX2EliteExtremeandSnapdragonX2Elite_FeaturesataGlance.pdf", "https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions", "https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf", "https://www.vertiv.com/en-us/insights/articles/educational-articles/understanding-direct-to-chip-cooling-in-hpc-infrastructure-a-deep-dive-into-liquid-cooling/", "https://www.iea.org/reports/energy-and-ai/executive-summary"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "How AI chips work", "item": "https://www.clarigital.com/ai-atlas/ai-chips/how-ai-chips-work/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>How AI chips work</span></nav>
+    <span class="label-tag">AI Chips · Explainer</span>
+    <h1>How AI Chips Work</h1>
+    <p class="hero-lead">Why AI runs on special chips, what is inside one, why memory matters more than speed, how thousands of chips are joined into one computer, and why they need so much power. Start simple, go as deep as you like.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Explainer</span>
+      <span class="meta-tag mt-gray">8 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">33 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where only a company’s own claim exists, the text says so.</div>
+<section class="chip-sec" id="why" aria-labelledby="h-why">
+<h2 id="h-why"><span>1.</span>Why AI needs special chips</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>An ordinary computer processor (a <b>CPU</b>) is like a few very clever workers who handle one job after another. An AI chip is like thousands of workers who each do one small sum at the same moment.</p>
+<p>AI models are built from huge grids of numbers, and running them means multiplying those grids together billions of times. NVIDIA's own guide calls these matrix multiplications "a fundamental building block" of neural networks <a class="cite" href="https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html" target="_blank" rel="noopener" title="NVIDIA Docs: Matrix Multiplication Background User&#x27;s Guide">1</a>. Thousands of workers doing sums at once is exactly what that needs.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The difference is scale. The biggest server CPUs today have 192 cores (AMD's EPYC 9965) or 128 cores (Intel's Xeon 6900P) <a class="cite" href="https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html" target="_blank" rel="noopener" title="AMD Newsroom: AMD launches 5th Gen AMD EPYC CPUs (10 Oct 2024)">2</a> <a class="cite" href="https://download.intel.com/newsroom/2024/data-center/Fact-Sheet-Xeon-6-P-Core.pdf" target="_blank" rel="noopener" title="Intel Newsroom: Intel Xeon 6 with P-cores fact sheet (2024)">3</a>. An NVIDIA H100 GPU has 132 "streaming multiprocessors" holding 16,896 basic cores and 528 Tensor Cores built specifically for matrix maths <a class="cite" href="https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: NVIDIA Hopper Architecture In-Depth">4</a>. A CPU is built to be quick at anything; a GPU is built to do the same simple thing thousands of times in parallel <a class="cite" href="https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/" target="_blank" rel="noopener" title="NVIDIA Docs: GPU Performance Background User&#x27;s Guide">5</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Most of a neural network's work reduces to general matrix multiplies (GEMMs): fully connected layers, attention and convolutions can all be expressed that way <a class="cite" href="https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html" target="_blank" rel="noopener" title="NVIDIA Docs: Matrix Multiplication Background User&#x27;s Guide">1</a>. The question for any chip is whether a given operation is limited by maths or by memory. NVIDIA frames this as arithmetic intensity, the number of calculations per byte moved: if it is lower than the chip's ratio of maths speed to memory speed, the chip waits on memory <a class="cite" href="https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/" target="_blank" rel="noopener" title="NVIDIA Docs: GPU Performance Background User&#x27;s Guide">5</a>. Matrix-vector products, common when an AI generates text one word at a time, are always memory-limited <a class="cite" href="https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html" target="_blank" rel="noopener" title="NVIDIA Docs: Matrix Multiplication Background User&#x27;s Guide">1</a>. That single idea explains most AI chip design choices.</p>
+</div>
+</section>
+<section class="chip-sec" id="inside" aria-labelledby="h-inside">
+<h2 id="h-inside"><span>2.</span>Inside an AI chip: cores and matrix engines</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Inside an AI chip are two kinds of worker: general cores that can do any sum, and special <b>matrix engines</b> that only multiply grids of numbers but do it extremely fast. NVIDIA calls its matrix engines Tensor Cores; Google calls its version the MXU <a class="cite" href="https://www.nvidia.com/en-us/data-center/tensor-cores" target="_blank" rel="noopener" title="NVIDIA: Tensor Cores">6</a> <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud Docs: TPU system architecture">7</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>NVIDIA introduced Tensor Cores with its Volta chips; each one multiplies small blocks of numbers and adds the result in one step, and can add at higher precision than it multiplies <a class="cite" href="https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/" target="_blank" rel="noopener" title="NVIDIA Docs: GPU Performance Background User&#x27;s Guide">5</a>. A Blackwell Ultra GPU has 160 multiprocessors and 640 fifth-generation Tensor Cores <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">8</a>.</p>
+<p>Google took a different route with its TPU. Each TPU core has matrix units built as a <b>systolic array</b>: a grid of 128 by 128 multiply-accumulate cells (256 by 256 on newer TPUs) where numbers flow through like a wave, each cell passing its result to the next <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud Docs: TPU system architecture">7</a>. Google's own documentation says TPUs suit work dominated by matrix maths and are unsuitable for programs full of branches <a class="cite" href="https://docs.cloud.google.com/tpu/docs/intro-to-tpu" target="_blank" rel="noopener" title="Google Cloud Docs: Introduction to Cloud TPU">9</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The original TPU, described by Google engineers in 2017, had a single matrix unit of 65,536 8-bit multiply-accumulators delivering 92 trillion operations per second, with 28 MiB of on-chip memory; it had been in Google's data centres since 2015 and was on average 15 to 30 times faster than the CPUs and GPUs of its time on Google's inference work, with 30 to 80 times better performance per watt <a class="cite" href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener" title="Jouppi et al., ISCA 2017: In-Datacenter Performance Analysis of a Tensor Processing Unit">10</a>. The design lesson has held: give up flexibility, spend the silicon on matrix maths and on-chip memory, and efficiency rises sharply.</p>
+</div>
+</section>
+<section class="chip-sec" id="numbers" aria-labelledby="h-numbers">
+<h2 id="h-numbers"><span>3.</span>Smaller numbers, faster answers</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Computers store numbers with a fixed number of digits. AI does not need many, so chips use shorter numbers: 16, 8 or even 4 bits instead of 32. Shorter numbers mean the chip can do more sums at once and fit bigger models in memory. That is why chip makers quote their biggest speeds at "FP4" or "FP8".</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ul>
+<li><b>bfloat16</b> was created at Google Brain. It keeps the same range as a 32-bit number but with less precision, and Google says a bfloat16 multiplier is about half the size of an FP16 one and eight times smaller than FP32 <a class="cite" href="https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus" target="_blank" rel="noopener" title="Google Cloud Blog: BFloat16: the secret to high performance on Cloud TPUs">11</a>.</li>
+<li><b>FP8</b> arrived on NVIDIA's Hopper chips in two versions, one favouring range and one favouring precision <a class="cite" href="https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: NVIDIA Hopper Architecture In-Depth">4</a>.</li>
+<li><b>FP4</b>: NVIDIA's NVFP4 format came with Blackwell and cuts a model's memory about 3.5 times compared with FP16 <a class="cite" href="https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Introducing NVFP4 for efficient and accurate low-precision inference">12</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>At 4 bits, the trick is shared scale factors. The industry's open MX standard, contributed in 2023 by AMD, Arm, Intel, Meta, Microsoft, NVIDIA and Qualcomm, groups 32 numbers that share one power-of-two scale, and defines MXFP8, MXFP6, MXFP4 and MXINT8 <a class="cite" href="https://www.opencompute.org/documents/ocp-microscaling-formats-mx-v1-0-spec-final-pdf" target="_blank" rel="noopener" title="Open Compute Project: OCP Microscaling Formats (MX) v1.0 Specification (Sept 2023)">13</a>. NVIDIA's NVFP4 uses smaller blocks of 16 values with a more precise FP8 scale, plus one scale per tensor <a class="cite" href="https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Introducing NVFP4 for efficient and accurate low-precision inference">12</a>. When comparing chips, check that the precision matches: an FP4 figure is roughly double an FP8 figure on the same hardware.</p>
+</div>
+</section>
+<section class="chip-sec" id="memory" aria-labelledby="h-memory">
+<h2 id="h-memory"><span>4.</span>Memory: the real speed limit</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A chip can only work as fast as it can be fed. AI chips use a special memory called <b>HBM</b> (high-bandwidth memory): memory chips stacked on top of each other and placed right next to the processor, so data has a very short distance to travel.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The industry standard for the newest version, HBM4, was published by JEDEC in April 2025. Each stack has a 2,048-bit connection running at up to 8 Gb/s per pin, for up to 2 terabytes per second, and can be 4, 8, 12 or 16 chips high with up to 64 GB <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)">14</a>. A Blackwell Ultra GPU carries eight 12-high stacks, 288 GB in total, at 8 TB/s <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">8</a>; NVIDIA's Rubin GPU moves to HBM4 with up to 288 GB and up to 22 TB/s <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform">15</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Researchers call the gap between compute and memory the "memory wall". Over 20 years, peak AI hardware compute grew about 60,000 times while memory bandwidth grew about 100 times and chip-to-chip bandwidth about 30 times; server compute scales about 3.0 times every two years against 1.6 for memory <a class="cite" href="https://arxiv.org/abs/2403.14123" target="_blank" rel="noopener" title="Gholami et al., IEEE Micro 2024: AI and Memory Wall">16</a>. The authors conclude memory is now the main bottleneck, especially for serving models to users <a class="cite" href="https://arxiv.org/abs/2403.14123" target="_blank" rel="noopener" title="Gholami et al., IEEE Micro 2024: AI and Memory Wall">16</a>. This is why HBM supply, not chip design, often decides how many AI chips can be built.</p>
+</div>
+</section>
+<section class="chip-sec" id="links" aria-labelledby="h-links">
+<h2 id="h-links"><span>5.</span>Joining thousands of chips</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>The biggest AI models do not fit on one chip, so chips are joined with extremely fast cables to act as one. NVIDIA's GB200 NVL72 joins 72 GPUs and 36 processors in one rack, with each GPU able to talk to the others at 1.8 terabytes per second <a class="cite" href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/" target="_blank" rel="noopener" title="NVIDIA: GB200 NVL72 product page">17</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>There are two kinds of link. <b>Scale-up</b> joins chips inside a rack so they share memory almost like one chip; <b>scale-out</b> joins racks across a building. NVLink is NVIDIA's scale-up link, with NVLink Switch chips giving every GPU a full-speed path to every other <a class="cite" href="https://www.nvidia.com/en-us/data-center/nvlink/" target="_blank" rel="noopener" title="NVIDIA: NVLink and NVLink Switch">18</a>. Google joins its TPUs with its own inter-chip network into "pods" <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud Docs: TPU system architecture">7</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Open alternatives now exist. The UALink Consortium published its 1.0 scale-up specification in April 2025: 200 Gb/s per lane, up to 1,024 accelerators in a pod, with more than 85 member companies including AMD, Apple, AWS, Google, Intel, Meta and Microsoft <a class="cite" href="https://ualinkconsortium.org/wp-content/uploads/2025/04/UALink-1.0-Specification-PR_FINAL.pdf" target="_blank" rel="noopener" title="UALink Consortium: UALink 200G 1.0 Specification release (8 Apr 2025)">19</a>. The Ultra Ethernet Consortium published its 1.0 scale-out specification in June 2025, designed to reach millions of endpoints over Ethernet <a class="cite" href="https://ultraethernet.org/ultra-ethernet-consortium-uec-launches-specification-1-0-transforming-ethernet-for-ai-and-hpc-at-scale/" target="_blank" rel="noopener" title="Ultra Ethernet Consortium: UEC launches Specification 1.0 (11 Jun 2025)">20</a>. NVIDIA's figures for its sixth-generation NVLink differ between pages: its NVLink page gives 3 TB/s per GPU and 216 TB/s per Vera Rubin NVL72 rack <a class="cite" href="https://www.nvidia.com/en-us/data-center/nvlink/" target="_blank" rel="noopener" title="NVIDIA: NVLink and NVLink Switch">18</a>, while its Rubin technical blog gives 3.6 TB/s and 260 TB/s <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform">15</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="trainvsinfer" aria-labelledby="h-trainvsinfer">
+<h2 id="h-trainvsinfer"><span>6.</span>Training versus inference</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>Training</b> is teaching: the model looks at huge amounts of data and adjusts itself. <b>Inference</b> is using: the finished model answers your question <a class="cite" href="https://www.nvidia.com/en-us/glossary/ai-inference/" target="_blank" rel="noopener" title="NVIDIA Glossary: What is AI inference?">21</a>. Training happens in giant bursts; inference happens every time anyone uses the AI.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Chips are now being designed for one or the other. Google says Ironwood, its seventh-generation TPU announced in April 2025, is the first TPU designed specifically for inference, with 192 GB of HBM per chip and pods of up to 9,216 chips <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener" title="Google Blog: Ironwood: the first Google TPU for the age of inference (9 Apr 2025)">22</a>. Groq's LPU was built only for inference and keeps its data in on-chip memory rather than HBM <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">23</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Training compute keeps climbing. The research group Epoch AI estimates the compute used to train frontier models grew about 4 to 5 times a year from 2010 to 2024 <a class="cite" href="https://epoch.ai/blog/training-compute-of-frontier-ai-models-grows-by-4-5x-per-year" target="_blank" rel="noopener" title="Epoch AI (research): Training compute of frontier AI models grows by 4-5x per year">24</a>, and counted more than 30 models from 12 developers trained with over 10^25 operations by mid-2025 <a class="cite" href="https://epoch.ai/data-insights/models-over-1e25-flop" target="_blank" rel="noopener" title="Epoch AI (research): Models over 1e25 FLOP">25</a>. These are research estimates, not company disclosures. Inference, meanwhile, favours memory bandwidth and low precision, which is why inference chips lean on FP4 and on-chip memory <a class="cite" href="https://www.nvidia.com/en-us/glossary/ai-inference/" target="_blank" rel="noopener" title="NVIDIA Glossary: What is AI inference?">21</a> <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">23</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="types" aria-labelledby="h-types">
+<h2 id="h-types"><span>7.</span>The main kinds of AI chip</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul>
+<li><b>GPU</b>: flexible, works for almost any AI task. NVIDIA and AMD make them.</li>
+<li><b>TPU</b>: Google's own chip, built mainly for matrix maths <a class="cite" href="https://docs.cloud.google.com/tpu/docs/intro-to-tpu" target="_blank" rel="noopener" title="Google Cloud Docs: Introduction to Cloud TPU">9</a>.</li>
+<li><b>LPU</b>: Groq's chip, built only for running models fast <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">23</a>.</li>
+<li><b>Wafer-scale</b>: Cerebras makes one giant chip from a whole silicon wafer <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer-Scale Engine (13 Mar 2024)">26</a>.</li>
+<li><b>NPU</b>: small AI engines inside phones and laptops, such as Apple's Neural Engine <a class="cite" href="https://www.apple.com/newsroom/2024/05/apple-introduces-m4-chip/" target="_blank" rel="noopener" title="Apple Newsroom: Apple introduces M4 chip (May 2024)">27</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Cerebras's WSE-3 packs 4 trillion transistors and 900,000 AI cores onto one wafer, with 44 GB of on-chip memory, made on TSMC's 5 nm process <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer-Scale Engine (13 Mar 2024)">26</a>. Groq says its LPU reads on-chip memory at over 80 TB/s, against about 8 TB/s for a GPU's off-chip HBM, and runs programs the same way every time because the compiler plans every step in advance <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">23</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>On devices: Apple's M4 Neural Engine does up to 38 trillion operations per second <a class="cite" href="https://www.apple.com/newsroom/2024/05/apple-introduces-m4-chip/" target="_blank" rel="noopener" title="Apple Newsroom: Apple introduces M4 chip (May 2024)">27</a>; Apple's M5 adds a neural accelerator to every GPU core and claims over four times the peak GPU AI compute of M4, with 153 GB/s of memory bandwidth <a class="cite" href="https://www.apple.com/newsroom/2025/10/apple-unleashes-m5-the-next-big-leap-in-ai-performance-for-apple-silicon/" target="_blank" rel="noopener" title="Apple Newsroom: Apple unleashes M5 (15 Oct 2025)">28</a>. Qualcomm's Snapdragon X2 Elite laptop chip has an 80 TOPS NPU <a class="cite" href="https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2025-press-kit/day-2-/documents/SnapdragonX2EliteExtremeandSnapdragonX2Elite_FeaturesataGlance.pdf" target="_blank" rel="noopener" title="Qualcomm: Snapdragon X2 Elite features at a glance (2025)">29</a>. Cerebras's CS-4 system, announced in August 2026, uses a "WSE-3 Turbo" at 250 petaflops per wafer by the company's own figures <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4 (18 Aug 2026)">30</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="power" aria-labelledby="h-power">
+<h2 id="h-power"><span>8.</span>Power and heat</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AI chips use a lot of electricity. One NVIDIA GPU can draw up to 1,400 watts <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">8</a>. A full rack of 72 draws around 120 kilowatts <a class="cite" href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf" target="_blank" rel="noopener" title="NVIDIA Docs: DGX GB200 user guide">31</a>, so racks are now cooled with liquid instead of fans.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Power per chip keeps rising: NVIDIA's maximum GPU power went from 700 W (Hopper) to 1,200 W (Blackwell) to 1,400 W (Blackwell Ultra) <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">8</a>. Air cooling reaches its limits as racks go past about 20 kW and approach 50 kW, according to cooling maker Vertiv <a class="cite" href="https://www.vertiv.com/en-us/insights/articles/educational-articles/understanding-direct-to-chip-cooling-in-hpc-infrastructure-a-deep-dive-into-liquid-cooling/" target="_blank" rel="noopener" title="Vertiv: Understanding direct-to-chip cooling in HPC infrastructure">32</a>. The GB200 NVL72 uses cold plates on each processor with coolant piped through the rack <a class="cite" href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf" target="_blank" rel="noopener" title="NVIDIA Docs: DGX GB200 user guide">31</a>, and NVIDIA describes Vera Rubin NVL72 as fully liquid cooled <a class="cite" href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside the NVIDIA Rubin Platform">15</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The International Energy Agency estimates data centres used about 415 TWh of electricity in 2024, around 1.5% of the world's total, and projects this to more than double to about 945 TWh by 2030, with AI the biggest driver; the US was 45% of data-centre use, China 25% and Europe 15% <a class="cite" href="https://www.iea.org/reports/energy-and-ai/executive-summary" target="_blank" rel="noopener" title="International Energy Agency: Energy and AI: executive summary (April 2025)">33</a>. Efficiency per chip keeps improving (Google says Ironwood has twice the performance per watt of its previous TPU <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener" title="Google Blog: Ironwood: the first Google TPU for the age of inference (9 Apr 2025)">22</a>), but total demand is growing faster than efficiency.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>9.</span>Sources</h2>
+<p class="note">33 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator or an annual report; <b>Standard</b> = a published industry standard; <b>Paper</b> = a peer-reviewed or conference paper; <b>Research</b> = an independent research body; <b>Government</b> = a government page; <b>Press</b> = news coverage, used only where no official source exists.</p>
+<ol class="src-list">
+<li id="src-1"><b>NVIDIA Docs</b>: <a href="https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html" target="_blank" rel="noopener">Matrix Multiplication Background User&#x27;s Guide</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>AMD Newsroom</b>: <a href="https://www.amd.com/en/newsroom/press-releases/2024-10-10-amd-launches-5th-gen-amd-epyc-cpus-maintaining-le.html" target="_blank" rel="noopener">AMD launches 5th Gen AMD EPYC CPUs (10 Oct 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>Intel Newsroom</b>: <a href="https://download.intel.com/newsroom/2024/data-center/Fact-Sheet-Xeon-6-P-Core.pdf" target="_blank" rel="noopener">Intel Xeon 6 with P-cores fact sheet (2024)</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/" target="_blank" rel="noopener">NVIDIA Hopper Architecture In-Depth</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>NVIDIA Docs</b>: <a href="https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/" target="_blank" rel="noopener">GPU Performance Background User&#x27;s Guide</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/tensor-cores" target="_blank" rel="noopener">Tensor Cores</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>Google Cloud Docs</b>: <a href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener">TPU system architecture</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener">Inside NVIDIA Blackwell Ultra</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>Google Cloud Docs</b>: <a href="https://docs.cloud.google.com/tpu/docs/intro-to-tpu" target="_blank" rel="noopener">Introduction to Cloud TPU</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>Jouppi et al., ISCA 2017</b>: <a href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener">In-Datacenter Performance Analysis of a Tensor Processing Unit</a><span class="st st-paper">Paper</span></li>
+<li id="src-11"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/ai-machine-learning/bfloat16-the-secret-to-high-performance-on-cloud-tpus" target="_blank" rel="noopener">BFloat16: the secret to high performance on Cloud TPUs</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference" target="_blank" rel="noopener">Introducing NVFP4 for efficient and accurate low-precision inference</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>Open Compute Project</b>: <a href="https://www.opencompute.org/documents/ocp-microscaling-formats-mx-v1-0-spec-final-pdf" target="_blank" rel="noopener">OCP Microscaling Formats (MX) v1.0 Specification (Sept 2023)</a><span class="st st-standard">Standard</span></li>
+<li id="src-14"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener">JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)</a><span class="st st-standard">Standard</span></li>
+<li id="src-15"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/inside-the-nvidia-rubin-platform-six-new-chips-one-ai-supercomputer/" target="_blank" rel="noopener">Inside the NVIDIA Rubin Platform</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>Gholami et al., IEEE Micro 2024</b>: <a href="https://arxiv.org/abs/2403.14123" target="_blank" rel="noopener">AI and Memory Wall</a><span class="st st-paper">Paper</span></li>
+<li id="src-17"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/gb200-nvl72/" target="_blank" rel="noopener">GB200 NVL72 product page</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/nvlink/" target="_blank" rel="noopener">NVLink and NVLink Switch</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>UALink Consortium</b>: <a href="https://ualinkconsortium.org/wp-content/uploads/2025/04/UALink-1.0-Specification-PR_FINAL.pdf" target="_blank" rel="noopener">UALink 200G 1.0 Specification release (8 Apr 2025)</a><span class="st st-standard">Standard</span></li>
+<li id="src-20"><b>Ultra Ethernet Consortium</b>: <a href="https://ultraethernet.org/ultra-ethernet-consortium-uec-launches-specification-1-0-transforming-ethernet-for-ai-and-hpc-at-scale/" target="_blank" rel="noopener">UEC launches Specification 1.0 (11 Jun 2025)</a><span class="st st-standard">Standard</span></li>
+<li id="src-21"><b>NVIDIA Glossary</b>: <a href="https://www.nvidia.com/en-us/glossary/ai-inference/" target="_blank" rel="noopener">What is AI inference?</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>Google Blog</b>: <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener">Ironwood: the first Google TPU for the age of inference (9 Apr 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>Groq Blog</b>: <a href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener">The Groq LPU explained</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>Epoch AI (research)</b>: <a href="https://epoch.ai/blog/training-compute-of-frontier-ai-models-grows-by-4-5x-per-year" target="_blank" rel="noopener">Training compute of frontier AI models grows by 4-5x per year</a><span class="st st-research">Research</span></li>
+<li id="src-25"><b>Epoch AI (research)</b>: <a href="https://epoch.ai/data-insights/models-over-1e25-flop" target="_blank" rel="noopener">Models over 1e25 FLOP</a><span class="st st-research">Research</span></li>
+<li id="src-26"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener">Cerebras announces third-generation Wafer-Scale Engine (13 Mar 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>Apple Newsroom</b>: <a href="https://www.apple.com/newsroom/2024/05/apple-introduces-m4-chip/" target="_blank" rel="noopener">Apple introduces M4 chip (May 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>Apple Newsroom</b>: <a href="https://www.apple.com/newsroom/2025/10/apple-unleashes-m5-the-next-big-leap-in-ai-performance-for-apple-silicon/" target="_blank" rel="noopener">Apple unleashes M5 (15 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>Qualcomm</b>: <a href="https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/images/company/news-media/media-center/press-kits/snapdragon-summit-2025-press-kit/day-2-/documents/SnapdragonX2EliteExtremeandSnapdragonX2Elite_FeaturesataGlance.pdf" target="_blank" rel="noopener">Snapdragon X2 Elite features at a glance (2025)</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>Cerebras Investor Relations</b>: <a href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener">Cerebras unveils CS-4 (18 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>NVIDIA Docs</b>: <a href="https://docs.nvidia.com/dgx/dgxgb200-user-guide/dgxgb200-user-guide.pdf" target="_blank" rel="noopener">DGX GB200 user guide</a><span class="st st-official">Official</span></li>
+<li id="src-32"><b>Vertiv</b>: <a href="https://www.vertiv.com/en-us/insights/articles/educational-articles/understanding-direct-to-chip-cooling-in-hpc-infrastructure-a-deep-dive-into-liquid-cooling/" target="_blank" rel="noopener">Understanding direct-to-chip cooling in HPC infrastructure</a><span class="st st-official">Official</span></li>
+<li id="src-33"><b>International Energy Agency</b>: <a href="https://www.iea.org/reports/energy-and-ai/executive-summary" target="_blank" rel="noopener">Energy and AI: executive summary (April 2025)</a><span class="st st-research">Research</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#why">1. Why AI needs special chips</a><a href="#inside">2. Inside an AI chip: cores and matrix engines</a><a href="#numbers">3. Smaller numbers, faster answers</a><a href="#memory">4. Memory: the real speed limit</a><a href="#links">5. Joining thousands of chips</a><a href="#trainvsinfer">6. Training versus inference</a><a href="#types">7. The main kinds of AI chip</a><a href="#power">8. Power and heat</a><a href="#sources">9. Sources</a></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip guides</a><a href="/ai-atlas/ai-chips/how-a-chip-is-made/" class="sidebar-link">How a chip is made: sand to server</a><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD guide</a><a href="/ai-atlas/ai-chips/nvidia/" class="sidebar-link">NVIDIA guide</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22How%20AI%20Chips%20Work%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-ai-chips-work%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22How%20AI%20Chips%20Work%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-ai-chips-work%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22How%20AI%20Chips%20Work%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-ai-chips-work%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22How%20AI%20Chips%20Work%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-ai-chips-work%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22How%20AI%20Chips%20Work%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fhow-ai-chips-work%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

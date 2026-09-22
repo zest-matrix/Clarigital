@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AMD AI Chips (Instinct): The Complete Guide | Clarigital</title>
+<meta name="description" content="How AMD&#x27;s Instinct AI chips are made, where, what they cost to rent, who buys them and what its filings reveal. Simple to expert, every figure sourced.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/amd/">
+<meta property="og:title" content="AMD AI Chips (Instinct): The Complete Guide">
+<meta property="og:description" content="How AMD&#x27;s Instinct AI chips are made, where, what they cost to rent, who buys them and what its filings reveal. Simple to expert, every figure sourced.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/amd/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v3*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v3*//end
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AMD AI Chips: The Complete Guide", "description": "How AMD's Instinct AI chips are made, where, what they cost to rent, who buys them and what its filings reveal. Simple to expert, every figure sourced.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/amd/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/amd/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "about": {"@type": "Organization", "name": "Advanced Micro Devices, Inc.", "url": "https://www.amd.com", "tickerSymbol": "NASDAQ: AMD", "foundingDate": "1969-05-01", "address": {"@type": "PostalAddress", "streetAddress": "2485 Augustine Drive", "addressLocality": "Santa Clara", "addressRegion": "CA", "postalCode": "95054", "addressCountry": "US"}, "numberOfEmployees": {"@type": "QuantitativeValue", "value": 31000}}, "citation": ["https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf", "https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm", "https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results", "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era", "https://www.amd.com/en/products/accelerators/instinct/mi400.html", "https://www.businesswire.com/news/home/20240530653602/en/AMD-Broadcom-Cisco-Google-Hewlett-Packard-Enterprise-Intel-Meta-and-Microsoft-Form-Ultra-Accelerator-Link-UALink-Promoter-Group-to-Drive-Data-Center-AI-Connectivity", "https://ir.amd.com/news-events/press-releases/detail/1276/amd-reports-fourth-quarter-and-full-year-2025-financial-results", "https://ir.amd.com/news-events/press-releases/detail/1266/amd-unveils-strategy-to-lead-the-1-trillion-compute-market-and-accelerate-next-phase-of-growth", "https://www.amd.com/en/blogs/2024/amd-55th-anniversary-special-relive-history-with-.html", "https://ir.amd.com/board-member/lisa-su", "https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm", "https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm", "https://www.sec.gov/Archives/edgar/data/2488/000119312506217735/dex991.htm", "https://www.sec.gov/Archives/edgar/data/2488/000119312508209113/dex991.htm", "https://ir.amd.com/news-events/press-releases/detail/766/amd-raises-expectations-for-server-performance-unveils-epyc-processor-brand-for-the-datacenter", "https://ir.amd.com/news-events/press-releases/detail/1047/amd-completes-acquisition-of-xilinx", "https://ir.amd.com/news-events/press-releases/detail/1073/worlds-first-exascale-supercomputer-powered-by-amd-epyc-processors-and-amd-instinct-accelerators", "https://ir.amd.com/news-events/press-releases/detail/1173/amd-delivers-leadership-portfolio-of-data-center-ai-solutions-with-amd-instinct-mi300-series", "https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025", "https://ir.amd.com/news-events/press-releases/detail/1240/amd-completes-acquisition-of-zt-systems", "https://ir.amd.com/news-events/press-releases/detail/1032/new-amd-instinct-mi200-series-accelerators-bring", "https://www.llnl.gov/article/53596/el-capitan-retains-title-worlds-fastest-supercomputer-latest-top500", "https://ir.amd.com/news-events/press-releases/detail/1211/amd-to-significantly-expand-data-center-ai-systems-capabilities-with-acquisition-of-hyperscale-solutions-provider-zt-systems", "https://www.globenewswire.com/news-release/2025/10/27/3174599/0/en/AMD-Completes-Divestiture-of-ZT-Systems-Data-Center-Infrastructure-Manufacturing-Business-to-Sanmina.html", "https://www.amd.com/en/blogs/2023/amd-completes-acquisition-of-nod-ai.html", "https://ir.amd.com/news-events/press-releases/detail/1210/amd-completes-acquisition-of-silo-ai-to-accelerate-development-and-deployment-of-ai-models-on-amd-hardware", "https://www.amd.com/en/blogs/2025/amd-acquires-brium-to-strengthen-open-ai-software-ecosystem.html", "https://ir.amd.com/news-events/press-releases/detail/1220/amd-delivers-leadership-ai-performance-with-amd-instinct-mi325x-accelerators", "https://www.amd.com/en/products/accelerators/instinct/mi400/mi455x.html", "https://amd.com/en/technologies/cdna.html", "https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus", "https://www.amd.com/en/products/rackscale-solutions/helios.html", "https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi350x-gpu-brochure.pdf", "https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html", "https://newsroom.amd.com/news/samsung-and-amd-expand-strategic-collaboratio/", "https://investors.micron.com/news-releases/news-release-details/micron-hbm-designed-leading-amd-ai-platform", "https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html", "https://hc2024.hotchips.org/assets/program/conference/day1/23_HC2024.AMD.MI300X.ASmith(MI300X).v1.Final.20240817.pdf", "https://rocm.docs.amd.com/en/latest/reference/gpu-arch/mi350.html", "https://ir.amd.com/news-events/press-releases/detail/1286/amd-announces-more-than-10-billion-in-taiwan-ecosystem-investments-to-accelerate-ai-infrastructure", "https://newsroom.amd.com/news/amd-achieves-first-tsmc-n2-product-silicon-milesto/", "https://en.tfme.com/contact.html", "https://ir.amd.com/news-events/press-releases/detail/684/amd-and-nantong-fujitsu-microelectronics-co-ltd-close-on-semiconductor-assembly-and-test-joint-venture", "https://www.tsmc.com/english/contact-us", "https://www.amd.com/en/corporate/locations.html", "https://www.amd.com/en/newsroom/press-releases/2023-11-27-amd-inaugurates-its-largest-global-design-center-in-india.html", "https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html", "https://www.amd.com/en/partner/articles/instinct-mi325x-accelerators.html", "https://www.amd.com/en/where-to-buy/accelerators/instinct.html", "https://www.amd.com/en/products/processors/desktops/ryzen/ryzen-ai-halo.html", "https://ir.amd.com/news-events/press-releases/detail/1238/amd-unveils-next-generation-amd-rdna-4-architecture-with-the-launch-of-amd-radeon-rx-9000-series-graphics-cards", "https://ir.amd.com/news-events/press-releases/detail/1253/amd-introduces-new-radeon-graphics-cards-and-ryzen-threadripper-processors-at-computex-2025", "https://www.amd.com/en/developer/resources/cloud-access/amd-developer-cloud.html", "https://blogs.oracle.com/cloud-infrastructure/announcing-ga-oci-compute-amd-mi300x-gpus", "https://www.digitalocean.com/pricing/gpu-droplets", "https://www.crusoe.ai/cloud/pricing", "https://www.vultr.com/pricing/", "https://tensorwave.com/products/accelerators/amd-mi355x", "https://compute.indiaai.gov.in/pricelist", "https://ir.amd.com/news-events/press-releases/detail/732/amd-releases-new-version-of-rocm-the-most-versatile-open-source-platform-for-gpu-computing", "https://rocm.docs.amd.com/en/latest/about/release-notes.html", "https://ir.amd.com/news-events/press-releases/detail/1071/amd-expands-data-center-solutions-capabilities-with-acquisition-of-pensando", "https://www.fool.com/earnings/call-transcripts/2026/08/11/amd-amd-q2-2026-earnings-call-transcript/", "https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus", "https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus", "https://www.amd.com/en/newsroom/press-releases/oracle-and-amd-expand-partnership-to-help-customers-ach.html", "https://www.amd.com/en/blogs/2025/Microsoft-Azure-Expanding-AI-Infra-Choice-with-AMD-Helios.html", "https://ir.amd.com/news-events/press-releases/detail/1250/amd-and-humain-form-strategic-10b-collaboration-to-advance-global-ai", "https://www.sec.gov/Archives/edgar/data/0000002488/000119312525230895/d28189d8k.htm", "https://www.sec.gov/Archives/edgar/data/0000002488/000000248825000039/amd-20250415.htm", "https://ir.amd.com/news-events/press-releases/detail/1145/amd-announces-plan-to-invest-approximately-400-million", "https://indiaai.gov.in/hub/indiaai-compute-capacity"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "AMD", "item": "https://www.clarigital.com/ai-atlas/ai-chips/amd/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>AMD</span></nav>
+    <span class="label-tag">AI Chips · Brand guide</span>
+    <h1>AMD AI Chips: The Complete Guide</h1>
+    <p class="hero-lead">NVIDIA&#x27;s main rival in AI chips. What AMD sells, how its Instinct chips are built from chiplets and where, what they cost to rent, the OpenAI, Meta and Anthropic deals, and the facts buried in its filings. Three reading levels, every number sourced.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">AMD</span>
+      <span class="meta-tag mt-gray">16 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">72 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Every brand in our AI Chips section uses the same 16 sections in the same order. Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where a company has not published something, we say so rather than estimate.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD competes directly with NVIDIA in AI chips; its own annual report names NVIDIA as a competitor <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a>. Like NVIDIA it designs chips and pays TSMC to make them <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K fiscal 2025, business section (HTML)">2</a>. Its AI chips are called <b>Instinct</b>. In its latest quarter AMD sold <b>$11.5 billion</b> of products, and <b>$6.7 billion</b> of that, 58%, came from its Data Center business, up 107% on a year earlier <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Reports Second Quarter 2026 Financial Results (4 Aug 2026)">3</a>.</p>
+<div class="fact-grid">
+<div><b>What it sells</b>AI chips (Instinct GPUs), server processors (EPYC), PC chips, and now whole AI racks (Helios)</div>
+<div><b>Latest AI chip</b>Instinct MI455X, in the Helios rack, in production from July 2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a></div>
+<div><b>Who makes the chips</b>TSMC, with partners for packaging and testing <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K fiscal 2025, business section (HTML)">2</a></div>
+<div><b>Biggest AI customers</b>OpenAI, Meta, Anthropic, Oracle, Microsoft <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Reports Second Quarter 2026 Financial Results (4 Aug 2026)">3</a></div>
+</div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>AMD sells both server processors (EPYC) and AI chips, and since 2026 it sells them together in a single rack called Helios: 72 Instinct MI455X chips and 18 EPYC processors <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a>. Its pitch against NVIDIA rests on three things: more memory per chip, open software (ROCm), and open standards for linking chips (UALink) <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series page">5</a> <a class="cite" href="https://www.businesswire.com/news/home/20240530653602/en/AMD-Broadcom-Cisco-Google-Hewlett-Packard-Enterprise-Intel-Meta-and-Microsoft-Form-Ultra-Accelerator-Link-UALink-Promoter-Group-to-Drive-Data-Center-AI-Connectivity" target="_blank" rel="noopener" title="UALink Promoter Group (press release): AMD, Broadcom, Cisco, Google, HPE, Intel, Meta and Microsoft form UALink promoter group (30 May 2024)">6</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AMD's financial year is the calendar year (it ends on the last Saturday of December) <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a>. Fiscal 2025 revenue was $34.6 billion, with Data Center at $16.6 billion <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1276/amd-reports-fourth-quarter-and-full-year-2025-financial-results" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Reports Fourth Quarter and Full Year 2025 Financial Results">7</a>. For the third quarter of 2026 AMD guided revenue of about $13 billion, plus or minus $300 million <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Reports Second Quarter 2026 Financial Results (4 Aug 2026)">3</a>. At its November 2025 Financial Analyst Day it set targets of more than 60% a year growth for Data Center and more than 80% for Data Center AI over three to five years <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1266/amd-unveils-strategy-to-lead-the-1-trillion-compute-market-and-accelerate-next-phase-of-growth" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Financial Analyst Day 2025 strategy">8</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="company" aria-labelledby="h-company">
+<h2 id="h-company"><span>2.</span>Company card</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Advanced Micro Devices was founded on 1 May 1969 by Jerry Sanders and seven co-founders <a class="cite" href="https://www.amd.com/en/blogs/2024/amd-55th-anniversary-special-relive-history-with-.html" target="_blank" rel="noopener" title="AMD Blog: AMD 55th anniversary: relive history (2024)">9</a> <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a>. Dr Lisa Su has been President and CEO since October 2014 and Chair since February 2022 <a class="cite" href="https://ir.amd.com/board-member/lisa-su" target="_blank" rel="noopener" title="AMD Investor Relations: Board member: Lisa Su">10</a>. Its shares trade on the Nasdaq as <b>AMD</b> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>.</p>
+<table class="spec"><tbody>
+<tr><th>Legal name</th><td>Advanced Micro Devices, Inc. <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a></td></tr>
+<tr><th>Headquarters</th><td>2485 Augustine Drive, Santa Clara, California 95054, USA <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a> (<a href="https://www.openstreetmap.org/search?query=2485%20Augustine%20Drive%20Santa%20Clara" target="_blank" rel="noopener">map</a>)</td></tr>
+<tr><th>Founded</th><td>1 May 1969; public since 1972 <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a></td></tr>
+<tr><th>Chief Executive</th><td>Lisa Su, Chair, President and CEO <a class="cite" href="https://ir.amd.com/board-member/lisa-su" target="_blank" rel="noopener" title="AMD Investor Relations: Board member: Lisa Su">10</a></td></tr>
+<tr><th>Employees</th><td>About 31,000 (27 December 2025) <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a></td></tr>
+<tr><th>Stock</th><td>AMD, Nasdaq Global Select Market <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a></td></tr>
+<tr><th>Investor site</th><td><a href="https://ir.amd.com" target="_blank" rel="noopener">ir.amd.com</a></td></tr>
+</tbody></table>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>For almost five decades AMD was based at 915 DeGuigne Drive in Sunnyvale before moving to Santa Clara <a class="cite" href="https://www.amd.com/en/blogs/2024/amd-55th-anniversary-special-relive-history-with-.html" target="_blank" rel="noopener" title="AMD Blog: AMD 55th anniversary: relive history (2024)">9</a>. It is incorporated in Delaware <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>. The fiscal 2025 annual report was filed on 4 February 2026 and later amended to correct the presentation of some figures <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AMD's main documents are the annual 10-K, the quarterly 10-Q and the earnings press releases, all on ir.amd.com and the SEC site <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm" target="_blank" rel="noopener" title="AMD: Form 10-Q, quarter ended 27 June 2026">12</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Reports Second Quarter 2026 Financial Results (4 Aug 2026)">3</a>. AMD reports three segments: Data Center, Client and Gaming, and Embedded; in the June 2026 quarter they were $6.7 billion, $3.8 billion and $977 million <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Reports Second Quarter 2026 Financial Results (4 Aug 2026)">3</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>3.</span>The story</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul class="timeline">
+<li><b>1969</b> Founded in California <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a>.</li>
+<li><b>2006</b> Buys ATI, maker of Radeon graphics chips, for about $5.4 billion <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000119312506217735/dex991.htm" target="_blank" rel="noopener" title="AMD (SEC exhibit): AMD completes ATI acquisition (Oct 2006)">13</a>.</li>
+<li><b>2009</b> Spins off its factories into what became GlobalFoundries, and becomes fabless <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000119312508209113/dex991.htm" target="_blank" rel="noopener" title="AMD (SEC exhibit): AMD and ATIC to form The Foundry Company (Oct 2008)">14</a>.</li>
+<li><b>2017</b> Launches EPYC server processors on its Zen design <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/766/amd-raises-expectations-for-server-performance-unveils-epyc-processor-brand-for-the-datacenter" target="_blank" rel="noopener" title="AMD Investor Relations: AMD unveils EPYC processor brand (16 May 2017)">15</a>.</li>
+<li><b>2022</b> Completes the Xilinx purchase; its chips power Frontier, the first exascale supercomputer <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1047/amd-completes-acquisition-of-xilinx" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Completes Acquisition of Xilinx (14 Feb 2022)">16</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1073/worlds-first-exascale-supercomputer-powered-by-amd-epyc-processors-and-amd-instinct-accelerators" target="_blank" rel="noopener" title="AMD Investor Relations: World&#x27;s first exascale supercomputer powered by AMD (30 May 2022)">17</a>.</li>
+<li><b>2023</b> Launches Instinct MI300X, its big AI chip <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1173/amd-delivers-leadership-portfolio-of-data-center-ai-solutions-with-amd-instinct-mi300-series" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Instinct MI300 series launch (6 Dec 2023)">18</a>.</li>
+<li><b>2025</b> MI350 series; buys rack-maker ZT Systems <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025" target="_blank" rel="noopener" title="AMD Investor Relations: Advancing AI 2025: MI350 series and Helios preview (12 Jun 2025)">19</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1240/amd-completes-acquisition-of-zt-systems" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Completes Acquisition of ZT Systems (31 Mar 2025)">20</a>.</li>
+<li><b>2026</b> Helios rack with MI455X enters production <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>AMD's route into AI came through supercomputers. Its Instinct MI250X chips, announced in 2021, powered Frontier at Oak Ridge National Laboratory, which in May 2022 became the first machine to pass one exaflop on the Top500 list <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1032/new-amd-instinct-mi200-series-accelerators-bring" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Instinct MI200 series (8 Nov 2021)">21</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1073/worlds-first-exascale-supercomputer-powered-by-amd-epyc-processors-and-amd-instinct-accelerators" target="_blank" rel="noopener" title="AMD Investor Relations: World&#x27;s first exascale supercomputer powered by AMD (30 May 2022)">17</a>. Its MI300A chip, which puts processor and GPU in one package, powers El Capitan at Lawrence Livermore, which kept the title of world's fastest supercomputer in November 2025 <a class="cite" href="https://www.llnl.gov/article/53596/el-capitan-retains-title-worlds-fastest-supercomputer-latest-top500" target="_blank" rel="noopener" title="Lawrence Livermore National Laboratory: El Capitan retains title of world&#x27;s fastest supercomputer (Nov 2025)">22</a>. The same chiplet designs became the MI300X for AI in December 2023 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1173/amd-delivers-leadership-portfolio-of-data-center-ai-solutions-with-amd-instinct-mi300-series" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Instinct MI300 series launch (6 Dec 2023)">18</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AMD bought its way into whole-rack systems. It agreed to buy ZT Systems in August 2024 for $4.9 billion including contingent payments <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1211/amd-to-significantly-expand-data-center-ai-systems-capabilities-with-acquisition-of-hyperscale-solutions-provider-zt-systems" target="_blank" rel="noopener" title="AMD Investor Relations: AMD to acquire ZT Systems (19 Aug 2024)">23</a>, completed it in March 2025 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1240/amd-completes-acquisition-of-zt-systems" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Completes Acquisition of ZT Systems (31 Mar 2025)">20</a>, then sold ZT's manufacturing arm to Sanmina in October 2025 while keeping the design teams; Sanmina became its preferred partner for building racks <a class="cite" href="https://www.globenewswire.com/news-release/2025/10/27/3174599/0/en/AMD-Completes-Divestiture-of-ZT-Systems-Data-Center-Infrastructure-Manufacturing-Business-to-Sanmina.html" target="_blank" rel="noopener" title="AMD (press release): AMD completes divestiture of ZT Systems manufacturing to Sanmina (27 Oct 2025)">24</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>. Software was bought too: Nod.ai (2023), Silo AI (about $665 million, 2024) and Brium (2025) <a class="cite" href="https://www.amd.com/en/blogs/2023/amd-completes-acquisition-of-nod-ai.html" target="_blank" rel="noopener" title="AMD Blog: AMD completes acquisition of Nod.ai (Oct 2023)">25</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1210/amd-completes-acquisition-of-silo-ai-to-accelerate-development-and-deployment-of-ai-models-on-amd-hardware" target="_blank" rel="noopener" title="AMD Investor Relations: AMD completes acquisition of Silo AI (12 Aug 2024)">26</a> <a class="cite" href="https://www.amd.com/en/blogs/2025/amd-acquires-brium-to-strengthen-open-ai-software-ecosystem.html" target="_blank" rel="noopener" title="AMD Blog: AMD acquires Brium (Jun 2025)">27</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineup" aria-labelledby="h-lineup">
+<h2 id="h-lineup"><span>4.</span>The lineup</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<table class="spec"><thead><tr><th>Name</th><th>What it is</th><th>Launched</th></tr></thead><tbody>
+<tr><td>Instinct MI300X</td><td>AMD's first big AI chip, with 192 GB of memory</td><td>Dec 2023 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1173/amd-delivers-leadership-portfolio-of-data-center-ai-solutions-with-amd-instinct-mi300-series" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Instinct MI300 series launch (6 Dec 2023)">18</a></td></tr>
+<tr><td>Instinct MI325X</td><td>MI300X with more memory (256 GB)</td><td>Oct 2024 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1220/amd-delivers-leadership-ai-performance-with-amd-instinct-mi325x-accelerators" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Instinct MI325X accelerators (10 Oct 2024)">28</a></td></tr>
+<tr><td>Instinct MI350X / MI355X</td><td>New design on a smaller process; 288 GB</td><td>Jun 2025 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025" target="_blank" rel="noopener" title="AMD Investor Relations: Advancing AI 2025: MI350 series and Helios preview (12 Jun 2025)">19</a></td></tr>
+<tr><td>Instinct MI350P</td><td>A plug-in card version for ordinary servers</td><td>2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a></td></tr>
+<tr><td>Instinct MI455X</td><td>Newest AI chip, 432 GB of memory</td><td>Jul 2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a> <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400/mi455x.html" target="_blank" rel="noopener" title="AMD: Instinct MI455X product page">29</a></td></tr>
+<tr><td>Helios</td><td>A rack of 72 MI455X and 18 EPYC processors</td><td>Jul 2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a></td></tr>
+</tbody></table>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>AMD names its AI chip designs "CDNA": CDNA 3 for MI300X and MI325X, CDNA 4 for the MI350 series, CDNA 5 for the MI400 series <a class="cite" href="https://amd.com/en/technologies/cdna.html" target="_blank" rel="noopener" title="AMD: AMD CDNA architecture">30</a>. The MI400 family has two branches: MI455X (part of the MI450 series) for AI, and MI430X for scientific computing and national AI projects, with 288 teraflops of full-precision (FP64) maths, expected in 2027 <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series page">5</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Anthropic partnership, up to 2 gigawatts (22 Jul 2026)">31</a>.</p>
+<p>Status as of September 2026: AMD said on 23 July 2026 that Helios was in production <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a>, with volume deployments expected in the second half of 2026 <a class="cite" href="https://www.amd.com/en/products/rackscale-solutions/helios.html" target="_blank" rel="noopener" title="AMD: Helios rack-scale solution page">32</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The MI350X and MI355X share a design but differ in power: MI350X is rated at up to 1,000 W and offered with air or liquid cooling, MI355X at up to 1,400 W <a class="cite" href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi350x-gpu-brochure.pdf" target="_blank" rel="noopener" title="AMD: Instinct MI350X product brief">33</a> <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">34</a>. AMD has published the roadmap after MI400: MI500 in 2027 and MI600 in 2028 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>How it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD designs its chips and other companies make them <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K fiscal 2025, business section (HTML)">2</a>:</p>
+<ol class="steps">
+<li><b>Chip making:</b> TSMC makes AMD's advanced chips; GlobalFoundries supplies some older-process wafers <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K fiscal 2025, business section (HTML)">2</a>.</li>
+<li><b>Chiplets:</b> an Instinct chip is not one piece of silicon but several small "chiplets" stacked and joined in one package.</li>
+<li><b>Memory:</b> Samsung and Micron supply the HBM memory for the MI350 series <a class="cite" href="https://newsroom.amd.com/news/samsung-and-amd-expand-strategic-collaboratio/" target="_blank" rel="noopener" title="AMD Newsroom: Samsung and AMD expand strategic collaboration">35</a> <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-hbm-designed-leading-amd-ai-platform" target="_blank" rel="noopener" title="Micron Investor Relations: Micron HBM designed into leading AMD AI platform">36</a>.</li>
+<li><b>Assembly and test:</b> two joint ventures with Tongfu Microelectronics, plus SPIL and KYEC <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K fiscal 2025, business section (HTML)">2</a>.</li>
+<li><b>Racks:</b> Sanmina is AMD's preferred partner for building Helios racks <a class="cite" href="https://www.globenewswire.com/news-release/2025/10/27/3174599/0/en/AMD-Completes-Divestiture-of-ZT-Systems-Data-Center-Infrastructure-Manufacturing-Business-to-Sanmina.html" target="_blank" rel="noopener" title="AMD (press release): AMD completes divestiture of ZT Systems manufacturing to Sanmina (27 Oct 2025)">24</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The MI300X combines 5 nm compute chiplets and 6 nm input/output chiplets made by TSMC, 153 billion transistors in all <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a> <a class="cite" href="https://hc2024.hotchips.org/assets/program/conference/day1/23_HC2024.AMD.MI300X.ASmith(MI300X).v1.Final.20240817.pdf" target="_blank" rel="noopener" title="AMD at Hot Chips 2024: AMD Instinct MI300X (Alan Smith)">38</a>. For the MI350 series, AMD's documentation says the compute chiplets are made on TSMC's N3P process and the input/output chiplets on N6 <a class="cite" href="https://rocm.docs.amd.com/en/latest/reference/gpu-arch/mi350.html" target="_blank" rel="noopener" title="AMD ROCm Docs: MI350 series GPU architecture">39</a>. The MI400 series moves to 2 nm and 3 nm <a class="cite" href="https://amd.com/en/technologies/cdna.html" target="_blank" rel="noopener" title="AMD: AMD CDNA architecture">30</a>.</p>
+<p>AMD said Samsung is its primary HBM3E partner for the MI350X and MI355X, and that the two companies "will align on primary HBM4 supply" for the MI455X <a class="cite" href="https://newsroom.amd.com/news/samsung-and-amd-expand-strategic-collaboratio/" target="_blank" rel="noopener" title="AMD Newsroom: Samsung and AMD expand strategic collaboration">35</a>; Micron said its 12-high 36 GB HBM3E is in the MI350 series <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-hbm-designed-leading-amd-ai-platform" target="_blank" rel="noopener" title="Micron Investor Relations: Micron HBM designed into leading AMD AI platform">36</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AMD is also paying to secure packaging. In May 2026 it announced more than $10 billion of investments in Taiwan's supply chain, including advanced packaging with ASE, SPIL and PTI, and substrates <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1286/amd-announces-more-than-10-billion-in-taiwan-ecosystem-investments-to-accelerate-ai-infrastructure" target="_blank" rel="noopener" title="AMD Investor Relations: More than $10 billion in Taiwan ecosystem investments (21 May 2026)">40</a>. In the US, AMD said it validated its 5th-generation EPYC processors at TSMC's Arizona fab and that its "Venice" EPYC was the first high-performance product taped out on TSMC's 2 nm process <a class="cite" href="https://newsroom.amd.com/news/amd-achieves-first-tsmc-n2-product-silicon-milesto/" target="_blank" rel="noopener" title="AMD Newsroom: AMD achieves first TSMC N2 product silicon milestone (Apr 2025)">41</a>. AMD has not said that any Instinct AI chip is made in Arizona.</p>
+</div>
+</section>
+<section class="chip-sec" id="where" aria-labelledby="h-where">
+<h2 id="h-where"><span>6.</span>Where it’s made: factories and addresses</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Sites officially linked to AMD's chips, with addresses from each operator's own website:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Site</th><th>Operator</th><th>Address</th><th>What happens there</th></tr></thead><tbody>
+<tr><td>TF-AMD Penang</td><td>TF-AMD (Tongfu 85%, AMD 15%)</td><td>Phase 3, Free Industrial Zone, Bayan Lepas 11900, Penang, Malaysia <a class="cite" href="https://en.tfme.com/contact.html" target="_blank" rel="noopener" title="Tongfu Microelectronics: Contact: TF-AMD Penang and Suzhou">42</a></td><td>Assembly and test; former AMD plant <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/684/amd-and-nantong-fujitsu-microelectronics-co-ltd-close-on-semiconductor-assembly-and-test-joint-venture" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Nantong Fujitsu Microelectronics close assembly and test joint venture (2016)">43</a> <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K fiscal 2025, business section (HTML)">2</a></td></tr>
+<tr><td>TF-AMD Suzhou</td><td>TF-AMD (Tongfu 85%, AMD 15%)</td><td>No. 88 Sutong Road, Suzhou Industrial Park, Jiangsu, China <a class="cite" href="https://en.tfme.com/contact.html" target="_blank" rel="noopener" title="Tongfu Microelectronics: Contact: TF-AMD Penang and Suzhou">42</a></td><td>Assembly and test; former AMD plant <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/684/amd-and-nantong-fujitsu-microelectronics-co-ltd-close-on-semiconductor-assembly-and-test-joint-venture" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Nantong Fujitsu Microelectronics close assembly and test joint venture (2016)">43</a></td></tr>
+<tr><td>TSMC Arizona (Fab 21)</td><td>TSMC</td><td>5088 W. Innovation Circle, Phoenix, AZ 85083, USA <a class="cite" href="https://www.tsmc.com/english/contact-us" target="_blank" rel="noopener" title="TSMC: Contact us (fab addresses)">44</a></td><td>AMD EPYC processors validated here <a class="cite" href="https://newsroom.amd.com/news/amd-achieves-first-tsmc-n2-product-silicon-milesto/" target="_blank" rel="noopener" title="AMD Newsroom: AMD achieves first TSMC N2 product silicon milestone (Apr 2025)">41</a>; Instinct: not disclosed</td></tr>
+</tbody></table></div>
+<p class="note">AMD does not say which TSMC fab in Taiwan makes its Instinct chips, or which assembly site handles them.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>AMD's own main sites (from amd.com) <a class="cite" href="https://www.amd.com/en/corporate/locations.html" target="_blank" rel="noopener" title="AMD: AMD corporate locations">45</a>:</p>
+<ul>
+<li><b>Santa Clara (HQ):</b> 2485 Augustine Drive, Santa Clara, CA 95054, USA</li>
+<li><b>Austin:</b> 8000 Metropolis Drive, Building C, Austin, TX 78744, USA</li>
+<li><b>San Jose:</b> 2100 Logic Drive, San Jose, CA 95124, USA</li>
+<li><b>Markham:</b> 1 Commerce Valley Drive, Markham, Ontario, Canada</li>
+<li><b>Hsinchu:</b> No. 101, Sec. 2, Gongdao 5th Road, East District, Hsinchu City, Taiwan</li>
+<li><b>Shanghai:</b> 1387 Zhangdong Road, Pudong, Shanghai, China</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AMD's India offices (from amd.com) <a class="cite" href="https://www.amd.com/en/corporate/locations.html" target="_blank" rel="noopener" title="AMD: AMD corporate locations">45</a>:</p>
+<ul>
+<li><b>Bengaluru, Technostar campus (largest AMD design centre):</b> Building 1, Level 1, Prestige Technostar, Doddanekundi Industrial Area, Bengaluru 560037 <a class="cite" href="https://www.amd.com/en/newsroom/press-releases/2023-11-27-amd-inaugurates-its-largest-global-design-center-in-india.html" target="_blank" rel="noopener" title="AMD Newsroom: AMD inaugurates its largest global design center in India (28 Nov 2023)">46</a></li>
+<li><b>Bengaluru, Whitefield:</b> Building II, Plot 100–103, Export Promotion Industrial Area, Whitefield, Bengaluru 560066</li>
+<li><b>Bengaluru, Koramangala:</b> 2nd Floor, Kabra Excelsior, 6A, 7th Main Road, Koramangala, Bengaluru 560034</li>
+<li><b>Hyderabad, Knowledge City:</b> 10th–17th Floor, Salarpuria Sattva Knowledge City, Hyderabad 500081</li>
+<li><b>Hyderabad, Mindspace:</b> Building 11, Mindspace, Madhapur, Hyderabad 500081</li>
+<li><b>Gurugram:</b> Spaze I-Tech Park, Tower B1, Sector 49, Sohna Road, Gurugram 122018</li>
+<li><b>New Delhi:</b> A-25, 2nd Floor, Mathura Road, Mohan Cooperative Industrial Estate, New Delhi 110044</li>
+</ul>
+</div>
+</section>
+<section class="chip-sec" id="works" aria-labelledby="h-works">
+<h2 id="h-works"><span>7.</span>How it works</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD's AI chips work like NVIDIA's: thousands of small maths units doing sums at the same time, fed by very fast stacked memory. AMD's difference is how the chip is built. Instead of one big piece of silicon, an Instinct chip is several smaller chiplets joined together, which lets AMD mix different manufacturing processes and fit more memory <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a> <a class="cite" href="https://rocm.docs.amd.com/en/latest/reference/gpu-arch/mi350.html" target="_blank" rel="noopener" title="AMD ROCm Docs: MI350 series GPU architecture">39</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Memory is AMD's headline advantage: 192 GB on MI300X, 256 GB on MI325X, 288 GB on MI355X and 432 GB of HBM4 on MI455X <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1220/amd-delivers-leadership-ai-performance-with-amd-instinct-mi325x-accelerators" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Instinct MI325X accelerators (10 Oct 2024)">28</a> <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">34</a> <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series page">5</a>. More memory means a large AI model can run on fewer chips. A Helios rack holds 31 TB of HBM4 with 1.7 petabytes per second of combined bandwidth <a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD Blog: AMD launches Helios rack-scale AI infrastructure (2026)">47</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The MI300X has 304 compute units on eight compute chiplets <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a> <a class="cite" href="https://hc2024.hotchips.org/assets/program/conference/day1/23_HC2024.AMD.MI300X.ASmith(MI300X).v1.Final.20240817.pdf" target="_blank" rel="noopener" title="AMD at Hot Chips 2024: AMD Instinct MI300X (Alan Smith)">38</a>; the MI355X has 256 compute units <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">34</a>. Helios links its 72 GPUs with 260 TB/s of scale-up bandwidth and 43 TB/s of scale-out networking, using AMD's Pensando "Vulcano" 800 Gb/s network cards <a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD Blog: AMD launches Helios rack-scale AI infrastructure (2026)">47</a> <a class="cite" href="https://www.amd.com/en/products/rackscale-solutions/helios.html" target="_blank" rel="noopener" title="AMD: Helios rack-scale solution page">32</a>. AMD says Helios supports UALink, the open chip-linking standard it co-founded <a class="cite" href="https://www.businesswire.com/news/home/20240530653602/en/AMD-Broadcom-Cisco-Google-Hewlett-Packard-Enterprise-Intel-Meta-and-Microsoft-Form-Ultra-Accelerator-Link-UALink-Promoter-Group-to-Drive-Data-Center-AI-Connectivity" target="_blank" rel="noopener" title="UALink Promoter Group (press release): AMD, Broadcom, Cisco, Google, HPE, Intel, Meta and Microsoft form UALink promoter group (30 May 2024)">6</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>8.</span>Specs explained</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD's own figures. "Dense" and "sparse" are explained in our <a href="/ai-atlas/ai-chips/how-ai-chips-work/">How AI chips work</a> guide.</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Chip</th><th>Transistors</th><th>Memory</th><th>Memory speed</th><th>AI compute (as AMD states it)</th><th>Power</th></tr></thead><tbody>
+<tr><td>MI300X</td><td>153 billion <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a></td><td>192 GB HBM3</td><td>5.3 TB/s</td><td>2.61 PFLOPS FP8 dense (5.22 sparse)</td><td>750 W <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a></td></tr>
+<tr><td>MI325X</td><td>—</td><td>256 GB HBM3E</td><td>6.0 TB/s <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1220/amd-delivers-leadership-ai-performance-with-amd-instinct-mi325x-accelerators" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Instinct MI325X accelerators (10 Oct 2024)">28</a></td><td>2.6 PFLOPS FP8</td><td>1,000 W <a class="cite" href="https://www.amd.com/en/partner/articles/instinct-mi325x-accelerators.html" target="_blank" rel="noopener" title="AMD: Instinct MI325X partner article">48</a></td></tr>
+<tr><td>MI355X</td><td>185 billion</td><td>288 GB HBM3E</td><td>8 TB/s</td><td>5 PFLOPS FP8 dense (10.1 sparse); 10.1 PFLOPS FP4</td><td>1,400 W <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">34</a></td></tr>
+<tr><td>MI455X</td><td>320 billion <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400/mi455x.html" target="_blank" rel="noopener" title="AMD: Instinct MI455X product page">29</a></td><td>432 GB HBM4</td><td>See note</td><td>40 PFLOPS FP4; 20 PFLOPS FP8</td><td>Not published <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series page">5</a></td></tr>
+</tbody></table></div>
+<p class="note">MI455X memory speed: AMD's MI400 page and Helios blog give 23.3 TB/s per GPU <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series page">5</a> <a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD Blog: AMD launches Helios rack-scale AI infrastructure (2026)">47</a>; its June 2025 preview and a section of the Helios page give 19.6 TB/s <a class="cite" href="https://www.amd.com/en/products/rackscale-solutions/helios.html" target="_blank" rel="noopener" title="AMD: Helios rack-scale solution page">32</a>. AMD does not say whether the MI455X compute figures are dense or sparse <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series page">5</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<table class="spec"><thead><tr><th>Rack</th><th>Chips</th><th>Memory</th><th>Links</th><th>AI compute</th></tr></thead><tbody>
+<tr><td>Helios</td><td>72 MI455X + 18 EPYC "Venice" <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a></td><td>31 TB HBM4, 1.7 PB/s</td><td>260 TB/s scale-up; 43 TB/s scale-out</td><td>2.9 exaflops FP4; 1.4 exaflops FP8 <a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD Blog: AMD launches Helios rack-scale AI infrastructure (2026)">47</a></td></tr>
+</tbody></table>
+<p>AMD claims Helios delivers 34 times the token throughput of MI355X systems <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a>. That is AMD's own claim.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>A quirk to watch: for MXFP4 on the MI355X, AMD lists the same 10.1 petaflops figure for dense and sparse <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">34</a>, while its FP8 and FP16 figures double with sparsity. Compare the FP8 dense figures (2.61 for MI300X, 5 for MI355X) for a like-for-like view <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a> <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">34</a>. For full-precision science work the MI300X does 163.4 teraflops of FP64 matrix maths against 78.6 for MI355X <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a> <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">34</a>: AMD traded scientific precision for AI speed, and now offers MI430X for scientific work <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series page">5</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>9.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>AMD does not publish prices for its Instinct AI chips.</b> They are sold through server makers, cloud companies and AMD sales <a class="cite" href="https://www.amd.com/en/where-to-buy/accelerators/instinct.html" target="_blank" rel="noopener" title="AMD: Where to buy AMD Instinct">49</a>. What <i>is</i> officially published:</p>
+<h3>Prices AMD publishes</h3>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Product</th><th>Price</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Ryzen AI Halo developer system (Ryzen AI Max+ 395, 128 GB)</td><td>$3,999</td><td>Retail price stated by AMD <a class="cite" href="https://www.amd.com/en/products/processors/desktops/ryzen/ryzen-ai-halo.html" target="_blank" rel="noopener" title="AMD: Ryzen AI Halo developer platform">50</a></td></tr>
+<tr><td>Radeon RX 9070 XT / RX 9070</td><td>$599 / $549</td><td>Launch prices, 2025 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1238/amd-unveils-next-generation-amd-rdna-4-architecture-with-the-launch-of-amd-radeon-rx-9000-series-graphics-cards" target="_blank" rel="noopener" title="AMD Investor Relations: AMD RDNA 4 and Radeon RX 9000 series launch (2025)">51</a></td></tr>
+<tr><td>Radeon RX 9060 XT 16 GB / 8 GB</td><td>$349 / $299</td><td>Launch prices <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1253/amd-introduces-new-radeon-graphics-cards-and-ryzen-threadripper-processors-at-computex-2025" target="_blank" rel="noopener" title="AMD Investor Relations: New Radeon graphics cards at Computex 2025">52</a></td></tr>
+<tr><td>AMD Developer Cloud</td><td>$100 free credit</td><td>No hourly rate published by AMD <a class="cite" href="https://www.amd.com/en/developer/resources/cloud-access/amd-developer-cloud.html" target="_blank" rel="noopener" title="AMD: AMD Developer Cloud">53</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<h3>What it costs to rent AMD chips (providers' own list prices)</h3>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Provider and chip</th><th>Price per GPU-hour</th><th>Type</th></tr></thead><tbody>
+<tr><td>Oracle Cloud, MI300X (8-GPU machine)</td><td>$6.00</td><td>List price at launch <a class="cite" href="https://blogs.oracle.com/cloud-infrastructure/announcing-ga-oci-compute-amd-mi300x-gpus" target="_blank" rel="noopener" title="Oracle Cloud Blog: Announcing GA of OCI Compute with AMD MI300X GPUs">54</a></td></tr>
+<tr><td>DigitalOcean, MI300X</td><td>$2.59 on-demand; $1.91 with 12-month contract</td><td><a class="cite" href="https://www.digitalocean.com/pricing/gpu-droplets" target="_blank" rel="noopener" title="DigitalOcean: GPU Droplets pricing">55</a></td></tr>
+<tr><td>DigitalOcean, MI325X</td><td>$3.80 on-demand; $2.88 with 12-month contract</td><td><a class="cite" href="https://www.digitalocean.com/pricing/gpu-droplets" target="_blank" rel="noopener" title="DigitalOcean: GPU Droplets pricing">55</a></td></tr>
+<tr><td>Crusoe, MI300X</td><td>$3.45</td><td>On-demand <a class="cite" href="https://www.crusoe.ai/cloud/pricing" target="_blank" rel="noopener" title="Crusoe: Cloud pricing">56</a></td></tr>
+<tr><td>Vultr, MI300X / MI325X / MI355X</td><td>$1.85 / $2.00 / $2.59</td><td>Pre-emptible (can be interrupted) <a class="cite" href="https://www.vultr.com/pricing/" target="_blank" rel="noopener" title="Vultr: Pricing">57</a></td></tr>
+<tr><td>TensorWave, MI355X</td><td>from $2.95</td><td>"Starting at"; term not stated <a class="cite" href="https://tensorwave.com/products/accelerators/amd-mi355x" target="_blank" rel="noopener" title="TensorWave: AMD Instinct MI355X">58</a></td></tr>
+</tbody></table></div>
+<p class="note">Microsoft Azure's MI300X prices and Oracle's current price list load by script and could not be read reliably, so they are not shown. Oracle's launch announcement for MI355X gives $8.60 an hour without saying whether that is per GPU, so it is left out.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<h3>In India (rupees per hour)</h3>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Provider</th><th>Chip</th><th>Price</th><th>Notes</th></tr></thead><tbody>
+<tr><td>IndiaAI Mission compute portal</td><td>MI300X, 1 GPU</td><td>₹168.20 on-demand; ₹148 with 12-month reservation</td><td>Portal list price <a class="cite" href="https://compute.indiaai.gov.in/pricelist" target="_blank" rel="noopener" title="IndiaAI Mission: Compute portal price list">59</a></td></tr>
+<tr><td>IndiaAI Mission compute portal</td><td>MI300X, 8 GPUs</td><td>₹1,416.50 on-demand</td><td><a class="cite" href="https://compute.indiaai.gov.in/pricelist" target="_blank" rel="noopener" title="IndiaAI Mission: Compute portal price list">59</a></td></tr>
+<tr><td>IndiaAI Mission compute portal</td><td>MI325X, 1 GPU</td><td>₹169.20 on-demand</td><td><a class="cite" href="https://compute.indiaai.gov.in/pricelist" target="_blank" rel="noopener" title="IndiaAI Mission: Compute portal price list">59</a></td></tr>
+</tbody></table></div>
+<p>The spread is wide: the same MI300X lists at $6.00 an hour on Oracle and under $2 on some specialist clouds <a class="cite" href="https://blogs.oracle.com/cloud-infrastructure/announcing-ga-oci-compute-amd-mi300x-gpus" target="_blank" rel="noopener" title="Oracle Cloud Blog: Announcing GA of OCI Compute with AMD MI300X GPUs">54</a> <a class="cite" href="https://www.vultr.com/pricing/" target="_blank" rel="noopener" title="Vultr: Pricing">57</a>. For comparison, the IndiaAI portal lists NVIDIA's H100 at ₹153 an hour on demand (see our <a href="/ai-atlas/ai-chips/nvidia/">NVIDIA guide</a>).</p>
+</div>
+</section>
+<section class="chip-sec" id="moat" aria-labelledby="h-moat">
+<h2 id="h-moat"><span>10.</span>The software lock-in</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD's answer to NVIDIA's CUDA is <b>ROCm</b>, its free, open-source software for running AI on AMD chips. AMD has released it since at least 2016 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/732/amd-releases-new-version-of-rocm-the-most-versatile-open-source-platform-for-gpu-computing" target="_blank" rel="noopener" title="AMD Investor Relations: AMD releases new version of ROCm (Nov 2016)">60</a>. Its newest version, ROCm 10.0, came out on 26 August 2026 and supports the main AI tools, including PyTorch, JAX and vLLM <a class="cite" href="https://rocm.docs.amd.com/en/latest/about/release-notes.html" target="_blank" rel="noopener" title="AMD ROCm Docs: ROCm release notes">61</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>AMD's strategy is openness: open-source software, and open standards so customers are not locked in. It co-founded the UALink group in May 2024 with Broadcom, Cisco, Google, HPE, Intel, Meta and Microsoft to create an open alternative to NVIDIA's NVLink <a class="cite" href="https://www.businesswire.com/news/home/20240530653602/en/AMD-Broadcom-Cisco-Google-Hewlett-Packard-Enterprise-Intel-Meta-and-Microsoft-Form-Ultra-Accelerator-Link-UALink-Promoter-Group-to-Drive-Data-Center-AI-Connectivity" target="_blank" rel="noopener" title="UALink Promoter Group (press release): AMD, Broadcom, Cisco, Google, HPE, Intel, Meta and Microsoft form UALink promoter group (30 May 2024)">6</a>. It bought Pensando for networking (about $1.9 billion, 2022) and three AI software companies (Nod.ai, Silo AI, Brium) to improve its software <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1071/amd-expands-data-center-solutions-capabilities-with-acquisition-of-pensando" target="_blank" rel="noopener" title="AMD Investor Relations: AMD completes acquisition of Pensando (2022)">62</a> <a class="cite" href="https://www.amd.com/en/blogs/2023/amd-completes-acquisition-of-nod-ai.html" target="_blank" rel="noopener" title="AMD Blog: AMD completes acquisition of Nod.ai (Oct 2023)">25</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1210/amd-completes-acquisition-of-silo-ai-to-accelerate-development-and-deployment-of-ai-models-on-amd-hardware" target="_blank" rel="noopener" title="AMD Investor Relations: AMD completes acquisition of Silo AI (12 Aug 2024)">26</a> <a class="cite" href="https://www.amd.com/en/blogs/2025/amd-acquires-brium-to-strengthen-open-ai-software-ecosystem.html" target="_blank" rel="noopener" title="AMD Blog: AMD acquires Brium (Jun 2025)">27</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Software is AMD's known gap, and it is buying help. Under its July 2026 deal with Anthropic, AMD adopts Claude internally and uses it to speed up ROCm development <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Anthropic partnership, up to 2 gigawatts (22 Jul 2026)">31</a>. On the August 2026 earnings call, Lisa Su said open-source contributions to ROCm had risen more than tenfold in a year and that more than 3 million models run "out of the box" <a class="cite" href="https://www.fool.com/earnings/call-transcripts/2026/08/11/amd-amd-q2-2026-earnings-call-transcript/" target="_blank" rel="noopener" title="The Motley Fool (press): AMD Q2 2026 earnings call transcript (11 Aug 2026)">63</a> (call quotes are from a third-party transcript). AMD itself names NVIDIA's "proprietary software ecosystem" as a competitive risk <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="buyers" aria-labelledby="h-buyers">
+<h2 id="h-buyers"><span>11.</span>Who buys it and why</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD has signed multi-gigawatt deals with three of the biggest AI labs. AMD said in August 2026 that Helios is being deployed by Anthropic, Cirrascale, HUMAIN, Meta, Microsoft, OpenAI, Oracle, TensorWave, Vultr and others <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Reports Second Quarter 2026 Financial Results (4 Aug 2026)">3</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ul>
+<li><b>OpenAI (Oct 2025):</b> 6 gigawatts of AMD GPUs, starting with 1 gigawatt of MI450 in the second half of 2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and OpenAI strategic partnership to deploy 6 gigawatts (6 Oct 2025)">64</a>.</li>
+<li><b>Meta (Feb 2026):</b> 6 gigawatts of Instinct GPUs based on a custom MI450, first shipments in the second half of 2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Meta expanded partnership to deploy 6 gigawatts (24 Feb 2026)">65</a>.</li>
+<li><b>Anthropic (Jul 2026):</b> up to 2 gigawatts of MI450 in Helios racks from the first half of 2027, with AMD investing up to $5 billion in Anthropic <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Anthropic partnership, up to 2 gigawatts (22 Jul 2026)">31</a>.</li>
+<li><b>Oracle:</b> 50,000 MI450 GPUs from the third quarter of 2026 <a class="cite" href="https://www.amd.com/en/newsroom/press-releases/oracle-and-amd-expand-partnership-to-help-customers-ach.html" target="_blank" rel="noopener" title="AMD Newsroom: Oracle and AMD expand partnership">66</a>.</li>
+<li><b>Microsoft:</b> adopting Helios with MI455X for Azure <a class="cite" href="https://www.amd.com/en/blogs/2025/Microsoft-Azure-Expanding-AI-Infra-Choice-with-AMD-Helios.html" target="_blank" rel="noopener" title="AMD Blog: Microsoft Azure expanding AI infrastructure choice with AMD Helios">67</a>.</li>
+<li><b>HUMAIN, Saudi Arabia (May 2025):</b> a $10 billion collaboration for 500 MW of AMD computing over five years <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1250/amd-and-humain-form-strategic-10b-collaboration-to-advance-global-ai" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and HUMAIN $10B collaboration (13 May 2025)">68</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AMD said in June 2025 that seven of the ten largest AI model builders run production work on Instinct <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025" target="_blank" rel="noopener" title="AMD Investor Relations: Advancing AI 2025: MI350 series and Helios preview (12 Jun 2025)">19</a>. It does not name customers' shares of revenue in the filings we could read; it says only that a small number of customers account for a substantial share <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a>. International sales were 67% of revenue in 2025 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>. On the August 2026 call AMD said it expects Data Center revenue to more than double in 2027 <a class="cite" href="https://www.fool.com/earnings/call-transcripts/2026/08/11/amd-amd-q2-2026-earnings-call-transcript/" target="_blank" rel="noopener" title="The Motley Fool (press): AMD Q2 2026 earnings call transcript (11 Aug 2026)">63</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>12.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Public facts buried in AMD's filings and releases. Each links to the exact document.</p>
+<ol class="hidden-list">
+<li><b>OpenAI can buy up to 160 million AMD shares for one cent each</b>, if milestones are met; the last batch needs AMD's share price to reach $600. The warrant runs until October 2030 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/0000002488/000119312525230895/d28189d8k.htm" target="_blank" rel="noopener" title="AMD: Form 8-K, OpenAI warrant (Oct 2025)">69</a>.</li>
+<li><b>Meta got a near-identical warrant four months later</b>: another 160 million shares, so up to 320 million in total <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Meta expanded partnership to deploy 6 gigawatts (24 Feb 2026)">65</a>.</li>
+<li><b>None of the OpenAI warrant had vested</b> by the end of 2025 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>.</li>
+<li><b>AMD is investing up to $5 billion in Anthropic</b> alongside Anthropic's chip order <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Anthropic partnership, up to 2 gigawatts (22 Jul 2026)">31</a>.</li>
+<li><b>The ZT Systems round trip:</b> bought for $3.2 billion in cash plus 8.3 million shares, then its factories sold to Sanmina for $2.4 billion plus up to $450 million more <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ol class="hidden-list" start="6">
+<li><b>The China export charge shrank:</b> AMD warned of up to about $800 million in charges when US rules blocked its MI308 chip <a class="cite" href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248825000039/amd-20250415.htm" target="_blank" rel="noopener" title="AMD: Form 8-K, 15 Apr 2025 (MI308 export licence)">70</a>, but the net charge for 2025 was about $440 million after it released reserves and sold about $390 million of MI308 to China in the fourth quarter <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>.</li>
+<li><b>It guided about $100 million of MI308 sales to China</b> for the first quarter of 2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1276/amd-reports-fourth-quarter-and-full-year-2025-financial-results" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Reports Fourth Quarter and Full Year 2025 Financial Results">7</a>.</li>
+<li><b>Purchase commitments of $12.2 billion</b>, with $8.5 billion due in 2026 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>.</li>
+<li><b>Inventory reached $8.47 billion in June 2026</b>, 62% of it work in progress, ahead of the MI450 ramp <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm" target="_blank" rel="noopener" title="AMD: Form 10-Q, quarter ended 27 June 2026">12</a>.</li>
+<li><b>AMD's Penang and Suzhou assembly plants are no longer AMD's:</b> since 2016 they have been 85% owned by Tongfu Microelectronics, with AMD keeping 15% <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/684/amd-and-nantong-fujitsu-microelectronics-co-ltd-close-on-semiconductor-assembly-and-test-joint-venture" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Nantong Fujitsu Microelectronics close assembly and test joint venture (2016)">43</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<ol class="hidden-list" start="11">
+<li><b>More than $10 billion committed to Taiwan's supply chain</b>, including packaging with ASE, SPIL and PTI <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1286/amd-announces-more-than-10-billion-in-taiwan-ecosystem-investments-to-accelerate-ai-infrastructure" target="_blank" rel="noopener" title="AMD Investor Relations: More than $10 billion in Taiwan ecosystem investments (21 May 2026)">40</a>.</li>
+<li><b>AI chips earn less than average:</b> the CFO said Data Center AI margins are slightly below the company average <a class="cite" href="https://www.fool.com/earnings/call-transcripts/2026/08/11/amd-amd-q2-2026-earnings-call-transcript/" target="_blank" rel="noopener" title="The Motley Fool (press): AMD Q2 2026 earnings call transcript (11 Aug 2026)">63</a> (third-party transcript).</li>
+<li><b>Full-precision maths halved from MI300X to MI355X</b> (163.4 to 78.6 teraflops FP64) as AMD optimised for AI <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener" title="AMD: Instinct MI300X product page">37</a> <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">34</a>.</li>
+<li><b>Two-thirds of sales are outside the US</b>: 67% in 2025 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>.</li>
+<li><b>Samsung is AMD's primary memory partner</b> for the MI350X and MI355X, and the two say they will align on HBM4 supply for the MI455X <a class="cite" href="https://newsroom.amd.com/news/samsung-and-amd-expand-strategic-collaboratio/" target="_blank" rel="noopener" title="AMD Newsroom: Samsung and AMD expand strategic collaboration">35</a>.</li>
+</ol>
+</div>
+</section>
+<section class="chip-sec" id="weak" aria-labelledby="h-weak">
+<h2 id="h-weak"><span>13.</span>Weak spots</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Risks AMD lists in its own annual report <a class="cite" href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener" title="AMD: Form 10-K, fiscal year 2025 (filed 4 Feb 2026)">1</a>:</p>
+<ul>
+<li><b>One chip factory:</b> it relies on TSMC for all its most advanced chips.</li>
+<li><b>NVIDIA's software lead:</b> AMD names NVIDIA's proprietary software ecosystem as a competitive threat.</li>
+<li><b>Few big customers:</b> a small number account for a large share of sales.</li>
+<li><b>Export rules:</b> US controls may limit who it can sell to.</li>
+<li><b>Supply shortages</b> could force it to ration chips between customers.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The 2025 export rule on the MI308 showed the risk in real money: AMD first warned of up to about $800 million in charges <a class="cite" href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248825000039/amd-20250415.htm" target="_blank" rel="noopener" title="AMD: Form 8-K, 15 Apr 2025 (MI308 export licence)">70</a>. Its three big AI-lab deals (OpenAI, Meta, Anthropic) all ship MI450-based chips from late 2026 or 2027 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and OpenAI strategic partnership to deploy 6 gigawatts (6 Oct 2025)">64</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Meta expanded partnership to deploy 6 gigawatts (24 Feb 2026)">65</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Anthropic partnership, up to 2 gigawatts (22 Jul 2026)">31</a>, so execution on one product generation carries a lot of weight.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AMD's inventory build (62% work in progress at $8.47 billion) and $12.2 billion of purchase commitments are bets that the MI450 ramp lands on time <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm" target="_blank" rel="noopener" title="AMD: Form 10-Q, quarter ended 27 June 2026">12</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener" title="AMD: Form 10-K/A, fiscal year 2025">11</a>. The warrants given to OpenAI and Meta dilute existing shareholders if the milestones are met <a class="cite" href="https://www.sec.gov/Archives/edgar/data/0000002488/000119312525230895/d28189d8k.htm" target="_blank" rel="noopener" title="AMD: Form 8-K, OpenAI warrant (Oct 2025)">69</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Meta expanded partnership to deploy 6 gigawatts (24 Feb 2026)">65</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="india" aria-labelledby="h-india">
+<h2 id="h-india"><span>14.</span>India angle</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>India is central to AMD's engineering. In November 2023 AMD opened its largest design centre in the world in Bengaluru, and said India held 25% of its global workforce <a class="cite" href="https://www.amd.com/en/newsroom/press-releases/2023-11-27-amd-inaugurates-its-largest-global-design-center-in-india.html" target="_blank" rel="noopener" title="AMD Newsroom: AMD inaugurates its largest global design center in India (28 Nov 2023)">46</a>. The Bengaluru teams work on data-centre processors and GPUs, 3D chip stacking and AI <a class="cite" href="https://www.amd.com/en/newsroom/press-releases/2023-11-27-amd-inaugurates-its-largest-global-design-center-in-india.html" target="_blank" rel="noopener" title="AMD Newsroom: AMD inaugurates its largest global design center in India (28 Nov 2023)">46</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>In July 2023 AMD announced plans to invest about $400 million in India over five years, add about 3,000 engineering roles by the end of 2028, and said it already had more than 6,500 employees in India <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1145/amd-announces-plan-to-invest-approximately-400-million" target="_blank" rel="noopener" title="AMD Investor Relations: AMD announces plan to invest approximately $400 million in India (28 Jul 2023)">71</a>. The Technostar campus covers 500,000 square feet <a class="cite" href="https://www.amd.com/en/newsroom/press-releases/2023-11-27-amd-inaugurates-its-largest-global-design-center-in-india.html" target="_blank" rel="noopener" title="AMD Newsroom: AMD inaugurates its largest global design center in India (28 Nov 2023)">46</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AMD's MI300X is among the GPU types in the IndiaAI Mission's shared compute pool, offered through empanelled cloud providers <a class="cite" href="https://indiaai.gov.in/hub/indiaai-compute-capacity" target="_blank" rel="noopener" title="IndiaAI Mission: IndiaAI compute capacity">72</a>; the portal lists MI300X at ₹168.20 an hour on demand <a class="cite" href="https://compute.indiaai.gov.in/pricelist" target="_blank" rel="noopener" title="IndiaAI Mission: Compute portal price list">59</a>. We found no official AMD India update after 2023 on headcount or investment.</p>
+</div>
+</section>
+<section class="chip-sec" id="next" aria-labelledby="h-next">
+<h2 id="h-next"><span>15.</span>What’s next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Only what AMD has announced:</p>
+<ul>
+<li><b>Helios with MI455X:</b> in production, volume deployments in the second half of 2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a> <a class="cite" href="https://www.amd.com/en/products/rackscale-solutions/helios.html" target="_blank" rel="noopener" title="AMD: Helios rack-scale solution page">32</a>.</li>
+<li><b>MI430X:</b> for scientific and national AI computing, expected 2027 <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series page">5</a>.</li>
+<li><b>MI500:</b> 2027. <b>MI600:</b> 2028 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)">4</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>AMD's 2030 goal is 20 times better energy efficiency at rack scale compared with 2024 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025" target="_blank" rel="noopener" title="AMD Investor Relations: Advancing AI 2025: MI350 series and Helios preview (12 Jun 2025)">19</a>. On the August 2026 call, Lisa Su said Helios initial shipments begin later in the third quarter and ramp through the fourth quarter into 2027 <a class="cite" href="https://www.fool.com/earnings/call-transcripts/2026/08/11/amd-amd-q2-2026-earnings-call-transcript/" target="_blank" rel="noopener" title="The Motley Fool (press): AMD Q2 2026 earnings call transcript (11 Aug 2026)">63</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The first big test is delivery: 1 gigawatt for OpenAI and Meta each in the second half of 2026, and Anthropic's first gigawatt in the first half of 2027 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and OpenAI strategic partnership to deploy 6 gigawatts (6 Oct 2025)">64</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Meta expanded partnership to deploy 6 gigawatts (24 Feb 2026)">65</a> <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus" target="_blank" rel="noopener" title="AMD Investor Relations: AMD and Anthropic partnership, up to 2 gigawatts (22 Jul 2026)">31</a>. AMD's own growth targets (Data Center AI above 80% a year) assume those ramps land <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1266/amd-unveils-strategy-to-lead-the-1-trillion-compute-market-and-accelerate-next-phase-of-growth" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Financial Analyst Day 2025 strategy">8</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>16.</span>Sources</h2>
+<p class="note">72 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator; <b>Press</b> = news coverage, used only where no official source exists and labelled in the text.</p>
+<ol class="src-list">
+<li id="src-1"><b>AMD</b>: <a href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/0000002488-26-000018.pdf" target="_blank" rel="noopener">Form 10-K, fiscal year 2025 (filed 4 Feb 2026)</a><span class="st st-filing">Filing</span></li>
+<li id="src-2"><b>AMD</b>: <a href="https://ir.amd.com/financial-information/sec-filings/content/0000002488-26-000018/amd-20251227.htm" target="_blank" rel="noopener">Form 10-K fiscal 2025, business section (HTML)</a><span class="st st-filing">Filing</span></li>
+<li id="src-3"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener">AMD Reports Second Quarter 2026 Financial Results (4 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener">AAI 2026: AMD delivers full-stack compute for the agentic AI era (23 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>AMD</b>: <a href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener">Instinct MI400 series page</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>UALink Promoter Group (press release)</b>: <a href="https://www.businesswire.com/news/home/20240530653602/en/AMD-Broadcom-Cisco-Google-Hewlett-Packard-Enterprise-Intel-Meta-and-Microsoft-Form-Ultra-Accelerator-Link-UALink-Promoter-Group-to-Drive-Data-Center-AI-Connectivity" target="_blank" rel="noopener">AMD, Broadcom, Cisco, Google, HPE, Intel, Meta and Microsoft form UALink promoter group (30 May 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1276/amd-reports-fourth-quarter-and-full-year-2025-financial-results" target="_blank" rel="noopener">AMD Reports Fourth Quarter and Full Year 2025 Financial Results</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1266/amd-unveils-strategy-to-lead-the-1-trillion-compute-market-and-accelerate-next-phase-of-growth" target="_blank" rel="noopener">AMD Financial Analyst Day 2025 strategy</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>AMD Blog</b>: <a href="https://www.amd.com/en/blogs/2024/amd-55th-anniversary-special-relive-history-with-.html" target="_blank" rel="noopener">AMD 55th anniversary: relive history (2024)</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/board-member/lisa-su" target="_blank" rel="noopener">Board member: Lisa Su</a><span class="st st-official">Official</span></li>
+<li id="src-11"><b>AMD</b>: <a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000021/amd-20251227.htm" target="_blank" rel="noopener">Form 10-K/A, fiscal year 2025</a><span class="st st-filing">Filing</span></li>
+<li id="src-12"><b>AMD</b>: <a href="https://www.sec.gov/Archives/edgar/data/2488/000000248826000123/amd-20260627.htm" target="_blank" rel="noopener">Form 10-Q, quarter ended 27 June 2026</a><span class="st st-filing">Filing</span></li>
+<li id="src-13"><b>AMD (SEC exhibit)</b>: <a href="https://www.sec.gov/Archives/edgar/data/2488/000119312506217735/dex991.htm" target="_blank" rel="noopener">AMD completes ATI acquisition (Oct 2006)</a><span class="st st-filing">Filing</span></li>
+<li id="src-14"><b>AMD (SEC exhibit)</b>: <a href="https://www.sec.gov/Archives/edgar/data/2488/000119312508209113/dex991.htm" target="_blank" rel="noopener">AMD and ATIC to form The Foundry Company (Oct 2008)</a><span class="st st-filing">Filing</span></li>
+<li id="src-15"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/766/amd-raises-expectations-for-server-performance-unveils-epyc-processor-brand-for-the-datacenter" target="_blank" rel="noopener">AMD unveils EPYC processor brand (16 May 2017)</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1047/amd-completes-acquisition-of-xilinx" target="_blank" rel="noopener">AMD Completes Acquisition of Xilinx (14 Feb 2022)</a><span class="st st-official">Official</span></li>
+<li id="src-17"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1073/worlds-first-exascale-supercomputer-powered-by-amd-epyc-processors-and-amd-instinct-accelerators" target="_blank" rel="noopener">World&#x27;s first exascale supercomputer powered by AMD (30 May 2022)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1173/amd-delivers-leadership-portfolio-of-data-center-ai-solutions-with-amd-instinct-mi300-series" target="_blank" rel="noopener">AMD Instinct MI300 series launch (6 Dec 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1255/amd-unveils-vision-for-an-open-ai-ecosystem-detailing-new-silicon-software-and-systems-at-advancing-ai-2025" target="_blank" rel="noopener">Advancing AI 2025: MI350 series and Helios preview (12 Jun 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-20"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1240/amd-completes-acquisition-of-zt-systems" target="_blank" rel="noopener">AMD Completes Acquisition of ZT Systems (31 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1032/new-amd-instinct-mi200-series-accelerators-bring" target="_blank" rel="noopener">AMD Instinct MI200 series (8 Nov 2021)</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>Lawrence Livermore National Laboratory</b>: <a href="https://www.llnl.gov/article/53596/el-capitan-retains-title-worlds-fastest-supercomputer-latest-top500" target="_blank" rel="noopener">El Capitan retains title of world&#x27;s fastest supercomputer (Nov 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1211/amd-to-significantly-expand-data-center-ai-systems-capabilities-with-acquisition-of-hyperscale-solutions-provider-zt-systems" target="_blank" rel="noopener">AMD to acquire ZT Systems (19 Aug 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>AMD (press release)</b>: <a href="https://www.globenewswire.com/news-release/2025/10/27/3174599/0/en/AMD-Completes-Divestiture-of-ZT-Systems-Data-Center-Infrastructure-Manufacturing-Business-to-Sanmina.html" target="_blank" rel="noopener">AMD completes divestiture of ZT Systems manufacturing to Sanmina (27 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>AMD Blog</b>: <a href="https://www.amd.com/en/blogs/2023/amd-completes-acquisition-of-nod-ai.html" target="_blank" rel="noopener">AMD completes acquisition of Nod.ai (Oct 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1210/amd-completes-acquisition-of-silo-ai-to-accelerate-development-and-deployment-of-ai-models-on-amd-hardware" target="_blank" rel="noopener">AMD completes acquisition of Silo AI (12 Aug 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>AMD Blog</b>: <a href="https://www.amd.com/en/blogs/2025/amd-acquires-brium-to-strengthen-open-ai-software-ecosystem.html" target="_blank" rel="noopener">AMD acquires Brium (Jun 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1220/amd-delivers-leadership-ai-performance-with-amd-instinct-mi325x-accelerators" target="_blank" rel="noopener">AMD Instinct MI325X accelerators (10 Oct 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>AMD</b>: <a href="https://www.amd.com/en/products/accelerators/instinct/mi400/mi455x.html" target="_blank" rel="noopener">Instinct MI455X product page</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>AMD</b>: <a href="https://amd.com/en/technologies/cdna.html" target="_blank" rel="noopener">AMD CDNA architecture</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1292/amd-and-anthropic-announce-strategic-partnership-to-deploy-up-to-2-gigawatts-of-amd-instinct-mi450-series-gpus" target="_blank" rel="noopener">AMD and Anthropic partnership, up to 2 gigawatts (22 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-32"><b>AMD</b>: <a href="https://www.amd.com/en/products/rackscale-solutions/helios.html" target="_blank" rel="noopener">Helios rack-scale solution page</a><span class="st st-official">Official</span></li>
+<li id="src-33"><b>AMD</b>: <a href="https://www.amd.com/content/dam/amd/en/documents/instinct-tech-docs/product-briefs/amd-instinct-mi350x-gpu-brochure.pdf" target="_blank" rel="noopener">Instinct MI350X product brief</a><span class="st st-official">Official</span></li>
+<li id="src-34"><b>AMD</b>: <a href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener">Instinct MI355X product page</a><span class="st st-official">Official</span></li>
+<li id="src-35"><b>AMD Newsroom</b>: <a href="https://newsroom.amd.com/news/samsung-and-amd-expand-strategic-collaboratio/" target="_blank" rel="noopener">Samsung and AMD expand strategic collaboration</a><span class="st st-official">Official</span></li>
+<li id="src-36"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news-releases/news-release-details/micron-hbm-designed-leading-amd-ai-platform" target="_blank" rel="noopener">Micron HBM designed into leading AMD AI platform</a><span class="st st-official">Official</span></li>
+<li id="src-37"><b>AMD</b>: <a href="https://www.amd.com/en/products/accelerators/instinct/mi300/mi300x.html" target="_blank" rel="noopener">Instinct MI300X product page</a><span class="st st-official">Official</span></li>
+<li id="src-38"><b>AMD at Hot Chips 2024</b>: <a href="https://hc2024.hotchips.org/assets/program/conference/day1/23_HC2024.AMD.MI300X.ASmith(MI300X).v1.Final.20240817.pdf" target="_blank" rel="noopener">AMD Instinct MI300X (Alan Smith)</a><span class="st st-conference">Conference</span></li>
+<li id="src-39"><b>AMD ROCm Docs</b>: <a href="https://rocm.docs.amd.com/en/latest/reference/gpu-arch/mi350.html" target="_blank" rel="noopener">MI350 series GPU architecture</a><span class="st st-official">Official</span></li>
+<li id="src-40"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1286/amd-announces-more-than-10-billion-in-taiwan-ecosystem-investments-to-accelerate-ai-infrastructure" target="_blank" rel="noopener">More than $10 billion in Taiwan ecosystem investments (21 May 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-41"><b>AMD Newsroom</b>: <a href="https://newsroom.amd.com/news/amd-achieves-first-tsmc-n2-product-silicon-milesto/" target="_blank" rel="noopener">AMD achieves first TSMC N2 product silicon milestone (Apr 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-42"><b>Tongfu Microelectronics</b>: <a href="https://en.tfme.com/contact.html" target="_blank" rel="noopener">Contact: TF-AMD Penang and Suzhou</a><span class="st st-official">Official</span></li>
+<li id="src-43"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/684/amd-and-nantong-fujitsu-microelectronics-co-ltd-close-on-semiconductor-assembly-and-test-joint-venture" target="_blank" rel="noopener">AMD and Nantong Fujitsu Microelectronics close assembly and test joint venture (2016)</a><span class="st st-official">Official</span></li>
+<li id="src-44"><b>TSMC</b>: <a href="https://www.tsmc.com/english/contact-us" target="_blank" rel="noopener">Contact us (fab addresses)</a><span class="st st-official">Official</span></li>
+<li id="src-45"><b>AMD</b>: <a href="https://www.amd.com/en/corporate/locations.html" target="_blank" rel="noopener">AMD corporate locations</a><span class="st st-official">Official</span></li>
+<li id="src-46"><b>AMD Newsroom</b>: <a href="https://www.amd.com/en/newsroom/press-releases/2023-11-27-amd-inaugurates-its-largest-global-design-center-in-india.html" target="_blank" rel="noopener">AMD inaugurates its largest global design center in India (28 Nov 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-47"><b>AMD Blog</b>: <a href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener">AMD launches Helios rack-scale AI infrastructure (2026)</a><span class="st st-official">Official</span></li>
+<li id="src-48"><b>AMD</b>: <a href="https://www.amd.com/en/partner/articles/instinct-mi325x-accelerators.html" target="_blank" rel="noopener">Instinct MI325X partner article</a><span class="st st-official">Official</span></li>
+<li id="src-49"><b>AMD</b>: <a href="https://www.amd.com/en/where-to-buy/accelerators/instinct.html" target="_blank" rel="noopener">Where to buy AMD Instinct</a><span class="st st-official">Official</span></li>
+<li id="src-50"><b>AMD</b>: <a href="https://www.amd.com/en/products/processors/desktops/ryzen/ryzen-ai-halo.html" target="_blank" rel="noopener">Ryzen AI Halo developer platform</a><span class="st st-official">Official</span></li>
+<li id="src-51"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1238/amd-unveils-next-generation-amd-rdna-4-architecture-with-the-launch-of-amd-radeon-rx-9000-series-graphics-cards" target="_blank" rel="noopener">AMD RDNA 4 and Radeon RX 9000 series launch (2025)</a><span class="st st-official">Official</span></li>
+<li id="src-52"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1253/amd-introduces-new-radeon-graphics-cards-and-ryzen-threadripper-processors-at-computex-2025" target="_blank" rel="noopener">New Radeon graphics cards at Computex 2025</a><span class="st st-official">Official</span></li>
+<li id="src-53"><b>AMD</b>: <a href="https://www.amd.com/en/developer/resources/cloud-access/amd-developer-cloud.html" target="_blank" rel="noopener">AMD Developer Cloud</a><span class="st st-official">Official</span></li>
+<li id="src-54"><b>Oracle Cloud Blog</b>: <a href="https://blogs.oracle.com/cloud-infrastructure/announcing-ga-oci-compute-amd-mi300x-gpus" target="_blank" rel="noopener">Announcing GA of OCI Compute with AMD MI300X GPUs</a><span class="st st-official">Official</span></li>
+<li id="src-55"><b>DigitalOcean</b>: <a href="https://www.digitalocean.com/pricing/gpu-droplets" target="_blank" rel="noopener">GPU Droplets pricing</a><span class="st st-official">Official</span></li>
+<li id="src-56"><b>Crusoe</b>: <a href="https://www.crusoe.ai/cloud/pricing" target="_blank" rel="noopener">Cloud pricing</a><span class="st st-official">Official</span></li>
+<li id="src-57"><b>Vultr</b>: <a href="https://www.vultr.com/pricing/" target="_blank" rel="noopener">Pricing</a><span class="st st-official">Official</span></li>
+<li id="src-58"><b>TensorWave</b>: <a href="https://tensorwave.com/products/accelerators/amd-mi355x" target="_blank" rel="noopener">AMD Instinct MI355X</a><span class="st st-official">Official</span></li>
+<li id="src-59"><b>IndiaAI Mission</b>: <a href="https://compute.indiaai.gov.in/pricelist" target="_blank" rel="noopener">Compute portal price list</a><span class="st st-official">Official</span></li>
+<li id="src-60"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/732/amd-releases-new-version-of-rocm-the-most-versatile-open-source-platform-for-gpu-computing" target="_blank" rel="noopener">AMD releases new version of ROCm (Nov 2016)</a><span class="st st-official">Official</span></li>
+<li id="src-61"><b>AMD ROCm Docs</b>: <a href="https://rocm.docs.amd.com/en/latest/about/release-notes.html" target="_blank" rel="noopener">ROCm release notes</a><span class="st st-official">Official</span></li>
+<li id="src-62"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1071/amd-expands-data-center-solutions-capabilities-with-acquisition-of-pensando" target="_blank" rel="noopener">AMD completes acquisition of Pensando (2022)</a><span class="st st-official">Official</span></li>
+<li id="src-63"><b>The Motley Fool (press)</b>: <a href="https://www.fool.com/earnings/call-transcripts/2026/08/11/amd-amd-q2-2026-earnings-call-transcript/" target="_blank" rel="noopener">AMD Q2 2026 earnings call transcript (11 Aug 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-64"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1260/amd-and-openai-announce-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener">AMD and OpenAI strategic partnership to deploy 6 gigawatts (6 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-65"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1279/amd-and-meta-announce-expanded-strategic-partnership-to-deploy-6-gigawatts-of-amd-gpus" target="_blank" rel="noopener">AMD and Meta expanded partnership to deploy 6 gigawatts (24 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-66"><b>AMD Newsroom</b>: <a href="https://www.amd.com/en/newsroom/press-releases/oracle-and-amd-expand-partnership-to-help-customers-ach.html" target="_blank" rel="noopener">Oracle and AMD expand partnership</a><span class="st st-official">Official</span></li>
+<li id="src-67"><b>AMD Blog</b>: <a href="https://www.amd.com/en/blogs/2025/Microsoft-Azure-Expanding-AI-Infra-Choice-with-AMD-Helios.html" target="_blank" rel="noopener">Microsoft Azure expanding AI infrastructure choice with AMD Helios</a><span class="st st-official">Official</span></li>
+<li id="src-68"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1250/amd-and-humain-form-strategic-10b-collaboration-to-advance-global-ai" target="_blank" rel="noopener">AMD and HUMAIN $10B collaboration (13 May 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-69"><b>AMD</b>: <a href="https://www.sec.gov/Archives/edgar/data/0000002488/000119312525230895/d28189d8k.htm" target="_blank" rel="noopener">Form 8-K, OpenAI warrant (Oct 2025)</a><span class="st st-filing">Filing</span></li>
+<li id="src-70"><b>AMD</b>: <a href="https://www.sec.gov/Archives/edgar/data/0000002488/000000248825000039/amd-20250415.htm" target="_blank" rel="noopener">Form 8-K, 15 Apr 2025 (MI308 export licence)</a><span class="st st-filing">Filing</span></li>
+<li id="src-71"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1145/amd-announces-plan-to-invest-approximately-400-million" target="_blank" rel="noopener">AMD announces plan to invest approximately $400 million in India (28 Jul 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-72"><b>IndiaAI Mission</b>: <a href="https://indiaai.gov.in/hub/indiaai-compute-capacity" target="_blank" rel="noopener">IndiaAI compute capacity</a><span class="st st-official">Official</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#company">2. Company card</a><a href="#story">3. The story</a><a href="#lineup">4. The lineup</a><a href="#made">5. How it’s made</a><a href="#where">6. Where it’s made: factories and addresses</a><a href="#works">7. How it works</a><a href="#specs">8. Specs explained</a><a href="#pricing">9. Official pricing</a><a href="#moat">10. The software lock-in</a><a href="#buyers">11. Who buys it and why</a><a href="#hidden">12. Hidden in plain sight</a><a href="#weak">13. Weak spots</a><a href="#india">14. India angle</a><a href="#next">15. What’s next</a><a href="#sources">16. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Headquarters</span><span style="color:var(--fg);font-weight:500;text-align:right">Santa Clara, California</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Founded</span><span style="color:var(--fg);font-weight:500;text-align:right">1969</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>CEO</span><span style="color:var(--fg);font-weight:500;text-align:right">Lisa Su</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Makes its own chips?</span><span style="color:var(--fg);font-weight:500;text-align:right">No, designs them (fabless)</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Main chip factory</span><span style="color:var(--fg);font-weight:500;text-align:right">TSMC</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Latest quarter revenue</span><span style="color:var(--fg);font-weight:500;text-align:right">$11.5 billion</span></div></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip brands</a><a href="/ai-atlas/ai-chips/nvidia/" class="sidebar-link">NVIDIA</a><a href="/ai-atlas/ai-chips/how-a-chip-is-made/" class="sidebar-link">How a chip is made: sand to server</a><a href="/ai-atlas/ai-chips/how-ai-chips-work/" class="sidebar-link">How AI chips work</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22AMD%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22AMD%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22AMD%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22AMD%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22AMD%20AI%20Chips%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

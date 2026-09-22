@@ -29,10 +29,10 @@ export const OFFICIAL = [
 
 // No official feed published (checked S132). Shown as discussion, clearly labelled.
 export const DISCUSSED = [
-  { id: 'anthropic', name: 'Anthropic', product: 'Claude', queries: ['Anthropic', 'Claude AI'], home: 'https://www.anthropic.com/news' },
+  { id: 'anthropic', name: 'Anthropic', product: 'Claude', queries: ['Anthropic', 'Claude'], home: 'https://www.anthropic.com/news' },
   { id: 'meta', name: 'Meta AI', product: 'Llama', queries: ['Meta AI', 'Llama'], home: 'https://ai.meta.com/blog/' },
   { id: 'xai', name: 'xAI', product: 'Grok', queries: ['xAI', 'Grok'], home: 'https://x.ai/news' },
-  { id: 'mistral', name: 'Mistral', product: 'Le Chat', queries: ['Mistral AI', 'Mistral'], home: 'https://mistral.ai/news/' },
+  { id: 'mistral', name: 'Mistral', product: 'Le Chat', queries: ['Mistral'], home: 'https://mistral.ai/news/' },
   { id: 'deepseek', name: 'DeepSeek', product: 'DeepSeek models', queries: ['DeepSeek'], home: 'https://www.deepseek.com' },
 ];
 
@@ -43,6 +43,11 @@ export const PRESS = [
 const AI_WORDS = /\b(AI|A\.I\.|artificial intelligence|LLMs?|GPT[-\w.]*|ChatGPT|OpenAI|Anthropic|Claude|Gemini|DeepMind|Copilot|Llama|Mistral|DeepSeek|Grok|xAI|Nvidia|GPUs?|TPUs?|machine learning|neural|chatbots?|agents?|agentic|inference|Hugging ?Face|transformer|diffusion|frontier model)\b/i;
 
 export function isAI(text) { return AI_WORDS.test(text || ''); }
+
+// True if the title names one of the terms exactly (case-sensitive for short all-caps-ish names like xAI).
+export function mentions(title, terms) {
+  return (terms || []).some(k => new RegExp('(^|[^\\w])' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '($|[^\\w])', k.length <= 4 ? '' : 'i').test(title || ''));
+}
 
 // ---- tiny XML helpers (Workers have no DOMParser) ------------------------
 const ENT = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };

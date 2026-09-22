@@ -7,7 +7,7 @@
 // paths that are not files. Every other path falls straight through to ASSETS.
 import { DurableObject } from 'cloudflare:workers';
 import {
-  UA, OFFICIAL, DISCUSSED, PRESS, parseFeed, applyFilter, hnStories, dedupe, ist,
+  UA, OFFICIAL, DISCUSSED, PRESS, mentions, parseFeed, applyFilter, hnStories, dedupe, ist,
   briefPrompt, extractSearchUrls, extractJson, validateBrief, tagItems,
 } from './lib.js';
 
@@ -44,9 +44,10 @@ async function buildFeeds() {
   const discussed = DISCUSSED.map(async c => {
     const all = [];
     for (const q of c.queries) {
-      const u = 'https://hn.algolia.com/api/v1/search?tags=story&restrictSearchableAttributes=title&hitsPerPage=10'
+      const u = 'https://hn.algolia.com/api/v1/search?tags=story&restrictSearchableAttributes=title&hitsPerPage=20&typoTolerance=false'
         + '&query=' + encodeURIComponent(q) + '&numericFilters=' + encodeURIComponent('created_at_i>' + since + ',points>15');
-      all.push(...hnStories(JSON.parse(await getText(u))));
+      // S133: the search is fuzzy ("xAI" matched "AI"), so keep only titles that name the company exactly.
+      all.push(...hnStories(JSON.parse(await getText(u))).filter(s => mentions(s.title, c.queries)));
     }
     const items = dedupe(all).sort((a, b) => b.points - a.points).slice(0, 4);
     return { id: c.id, name: c.name, product: c.product, kind: 'discussed', home: c.home, items };
@@ -85,9 +86,9 @@ async function callClaude(env, messages) {
     method: 'POST',
     headers: { 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
     body: JSON.stringify({
-      model: env.BRIEF_MODEL || 'claude-sonnet-5',
+      model: env.BRIEF_MODEL || 'claude-haiku-4-5-20251001',
       max_tokens: 8000,
-      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: Number(env.BRIEF_MAX_SEARCHES || 15) }],
+      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: Number(env.BRIEF_MAX_SEARCHES || 8) }],
       messages,
     }),
     signal: AbortSignal.timeout(600000),
@@ -113,7 +114,7 @@ export async function generateBrief(env, now = Date.now()) {
   const v = validateBrief(raw, allowed, { now });
   let tags = null;
   try { tags = await (await env.ASSETS.fetch(new Request('https://www.clarigital.com/ai-news/tags.json'))).json(); } catch {}
-  const brief = tagItems({ date, generated: new Date(now).toISOString(), model: env.BRIEF_MODEL || 'claude-sonnet-5',
+  const brief = tagItems({ date, generated: new Date(now).toISOString(), model: env.BRIEF_MODEL || 'claude-haiku-4-5-20251001',
     usa: v.usa, india: v.india, world: v.world, continents: v.continents }, tags);
   brief.checks = { searchResults: allowed.size, dropped: v.dropped };
   if (brief.usa.length + brief.india.length < 2) throw new Error('too few verified stories (' + (brief.usa.length + brief.india.length) + '); kept previous brief');
@@ -131,7 +132,7 @@ export class BriefStore extends DurableObject {
     const today = ist(now).date;
     if (st.running && now - (st.runningSince || 0) < 20 * 60e3) return { queued: false, why: 'already running' };
     const count = st.day === today ? (st.count || 0) : 0;
-    if (count >= (force ? 6 : 3)) return { queued: false, why: 'daily limit reached' };
+    if (count >= (force ? 4 : 2)) return { queued: false, why: 'daily limit reached' };
     if (!force && st.lastAttempt && now - st.lastAttempt < 30 * 60e3) return { queued: false, why: 'tried recently' };
     await this.ctx.storage.put('state', { ...st, queued: reason, queuedAt: now });
     await this.ctx.storage.setAlarm(now + 500);
