@@ -19,6 +19,9 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"Clarigital","url":"https://www.clarigital.com","description":"Digital marketing and AI guides. Official sources only. No ads. Free forever.","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.clarigital.com/search/?q={search_term_string}"},"query-input":"required name=search_term_string"}},{"@type":"Organization","name":"Clarigital","url":"https://www.clarigital.com","description":"Free digital marketing and AI reference library built on official sources."}]}</script>
 <!-- Apply theme before paint to prevent flash -->
 <style>
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth}
 
@@ -262,6 +265,16 @@ h1 em{font-style:normal;color:var(--blue)}
 <meta property="og:image" content="https://www.clarigital.com/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://www.clarigital.com/og-image.png">
+<style>/* hp-news-css (S132) */
+.hp-news-card{background:#111827;border:1px solid rgba(129,140,248,.25);border-radius:14px;padding:20px 22px;max-width:760px;margin:0 auto}
+.hp-news-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px;margin-bottom:12px}
+.hp-news-top h2{font-size:1.1rem;font-weight:800;color:#F1F5F9;letter-spacing:-.01em}
+.hp-news-top span{font-size:.75rem;color:rgba(241,245,249,.45)}
+.hp-news-card ol{list-style:none;margin:0;padding:0}
+.hp-news-card li{padding:10px 0;border-top:1px solid rgba(241,245,249,.07);font-size:.9rem;color:rgba(241,245,249,.6);line-height:1.5}
+.hp-news-card li b{display:block;color:#F1F5F9;font-size:.95rem;margin-bottom:2px}
+.hpn-btn{display:inline-block;margin-top:12px;font-size:.85rem;font-weight:700;color:#818CF8}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -284,7 +297,7 @@ h1 em{font-style:normal;color:var(--blue)}
 
     <div class="nav-links">
       <a href="/codex/" class="active-blue">Codex</a>
-      <a href="/ai-atlas/" class="active-indigo" style="color:var(--indigo)">AI Atlas</a>
+      <a href="/ai-atlas/" class="active-indigo" style="color:var(--indigo)">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
       <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/" style="color:#10B981;font-weight:600">AI Kids</a>
       <a href="/courses/">Courses</a>
       <a href="/sources/">Sources</a>
@@ -308,6 +321,7 @@ h1 em{font-style:normal;color:var(--blue)}
       <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
       <button class="nav-close" id="navClose" aria-label="Close menu">&#x2715;</button>
     </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
     <a href="/fintech-ai/" class="di">Fintech AI</a>
     <a href="/ai-kids/" class="di">AI Kids</a>
     <a href="/courses/" class="di">Courses</a>
@@ -350,12 +364,13 @@ h1 em{font-style:normal;color:var(--blue)}
     <h1 style="font-size:clamp(1.7rem,4vw,2.5rem);font-weight:800;color:#F1F5F9;line-height:1.2;letter-spacing:-.04em;margin-bottom:8px;min-height:1.3em">
       <span id="typer"></span><span id="typer-cursor" style="display:none;width:2px;height:1em;background:#818CF8;vertical-align:middle;margin-left:2px;animation:blink .7s step-end infinite">​</span>
     </h1>
-    <p style="font-size:clamp(.88rem,2vw,.97rem);color:rgba(241,245,249,.45);line-height:1.75;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto">140 AI guides &nbsp;·&nbsp; 331 marketing guides &nbsp;·&nbsp; 1,000+ prompts &nbsp;·&nbsp; 0 ads &nbsp;·&nbsp; 100% official sources</p>
+    <p style="font-size:clamp(.88rem,2vw,.97rem);color:rgba(241,245,249,.45);line-height:1.75;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto">140 AI guides &nbsp;·&nbsp; 331 marketing guides &nbsp;·&nbsp; 1,000+ prompts &nbsp;·&nbsp; 0 ads &nbsp;·&nbsp; 100% official sources</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
 
     <!-- WHATSAPP-STYLE PROMPT CHIPS -->
     <div style="margin-bottom:20px">
       <p style="font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:rgba(241,245,249,.3);margin-bottom:12px">What would you like to do today?</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:540px;margin:0 auto" id="prompt-chips">
+        <a href="/ai-news/" class="hp-chip" data-news-link>&#128240; Today&#8217;s AI news</a>
         <a href="/ai-atlas/which-ai/" class="hp-chip">🤖 Which AI should I use?</a>
         <a href="/ai-atlas/specialist-tools/coding/lovable/" class="hp-chip">🏗️ Build an app without coding</a>
         <a href="/codex/social-media/whatsapp-marketing/" class="hp-chip">💬 Market on WhatsApp</a>
@@ -389,6 +404,32 @@ h1 em{font-style:normal;color:var(--blue)}
     </div>
   </div>
 </section>
+
+
+<!-- AI NEWS CARD (S132, gen_news_nav.py) -->
+<section id="hp-news" style="padding:0 0 44px" aria-labelledby="hpn-h">
+  <div class="wrap">
+    <div class="hp-news-card">
+      <div class="hp-news-top"><h2 id="hpn-h">&#128240; Today&#8217;s AI Brief</h2><span id="hpn-date">New every morning at 6:00 AM IST</span></div>
+      <ol id="hpn-list"><li>The day&#8217;s top AI stories, each with why it matters and a link to the original report.</li></ol>
+      <a href="/ai-news/" class="hpn-btn">Read the full brief and live updates &#8594;</a>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  var list=document.getElementById('hpn-list');if(!list||!window.fetch)return;
+  fetch('/api/brief').then(function(r){return r.json();}).then(function(j){
+    var b=j&&j.brief;if(!b)return;
+    var picks=[(b.usa||[])[0],(b.india||[])[0],(b.world||[])[0]||(b.usa||[])[1]].filter(Boolean);
+    if(!picks.length)return;
+    list.textContent='';
+    picks.forEach(function(it){var li=document.createElement('li');var h=document.createElement('b');h.textContent=it.headline;li.appendChild(h);li.appendChild(document.createTextNode(it.why?'Why it matters: '+it.why:(it.summary||'')));list.appendChild(li);});
+    var d=new Date(b.date+'T06:00:00+05:30');
+    document.getElementById('hpn-date').textContent=new Intl.DateTimeFormat('en-IN',{weekday:'long',day:'numeric',month:'long'}).format(d);
+  }).catch(function(){});
+})();
+</script>
 
 <!-- THREE CARDS -->
 <section style="padding:0 0 52px">
@@ -485,7 +526,7 @@ h1 em{font-style:normal;color:var(--blue)}
   </div>
 </section>
 
-<div class="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22%E2%80%8B%22%20at%20https%3A%2F%2Fwww.clarigital.com%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">

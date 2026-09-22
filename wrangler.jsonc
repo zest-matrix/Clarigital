@@ -5,9 +5,28 @@
   "name": "clarigital",
   "compatibility_date": "2026-09-15",
   "observability": { "enabled": true },
+
+  // S132: a small Worker for the AI News page (/ai-news/). Static files are
+  // still served first, exactly as before; this code only answers /api/*.
+  "main": "worker/index.js",
+
   "assets": {
     // "." is the whole repository. .assetsignore is what keeps .git,
     // _build/ and CLARIGITAL-MASTER.md out of it. Do not remove that file.
-    "directory": "."
-  }
+    "directory": ".",
+    "binding": "ASSETS"
+  },
+
+  // 00:30 UTC = 06:00 IST: write the daily AI brief.
+  "triggers": { "crons": ["30 0 * * *"] },
+
+  // Holds the latest brief only. Nothing about visitors is stored.
+  "durable_objects": {
+    "bindings": [{ "name": "BRIEF_STORE", "class_name": "BriefStore" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["BriefStore"] }],
+
+  // Model used for the brief. The API key is NOT here: it is a secret added
+  // once in the Cloudflare dashboard (ANTHROPIC_API_KEY). See _build/AI-NEWS.md.
+  "vars": { "BRIEF_MODEL": "claude-sonnet-5", "BRIEF_MAX_SEARCHES": "15" }
 }

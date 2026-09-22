@@ -15,6 +15,9 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
 <style>
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;scroll-behavior:smooth}
 :root{
@@ -171,7 +174,7 @@ p{line-height:1.75;color:var(--muted)}
     <div class="nav-links">
       <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
       <a href="/codex/">Codex</a>
-      <a href="/ai-atlas/" class="active">AI Atlas</a>
+      <a href="/ai-atlas/" class="active">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
       <a href="/courses/">Courses</a>
       <a href="/curriculum/">Curriculum</a>
       <a href="/about/">About</a>
@@ -187,6 +190,7 @@ p{line-height:1.75;color:var(--muted)}
       <span style="font-size:.88rem;font-weight:700;color:var(--fg)">Clarigital</span>
       <button class="nav-close" id="navClose">✕</button>
     </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
     <a href="/fintech-ai/" class="di">Fintech AI</a>
     <a href="/ai-kids/" class="di">AI Kids</a>
     <a href="/courses/" class="di">Courses</a>
@@ -211,7 +215,7 @@ p{line-height:1.75;color:var(--muted)}
     </nav>
     <div class="label-tag">Agentic Frameworks</div>
     <h1>LangChain &amp; LangGraph</h1>
-    <p class="hero-lead">LangChain is the most widely used framework for building with large language models — over 1,000 integrations, millions of developers, and the largest open-source ecosystem in the space. LangGraph is LangChain's own recommended approach for building agents: a graph-based state machine that makes complex, multi-step AI workflows reliable, inspectable, and controllable.</p>
+    <p class="hero-lead">LangChain is the most widely used framework for building with large language models — over 1,000 integrations, millions of developers, and the largest open-source ecosystem in the space. LangGraph is LangChain's own recommended approach for building agents: a graph-based state machine that makes complex, multi-step AI workflows reliable, inspectable, and controllable.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
     <div class="art-meta">
       <span class="meta-tag mt-indigo">Agentic Framework</span>
       <span class="meta-tag">Free · Open Source · MIT</span>
@@ -397,16 +401,16 @@ p{line-height:1.75;color:var(--muted)}
         <p>LangGraph supports token-level streaming from model calls via <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">graph.astream()</code>. Both node outputs and intermediate model tokens can be streamed to the client, enabling responsive UIs that show progress as the agent works. This is significant for production applications where multi-step agent workflows may run for 30–120 seconds.</p>
 
         <h2 id="s-red-4">MCP integration</h2>
-        <p>LangGraph supports MCP (Model Context Protocol) tool servers via the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">langchain-mcp-adapters</code> package. Any MCP-compliant tool server can be loaded as a LangChain tool and used inside a LangGraph node. This means the full ecosystem of MCP tool providers (Claude Desktop integrations, third-party MCP servers) is available to LangGraph agents. Official documentation at <a href="https://python.langchain.com/docs/integrations/tools/mcp/" target="_blank" rel="noopener" style="color:var(--indigo)">python.langchain.com</a>.</p>
+        <p>LangGraph supports MCP (Model Context Protocol) tool servers via the <code style="background:var(--bg2);padding:1px 5px;border-radius:4px;font-size:.85rem">langchain-mcp-adapters</code> package. Any MCP-compliant tool server can be loaded as a LangChain tool and used inside a LangGraph node. This means the full ecosystem of MCP tool providers (Claude Desktop integrations, third-party MCP servers) is available to LangGraph agents. Official documentation at <a href="https://python.langchain.com/docs/integrations/tools/mcp/" target="_blank" rel="noopener" style="color:var(--indigo)">docs.langchain.com/</a>.</p>
 
         <h2 id="s-red-5">LangSmith — observability in production</h2>
-        <p>LangSmith provides distributed tracing for LangChain and LangGraph applications. Each run generates a trace tree showing every node execution, model call, token count, latency, and cost. Traces are queryable and filterable. The evaluation framework allows automated testing against datasets with custom evaluators. LangSmith is the primary tool for identifying failure modes, measuring quality, and tracking costs in production LangGraph deployments. Pricing: free tier (5,000 traces/month), Developer ($39/user/month), Plus ($299/user/month). Official documentation at <a href="https://docs.smith.langchain.com" target="_blank" rel="noopener" style="color:var(--indigo)">docs.smith.langchain.com</a>.</p>
+        <p>LangSmith provides distributed tracing for LangChain and LangGraph applications. Each run generates a trace tree showing every node execution, model call, token count, latency, and cost. Traces are queryable and filterable. The evaluation framework allows automated testing against datasets with custom evaluators. LangSmith is the primary tool for identifying failure modes, measuring quality, and tracking costs in production LangGraph deployments. Pricing: free tier (5,000 traces/month), Developer ($39/user/month), Plus ($299/user/month). Official documentation at <a href="https://docs.langchain.com/langsmith/home" target="_blank" rel="noopener" style="color:var(--indigo)">docs.langchain.com/langsmith/home</a>.</p>
 
         <h2 id="s-red-6">Official documentation</h2>
         <ul>
-          <li>LangChain Python docs: <a href="https://python.langchain.com" target="_blank" rel="noopener" style="color:var(--indigo)">python.langchain.com</a></li>
-          <li>LangGraph docs: <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener" style="color:var(--indigo)">langchain-ai.github.io/langgraph</a></li>
-          <li>LangSmith docs: <a href="https://docs.smith.langchain.com" target="_blank" rel="noopener" style="color:var(--indigo)">docs.smith.langchain.com</a></li>
+          <li>LangChain Python docs: <a href="https://docs.langchain.com/" target="_blank" rel="noopener" style="color:var(--indigo)">docs.langchain.com/</a></li>
+          <li>LangGraph docs: <a href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener" style="color:var(--indigo)">langchain-ai.github.io/langgraph</a></li>
+          <li>LangSmith docs: <a href="https://docs.langchain.com/langsmith/home" target="_blank" rel="noopener" style="color:var(--indigo)">docs.langchain.com/langsmith/home</a></li>
           <li>GitHub: <a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener" style="color:var(--indigo)">github.com/langchain-ai/langgraph</a></li>
         </ul>
 
@@ -444,9 +448,9 @@ p{line-height:1.75;color:var(--muted)}
       </div>
       <div class="sidebar-card">
         <h3>Official docs</h3>
-        <a href="https://python.langchain.com" target="_blank" rel="noopener" class="sidebar-link">LangChain Python ↗</a>
-        <a href="https://langchain-ai.github.io/langgraph/" target="_blank" rel="noopener" class="sidebar-link">LangGraph ↗</a>
-        <a href="https://docs.smith.langchain.com" target="_blank" rel="noopener" class="sidebar-link">LangSmith ↗</a>
+        <a href="https://docs.langchain.com/" target="_blank" rel="noopener" class="sidebar-link">LangChain Python ↗</a>
+        <a href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener" class="sidebar-link">LangGraph ↗</a>
+        <a href="https://docs.langchain.com/langsmith/home" target="_blank" rel="noopener" class="sidebar-link">LangSmith ↗</a>
         <a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener" class="sidebar-link">GitHub ↗</a>
       </div>
     </aside>
@@ -454,7 +458,7 @@ p{line-height:1.75;color:var(--muted)}
   </div>
 </div>
 
-<div class="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22LangChain%20%26amp%3B%20LangGraph%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fspecialist-tools%2Fagentic-frameworks%2Flangchain%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">
