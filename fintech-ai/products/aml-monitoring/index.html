@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "AML Monitoring Systems: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/aml-monitoring/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -207,13 +214,13 @@ build</em>.</p>
 <h2 id="s-green-1">Four layers, and the clock</h2>
 
 <p>Four layers, and the first is the one almost nobody builds properly:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Layer</th><th>What it produces</th><th>Usually</th></tr>
 <tr><td><strong>Customer risk rating</strong></td><td>A band that changes how everything below behaves</td><td><strong>A field set at onboarding and never recomputed</strong></td></tr>
 <tr><td><strong>Scenario engine</strong></td><td>Alerts, from named patterns</td><td>Bought, then left at defaults</td></tr>
 <tr><td><strong>Case management</strong></td><td>A decision, with a reason and a timestamp</td><td>A spreadsheet</td></tr>
 <tr><td><strong>Reporting</strong></td><td>A filing, inside a deadline</td><td>Manual, and late</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>The clock most systems cannot answer for.</strong> A Suspicious Transaction Report must be filed with FIU-IND <strong>within 7 working days of forming the suspicion</strong> &mdash; and the obligation arises <strong>when the suspicion is formed, not when the transaction occurred</strong>, which may have been months earlier. That is an <em>architectural</em> requirement, not a policy one: your system has to record <strong>the moment an analyst formed suspicion</strong>, distinctly from when the alert fired and when the case was opened. <strong>Most case-management implementations record neither, and that timestamp is exactly what an examiner asks for.</strong></p></div>
 <p><strong>What this is not:</strong></p>
 <ul>
@@ -225,7 +232,7 @@ build</em>.</p>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Build the risk rating first</strong></td><td>Everything below inherits it.</td></tr>
 <tr><td>2</td><td><strong>Get the data model right</strong></td><td>Aggregates, not rows. The thing you cannot retrofit.</td></tr>
@@ -235,7 +242,7 @@ build</em>.</p>
 <tr><td>6</td><td><strong>File on the clock</strong></td><td>7 working days, 15th of the month, FINnet 2.0.</td></tr>
 <tr><td>7</td><td><strong>Feed it back</strong></td><td>Outcomes change the rating. The loop nobody closes.</td></tr>
 <tr><td>8</td><td><strong>Keep the record</strong></td><td>Five years, and the decision trail, not just the filing.</td></tr>
-</table>
+</table></div>
 
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Step 1 — the customer risk rating</h2>
@@ -338,13 +345,13 @@ as raised.</p>
 <p>An alert is a machine output. A case is a human process. The transition is where the regulatory
 clock starts, and it is almost always modelled wrongly.</p>
 <p>Four distinct moments, and a system that collapses them cannot answer an examiner:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Moment</th><th>What it is</th></tr>
 <tr><td><strong>Alert raised</strong></td><td>The scenario fired. A machine timestamp</td></tr>
 <tr><td><strong>Case opened</strong></td><td>An analyst picked it up</td></tr>
 <tr><td><strong>Suspicion formed</strong></td><td><strong>The clock starts here.</strong> A human judgement, on a date</td></tr>
 <tr><td><strong>Report filed</strong></td><td>Within <strong>7 working days</strong> of the moment above</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>&ldquo;Suspicion formed&rdquo; is a field, and it is a field an analyst sets deliberately.</strong> It is not the alert date and not the case-open date. A system that has no such field will, under examination, be read as having formed suspicion at the earliest plausible moment &mdash; which is the alert &mdash; and every filing will look late. <strong>Build the field, require a reason with it, and make it un-editable after the fact.</strong></p></div><div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 5 to 7, the four timestamps, the two clocks, the loop</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import date, timedelta
 
 # STEP 5. FOUR TIMESTAMPS. A SYSTEM THAT COLLAPSES THEM CANNOT ANSWER.
@@ -452,7 +459,7 @@ is the whole of where AI belongs here.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>record the moment suspicion was formed, as its own field, set by a named analyst, with a reason, and immutable afterwards.</strong> It is the field the 7-working-day clock runs from, it is the first thing an examiner asks for, and almost no case-management implementation has it.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Risk rating set once at onboarding</strong></td><td>Stored as a column.</td><td>Recompute on events, not only on a calendar.</td></tr>
 <tr><td><strong>Monitoring runs on full scans</strong></td><td>No aggregate layer.</td><td>Incremental aggregates per customer per window.</td></tr>
@@ -464,7 +471,7 @@ is the whole of where AI belongs here.</p>
 <tr><td><strong>CTR missed</strong></td><td>Treated as an analyst task.</td><td>Monthly aggregation over related cash transactions. A query.</td></tr>
 <tr><td><strong>Precision drifts</strong></td><td>Tuned once, before launch.</td><td>Feed case outcomes back into the statistics.</td></tr>
 <tr><td><strong>Records kept from the wrong date</strong></td><td>Retention keyed to the transaction.</td><td>Identification records run from the END of the relationship.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

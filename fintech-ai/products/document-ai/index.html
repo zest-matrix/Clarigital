@@ -5,7 +5,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Document AI: How to Build It | Clarigital</title>
 <meta name="description" content="Build a document AI product step by step: the eight stages, your options at each one, how to connect them, and what it costs.">
-<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/document-ai/">>
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/products/document-ai/">
 <meta property="og:type" content="article"><meta property="og:title" content="Document AI: How to Build It">
 <meta property="og:description" content="Build a document AI product step by step: the eight stages, your options at each one, how to connect them, and what it costs."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/products/document-ai/">
 <meta property="og:site_name" content="Clarigital">
@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Document AI: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/document-ai/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -203,12 +210,12 @@ build sheets list what to buy. This page walks you through <strong>building one 
 finish</strong>.</p>
 <p>It is written for someone who has not built this before. Every step says what goes in, what comes
 out, and how to plug it into the next step.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>If you want...</th><th>Read...</th></tr>
 <tr><td>To understand why document reading is hard</td><td><a href="/fintech-ai/identity-onboarding/">the Identity module</a></td></tr>
 <tr><td>A full list of every tool, with prices</td><td><a href="/fintech-ai/identity-onboarding/build-sheet/">the Identity Build Sheet</a></td></tr>
 <tr><td><strong>To build the thing</strong></td><td><strong>this page</strong></td></tr>
-</table>
+</table></div>
 <p>Nothing here is secret. All of it is doable by two engineers in a few weeks. The hard part is not
 any single step. It is knowing which eight steps there are, and what to connect to what.</p>
 
@@ -237,7 +244,7 @@ scanned paper. The business case is almost always <em>we have forty people doing
 
 <p>Here is the whole thing. Eight steps. Read this table once and the rest of the page is just
 detail.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Get the file</strong></td><td>The document arrives from somewhere.</td></tr>
 <tr><td>2</td><td><strong>Check it is usable</strong></td><td>Is it too blurry to read? Find out before you pay to read it.</td></tr>
@@ -247,7 +254,7 @@ detail.</p>
 <tr><td>6</td><td><strong>Check the fields are real</strong></td><td>Does the PAN number pass its checksum? Does the date make sense?</td></tr>
 <tr><td>7</td><td><strong>Accept, review or reject</strong></td><td>Send the uncertain ones to a human.</td></tr>
 <tr><td>8</td><td><strong>Keep the evidence</strong></td><td>What you read, from which image, how sure you were, when.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>Steps 2, 6, 7 and 8 are the ones people skip. They are also the ones that decide whether this works in production or only in the demo. A team that builds steps 1, 3, 4 and 5 has built a demo. That is not an insult &mdash; it is just a much smaller thing than it looks.</p></div>
 <p>Steps 3 and 4 are where the money goes. Steps 2, 6, 7 and 8 are where the product lives.</p>
 
@@ -256,12 +263,12 @@ detail.</p>
 
 <h3 id="s-indigo-s1">Step 1 &mdash; Get the file</h3>
 <p><strong>What it does:</strong> the document gets from the customer to your server.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Option</th><th>What it is</th><th>Effort</th><th>Pick this when</th></tr>
 <tr><td><strong>A. Plain upload</strong></td><td>A file input on a web page.</td><td>Hours</td><td>Always start here. It works and it costs nothing.</td></tr>
 <tr><td><strong>B. Mobile SDK capture</strong></td><td>A vendor's camera component that guides the user and rejects bad shots on the phone.</td><td>Days, plus a licence</td><td>Consumer app, high volume, and bad photos are killing you.</td></tr>
 <tr><td><strong>C. DigiLocker fetch</strong></td><td>The customer consents and you receive the issued document directly.</td><td>Weeks, needs approval</td><td>You want a document that is already verified. Skips steps 2&ndash;6 entirely for supported documents.</td></tr>
-</table>
+</table></div>
 <p><strong>What comes out:</strong> a file on disk or in object storage, plus an id.</p>
 <p><strong>Connect it to step 2:</strong> do not pass the file around. Save it once, give it an id, and
 pass the id. Every later step reads from storage using that id. If you pass image bytes between
@@ -271,12 +278,12 @@ services you will run out of memory on the day someone uploads a 40&nbsp;MB scan
 <h3 id="s-indigo-s2">Step 2 &mdash; Check it is usable</h3>
 <p><strong>What it does:</strong> looks at the image and decides whether it is worth reading. Blurry,
 dark, cropped, upside down, or a photo of a screen.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Option</th><th>What it is</th><th>Roughly costs</th><th>Pick this when</th></tr>
 <tr><td><strong>A. Simple maths</strong></td><td>OpenCV. Measure blur, brightness and resolution with about thirty lines of code.</td><td>Free</td><td>Start here. It catches most of the bad ones.</td></tr>
 <tr><td><strong>B. A small model</strong></td><td>A trained classifier that scores image quality.</td><td>Your own GPU time</td><td>Simple maths is passing things that later fail.</td></tr>
 <tr><td><strong>C. Skip it</strong></td><td>Send everything to the OCR and see what happens.</td><td>You pay per page, so this is the expensive option</td><td>Never, once you are past a few hundred documents a day.</td></tr>
-</table>
+</table></div>
 <div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 2, the cheapest useful quality gate</span><button class="cb-copy" type="button">Copy</button></div><pre><code>import cv2
 
 # This is the whole thing. It is not clever. It works.
@@ -327,12 +334,12 @@ than anything else you will do.</p>
 salary slip or a bank statement.</p>
 <p>You need this because step 4 and step 5 are different for each type. There is no general "read any
 document" that gives you clean fields.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Option</th><th>What it is</th><th>Roughly costs</th><th>Pick this when</th></tr>
 <tr><td><strong>A. Ask the user</strong></td><td>A dropdown: "what are you uploading?"</td><td>Free</td><td>Start here. Genuinely. Most products never need more.</td></tr>
 <tr><td><strong>B. Keyword rules</strong></td><td>Run cheap OCR, look for giveaway words ("INCOME TAX DEPARTMENT", "Permanent Account Number").</td><td>≈ $1.50 per 1,000 pages</td><td>You have a few document types and they have distinctive text.</td></tr>
 <tr><td><strong>C. A classifier model</strong></td><td>Azure or Google classify the document before reading it.</td><td>≈ $3&ndash;5 per 1,000</td><td>Many types, or documents arrive in bulk with no user to ask.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>Option A sounds lazy and is usually right. If the user is standing in your app uploading their PAN card, they know it is a PAN card. Asking costs nothing and is more accurate than any classifier. Save the classifier for post boxes and bulk scans, where there is no user to ask.</p></div>
 <p><strong>What comes out:</strong> a document type, and a confidence score if you used B or C.</p>
 <p><strong>Connect it to step 4:</strong> the document type chooses <em>which</em> reader you call. PAN
@@ -342,13 +349,13 @@ bank statement to an ID reader gets you nothing useful and still bills you.</p>
 <h3 id="s-indigo-s4">Step 4 &mdash; Read the text</h3>
 <p><strong>What it does:</strong> turns the picture into words, with a position on the page and a
 confidence for each one.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Option</th><th>What it is</th><th>Roughly costs per 1,000 pages</th><th>Pick this when</th></tr>
 <tr><td><strong>A. Plain OCR</strong></td><td>AWS, Google or Azure. Just gives you words and boxes.</td><td><strong>≈ $1.50</strong>, all three within cents of each other</td><td>You will do the field-finding yourself in step 5.</td></tr>
 <tr><td><strong>B. Identity-document API</strong></td><td>AWS Textract AnalyzeID and equivalents. Knows what a passport and a driving licence look like.</td><td><strong>≈ $10&ndash;25</strong></td><td>ID documents specifically. It does steps 4 and 5 together.</td></tr>
 <tr><td><strong>C. Prebuilt or custom models</strong></td><td>Azure and Google models for invoices, receipts, and your own trained ones.</td><td>Prebuilt <strong>≈ $10</strong>, custom <strong>≈ $30</strong></td><td>A document type with a stable layout and real volume.</td></tr>
 <tr><td><strong>D. Self-hosted</strong></td><td>PaddleOCR, docTR, Tesseract on your own machine.</td><td><strong>No per-page fee.</strong> You pay for CPU, and GPU if you use a vision model</td><td>Data cannot leave your building, or volume is high enough that per-page pricing hurts.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>Plain OCR is a commodity. Do not spend a week choosing.</strong> AWS, Google and Azure price it at roughly $1.50 per 1,000 pages and match each other to the cent. Pick the one your infrastructure already uses. The interesting choice is <strong>B versus A-plus-your-own-step-5</strong>, and that is a build-versus-buy decision, not a vendor comparison.</p></div>
 <p><strong>What comes out:</strong> a list of text pieces. Each has the text, a box saying where it sat
 on the page, and a confidence between 0 and 1.</p>
@@ -422,14 +429,14 @@ by step 8 they are your evidence.</p>
 <h3 id="s-indigo-s5">Step 5 &mdash; Turn words into fields</h3>
 <p><strong>What it does:</strong> decides which of those words is the name, which is the PAN number,
 which is the date of birth.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Option</th><th>What it is</th><th>Roughly costs</th><th>Pick this when</th></tr>
 <tr><td><strong>A. Position rules</strong></td><td>On a PAN card the number is always in the same place. Take whatever text sits in that box.</td><td>Free</td><td>Fixed-layout documents. Fast, free, and completely predictable.</td></tr>
 <tr><td><strong>B. Label matching</strong></td><td>Find the word "Name", take what is to the right of it.</td><td>Free</td><td>Forms with printed labels. Handles small layout shifts.</td></tr>
 <tr><td><strong>C. Pattern matching</strong></td><td>A PAN is five letters, four digits, one letter. Find anything that matches.</td><td>Free</td><td>Fields with a strict format. Combine with A or B.</td></tr>
 <tr><td><strong>D. Let the API do it</strong></td><td>You picked option B in step 4, so fields come back already extracted.</td><td>Included in the $10&ndash;25</td><td>ID documents. Least code by a distance.</td></tr>
 <tr><td><strong>E. Ask a language model</strong></td><td>Give the model the OCR text and ask for JSON.</td><td>Per token, so it depends</td><td>Messy or varied layouts where A, B and C all fail.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>Option E has a trap.</strong> A language model will happily invent a plausible date of birth if the OCR did not read one. You asked for JSON with a <code>dob</code> field and it will give you a <code>dob</code> field. Two rules if you use it: pass only the OCR text and <strong>never the image description</strong>, and then check every returned value actually appears in the OCR output. If the model returns something the OCR never read, throw it away and mark the field missing. This is the same rule as the refusal gate in <a href="/fintech-ai/customer-operations/build-sheet/">Build Sheet 06</a> &mdash; the value must be present in the retrieved text, not merely plausible.</p></div>
 <p><strong>Connect it to step 6:</strong> pass the whole field object, with scores and boxes. Do not
 flatten it to plain strings here. Step 6 needs the scores and step 7 needs the boxes.</p>
@@ -439,13 +446,13 @@ flatten it to plain strings here. Step 6 needs the scores and step 7 needs the b
 is the step that separates a demo from a product.</p>
 <p>A confidence score tells you how clearly the system saw the characters. It does not tell you
 whether the answer is right. An OCR engine can read a smudged 8 as a 3 with 0.98 confidence.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Check</th><th>What it catches</th><th>Costs</th></tr>
 <tr><td><strong>Format</strong></td><td>A PAN that is not five letters, four digits, one letter. An eleven-digit phone number.</td><td>Free</td></tr>
 <tr><td><strong>Checksum</strong></td><td>Aadhaar has a check digit. So do IFSC and GSTIN and many others. A single misread character fails it.</td><td>Free</td></tr>
 <tr><td><strong>Cross-field</strong></td><td>Date of birth after today. Issue date after expiry date. Age of four on a PAN card.</td><td>Free</td></tr>
 <tr><td><strong>Against the source</strong></td><td>Ask the issuing authority whether this number exists and matches this name.</td><td>Per lookup, varies by provider</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>The first three are free and catch most of it. Do all three before you spend money on the fourth. A field that fails a checksum does not need a paid lookup to tell you it is wrong &mdash; and sending it anyway is a cost you can remove on your first afternoon.</p></div>
 <p><strong>Connect it to step 7:</strong> each field now carries both a confidence <em>and</em> a
 validation result. Step 7 needs both, and they disagree more often than you would expect. A field can
@@ -506,7 +513,7 @@ the record. Especially the edits.</p>
 you accept this document?"</p>
 <p>This is the step that gets left until last and then never gets built. It is also the one that
 regulators and auditors ask about first.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Store</th><th>Why</th></tr>
 <tr><td>The original image</td><td>Everything else is a claim about it.</td></tr>
 <tr><td>The full OCR output</td><td>So you can re-run step 5 later without paying for step 4 again.</td></tr>
@@ -515,7 +522,7 @@ regulators and auditors ask about first.</p>
 <tr><td>Which thresholds were in force</td><td>The rules change. The record must say which rules applied that day.</td></tr>
 <tr><td>The decision, and who made it</td><td>Automatic, or a named reviewer.</td></tr>
 <tr><td>Every correction a human made</td><td>Your best training data and your best bug report.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p>Store the record <strong>append-only</strong>. A correction is a new row, never an edit to the old one. The question is not only &ldquo;what do we believe now&rdquo; but &ldquo;what did we believe on the day we opened the account&rdquo;, and an updated row cannot answer the second one.</p></div>
 <h2 id="s-indigo-5">What it costs</h2>
 <div class="reg"><div class="reg-head"><h3>Document AI — what it costs per 1,000 pages</h3><span class="reg-date">Verified May 2026</span></div><div class="reg-row"><div class="n">Quality gate (step 2)<span class="pill p-oss">oss</span></div><div class="d"><strong>Free.</strong> OpenCV, thirty lines. Removes more OCR spend than any other decision here.</div></div><div class="reg-row"><div class="n">Classification (step 3)<span class="pill p-direct">direct</span></div><div class="d"><strong>Free</strong> if you ask the user. <strong>&asymp; $3&ndash;5</strong> per 1,000 for a cloud classifier. <strong>&asymp; $1.50</strong> if you classify by running plain OCR and keyword matching.</div></div><div class="reg-row"><div class="n">Plain OCR (step 4)<span class="pill p-direct">direct</span></div><div class="d"><strong>&asymp; $1.50 per 1,000 pages</strong> on AWS, Google and Azure &mdash; matching to the cent. Falls to <strong>&asymp; $0.60</strong> at high volume (above roughly 1M/month on Azure, 5M on Google). <strong>Price is not a reason to choose between them.</strong></div></div><div class="reg-row"><div class="n">Identity-document API (step 4+5)<span class="pill p-direct">direct</span></div><div class="d">AWS Textract AnalyzeID and equivalents: <strong>&asymp; $10&ndash;25 per 1,000</strong>. Does the reading and the field extraction together for ID documents.</div></div><div class="reg-row"><div class="n">Prebuilt and custom models<span class="pill p-direct">direct</span></div><div class="d">Prebuilt <strong>&asymp; $10 per 1,000</strong>. Custom extraction <strong>&asymp; $30 per 1,000</strong> on both Azure and Google.</div></div><div class="reg-row"><div class="n">Forms and tables<span class="pill p-direct">direct</span></div><div class="d">AWS Textract: tables <strong>&asymp; $15</strong>, forms <strong>&asymp; $50</strong>, forms+tables <strong>&asymp; $65</strong>, forms+tables+queries <strong>&asymp; $70</strong> per 1,000. <strong>The wrong tool for an ID card</strong> &mdash; this is for bank statements and application forms.</div></div><div class="reg-row"><div class="n">Self-hosted (step 4)<span class="pill p-oss">oss</span></div><div class="d"><strong>No per-page fee.</strong> PaddleOCR, docTR, Tesseract. You pay for CPU, and GPU if you use a vision model. Check the licence of every model you pull &mdash; some are research-only.</div></div><div class="reg-row"><div class="n">Human review (step 7)<span class="pill p-direct">direct</span></div><div class="d"><strong>The line that decides your business case.</strong> A reviewer costs the same whether the document was cheap or expensive to read. If 30% of documents go to review, your real cost per document is dominated by people, not by API calls.</div></div><div class="reg-foot">Where to buy these: <a href="/fintech-ai/identity-onboarding/build-sheet/"><strong>Identity Onboarding Build Sheet</strong></a> names every tool with its unit cost. <a href="/fintech-ai/build-playbook/getting-access/"><strong>Getting Access</strong></a> covers which ones you can sign up for today, which need a sales call, and which are licensed.</div></div><div class="warn"><span class="note-lbl">Watch out</span><p><strong>Features stack, and one document can hit several meters.</strong> A non-standard document typically runs a classifier (&asymp;$3) and then custom extraction (&asymp;$30), so the real cost is the sum of every model that fires &mdash; not a single headline rate. This is the most common mistake in a document-AI cost estimate.</p></div><div class="note"><span class="note-lbl">Note</span><p>Two more things that quietly distort estimates. Google bills roughly <strong>$0.05 an hour per deployed custom processor version</strong> &mdash; about <strong>$438 a year</strong> whether or not you send it any traffic. And <strong>multi-page documents bill page by page</strong>, so a 40-page file is 40 billable pages even if you only need page one.</p></div>
@@ -557,7 +564,7 @@ months and end up with the proper version anyway, having paid for the detour.</p
 <h2 id="s-amber-1">What goes wrong</h2>
 
 <p>Ranked by how often we see them, not by how serious they are.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>High confidence, wrong value</strong></td><td>Confidence measures how clearly the characters were seen, not whether the answer is right.</td><td>Step 6. Checksums and format rules, always, even on 0.99 fields.</td></tr>
 <tr><td><strong>Review queue quietly grows</strong></td><td>Something upstream changed &mdash; a new phone camera, a redesigned document, a vendor model update.</td><td>Chart queue size weekly. A rising line is always upstream.</td></tr>
@@ -566,7 +573,7 @@ months and end up with the proper version anyway, having paid for the detour.</p
 <tr><td><strong>The model invented a field</strong></td><td>A language model was asked for JSON and filled in a blank.</td><td>Check every value appears in the OCR text. If not, mark it missing.</td></tr>
 <tr><td><strong>Cannot explain a decision from last year</strong></td><td>The record was updated in place, or the thresholds were never stored.</td><td>Append-only, with the threshold version on every row.</td></tr>
 <tr><td><strong>Works in the demo, fails in the app</strong></td><td>Demo used clean scans. Real users send photos at night, at an angle, with a thumb over the corner.</td><td>Step 2, and test on photos your own team took on their own phones.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

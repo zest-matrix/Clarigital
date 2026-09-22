@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Cross-Border Payments: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/cross-border-payments/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -207,19 +214,19 @@ marketplace that touches a foreign currency.</p>
 
 <p>Cross-border payments in India sit on three legal layers at once, and you cannot ignore any of
 them:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Layer</th><th>What it governs</th></tr>
 <tr><td><strong>FEMA, 1999</strong></td><td>Whether the money may cross the border at all, and for what purpose.</td></tr>
 <tr><td><strong>RBI payment regulation</strong></td><td>Who is allowed to move it &mdash; AD banks, and now authorised PA-CBs.</td></tr>
 <tr><td><strong>PMLA / FIU-IND</strong></td><td>Reporting obligations. A Delhi High Court ruling in July 2023 confirmed these operators are reporting entities.</td></tr>
-</table>
+</table></div>
 <p><strong>The three PA-CB categories, by direction of flow:</strong></p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Category</th><th>Direction</th><th>Who needs it</th></tr>
 <tr><td><strong>Export</strong></td><td>Money coming <em>in</em> from overseas buyers</td><td>SaaS, IT services, freelancers, exporters.</td></tr>
 <tr><td><strong>Import</strong></td><td>Money going <em>out</em> to overseas sellers</td><td>Businesses buying foreign goods, software or services.</td></tr>
 <tr><td><strong>Both</strong></td><td>Two-way</td><td>Marketplaces, and anyone who both earns and spends abroad.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Match the category to your flow before you sign anything.</strong> A provider authorised for export-only cannot process your outbound supplier payments, and you will find that out at the moment you need to pay someone. If you do both, you need a provider covering both &mdash; or two providers.</p></div>
 <p><strong>What it is not:</strong></p>
 <ul>
@@ -231,7 +238,7 @@ violation, with penalties running to criminal prosecution for wilful breaches.</
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Which direction?</strong></td><td>In, out, or both. It decides everything after.</td></tr>
 <tr><td>2</td><td><strong>Pick your route</strong></td><td>AD bank, a PA-CB provider, or become one.</td></tr>
@@ -241,18 +248,18 @@ violation, with penalties running to criminal prosecution for wilful breaches.</
 <tr><td>6</td><td><strong>Document it</strong></td><td>Purpose code, FIRA, EDPMS or IDPMS. This is what makes it legal, not just successful.</td></tr>
 <tr><td>7</td><td><strong>The FX</strong></td><td>Where the real cost lives, and where it is hidden.</td></tr>
 <tr><td>8</td><td><strong>Reconcile and report</strong></td><td>Including the FIU-IND obligation that surprises people.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>Step 6 is the one that separates a working integration from a compliant one. A payment can settle perfectly and still leave you with an open entry in a monitoring system that someone has to close, months later, without the paperwork.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 to 3 — direction, route and authorisation</h2>
 
 <h3 id="s-indigo-s1">Steps 1 and 2 &mdash; Direction, then route</h3>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Route</th><th>What it means</th><th>When it fits</th></tr>
 <tr><td><strong>AD Category-I bank directly</strong></td><td>Your bank handles the remittance and the documentation.</td><td>Low volume, large tickets, or anything above the PA-CB cap.</td></tr>
 <tr><td><strong>An authorised PA-CB</strong></td><td>A provider handles collection, conversion and paperwork.</td><td>Most businesses. Better rates, better developer experience, and the documentation largely handled.</td></tr>
 <tr><td><strong>Become a PA-CB</strong></td><td><strong>&#8377;15 crore net worth at application, rising to &#8377;25 crore</strong>, plus authorisation, FIU-IND registration and FEMA obligations.</td><td>Cross-border payments <em>are</em> your product.</td></tr>
-</table>
+</table></div>
 
 <h3 id="s-indigo-s3">Step 3 &mdash; Verify the authorisation</h3>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>The procurement trap: &ldquo;in-principle approval&rdquo; is not authorisation.</strong> Several well-known names have held in-principle PA-CB approval for extended periods while their final authorisation remained pending. In-principle means the RBI is minded to approve, subject to conditions. It does not mean the entity may yet process your cross-border payments. <strong>Ask two questions and get written answers: is the authorisation final, and which category does it cover?</strong> &ldquo;We are RBI regulated&rdquo; answers neither.</p></div>
@@ -401,12 +408,12 @@ from the interbank rate. The fee is visible and the spread is not, and the sprea
 larger number. <a href="/fintech-ai/payments-reconciliation/build-sheet/">Build Sheet 05</a> records
 that all-in cross-border costs are frequently reported in the <strong>5&ndash;7%</strong> range
 against a <strong>3%</strong> headline, and the difference is almost entirely FX.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Ask this</th><th>Why</th></tr>
 <tr><td><strong>&ldquo;What is your markup over the interbank mid-rate?&rdquo;</strong></td><td>The only question that gets a comparable number. &ldquo;Competitive rates&rdquo; is not an answer.</td></tr>
 <tr><td><strong>&ldquo;Show me the rate you applied on my last ten transactions, against the mid at that timestamp.&rdquo;</strong></td><td>Turns a claim into arithmetic. Store the applied rate per transaction and you can compute this yourself.</td></tr>
 <tr><td><strong>&ldquo;Who else takes a cut before it lands?&rdquo;</strong></td><td>Correspondent bank charges, beneficiary bank charges, and lifting fees are real and often undisclosed.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>Store the FX rate applied, per transaction, from day one.</strong> Without it you cannot audit your provider, cannot compare two providers honestly, and cannot answer a merchant asking why they received less than they expected. It is one column, and adding it later means the historical comparison you actually want is impossible.</p></div>
 
 <h3 id="s-indigo-s8">Step 8 &mdash; Reconcile and report</h3>
@@ -449,7 +456,7 @@ FEMA and FIU-IND reporting, merchant due diligence at scale.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>store the FX rate applied on every single transaction, starting with the first one.</strong> It is one column. Without it you cannot audit your provider, compare alternatives honestly, or explain a shortfall to a merchant &mdash; and it cannot be reconstructed later.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Provider cannot process your payment</strong></td><td>Export-only authorisation, outbound payment.</td><td>Check category against direction, in code.</td></tr>
 <tr><td><strong>&ldquo;RBI regulated&rdquo; turns out to be in-principle</strong></td><td>Nobody asked whether authorisation was final.</td><td>Two written questions: final, and which category.</td></tr>
@@ -459,7 +466,7 @@ FEMA and FIU-IND reporting, merchant due diligence at scale.</p>
 <tr><td><strong>Purpose code guessed at year end</strong></td><td>Not captured at payment time.</td><td>Pick it from the current RBI list, at payment.</td></tr>
 <tr><td><strong>No FIRA when a client asks</strong></td><td>Never requested.</td><td>Request and store per inward remittance.</td></tr>
 <tr><td><strong>EDD blocks a payment unexpectedly</strong></td><td>Treated as an escalation, not a step.</td><td>Above &#8377;2.5 lakh it is the normal path.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

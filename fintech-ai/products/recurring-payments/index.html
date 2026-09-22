@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Recurring Payments: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/recurring-payments/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -209,12 +216,12 @@ instalments.</p>
 may then debit them repeatedly within agreed limits, without asking again each time.</p>
 <p>The 2026 framework covers <strong>credit cards, debit cards, prepaid instruments and UPI</strong>,
 for <strong>domestic and cross-border</strong> recurring transactions. Three rails, one rulebook.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Rail</th><th>What it is</th><th>Best for</th></tr>
 <tr><td><strong>Card e-mandate</strong></td><td>Standing instruction against a card.</td><td>Subscriptions, international customers, higher ticket sizes.</td></tr>
 <tr><td><strong>UPI AutoPay</strong></td><td>Mandate against a UPI ID, approved in the customer's UPI app.</td><td>Consumer India. Highest reach, lowest friction to register.</td></tr>
 <tr><td><strong>eNACH</strong></td><td>Standing instruction registered directly against a bank account.</td><td>Loan EMIs, larger amounts, customers without cards.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>UPI AutoPay runs under the same framework as card mandates.</strong> The pre-debit notification requirement and the AFA thresholds apply identically. The payment instrument changes; the compliance obligation does not. That matters when you build &mdash; one set of rules, three integrations, and it is tempting to build three different rule implementations by accident.</p></div>
 <p><strong>What it is not:</strong></p>
 <ul>
@@ -227,7 +234,7 @@ get most wrong.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Pick the rail</strong></td><td>Card, UPI AutoPay, or eNACH. Often more than one.</td></tr>
 <tr><td>2</td><td><strong>Register the mandate</strong></td><td>One authentication, up front. Get this right or nothing else runs.</td></tr>
@@ -237,7 +244,7 @@ get most wrong.</li>
 <tr><td>6</td><td><strong>When it fails</strong></td><td>Diagnose the mode. Do not send everyone the same email.</td></tr>
 <tr><td>7</td><td><strong>Confirm, after</strong></td><td>Post-debit notification, with the grievance route on it.</td></tr>
 <tr><td>8</td><td><strong>Modify, pause, revoke, reissue</strong></td><td>The customer is in control, and cards get replaced.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>Steps 4, 6 and 7 are where the money is. Registration is a one-off engineering problem; <strong>collection is an operational one you will run forever</strong>, and the difference between a good and a bad implementation of step 6 is worth more than everything else on this page combined.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 to 3 — rails, registration and limits</h2>
@@ -454,14 +461,14 @@ customer did not authorise is not a billing dispute; it is an unauthorised trans
 attached.</p>
 
 <h3 id="s-indigo-s8">Step 8 &mdash; Modify, pause, revoke, reissue</h3>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Event</th><th>What must be possible</th></tr>
 <tr><td><strong>Modify</strong></td><td>Amount cap or validity period, by the customer, with AFA.</td></tr>
 <tr><td><strong>Pause</strong></td><td>Without cancelling. Build it; customers who cannot pause, cancel.</td></tr>
 <tr><td><strong>Revoke</strong></td><td>At any point, with AFA. Immediate effect on the next debit.</td></tr>
 <tr><td><strong>Opt out of one debit</strong></td><td>A single skipped payment, not the whole mandate. Frequently missed.</td></tr>
 <tr><td><strong>Card reissued</strong></td><td>Issuers may map existing card e-mandates to the reissued card &mdash; which removes the old problem of every mandate silently lapsing when a card expired.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Card reissue mapping is quietly one of the most valuable changes in the 2026 framework.</strong> Mandate churn on card expiry used to be a large, invisible source of involuntary subscriber loss &mdash; the customer never chose to leave, the card simply expired. Ask your acquirer whether they support the mapping, because it is the difference between losing a cohort every three years and not.</p></div>
 <h2 id="s-indigo-3">What it costs</h2>
 <div class="reg"><div class="reg-head"><h3>Recurring payments &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">The facility, to the customer<span class="pill p-direct">direct</span></div><div class="d"><strong>Nothing. Issuers are prohibited from charging customers</strong> for using an e-mandate. If a fee exists in your flow, you absorb it.</div></div><div class="reg-row"><div class="n">Per transaction<span class="pill p-direct">direct</span></div><div class="d">Ordinary payment processing, per successful debit. See <a href="/fintech-ai/payments-reconciliation/build-sheet/">Build Sheet 05</a> for the rails and their rates.</div></div><div class="reg-row"><div class="n">Mandate registration<span class="pill p-direct">direct</span></div><div class="d">Sometimes a separate small fee per registered mandate, sometimes bundled. Worth asking, because a high-churn product registers far more mandates than a stable one.</div></div><div class="reg-row"><div class="n">Notifications<span class="pill p-direct">direct</span></div><div class="d"><strong>Two per debit cycle, minimum</strong> &mdash; one 24 hours before, one after. On SMS at scale this is a real line, and it is proportional to your billing frequency rather than your revenue.</div></div><div class="reg-row"><div class="n">Failure handling<span class="pill p-direct">direct</span></div><div class="d"><strong>The line that decides the economics.</strong> Recovery is customer-action-dependent in three of four failure modes, so it costs communication and time rather than compute. Getting it right is worth more than any per-transaction saving.</div></div><div class="reg-row"><div class="n">Building three rails<span class="pill p-direct">direct</span></div><div class="d">Card, UPI AutoPay and eNACH are three integrations under one rulebook. <strong>Budget three integrations and one rule engine</strong> &mdash; not three of each.</div></div><div class="reg-foot">Where to buy these: <a href="/fintech-ai/payments-reconciliation/build-sheet/"><strong>Payments Reconciliation Build Sheet</strong></a> names every tool with its unit cost. <a href="/fintech-ai/build-playbook/getting-access/"><strong>Getting Access</strong></a> covers which ones you can sign up for today, which need a sales call, and which are licensed.</div></div><div class="warn"><span class="note-lbl">Watch out</span><p><strong>Model involuntary churn, not just failed debits.</strong> A failed instalment that is never recovered is a lost customer who did not choose to leave. Measure <em>recovery rate per failure mode</em> and <em>involuntary churn</em> separately from voluntary cancellation &mdash; most billing dashboards collapse all three into &ldquo;churn&rdquo; and hide the one you can actually fix.</p></div>
@@ -493,7 +500,7 @@ churn reporting &rarr; a dunning sequence that escalates across rails rather tha
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>split your dunning message into three.</strong> Cancelled mandate, above-threshold, and notification failure need three different customer actions, and one generic email serves none of them. It is a week of work and it moves recovery more than any other change available here.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>EMI collections fail above &#8377;15,000</strong></td><td>The &#8377;1 lakh exception was assumed to cover loans.</td><td>It covers insurance, mutual funds and credit card bills only.</td></tr>
 <tr><td><strong>Recovery rate is poor</strong></td><td>One generic dunning email for three different failure modes.</td><td>Three messages, three actions.</td></tr>
@@ -503,7 +510,7 @@ churn reporting &rarr; a dunning sequence that escalates across rails rather tha
 <tr><td><strong>Customers cancel instead of pausing</strong></td><td>There is no pause.</td><td>Build pause. Cancelling is a decision they cannot undo easily.</td></tr>
 <tr><td><strong>Three rails, three rule implementations</strong></td><td>Each integration was built by itself.</td><td>One mandate model, three adapters.</td></tr>
 <tr><td><strong>A debit after expiry</strong></td><td>Validity stored but not enforced.</td><td>Enforce it. It is an unauthorised transaction.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

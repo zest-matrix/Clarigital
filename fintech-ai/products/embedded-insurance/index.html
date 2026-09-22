@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Embedded Insurance: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/embedded-insurance/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -212,13 +219,13 @@ risk, you do not decide claims, and in most designs the money is not yours for m
 you own is the moment the customer is offered cover, and the obligations that attach to that moment.</p>
 <p>Four roles. Work out which one you are before anything else, because every later answer depends
 on it:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Role</th><th>What it does</th><th>What it needs</th></tr>
 <tr><td><strong>Insurer</strong></td><td>Underwrites, prices, files the product, pays claims.</td><td>An insurance licence. Almost certainly not you.</td></tr>
 <tr><td><strong>Intermediary</strong></td><td>Solicits and procures the policy, and services the policyholder.</td><td><strong>IRDAI registration</strong> &mdash; corporate agent, broker or insurance marketing firm.</td></tr>
 <tr><td><strong>Platform</strong></td><td>Owns the surface the customer is standing on.</td><td>Nothing, on its own. <strong>Which is the trap.</strong></td></tr>
 <tr><td><strong>Master policyholder</strong></td><td>Holds a group policy under which members are covered.</td><td>A group that <strong>already exists</strong>. See step 2.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>The three designs most teams reach for first are the three that do not work.</strong><br><br><strong>1. Referral for a revenue share.</strong> &ldquo;We just send traffic, the insurer does the selling.&rdquo; If you are presenting products, taking the customer through a choice and being paid for the outcome, you are soliciting insurance for remuneration. That needs registration, whatever the contract calls it.<br><br><strong>2. A group policy covering &lsquo;our customers&rsquo;.</strong> Buy one master policy, enrol buyers into it as they arrive, no intermediary licence required. The <strong>Protection of Policyholders&rsquo; Interests Regulations, 2024</strong> closed this: the group must be in existence <em>before</em> the policy is issued, and a master policyholder obtains cover only after the group has been formed and its members enrolled. You cannot constitute a group out of people who have not bought anything yet.<br><br><strong>3. Cover folded in so it cannot be declined.</strong> Barred for a corporate agent selling insurance alongside a principal product, and from 1 January 2027 barred outright for banks and NBFCs under the RBI Directions.</p></div>
 <p><strong>What embedded insurance is not:</strong></p>
 <ul>
@@ -232,7 +239,7 @@ non-delegable obligation. Step 8.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Are you allowed to sell it?</strong></td><td>Answer this before designing a screen.</td></tr>
 <tr><td>2</td><td><strong>Pick the structure</strong></td><td>Corporate agent, broker, marketing firm &mdash; or someone else&rsquo;s licence.</td></tr>
@@ -242,7 +249,7 @@ non-delegable obligation. Step 8.</li>
 <tr><td>6</td><td><strong>Issue and deliver</strong></td><td>Electronic policy, and from 2027 a named seller on it.</td></tr>
 <tr><td>7</td><td><strong>Free look, cancellation, refund</strong></td><td>The refund that must not flow back through you.</td></tr>
 <tr><td>8</td><td><strong>Service the policyholder</strong></td><td>Grievances and claims support. Non-delegable.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 5, 7 and 8 are the ones people skip, and they are the ones an inspection looks at.</strong> Steps 3 and 4 are where the product feels like a product. A build that does 3 and 4 beautifully and skips the rest is a nicely designed checkout add-on that somebody is going to be fined for.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 and 2 — permission, and the structure</h2>
@@ -256,13 +263,13 @@ requirement came in with the 2024 policyholder regulations. Before you sign anyt
 who says they will handle the licensing, go and look yourself.</p>
 
 <h3 id="s-indigo-s2">Step 2 &mdash; Pick the structure</h3>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Route</th><th>You represent</th><th>Suits</th><th>Cost of entry</th></tr>
 <tr><td><strong>Corporate agent</strong></td><td>The insurer</td><td>Most embedded products. A fixed panel, one integration each.</td><td><strong>&#8377;50 lakh net worth</strong>, held at all times</td></tr>
 <tr><td><strong>Insurance broker</strong></td><td><strong>The customer</strong></td><td>Genuine comparison across the market, with a written recommendation.</td><td>Higher capital, higher duty</td></tr>
 <tr><td><strong>Insurance marketing firm</strong></td><td>The insurer, area-restricted</td><td>Smaller, regional distribution.</td><td>Lower, and narrower in scope</td></tr>
 <tr><td><strong>Someone else&rsquo;s licence</strong></td><td>Nobody &mdash; you are a vendor</td><td>Testing demand before committing.</td><td><strong>You may not be paid for the sale</strong></td></tr>
-</table>
+</table></div>
 <p><strong>Corporate agent, in numbers.</strong> Up to <strong>nine life, nine general and nine health
 insurers</strong>; a composite corporate agent may hold up to <strong>27 arrangements in total</strong>.
 A corporate agent (general) is limited to retail lines plus commercial lines with a total sum insured
@@ -286,7 +293,7 @@ precisely how the mis-selling definitions are drawn.</p>
 <h3 id="s-indigo-s4">Step 4 &mdash; The offer on the page</h3>
 <p>This is the step that changes on 1 January 2027, and the changes are in your interface, not in
 your contracts.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Pattern</th><th>Status</th></tr>
 <tr><td>Cover pre-ticked, customer unticks to decline</td><td><strong>Banned</strong> &mdash; pre-selected add-on</td></tr>
 <tr><td>&ldquo;No thanks&rdquo; rendered small, grey or below the fold</td><td><strong>Banned</strong> &mdash; hidden decline</td></tr>
@@ -295,7 +302,7 @@ your contracts.</p>
 <tr><td>Cover required to complete the main purchase</td><td><strong>Banned</strong> &mdash; compulsory bundling and forced action</td></tr>
 <tr><td>Cover required, but the customer may buy it anywhere</td><td><strong>Permitted</strong> where it is a genuine risk mitigant</td></tr>
 <tr><td>Cancelling the cover is harder than buying it</td><td><strong>Banned</strong> &mdash; subscription trap</td></tr>
-</table>
+</table></div>
 <p>Those come from the RBI Directions and bind banks and NBFCs. <strong>If you are neither, they do
 not bind you and you should build to them anyway</strong> &mdash; IRDAI reached the same conclusion
 by a different route when it penalised a distributor for ranking products as &ldquo;top&rdquo; and
@@ -486,7 +493,7 @@ route has to be published where a policyholder can find it, reachable by phone, 
 person, and disclosed on your website alongside your registration number and your role.</strong></p>
 
 <h3 id="s-indigo-s2027">What changes on 1 January 2027, in one place</h3>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Change</th><th>Source</th><th>What it touches</th></tr>
 <tr><td><strong>Named seller on every proposal, policy and certificate</strong></td><td>IRDAI Intermediaries Amendment 2026</td><td>Your proposal payload and policy schema</td></tr>
 <tr><td><strong>Policy-wise sales records remotely accessible to the regulator</strong></td><td>IRDAI Intermediaries Amendment 2026</td><td>Your data model and retention</td></tr>
@@ -496,7 +503,7 @@ person, and disclosed on your website alongside your registration number and you
 <tr><td><strong>Dark patterns prohibited</strong></td><td>RBI RBC (Second Amendment) 2026</td><td>Your interface</td></tr>
 <tr><td><strong>Full compensation for mis-selling</strong></td><td>RBI RBC (Second Amendment) 2026</td><td>Your refund and complaints path</td></tr>
 <tr><td><strong>Responsibility for DSAs, sub-agents and representatives</strong></td><td>RBI RBC (Second Amendment) 2026</td><td>Your partner and affiliate programme</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>One useful loosening in the same RBI Directions:</strong> an NBFC may distribute insurance <strong>without prior RBI approval</strong>, subject to its IRDAI registration. If you are an NBFC that shelved embedded insurance because of the approval step, the step has gone. The IRDAI registration has not.</p></div>
 <h2 id="s-indigo-4">What it costs</h2>
 <div class="reg"><div class="reg-head"><h3>Embedded insurance &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Corporate agent registration<span class="pill p-direct">direct</span></div><div class="d">Non-refundable application fee <strong>&#8377;10,000</strong>, registration fee <strong>&#8377;25,000</strong>, and <strong>&#8377;500</strong> per certificate for the principal officer, each specified person and each authorised verifier. Trivial next to what sits underneath it.</div></div><div class="reg-row"><div class="n">Net worth<span class="pill p-direct">direct</span></div><div class="d"><strong>&#8377;50 lakh, maintained at all times</strong>, for an entity doing insurance intermediation exclusively. This is locked capital, not a one-off fee, and where you have another business the two must be at arm&rsquo;s length.</div></div><div class="reg-row"><div class="n">Annual fee<span class="pill p-direct">direct</span></div><div class="d">Under the continuous-registration regime, <strong>the higher of &#8377;10,000 or 0.04% of commission and other receipts from insurers in the preceding financial year</strong>. It scales with you, which most licence fees do not.</div></div><div class="reg-row"><div class="n">Principal officer and certified sellers<span class="pill p-direct">direct</span></div><div class="d">A graduate principal officer with <strong>50 hours</strong> of Insurance Institute of India training and the examination passed, plus certification for every specified person. <strong>From 1 January 2027 every policy names one of them</strong>, so this headcount becomes a function of your sales volume rather than a fixed compliance cost.</div></div><div class="reg-row"><div class="n">Professional indemnity insurance<span class="pill p-direct">direct</span></div><div class="d">Required where insurance intermediation is more than half of your revenue. Price it before you assume the economics work at scale.</div></div><div class="reg-row"><div class="n">Your commission<span class="pill p-indirect">indirect</span></div><div class="d">Paid by the insurer out of its <strong>Expenses of Management</strong> envelope &mdash; <strong>30%</strong> of gross written premium for a general insurer, <strong>35%</strong> for a standalone health insurer, segmental for life. Not a number your partner is free to set.</div></div><div class="reg-row"><div class="n">The premium float<span class="pill p-indirect">indirect</span></div><div class="d"><strong>Zero, by law.</strong> Twenty-four hours, in full, without netting commission. If a business case anywhere in your model assumes working capital from held premium, delete it.</div></div><div class="reg-row"><div class="n">Servicing<span class="pill p-direct">direct</span></div><div class="d">A published insurance grievance route, an option on the phone line, a named officer, renewal notices, and policy-wise records reachable by the regulator. <strong>Non-delegable, which means it cannot be outsourced to the insurer and called done.</strong></div></div><div class="reg-foot">Where to buy these: <a href="/fintech-ai/customer-operations/build-sheet/"><strong>Customer Operations Build Sheet</strong></a> names every tool with its unit cost. <a href="/fintech-ai/build-playbook/getting-access/"><strong>Getting Access</strong></a> covers which ones you can sign up for today, which need a sales call, and which are licensed.</div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The cost nobody models is attribution.</strong> An embedded checkout has no salesperson, and from 1 January 2027 every policy needs one. Whether that is a small certified team behind the flow or a defined functional identity, it is a decision with a headcount attached, and it is easier to make in 2026 than in a hurry in January.</p></div>
@@ -528,7 +535,7 @@ servicing &mdash; are all outside the part that looks like the product.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>the premium is not yours, and it has to be with the insurer within 24 hours, in full, without your commission taken out.</strong> Build the remittance queue before you build the offer screen. Everything else on this page can be retrofitted; that one is in the plumbing.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Premium sits for two or three days</strong></td><td>PSP settlement cycle treated as the remittance clock.</td><td>24 hours from collection, excluding bank and postal holidays.</td></tr>
 <tr><td><strong>Commission netted out of premium</strong></td><td>Finance nets fees everywhere else.</td><td>Remit gross. Accrue and invoice commission separately.</td></tr>
@@ -540,7 +547,7 @@ servicing &mdash; are all outside the part that looks like the product.</p>
 <tr><td><strong>Policies with no identifiable seller</strong></td><td>A checkout has no salesperson.</td><td>Attribution model decided before 1 January 2027.</td></tr>
 <tr><td><strong>A group policy covering future customers</strong></td><td>Group treated as a marketing segment.</td><td>The group must exist and be enrolled before the policy issues.</td></tr>
 <tr><td><strong>Partner&rsquo;s registration lapses</strong></td><td>Nobody tracked their 31 January 2027 filing.</td><td>Track it like a certificate expiry, because it is one.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

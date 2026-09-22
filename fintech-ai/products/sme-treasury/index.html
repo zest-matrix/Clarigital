@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "SME Treasury: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/sme-treasury/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -212,13 +219,13 @@ which is why it is a harder build than it looks and why it is last.</p>
 and already owes. You are not a bank, not a lender, not a broker and not a payment company &mdash;
 and the product is largely defined by staying that way.</p>
 <p><strong>The four lines, and the feature request that crosses each one:</strong></p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>They ask for</th><th>You become</th><th>Instead</th></tr>
 <tr><td>&ldquo;Hold our money so payouts are instant&rdquo;</td><td>A <strong>payment aggregator</strong>. Escrow with a scheduled commercial bank, net worth &#8377;15 crore rising to &#8377;25 crore, day-end balance equal to the amount realised</td><td><strong>Never touch the money.</strong> Initiate from their account, on their mandate</td></tr>
 <tr><td>&ldquo;Tell us where to park the surplus&rdquo;</td><td>An <strong>investment adviser</strong>. Registration, a capped fee, and you may not execute</td><td>Show <strong>their own bank&rsquo;s</strong> options and the arithmetic. Recommend nothing</td></tr>
 <tr><td>&ldquo;Front us the cash until the invoice clears&rdquo;</td><td>A <strong>lender</strong>. NBFC registration, the Digital Lending Directions, a KFS</td><td>Route to a regulated lender, or to <strong>TReDS</strong></td></tr>
 <tr><td>&ldquo;Convert this to dollars for us&rdquo;</td><td>Inside <strong>FEMA</strong>, needing an authorised dealer</td><td>Their AD bank does the conversion. You do the <strong>tracking</strong></td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>None of those four looks like a licensing decision at the moment it is made.</strong> Each arrives as a support ticket from a customer you like, gets scoped as a fortnight of work, and is shipped by someone who has never read a Master Direction. <strong>Put the four assertions in code on day one</strong> &mdash; a boundary you can only enforce by remembering it is not a boundary.</p></div>
 <p><strong>What it is not:</strong></p>
 <ul>
@@ -232,7 +239,7 @@ supports.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Decide what you are not</strong></td><td>The four lines, asserted in code.</td></tr>
 <tr><td>2</td><td><strong>See the cash</strong></td><td>Every account, one position, one currency base.</td></tr>
@@ -242,7 +249,7 @@ supports.</li>
 <tr><td>6</td><td><strong>The surplus</strong></td><td>Show the arithmetic. Recommend nothing.</td></tr>
 <tr><td>7</td><td><strong>Currency</strong></td><td>If they trade abroad, there is a queue waiting for them.</td></tr>
 <tr><td>8</td><td><strong>Close the loop</strong></td><td>Reconciliation, and an audit trail of decisions.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 3 and 8 are the skipped ones</strong>, and they are unusual company: a licensing question, a tax-compliance dependency and a reconciliation job. None of the three is what a treasury product demo is about, and all three are what makes one trustworthy.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 and 2 — the four lines, and the cash position</h2>
@@ -319,14 +326,14 @@ apply</strong> &mdash; how long you may fetch is not how long you may keep.</p>
 <h3 id="s-indigo-s3">Step 3 &mdash; Receivables, and the IRN that makes one real</h3>
 <p>An SME treasury product lives on the receivables ledger, and in India that ledger has a tax
 dependency most treasury software treats as somebody else&rsquo;s problem.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Rule</th><th>Position</th></tr>
 <tr><td><strong>E-invoicing applies</strong></td><td>AATO above <strong>&#8377;5 crore</strong> in any financial year since 2017-18. <strong>Permanent once crossed</strong> &mdash; it keeps applying to every GSTIN under that PAN even if a later year falls below</td></tr>
 <tr><td><strong>The 30-day hard stop</strong></td><td>AATO <strong>&#8377;10 crore and above</strong>, from <strong>1 April 2025</strong>: an invoice, credit note or debit note must reach the IRP <strong>within 30 days of its date</strong>. The portal refuses it afterwards</td></tr>
 <tr><td><strong>What a miss costs</strong></td><td>No IRN means <strong>no valid tax invoice</strong>, which means <strong>your customer cannot claim input tax credit</strong></td></tr>
 <tr><td><strong>Cancellation</strong></td><td><strong>24 hours</strong> on the IRP. After that it is a credit note, which itself must be reported</td></tr>
 <tr><td><strong>Turnover is aggregate</strong></td><td>Across all GSTINs under one PAN: taxable, exempt, exports and inter-state stock transfers, excluding GST itself</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>This is where a treasury problem becomes a customer relationship problem, and it is the finding worth carrying off this page.</strong> A missed IRN does not hurt the business that issued the invoice first. <strong>It hurts their customer</strong>, who loses input tax credit on a purchase they have already paid for &mdash; and who will remember it at renewal. <strong>Model the IRN as a state on the receivable, not as a field on the invoice</strong>, with an age, an owner and an escalation before day 30. A receivable with no IRN is not a receivable you can chase, finance or count.</p></div>
 <p>The rest of receivables is ordinary and still usually done badly: ageing buckets that mean
 something, a promised-payment date that is separate from the due date, and a single reference that
@@ -425,7 +432,7 @@ that a rule engine is a model and that you must be able to say why.</p>
 <h3 id="s-indigo-s7">Where this product touches the rest of the section</h3>
 <p>Thirteen guides in, the map is worth drawing once. <strong>A treasury product is an integration of
 other people&rsquo;s regulated surfaces</strong>, and each one has its own page:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Surface</th><th>Where the detail is</th></tr>
 <tr><td>Consented bank and GST data</td><td><a href="/fintech-ai/products/account-aggregator/">Account Aggregator</a></td></tr>
 <tr><td>Paying suppliers, collecting from customers</td><td><a href="/fintech-ai/payments-reconciliation/build-sheet/">Build Sheet 05</a> and <a href="/fintech-ai/products/upi-switch/">UPI</a></td></tr>
@@ -434,7 +441,7 @@ other people&rsquo;s regulated surfaces</strong>, and each one has its own page:
 <tr><td>Paying or being paid across borders</td><td><a href="/fintech-ai/products/cross-border-payments/">Cross-Border Payments</a></td></tr>
 <tr><td>Anything resembling a recommendation</td><td><a href="/fintech-ai/products/robo-advisory/">Robo-Advisory</a></td></tr>
 <tr><td>Anything resembling a credit decision</td><td><a href="/fintech-ai/products/alternative-credit-scoring/">Alternative Credit Scoring</a></td></tr>
-</table>
+</table></div>
 
 <h2 id="s-indigo-3">What it costs</h2>
 <div class="reg"><div class="reg-head"><h3>SME treasury &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Registrations<span class="pill p-direct">direct</span></div><div class="d"><strong>None, if you hold the four lines.</strong> That is the entire commercial argument for building this product rather than a lending or payments one &mdash; and it evaporates the first time money rests in your account.</div></div><div class="reg-row"><div class="n">Account Aggregator<span class="pill p-direct">direct</span></div><div class="d">Per fetch, plus the build. Scope it as <strong>two modules</strong> if you are a regulated entity: joining as an FIU can also require joining as an FIP. Detail in the Account Aggregator guide.</div></div><div class="reg-row"><div class="n">Bank connectivity<span class="pill p-direct">direct</span></div><div class="d">The real integration cost, and it is <strong>per bank</strong>. Coverage is the product; a treasury tool that sees three of a customer&rsquo;s four accounts is worse than a spreadsheet, because it looks complete.</div></div><div class="reg-row"><div class="n">E-invoicing integration<span class="pill p-direct">direct</span></div><div class="d">IRP connectivity, or a GSP. Small against what a <strong>blocked IRN</strong> costs a customer&rsquo;s customer in lost input tax credit.</div></div><div class="reg-row"><div class="n">Forecast accuracy<span class="pill p-indirect">indirect</span></div><div class="d">Not a line item and the thing you are actually selling. <strong>A wrong forecast that looks confident is worse than no forecast</strong>, because an SME will schedule payroll against it.</div></div><div class="reg-row"><div class="n">The support cost of being right<span class="pill p-indirect">indirect</span></div><div class="d">Every stale balance, unmatched credit and open EDPMS entry becomes a conversation. <strong>Staff reconciliation as a queue with an owner</strong>, not as a month-end task.</div></div><div class="reg-row"><div class="n">What you are competing with<span class="pill p-indirect">indirect</span></div><div class="d"><strong>A spreadsheet and a WhatsApp group, and they are free and already working.</strong> The bar is not another treasury product. It is the incumbent process, which has no licence fee and no integration risk.</div></div><div class="reg-foot">Where to buy these: <a href="/fintech-ai/payments-reconciliation/build-sheet/"><strong>Payments Reconciliation Build Sheet</strong></a> names every tool with its unit cost. <a href="/fintech-ai/build-playbook/getting-access/"><strong>Getting Access</strong></a> covers which ones you can sign up for today, which need a sales call, and which are licensed.</div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The honest pricing observation for this product:</strong> an SME will pay for a decision it can act on and will not pay for a dashboard. The willingness to pay sits on <em>&ldquo;payroll on the 30th is covered unless these two invoices slip&rdquo;</em> &mdash; a sentence, not a chart &mdash; and everything on this page exists to make that sentence true and defensible.</p></div>
@@ -465,7 +472,7 @@ sequence is always the same &mdash; a customer asks, it is scoped as a fortnight
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>the four boundaries are code, not policy.</strong> Every one of them will be crossed by a feature request that is reasonable, well-intentioned and small. An assertion that fails the build is the only version of that boundary that survives contact with a roadmap.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Funds rest in a platform account</strong></td><td>&ldquo;Instant payouts&rdquo; shipped as a feature.</td><td>Assert the settlement account owner. You are not a payment aggregator.</td></tr>
 <tr><td><strong>Surplus list sorted by return</strong></td><td>It is the obvious default sort.</td><td>Stable order, no ranking, nothing recommended.</td></tr>
@@ -478,7 +485,7 @@ sequence is always the same &mdash; a customer asks, it is scoped as a fortnight
 <tr><td><strong>Unexplained bank credits never surface</strong></td><td>Left join instead of full outer.</td><td>Full outer join. The unmatched bank line is the point.</td></tr>
 <tr><td><strong>EDPMS backlog discovered by a declined transaction</strong></td><td>Nobody owned the queue.</td><td>Owner and age, from the first transaction.</td></tr>
 <tr><td><strong>Three of four accounts connected</strong></td><td>One bank had no integration.</td><td>Say so on screen. A partial position that looks complete is worse than none.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

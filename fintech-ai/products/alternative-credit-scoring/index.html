@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Alternative Credit Scoring: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/alternative-credit-scoring/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -212,13 +219,13 @@ estimate whether someone will repay. It exists because roughly the same person k
 creditworthy, and invisible to the instrument that measures creditworthiness.</p>
 <p>Four things get called &ldquo;the score&rdquo; and they are different objects with different
 obligations:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Object</th><th>What it is</th><th>Who owns the consequence</th></tr>
 <tr><td><strong>Bureau score</strong></td><td>Produced by a Credit Information Company from reported repayment data.</td><td>The CIC, under the credit information framework.</td></tr>
 <tr><td><strong>Your model&rsquo;s score</strong></td><td>Your estimate, from your features.</td><td><strong>You.</strong> Entirely, including where a vendor built it.</td></tr>
 <tr><td><strong>A vendor score you consume</strong></td><td>Someone else&rsquo;s model, called over an API.</td><td><strong>Still you.</strong> See step 6.</td></tr>
 <tr><td><strong>The decision</strong></td><td>Approve, refer or decline, at a price.</td><td>You, and it is the decision rather than the score that a borrower can contest.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Keep the score and the decision separate in your head and in your code.</strong> A score is a number. A decision is an act with a reason attached, and the reason has to survive being asked for months later. Teams that collapse the two end up unable to answer <em>why was this person declined</em> without re-running a model that has since been retrained.</p></div>
 <p><strong>What it is not:</strong></p>
 <ul>
@@ -232,7 +239,7 @@ and it is the most important paragraph on this page.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>What is the decision?</strong></td><td>And is a model the right shape for it at all.</td></tr>
 <tr><td>2</td><td><strong>What may you lawfully use?</strong></td><td>Narrower than you think, and consent is the only basis.</td></tr>
@@ -242,7 +249,7 @@ and it is the most important paragraph on this page.</li>
 <tr><td>6</td><td><strong>Validate and register</strong></td><td>Independently. Including the vendor&rsquo;s model.</td></tr>
 <tr><td>7</td><td><strong>Decide, and record the reason</strong></td><td><strong>The step that carries the obligation.</strong></td></tr>
 <tr><td>8</td><td><strong>Monitor, report, retire</strong></td><td>Drift, weekly bureau reporting, and a 10-year inventory.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 2, 7 and 8 are the ones people skip.</strong> Steps 3 to 6 are the part that looks like data science and they are the part a vendor will happily sell you. The obligations live almost entirely outside them.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 and 2 — the decision, and what you may use</h2>
@@ -258,7 +265,7 @@ every decision, and you can change it on a Tuesday.</strong></p>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>A rule engine is a model too.</strong> The RBI's <strong>draft Guidance on Regulatory Principles for Model Risk Management, 2026</strong> (PR 2026-2027/528, <strong>24 June 2026</strong>, comments closed 24 July 2026 &mdash; <strong>still a draft at the time of writing</strong>) defines a model to include AI and ML systems, <strong>scoring algorithms, rule engines and material spreadsheets</strong> that influence decisions such as lending rates or customer pricing. The rules engine you wrote specifically to avoid model risk is in scope. <strong>The first governance task is not building controls, it is finding what you already have.</strong> Depth on the framework itself is in Build Sheet 09; this page covers what it means for one scoring pipeline.</p></div>
 
 <h3 id="s-indigo-s2">Step 2 &mdash; What may you lawfully use?</h3>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Data</th><th>Position</th></tr>
 <tr><td>Bureau report and score</td><td>Permitted, with consent. <strong>Every pull alerts the customer</strong> &mdash; see step 3</td></tr>
 <tr><td>Bank statements via Account Aggregator</td><td>Permitted, with a consent artefact. <strong>Verify the signature</strong></td></tr>
@@ -266,7 +273,7 @@ every decision, and you can change it on a Tuesday.</strong></p>
 <tr><td>Your own transaction and repayment history</td><td>Permitted, for the purpose the customer agreed to</td></tr>
 <tr><td>Camera, microphone, location</td><td><strong>Explicit consent required</strong>, purpose-bound</td></tr>
 <tr><td><strong>Contacts, call logs, media files</strong></td><td><strong>PROHIBITED</strong></td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>India has no &ldquo;legitimate interest&rdquo; basis. This is the single most consequential difference from a GDPR-shaped design.</strong> Under the <strong>DPDP Act</strong> and the <strong>DPDP Rules, 2025</strong> (notified <strong>13 November 2025</strong>), consent is the operative basis and it must be free, specific, informed, unconditional and unambiguous. A European team can lean on legitimate interest for credit assessment and fraud prevention; an Indian one cannot. <strong>Every field in your feature store needs a consent that names the purpose it is being used for</strong> &mdash; and a score derived from a field inherits that field's purpose, the same rule as derived AA data. Phasing: the Data Protection Board has been operational since <strong>13 November 2025</strong>, consent-manager provisions commence <strong>13 November 2026</strong>, and <strong>substantive obligations commence 13 May 2027</strong>. Penalties reach <strong>&#8377;250 crore</strong> and stack per violation.</p></div>
 <h2 id="s-indigo-1">Steps 3 and 4 — the data, and the lineage</h2>
 
@@ -337,12 +344,12 @@ def build_feature(name, value, field, consent_id, window_days):
 </code></pre></div>
 <p><strong>Where the data actually comes from.</strong> Three rails matter and only one of them is
 new:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Rail</th><th>What it gives you</th><th>Status</th></tr>
 <tr><td><strong>Credit Information Companies</strong></td><td>Reported repayment history across the system.</td><td>Mature. Four bureaus.</td></tr>
 <tr><td><strong>Account Aggregator</strong></td><td>Consented bank statements and other financial information.</td><td>Mature. <a href="/fintech-ai/products/account-aggregator/">Its own guide</a> &mdash; and note you may have to join as an FIP too.</td></tr>
 <tr><td><strong>Unified Lending Interface</strong></td><td>One API gateway to many data providers instead of many bilateral integrations.</td><td><strong>No longer a pilot.</strong></td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>ULI is the integration argument, not the underwriting argument.</strong> Built by the Reserve Bank Innovation Hub, launched as the Public Tech Platform for Frictionless Credit on <strong>10 August 2023</strong> and rebranded ULI on <strong>26 August 2024</strong>. As at <strong>12 December 2025</strong> the RBI reported <strong>64 lenders onboarded</strong> &mdash; 41 banks and 23 NBFCs, up from 36 a year earlier &mdash; with <strong>more than 136 data services</strong> across <strong>12 loan journeys</strong>, up from around 50 services. What it removes is the many-to-many integration cost. What it does not remove is your obligation: <strong>the RBI has been explicit that consent management and grievance redress stay with the individual lender, not the platform.</strong> Plugging into ULI hands you more data and none of the accountability.</p></div>
 <h2 id="s-indigo-2">Steps 5 and 6 — bias testing and validation</h2>
 
@@ -454,7 +461,7 @@ and <strong>usage restrictions</strong>. <strong>Explainability is therefore a c
 selection, with a price attached, rather than a reporting feature you add at the end.</strong></p>
 
 <h3 id="s-indigo-srep">Reporting back, on a clock that keeps shortening</h3>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Obligation</th><th>Position</th></tr>
 <tr><td>Reporting frequency</td><td><strong>Fortnightly</strong> (15th and last day) from <strong>1 January 2025</strong>, within <strong>7 calendar days</strong> of the fortnight. Amended directions moving to a <strong>weekly</strong> incremental cycle &mdash; the <strong>9th, 16th, 23rd and last day</strong> &mdash; were deferred from 1 April to <strong>1 July 2026</strong></td></tr>
 <tr><td>Complaint resolution</td><td><strong>30 calendar days</strong> &mdash; 21 for the lender to investigate and correct, 9 for the CIC to update</td></tr>
@@ -463,7 +470,7 @@ selection, with a price attached, rather than a reporting feature you add at the
 <tr><td>Rejection</td><td>The lender must inform the customer <strong>the reasons</strong></td></tr>
 <tr><td>Residency</td><td>Credit information <strong>processed and stored in India</strong>, not transferred out</td></tr>
 <tr><td>Third-party sharing</td><td>Consent-based; the recipient <strong>may not resell or re-share</strong>, and the CIC must assess it first</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Weekly reporting cuts both ways and the second way is the one that affects your build.</strong> Fresher data is the benefit everyone quotes. The consequence nobody designs for: <strong>the file you scored on can change between decision and disbursal.</strong> On a fortnightly cycle that window was mostly theoretical; on a weekly one it is ordinary. Decide explicitly whether a sanction is re-checked before money moves, and store the answer &mdash; because if you do not decide, the answer is no, by default, silently.</p></div>
 <h2 id="s-indigo-4">What it costs</h2>
 <div class="reg"><div class="reg-head"><h3>Alternative credit scoring &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Bureau pulls<span class="pill p-direct">direct</span></div><div class="d">Per enquiry, negotiated by volume, and cheaper soft than hard. The cost that actually matters is not the rupee figure: <strong>every access alerts the customer</strong>, so a pull-everything design spends trust as well as money.</div></div><div class="reg-row"><div class="n">Account Aggregator<span class="pill p-direct">direct</span></div><div class="d">Per fetch, plus the build. <strong>Scope it as two modules, not one</strong> &mdash; a regulated entity joining as an FIU must generally also join as an FIP. Estimates built on the FIU side alone are wrong by roughly half. Detail in the Account Aggregator guide.</div></div><div class="reg-row"><div class="n">ULI integration<span class="pill p-direct">direct</span></div><div class="d">One gateway rather than many bilateral integrations. <strong>Saves integration cost, transfers no accountability</strong> &mdash; consent management and grievance redress stay with you.</div></div><div class="reg-row"><div class="n">A vendor score<span class="pill p-direct">direct</span></div><div class="d">Per call, and the cheapest-looking option. <strong>Independent validation is mandatory anyway</strong>, so budget the validation alongside the subscription, and get audit rights and an exit in the contract.</div></div><div class="reg-row"><div class="n">Independent validation<span class="pill p-direct">direct</span></div><div class="d">A named external validator for high-materiality models. Recurring, not one-off, and the line most often missing from a business case.</div></div><div class="reg-row"><div class="n">Explainability<span class="pill p-indirect">indirect</span></div><div class="d"><strong>A model that cannot explain itself costs more forever</strong> &mdash; enhanced validation, output verification, more frequent monitoring and usage restrictions. Price it at architecture choice, not at go-live.</div></div><div class="reg-row"><div class="n">The inventory<span class="pill p-direct">direct</span></div><div class="d">Every model registered, no model used unless listed, and a decommissioned model retained <strong>ten years</strong>. Cheap to run from day one, expensive to reconstruct.</div></div><div class="reg-row"><div class="n">Getting it wrong<span class="pill p-indirect">indirect</span></div><div class="d"><strong>&#8377;100 per calendar day</strong> per unresolved credit information complaint past 30 days, DPDP penalties to <strong>&#8377;250 crore</strong> stacking per violation, and a supervisory conversation about a model you cannot explain.</div></div><div class="reg-foot">Where to buy these: <a href="/fintech-ai/credit-underwriting/build-sheet/"><strong>Credit Underwriting Build Sheet</strong></a> names every tool with its unit cost. <a href="/fintech-ai/build-playbook/getting-access/"><strong>Getting Access</strong></a> covers which ones you can sign up for today, which need a sales call, and which are licensed.</div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The cheapest useful thing on this list is the decision record.</strong> Storing the score, the resolved model version, the thresholds as they stood and the ranked reasons costs a few hundred bytes per application. It is also the only artefact that answers the question you will actually be asked, and it cannot be recreated after the fact at any price.</p></div>
@@ -496,7 +503,7 @@ traffic</strong> &mdash; and then subtract the permanent operating cost above be
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>store the reason at the moment you decide.</strong> Everything else here can be retrofitted with effort. A reason that was never written down is gone, and it is the one thing a borrower, a bureau complaint and a supervisor will all ask for.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Cannot say why someone was declined</strong></td><td>The reason was never stored; the model has since been retrained.</td><td>Ranked reasons written at decision time, with the resolved model version.</td></tr>
 <tr><td><strong>Phone data in the feature list</strong></td><td>Copied from a market where it is permitted.</td><td>Contacts, call logs and media files are prohibited. Remove, do not gate.</td></tr>
@@ -509,7 +516,7 @@ traffic</strong> &mdash; and then subtract the permanent operating cost above be
 <tr><td><strong>File changed between sanction and disbursal</strong></td><td>Weekly reporting made a theoretical window ordinary.</td><td>Decide the re-check rule explicitly and store it.</td></tr>
 <tr><td><strong>Kill switch needs a deploy</strong></td><td>Built as a config change.</td><td>A runtime flag, pullable by someone other than the model owner.</td></tr>
 <tr><td><strong>Fallback share is zero</strong></td><td>Read as a good sign.</td><td>It means the fallback has never run and is untested.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

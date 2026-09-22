@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Video KYC: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/video-kyc/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -228,7 +235,7 @@ control, not a cost to be automated away.</li>
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
 <p>Eight steps. Read this once and the rest is detail.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Can they even start?</strong></td><td>Right device, in India, real connection. Check before you waste an officer's time.</td></tr>
 <tr><td>2</td><td><strong>Get consent, on the record</strong></td><td>Recorded, timestamped, and impossible to alter later.</td></tr>
@@ -238,7 +245,7 @@ control, not a cost to be automated away.</li>
 <tr><td>6</td><td><strong>The conversation</strong></td><td>A trained officer asks questions that cannot be rehearsed.</td></tr>
 <tr><td>7</td><td><strong>Decide</strong></td><td>Approve, re-do, or refuse. Three outcomes, never two.</td></tr>
 <tr><td>8</td><td><strong>Audit, then activate</strong></td><td>A different team checks the session. Only then does the account open.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>Steps 1, 2 and 8 are the ones teams skip, and they are the ones an inspection looks at. A build that does 3&ndash;6 beautifully and skips 8 is not a video KYC product &mdash; it is a video call with face matching.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 and 2 — can they start, and consent</h2>
@@ -246,12 +253,12 @@ control, not a cost to be automated away.</li>
 <h3 id="s-indigo-s1">Step 1 &mdash; Can they even start?</h3>
 <p><strong>What it does:</strong> confirms the customer is in India, on a real connection, with a
 working camera, before anyone joins the call.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Option</th><th>What it is</th><th>Effort</th><th>Pick this when</th></tr>
 <tr><td><strong>A. Browser APIs only</strong></td><td>Geolocation API plus a getUserMedia test.</td><td>A day</td><td>Start here. It catches the honest failures, which are most of them.</td></tr>
 <tr><td><strong>B. Add IP intelligence</strong></td><td>A lookup service that tells you country, ASN, and whether the IP is VPN, proxy or hosting.</td><td>Days, small per-lookup fee</td><td>As soon as you are live. Required to detect spoofing.</td></tr>
 <tr><td><strong>C. Full device intelligence</strong></td><td>Device fingerprint, emulator detection, rooted-device checks.</td><td>Weeks, licensed</td><td>Volume is high enough that organised attempts are worth defending against.</td></tr>
-</table>
+</table></div>
 <div class="cb"><div class="cb-head"><span class="cb-lang">Python — step 1, the pre-flight gate</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from ipaddress import ip_address
 
 # RBI requires the customer to be IN INDIA, the app to reject foreign IPs, and
@@ -313,12 +320,12 @@ conversation. One file, one timeline, one set of timestamps.</p>
 accused of editing.</p>
 <p>The requirement has three parts and teams usually build one: consent must be
 <strong>recorded</strong>, <strong>auditable</strong>, and <strong>alteration-proof</strong>.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Option</th><th>What it is</th><th>Pick this when</th></tr>
 <tr><td><strong>A. Spoken, inside the recording</strong></td><td>The officer asks, the customer says yes, it is in the video.</td><td>Always. This is the baseline and it satisfies &ldquo;recorded&rdquo;.</td></tr>
 <tr><td><strong>B. Hash the recording</strong></td><td>Store a cryptographic hash of the file when the session closes.</td><td>Always. This is what makes &ldquo;alteration-proof&rdquo; a fact rather than a claim.</td></tr>
 <tr><td><strong>C. External timestamping</strong></td><td>A trusted timestamp authority signs the hash.</td><td>When you need to prove the file existed at a time, not just that it is unchanged.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>The gotcha nobody documents:</strong> &ldquo;alteration-proof&rdquo; is usually implemented as <em>we do not have a feature that edits it</em>. That is not the same thing and it will not survive a question from an auditor. <strong>Hash the file on close, store the hash somewhere the video pipeline cannot write to, and re-verify it on retrieval.</strong> It costs almost nothing and it converts a policy claim into arithmetic.</p></div>
 <h2 id="s-indigo-1">Steps 3 and 4 — documents, and proving a real person</h2>
 
@@ -326,12 +333,12 @@ accused of editing.</p>
 <p><strong>What it does:</strong> gets the identity documents into the session, live.</p>
 <p><strong>Live capture is mandatory.</strong> An uploaded scan does not meet the standard, however
 clear it is. The document has to be shown to the camera during the session.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Route</th><th>What it gives you</th><th>Note</th></tr>
 <tr><td><strong>DigiLocker / offline Aadhaar XML</strong></td><td>The issued record, already verified.</td><td>XML or QR must be <strong>no older than three days</strong>.</td></tr>
 <tr><td><strong>Live PAN capture</strong></td><td>An image verified against the authorised database.</td><td>Verification against the database, not just a reading of the card.</td></tr>
 <tr><td><strong>Other OVD via live capture</strong></td><td>For customers without the above.</td><td>Reading and structuring is <a href="/fintech-ai/products/document-ai/">Document AI</a> &mdash; the same eight steps, inside this one.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>The Aadhaar number must be redacted in your records.</strong> Not masked in the UI &mdash; redacted in what you store. Teams capture a clean frame of the Aadhaar card into the video recording and then discover the recording itself now contains the full number, retained for years. <strong>Decide where redaction happens before you record anything</strong>, because you cannot un-record.</p></div>
 
 <h3 id="s-indigo-s4">Step 4 &mdash; Prove a real person is there</h3>
@@ -395,11 +402,11 @@ with a better face model.</p>
 
 <h3 id="s-indigo-s5">Step 5 &mdash; Match the face to the document</h3>
 <p><strong>What it does:</strong> compares the live face with the photo on the identity document.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Option</th><th>What it is</th><th>Pick this when</th></tr>
 <tr><td><strong>A. Vendor API</strong></td><td>Send both images, get a similarity score.</td><td>Almost always. This is a commodity and not where your effort belongs.</td></tr>
 <tr><td><strong>B. Self-hosted model</strong></td><td>Run face matching on your own infrastructure.</td><td>Residency rules make sending faces out impossible, or volume justifies it.</td></tr>
-</table>
+</table></div>
 <p>The technical work is small. The <em>policy</em> work is not, and it is yours:</p>
 <ul>
 <li><strong>Set the threshold deliberately, and write down why.</strong> It trades false accepts
@@ -511,7 +518,7 @@ learned where your own failures actually are.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>work out your concurrent-audit rate in week one.</strong> Everything else on this page can be bought, tuned or fixed later. That number is a hard ceiling on how many customers you can onboard per day, it is set by people rather than technology, and almost nobody discovers it until they need the capacity.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Liveness passes a deepfake</strong></td><td>The product answers &ldquo;is this a real face&rdquo;, not &ldquo;did this come from a camera&rdquo;.</td><td>Injection detection. Ask the vendor the question directly.</td></tr>
 <tr><td><strong>The recording contains an un-redacted Aadhaar</strong></td><td>Redaction was designed for the UI, not for the stored video.</td><td>Decide redaction before you record. You cannot un-record.</td></tr>
@@ -520,7 +527,7 @@ learned where your own failures actually are.</p>
 <tr><td><strong>&ldquo;Alteration-proof&rdquo; cannot be demonstrated</strong></td><td>It meant &ldquo;we have no edit feature&rdquo;.</td><td>Hash on close, store it out of reach, re-verify at audit.</td></tr>
 <tr><td><strong>Sessions die at step 6</strong></td><td>No bandwidth check at step 1.</td><td>Pre-flight. The officer's time is the expensive part.</td></tr>
 <tr><td><strong>Audit failure rate is near zero</strong></td><td>It is a rubber stamp.</td><td>Sample and re-review. A control nobody fails is not a control.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

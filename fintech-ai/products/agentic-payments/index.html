@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Agentic Payments: How to Prepare", "item": "https://www.clarigital.com/fintech-ai/products/agentic-payments/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -207,17 +214,17 @@ otherwise would be the first dishonest thing here.</p>
 <h2 id="s-green-1">What is known, and what is not</h2>
 
 <p>What is actually known, and it is less than the coverage suggests:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Known</th><th>Not known</th></tr>
 <tr><td>NPCI is developing a <strong>Unified Agent Protocol</strong> to register, verify and authorise AI agents on UPI</td><td>When, or whether, the RBI approves it</td></tr>
 <tr><td>It is expected to build on <strong>UPI Circle</strong> (delegated payment authority) and <strong>Reserve Pay</strong> (blocking funds for multiple debits)</td><td>The final limits. Reserve Pay blocks are currently capped at <strong>&#8377;10,000 for up to 90 days</strong>, and both may be revisited for agentic use</td></tr>
 <tr><td>Merchants are expected to get infrastructure to integrate directly, with rule-based instructions, spending limits, audit trails and identity checks</td><td>The integration surface. Nothing is published</td></tr>
 <tr><td>NPCI has said it intends to include a <strong>liability framework</strong></td><td><strong>What it says.</strong> No details have been given</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>The scale is why this matters rather than why it is settled.</strong> UPI processed <strong>24.51 billion transactions worth about &#8377;29.82 lakh crore in August 2026</strong>. Introducing autonomous initiation into infrastructure of that size is a globally consequential change, and it is the reason the specification is being negotiated slowly rather than shipped. <strong>Treat every date you read as a plan, not a commitment.</strong></p></div>
 <h2 id="s-green-2">Eight questions, and where each stands</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Question</th><th>Where it stands</th></tr>
 <tr><td>1</td><td><strong>Who is the agent?</strong></td><td>Three identities, not one. Reasonably well understood</td></tr>
 <tr><td>2</td><td><strong>What was delegated?</strong></td><td>Task, merchant, category, amount, validity</td></tr>
@@ -227,7 +234,7 @@ otherwise would be the first dishonest thing here.</p>
 <tr><td>6</td><td><strong>How is it revoked?</strong></td><td>Understood in principle, unbuilt in practice</td></tr>
 <tr><td>7</td><td><strong>Where does the data live?</strong></td><td>Localisation applies and is underdiscussed</td></tr>
 <tr><td>8</td><td><strong>What do you do now?</strong></td><td>The only part with a clear answer</td></tr>
-</table>
+</table></div>
 
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Questions 1 and 2 — identity and delegation</h2>
@@ -421,7 +428,7 @@ deadline.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>put the limits where the agent cannot reason about them.</strong> The RBI's own FREE-AI report names prompt injection as a financial-AI risk, which means the design assumption is that the agent will eventually be manipulated. Every control that lives inside the agent's reasoning is defeated by the same class of attack &mdash; and that conclusion does not depend on anything NPCI has yet to publish.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>What to do instead</th></tr>
 <tr><td><strong>Limit enforced in the system prompt</strong></td><td>It works in testing.</td><td>Downstream of the agent. Issuer or network.</td></tr>
 <tr><td><strong>A second model reviews the first</strong></td><td>Feels like defence in depth.</td><td>Both read attacker-influenced text. Same attack.</td></tr>
@@ -432,7 +439,7 @@ deadline.</p>
 <tr><td><strong>Built to reported limits</strong></td><td>The numbers were in the coverage.</td><td>They are under negotiation. Do not key to them.</td></tr>
 <tr><td><strong>Agent runs offshore</strong></td><td>That is where the model is.</td><td>Localisation applies to payment data regardless.</td></tr>
 <tr><td><strong>Terms silent on agent error</strong></td><td>Nobody drafted for it.</td><td>You are allocating it by omission. Do it deliberately.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

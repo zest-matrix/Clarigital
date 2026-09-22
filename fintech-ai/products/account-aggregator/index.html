@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Account Aggregator: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/account-aggregator/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -207,12 +214,12 @@ verification.</p>
 <h2 id="s-green-1">What Account Aggregator actually is</h2>
 
 <p>Account Aggregator is India's consented financial data rail. Three roles:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Role</th><th>Who</th><th>What they do</th></tr>
 <tr><td><strong>FIP</strong></td><td>Banks, NBFCs, insurers, depositories, GSTN, NPS record-keepers, CCIL</td><td><strong>Holds</strong> the customer's data.</td></tr>
 <tr><td><strong>AA</strong></td><td>An RBI-licensed NBFC</td><td><strong>Moves</strong> the data. Cannot read it.</td></tr>
 <tr><td><strong>FIU</strong></td><td>You</td><td><strong>Consumes</strong> the data for a stated purpose.</td></tr>
-</table>
+</table></div>
 <p>The design principle that makes the whole thing work: <strong>the AA is a data-blind pipe</strong>.
 Data is encrypted end to end between FIP and FIU, and the AA does not hold the decryption key. It
 brokers consent; it never sees the money.</p>
@@ -232,7 +239,7 @@ consented, for the purpose you named.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Can you even be an FIU?</strong></td><td>You must be regulated by RBI, SEBI, IRDAI or PFRDA. Most startups cannot.</td></tr>
 <tr><td>2</td><td><strong>Scope both modules</strong></td><td>Fetching and serving. This is the half everyone forgets.</td></tr>
@@ -242,7 +249,7 @@ consented, for the purpose you named.</li>
 <tr><td>6</td><td><strong>Fetch and decrypt</strong></td><td>The part that is genuinely just engineering.</td></tr>
 <tr><td>7</td><td><strong>Use it &mdash; only for what you said</strong></td><td>Purpose limitation is not a suggestion.</td></tr>
 <tr><td>8</td><td><strong>Revocation and expiry</strong></td><td>What you delete, and when, and how you prove it.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>Steps 1, 2 and 8 are where the money and the risk are. Steps 4 to 6 are a solved commodity on the happy path &mdash; the ReBIT specification is published, the calls are named, and a competent team gets a fetch working in a fortnight.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 and 2 — eligibility, and the module everyone forgets</h2>
@@ -251,12 +258,12 @@ consented, for the purpose you named.</li>
 <p><strong>You must be registered with and regulated by RBI, SEBI, IRDAI or PFRDA.</strong> A fintech
 with no NBFC licence, no lending licence and no adviser registration cannot be an FIU. There is no
 partial route.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Route</th><th>What it means</th></tr>
 <tr><td><strong>Get regulated</strong></td><td>NBFC, investment adviser, insurer, whatever fits the business. Months, and a permanent compliance function.</td></tr>
 <tr><td><strong>Partner with a regulated entity</strong></td><td>They are the FIU; you build the product layer. Fast, and the data-use decisions are theirs.</td></tr>
 <tr><td><strong>Become an AA yourself</strong></td><td>An RBI-licensed NBFC-AA: <strong>&#8377;2 crore Net Owned Fund</strong> before the certificate, no storage or caching of financial data, tested DR and business continuity, three board committees, periodic IS audits.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p>If you are considering the third row: the commonly cited reasons applications stall are <strong>incomplete technical documentation, not reaching the &#8377;2 crore Net Owned Fund before the certificate is issued, a poor consent-revocation interface, and skipped IS audits or DR drills</strong>. Three of those four are engineering problems that arrive disguised as paperwork.</p></div>
 
 <h3 id="s-indigo-s2">Step 2 &mdash; Scope both modules</h3>
@@ -264,11 +271,11 @@ partial route.</p>
 <p>Since October 2023, a regulated entity joining as an FIU <strong>must also join as an FIP</strong>
 if it holds financial information. The rule exists to stop free-riding: you cannot take from the
 ecosystem without contributing to it.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Module</th><th>What it does</th><th>Usually estimated?</th></tr>
 <tr><td><strong>FIU side</strong></td><td>Request consent, fetch, decrypt, use.</td><td>Yes. This is what people mean by &ldquo;AA integration&rdquo;.</td></tr>
 <tr><td><strong>FIP side</strong></td><td>Receive consent artefacts, <strong>validate their signatures</strong>, and serve <em>your</em> data to whoever asks with valid consent &mdash; including competitors.</td><td><strong>No.</strong> And it has harder availability requirements, because now you are the dependency.</td></tr>
-</table>
+</table></div>
 <p>The FIP side is the more demanding build. As an FIU, a slow response is your problem. As an FIP,
 <strong>a slow response is someone else's customer failing to get a loan</strong>, and your uptime
 becomes an ecosystem metric.</p>
@@ -278,12 +285,12 @@ becomes an ecosystem metric.</p>
 <h3 id="s-indigo-s3">Step 3 &mdash; Pick your AA</h3>
 <p>Because every AA is data-blind, they all deliver identical bytes. There are exactly three things
 worth measuring, and none of them is the per-fetch price.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Measure</th><th>Why it decides the product</th></tr>
 <tr><td><strong>FIP coverage</strong></td><td>Which banks your actual customers use. A 95% coverage figure is meaningless if the missing 5% is where your segment banks.</td></tr>
 <tr><td><strong>Consent success rate</strong></td><td>The share of started journeys that end in delivered data. <strong>This is the number.</strong> It moves conversion more than anything you control.</td></tr>
 <tr><td><strong>Uptime, and FIP-level uptime</strong></td><td>An AA that is up while a major FIP is down is still a failed fetch for your customer. Ask for the breakdown, not the headline.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>Use more than one AA. They cost little to run in parallel, coverage differs, and consent success rate differs by AA <em>and</em> by FIP. Routing a customer to the AA with the best success rate for <em>their</em> bank is a real conversion gain and it is invisible if you only integrated one.</p></div>
 
 <h3 id="s-indigo-s4">Step 4 &mdash; Write the consent request</h3>
@@ -428,12 +435,12 @@ reason: the derived artefact does not look like the source.</li>
 <h3 id="s-indigo-s8">Step 8 &mdash; Revocation and expiry</h3>
 <p><strong>The customer can revoke at any time.</strong> Your system must handle that arriving
 without warning, for a customer mid-journey, on a Sunday.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Event</th><th>What must happen</th></tr>
 <tr><td><strong>Revoked</strong></td><td>Stop fetching immediately. Existing data is governed by <code>DataLife</code>, not deleted on the spot &mdash; but no new fetches, ever, under that consent.</td></tr>
 <tr><td><strong>Consent expired</strong></td><td>Same. Fetching on an expired consent is the clearest possible breach.</td></tr>
 <tr><td><strong>DataLife expired</strong></td><td><strong>Delete.</strong> Including from backups, derived tables and any model training set it reached.</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>&ldquo;Delete&rdquo; is the hardest word on this page.</strong> Financial data fetched for underwriting typically lands in a warehouse, a feature store, a model training set and a backup within its first hour. A retention clock that only deletes the primary record has deleted almost nothing. <strong>Decide, before your first fetch, where AA data is allowed to go</strong> &mdash; and keep that list short, because every destination is a place you will have to delete from later and prove that you did.</p></div>
 <h2 id="s-indigo-4">What it costs</h2>
 <div class="reg"><div class="reg-head"><h3>Account Aggregator &mdash; what it costs</h3><span class="reg-date">Verified September 2026</span></div><div class="reg-row"><div class="n">Being an FIU<span class="pill p-direct">direct</span></div><div class="d">The licence you already hold, or a partnership. <strong>The regulatory status is the entry cost</strong>, not the integration.</div></div><div class="reg-row"><div class="n">Per fetch<span class="pill p-direct">direct</span></div><div class="d">AAs charge per successful data fetch, commercially negotiated and modest at volume. <strong>Not the number that decides anything</strong> &mdash; consent success rate moves your economics far more than per-fetch price.</div></div><div class="reg-row"><div class="n">The FIU module<span class="pill p-direct">direct</span></div><div class="d">Consent, fetch, decrypt, store. Weeks for a competent team. ReBIT specifications are published and the calls are named, so the happy path is a solved commodity.</div></div><div class="reg-row"><div class="n">The FIP module<span class="pill p-direct">direct</span></div><div class="d"><strong>The half that is missed.</strong> Receive and validate artefacts, serve your own data on demand, with availability that matters to other firms' customers. <strong>Budget roughly the same again as the FIU side</strong>, plus ongoing uptime obligations.</div></div><div class="reg-row"><div class="n">Becoming an AA<span class="pill p-direct">direct</span></div><div class="d"><strong>&#8377;2 crore Net Owned Fund</strong> before the certificate, three board committees, periodic IS audits, tested DR, and a no-storage architecture. A licensed business, not a feature.</div></div><div class="reg-row"><div class="n">Certification and membership<span class="pill p-direct">direct</span></div><div class="d">Certification by a Sahamati-empanelled auditor, plus ecosystem membership fees by category. Small next to the build, and a gating item on timelines.</div></div><div class="reg-row"><div class="n">Retention and deletion<span class="pill p-direct">direct</span></div><div class="d"><strong>Quietly the expensive one.</strong> Every destination AA data reaches is somewhere you must later delete from and evidence the deletion. This is engineering time, not licence cost.</div></div><div class="reg-foot">Where to buy these: <a href="/fintech-ai/infrastructure/build-sheet/"><strong>Infrastructure Build Sheet</strong></a> names every tool with its unit cost. <a href="/fintech-ai/build-playbook/getting-access/"><strong>Getting Access</strong></a> covers which ones you can sign up for today, which need a sales call, and which are licensed.</div></div><div class="note"><span class="note-lbl">Note</span><p><strong>The number to optimise is consent success rate, and almost nobody instruments it.</strong> Measure it per AA, per FIP and per step of the journey &mdash; started, redirected, approved, delivered. A 10-point improvement there is worth more than any price negotiation you will have, and it is entirely within your control at the redirect.</p></div>
@@ -463,7 +470,7 @@ terms on fetches.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>scope the FIP module in your first estimate.</strong> It is the half that is forgotten, it is the harder half, and discovering it mid-project is how an eight-week integration becomes a quarter.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>The estimate is half the work</strong></td><td>Only the FIU module was scoped.</td><td>FIP module from day one.</td></tr>
 <tr><td><strong>Consent success rate is poor</strong></td><td>The redirect is unexplained.</td><td>Say what happens next and name the AA before you send them.</td></tr>
@@ -473,7 +480,7 @@ terms on fetches.</p>
 <tr><td><strong>A score outlives its consent</strong></td><td>Derived data was not treated as AA data.</td><td>Derived inherits purpose and retention.</td></tr>
 <tr><td><strong>Coverage gap for your segment</strong></td><td>A headline coverage number was accepted.</td><td>Test with your own customers' banks.</td></tr>
 <tr><td><strong>One consent bundles several purposes</strong></td><td>It seemed efficient.</td><td>One consent per purpose.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

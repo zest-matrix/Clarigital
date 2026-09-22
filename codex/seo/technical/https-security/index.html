@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>HTTPS and Security Signals — Clarigital Codex</title>
 <meta name="description" content="Why HTTPS is a ranking signal, how to migrate without losing rankings, and the security headers that signal a trustworthy site.">
-<link rel="canonical" href="https://www.clarigital.com/codex/seo/technical/https-security/">>
+<link rel="canonical" href="https://www.clarigital.com/codex/seo/technical/https-security/">
 <meta property="og:type" content="article"><meta property="og:title" content="HTTPS and Security Signals">
 <meta property="og:description" content="Why HTTPS is a ranking signal, how to migrate without losing rankings, and the security headers that signal a trustworthy site."><meta property="og:url" content="https://www.clarigital.com/codex/seo/technical/https-security/">
 <meta property="og:site_name" content="Clarigital">
@@ -15,6 +15,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "HTTPS and Security Signals", "description": "Why HTTPS is a ranking signal, how to migrate without losing rankings, and the security headers that signal a trustworthy site.", "url": "https://www.clarigital.com/codex/seo/technical/https-security/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 2, "name": "/codex/seo/technical/", "item": "https://www.clarigital.comTechnical SEO"}, {"@type": "ListItem", "position": 3, "name": "HTTPS and Security Signals", "item": "https://www.clarigital.com/codex/seo/technical/https-security/"}]}</script>
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
 .ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -246,14 +253,14 @@ everything above is verified turns a mistake into a long one.</li>
 
 <p>Security headers are cheap to add and easy to add wrongly. Each one prevents a specific thing, and
 knowing which is the difference between configuration and cargo cult.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Header</th><th>What it prevents</th><th>Caution</th></tr>
 <tr><td><strong>HSTS</strong></td><td>Downgrade to HTTP after the first visit</td><td>Hard to undo. Start with a short max-age, raise it once stable</td></tr>
 <tr><td><strong>Content-Security-Policy</strong></td><td>Injected scripts executing</td><td>The one most likely to break your site. Deploy report-only first</td></tr>
 <tr><td><strong>X-Content-Type-Options</strong></td><td>Browsers guessing a file's type and executing it</td><td>Safe. Set it and forget it</td></tr>
 <tr><td><strong>Referrer-Policy</strong></td><td>Leaking full URLs to third parties</td><td>Too strict and you lose referrer data in your own analytics</td></tr>
 <tr><td><strong>X-Frame-Options</strong></td><td>Your pages being framed for clickjacking</td><td>Breaks legitimate embedding if you have any</td></tr>
-</table>
+</table></div>
 <p><strong>Content-Security-Policy is worth the effort and is not a one-line addition.</strong> Run it
 in report-only mode for a fortnight, collect what it would have blocked, and only then enforce.
 Enforcing first is how a site loses its own analytics, its fonts, or its checkout.</p>

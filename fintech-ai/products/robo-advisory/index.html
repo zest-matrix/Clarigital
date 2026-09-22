@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Robo-Advisory: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/robo-advisory/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -209,14 +216,14 @@ one entity.</strong></p>
 
 <p>Before anything else, work out which of these you are. The answer determines your registration,
 your revenue model, your liability and roughly 80% of your architecture:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>You are</th><th>You may</th><th>You may NOT</th><th>You are paid by</th></tr>
 <tr><td><strong>Investment Adviser (IA)</strong></td><td>Recommend, plan, review</td><td><strong>Execute</strong></td><td><strong>The client.</strong> Fee-only, capped</td></tr>
 <tr><td><strong>Research Analyst (RA)</strong></td><td>Publish research, model portfolios</td><td>Give personalised advice</td><td>Subscription</td></tr>
 <tr><td><strong>Execution Only Platform (EOP)</strong></td><td>Transact <strong>direct plans</strong></td><td><strong>Advise</strong>, or touch regular plans</td><td>AMCs or investors, by category</td></tr>
 <tr><td><strong>Distributor</strong></td><td>Sell <strong>regular</strong> plans</td><td>Advise</td><td><strong>Commission from the manufacturer</strong></td></tr>
 <tr><td><strong>None of these</strong></td><td>Publish general education</td><td><strong>Anything a reasonable person reads as a recommendation</strong></td><td>Nobody, safely</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>&ldquo;Robo-advisory&rdquo; is not a registration category.</strong> There is no robo licence, no lighter-touch digital regime, and no threshold below which an algorithm counts as a calculator. SEBI regulates the <em>activity</em>, and a program that recommends securities to a specific person on the basis of their circumstances is giving investment advice regardless of whether a human read it first.</p></div>
 <p><strong>What this is not:</strong></p>
 <ul>
@@ -229,7 +236,7 @@ responsibility; it does not share it.</strong> Step 6.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Which entity are you?</strong></td><td>And is what you are planning actually advice.</td></tr>
 <tr><td>2</td><td><strong>Register</strong></td><td>IA, EOP, or both through two entities.</td></tr>
@@ -239,7 +246,7 @@ responsibility; it does not share it.</strong> Step 6.</li>
 <tr><td>6</td><td><strong>Deliver the advice</strong></td><td>With the AI disclosure, and a human who owns it.</td></tr>
 <tr><td>7</td><td><strong>Execution</strong></td><td><strong>The wall, and how the client crosses it.</strong></td></tr>
 <tr><td>8</td><td><strong>Review and audit</strong></td><td>Two clocks, and a line-wise annual audit.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 5, 7 and 8 are the skipped ones.</strong> Steps 3, 4 and 6 are the parts that look like a product and a vendor will sell you all three. The registration question, the exclusions record, the execution wall and the audit trail are what an inspection is about.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 and 2 — the perimeter, and registration</h2>
@@ -258,7 +265,7 @@ started giving advice, and by the end you have.</strong></p>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>&ldquo;For educational purposes only&rdquo; is not a defence, and there is a large order saying so.</strong> SEBI's December 2025 action against an unregistered advisory operation impounded roughly <strong>&#8377;546 crore</strong> and imposed a market ban. The regulator's position is that a disclaimer does not change what an activity is &mdash; inside a course, a private group, a newsletter or a chatbot reply. <strong>If the label is doing the compliance work, there is no compliance.</strong></p></div>
 
 <h3 id="s-indigo-s2">Step 2 &mdash; Register, and budget properly for it</h3>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Item</th><th>Position</th></tr>
 <tr><td><strong>Supervisory body</strong></td><td><strong>IAASB &mdash; BSE Limited</strong>, appointed 25 July 2024 for five years. Your day-to-day counterparty, not SEBI</td></tr>
 <tr><td><strong>Capital</strong></td><td>The old corporate net-worth requirement was <strong>abolished in December 2024</strong> and replaced by a <strong>deposit held under lien in favour of IAASB</strong></td></tr>
@@ -267,7 +274,7 @@ started giving advice, and by the end you have.</strong></p>
 <tr><td><strong>Corporatisation trigger</strong></td><td><strong>300 clients OR &#8377;3 crore</strong> in fees in a financial year, whichever comes first. Notify immediately, then 3 months to in-principle and 3 more to complete &mdash; onboarding continues throughout</td></tr>
 <tr><td><strong>Fee ceiling</strong></td><td><strong>&#8377;1.51 lakh per client per year</strong> for individuals and HUFs, inflation-revised</td></tr>
 <tr><td><strong>If you also want to execute</strong></td><td>A <strong>separate entity</strong> registered as an EOP. See step 7</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p>Depth on the IA framework &mdash; part-time IA, compliance officer eligibility, the perimeter of &ldquo;investment advice&rdquo;, the tooling and the data licensing trap &mdash; lives in <a href="/fintech-ai/wealth-advisory/build-sheet/"><strong>Build Sheet 07</strong></a> and is not repeated here. <strong>This page owns the workflow and the wiring.</strong></p></div>
 <h2 id="s-indigo-1">Steps 3 to 5 — onboard, profile, recommend</h2>
 
@@ -446,14 +453,14 @@ client</strong>. Since <strong>10 February 2025</strong> that has had a regulati
 <h3 id="s-indigo-s7">The execution wall, in detail</h3>
 <p>This is the structural fact of the product, so it is worth being precise about what sits on each
 side.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th></th><th>Category 1 EOP</th><th>Category 2 EOP</th></tr>
 <tr><td><strong>Registers with</strong></td><td><strong>AMFI</strong></td><td><strong>Stock exchange</strong>, EOP segment, as a stock broker</td></tr>
 <tr><td><strong>Acts as agent of</strong></td><td>The <strong>AMCs</strong></td><td>The <strong>investor</strong></td></tr>
 <tr><td><strong>Integrates with</strong></td><td>AMCs and their RTAs</td><td>The exchange platform</td></tr>
 <tr><td><strong>Paid by</strong></td><td>The AMCs</td><td>The investor</td></tr>
 <tr><td><strong>Deposit</strong></td><td>&mdash;</td><td><strong>&#8377;10 lakh</strong> base minimum capital, not additive if already a member in another segment</td></tr>
-</table>
+</table></div>
 <p><strong>Both categories: direct plans only, and you may not be both.</strong> An EOP may not
 provide services for regular plans at all, and Category 2 may not act as a transaction aggregator for
 direct plans.</p>
@@ -489,7 +496,7 @@ hard-coded to zero.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>store what you excluded, and why.</strong> It costs a few kilobytes per recommendation, it is the question an inspection actually asks, and it is the one artefact here that cannot be reconstructed at any price after the fact.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>One entity doing advice and execution</strong></td><td>Built to the pre-2023 model.</td><td>Two entities. Assert the ids differ in code.</td></tr>
 <tr><td><strong>Capacity and tolerance blended into one score</strong></td><td>One number is easier to display.</td><td>Store and show both. The failure modes are opposite.</td></tr>
@@ -502,7 +509,7 @@ hard-coded to zero.</p>
 <tr><td><strong>No record of monitoring that found nothing</strong></td><td>Only exceptions were logged.</td><td>Log the run. Absence of records reads as absence of monitoring.</td></tr>
 <tr><td><strong>&ldquo;Educational&rdquo; content that personalises</strong></td><td>Gradual drift, no single guilty release.</td><td>Three screen tests, every release.</td></tr>
 <tr><td><strong>Commission received on the adviser side</strong></td><td>A platform rebate booked as revenue.</td><td>Fee-only. Hard-code the field to zero and test it.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

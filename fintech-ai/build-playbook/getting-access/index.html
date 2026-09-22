@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Build Playbook", "item": "https://www.clarigital.com/fintech-ai/build-playbook/"}, {"@type": "ListItem", "position": 4, "name": "Getting Access: APIs, Sandboxes and Keys", "item": "https://www.clarigital.com/fintech-ai/build-playbook/getting-access/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -207,16 +214,16 @@ because it is the question nobody answers in public.</p>
 <h2 id="s-green-1">Three tiers of access</h2>
 
 <p>Three tiers, and knowing which tier a component sits in saves weeks:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Tier</th><th>What it means</th><th>How long</th></tr>
 <tr><td><strong>1 &mdash; Self-serve</strong></td><td>Create an account, get keys, start calling</td><td><strong>An afternoon</strong></td></tr>
 <tr><td><strong>2 &mdash; Vendor sandbox</strong></td><td>Free sandbox, production behind a sales conversation</td><td>Days to weeks</td></tr>
 <tr><td><strong>3 &mdash; Licensed</strong></td><td>You must be, or go through, an authorised entity</td><td><strong>Months, or never</strong></td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>The single most useful thing on this page:</strong> almost nobody builds tier 3 themselves. <strong>You do not become an AUA to read an Aadhaar.</strong> You integrate with an aggregator who already is one &mdash; the licence sits with them, you call REST over HTTPS. That is what Setu, Surepass, Signzy and Sandbox are, and it is the difference between a nine-month permission project and a fortnight of engineering. <strong>The licence is a thing to rent before it is a thing to own.</strong></p></div>
 <h2 id="s-green-2">What sits in which tier</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What you need</th><th>Tier</th><th>Route</th></tr>
 <tr><td>DigiLocker documents</td><td><strong>1</strong></td><td>Government sandbox, or an aggregator</td></tr>
 <tr><td>PAN verification</td><td><strong>1</strong></td><td>Aggregator, free trial</td></tr>
@@ -228,26 +235,26 @@ because it is the question nobody answers in public.</p>
 <tr><td>Account Aggregator data</td><td><strong>3</strong></td><td>FIU registration, or a TSP</td></tr>
 <tr><td>UPI / NPCI rails</td><td><strong>3</strong></td><td>Sponsor bank. Always</td></tr>
 <tr><td>CTS cheque clearing</td><td><strong>3</strong></td><td>Clearing membership</td></tr>
-</table>
+</table></div>
 
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Tier 1 — what you can have today</h2>
 
 <h3 id="s-indigo-t1">Tier 1 &mdash; what you can have today</h3>
 <p>These are real, free or trial-based, and require no licence and no sales call.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Route</th><th>What it gives you</th></tr>
 <tr><td><strong>API Setu</strong><br><a href="https://sandbox.api-setu.in" target="_blank" rel="noopener">sandbox.api-setu.in</a></td><td>The government's own open API platform, from <strong>MeitY</strong>. Includes a <strong>DigiLocker sandbox</strong>. Free. Start here if you want to understand the data before choosing a vendor</td></tr>
 <tr><td><strong>Sandbox</strong><br><a href="https://developer.sandbox.co.in/docs" target="_blank" rel="noopener">developer.sandbox.co.in/docs</a></td><td>Sign up &rarr; get an API key and secret from the console &rarr; exchange them for a 24-hour access token &rarr; call. <strong>Separate test and production credentials</strong>, which is the part that matters. Covers <strong>PAN, bank account, Aadhaar, GST, MCA, DigiLocker and EntityLocker</strong>, and holds an <strong>ERI licence</strong> for income-tax APIs, which is unusual. <em>Verified against their live quickstart, September 2026</em></td></tr>
 <tr><td><strong>Setu</strong><br><a href="https://setu.co/data/kyc/" target="_blank" rel="noopener">setu.co/data/kyc</a></td><td><strong>40+ data APIs</strong> behind one integration, working through NSDL, UIDAI and DigiLocker. Sandbox on request, keys issued per organisation</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Start with API Setu even if you will buy from a vendor.</strong> It is free, it is the source, and an afternoon on it tells you what the data actually looks like &mdash; which fields exist, which are blank in practice, what the consent flow feels like. <strong>Every vendor demo is built on a clean record.</strong> Yours will not be.</p></div>
 <h2 id="s-indigo-1">Tiers 2 and 3 — negotiated, and gated</h2>
 
 <h3 id="s-indigo-t2">Tier 2 &mdash; sandbox free, production negotiated</h3>
 <p>The verification and liveness specialists. All of these publish a sandbox; almost none publishes a
 price.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Vendor</th><th>Sandbox</th><th>Pricing</th></tr>
 <tr><td><a href="https://surepass.io" target="_blank" rel="noopener">Surepass</a></td><td><strong>Free sandbox</strong></td><td>Contact sales</td></tr>
 <tr><td><a href="https://signzy.com" target="_blank" rel="noopener">Signzy</a></td><td><strong>Sandbox environments</strong></td><td>Quote only</td></tr>
@@ -255,7 +262,7 @@ price.</p>
 <tr><td><a href="https://www.idfy.com" target="_blank" rel="noopener">IDfy</a></td><td>On request</td><td>Quote only</td></tr>
 <tr><td><a href="https://www.digio.in" target="_blank" rel="noopener">Digio</a></td><td>On request</td><td>Quote only</td></tr>
 <tr><td><a href="https://www.iproov.com" target="_blank" rel="noopener">iProov</a></td><td>On request</td><td>Quote only &mdash; liveness specialist</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>Almost every Indian KYC vendor is quote-only, and that is worth knowing before you are quoted.</strong> There is no public rate card to compare against, so the first number you hear anchors everything. <strong>Get three quotes on the same volume assumption and the same component list</strong>, because the bundling differs more than the unit price does &mdash; and ask specifically whether <strong>injection detection is included or an add-on</strong>. The ones that meter it separately are frequently the ones that actually have it.</p></div>
 
 <h3 id="s-indigo-t3">Tier 3 &mdash; the genuinely gated ones</h3>
@@ -320,7 +327,7 @@ its own end date.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>you almost certainly do not need to hold the licence yourself.</strong> Rent it from an aggregator, build in a fortnight, and revisit ownership when the volume makes it worth the nine months. The obligations stay yours either way.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Licence started last</strong></td><td>Treated as paperwork, not a dependency.</td><td>It is the only item measured in months. Day one, in parallel.</td></tr>
 <tr><td><strong>Free trial burned during planning</strong></td><td>Activated before anyone was ready to build.</td><td>Start the clock when a developer is.</td></tr>
@@ -330,7 +337,7 @@ its own end date.</p>
 <tr><td><strong>Real Aadhaar numbers in the sandbox</strong></td><td>Testing with what was to hand.</td><td>Provider test identities. It is still personal data.</td></tr>
 <tr><td><strong>Sandbox lapsed after go-live</strong></td><td>Seen as a pre-launch tool.</td><td>Keep it. It is where you reproduce incidents safely.</td></tr>
 <tr><td><strong>Aggregator treated as the compliance owner</strong></td><td>They hold the licence.</td><td>The licence is theirs. The obligation is yours.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

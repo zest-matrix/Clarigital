@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Duplicate Content and Canonicalisation — Clarigital Codex</title>
 <meta name="description" content="How duplicate content arises, what Google actually does about it, and how canonical tags, parameters and redirects resolve it correctly.">
-<link rel="canonical" href="https://www.clarigital.com/codex/seo/technical/duplicate-content-canonicalisation/">>
+<link rel="canonical" href="https://www.clarigital.com/codex/seo/technical/duplicate-content-canonicalisation/">
 <meta property="og:type" content="article"><meta property="og:title" content="Duplicate Content and Canonicalisation">
 <meta property="og:description" content="How duplicate content arises, what Google actually does about it, and how canonical tags, parameters and redirects resolve it correctly."><meta property="og:url" content="https://www.clarigital.com/codex/seo/technical/duplicate-content-canonicalisation/">
 <meta property="og:site_name" content="Clarigital">
@@ -15,6 +15,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Duplicate Content and Canonicalisation", "description": "How duplicate content arises, what Google actually does about it, and how canonical tags, parameters and redirects resolve it correctly.", "url": "https://www.clarigital.com/codex/seo/technical/duplicate-content-canonicalisation/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Codex", "item": "https://www.clarigital.com/codex/"}, {"@type": "ListItem", "position": 2, "name": "/codex/seo/technical/", "item": "https://www.clarigital.comTechnical SEO"}, {"@type": "ListItem", "position": 3, "name": "Duplicate Content and Canonicalisation", "item": "https://www.clarigital.com/codex/seo/technical/duplicate-content-canonicalisation/"}]}</script>
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
 .ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -242,7 +249,7 @@ again will not fix it.</p>
 
 <p>Canonical tags are the default answer to duplication and frequently the wrong one. Each instrument
 does something different and they are not interchangeable.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Situation</th><th>Instrument</th></tr>
 <tr><td>Two URLs, genuinely the same page</td><td><strong>Canonical</strong> to the preferred one</td></tr>
 <tr><td>A page permanently moved</td><td><strong>301 redirect</strong>, not a canonical</td></tr>
@@ -250,7 +257,7 @@ does something different and they are not interchangeable.</p>
 <tr><td>Paginated sequences</td><td><strong>Self-referencing canonicals</strong> on each page</td></tr>
 <tr><td>Same content for different regions or languages</td><td><strong>hreflang</strong> plus self-referencing canonicals</td></tr>
 <tr><td>Syndicated to a third party</td><td>Ask for a <strong>canonical back to you</strong>, or accept the risk</td></tr>
-</table>
+</table></div>
 <p>Two errors are worth naming because they are frequent and expensive.
 <strong>Canonicalising paginated pages to page one</strong> removes deeper items from consideration
 entirely. And <strong>combining noindex with a canonical</strong> on the same URL sends contradictory

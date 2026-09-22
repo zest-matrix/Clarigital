@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Merchant Onboarding: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/merchant-onboarding/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -208,13 +215,13 @@ loss.</p>
 <h2 id="s-green-1">Four questions, and only one is customer KYC</h2>
 
 <p>Four questions, and only the first resembles customer KYC:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Question</th><th>What answers it</th></tr>
 <tr><td><strong>Does this business exist?</strong></td><td>Registration, PAN, bank account, CKYCR record, a real address</td></tr>
 <tr><td><strong>What does it actually sell?</strong></td><td>Website, catalogue, category code &mdash; and whether the three agree</td></tr>
 <tr><td><strong>What will it cost me?</strong></td><td>Refund and chargeback profile of that category, settlement exposure</td></tr>
 <tr><td><strong>Who is behind it?</strong></td><td>Directors, beneficial ownership, antecedents, sanctions</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>The asymmetry that shapes the whole build:</strong> in customer KYC a bad actor costs you one account. <strong>In merchant onboarding a bad actor takes money from your other customers, and you are the one who settles the disputes.</strong> A fraudulent merchant is a liability that arrives as hundreds of chargebacks weeks later, after the settlement has left your escrow. That is why the Directions push responsibility onto the aggregator rather than the acquiring bank.</p></div>
 <p><strong>What this is not:</strong></p>
 <ul>
@@ -225,7 +232,7 @@ loss.</p>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Establish the entity</strong></td><td>PAN, registration, bank account, CKYCR.</td></tr>
 <tr><td>2</td><td><strong>Check the people</strong></td><td>Directors, ownership, antecedents, sanctions.</td></tr>
@@ -235,7 +242,7 @@ loss.</p>
 <tr><td>6</td><td><strong>Set up the money</strong></td><td>Escrow, and the transaction it may never touch.</td></tr>
 <tr><td>7</td><td><strong>Monitor against the profile</strong></td><td>The obligation that never ends.</td></tr>
 <tr><td>8</td><td><strong>Offboard</strong></td><td>The step nobody builds until they need it.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 4, 7 and 8 are where this diverges from every other onboarding build on this site</strong>, and they are the three that a KYC vendor will not sell you. Steps 1 to 3 are verification and the market is mature. <strong>Nobody sells you sub-merchant visibility, profile-based monitoring, or a clean way to remove a merchant whose money you are still holding.</strong></p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 to 3 — entity, people, and which path</h2>
@@ -465,7 +472,7 @@ feed. <strong>A promise you cannot verify is a promise you will be answering for
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>capture a numeric business profile at onboarding.</strong> Expected volume, expected ticket, expected geography. Without numbers, the monitoring obligation is unmeetable by construction &mdash; and the merchant's own estimate, given before they have any reason to be careful, is the most honest figure you will ever get from them.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Marketplace settles for unlisted sellers</strong></td><td>Clause in the contract, no feed behind it.</td><td>Seller roster, reconciled against settlement.</td></tr>
 <tr><td><strong>Category declared, never checked</strong></td><td>Stored as entered.</td><td>Compare against the site and the catalogue.</td></tr>
@@ -477,7 +484,7 @@ feed. <strong>A promise you cannot verify is a promise you will be answering for
 <tr><td><strong>Terminated director returns as a new entity</strong></td><td>No internal list.</td><td>Screen against your own offboarding history.</td></tr>
 <tr><td><strong>Offboarding releases settlement normally</strong></td><td>No separate path.</td><td>Hold for the dispute window. Chargebacks arrive for weeks.</td></tr>
 <tr><td><strong>PA-CB using one escrow</strong></td><td>Domestic pattern reused.</td><td>Three accounts, and FX only with an Authorised Dealer.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

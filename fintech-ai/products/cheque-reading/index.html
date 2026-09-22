@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Cheque Reading: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/cheque-reading/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -209,21 +216,21 @@ would never call obsolete. The volumes are falling and the values are not.</p>
 <p>The first thing to be precise about: <strong>you are not reading a photograph of a cheque.</strong>
 CTS defines exactly what a cheque image is, and a pipeline built for arbitrary document photos is
 solving a different problem.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Image view</th><th>Specification</th><th>What it is for</th></tr>
 <tr><td><strong>Front, greyscale</strong></td><td>Minimum <strong>100 DPI</strong>, JFIF/JPEG, <strong>8 bits per pixel</strong> (256 levels)</td><td>Handwriting &mdash; the amount, the payee, the signature</td></tr>
 <tr><td><strong>Front, black and white</strong></td><td>Minimum <strong>200 DPI</strong>, TIFF, CCITT G4</td><td>Contrast, archival, machine reading</td></tr>
 <tr><td><strong>Rear, black and white</strong></td><td>Minimum <strong>200 DPI</strong>, TIFF, CCITT G4</td><td>Endorsements and stamps</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>The image is signed, and it is signed at the point of capture.</strong> It is mandatory for the presenting bank to digitally sign the image and data <strong>from the point of origin</strong>, and image and data remain secured by PKI through the whole cycle &mdash; capture system, presenting bank, clearing house, drawee bank. The system is built to be compliant with the <strong>IT Act, 2000</strong>. <strong>A pipeline that re-encodes, crops or enhances an image after capture breaks the signature</strong>, and therefore breaks the instrument. Any enhancement you do for your own reading happens on a copy.</p></div>
 <p><strong>Who you are changes the whole build:</strong></p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>You are</th><th>Your problem</th></tr>
 <tr><td><strong>The presenting bank</strong></td><td>Capture, sign, extract, present into clearing. The full build.</td></tr>
 <tr><td><strong>The drawee bank</strong></td><td>Verify against the account, match Positive Pay, pay or return &mdash; <strong>within the hour</strong>.</td></tr>
 <tr><td><strong>A corporate depositor</strong></td><td>Reconciling what you banked against what cleared. No CTS integration at all.</td></tr>
 <tr><td><strong>A vendor</strong></td><td>You sell into one of the first two. Their constraints are your specification.</td></tr>
-</table>
+</table></div>
 <p><strong>What this is not:</strong></p>
 <ul>
 <li><strong>Not an OCR benchmark.</strong> Accuracy on a public handwriting dataset predicts very
@@ -235,7 +242,7 @@ already declared. Step 6.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Establish which side you are on</strong></td><td>Presenting, drawee, depositor or vendor.</td></tr>
 <tr><td>2</td><td><strong>Capture the image triple</strong></td><td>To specification, signed at origin.</td></tr>
@@ -245,7 +252,7 @@ already declared. Step 6.</li>
 <tr><td>6</td><td><strong>Match Positive Pay</strong></td><td>Against what the drawer declared in advance.</td></tr>
 <tr><td>7</td><td><strong>Present, and watch the clock</strong></td><td>Hourly cycles, same-day realisation.</td></tr>
 <tr><td>8</td><td><strong>Handle returns</strong></td><td>Reasons, timelines, and the customer.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 5, 6 and 7 are where this differs from every other document-AI build</strong>, and they are the three that a vendor demonstration skips. Steps 2 to 4 are the part that looks like the product. <strong>An extraction engine that is excellent at 4 and silent on 5 and 6 has automated the easy half.</strong></p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 to 3 — side, capture, MICR</h2>
@@ -371,13 +378,13 @@ disagrees with the declaration still stops the cheque &mdash; and it should.</p>
 until the next working day. <strong>RBI circular RBI/2025-26/73 of 13 August 2025</strong> replaced
 that with <strong>continuous clearing and settlement on realisation</strong>, effective
 <strong>4 October 2025</strong>.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Then</th><th>Now</th></tr>
 <tr><td>Two fixed batch sessions</td><td><strong>Continuous presentation through the working day</strong></td></tr>
 <tr><td>Settlement at session close</td><td><strong>Hourly settlement on realisation</strong></td></tr>
 <tr><td>Credit typically next working day</td><td><strong>Credit the same working day</strong> once the paying bank confirms</td></tr>
 <tr><td>A confirmation window measured in hours</td><td>A confirmation window measured in <strong>the hour</strong>, bounded by the <strong>Item Expiry Time</strong></td></tr>
-</table>
+</table></div>
 <div class="cb"><div class="cb-head"><span class="cb-lang">Python — steps 7 and 8, the hourly cycle and the return path</span><button class="cb-copy" type="button">Copy</button></div><pre><code>from datetime import datetime, timedelta
 
 # STEP 7. CONTINUOUS CLEARING. THE DEADLINE IS NOW PER ITEM, NOT PER DAY.
@@ -477,7 +484,7 @@ technology was never the constraint; the hour is.</strong></p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>read the amount in words independently, and when it disagrees with the figures, the words govern.</strong> Section 18 of the Negotiable Instruments Act settled that in 1881. Most pipelines treat the figures as the answer and the words as a check, because figures are easier to read &mdash; which is exactly backwards.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Signature broken by enhancement</strong></td><td>Deskew or contrast applied to the original.</td><td>Sign at origin. Enhance a copy.</td></tr>
 <tr><td><strong>LAR derived from CAR</strong></td><td>The words are hard; the figures are easy.</td><td>Independent reads, or you have one reading and a rationalisation.</td></tr>
@@ -490,7 +497,7 @@ technology was never the constraint; the hour is.</strong></p>
 <tr><td><strong>Alteration accepted</strong></td><td>Treated as a low-confidence read.</td><td>CTS does not accept alterations except date validation. Return it.</td></tr>
 <tr><td><strong>Return reason not carried to the customer</strong></td><td>Reason code stays in the system.</td><td>Plain language, and keep the image against the return.</td></tr>
 <tr><td><strong>Rising "signature differs" rate unexplained</strong></td><td>Read as customer behaviour.</td><td>It is usually capture or model drift. Track returns by reason.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

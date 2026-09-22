@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Government ID Masking: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/id-masking/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -208,13 +215,13 @@ looks.</p>
 <h2 id="s-green-1">Masking and vaulting are two different duties</h2>
 
 <p>Two separate duties, frequently confused, with different sources and different failure modes:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th></th><th>Masking</th><th>Vaulting</th></tr>
 <tr><td><strong>What it is</strong></td><td>Obscuring the number on the <em>document image</em></td><td>Keeping the number out of your <em>databases</em></td></tr>
 <tr><td><strong>Who requires it</strong></td><td><strong>RBI, IRDAI, SEBI</strong> for their regulated entities</td><td><strong>UIDAI</strong>, for anyone storing Aadhaar numbers</td></tr>
 <tr><td><strong>What good looks like</strong></td><td>First eight digits <strong>and the QR code</strong> obscured</td><td>Number only in the vault; a <strong>Reference Key</strong> everywhere else</td></tr>
 <tr><td><strong>How it fails</strong></td><td>Visibly &mdash; a reviewer sees the number</td><td><strong>Invisibly</strong> &mdash; until an audit or a breach</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>The regulatory spine, and it is four bodies rather than one.</strong> <strong>UIDAI</strong>'s 2018 circular established that a masked Aadhaar is valid proof of identity. <strong>RBI</strong>'s amendment of <strong>29 May 2019</strong> to the KYC Master Direction requires regulated entities to redact the number where authentication is not required. <strong>IRDAI</strong> followed on <strong>29 January 2019</strong> and <strong>SEBI</strong> on <strong>24 April 2020</strong>. Underneath all of them sits the <strong>Aadhaar Act, 2016</strong> and the Supreme Court's 2018 judgment, which upheld the scheme subject to conditions on how the number may be held and used.</p></div>
 <p><strong>What this is not:</strong></p>
 <ul>
@@ -228,7 +235,7 @@ listed. Step 6.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Find out what you hold</strong></td><td>Before designing anything. It is more places than the list says.</td></tr>
 <tr><td>2</td><td><strong>Decide what you may keep</strong></td><td>The cheapest number to protect is one you never stored.</td></tr>
@@ -238,7 +245,7 @@ listed. Step 6.</li>
 <tr><td>6</td><td><strong>Purge where it leaked</strong></td><td>Logs, tickets, backups, video frames. The hard one.</td></tr>
 <tr><td>7</td><td><strong>Serve it back</strong></td><td>For the few cases that genuinely need the real number.</td></tr>
 <tr><td>8</td><td><strong>Prove it</strong></td><td>Access logs, retention, and evidence that survives a question.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 6 and 8 are the ones that get skipped, and they are the ones that decide whether any of this worked.</strong> Steps 3 to 5 are the part that looks like a project and a vendor will sell you all three. <strong>Nobody sells you the discovery or the purge</strong>, because both are unglamorous and specific to your estate.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 and 2 — what you hold, and what you may keep</h2>
@@ -467,7 +474,7 @@ getting worse.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>assert at the boundary that no business write contains an identity number, and make it fail the request rather than log a warning.</strong> It is a few lines, it is the only control that holds as the system grows, and it turns an invisible failure into a visible one.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Digits masked, QR left intact</strong></td><td>The QR is not read as part of the number.</td><td>It encodes the whole number. Mask it.</td></tr>
 <tr><td><strong>Redaction draws a box over the pixels</strong></td><td>Some libraries overlay rather than remove.</td><td>Read your own output back and assert.</td></tr>
@@ -481,7 +488,7 @@ getting worse.</p>
 <tr><td><strong>Shared HSM across group entities</strong></td><td>Shared services is the point of shared services.</td><td>Logical isolation and dedicated keys per entity.</td></tr>
 <tr><td><strong>Scanner returns thousands of false hits</strong></td><td>Twelve-digit regex with no checksum.</td><td>Validate with the checksum. Otherwise nobody finishes the scan.</td></tr>
 <tr><td><strong>Access log with no purpose column</strong></td><td>Logged the read, not the reason.</td><td>Actor and purpose on every de-tokenisation.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

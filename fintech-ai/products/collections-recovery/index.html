@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "Collections and Recovery: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/collections-recovery/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -209,13 +216,13 @@ time when the agent is increasingly a machine.</p>
 
 <p>Collections is a sequence of decisions, and the regulated part is the contact rather than the
 decision. What you are building:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Layer</th><th>What it decides</th><th>Regulated?</th></tr>
 <tr><td><strong>Prioritisation</strong></td><td>Which accounts to work, in what order</td><td>Indirectly &mdash; through the model rules</td></tr>
 <tr><td><strong>Treatment</strong></td><td>Reminder, call, restructure offer, field visit</td><td>Partly</td></tr>
 <tr><td><strong>Contact</strong></td><td>When, how often, by what channel, in what words</td><td><strong>Heavily, and specifically</strong></td></tr>
 <tr><td><strong>Settlement</strong></td><td>What you will accept and on what terms</td><td>By your own board-approved policy</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>The standing rules, in force today and unchanged until January.</strong> The <strong>Fair Practices Code</strong> restricts contact to <strong>8 AM to 7 PM</strong>, across every channel &mdash; call, SMS, messaging app, email and visit &mdash; and prohibits contacting relatives, employers, neighbours or colleagues to apply pressure. The recovery agents circular of <strong>12 August 2022</strong> reinforced this across regulated entities. And throughout, <strong>the lender remains liable for the conduct of anyone recovering on its behalf.</strong> Outsourcing the calling does not outsource the answerability.</p></div>
 <p><strong>What this is not:</strong></p>
 <ul>
@@ -227,7 +234,7 @@ stop.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Segment by reason, not by days past due</strong></td><td>Forgot, cannot, will not. Three different problems.</td></tr>
 <tr><td>2</td><td><strong>Build the contact rules as code</strong></td><td>Hours, frequency, channel, consent. Not as a policy document.</td></tr>
@@ -237,7 +244,7 @@ stop.</li>
 <tr><td>6</td><td><strong>Offer a way out</strong></td><td>Restructure, settle, pause. The point of the exercise.</td></tr>
 <tr><td>7</td><td><strong>Escalate lawfully</strong></td><td>Agents, visits, devices &mdash; all newly constrained.</td></tr>
 <tr><td>8</td><td><strong>Record and answer for it</strong></td><td>Recordings, complaints, the Ombudsman clock.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 1, 5 and 8 are the ones that get skipped.</strong> Steps 2 to 4 are what a collections platform sells you. <strong>Nobody sells you the segmentation by reason, the constraint on the machine, or the evidence trail</strong> &mdash; and those three decide whether the system recovers money or generates complaints.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 to 3 — segment, gate, script</h2>
@@ -246,12 +253,12 @@ stop.</li>
 <p>Almost every collections system buckets accounts by how late they are. Days past due is a
 measure of <em>how long</em>, and tells you nothing about <em>why</em> &mdash; which is the only thing
 that determines what works.</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Reason</th><th>What actually works</th></tr>
 <tr><td><strong>Forgot</strong> &mdash; a failed mandate, an expired card, a changed account</td><td>A reminder and a one-tap fix. <strong>A call here is a cost and an irritation</strong></td></tr>
 <tr><td><strong>Cannot</strong> &mdash; income shock, illness, job loss</td><td>A restructure conversation. Pressure produces nothing and costs the relationship</td></tr>
 <tr><td><strong>Will not</strong> &mdash; dispute, dissatisfaction, refusal</td><td>Resolution of the dispute, or lawful escalation. Not more reminders</td></tr>
-</table>
+</table></div>
 <p><strong>The first bucket is usually the largest and the cheapest to fix</strong>, and treating it
 with the same intensity as the third is how collections programmes generate complaints while
 recovering money they would have recovered anyway.</p>
@@ -448,7 +455,7 @@ def evidence_pack(account, store):
 <p>The <strong>Fourth Amendment Directions</strong> of <strong>6 August 2026</strong>, in force from
 <strong>1 January 2027</strong> and issued under sections 21 and 35A of the Banking Regulation Act,
 convert a scattered set of expectations into a detailed and enforceable code. What they add:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Requirement</th><th>Detail</th></tr>
 <tr><td><strong>Agent certification</strong></td><td>Background verification, and certification through <strong>IIBF</strong> or a similar institution</td></tr>
 <tr><td><strong>Public disclosure</strong></td><td>An updated list of empanelled recovery agencies on the website and digital platforms</td></tr>
@@ -457,7 +464,7 @@ convert a scattered set of expectations into a detailed and enforceable code. Wh
 <tr><td><strong>Call recording</strong></td><td>Recovery interactions recorded, <strong>with prior intimation</strong></td></tr>
 <tr><td><strong>Board-approved policy</strong></td><td>Monitoring, escalation, due diligence, and compensation linked to complaints</td></tr>
 <tr><td><strong>Scope</strong></td><td>Recovery agencies and agents defined; <strong>Business Correspondents handling collections are in</strong></td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>Device locking: the baseline is now prohibition.</strong> The revised framework permits only <strong>graduated restriction of functions on a device the loan financed</strong>, after a defined period of missed payments, and creates a <strong>compensation mechanism for borrowers subjected to wrongful recovery action</strong>. Outside device finance, remote locking is not a recovery tool. <strong>If your collections roadmap contains a device-control feature, that feature has a deadline rather than a launch date</strong>, and the compensation exposure attaches to getting it wrong.</p></div>
 
 <h3 id="s-indigo-s8">Step 8 &mdash; Record it, and answer for it</h3>
@@ -500,7 +507,7 @@ metric.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>put distress handling outside the automation, not inside it.</strong> Every other control here is a rule a machine can follow. Noticing that something has changed is the one thing it cannot do, and the whole defensibility of an automated collections system rests on how quickly it stops.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>SMS at 10pm</strong></td><td>The window was applied to voice only.</td><td>Every channel. An automated message is a contact.</td></tr>
 <tr><td><strong>Call in the wrong time zone</strong></td><td>Server time, not borrower time.</td><td>Evaluate the window in the borrower's local time.</td></tr>
@@ -514,7 +521,7 @@ metric.</p>
 <tr><td><strong>Device locked outside device finance</strong></td><td>It worked, so it stayed.</td><td>Baseline is prohibition, with compensation exposure.</td></tr>
 <tr><td><strong>Complaint sits 30 days</strong></td><td>Tracked by volume, not age.</td><td>Internal clock shorter than the Ombudsman's. Track the oldest.</td></tr>
 <tr><td><strong>Cannot say what was said</strong></td><td>Recording absent or unretrievable.</td><td>Record with prior intimation; test retrieval.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 

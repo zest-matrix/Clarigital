@@ -19,6 +19,13 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "UPI Switch Infrastructure: How to Build It", "item": "https://www.clarigital.com/fintech-ai/products/upi-switch/"}]}</script>
 
 <style>
+/*phone-fit-v7*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,.path-step>*{min-width:0}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+/*phone-fit-v7*//end
 .rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
 .rail-ask:hover{border-color:var(--indigo)}
 .rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
@@ -210,22 +217,22 @@ product more tightly, day to day, than most regulations do.</p>
 
 <p>Four different products get called &ldquo;building on UPI&rdquo; and they have almost nothing in
 common except the rails:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What you are building</th><th>What you actually need</th><th>Effort</th></tr>
 <tr><td><strong>Accepting UPI as a merchant</strong></td><td>A payment aggregator or gateway. You are a customer of this ecosystem, not a participant in it.</td><td>Days</td></tr>
 <tr><td><strong>A UPI app (TPAP)</strong></td><td>A <strong>PSP bank</strong> to sponsor you, plus NPCI certification.</td><td>Months</td></tr>
 <tr><td><strong>UPI inside your own app</strong></td><td>A sponsor bank&rsquo;s SDK, plus <strong>UDIR integration</strong>. See step 6.</td><td>Weeks to months</td></tr>
 <tr><td><strong>The switch itself</strong></td><td>To <em>be</em> a bank, or to build the switch a bank runs.</td><td>Quarters</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Work out which one you are before reading further.</strong> Most teams who say &ldquo;we are building a UPI product&rdquo; mean row one, which is a commercial decision rather than an engineering project and is covered in Build Sheet 05. Rows two and four are where this page lives.</p></div>
 <p><strong>Who is who on the rails:</strong></p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th>Party</th><th>Role</th></tr>
 <tr><td><strong>NPCI</strong></td><td>Owns and operates UPI. Sets the rules, the liabilities, the settlement cut-offs and the dispute protocol. Approves who may participate. <strong>May audit you, directly or through a third party.</strong></td></tr>
 <tr><td><strong>PSP bank</strong></td><td>A bank, connected to UPI. Holds the handle. <strong>Audits your app, owns grievance redressal, and answers for your data residency.</strong></td></tr>
 <tr><td><strong>TPAP</strong></td><td>The app the customer sees. <strong>No licence, no direct line to the network.</strong> Borrows both.</td></tr>
 <tr><td><strong>Issuer and beneficiary banks</strong></td><td>Where the money leaves and lands. <strong>Neither is under your control and both can fail your transaction.</strong></td></tr>
-</table>
+</table></div>
 <p><strong>What this is not:</strong></p>
 <ul>
 <li><strong>Not a licence you can hold.</strong> Participation is approved by NPCI and sponsored by a
@@ -237,7 +244,7 @@ Step 8.</li>
 
 <h2 id="s-green-2">The whole journey, in one table</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>#</th><th>Step</th><th>In plain words</th></tr>
 <tr><td>1</td><td><strong>Pick the shape</strong></td><td>Which of the four products, honestly.</td></tr>
 <tr><td>2</td><td><strong>Find a bank</strong></td><td>The commercial step everyone underestimates.</td></tr>
@@ -247,7 +254,7 @@ Step 8.</li>
 <tr><td>6</td><td><strong>Disputes</strong></td><td>UDIR, and a turnaround clock with a penalty on it.</td></tr>
 <tr><td>7</td><td><strong>Reconcile and settle</strong></td><td>Cut-offs you do not control.</td></tr>
 <tr><td>8</td><td><strong>Run it</strong></td><td>Declines, uptime, the 30% cap, and now MDR.</td></tr>
-</table>
+</table></div>
 <div class="note"><span class="note-lbl">Note</span><p><strong>Steps 5, 6 and 8 are where the work is</strong>, and they are the three that look like operations rather than product. A team that builds steps 1 to 4 well has built a demo that works on a good day. UPI does not have only good days.</p></div>
 </div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
 <h2 id="s-indigo-0">Steps 1 to 3 — shape, bank, certification</h2>
@@ -263,14 +270,14 @@ timeline. The bank is taking on your risk: <strong>NPCI holds the PSP bank respo
 your app and systems, for the grievance mechanism your customers use, and for keeping all UPI
 transaction data in India.</strong> A bank that signs you is accepting audit findings on your code.</p>
 <p>Two routes, and the trade is the usual one:</p>
-<table>
+<div class="pf-scroll"><table>
 <tr><th></th><th>Direct with a PSP bank</th><th>Through an enabler</th></tr>
 <tr><td><strong>You own</strong></td><td>The whole stack</td><td>The app surface</td></tr>
 <tr><td><strong>Certification</strong></td><td>Yours to pass</td><td>Largely inherited</td></tr>
 <tr><td><strong>Time</strong></td><td>Months</td><td>Weeks</td></tr>
 <tr><td><strong>Ceiling</strong></td><td>None you did not build</td><td>Theirs</td></tr>
 <tr><td><strong>Reversibility</strong></td><td>Hard &mdash; the handle suffix is theirs</td><td>Harder</td></tr>
-</table>
+</table></div>
 <div class="warn"><span class="note-lbl">Watch out</span><p><strong>The handle suffix is a switching cost disguised as a branding decision.</strong> Your customers' UPI IDs end in your PSP bank's suffix. Changing banks later means every customer re-registers a new UPI ID, which in practice means losing a meaningful share of them. <strong>Ask about the exit before you sign the entry</strong> &mdash; same rule as the payment-gateway exit path in Build Sheet 05, and for the same reason: integration takes weeks and extraction takes quarters.</p></div>
 
 <h3 id="s-indigo-s3">Step 3 &mdash; Certify with NPCI</h3>
@@ -458,7 +465,7 @@ that is visible to NPCI, to your bank and to your customers simultaneously.</p>
 <div class="note"><span class="note-lbl">Note</span><p>If you take one thing from this page: <strong>make &ldquo;deemed&rdquo; a real state in your schema today.</strong> Not a null, not a failure, not a retry. It costs a migration now and it is the difference between a bad hour and a double-debit incident with a dispute trail.</p></div>
 <h2 id="s-amber-1">What goes wrong</h2>
 
-<table>
+<div class="pf-scroll"><table>
 <tr><th>What goes wrong</th><th>Why</th><th>Fix</th></tr>
 <tr><td><strong>Customer debited twice</strong></td><td>An unknown outcome was retried with a fresh reference.</td><td>Reference derived from intent, stored before the call.</td></tr>
 <tr><td><strong>&ldquo;Payment failed&rdquo; on a live debit</strong></td><td>Deemed mapped to failure in the UI.</td><td>Its own state, its own message, its own screen.</td></tr>
@@ -470,7 +477,7 @@ that is visible to NPCI, to your bank and to your customers simultaneously.</p>
 <tr><td><strong>Certification treated as a launch gate</strong></td><td>No capacity reserved for spec changes.</td><td>Standing engineering budget for re-certification.</td></tr>
 <tr><td><strong>Cannot change banks</strong></td><td>Every customer&rsquo;s handle carries the suffix.</td><td>Negotiate the exit before signing the entry.</td></tr>
 <tr><td><strong>No fee engine when the circular lands</strong></td><td>Six years of zero MDR encoded as an assumption.</td><td>Per-rail, per-ticket-size pricing in the schema now.</td></tr>
-</table>
+</table></div>
 
 <h2 id="s-amber-2">Where to go next</h2>
 
