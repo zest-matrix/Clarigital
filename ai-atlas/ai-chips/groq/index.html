@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Groq LPU AI Chips: The Complete Guide | Clarigital</title>
+<meta name="description" content="Groq&#x27;s LPU inference chips: how they work, who makes them, the NVIDIA licensing deal, GroqCloud prices and data centres, and what the record shows.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/groq/">
+<meta property="og:title" content="Groq LPU AI Chips: The Complete Guide">
+<meta property="og:description" content="Groq&#x27;s LPU inference chips: how they work, who makes them, the NVIDIA licensing deal, GroqCloud prices and data centres, and what the record shows.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/groq/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Groq: The Complete Guide", "description": "Groq's LPU inference chips: how they work, who makes them, the NVIDIA licensing deal, GroqCloud prices and data centres, and what the record shows.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/groq/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/groq/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "about": {"@type": "Organization", "name": "Groq, Inc.", "url": "https://groq.com", "foundingDate": "2016", "address": {"@type": "PostalAddress", "addressLocality": "San Francisco", "addressRegion": "CA", "addressCountry": "US"}}, "citation": ["https://groq.com/blog/the-groq-lpu-explained", "https://groq.com/", "https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud", "https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale", "https://www.sammobile.com/news/samsung-makes-groq-3-lpu-chips-nvidia/", "https://console.groq.com/docs/models", "https://www.datacenterdynamics.com/en/news/nvidia-to-license-tech-from-ai-inference-chip-company-groq-hire-its-leadership/", "https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai", "https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner", "https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market", "https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html", "https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business", "https://www.sec.gov/Archives/edgar/data/1664703/000119312526126402/d104322d8k.htm", "https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html", "https://www.prnewswire.com/news-releases/groq-selects-samsung-foundry-to-bring-next-gen-lpu-to-the-ai-acceleration-market-301900464.html", "https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html", "https://www.prnewswire.com/news-releases/meta-and-groq-collaborate-to-deliver-fast-inference-for-the-official-llama-api-302441674.html", "https://groq.com/newsroom/groq-becomes-exclusive-inference-provider-for-bell-canadas-sovereign-ai-network", "https://www.tomshardware.com/tech-industry/semiconductors/nvidias-20-billion-groq-deal-produces-its-first-chip", "https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf", "https://docs.alcf.anl.gov/ai-testbed/groq/", "https://www.nvidia.com/en-us/data-center/lpx/", "https://groq.com/platform", "https://www.theregister.com/2020/09/29/groq_ai_dev_kit/", "https://www.carahsoft.com/news/groq-and-carahsoft-partner-to-provide-rapid-ai-inference-speed-to-the-public-sector-2024", "https://newsletter.semianalysis.com/p/groq-inference-tokenomics-speed-but", "https://groq.com/newsroom/groq-launches-european-data-center-footprint-in-helsinki-finland", "https://groq.com/newsroom/groq-expands-to-asia-pacific-with-sydney-data-center-to-power-the-next-generation-of-ai-inference", "https://www.computer.org/csdl/proceedings-article/isca/2020/09138986/1lsasZYR61O", "https://artificialanalysis.ai/providers/groq", "https://www.prnewswire.com/news-releases/groq-and-humain-launch-openais-new-open-models-day-zero-302522398.html", "https://www.prnewswire.com/news-releases/mclaren-racing-announces-groq-as-an-official-partner-of-the-mclaren-formula-1-team-302567767.html", "https://groq.com/newsroom/groq-partners-with-paytm-delivering-real-time-ai-for-payments-and-platform-intelligence-in-india", "https://www.trendforce.com/news/2025/07/31/news-groq-cuts-2025-revenue-projection-by-usd-1-5b-dealing-blow-to-samsung-foundry/", "https://www.sdxcentral.com/news/nvidias-groq-deal-facing-doj-probe-amid-regulator-scrutiny-into-acqui-hires-report/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "Groq", "item": "https://www.clarigital.com/ai-atlas/ai-chips/groq/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>Groq</span></nav>
+    <span class="label-tag">AI Chips · Brand guide</span>
+    <h1>Groq: The Complete Guide</h1>
+    <p class="hero-lead">Groq built the LPU, a chip made only for running AI models fast. In December 2025 it licensed that technology to NVIDIA and its founder moved there, while Groq kept running its cloud. What the LPU is, how it works, who makes it, what GroqCloud costs, and the facts in plain sight. Three reading levels, every number sourced.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Groq</span>
+      <span class="meta-tag mt-gray">16 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">35 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Every brand in our AI Chips section uses the same 16 sections in the same order. Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where a company has not published something, we say so rather than estimate.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Groq designed the LPU (Language Processing Unit), a chip built only to run AI models quickly, not to train them <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>. Instead of separate memory chips, it keeps everything in fast memory on the chip itself <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>. Groq rents LPUs through its cloud service, GroqCloud, which it says millions of developers use <a class="cite" href="https://groq.com/" target="_blank" rel="noopener" title="Groq: Groq home page">2</a> <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</p>
+<div class="fact-grid">
+<div><b>What it is</b>An AI chip for inference (answering), with memory on the chip <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a></div>
+<div><b>Big change</b>Licensed its technology to NVIDIA in December 2025; founder moved to NVIDIA <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a></div>
+<div><b>Who builds it</b>First chip on a 14 nm process; Samsung makes NVIDIA's Groq 3 chip (press) <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a> <a class="cite" href="https://www.sammobile.com/news/samsung-makes-groq-3-lpu-chips-nvidia/" target="_blank" rel="noopener" title="SamMobile (press): Samsung makes Groq 3 LPU chips for NVIDIA (Mar 2026)">5</a></div>
+<div><b>Can you use one?</b>Yes, through GroqCloud, paid per token <a class="cite" href="https://console.groq.com/docs/models" target="_blank" rel="noopener" title="GroqCloud Docs: Supported models: prices and speeds">6</a></div>
+</div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>On 24 December 2025 Groq announced a "non-exclusive licensing agreement" giving NVIDIA its inference technology; founder Jonathan Ross, president Sunny Madra and other staff joined NVIDIA, while Groq said it "will continue to operate as an independent company" and "GroqCloud will continue to operate without interruption" <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a>. Neither company gave a price; press reports put it at about $20 billion <a class="cite" href="https://www.datacenterdynamics.com/en/news/nvidia-to-license-tech-from-ai-inference-chip-company-groq-hire-its-leadership/" target="_blank" rel="noopener" title="DatacenterDynamics (press): NVIDIA to license tech from Groq and hire its leadership (Dec 2025)">7</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>NVIDIA now sells a rack called the NVIDIA Groq 3 LPX, in full production from August 2026; "Groq and LPU are used under license from Groq, Inc." <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Groq 3 LPX now in full production (24 Aug 2026)">8</a>. Groq itself became an NVIDIA Cloud Partner and plans to be among the first to bring those racks to market <a class="cite" href="https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes an NVIDIA Cloud Partner (12 Aug 2026)">9</a> <a class="cite" href="https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market" target="_blank" rel="noopener" title="Groq Blog: Groq among the first to bring NVIDIA Groq 3 LPX and Vera Rubin NVL72 to market (24 Aug 2026)">10</a>. In August 2026 Groq raised $350 million at a $3.5 billion valuation, about half its September 2025 value <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a> <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="company" aria-labelledby="h-company">
+<h2 id="h-company"><span>2.</span>Company card</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Groq was founded in 2016 by Jonathan Ross <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a>. After he left for NVIDIA, Groq has been led by Adam Winter as chief executive <a class="cite" href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener" title="Groq Newsroom: Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)">12</a> <a class="cite" href="https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes an NVIDIA Cloud Partner (12 Aug 2026)">9</a>.</p>
+<div class="pf-scroll"><table class="spec"><tbody>
+<tr><th>Legal name</th><td>Groq, Inc. <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Groq 3 LPX now in full production (24 Aug 2026)">8</a></td></tr>
+<tr><th>Headquarters</th><td>San Francisco, California (2026 releases); earlier Mountain View <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a> <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a></td></tr>
+<tr><th>Founder</th><td>Jonathan Ross, now at NVIDIA <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a></td></tr>
+<tr><th>Chief Executive</th><td>Adam Winter <a class="cite" href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener" title="Groq Newsroom: Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)">12</a> <a class="cite" href="https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes an NVIDIA Cloud Partner (12 Aug 2026)">9</a></td></tr>
+<tr><th>Executive Chairman</th><td>Alex Davis, also CEO of lead investor Disruptive <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a></td></tr>
+<tr><th>Chief Technology Officer</th><td>Sinclair Schuller <a class="cite" href="https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market" target="_blank" rel="noopener" title="Groq Blog: Groq among the first to bring NVIDIA Groq 3 LPX and Vera Rubin NVL72 to market (24 Aug 2026)">10</a></td></tr>
+<tr><th>Status</th><td>Private company <a class="cite" href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener" title="Groq Newsroom: Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)">12</a></td></tr>
+</tbody></table></div>
+<p class="note">Groq does not publish a street address or staff numbers in the releases we read.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Leadership changed quickly. Simon Edwards became chief executive at the NVIDIA deal <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a>; a Bloom Energy filing shows he was Groq's finance chief from September 2025 and CEO only from December 2025 to March 2026, before becoming Bloom's finance chief <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1664703/000119312526126402/d104322d8k.htm" target="_blank" rel="noopener" title="Bloom Energy (SEC): Form 8-K: appointment of Simon Edwards as CFO (26 Mar 2026)">13</a>. By June 2026 Groq's releases named Adam Winter as CEO <a class="cite" href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener" title="Groq Newsroom: Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)">12</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Funding: $640 million at a $2.8 billion valuation (August 2024, led by BlackRock) <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $640M to meet soaring demand for fast AI inference (5 Aug 2024)">14</a>; $750 million at $6.9 billion (September 2025, led by Disruptive) <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a>; $650 million in June 2026 <a class="cite" href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener" title="Groq Newsroom: Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)">12</a>; and $350 million called a "Series A" at $3.5 billion in August 2026, with planned participation from NVIDIA <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>3.</span>The story</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul class="timeline">
+<li><b>2016</b> Groq founded <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a>.</li>
+<li><b>2023</b> Picks Samsung's Texas plant for a next-generation chip <a class="cite" href="https://www.prnewswire.com/news-releases/groq-selects-samsung-foundry-to-bring-next-gen-lpu-to-the-ai-acceleration-market-301900464.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq selects Samsung Foundry to bring next-gen LPU to market (Aug 2023)">15</a>.</li>
+<li><b>2024</b> $640 million funding; Saudi data centre built in eight days <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $640M to meet soaring demand for fast AI inference (5 Aug 2024)">14</a> <a class="cite" href="https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Saudi Arabia announces $1.5 billion expansion with Groq (10 Feb 2025)">16</a>.</li>
+<li><b>2025</b> $1.5 billion Saudi commitment, Meta Llama API, Bell Canada, NVIDIA licence <a class="cite" href="https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Saudi Arabia announces $1.5 billion expansion with Groq (10 Feb 2025)">16</a> <a class="cite" href="https://www.prnewswire.com/news-releases/meta-and-groq-collaborate-to-deliver-fast-inference-for-the-official-llama-api-302441674.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Meta and Groq collaborate on the official Llama API (29 Apr 2025)">17</a> <a class="cite" href="https://groq.com/newsroom/groq-becomes-exclusive-inference-provider-for-bell-canadas-sovereign-ai-network" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes exclusive inference provider for Bell Canada&#x27;s sovereign AI network (28 May 2025)">18</a> <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a>.</li>
+<li><b>2026</b> NVIDIA Cloud Partner; $1 billion of new funding <a class="cite" href="https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes an NVIDIA Cloud Partner (12 Aug 2026)">9</a> <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Groq grew a developer following fast: 360,000 in August 2024, 2 million by September 2025 and more than 6 million by August 2026, by its own count <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $640M to meet soaring demand for fast AI inference (5 Aug 2024)">14</a> <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a> <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>. In 2024 it aimed to deploy more than 108,000 LPUs by the end of March 2025 <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $640M to meet soaring demand for fast AI inference (5 Aug 2024)">14</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The 2023 Samsung deal was for a 4 nm chip at Samsung's new Taylor, Texas plant, which Groq said would scale "from 85,000 to over 600,000 chips" <a class="cite" href="https://www.prnewswire.com/news-releases/groq-selects-samsung-foundry-to-bring-next-gen-lpu-to-the-ai-acceleration-market-301900464.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq selects Samsung Foundry to bring next-gen LPU to market (Aug 2023)">15</a>. No Groq-branded 4 nm chip has shipped; the chip that emerged is NVIDIA's Groq 3, which press reports say Samsung makes on 4 nm <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/nvidias-20-billion-groq-deal-produces-its-first-chip" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): NVIDIA&#x27;s Groq deal produces its first chip">19</a> <a class="cite" href="https://www.sammobile.com/news/samsung-makes-groq-3-lpu-chips-nvidia/" target="_blank" rel="noopener" title="SamMobile (press): Samsung makes Groq 3 LPU chips for NVIDIA (Mar 2026)">5</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineup" aria-labelledby="h-lineup">
+<h2 id="h-lineup"><span>4.</span>The lineup</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Product</th><th>What it is</th><th>Status</th></tr></thead><tbody>
+<tr><td>LPU / GroqChip (gen 1)</td><td>The original 14 nm chip</td><td>Runs GroqCloud <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a></td></tr>
+<tr><td>GroqCard</td><td>One chip on a PCIe card</td><td>Datasheet published <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a></td></tr>
+<tr><td>GroqNode / GroqRack</td><td>8 cards per server; racks of servers</td><td>Used in labs <a class="cite" href="https://docs.alcf.anl.gov/ai-testbed/groq/" target="_blank" rel="noopener" title="Argonne Leadership Computing Facility: Groq system in the ALCF AI Testbed">21</a></td></tr>
+<tr><td>GroqCloud</td><td>Cloud service, pay per token</td><td>13 data centres <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a></td></tr>
+<tr><td>NVIDIA Groq 3 LPX</td><td>NVIDIA's rack of 256 LPUs, under licence</td><td>Full production, Aug 2026 <a class="cite" href="https://www.nvidia.com/en-us/data-center/lpx/" target="_blank" rel="noopener" title="NVIDIA: Groq 3 LPX product page">22</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Groq 3 LPX now in full production (24 Aug 2026)">8</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>GroqCloud now has three tiers: GroqMetal (infrastructure), GroqCore (inference) and GroqAssured (enterprise controls) <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a>. Groq's home page says: "We pioneered the LPU. Now, with LPX, it works alongside NVIDIA's next-generation GPUs" <a class="cite" href="https://groq.com/" target="_blank" rel="noopener" title="Groq: Groq home page">2</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>NVIDIA's Groq 3 chip has 500 MB of SRAM and 150 TB/s of memory bandwidth; each LPX rack holds 256 of them, 128 GB of SRAM plus 12 TB of DDR5 memory <a class="cite" href="https://www.nvidia.com/en-us/data-center/lpx/" target="_blank" rel="noopener" title="NVIDIA: Groq 3 LPX product page">22</a>. Groq quotes 315 petaflops of FP8 compute and 1,000 tokens a second per user per rack <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>How it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Groq designs the chip; others make it.</p>
+<ol class="steps">
+<li><b>First chip:</b> 14 nm process <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>; press reports name GlobalFoundries as the maker <a class="cite" href="https://www.theregister.com/2020/09/29/groq_ai_dev_kit/" target="_blank" rel="noopener" title="The Register (press): Groq AI chip dev kit: 14 nm, fabbed by GlobalFoundries (29 Sep 2020)">24</a>.</li>
+<li><b>Groq 3 (NVIDIA):</b> Samsung, 4 nm, press reports say <a class="cite" href="https://www.sammobile.com/news/samsung-makes-groq-3-lpu-chips-nvidia/" target="_blank" rel="noopener" title="SamMobile (press): Samsung makes Groq 3 LPU chips for NVIDIA (Mar 2026)">5</a>.</li>
+<li><b>Cards:</b> the GroqCard datasheet is published by BittWare, a Molex company <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a>.</li>
+<li><b>Racks and servers:</b> Groq is deploying NVIDIA racks with Dell <a class="cite" href="https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market" target="_blank" rel="noopener" title="Groq Blog: Groq among the first to bring NVIDIA Groq 3 LPX and Vera Rubin NVL72 to market (24 Aug 2026)">10</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>In 2024 Groq's public-sector partner said "all Groq systems are designed, fabricated, and assembled in North America" <a class="cite" href="https://www.carahsoft.com/news/groq-and-carahsoft-partner-to-provide-rapid-ai-inference-speed-to-the-public-sector-2024" target="_blank" rel="noopener" title="Carahsoft: Groq and Carahsoft partner to bring AI inference to the public sector (May 2024)">25</a>. Groq's 2023 Samsung release said the deal "strengthens Groq's already completely North American-based operations for engineering and manufacturing" <a class="cite" href="https://www.prnewswire.com/news-releases/groq-selects-samsung-foundry-to-bring-next-gen-lpu-to-the-ai-acceleration-market-301900464.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq selects Samsung Foundry to bring next-gen LPU to market (Aug 2023)">15</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The first chip measures about 725 mm² with about 28.6 billion transistors, according to press reports citing analysts <a class="cite" href="https://www.theregister.com/2020/09/29/groq_ai_dev_kit/" target="_blank" rel="noopener" title="The Register (press): Groq AI chip dev kit: 14 nm, fabbed by GlobalFoundries (29 Sep 2020)">24</a>. An analyst estimate puts its wafer cost at "likely less than $6,000", well below leading-edge chips <a class="cite" href="https://newsletter.semianalysis.com/p/groq-inference-tokenomics-speed-but" target="_blank" rel="noopener" title="SemiAnalysis (analyst): Groq inference tokenomics: speed, but at what cost? (Feb 2024)">26</a>. At NVIDIA's GTC in March 2026, press reports say, Jensen Huang said Samsung "manufactures the Groq 3 LPU chip" <a class="cite" href="https://www.sammobile.com/news/samsung-makes-groq-3-lpu-chips-nvidia/" target="_blank" rel="noopener" title="SamMobile (press): Samsung makes Groq 3 LPU chips for NVIDIA (Mar 2026)">5</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="where" aria-labelledby="h-where">
+<h2 id="h-where"><span>6.</span>Where it’s made: factories and addresses</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Groq does not name a chip factory address. Its GroqCloud data centres, from official releases:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Site</th><th>Location</th><th>What we know</th></tr></thead><tbody>
+<tr><td>Saudi Arabia</td><td>Dammam (2025 release); Riyadh (current list)</td><td>"Brought online in just eight days" (Dec 2024) <a class="cite" href="https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Saudi Arabia announces $1.5 billion expansion with Groq (10 Feb 2025)">16</a> <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a></td></tr>
+<tr><td>Kamloops</td><td>British Columbia, Canada</td><td>7 MW, for Bell Canada <a class="cite" href="https://groq.com/newsroom/groq-becomes-exclusive-inference-provider-for-bell-canadas-sovereign-ai-network" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes exclusive inference provider for Bell Canada&#x27;s sovereign AI network (28 May 2025)">18</a></td></tr>
+<tr><td>Helsinki / Vantaa</td><td>Finland (with Equinix)</td><td>First European site, 2025 <a class="cite" href="https://groq.com/newsroom/groq-launches-european-data-center-footprint-in-helsinki-finland" target="_blank" rel="noopener" title="Groq Newsroom: Groq launches European data centre footprint in Helsinki (Jul 2025)">27</a> <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a></td></tr>
+<tr><td>Sydney</td><td>Australia (Equinix)</td><td>4.5 MW, Nov 2025 <a class="cite" href="https://groq.com/newsroom/groq-expands-to-asia-pacific-with-sydney-data-center-to-power-the-next-generation-of-ai-inference" target="_blank" rel="noopener" title="Groq Newsroom: Groq expands to Asia-Pacific with Sydney data centre (17 Nov 2025)">28</a></td></tr>
+<tr><td>US sites</td><td>Liberty Lake, St Paul, Dallas, Houston</td><td>Listed on Groq's platform page <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a></td></tr>
+</tbody></table></div>
+<p class="note">Groq publishes towns but not street addresses <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Groq's current list also names Vaudreuil-Dorion and Calgary in Canada and London in the UK <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a>. In August 2026 it said it runs 54 MW across 13 data centres and expects more than 200 MW in 2027 <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Bell Canada plans 500 MW across six sites, with Groq as its exclusive inference provider <a class="cite" href="https://groq.com/newsroom/groq-becomes-exclusive-inference-provider-for-bell-canadas-sovereign-ai-network" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes exclusive inference provider for Bell Canada&#x27;s sovereign AI network (28 May 2025)">18</a>. The Saudi site moved from "Dammam" in the 2025 release to "Riyadh" on the current list; Groq has not explained the change <a class="cite" href="https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Saudi Arabia announces $1.5 billion expansion with Groq (10 Feb 2025)">16</a> <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="works" aria-labelledby="h-works">
+<h2 id="h-works"><span>7.</span>How it works</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A GPU fetches the AI model from separate memory chips for every word it writes. Groq's LPU keeps the model in fast memory on the chip (SRAM), which Groq says has "memory bandwidth upwards of 80 terabytes/second, while GPU off-chip HBM clocks in at about eight terabytes/second" <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The LPU is deterministic: the compiler plans every step in advance, so data "executes the same way every time" <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>. Chips connect directly, with "no need for routers or controllers", so many chips act like one long conveyor belt <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>. Groq calls this a Tensor Streaming architecture <a class="cite" href="https://www.prnewswire.com/news-releases/groq-selects-samsung-foundry-to-bring-next-gen-lpu-to-the-ai-acceleration-market-301900464.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq selects Samsung Foundry to bring next-gen LPU to market (Aug 2023)">15</a> <a class="cite" href="https://www.computer.org/csdl/proceedings-article/isca/2020/09138986/1lsasZYR61O" target="_blank" rel="noopener" title="IEEE Computer Society: Think Fast: A Tensor Streaming Processor for accelerating deep learning workloads (ISCA 2020)">29</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The catch is memory size: 230 MB per first-generation chip <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a>. An analyst counted 576 chips, in 8 racks of 9 servers with 8 chips each, to serve one Mixtral model <a class="cite" href="https://newsletter.semianalysis.com/p/groq-inference-tokenomics-speed-but" target="_blank" rel="noopener" title="SemiAnalysis (analyst): Groq inference tokenomics: speed, but at what cost? (Feb 2024)">26</a>. Groq has not published an official chip count for a given model size.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>8.</span>Specs explained</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Official figures for the first-generation chip (GroqCard datasheet and Argonne lab documentation):</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Item</th><th>Value</th></tr></thead><tbody>
+<tr><td>On-chip memory (SRAM)</td><td>230 MB <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a> <a class="cite" href="https://docs.alcf.anl.gov/ai-testbed/groq/" target="_blank" rel="noopener" title="Argonne Leadership Computing Facility: Groq system in the ALCF AI Testbed">21</a></td></tr>
+<tr><td>Memory bandwidth</td><td>Up to 80 TB/s <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a></td></tr>
+<tr><td>Compute</td><td>750 TOPS (INT8); 188 TFLOPS (FP16) at 900 MHz <a class="cite" href="https://docs.alcf.anl.gov/ai-testbed/groq/" target="_blank" rel="noopener" title="Argonne Leadership Computing Facility: Groq system in the ALCF AI Testbed">21</a></td></tr>
+<tr><td>Power (card)</td><td>240 W typical, 275 W rated, 375 W maximum <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a></td></tr>
+<tr><td>Process</td><td>14 nm <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Chip</th><th>SRAM</th><th>Bandwidth</th><th>Per rack</th></tr></thead><tbody>
+<tr><td>Groq LPU (gen 1)</td><td>230 MB</td><td>80 TB/s</td><td>Racks of 9 servers × 8 cards <a class="cite" href="https://docs.alcf.anl.gov/ai-testbed/groq/" target="_blank" rel="noopener" title="Argonne Leadership Computing Facility: Groq system in the ALCF AI Testbed">21</a></td></tr>
+<tr><td>NVIDIA Groq 3 (LPX)</td><td>500 MB</td><td>150 TB/s</td><td>256 chips, 128 GB SRAM <a class="cite" href="https://www.nvidia.com/en-us/data-center/lpx/" target="_blank" rel="noopener" title="NVIDIA: Groq 3 LPX product page">22</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Press reports give Groq 3 at 98 billion transistors on Samsung's SF4X process <a class="cite" href="https://www.sammobile.com/news/samsung-makes-groq-3-lpu-chips-nvidia/" target="_blank" rel="noopener" title="SamMobile (press): Samsung makes Groq 3 LPU chips for NVIDIA (Mar 2026)">5</a>; NVIDIA's page gives 500 MB of SRAM where one press report says 512 MB, so we use NVIDIA's figure <a class="cite" href="https://www.nvidia.com/en-us/data-center/lpx/" target="_blank" rel="noopener" title="NVIDIA: Groq 3 LPX product page">22</a> <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/nvidias-20-billion-groq-deal-produces-its-first-chip" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): NVIDIA&#x27;s Groq deal produces its first chip">19</a>. The GroqCard has up to nine chip-to-chip connectors <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>9.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>GroqCloud's official prices, from Groq's model documentation:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Model</th><th>Input</th><th>Output</th><th>Speed Groq lists</th></tr></thead><tbody>
+<tr><td>GPT OSS 120B</td><td>$0.15 per million tokens</td><td>$0.60 per million tokens</td><td>500 tokens/s <a class="cite" href="https://console.groq.com/docs/models" target="_blank" rel="noopener" title="GroqCloud Docs: Supported models: prices and speeds">6</a></td></tr>
+<tr><td>GPT OSS 20B</td><td>$0.075 per million tokens</td><td>$0.30 per million tokens</td><td>1,000 tokens/s <a class="cite" href="https://console.groq.com/docs/models" target="_blank" rel="noopener" title="GroqCloud Docs: Supported models: prices and speeds">6</a></td></tr>
+<tr><td>Llama 3.3 70B</td><td colspan="2">"Contact Sales"</td><td>280 tokens/s <a class="cite" href="https://console.groq.com/docs/models" target="_blank" rel="noopener" title="GroqCloud Docs: Supported models: prices and speeds">6</a></td></tr>
+<tr><td>Whisper Large V3 (speech)</td><td colspan="2">$0.111 per hour of audio</td><td>— <a class="cite" href="https://console.groq.com/docs/models" target="_blank" rel="noopener" title="GroqCloud Docs: Supported models: prices and speeds">6</a></td></tr>
+<tr><td>Chips or racks</td><td colspan="2">Not published by the company</td><td>— <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The independent tester Artificial Analysis measured Groq at about 477 tokens a second on GPT OSS 120B and 270 on Llama 3.3 70B (third-party measurements) <a class="cite" href="https://artificialanalysis.ai/providers/groq" target="_blank" rel="noopener" title="Artificial Analysis (third-party): Groq provider benchmarks">30</a>. For the same GPT OSS 120B model, Cerebras charges $0.35 in and $0.75 out; see our <a href="/ai-atlas/ai-chips/cerebras/">Cerebras guide</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Groq does not publish hardware prices, and neither NVIDIA's LPX page nor the GroqCard datasheet gives one <a class="cite" href="https://www.nvidia.com/en-us/data-center/lpx/" target="_blank" rel="noopener" title="NVIDIA: Groq 3 LPX product page">22</a> <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a>. Groq's price list changes often; we show only models whose prices appear on the official page.</p>
+</div>
+</section>
+<section class="chip-sec" id="moat" aria-labelledby="h-moat">
+<h2 id="h-moat"><span>10.</span>The software lock-in</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Groq's edge was speed and predictability: a chip planned step by step by software, with memory on board <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>. Groq claims "up to a 10X speed advantage" over GPUs and similar energy savings (Groq's own claim) <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The technology was valuable enough for NVIDIA to license it and hire its founder, and NVIDIA now sells LPU racks alongside its GPUs <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Groq 3 LPX now in full production (24 Aug 2026)">8</a>. Because the licence is non-exclusive, Groq keeps the right to use its own designs <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Groq's remaining advantage is its cloud: 13 data centres, millions of developers and exclusive deals such as Bell Canada <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a> <a class="cite" href="https://groq.com/newsroom/groq-becomes-exclusive-inference-provider-for-bell-canadas-sovereign-ai-network" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes exclusive inference provider for Bell Canada&#x27;s sovereign AI network (28 May 2025)">18</a>. But it now runs NVIDIA hardware too, so its edge is increasingly the service rather than the chip <a class="cite" href="https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes an NVIDIA Cloud Partner (12 Aug 2026)">9</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="buyers" aria-labelledby="h-buyers">
+<h2 id="h-buyers"><span>11.</span>Who buys it and why</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Official partners and customers include Meta (Llama API), Bell Canada, Saudi Arabia's HUMAIN, McLaren's Formula 1 team, Paytm in India and Canva <a class="cite" href="https://www.prnewswire.com/news-releases/meta-and-groq-collaborate-to-deliver-fast-inference-for-the-official-llama-api-302441674.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Meta and Groq collaborate on the official Llama API (29 Apr 2025)">17</a> <a class="cite" href="https://groq.com/newsroom/groq-becomes-exclusive-inference-provider-for-bell-canadas-sovereign-ai-network" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes exclusive inference provider for Bell Canada&#x27;s sovereign AI network (28 May 2025)">18</a> <a class="cite" href="https://www.prnewswire.com/news-releases/groq-and-humain-launch-openais-new-open-models-day-zero-302522398.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq and HUMAIN launch OpenAI&#x27;s new open models day zero (5 Aug 2025)">31</a> <a class="cite" href="https://www.prnewswire.com/news-releases/mclaren-racing-announces-groq-as-an-official-partner-of-the-mclaren-formula-1-team-302567767.html" target="_blank" rel="noopener" title="Groq (PR Newswire): McLaren Racing announces Groq as an official partner (26 Sep 2025)">32</a> <a class="cite" href="https://groq.com/newsroom/groq-partners-with-paytm-delivering-real-time-ai-for-payments-and-platform-intelligence-in-india" target="_blank" rel="noopener" title="Groq Newsroom: Groq partners with Paytm for real-time AI in India (5 Nov 2025)">33</a> <a class="cite" href="https://groq.com/newsroom/groq-expands-to-asia-pacific-with-sydney-data-center-to-power-the-next-generation-of-ai-inference" target="_blank" rel="noopener" title="Groq Newsroom: Groq expands to Asia-Pacific with Sydney data centre (17 Nov 2025)">28</a>. US government agencies can buy through Carahsoft <a class="cite" href="https://www.carahsoft.com/news/groq-and-carahsoft-partner-to-provide-rapid-ai-inference-speed-to-the-public-sector-2024" target="_blank" rel="noopener" title="Carahsoft: Groq and Carahsoft partner to bring AI inference to the public sector (May 2024)">25</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Saudi Arabia committed $1.5 billion to expand Groq's inference infrastructure in February 2025 <a class="cite" href="https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Saudi Arabia announces $1.5 billion expansion with Groq (10 Feb 2025)">16</a>. Meta's Llama API launched with Groq at speeds of up to 625 tokens a second <a class="cite" href="https://www.prnewswire.com/news-releases/meta-and-groq-collaborate-to-deliver-fast-inference-for-the-official-llama-api-302441674.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Meta and Groq collaborate on the official Llama API (29 Apr 2025)">17</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Groq has not published revenue in any release we read <a class="cite" href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener" title="Groq Newsroom: Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)">12</a>. Press reports, citing The Information, said in July 2025 that Groq cut its 2025 revenue forecast from about $2 billion to about $500 million after delays to the Saudi deal <a class="cite" href="https://www.trendforce.com/news/2025/07/31/news-groq-cuts-2025-revenue-projection-by-usd-1-5b-dealing-blow-to-samsung-foundry/" target="_blank" rel="noopener" title="TrendForce (press, citing The Information): Groq cuts 2025 revenue projection by $1.5B (31 Jul 2025)">34</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>12.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Public facts in plain sight. Each links to the exact document.</p>
+<ol class="hidden-list">
+<li><b>NVIDIA sells a product with Groq's name on it</b>, under licence, and Groq plans to deploy it <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Groq 3 LPX now in full production (24 Aug 2026)">8</a> <a class="cite" href="https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market" target="_blank" rel="noopener" title="Groq Blog: Groq among the first to bring NVIDIA Groq 3 LPX and Vera Rubin NVL72 to market (24 Aug 2026)">10</a>.</li>
+<li><b>A "Series A" after earlier rounds up to Series D</b>, at about half the September 2025 valuation <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a> <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $640M to meet soaring demand for fast AI inference (5 Aug 2024)">14</a> <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a>.</li>
+<li><b>The post-deal CEO lasted about three months</b>; it shows up in a Bloom Energy filing, not a Groq release <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1664703/000119312526126402/d104322d8k.htm" target="_blank" rel="noopener" title="Bloom Energy (SEC): Form 8-K: appointment of Simon Edwards as CFO (26 Mar 2026)">13</a>.</li>
+<li><b>The Saudi data centre went up in eight days</b> <a class="cite" href="https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Saudi Arabia announces $1.5 billion expansion with Groq (10 Feb 2025)">16</a>.</li>
+<li><b>The executive chairman runs the lead investor</b> <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ol class="hidden-list" start="6">
+<li><b>The headquarters moved in releases</b>: Mountain View, Palo Alto once, then San Francisco <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a> <a class="cite" href="https://www.prnewswire.com/news-releases/groq-and-humain-launch-openais-new-open-models-day-zero-302522398.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq and HUMAIN launch OpenAI&#x27;s new open models day zero (5 Aug 2025)">31</a> <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</li>
+<li><b>The Samsung 4 nm chip announced in 2023 never shipped as a Groq product</b> <a class="cite" href="https://www.prnewswire.com/news-releases/groq-selects-samsung-foundry-to-bring-next-gen-lpu-to-the-ai-acceleration-market-301900464.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq selects Samsung Foundry to bring next-gen LPU to market (Aug 2023)">15</a> <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/nvidias-20-billion-groq-deal-produces-its-first-chip" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): NVIDIA&#x27;s Groq deal produces its first chip">19</a>.</li>
+<li><b>Groq was listed on a US Army software contract</b> through Carahsoft <a class="cite" href="https://www.carahsoft.com/news/groq-and-carahsoft-partner-to-provide-rapid-ai-inference-speed-to-the-public-sector-2024" target="_blank" rel="noopener" title="Carahsoft: Groq and Carahsoft partner to bring AI inference to the public sector (May 2024)">25</a>.</li>
+<li><b>Llama 3.3 70B has no public price</b>, only "Contact Sales" <a class="cite" href="https://console.groq.com/docs/models" target="_blank" rel="noopener" title="GroqCloud Docs: Supported models: prices and speeds">6</a>.</li>
+<li><b>Developers grew about 17 times</b> in two years, from 360,000 to more than 6 million <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $640M to meet soaring demand for fast AI inference (5 Aug 2024)">14</a> <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<ol class="hidden-list" start="11">
+<li><b>No price for the NVIDIA deal</b> appears in either company's release <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a> <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Groq 3 LPX now in full production (24 Aug 2026)">8</a>.</li>
+<li><b>The US Justice Department is reported to be examining the deal</b>; no official statement yet <a class="cite" href="https://www.sdxcentral.com/news/nvidias-groq-deal-facing-doj-probe-amid-regulator-scrutiny-into-acqui-hires-report/" target="_blank" rel="noopener" title="SDxCentral (press): NVIDIA&#x27;s Groq deal facing DOJ probe, report says (Sep 2026)">35</a>.</li>
+<li><b>Groq's own speeds and outside tests differ</b>: 500 against about 477 tokens a second for GPT OSS 120B <a class="cite" href="https://console.groq.com/docs/models" target="_blank" rel="noopener" title="GroqCloud Docs: Supported models: prices and speeds">6</a> <a class="cite" href="https://artificialanalysis.ai/providers/groq" target="_blank" rel="noopener" title="Artificial Analysis (third-party): Groq provider benchmarks">30</a>.</li>
+<li><b>Yann LeCun was named a technical adviser</b> in 2024 <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $640M to meet soaring demand for fast AI inference (5 Aug 2024)">14</a>.</li>
+<li><b>The Saudi site name changed</b> from Dammam to Riyadh <a class="cite" href="https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Saudi Arabia announces $1.5 billion expansion with Groq (10 Feb 2025)">16</a> <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a>.</li>
+</ol>
+</div>
+</section>
+<section class="chip-sec" id="weak" aria-labelledby="h-weak">
+<h2 id="h-weak"><span>13.</span>Weak spots</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Limits, from the public record:</p>
+<ul>
+<li><b>Tiny memory per chip:</b> 230 MB, so big models need hundreds of chips <a class="cite" href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener" title="BittWare, a Molex company (datasheet via Mouser): GroqCard accelerator product brief">20</a> <a class="cite" href="https://newsletter.semianalysis.com/p/groq-inference-tokenomics-speed-but" target="_blank" rel="noopener" title="SemiAnalysis (analyst): Groq inference tokenomics: speed, but at what cost? (Feb 2024)">26</a>.</li>
+<li><b>Older process:</b> 14 nm for the first chip <a class="cite" href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener" title="Groq Blog: The Groq LPU explained">1</a>.</li>
+<li><b>Lost its founder, president and other staff to NVIDIA</b> <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a>.</li>
+<li><b>Three chief executives in about six months</b> <a class="cite" href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener" title="Groq Newsroom: Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)">4</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1664703/000119312526126402/d104322d8k.htm" target="_blank" rel="noopener" title="Bloom Energy (SEC): Form 8-K: appointment of Simon Edwards as CFO (26 Mar 2026)">13</a> <a class="cite" href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener" title="Groq Newsroom: Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)">12</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The valuation fell from $6.9 billion to $3.5 billion between September 2025 and August 2026 <a class="cite" href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener" title="Groq (PR Newswire): Groq raises $750 million as inference demand surges (Sep 2025)">11</a> <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>. Press reports say the Justice Department is looking at whether the NVIDIA deal was structured to avoid a merger review; neither company nor the department has commented publicly <a class="cite" href="https://www.sdxcentral.com/news/nvidias-groq-deal-facing-doj-probe-amid-regulator-scrutiny-into-acqui-hires-report/" target="_blank" rel="noopener" title="SDxCentral (press): NVIDIA&#x27;s Groq deal facing DOJ probe, report says (Sep 2026)">35</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Groq's dependence on NVIDIA is growing: it is certified to "design, deploy, and operate NVIDIA accelerated computing" and plans NVIDIA Groq 3 LPX and Vera Rubin racks in its data centres <a class="cite" href="https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner" target="_blank" rel="noopener" title="Groq Newsroom: Groq becomes an NVIDIA Cloud Partner (12 Aug 2026)">9</a> <a class="cite" href="https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market" target="_blank" rel="noopener" title="Groq Blog: Groq among the first to bring NVIDIA Groq 3 LPX and Vera Rubin NVL72 to market (24 Aug 2026)">10</a>. The 2025 revenue forecast cut reported by the press shows how much one customer region mattered <a class="cite" href="https://www.trendforce.com/news/2025/07/31/news-groq-cuts-2025-revenue-projection-by-usd-1-5b-dealing-blow-to-samsung-foundry/" target="_blank" rel="noopener" title="TrendForce (press, citing The Information): Groq cuts 2025 revenue projection by $1.5B (31 Jul 2025)">34</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="india" aria-labelledby="h-india">
+<h2 id="h-india"><span>14.</span>India angle</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Groq's India link is Paytm: in November 2025 Paytm chose GroqCloud for real-time AI in payments, including fraud and risk checks <a class="cite" href="https://groq.com/newsroom/groq-partners-with-paytm-delivering-real-time-ai-for-payments-and-platform-intelligence-in-india" target="_blank" rel="noopener" title="Groq Newsroom: Groq partners with Paytm for real-time AI in India (5 Nov 2025)">33</a>. Groq has not announced an India office or data centre.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The Paytm release was datelined Noida and Mountain View, and Groq's Asia-Pacific general manager, Scott Albin, covers the region <a class="cite" href="https://groq.com/newsroom/groq-partners-with-paytm-delivering-real-time-ai-for-payments-and-platform-intelligence-in-india" target="_blank" rel="noopener" title="Groq Newsroom: Groq partners with Paytm for real-time AI in India (5 Nov 2025)">33</a>. Groq's nearest data centre to India is in Saudi Arabia <a class="cite" href="https://groq.com/platform" target="_blank" rel="noopener" title="Groq: Platform page: data centres and service tiers">23</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>For India's own chip plants and plans, see our India's semiconductor push guide (coming soon).</p>
+</div>
+</section>
+<section class="chip-sec" id="next" aria-labelledby="h-next">
+<h2 id="h-next"><span>15.</span>What’s next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Only what Groq and NVIDIA have announced:</p>
+<ul>
+<li><b>More capacity:</b> over 200 MW in 2027 <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</li>
+<li><b>NVIDIA hardware:</b> Groq 3 LPX and Vera Rubin racks in GroqCloud, with Dell <a class="cite" href="https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market" target="_blank" rel="noopener" title="Groq Blog: Groq among the first to bring NVIDIA Groq 3 LPX and Vera Rubin NVL72 to market (24 Aug 2026)">10</a>.</li>
+<li><b>LPX:</b> in full production at NVIDIA since August 2026 <a class="cite" href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener" title="NVIDIA Newsroom: NVIDIA Groq 3 LPX now in full production (24 Aug 2026)">8</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Groq now describes itself as an inference cloud rather than a chip company <a class="cite" href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener" title="Groq Newsroom: Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)">12</a>. Whether it builds another chip of its own has not been announced.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The open questions are regulatory, the reported US review of the NVIDIA deal <a class="cite" href="https://www.sdxcentral.com/news/nvidias-groq-deal-facing-doj-probe-amid-regulator-scrutiny-into-acqui-hires-report/" target="_blank" rel="noopener" title="SDxCentral (press): NVIDIA&#x27;s Groq deal facing DOJ probe, report says (Sep 2026)">35</a>, and commercial, whether GroqCloud can grow against far larger clouds <a class="cite" href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener" title="Groq Newsroom: Groq closes $350 million Series A (17 Aug 2026)">3</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>16.</span>Sources</h2>
+<p class="note">35 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator; <b>Press</b> = news coverage, used only where no official source exists and labelled in the text.</p>
+<ol class="src-list">
+<li id="src-1"><b>Groq Blog</b>: <a href="https://groq.com/blog/the-groq-lpu-explained" target="_blank" rel="noopener">The Groq LPU explained</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>Groq</b>: <a href="https://groq.com/" target="_blank" rel="noopener">Groq home page</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank" rel="noopener">Groq closes $350 million Series A (17 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-and-nvidia-enter-non-exclusive-inference-technology-licensing-agreement-to-accelerate-ai-inference-at-global-scale" target="_blank" rel="noopener">Groq and NVIDIA enter non-exclusive inference technology licensing agreement (24 Dec 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>SamMobile (press)</b>: <a href="https://www.sammobile.com/news/samsung-makes-groq-3-lpu-chips-nvidia/" target="_blank" rel="noopener">Samsung makes Groq 3 LPU chips for NVIDIA (Mar 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-6"><b>GroqCloud Docs</b>: <a href="https://console.groq.com/docs/models" target="_blank" rel="noopener">Supported models: prices and speeds</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>DatacenterDynamics (press)</b>: <a href="https://www.datacenterdynamics.com/en/news/nvidia-to-license-tech-from-ai-inference-chip-company-groq-hire-its-leadership/" target="_blank" rel="noopener">NVIDIA to license tech from Groq and hire its leadership (Dec 2025)</a><span class="st st-press">Press</span></li>
+<li id="src-8"><b>NVIDIA Newsroom</b>: <a href="https://nvidianews.nvidia.com/news/nvidia-groq-3-lpx-now-in-full-production-with-world-class-speed-for-agentic-ai" target="_blank" rel="noopener">NVIDIA Groq 3 LPX now in full production (24 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-becomes-an-nvidia-cloud-partner" target="_blank" rel="noopener">Groq becomes an NVIDIA Cloud Partner (12 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>Groq Blog</b>: <a href="https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market" target="_blank" rel="noopener">Groq among the first to bring NVIDIA Groq 3 LPX and Vera Rubin NVL72 to market (24 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-11"><b>Groq (PR Newswire)</b>: <a href="https://www.prnewswire.com/news-releases/groq-raises-750-million-as-inference-demand-surges-302559008.html" target="_blank" rel="noopener">Groq raises $750 million as inference demand surges (Sep 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-raises-usd650m-to-scale-its-ai-inference-cloud-business" target="_blank" rel="noopener">Groq raises $650M to scale its AI inference cloud business (22 Jun 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>Bloom Energy (SEC)</b>: <a href="https://www.sec.gov/Archives/edgar/data/1664703/000119312526126402/d104322d8k.htm" target="_blank" rel="noopener">Form 8-K: appointment of Simon Edwards as CFO (26 Mar 2026)</a><span class="st st-filing">Filing</span></li>
+<li id="src-14"><b>Groq (PR Newswire)</b>: <a href="https://www.prnewswire.com/news-releases/groq-raises-640m-to-meet-soaring-demand-for-fast-ai-inference-302214097.html" target="_blank" rel="noopener">Groq raises $640M to meet soaring demand for fast AI inference (5 Aug 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-15"><b>Groq (PR Newswire)</b>: <a href="https://www.prnewswire.com/news-releases/groq-selects-samsung-foundry-to-bring-next-gen-lpu-to-the-ai-acceleration-market-301900464.html" target="_blank" rel="noopener">Groq selects Samsung Foundry to bring next-gen LPU to market (Aug 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>Groq (PR Newswire)</b>: <a href="https://www.prnewswire.com/news-releases/saudi-arabia-announces-1-5-billion-expansion-to-fuel-ai-powered-economy-with-ai-tech-leader-groq-302372643.html" target="_blank" rel="noopener">Saudi Arabia announces $1.5 billion expansion with Groq (10 Feb 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-17"><b>Groq (PR Newswire)</b>: <a href="https://www.prnewswire.com/news-releases/meta-and-groq-collaborate-to-deliver-fast-inference-for-the-official-llama-api-302441674.html" target="_blank" rel="noopener">Meta and Groq collaborate on the official Llama API (29 Apr 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-becomes-exclusive-inference-provider-for-bell-canadas-sovereign-ai-network" target="_blank" rel="noopener">Groq becomes exclusive inference provider for Bell Canada&#x27;s sovereign AI network (28 May 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>Tom&#x27;s Hardware (press)</b>: <a href="https://www.tomshardware.com/tech-industry/semiconductors/nvidias-20-billion-groq-deal-produces-its-first-chip" target="_blank" rel="noopener">NVIDIA&#x27;s Groq deal produces its first chip</a><span class="st st-press">Press</span></li>
+<li id="src-20"><b>BittWare, a Molex company (datasheet via Mouser)</b>: <a href="https://www.mouser.com/catalog/specsheets/Molex_GroqCard_datasheet.pdf" target="_blank" rel="noopener">GroqCard accelerator product brief</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>Argonne Leadership Computing Facility</b>: <a href="https://docs.alcf.anl.gov/ai-testbed/groq/" target="_blank" rel="noopener">Groq system in the ALCF AI Testbed</a><span class="st st-government">Government</span></li>
+<li id="src-22"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/lpx/" target="_blank" rel="noopener">Groq 3 LPX product page</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>Groq</b>: <a href="https://groq.com/platform" target="_blank" rel="noopener">Platform page: data centres and service tiers</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>The Register (press)</b>: <a href="https://www.theregister.com/2020/09/29/groq_ai_dev_kit/" target="_blank" rel="noopener">Groq AI chip dev kit: 14 nm, fabbed by GlobalFoundries (29 Sep 2020)</a><span class="st st-press">Press</span></li>
+<li id="src-25"><b>Carahsoft</b>: <a href="https://www.carahsoft.com/news/groq-and-carahsoft-partner-to-provide-rapid-ai-inference-speed-to-the-public-sector-2024" target="_blank" rel="noopener">Groq and Carahsoft partner to bring AI inference to the public sector (May 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>SemiAnalysis (analyst)</b>: <a href="https://newsletter.semianalysis.com/p/groq-inference-tokenomics-speed-but" target="_blank" rel="noopener">Groq inference tokenomics: speed, but at what cost? (Feb 2024)</a><span class="st st-research">Research</span></li>
+<li id="src-27"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-launches-european-data-center-footprint-in-helsinki-finland" target="_blank" rel="noopener">Groq launches European data centre footprint in Helsinki (Jul 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-expands-to-asia-pacific-with-sydney-data-center-to-power-the-next-generation-of-ai-inference" target="_blank" rel="noopener">Groq expands to Asia-Pacific with Sydney data centre (17 Nov 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>IEEE Computer Society</b>: <a href="https://www.computer.org/csdl/proceedings-article/isca/2020/09138986/1lsasZYR61O" target="_blank" rel="noopener">Think Fast: A Tensor Streaming Processor for accelerating deep learning workloads (ISCA 2020)</a><span class="st st-paper">Paper</span></li>
+<li id="src-30"><b>Artificial Analysis (third-party)</b>: <a href="https://artificialanalysis.ai/providers/groq" target="_blank" rel="noopener">Groq provider benchmarks</a><span class="st st-research">Research</span></li>
+<li id="src-31"><b>Groq (PR Newswire)</b>: <a href="https://www.prnewswire.com/news-releases/groq-and-humain-launch-openais-new-open-models-day-zero-302522398.html" target="_blank" rel="noopener">Groq and HUMAIN launch OpenAI&#x27;s new open models day zero (5 Aug 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-32"><b>Groq (PR Newswire)</b>: <a href="https://www.prnewswire.com/news-releases/mclaren-racing-announces-groq-as-an-official-partner-of-the-mclaren-formula-1-team-302567767.html" target="_blank" rel="noopener">McLaren Racing announces Groq as an official partner (26 Sep 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-33"><b>Groq Newsroom</b>: <a href="https://groq.com/newsroom/groq-partners-with-paytm-delivering-real-time-ai-for-payments-and-platform-intelligence-in-india" target="_blank" rel="noopener">Groq partners with Paytm for real-time AI in India (5 Nov 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-34"><b>TrendForce (press, citing The Information)</b>: <a href="https://www.trendforce.com/news/2025/07/31/news-groq-cuts-2025-revenue-projection-by-usd-1-5b-dealing-blow-to-samsung-foundry/" target="_blank" rel="noopener">Groq cuts 2025 revenue projection by $1.5B (31 Jul 2025)</a><span class="st st-press">Press</span></li>
+<li id="src-35"><b>SDxCentral (press)</b>: <a href="https://www.sdxcentral.com/news/nvidias-groq-deal-facing-doj-probe-amid-regulator-scrutiny-into-acqui-hires-report/" target="_blank" rel="noopener">NVIDIA&#x27;s Groq deal facing DOJ probe, report says (Sep 2026)</a><span class="st st-press">Press</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#company">2. Company card</a><a href="#story">3. The story</a><a href="#lineup">4. The lineup</a><a href="#made">5. How it’s made</a><a href="#where">6. Where it’s made: factories and addresses</a><a href="#works">7. How it works</a><a href="#specs">8. Specs explained</a><a href="#pricing">9. Official pricing</a><a href="#moat">10. The software lock-in</a><a href="#buyers">11. Who buys it and why</a><a href="#hidden">12. Hidden in plain sight</a><a href="#weak">13. Weak spots</a><a href="#india">14. India angle</a><a href="#next">15. What’s next</a><a href="#sources">16. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Headquarters</span><span style="color:var(--fg);font-weight:500;text-align:right">San Francisco, California</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Founded</span><span style="color:var(--fg);font-weight:500;text-align:right">2016</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>CEO</span><span style="color:var(--fg);font-weight:500;text-align:right">Adam Winter</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Makes its own chips?</span><span style="color:var(--fg);font-weight:500;text-align:right">Designed the LPU; tech now licensed to NVIDIA</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Status</span><span style="color:var(--fg);font-weight:500;text-align:right">Private company</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Latest valuation</span><span style="color:var(--fg);font-weight:500;text-align:right">$3.5 billion (Aug 2026)</span></div></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip brands</a><a href="/ai-atlas/ai-chips/amazon-trainium/" class="sidebar-link">Amazon Trainium</a><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD</a><a href="/ai-atlas/ai-chips/apple/" class="sidebar-link">Apple</a><a href="/ai-atlas/ai-chips/cerebras/" class="sidebar-link">Cerebras</a><a href="/ai-atlas/ai-chips/google-tpu/" class="sidebar-link">Google TPU</a><a href="/ai-atlas/ai-chips/huawei-ascend/" class="sidebar-link">Huawei Ascend</a><a href="/ai-atlas/ai-chips/intel/" class="sidebar-link">Intel</a><a href="/ai-atlas/ai-chips/meta-mtia/" class="sidebar-link">Meta MTIA</a><a href="/ai-atlas/ai-chips/microsoft-maia/" class="sidebar-link">Microsoft Maia</a><a href="/ai-atlas/ai-chips/nvidia/" class="sidebar-link">NVIDIA</a><a href="/ai-atlas/ai-chips/ai-memory-hbm/" class="sidebar-link">AI memory (HBM) and why it is scarce</a><a href="/ai-atlas/ai-chips/export-rules/" class="sidebar-link">Export rules and the US–China chip contest</a><a href="/ai-atlas/ai-chips/how-a-chip-is-made/" class="sidebar-link">How a chip is made: sand to server</a><a href="/ai-atlas/ai-chips/how-ai-chips-work/" class="sidebar-link">How AI chips work</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Groq%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgroq%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Groq%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgroq%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Groq%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgroq%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Groq%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgroq%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Groq%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgroq%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

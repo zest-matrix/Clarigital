@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Google TPU (Ironwood, TPU 8): The Complete Guide | Clarigital</title>
+<meta name="description" content="Google&#x27;s TPU AI chips (Ironwood, TPU 8): how they work, who builds them, official hourly prices, who uses them and what the filings reveal.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/google-tpu/">
+<meta property="og:title" content="Google TPU (Ironwood, TPU 8): The Complete Guide">
+<meta property="og:description" content="Google&#x27;s TPU AI chips (Ironwood, TPU 8): how they work, who builds them, official hourly prices, who uses them and what the filings reveal.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/google-tpu/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Google TPU: The Complete Guide", "description": "Google's TPU AI chips (Ironwood, TPU 8): how they work, who builds them, official hourly prices, who uses them and what the filings reveal.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/google-tpu/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/google-tpu/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "about": {"@type": "Organization", "name": "Alphabet Inc.", "url": "https://abc.xyz", "tickerSymbol": "NASDAQ: GOOGL", "foundingDate": "2015-10-02", "address": {"@type": "PostalAddress", "streetAddress": "1600 Amphitheatre Parkway", "addressLocality": "Mountain View", "addressRegion": "CA", "postalCode": "94043", "addressCountry": "US"}, "numberOfEmployees": {"@type": "QuantitativeValue", "value": 190820}}, "citation": ["https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm", "https://arxiv.org/abs/1704.04760", "https://cloud.google.com/tpu", "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf", "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/", "https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm", "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/", "https://anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services", "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf", "https://cloud.google.com/tpu/pricing", "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/", "https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf", "https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140", "https://www.sec.gov/Archives/edgar/data/1288776/000165204416000012/goog10-k2015.htm", "https://www.googlecloudpresscorner.com/thomas-kurian", "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/googexhibit991q22026.htm", "https://cloud.google.com/blog/products/ai-machine-learning/google-supercharges-machine-learning-tasks-with-custom-chip", "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/google-cloud-offer-tpus-machine-learning/", "https://www.hpcwire.com/2018/05/09/google-o-2018-ai-everywhere-tpu-3-0-delivers-100-petaflops-requires-liquid-cooling/", "https://blog.google/innovation-and-ai/technology/developers-tools/io21-helpful-google/", "https://cloud.google.com/blog/products/compute/announcing-cloud-tpu-v5e-and-a3-gpus-in-ga/", "https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer", "https://cloud.google.com/blog/products/compute/introducing-trillium-6th-gen-tpus", "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/", "https://arxiv.org/abs/2304.01433", "https://docs.cloud.google.com/tpu/docs/release-notes", "https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-tops-q3-2026-estimates-as-ai-sales-surge-93CH-4886849", "https://docs.cloud.google.com/tpu/docs/tpu7x", "https://docs.cloud.google.com/tpu/docs/v6e", "https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive", "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm", "https://www.tomshardware.com/tech-industry/semiconductors/google-splits-its-tpu-into-two-chips-for-the-first-time-with-training-and-inference-variants", "https://www.trendforce.com/news/2026/08/20/news-marvell-amd-reportedly-shake-up-google-tpu-race-putting-broadcom-mediatek-under-pressure/", "https://www.techtimes.com/articles/318143/20260610/chip-supply-shifts-tsmc-googles-reported-intel-tpu-order-lifts-foundry-doubts-remain.htm", "https://www.eetimes.com/googles-marvell-deal-shows-custom-silicon-spreading-beyond-the-tpu/", "https://cloud.google.com/blog/topics/systems/ironwood-tpus-deliver-37x-carbon-efficiency-gains", "https://docs.cloud.google.com/tpu/docs/regions-zones", "https://datacenters.google/locations/council-bluffs-iowa/", "https://www.blackstone.com/news/press/blackstone-announces-joint-venture-with-google-to-create-new-tpu-cloud/", "https://datacenters.google/operating-sustainably/", "https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack", "https://developers.googleblog.com/torchtpu-running-pytorch-natively-on-tpus-at-google-scale/", "https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26", "https://docs.cloud.google.com/tpu/docs/v5e", "https://docs.cloud.google.com/tpu/docs/v5p", "https://www.datacenterdynamics.com/en/news/google-to-sell-tpus-to-a-select-group-of-customers-for-their-data-centers/", "https://vllm-project.github.io/2025/10/16/vllm-tpu.html", "https://cloud.google.com/blog/products/compute/ironwood-tpus-and-new-axion-based-vms-for-your-ai-workloads/", "https://www.anthropic.com/news/google-broadcom-partnership-compute", "https://www.tomshardware.com/tech-industry/artificial-intelligence/apple-skips-nvidias-gpus-for-its-ai-models-uses-thousands-of-google-tpus-instead", "https://www.datacenterdynamics.com/en/news/ai-startup-safe-superintelligence-to-use-googles-tpu-chips-for-research/", "https://finance.yahoo.com/news/openai-says-no-plan-googles-222056614.html", "https://siliconangle.com/2026/02/26/google-meta-reportedly-strike-new-multibillion-dollar-ai-chip-deal/", "https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/GOOG-10-Q-Q1-2026.pdf", "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial", "https://blog.google/company-news/outreach-and-initiatives/sustainability/2026-environmental-report/", "https://www.axios.com/2026/06/30/google-ai-boom-emissions-power-use", "https://fortune.com/2026/02/04/alphabet-google-ai-spending-supply-constraints/", "https://blog.google/intl/en-in/company-news/our-first-ai-hub-in-india-powered-by-a-15-billion-investment/", "https://www.airtel.in/press-release/10-2025/airtel-partners-with-google-to-establish-indias-first-mega-ai-hub-and-data-center-in-visakhapatnam/", "https://www.adani.com/newsroom/media-releases/adani-and-google-partner-to-build-indias-largest-data-centre-campus-in-visakhapatnam", "https://www.googlecloudpresscorner.com/2026-04-28-Google-Breaks-Ground-on-India-AI-Hub,-Launching-a-National-Industrial-Ecosystem-Alongside-Indias-Digital-Infrastructure-Milestone", "https://cloud.google.com/blog/products/infrastructure/google-cloud-region-in-delhi-ncr-is-now-open", "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245069&reg=3&lang=1"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "Google TPU", "item": "https://www.clarigital.com/ai-atlas/ai-chips/google-tpu/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>Google TPU</span></nav>
+    <span class="label-tag">AI Chips · Brand guide</span>
+    <h1>Google TPU: The Complete Guide</h1>
+    <p class="hero-lead">Google&#x27;s own AI chip, and until 2026 you could only rent it. What Google&#x27;s Tensor Processing Units are, how they differ from GPUs, who builds them, the official prices, the Anthropic deal, and the facts buried in Alphabet&#x27;s and Broadcom&#x27;s filings. Three reading levels, every number sourced.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Google TPU</span>
+      <span class="meta-tag mt-gray">16 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">64 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Every brand in our AI Chips section uses the same 16 sections in the same order. Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where a company has not published something, we say so rather than estimate.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A TPU (Tensor Processing Unit) is Google's own AI chip, built only for the maths AI needs <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud: TPU system architecture">1</a>. Google has used them inside its own services since 2015 <a class="cite" href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener" title="Jouppi et al. (Google), ISCA 2017: In-Datacenter Performance Analysis of a Tensor Processing Unit">2</a> and rents them to other companies through Google Cloud <a class="cite" href="https://cloud.google.com/tpu" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU product page">3</a>. The current chip is <b>Ironwood</b>, the seventh generation <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a>; the eighth generation, <b>TPU 8t</b> for training and <b>TPU 8i</b> for running models, was announced in April 2026 <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>.</p>
+<div class="fact-grid">
+<div><b>What it is</b>A chip designed only for AI maths, not a general graphics chip <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud: TPU system architecture">1</a></div>
+<div><b>Latest chip</b>Ironwood (TPU7x); TPU 8t and 8i "coming soon" <a class="cite" href="https://cloud.google.com/tpu" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU product page">3</a></div>
+<div><b>Who builds it</b>Google designs; Broadcom co-develops and supplies <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm" target="_blank" rel="noopener" title="Broadcom: Form 8-K, long-term TPU agreement with Google (6 Apr 2026)">6</a></div>
+<div><b>How you get one</b>Rent on Google Cloud; since 2026, a few customers can have TPUs in their own data centres <a class="cite" href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/" target="_blank" rel="noopener" title="Google (The Keyword): CEO remarks, Alphabet Q1 2026 earnings (29 Apr 2026)">7</a></div>
+</div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>TPUs are Google's answer to NVIDIA. Anthropic has agreed to use up to one million of them <a class="cite" href="https://anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services" target="_blank" rel="noopener" title="Anthropic: Expanding our use of Google Cloud TPUs and services (23 Oct 2025)">8</a>, and Google Cloud's revenue grew 82% in the June 2026 quarter to $24.8 billion <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf" target="_blank" rel="noopener" title="Alphabet Investor Relations: Alphabet second-quarter 2026 results (22 Jul 2026)">9</a>. Google publishes a price per chip per hour, which NVIDIA does not do for its data-centre chips: Ironwood lists at $12.00 an hour on demand <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Alphabet's revenue in the June 2026 quarter was $119.8 billion, up 24%; Google Cloud earned $8.8 billion of operating profit on $24.8 billion of revenue, and Alphabet spent $44.9 billion on capital projects in the quarter <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf" target="_blank" rel="noopener" title="Alphabet Investor Relations: Alphabet second-quarter 2026 results (22 Jul 2026)">9</a>. Google Cloud's backlog of signed business reached $514 billion <a class="cite" href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/" target="_blank" rel="noopener" title="Google (The Keyword): CEO remarks, Alphabet Q2 2026 earnings (22 Jul 2026)">11</a>. Alphabet guided 2026 capital spending of $175 to $185 billion in February <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf" target="_blank" rel="noopener" title="Alphabet Investor Relations: Alphabet fourth-quarter and fiscal year 2025 results (4 Feb 2026)">12</a> and raised it to $195 to $205 billion in July <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="company" aria-labelledby="h-company">
+<h2 id="h-company"><span>2.</span>Company card</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>TPUs are made by Google, part of Alphabet. Google was founded in 1998 <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a>; Alphabet became its parent company in October 2015 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1288776/000165204416000012/goog10-k2015.htm" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2015 (Alphabet becomes successor to Google)">14</a>. Sundar Pichai is chief executive of both <a class="cite" href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/" target="_blank" rel="noopener" title="Google (The Keyword): CEO remarks, Alphabet Q2 2026 earnings (22 Jul 2026)">11</a>.</p>
+<div class="pf-scroll"><table class="spec"><tbody>
+<tr><th>Legal name</th><td>Alphabet Inc. <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a></td></tr>
+<tr><th>Headquarters</th><td>1600 Amphitheatre Parkway, Mountain View, California 94043, USA <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a> (<a href="https://www.openstreetmap.org/search?query=1600%20Amphitheatre%20Parkway%20Mountain%20View" target="_blank" rel="noopener">map</a>)</td></tr>
+<tr><th>Chief Executive</th><td>Sundar Pichai, CEO of Google and Alphabet <a class="cite" href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/" target="_blank" rel="noopener" title="Google (The Keyword): CEO remarks, Alphabet Q2 2026 earnings (22 Jul 2026)">11</a></td></tr>
+<tr><th>Google Cloud CEO</th><td>Thomas Kurian, since November 2018 <a class="cite" href="https://www.googlecloudpresscorner.com/thomas-kurian" target="_blank" rel="noopener" title="Google Cloud Press Corner: Thomas Kurian, CEO, Google Cloud">15</a></td></tr>
+<tr><th>Employees</th><td>190,820 (31 December 2025) <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a></td></tr>
+<tr><th>Stock</th><td>GOOGL and GOOG, Nasdaq Global Select Market <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a></td></tr>
+<tr><th>Investor site</th><td><a href="https://abc.xyz/investor/" target="_blank" rel="noopener">abc.xyz/investor</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Alphabet's annual report describes the chips as "our own custom-built Tensor Processing Units (TPUs), such as Ironwood, our seventh-generation TPU" <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a>. TPUs sit inside Google Cloud, which reports as its own segment <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf" target="_blank" rel="noopener" title="Alphabet Investor Relations: Alphabet second-quarter 2026 results (22 Jul 2026)">9</a>. Alphabet had 198,933 employees at 30 June 2026 <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf" target="_blank" rel="noopener" title="Alphabet Investor Relations: Alphabet second-quarter 2026 results (22 Jul 2026)">9</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Alphabet's fiscal 2025 revenue was $402.8 billion and its capital spending $91.4 billion <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf" target="_blank" rel="noopener" title="Alphabet Investor Relations: Alphabet fourth-quarter and fiscal year 2025 results (4 Feb 2026)">12</a>. Google Cloud's fourth-quarter 2025 revenue was $17.7 billion with $5.3 billion of operating income <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf" target="_blank" rel="noopener" title="Alphabet Investor Relations: Alphabet fourth-quarter and fiscal year 2025 results (4 Feb 2026)">12</a>; by the second quarter of 2026 that had risen to $24.8 billion and $8.8 billion <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/googexhibit991q22026.htm" target="_blank" rel="noopener" title="Alphabet (SEC exhibit): Second-quarter 2026 results, Form 8-K exhibit 99.1">16</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>3.</span>The story</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul class="timeline">
+<li><b>2015</b> First TPU starts running inside Google's data centres, for running models only <a class="cite" href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener" title="Jouppi et al. (Google), ISCA 2017: In-Datacenter Performance Analysis of a Tensor Processing Unit">2</a>.</li>
+<li><b>2016</b> Google reveals the TPU publicly; it had helped power AlphaGo <a class="cite" href="https://cloud.google.com/blog/products/ai-machine-learning/google-supercharges-machine-learning-tasks-with-custom-chip" target="_blank" rel="noopener" title="Google Cloud Blog: Google supercharges machine learning tasks with TPU custom chip (19 May 2016)">17</a>.</li>
+<li><b>2017</b> TPU v2 can also train models; Google starts renting TPUs <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/google-cloud-offer-tpus-machine-learning/" target="_blank" rel="noopener" title="Google (The Keyword): Google Cloud offers TPUs for machine learning (17 May 2017)">18</a>.</li>
+<li><b>2018</b> TPU v3 needs liquid cooling, a first for Google's data centres <a class="cite" href="https://www.hpcwire.com/2018/05/09/google-o-2018-ai-everywhere-tpu-3-0-delivers-100-petaflops-requires-liquid-cooling/" target="_blank" rel="noopener" title="HPCwire (press): Google I/O 2018: TPU 3.0 delivers 100 petaflops, requires liquid cooling">19</a>.</li>
+<li><b>2021</b> TPU v4: one pod passes an exaflop <a class="cite" href="https://blog.google/innovation-and-ai/technology/developers-tools/io21-helpful-google/" target="_blank" rel="noopener" title="Google (The Keyword): Google I/O 2021 announcements (18 May 2021)">20</a>.</li>
+<li><b>2023</b> TPU v5e and v5p <a class="cite" href="https://cloud.google.com/blog/products/compute/announcing-cloud-tpu-v5e-and-a3-gpus-in-ga/" target="_blank" rel="noopener" title="Google Cloud Blog: Announcing Cloud TPU v5e (29 Aug 2023)">21</a> <a class="cite" href="https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer" target="_blank" rel="noopener" title="Google Cloud Blog: Introducing Cloud TPU v5p and AI Hypercomputer (6 Dec 2023)">22</a>.</li>
+<li><b>2024</b> Trillium (TPU v6e) <a class="cite" href="https://cloud.google.com/blog/products/compute/introducing-trillium-6th-gen-tpus" target="_blank" rel="noopener" title="Google Cloud Blog: Introducing Trillium, sixth-generation TPUs (15 May 2024)">23</a>.</li>
+<li><b>2025</b> Ironwood (TPU7x), built for running AI models <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener" title="Google (The Keyword): Ironwood: the first Google TPU for the age of inference (9 Apr 2025)">24</a>.</li>
+<li><b>2026</b> Eighth generation split into two chips, TPU 8t and TPU 8i <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Google built the first TPU for its own needs. When it revealed the chip in May 2016, it said TPUs had been running in its data centres "for more than a year", powering RankBrain search, Street View and AlphaGo <a class="cite" href="https://cloud.google.com/blog/products/ai-machine-learning/google-supercharges-machine-learning-tasks-with-custom-chip" target="_blank" rel="noopener" title="Google Cloud Blog: Google supercharges machine learning tasks with TPU custom chip (19 May 2016)">17</a>. The first TPU only ran trained models; TPU v2 in 2017 could train them too, and Google offered 1,000 of them free to researchers <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/google-cloud-offer-tpus-machine-learning/" target="_blank" rel="noopener" title="Google (The Keyword): Google Cloud offers TPUs for machine learning (17 May 2017)">18</a>. From TPU v4, Google linked thousands of chips with optical switches that can rewire the network <a class="cite" href="https://arxiv.org/abs/2304.01433" target="_blank" rel="noopener" title="Jouppi et al. (Google), ISCA 2023: TPU v4: An Optically Reconfigurable Supercomputer for Machine Learning">25</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Google's own paper on the first TPU reported 15 to 30 times the speed of contemporary GPUs and CPUs on its workloads, and 30 to 80 times the performance per watt <a class="cite" href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener" title="Jouppi et al. (Google), ISCA 2017: In-Datacenter Performance Analysis of a Tensor Processing Unit">2</a>. Its 2023 paper on TPU v4 described a 4,096-chip machine in service since 2020, 1.2 to 1.7 times faster than NVIDIA's A100 while using 1.3 to 1.9 times less power, on Google's comparison <a class="cite" href="https://arxiv.org/abs/2304.01433" target="_blank" rel="noopener" title="Jouppi et al. (Google), ISCA 2023: TPU v4: An Optically Reconfigurable Supercomputer for Machine Learning">25</a>. Ironwood was announced in April 2025 <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener" title="Google (The Keyword): Ironwood: the first Google TPU for the age of inference (9 Apr 2025)">24</a>; Google's release notes list it in preview from 24 November 2025 and generally available from 31 March 2026 <a class="cite" href="https://docs.cloud.google.com/tpu/docs/release-notes" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU release notes">26</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineup" aria-labelledby="h-lineup">
+<h2 id="h-lineup"><span>4.</span>The lineup</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Name</th><th>What it is</th><th>Available</th></tr></thead><tbody>
+<tr><td>TPU v5e</td><td>Low-cost chip for training and running mid-size models</td><td>Nov 2023 <a class="cite" href="https://cloud.google.com/blog/products/compute/announcing-cloud-tpu-v5e-and-a3-gpus-in-ga/" target="_blank" rel="noopener" title="Google Cloud Blog: Announcing Cloud TPU v5e (29 Aug 2023)">21</a></td></tr>
+<tr><td>TPU v5p</td><td>Large-scale training chip; 8,960 per pod</td><td>Dec 2023 <a class="cite" href="https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer" target="_blank" rel="noopener" title="Google Cloud Blog: Introducing Cloud TPU v5p and AI Hypercomputer (6 Dec 2023)">22</a></td></tr>
+<tr><td>Trillium (TPU v6e)</td><td>Sixth generation</td><td>Dec 2024 <a class="cite" href="https://docs.cloud.google.com/tpu/docs/release-notes" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU release notes">26</a></td></tr>
+<tr><td>Ironwood (TPU7x)</td><td>Seventh generation, built for running models; 9,216 per pod</td><td>2025–26 <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener" title="Google (The Keyword): Ironwood: the first Google TPU for the age of inference (9 Apr 2025)">24</a> <a class="cite" href="https://docs.cloud.google.com/tpu/docs/release-notes" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU release notes">26</a></td></tr>
+<tr><td>TPU 8t</td><td>Eighth-generation training chip</td><td>Coming soon <a class="cite" href="https://cloud.google.com/tpu" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU product page">3</a></td></tr>
+<tr><td>TPU 8i</td><td>Eighth-generation chip for running models and AI agents</td><td>Coming soon <a class="cite" href="https://cloud.google.com/tpu" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU product page">3</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The eighth generation is the first time Google has split a TPU generation into two chips: 8t for training and 8i for inference (running models) <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>. Google said both would be generally available "later in 2026" <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>; its TPU page still shows them as "Coming Soon" <a class="cite" href="https://cloud.google.com/tpu" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU product page">3</a>. Broadcom said in September 2026 that it had begun production shipments of TPU 8i <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-tops-q3-2026-estimates-as-ai-sales-surge-93CH-4886849" target="_blank" rel="noopener" title="Investing.com (press): Broadcom Q3 fiscal 2026 earnings call transcript">27</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Ironwood has two TensorCores and four SparseCores per chip <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>; Trillium has one TensorCore <a class="cite" href="https://docs.cloud.google.com/tpu/docs/v6e" target="_blank" rel="noopener" title="Google Cloud: TPU v6e (Trillium) documentation">29</a>. Google's documentation says TensorFlow is not supported on Ironwood; JAX and PyTorch are <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>. TPU 8i pods hold up to 1,152 chips in a new "Boardfly" layout that cuts the longest path between chips from 16 hops to 7 <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>How it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Google designs TPUs, but it does not say who manufactures them <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a>.</p>
+<ol class="steps">
+<li><b>Design:</b> Google, with Google DeepMind for the eighth generation <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>.</li>
+<li><b>Co-development and supply:</b> Broadcom, under a long-term agreement to "develop and supply" future TPUs through up to 2031 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm" target="_blank" rel="noopener" title="Broadcom: Form 8-K, long-term TPU agreement with Google (6 Apr 2026)">6</a>.</li>
+<li><b>Chip factory:</b> not disclosed by Google. Broadcom says about 95% of the wafers its manufacturers produced in 2025 came from TSMC <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm" target="_blank" rel="noopener" title="Broadcom: Form 10-K, fiscal year 2025">31</a>, and press reports name TSMC <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/google-splits-its-tpu-into-two-chips-for-the-first-time-with-training-and-inference-variants" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): Google splits its TPU into two chips for the first time (27 Apr 2026)">32</a>.</li>
+<li><b>Memory:</b> Ironwood carries 192 GiB of HBM memory <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>; Google does not name the supplier.</li>
+<li><b>Racks:</b> Google builds its own systems, with Arm-based Axion processors and liquid cooling for TPU 8 <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Broadcom's filing of 6 April 2026 describes two agreements with Google running to 2031: one to develop and supply custom TPUs for future generations through up to 2031, and one to supply networking and other parts for next-generation AI racks <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm" target="_blank" rel="noopener" title="Broadcom: Form 8-K, long-term TPU agreement with Google (6 Apr 2026)">6</a>. On its September 2026 call Broadcom said it had delivered Ironwood "in high volume to both Anthropic and Google" <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-tops-q3-2026-estimates-as-ai-sales-surge-93CH-4886849" target="_blank" rel="noopener" title="Investing.com (press): Broadcom Q3 fiscal 2026 earnings call transcript">27</a>.</p>
+<p>Other partners appear only in press reports, not confirmed by Google: MediaTek designing TPU 8i <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/google-splits-its-tpu-into-two-chips-for-the-first-time-with-training-and-inference-variants" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): Google splits its TPU into two chips for the first time (27 Apr 2026)">32</a> <a class="cite" href="https://www.trendforce.com/news/2026/08/20/news-marvell-amd-reportedly-shake-up-google-tpu-race-putting-broadcom-mediatek-under-pressure/" target="_blank" rel="noopener" title="TrendForce (press): Marvell, AMD reportedly shake up Google TPU race (20 Aug 2026)">33</a>, and Intel making or packaging millions of TPUs through 2028 <a class="cite" href="https://www.techtimes.com/articles/318143/20260610/chip-supply-shifts-tsmc-googles-reported-intel-tpu-order-lifts-foundry-doubts-remain.htm" target="_blank" rel="noopener" title="Tech Times (press): Google&#x27;s reported Intel TPU order (10 Jun 2026)">34</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Google is also adding suppliers for other custom chips: filings by Marvell, reported in August 2026, show Google holding a warrant for about 59 million Marvell shares that vests as Google buys up to $120 billion of Marvell products <a class="cite" href="https://www.eetimes.com/googles-marvell-deal-shows-custom-silicon-spreading-beyond-the-tpu/" target="_blank" rel="noopener" title="EE Times (press): Google&#x27;s Marvell deal shows custom silicon spreading beyond the TPU (28 Aug 2026)">35</a>. Ironwood's lifetime emissions are 23% from manufacturing and 77% from running it on Google's market-based accounting (8% manufacturing on a location basis), and it is 3.7 times more carbon-efficient than TPU v5p <a class="cite" href="https://cloud.google.com/blog/topics/systems/ironwood-tpus-deliver-37x-carbon-efficiency-gains" target="_blank" rel="noopener" title="Google Cloud Blog: Ironwood TPUs deliver 3.7x carbon efficiency gains (6 Apr 2026)">36</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="where" aria-labelledby="h-where">
+<h2 id="h-where"><span>6.</span>Where it’s made: factories and addresses</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Google does not disclose which factory makes TPUs, so there is no factory address to give. What Google does publish is where you can rent TPUs <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a>:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Google Cloud region</th><th>Location</th><th>TPUs offered</th></tr></thead><tbody>
+<tr><td>us-central1</td><td>Iowa, USA <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td><td>Ironwood, Trillium, v5p, v5e <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a></td></tr>
+<tr><td>us-east5</td><td>Columbus, Ohio, USA <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td><td>Trillium, v5p <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a></td></tr>
+<tr><td>us-east1</td><td>South Carolina, USA <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td><td>Trillium <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a></td></tr>
+<tr><td>us-south1</td><td>Dallas, Texas, USA <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td><td>Trillium, v5e <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a></td></tr>
+<tr><td>europe-west4</td><td>Netherlands</td><td>Trillium, v5p, v5e <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a></td></tr>
+<tr><td>asia-northeast1</td><td>Tokyo, Japan</td><td>Trillium <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a></td></tr>
+<tr><td>southamerica-west1</td><td>Santiago, Chile</td><td>Trillium <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a></td></tr>
+</tbody></table></div>
+<p class="note">Google publishes data centre cities but not street addresses <a class="cite" href="https://datacenters.google/locations/council-bluffs-iowa/" target="_blank" rel="noopener" title="Google Data Centers: Council Bluffs, Iowa">38</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Ironwood is offered only in the Iowa region <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a>. Google has operated in Iowa since 2007 with a $600 million first investment in Council Bluffs, has invested more than $20 billion in the state, and announced $7 billion more for Council Bluffs and a new Cedar Rapids campus <a class="cite" href="https://datacenters.google/locations/council-bluffs-iowa/" target="_blank" rel="noopener" title="Google Data Centers: Council Bluffs, Iowa">38</a>. No TPU of any generation is offered in Google Cloud's Mumbai or Delhi regions <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>TPUs are now also leaving Google's buildings. Google delivered its first TPU systems to customers' own data centres in the June 2026 quarter <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a>, and Blackstone is putting $5 billion into a joint venture with Google that offers TPU capacity from new US data centres, with 500 MW online in 2027 <a class="cite" href="https://www.blackstone.com/news/press/blackstone-announces-joint-venture-with-google-to-create-new-tpu-cloud/" target="_blank" rel="noopener" title="Blackstone: Blackstone announces joint venture with Google to create new TPU cloud (18 May 2026)">39</a>. Google's data centres ran at an average power usage effectiveness of 1.09 in 2025 <a class="cite" href="https://datacenters.google/operating-sustainably/" target="_blank" rel="noopener" title="Google Data Centers: Operating sustainably (fleet PUE)">40</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="works" aria-labelledby="h-works">
+<h2 id="h-works"><span>7.</span>How it works</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A TPU is built around a <b>matrix unit</b>: a grid of tens of thousands of small multiply-and-add circuits that pass numbers to their neighbours in a steady rhythm, called a systolic array <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud: TPU system architecture">1</a>. Because AI models are mostly huge grids of numbers multiplied together, this one job covers most of the work.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Each TPU core has matrix units, a vector unit for steps like softmax, and a scalar unit for control <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud: TPU system architecture">1</a>. On Trillium and Ironwood each matrix unit is 256 by 256 multiply-accumulators; earlier generations used 128 by 128 <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud: TPU system architecture">1</a>. SparseCores handle "embeddings", the lookup tables used in recommendation models <a class="cite" href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener" title="Google Cloud: TPU system architecture">1</a>. Chips link directly to each other through a fast inter-chip interconnect: inside a cube of 64 chips, each chip connects to six neighbours <a class="cite" href="https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack" target="_blank" rel="noopener" title="Google Cloud Blog: Inside the Ironwood TPU codesigned AI stack">41</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Optical circuit switches join 144 cubes into a 9,216-chip Ironwood superpod with 1.77 petabytes of shared memory, and can reroute around failed parts <a class="cite" href="https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack" target="_blank" rel="noopener" title="Google Cloud Blog: Inside the Ironwood TPU codesigned AI stack">41</a>. Google's 2023 paper said the optical switches cost under 5% of the system and use under 3% of its power <a class="cite" href="https://arxiv.org/abs/2304.01433" target="_blank" rel="noopener" title="Jouppi et al. (Google), ISCA 2023: TPU v4: An Optically Reconfigurable Supercomputer for Machine Learning">25</a>. Software runs through the XLA compiler: JAX was "co-designed with the TPU architecture", and TorchTPU, announced in April 2026, runs PyTorch natively and is in preview with select customers <a class="cite" href="https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack" target="_blank" rel="noopener" title="Google Cloud Blog: Inside the Ironwood TPU codesigned AI stack">41</a> <a class="cite" href="https://developers.googleblog.com/torchtpu-running-pytorch-natively-on-tpus-at-google-scale/" target="_blank" rel="noopener" title="Google Developers Blog: TorchTPU: running PyTorch natively on TPUs (7 Apr 2026)">42</a> <a class="cite" href="https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26" target="_blank" rel="noopener" title="Google Cloud Blog: AI infrastructure at Next &#x27;26 (22 Apr 2026)">43</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>8.</span>Specs explained</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Google's own figures, per chip. Google calls these "peak" figures and does not label them dense or sparse <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>; see our <a href="/ai-atlas/ai-chips/how-ai-chips-work/">How AI chips work</a> guide.</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Chip</th><th>AI compute</th><th>Memory</th><th>Memory speed</th><th>Chips per pod</th></tr></thead><tbody>
+<tr><td>TPU v5e</td><td>197 TFLOPS BF16</td><td>16 GB</td><td>800 GiB/s</td><td>256 <a class="cite" href="https://docs.cloud.google.com/tpu/docs/v5e" target="_blank" rel="noopener" title="Google Cloud: TPU v5e documentation">44</a></td></tr>
+<tr><td>TPU v5p</td><td>459 TFLOPS BF16</td><td>95 GiB</td><td>2,765 GB/s</td><td>8,960 <a class="cite" href="https://docs.cloud.google.com/tpu/docs/v5p" target="_blank" rel="noopener" title="Google Cloud: TPU v5p documentation">45</a></td></tr>
+<tr><td>Trillium (v6e)</td><td>918 TFLOPS BF16</td><td>32 GB</td><td>1,638 GB/s</td><td>256 <a class="cite" href="https://docs.cloud.google.com/tpu/docs/v6e" target="_blank" rel="noopener" title="Google Cloud: TPU v6e (Trillium) documentation">29</a></td></tr>
+<tr><td>Ironwood (TPU7x)</td><td>4,614 TFLOPS FP8; 2,307 BF16</td><td>192 GiB HBM</td><td>7,380 GB/s</td><td>9,216 <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a> <a class="cite" href="https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack" target="_blank" rel="noopener" title="Google Cloud Blog: Inside the Ironwood TPU codesigned AI stack">41</a></td></tr>
+<tr><td>TPU 8t</td><td>12.6 PFLOPS FP4</td><td>216 GB</td><td>6,528 GB/s</td><td>9,600 <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a> <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a></td></tr>
+<tr><td>TPU 8i</td><td>10.1 PFLOPS FP4</td><td>288 GB</td><td>8,601 GB/s</td><td>Up to 1,152 <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Pod</th><th>Chips</th><th>Compute</th><th>Shared memory</th></tr></thead><tbody>
+<tr><td>Ironwood superpod</td><td>9,216</td><td>42.5 exaflops FP8</td><td>1.77 PB <a class="cite" href="https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack" target="_blank" rel="noopener" title="Google Cloud Blog: Inside the Ironwood TPU codesigned AI stack">41</a></td></tr>
+<tr><td>TPU 8t superpod</td><td>9,600</td><td>121 exaflops</td><td>2 PB <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a></td></tr>
+</tbody></table></div>
+<p>Google says Ironwood has twice the performance per watt of Trillium <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener" title="Google (The Keyword): Ironwood: the first Google TPU for the age of inference (9 Apr 2025)">24</a> and TPU 8t and 8i up to twice that of Ironwood <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a>. Those are Google's own claims.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Compare like with like: TPU 8 figures are FP4, Ironwood's headline is FP8, and older chips are quoted in BF16, so each step up in the table partly reflects a smaller number format <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a> <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>. Ironwood's chips link at 1,200 GB/s each way and have 100 Gb/s each to the data-centre network <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>. TPU 8i has 384 MB of on-chip memory, three times the previous generation <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>9.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>Google publishes an hourly price per TPU chip.</b> These are Google Cloud's list prices in US dollars <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a>:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Chip</th><th>On demand</th><th>1-year commitment</th><th>3-year commitment</th><th>Region</th></tr></thead><tbody>
+<tr><td>Ironwood (TPU7x)</td><td>$12.00</td><td>$8.40</td><td>$5.40</td><td>Iowa <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td></tr>
+<tr><td>Trillium (v6e)</td><td>$2.70</td><td>$1.89</td><td>$1.22</td><td>South Carolina, Ohio <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td></tr>
+<tr><td>TPU v5p</td><td>$4.20</td><td>$2.94</td><td>$1.89</td><td>Ohio, South Carolina <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td></tr>
+<tr><td>TPU v5e</td><td>$1.20</td><td>$0.84</td><td>$0.54</td><td>Iowa and others <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td></tr>
+<tr><td>TPU 8t / TPU 8i</td><td colspan="4">Not published by the company <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a></td></tr>
+</tbody></table></div>
+<p class="note">All prices are per chip per hour. Commitments work out at 30% off for one year and 55% off for three years, by our arithmetic from Google's table.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Two cheaper ways to book: "Flex-start", where you wait for capacity, lists Ironwood at $6.00 an hour and Trillium at $1.35; "Calendar mode" bookings list Ironwood at $8.40 <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a>. Spot (interruptible) prices are dynamic and can change up to once every 30 days <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a>. Google does not publish a price for buying TPU hardware outright <a class="cite" href="https://www.datacenterdynamics.com/en/news/google-to-sell-tpus-to-a-select-group-of-customers-for-their-data-centers/" target="_blank" rel="noopener" title="DatacenterDynamics (press): Google to sell TPUs to a select group of customers for their data centers">46</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>For comparison, Ironwood's $12.00 on-demand rate sits close to what Microsoft Azure and Google Cloud list per NVIDIA H100 or H200 GPU (roughly $10.60 to $12.29 an hour; see our <a href="/ai-atlas/ai-chips/nvidia/">NVIDIA guide</a>), while Ironwood carries 192 GiB of memory per chip <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>. No TPU is offered in India's Google Cloud regions, so there is no rupee price <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="moat" aria-labelledby="h-moat">
+<h2 id="h-moat"><span>10.</span>The software lock-in</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Google's advantage is owning the whole stack: its own chip, its own network, its own data centres and its own AI models <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>. The software that runs on TPUs, JAX and the XLA compiler, comes from Google too <a class="cite" href="https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack" target="_blank" rel="noopener" title="Google Cloud Blog: Inside the Ironwood TPU codesigned AI stack">41</a>. TPU 8 supports JAX, PyTorch, vLLM and SGLang <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The long-standing weakness was PyTorch, the framework most AI developers use. Google addressed it in two steps: in October 2025 the popular vLLM serving tool got a TPU backend that handles JAX and PyTorch through one path <a class="cite" href="https://vllm-project.github.io/2025/10/16/vllm-tpu.html" target="_blank" rel="noopener" title="vLLM project blog: vLLM TPU: a new unified backend (16 Oct 2025)">47</a>, and in April 2026 Google announced TorchTPU, which runs PyTorch natively on TPUs <a class="cite" href="https://developers.googleblog.com/torchtpu-running-pytorch-natively-on-tpus-at-google-scale/" target="_blank" rel="noopener" title="Google Developers Blog: TorchTPU: running PyTorch natively on TPUs (7 Apr 2026)">42</a>. Pichai said on the July 2026 call that the software stack enables "workload portability across GPUs and TPUs" <a class="cite" href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/" target="_blank" rel="noopener" title="Google (The Keyword): CEO remarks, Alphabet Q2 2026 earnings (22 Jul 2026)">11</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Scale is the other moat. Google's "Virgo" network can link more than 134,000 TPU 8t chips in a single fabric <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a>, and up to a million chips in a single logical cluster <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>. Google claims TPU 8t delivers up to 2.7 times Ironwood's training price-performance <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="buyers" aria-labelledby="h-buyers">
+<h2 id="h-buyers"><span>11.</span>Who buys it and why</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>The biggest outside user is Anthropic. In October 2025 it agreed to use up to one million TPUs, with "well over a gigawatt" of capacity coming online in 2026, a deal worth "tens of billions of dollars" <a class="cite" href="https://anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services" target="_blank" rel="noopener" title="Anthropic: Expanding our use of Google Cloud TPUs and services (23 Oct 2025)">8</a>. Other named Ironwood customers include Lightricks and Essential AI <a class="cite" href="https://cloud.google.com/blog/products/compute/ironwood-tpus-and-new-axion-based-vms-for-your-ai-workloads/" target="_blank" rel="noopener" title="Google Cloud Blog: Ironwood TPUs and new Axion-based VMs (6 Nov 2025)">48</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ul>
+<li><b>Anthropic (April 2026):</b> "multiple gigawatts" more of next-generation TPU capacity from 2027, with Google and Broadcom, mostly in the US <a class="cite" href="https://www.anthropic.com/news/google-broadcom-partnership-compute" target="_blank" rel="noopener" title="Anthropic: Google and Broadcom partnership for compute (6 Apr 2026)">49</a>; Broadcom's filing puts it at about 3.5 gigawatts, contingent on Anthropic's commercial success <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm" target="_blank" rel="noopener" title="Broadcom: Form 8-K, long-term TPU agreement with Google (6 Apr 2026)">6</a>.</li>
+<li><b>Apple:</b> its 2024 paper said Apple trained its server model on 8,192 TPU v4 chips and its on-device model on 2,048 TPU v5p chips <a class="cite" href="https://www.tomshardware.com/tech-industry/artificial-intelligence/apple-skips-nvidias-gpus-for-its-ai-models-uses-thousands-of-google-tpus-instead" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press), on Apple&#x27;s paper arXiv 2407.21075: Apple uses thousands of Google TPUs for its AI models (Jul 2024)">50</a>.</li>
+<li><b>Safe Superintelligence:</b> using TPUs for research, announced April 2025 <a class="cite" href="https://www.datacenterdynamics.com/en/news/ai-startup-safe-superintelligence-to-use-googles-tpu-chips-for-research/" target="_blank" rel="noopener" title="DatacenterDynamics (press): Safe Superintelligence to use Google&#x27;s TPU chips (10 Apr 2025)">51</a>.</li>
+<li><b>OpenAI:</b> said in June 2025 it was "in early testing" with some TPUs but had no plans to deploy them at scale <a class="cite" href="https://finance.yahoo.com/news/openai-says-no-plan-googles-222056614.html" target="_blank" rel="noopener" title="Yahoo Finance / Reuters (press): OpenAI says no plan to use Google&#x27;s TPUs at scale (30 Jun 2025)">52</a>.</li>
+<li><b>Meta:</b> press reports in February 2026 of a multibillion-dollar deal to rent TPUs; neither company confirmed it <a class="cite" href="https://siliconangle.com/2026/02/26/google-meta-reportedly-strike-new-multibillion-dollar-ai-chip-deal/" target="_blank" rel="noopener" title="SiliconANGLE (press, citing The Information): Google and Meta reportedly strike multibillion-dollar AI chip deal (26 Feb 2026)">53</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Google now sells TPU systems, not just rental time. Pichai said in April 2026 that Google would "deliver TPUs to a select group of customers in their own data centers" <a class="cite" href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/" target="_blank" rel="noopener" title="Google (The Keyword): CEO remarks, Alphabet Q1 2026 earnings (29 Apr 2026)">7</a>; the first revenue from these sales came in the June 2026 quarter, with most expected in 2027 <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a>. Broadcom said it expects Anthropic to deploy 5 gigawatts of TPU 8i in 2027 and to become Broadcom's largest custom-chip customer that year <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-tops-q3-2026-estimates-as-ai-sales-surge-93CH-4886849" target="_blank" rel="noopener" title="Investing.com (press): Broadcom Q3 fiscal 2026 earnings call transcript">27</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>12.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Public facts buried in the filings and releases. Each links to the exact document.</p>
+<ol class="hidden-list">
+<li><b>Google's signed-but-unbilled cloud business nearly doubled in one quarter,</b> to $462 billion at 31 March 2026 <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/GOOG-10-Q-Q1-2026.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-Q, quarter ended 31 March 2026">54</a>, and reached $514 billion by June <a class="cite" href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/" target="_blank" rel="noopener" title="Google (The Keyword): CEO remarks, Alphabet Q2 2026 earnings (22 Jul 2026)">11</a>.</li>
+<li><b>The TPU deal is in Broadcom's filings, not Google's:</b> a long-term agreement to develop and supply Google's TPUs through up to 2031 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm" target="_blank" rel="noopener" title="Broadcom: Form 8-K, long-term TPU agreement with Google (6 Apr 2026)">6</a>.</li>
+<li><b>Alphabet has $232.7 billion of long-term purchase commitments</b> for infrastructure, energy and content <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/GOOG-10-Q-Q1-2026.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-Q, quarter ended 31 March 2026">54</a>.</li>
+<li><b>Capital spending guidance was raised twice in 2026,</b> from $175–185 billion in February, to $180–190 billion in April, to $195–205 billion in July <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf" target="_blank" rel="noopener" title="Alphabet Investor Relations: Alphabet fourth-quarter and fiscal year 2025 results (4 Feb 2026)">12</a> <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a>.</li>
+<li><b>Google delivered TPUs to customers' own data centres for the first time</b> in the June 2026 quarter <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ol class="hidden-list" start="6">
+<li><b>$75.6 billion of data centre leases have been signed but not started,</b> commencing between 2026 and 2031 <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/GOOG-10-Q-Q1-2026.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-Q, quarter ended 31 March 2026">54</a>.</li>
+<li><b>Few suppliers:</b> Alphabet says supply of "specialized AI chips, is limited to a small number of qualified suppliers" <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a>.</li>
+<li><b>Ironwood is not supported by TensorFlow</b>, Google's own older AI framework <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>.</li>
+<li><b>Broadcom's AI revenue was $16.7 billion in one quarter,</b> up 221% <a class="cite" href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noopener" title="Broadcom Investor Relations: Broadcom third-quarter fiscal 2026 results (2 Sep 2026)">55</a>.</li>
+<li><b>Electricity demand rose 37% in 2025,</b> and supply-chain emissions 25%, driven by AI hardware <a class="cite" href="https://blog.google/company-news/outreach-and-initiatives/sustainability/2026-environmental-report/" target="_blank" rel="noopener" title="Google (The Keyword): 2026 Environmental Report">56</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<ol class="hidden-list" start="11">
+<li><b>Water use reached 10.9 billion gallons in 2025,</b> up 34%, as reported from Google's environmental report <a class="cite" href="https://www.axios.com/2026/06/30/google-ai-boom-emissions-power-use" target="_blank" rel="noopener" title="Axios (press): Google&#x27;s AI boom drives emissions and power use (30 Jun 2026)">57</a>.</li>
+<li><b>Manufacturing is almost a quarter of Ironwood's lifetime carbon</b> (23%, on market-based accounting) <a class="cite" href="https://cloud.google.com/blog/topics/systems/ironwood-tpus-deliver-37x-carbon-efficiency-gains" target="_blank" rel="noopener" title="Google Cloud Blog: Ironwood TPUs deliver 3.7x carbon efficiency gains (6 Apr 2026)">36</a>.</li>
+<li><b>No TPUs in India:</b> none of Google's TPU generations is offered in its Mumbai or Delhi regions <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a>.</li>
+<li><b>Commitment discounts are uniform:</b> exactly 30% off for one year and 55% for three, across generations, by our arithmetic from Google's prices <a class="cite" href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU pricing">10</a>.</li>
+<li><b>The first TPU paper claimed 30 to 80 times better performance per watt</b> than the chips of its day <a class="cite" href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener" title="Jouppi et al. (Google), ISCA 2017: In-Datacenter Performance Analysis of a Tensor Processing Unit">2</a>.</li>
+</ol>
+</div>
+</section>
+<section class="chip-sec" id="weak" aria-labelledby="h-weak">
+<h2 id="h-weak"><span>13.</span>Weak spots</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Limits, in Google's own words and documents:</p>
+<ul>
+<li><b>Few suppliers</b> for specialised AI chips, some parts from a single source <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a>.</li>
+<li><b>Not enough capacity:</b> "demand is outpacing capacity" (July 2026) <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a>.</li>
+<li><b>Hard to get outside Google Cloud:</b> hardware sales go only to "a select group of customers" <a class="cite" href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/" target="_blank" rel="noopener" title="Google (The Keyword): CEO remarks, Alphabet Q1 2026 earnings (29 Apr 2026)">7</a>.</li>
+<li><b>Few regions:</b> Ironwood only in Iowa; no TPUs in India <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Google itself decides who gets TPUs first. On the July 2026 call Pichai said the first priority is allocating what Google needs "to compete at the frontier" <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a>. In February 2026 he said he expected Google to "go through the year in a supply constrained way" <a class="cite" href="https://fortune.com/2026/02/04/alphabet-google-ai-spending-supply-constraints/" target="_blank" rel="noopener" title="Fortune (press): Alphabet AI spending and supply constraints (4 Feb 2026)">58</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Dependence runs both ways: Broadcom names the loss of a custom-chip customer as a risk, and its top five customers made up about 40% of its revenue in fiscal 2025 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm" target="_blank" rel="noopener" title="Broadcom: Form 10-K, fiscal year 2025">31</a>. Google has not confirmed who makes its chips, so the foundry and memory risk cannot be assessed from its filings <a class="cite" href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener" title="Alphabet: Form 10-K, fiscal year 2025">4</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="india" aria-labelledby="h-india">
+<h2 id="h-india"><span>14.</span>India angle</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Google is building its first AI hub in India at Visakhapatnam, Andhra Pradesh: about $15 billion over 2026 to 2030, with a gigawatt-scale data centre campus, built with AdaniConneX and Airtel <a class="cite" href="https://blog.google/intl/en-in/company-news/our-first-ai-hub-in-india-powered-by-a-15-billion-investment/" target="_blank" rel="noopener" title="Google India (The Keyword): Our first AI hub in India, powered by a $15 billion investment (14 Oct 2025)">59</a> <a class="cite" href="https://www.airtel.in/press-release/10-2025/airtel-partners-with-google-to-establish-indias-first-mega-ai-hub-and-data-center-in-visakhapatnam/" target="_blank" rel="noopener" title="Bharti Airtel: Airtel partners with Google on India&#x27;s first mega AI hub in Visakhapatnam (Oct 2025)">60</a> <a class="cite" href="https://www.adani.com/newsroom/media-releases/adani-and-google-partner-to-build-indias-largest-data-centre-campus-in-visakhapatnam" target="_blank" rel="noopener" title="Adani Group: Adani and Google partner on Visakhapatnam data centre campus (Oct 2025)">61</a>. Ground was broken on 28 April 2026 at Tarluvada <a class="cite" href="https://www.googlecloudpresscorner.com/2026-04-28-Google-Breaks-Ground-on-India-AI-Hub,-Launching-a-National-Industrial-Ecosystem-Alongside-Indias-Digital-Infrastructure-Milestone" target="_blank" rel="noopener" title="Google Cloud Press Corner: Google breaks ground on India AI hub (28 Apr 2026)">62</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The Visakhapatnam site is planned at nearly 1 gigawatt across three campuses, built by AdaniConneX and Nxtra by Airtel <a class="cite" href="https://www.googlecloudpresscorner.com/2026-04-28-Google-Breaks-Ground-on-India-AI-Hub,-Launching-a-National-Industrial-Ecosystem-Alongside-Indias-Digital-Infrastructure-Milestone" target="_blank" rel="noopener" title="Google Cloud Press Corner: Google breaks ground on India AI hub (28 Apr 2026)">62</a>. Google Cloud already has two Indian regions, Mumbai and Delhi NCR (opened July 2021) <a class="cite" href="https://cloud.google.com/blog/products/infrastructure/google-cloud-region-in-delhi-ncr-is-now-open" target="_blank" rel="noopener" title="Google Cloud Blog: Google Cloud region in Delhi NCR is now open (15 Jul 2021)">63</a>, but offers no TPUs in either <a class="cite" href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener" title="Google Cloud: Cloud TPU regions and zones">37</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>No official Google release we found says TPUs will be installed at Visakhapatnam <a class="cite" href="https://www.googlecloudpresscorner.com/2026-04-28-Google-Breaks-Ground-on-India-AI-Hub,-Launching-a-National-Industrial-Ecosystem-Alongside-Indias-Digital-Infrastructure-Milestone" target="_blank" rel="noopener" title="Google Cloud Press Corner: Google breaks ground on India AI hub (28 Apr 2026)">62</a>. The IndiaAI Mission said in March 2026 it had onboarded more than 38,000 GPUs; its release does not mention Google or TPUs <a class="cite" href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245069&amp;reg=3&amp;lang=1" target="_blank" rel="noopener" title="Press Information Bureau, Government of India: IndiaAI Mission compute update (25 Mar 2026)">64</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="next" aria-labelledby="h-next">
+<h2 id="h-next"><span>15.</span>What’s next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Only what Google and its partners have announced:</p>
+<ul>
+<li><b>TPU 8t and TPU 8i:</b> generally available "later in 2026" <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener" title="Google (The Keyword): Eighth-generation TPUs for the agentic era (22 Apr 2026)">5</a>.</li>
+<li><b>TPU 8i shipping:</b> Broadcom began production shipments in its quarter to August 2026 <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-tops-q3-2026-estimates-as-ai-sales-surge-93CH-4886849" target="_blank" rel="noopener" title="Investing.com (press): Broadcom Q3 fiscal 2026 earnings call transcript">27</a>.</li>
+<li><b>More TPUs outside Google Cloud:</b> hardware deliveries to customers and the Blackstone TPU cloud, 500 MW in 2027 <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a> <a class="cite" href="https://www.blackstone.com/news/press/blackstone-announces-joint-venture-with-google-to-create-new-tpu-cloud/" target="_blank" rel="noopener" title="Blackstone: Blackstone announces joint venture with Google to create new TPU cloud (18 May 2026)">39</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Broadcom plans to deliver "multi-tens of billions of dollars of TPUs annually over the next several years" <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-tops-q3-2026-estimates-as-ai-sales-surge-93CH-4886849" target="_blank" rel="noopener" title="Investing.com (press): Broadcom Q3 fiscal 2026 earnings call transcript">27</a>, and Alphabet expects its capital spending "to increase significantly in 2027" <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener" title="Investing.com (press): Alphabet Q2 2026 earnings call transcript">13</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The test is supply. Anthropic's roadmap, as described by Broadcom, runs from 1 gigawatt of Ironwood in 2026 to 5 gigawatts of TPU 8i in 2027 and 10 more in 2028 <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-tops-q3-2026-estimates-as-ai-sales-surge-93CH-4886849" target="_blank" rel="noopener" title="Investing.com (press): Broadcom Q3 fiscal 2026 earnings call transcript">27</a>; whether TSMC, Intel or others make those chips has not been confirmed by Google <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/google-splits-its-tpu-into-two-chips-for-the-first-time-with-training-and-inference-variants" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): Google splits its TPU into two chips for the first time (27 Apr 2026)">32</a> <a class="cite" href="https://www.techtimes.com/articles/318143/20260610/chip-supply-shifts-tsmc-googles-reported-intel-tpu-order-lifts-foundry-doubts-remain.htm" target="_blank" rel="noopener" title="Tech Times (press): Google&#x27;s reported Intel TPU order (10 Jun 2026)">34</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>16.</span>Sources</h2>
+<p class="note">64 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator; <b>Press</b> = news coverage, used only where no official source exists and labelled in the text.</p>
+<ol class="src-list">
+<li id="src-1"><b>Google Cloud</b>: <a href="https://docs.cloud.google.com/tpu/docs/system-architecture-tpu-vm" target="_blank" rel="noopener">TPU system architecture</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>Jouppi et al. (Google), ISCA 2017</b>: <a href="https://arxiv.org/abs/1704.04760" target="_blank" rel="noopener">In-Datacenter Performance Analysis of a Tensor Processing Unit</a><span class="st st-paper">Paper</span></li>
+<li id="src-3"><b>Google Cloud</b>: <a href="https://cloud.google.com/tpu" target="_blank" rel="noopener">Cloud TPU product page</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>Alphabet</b>: <a href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/GOOG-10-K-2025.pdf" target="_blank" rel="noopener">Form 10-K, fiscal year 2025</a><span class="st st-filing">Filing</span></li>
+<li id="src-5"><b>Google (The Keyword)</b>: <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/eighth-generation-tpu-agentic-era/" target="_blank" rel="noopener">Eighth-generation TPUs for the agentic era (22 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>Broadcom</b>: <a href="https://www.sec.gov/Archives/edgar/data/1730168/000119312526144028/d87999d8k.htm" target="_blank" rel="noopener">Form 8-K, long-term TPU agreement with Google (6 Apr 2026)</a><span class="st st-filing">Filing</span></li>
+<li id="src-7"><b>Google (The Keyword)</b>: <a href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q1-2026/" target="_blank" rel="noopener">CEO remarks, Alphabet Q1 2026 earnings (29 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>Anthropic</b>: <a href="https://anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services" target="_blank" rel="noopener">Expanding our use of Google Cloud TPUs and services (23 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>Alphabet Investor Relations</b>: <a href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q2/2026q2-alphabet-earnings-release.pdf" target="_blank" rel="noopener">Alphabet second-quarter 2026 results (22 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>Google Cloud</b>: <a href="https://cloud.google.com/tpu/pricing" target="_blank" rel="noopener">Cloud TPU pricing</a><span class="st st-official">Official</span></li>
+<li id="src-11"><b>Google (The Keyword)</b>: <a href="https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/" target="_blank" rel="noopener">CEO remarks, Alphabet Q2 2026 earnings (22 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>Alphabet Investor Relations</b>: <a href="https://s206.q4cdn.com/479360582/files/doc_financials/2025/q4/2025q4-alphabet-earnings-release.pdf" target="_blank" rel="noopener">Alphabet fourth-quarter and fiscal year 2025 results (4 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>Investing.com (press)</b>: <a href="https://www.investing.com/news/transcripts/earnings-call-transcript-alphabet-beats-q2-2026-estimates-shares-fall-on-capex-surge-93CH-4807140" target="_blank" rel="noopener">Alphabet Q2 2026 earnings call transcript</a><span class="st st-press">Press</span></li>
+<li id="src-14"><b>Alphabet</b>: <a href="https://www.sec.gov/Archives/edgar/data/1288776/000165204416000012/goog10-k2015.htm" target="_blank" rel="noopener">Form 10-K, fiscal year 2015 (Alphabet becomes successor to Google)</a><span class="st st-filing">Filing</span></li>
+<li id="src-15"><b>Google Cloud Press Corner</b>: <a href="https://www.googlecloudpresscorner.com/thomas-kurian" target="_blank" rel="noopener">Thomas Kurian, CEO, Google Cloud</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>Alphabet (SEC exhibit)</b>: <a href="https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/googexhibit991q22026.htm" target="_blank" rel="noopener">Second-quarter 2026 results, Form 8-K exhibit 99.1</a><span class="st st-filing">Filing</span></li>
+<li id="src-17"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/ai-machine-learning/google-supercharges-machine-learning-tasks-with-custom-chip" target="_blank" rel="noopener">Google supercharges machine learning tasks with TPU custom chip (19 May 2016)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>Google (The Keyword)</b>: <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/google-cloud-offer-tpus-machine-learning/" target="_blank" rel="noopener">Google Cloud offers TPUs for machine learning (17 May 2017)</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>HPCwire (press)</b>: <a href="https://www.hpcwire.com/2018/05/09/google-o-2018-ai-everywhere-tpu-3-0-delivers-100-petaflops-requires-liquid-cooling/" target="_blank" rel="noopener">Google I/O 2018: TPU 3.0 delivers 100 petaflops, requires liquid cooling</a><span class="st st-press">Press</span></li>
+<li id="src-20"><b>Google (The Keyword)</b>: <a href="https://blog.google/innovation-and-ai/technology/developers-tools/io21-helpful-google/" target="_blank" rel="noopener">Google I/O 2021 announcements (18 May 2021)</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/compute/announcing-cloud-tpu-v5e-and-a3-gpus-in-ga/" target="_blank" rel="noopener">Announcing Cloud TPU v5e (29 Aug 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/ai-machine-learning/introducing-cloud-tpu-v5p-and-ai-hypercomputer" target="_blank" rel="noopener">Introducing Cloud TPU v5p and AI Hypercomputer (6 Dec 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/compute/introducing-trillium-6th-gen-tpus" target="_blank" rel="noopener">Introducing Trillium, sixth-generation TPUs (15 May 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>Google (The Keyword)</b>: <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener">Ironwood: the first Google TPU for the age of inference (9 Apr 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>Jouppi et al. (Google), ISCA 2023</b>: <a href="https://arxiv.org/abs/2304.01433" target="_blank" rel="noopener">TPU v4: An Optically Reconfigurable Supercomputer for Machine Learning</a><span class="st st-paper">Paper</span></li>
+<li id="src-26"><b>Google Cloud</b>: <a href="https://docs.cloud.google.com/tpu/docs/release-notes" target="_blank" rel="noopener">Cloud TPU release notes</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>Investing.com (press)</b>: <a href="https://www.investing.com/news/transcripts/earnings-call-transcript-broadcom-tops-q3-2026-estimates-as-ai-sales-surge-93CH-4886849" target="_blank" rel="noopener">Broadcom Q3 fiscal 2026 earnings call transcript</a><span class="st st-press">Press</span></li>
+<li id="src-28"><b>Google Cloud</b>: <a href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener">TPU7x (Ironwood) documentation</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>Google Cloud</b>: <a href="https://docs.cloud.google.com/tpu/docs/v6e" target="_blank" rel="noopener">TPU v6e (Trillium) documentation</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener">TPU 8t and TPU 8i technical deep dive</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>Broadcom</b>: <a href="https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm" target="_blank" rel="noopener">Form 10-K, fiscal year 2025</a><span class="st st-filing">Filing</span></li>
+<li id="src-32"><b>Tom&#x27;s Hardware (press)</b>: <a href="https://www.tomshardware.com/tech-industry/semiconductors/google-splits-its-tpu-into-two-chips-for-the-first-time-with-training-and-inference-variants" target="_blank" rel="noopener">Google splits its TPU into two chips for the first time (27 Apr 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-33"><b>TrendForce (press)</b>: <a href="https://www.trendforce.com/news/2026/08/20/news-marvell-amd-reportedly-shake-up-google-tpu-race-putting-broadcom-mediatek-under-pressure/" target="_blank" rel="noopener">Marvell, AMD reportedly shake up Google TPU race (20 Aug 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-34"><b>Tech Times (press)</b>: <a href="https://www.techtimes.com/articles/318143/20260610/chip-supply-shifts-tsmc-googles-reported-intel-tpu-order-lifts-foundry-doubts-remain.htm" target="_blank" rel="noopener">Google&#x27;s reported Intel TPU order (10 Jun 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-35"><b>EE Times (press)</b>: <a href="https://www.eetimes.com/googles-marvell-deal-shows-custom-silicon-spreading-beyond-the-tpu/" target="_blank" rel="noopener">Google&#x27;s Marvell deal shows custom silicon spreading beyond the TPU (28 Aug 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-36"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/topics/systems/ironwood-tpus-deliver-37x-carbon-efficiency-gains" target="_blank" rel="noopener">Ironwood TPUs deliver 3.7x carbon efficiency gains (6 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-37"><b>Google Cloud</b>: <a href="https://docs.cloud.google.com/tpu/docs/regions-zones" target="_blank" rel="noopener">Cloud TPU regions and zones</a><span class="st st-official">Official</span></li>
+<li id="src-38"><b>Google Data Centers</b>: <a href="https://datacenters.google/locations/council-bluffs-iowa/" target="_blank" rel="noopener">Council Bluffs, Iowa</a><span class="st st-official">Official</span></li>
+<li id="src-39"><b>Blackstone</b>: <a href="https://www.blackstone.com/news/press/blackstone-announces-joint-venture-with-google-to-create-new-tpu-cloud/" target="_blank" rel="noopener">Blackstone announces joint venture with Google to create new TPU cloud (18 May 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-40"><b>Google Data Centers</b>: <a href="https://datacenters.google/operating-sustainably/" target="_blank" rel="noopener">Operating sustainably (fleet PUE)</a><span class="st st-official">Official</span></li>
+<li id="src-41"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/compute/inside-the-ironwood-tpu-codesigned-ai-stack" target="_blank" rel="noopener">Inside the Ironwood TPU codesigned AI stack</a><span class="st st-official">Official</span></li>
+<li id="src-42"><b>Google Developers Blog</b>: <a href="https://developers.googleblog.com/torchtpu-running-pytorch-natively-on-tpus-at-google-scale/" target="_blank" rel="noopener">TorchTPU: running PyTorch natively on TPUs (7 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-43"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/compute/ai-infrastructure-at-next26" target="_blank" rel="noopener">AI infrastructure at Next &#x27;26 (22 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-44"><b>Google Cloud</b>: <a href="https://docs.cloud.google.com/tpu/docs/v5e" target="_blank" rel="noopener">TPU v5e documentation</a><span class="st st-official">Official</span></li>
+<li id="src-45"><b>Google Cloud</b>: <a href="https://docs.cloud.google.com/tpu/docs/v5p" target="_blank" rel="noopener">TPU v5p documentation</a><span class="st st-official">Official</span></li>
+<li id="src-46"><b>DatacenterDynamics (press)</b>: <a href="https://www.datacenterdynamics.com/en/news/google-to-sell-tpus-to-a-select-group-of-customers-for-their-data-centers/" target="_blank" rel="noopener">Google to sell TPUs to a select group of customers for their data centers</a><span class="st st-press">Press</span></li>
+<li id="src-47"><b>vLLM project blog</b>: <a href="https://vllm-project.github.io/2025/10/16/vllm-tpu.html" target="_blank" rel="noopener">vLLM TPU: a new unified backend (16 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-48"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/compute/ironwood-tpus-and-new-axion-based-vms-for-your-ai-workloads/" target="_blank" rel="noopener">Ironwood TPUs and new Axion-based VMs (6 Nov 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-49"><b>Anthropic</b>: <a href="https://www.anthropic.com/news/google-broadcom-partnership-compute" target="_blank" rel="noopener">Google and Broadcom partnership for compute (6 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-50"><b>Tom&#x27;s Hardware (press), on Apple&#x27;s paper arXiv 2407.21075</b>: <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/apple-skips-nvidias-gpus-for-its-ai-models-uses-thousands-of-google-tpus-instead" target="_blank" rel="noopener">Apple uses thousands of Google TPUs for its AI models (Jul 2024)</a><span class="st st-press">Press</span></li>
+<li id="src-51"><b>DatacenterDynamics (press)</b>: <a href="https://www.datacenterdynamics.com/en/news/ai-startup-safe-superintelligence-to-use-googles-tpu-chips-for-research/" target="_blank" rel="noopener">Safe Superintelligence to use Google&#x27;s TPU chips (10 Apr 2025)</a><span class="st st-press">Press</span></li>
+<li id="src-52"><b>Yahoo Finance / Reuters (press)</b>: <a href="https://finance.yahoo.com/news/openai-says-no-plan-googles-222056614.html" target="_blank" rel="noopener">OpenAI says no plan to use Google&#x27;s TPUs at scale (30 Jun 2025)</a><span class="st st-press">Press</span></li>
+<li id="src-53"><b>SiliconANGLE (press, citing The Information)</b>: <a href="https://siliconangle.com/2026/02/26/google-meta-reportedly-strike-new-multibillion-dollar-ai-chip-deal/" target="_blank" rel="noopener">Google and Meta reportedly strike multibillion-dollar AI chip deal (26 Feb 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-54"><b>Alphabet</b>: <a href="https://s206.q4cdn.com/479360582/files/doc_financials/2026/q1/GOOG-10-Q-Q1-2026.pdf" target="_blank" rel="noopener">Form 10-Q, quarter ended 31 March 2026</a><span class="st st-filing">Filing</span></li>
+<li id="src-55"><b>Broadcom Investor Relations</b>: <a href="https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announces-third-quarter-fiscal-year-2026-financial" target="_blank" rel="noopener">Broadcom third-quarter fiscal 2026 results (2 Sep 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-56"><b>Google (The Keyword)</b>: <a href="https://blog.google/company-news/outreach-and-initiatives/sustainability/2026-environmental-report/" target="_blank" rel="noopener">2026 Environmental Report</a><span class="st st-official">Official</span></li>
+<li id="src-57"><b>Axios (press)</b>: <a href="https://www.axios.com/2026/06/30/google-ai-boom-emissions-power-use" target="_blank" rel="noopener">Google&#x27;s AI boom drives emissions and power use (30 Jun 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-58"><b>Fortune (press)</b>: <a href="https://fortune.com/2026/02/04/alphabet-google-ai-spending-supply-constraints/" target="_blank" rel="noopener">Alphabet AI spending and supply constraints (4 Feb 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-59"><b>Google India (The Keyword)</b>: <a href="https://blog.google/intl/en-in/company-news/our-first-ai-hub-in-india-powered-by-a-15-billion-investment/" target="_blank" rel="noopener">Our first AI hub in India, powered by a $15 billion investment (14 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-60"><b>Bharti Airtel</b>: <a href="https://www.airtel.in/press-release/10-2025/airtel-partners-with-google-to-establish-indias-first-mega-ai-hub-and-data-center-in-visakhapatnam/" target="_blank" rel="noopener">Airtel partners with Google on India&#x27;s first mega AI hub in Visakhapatnam (Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-61"><b>Adani Group</b>: <a href="https://www.adani.com/newsroom/media-releases/adani-and-google-partner-to-build-indias-largest-data-centre-campus-in-visakhapatnam" target="_blank" rel="noopener">Adani and Google partner on Visakhapatnam data centre campus (Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-62"><b>Google Cloud Press Corner</b>: <a href="https://www.googlecloudpresscorner.com/2026-04-28-Google-Breaks-Ground-on-India-AI-Hub,-Launching-a-National-Industrial-Ecosystem-Alongside-Indias-Digital-Infrastructure-Milestone" target="_blank" rel="noopener">Google breaks ground on India AI hub (28 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-63"><b>Google Cloud Blog</b>: <a href="https://cloud.google.com/blog/products/infrastructure/google-cloud-region-in-delhi-ncr-is-now-open" target="_blank" rel="noopener">Google Cloud region in Delhi NCR is now open (15 Jul 2021)</a><span class="st st-official">Official</span></li>
+<li id="src-64"><b>Press Information Bureau, Government of India</b>: <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2245069&amp;reg=3&amp;lang=1" target="_blank" rel="noopener">IndiaAI Mission compute update (25 Mar 2026)</a><span class="st st-government">Government</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#company">2. Company card</a><a href="#story">3. The story</a><a href="#lineup">4. The lineup</a><a href="#made">5. How it’s made</a><a href="#where">6. Where it’s made: factories and addresses</a><a href="#works">7. How it works</a><a href="#specs">8. Specs explained</a><a href="#pricing">9. Official pricing</a><a href="#moat">10. The software lock-in</a><a href="#buyers">11. Who buys it and why</a><a href="#hidden">12. Hidden in plain sight</a><a href="#weak">13. Weak spots</a><a href="#india">14. India angle</a><a href="#next">15. What’s next</a><a href="#sources">16. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Headquarters</span><span style="color:var(--fg);font-weight:500;text-align:right">Mountain View, California</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Founded</span><span style="color:var(--fg);font-weight:500;text-align:right">1998 (Google)</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>CEO</span><span style="color:var(--fg);font-weight:500;text-align:right">Sundar Pichai</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Makes its own chips?</span><span style="color:var(--fg);font-weight:500;text-align:right">Designs them; partners build them</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Main chip partner</span><span style="color:var(--fg);font-weight:500;text-align:right">Broadcom</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Latest quarter Google Cloud revenue</span><span style="color:var(--fg);font-weight:500;text-align:right">$24.8 billion</span></div></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip brands</a><a href="/ai-atlas/ai-chips/amazon-trainium/" class="sidebar-link">Amazon Trainium</a><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD</a><a href="/ai-atlas/ai-chips/apple/" class="sidebar-link">Apple</a><a href="/ai-atlas/ai-chips/cerebras/" class="sidebar-link">Cerebras</a><a href="/ai-atlas/ai-chips/groq/" class="sidebar-link">Groq</a><a href="/ai-atlas/ai-chips/huawei-ascend/" class="sidebar-link">Huawei Ascend</a><a href="/ai-atlas/ai-chips/intel/" class="sidebar-link">Intel</a><a href="/ai-atlas/ai-chips/meta-mtia/" class="sidebar-link">Meta MTIA</a><a href="/ai-atlas/ai-chips/microsoft-maia/" class="sidebar-link">Microsoft Maia</a><a href="/ai-atlas/ai-chips/nvidia/" class="sidebar-link">NVIDIA</a><a href="/ai-atlas/ai-chips/ai-memory-hbm/" class="sidebar-link">AI memory (HBM) and why it is scarce</a><a href="/ai-atlas/ai-chips/export-rules/" class="sidebar-link">Export rules and the US–China chip contest</a><a href="/ai-atlas/ai-chips/how-a-chip-is-made/" class="sidebar-link">How a chip is made: sand to server</a><a href="/ai-atlas/ai-chips/how-ai-chips-work/" class="sidebar-link">How AI chips work</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Google%20TPU%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgoogle-tpu%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Google%20TPU%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgoogle-tpu%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Google%20TPU%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgoogle-tpu%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Google%20TPU%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgoogle-tpu%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Google%20TPU%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fgoogle-tpu%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

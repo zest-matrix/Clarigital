@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cerebras AI Chips: The Complete Guide | Clarigital</title>
+<meta name="description" content="Cerebras&#x27;s wafer-sized AI chips: WSE-3, CS-3 and CS-4, how they work, who makes them, cloud prices, the OpenAI deal and what the IPO filings reveal.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/cerebras/">
+<meta property="og:title" content="Cerebras AI Chips: The Complete Guide">
+<meta property="og:description" content="Cerebras&#x27;s wafer-sized AI chips: WSE-3, CS-3 and CS-4, how they work, who makes them, cloud prices, the OpenAI deal and what the IPO filings reveal.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/cerebras/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cerebras: The Complete Guide", "description": "Cerebras's wafer-sized AI chips: WSE-3, CS-3 and CS-4, how they work, who makes them, cloud prices, the OpenAI deal and what the IPO filings reveal.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/cerebras/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/cerebras/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "about": {"@type": "Organization", "name": "Cerebras Systems Inc.", "url": "https://www.cerebras.ai", "tickerSymbol": "NASDAQ: CBRS", "address": {"@type": "PostalAddress", "streetAddress": "1237 E. Arques Avenue", "addressLocality": "Sunnyvale", "addressRegion": "CA", "postalCode": "94085", "addressCountry": "US"}}, "citation": ["https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine", "https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed", "https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions", "https://www.cerebras.ai/inference", "https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples", "https://www.cerebras.ai/blog/openai-partners-with-cerebras-to-bring-high-speed-inference-to-the-mainstream", "https://investors.cerebras.ai/node/7126/pdf", "https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering", "https://www.cerebras.ai/company", "https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm", "https://techstartups.com/2025/12/19/ai-chipmaker-cerebras-revives-ipo-plans-after-1-1b-raise-and-cfius-clearance/", "https://www.theregister.com/software/2025/03/31/cerebras-systems-clears-hurdle-on-its-path-to-ipo/1208940", "https://finance.yahoo.com/markets/article/cerebras-stock-slides-after-near-70-surge-in-biggest-ipo-of-2026-130757084.html", "https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown", "https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine", "https://www.cerebras.ai/blog/introducing-condor-galaxy-1-a-4-exaflop-supercomputer-for-generative-ai", "https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference", "https://www.cerebras.ai/press-release/meta-collaborates-with-cerebras-to-drive-fast-inference-for-developers-in-new-llama-api", "https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s", "https://www.cerebras.ai/press-release/series-g", "https://www.cerebras.ai/press-release/awscollaboration", "https://www.cerebras.ai/press-release/cerebras-systems-raises-usd1-billion-series-h", "https://www.cerebras.ai/blog/how-cerebras-serves-gpt-5-6-sol-at-up-to-750-tokens-per-second", "https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared", "https://www.cerebras.ai/blog/introducing-cerebras-code", "https://www.cerebras.ai/blog/cerebras-cs3", "https://www.cerebras.ai/system", "https://wccftech.com/cerebras-cs-4-30x-uplift-ai-2026-next-gen-rack-solutions-cs-5-10k-tps-2027-cs-6-3d-wafer-scale-sram/", "https://www.cerebras.ai/press-release/cerebras-systems-accelerates-global-growth-with-new-india-office", "https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem", "https://www.cerebras.ai/press-release/cerebras-g42-announce-condor-galaxy-3", "https://investors.cerebras.ai/news-releases/news-release-details/cerebras-and-compute-nordic-finland-announce-new-165-mw-ai-data", "https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-accelerates-european-expansion-200mw-ai-compute", "https://www.cerebras.ai/chip", "https://inference-docs.cerebras.ai/models/openai-oss", "https://artificialanalysis.ai/providers/cerebras", "https://www.stocktitan.net/sec-filings/CBRS/10-q-cerebras-systems-inc-quarterly-earnings-report-a8d2a2485019.html", "https://www.sec.gov/Archives/edgar/data/2021728/000162828026025762/cerebras-sx1april2026.htm", "https://www.eetimes.com/cerebras-ipo-paperwork-sheds-light-on-relationship-with-g42/", "https://inference-docs.cerebras.ai/models/overview", "https://www.mediaoffice.abudhabi/en/technology/g42-mohamed-bin-zayed-university-of-artificial-intelligence-and-cerebras-partner-with-centre-for-development-of-advanced-computing-to-establish-ai-supercomputer-in-india/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "Cerebras", "item": "https://www.clarigital.com/ai-atlas/ai-chips/cerebras/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>Cerebras</span></nav>
+    <span class="label-tag">AI Chips · Brand guide</span>
+    <h1>Cerebras: The Complete Guide</h1>
+    <p class="hero-lead">Cerebras makes the biggest chip in the world: a whole silicon wafer turned into one AI processor. What it is, why it is so fast at answering questions, who builds it, what it costs to use, the OpenAI deal, and the facts buried in its stock-market filings. Three reading levels, every number sourced.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Cerebras</span>
+      <span class="meta-tag mt-gray">16 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">41 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Every brand in our AI Chips section uses the same 16 sections in the same order. Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where a company has not published something, we say so rather than estimate.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Most chips are cut out of a round silicon wafer, dozens at a time. Cerebras keeps the whole wafer as one giant chip, the Wafer-Scale Engine <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>. Its current chip, WSE-3, has 4 trillion transistors and 900,000 AI cores <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>. Because the memory sits on the chip itself, it can answer AI questions very quickly <a class="cite" href="https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Cerebras Inference: AI at instant speed (Aug 2024)">2</a>.</p>
+<div class="fact-grid">
+<div><b>What it is</b>A single AI processor made from a whole silicon wafer <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></div>
+<div><b>Latest system</b>CS-4, with three WSE-3 Turbo wafers, shipping from Q3 2026 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a></div>
+<div><b>Who builds it</b>Cerebras designs; TSMC makes the wafers <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></div>
+<div><b>Can you use one?</b>Yes, through Cerebras's own cloud; systems are also sold to large customers <a class="cite" href="https://www.cerebras.ai/inference" target="_blank" rel="noopener" title="Cerebras: Inference product page and plans">4</a> <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a></div>
+</div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Cerebras started by selling whole systems, mainly to G42 of Abu Dhabi, and now earns more from renting its chips as a cloud service: cloud and services revenue grew 281% to $126.0 million in the June 2026 quarter <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>. In January 2026 OpenAI signed for 750 megawatts of Cerebras inference compute in a deal Cerebras values at more than $20 billion <a class="cite" href="https://www.cerebras.ai/blog/openai-partners-with-cerebras-to-bring-high-speed-inference-to-the-mainstream" target="_blank" rel="noopener" title="Cerebras Blog: OpenAI partners with Cerebras to bring high-speed inference to the mainstream (14 Jan 2026)">6</a> <a class="cite" href="https://investors.cerebras.ai/node/7126/pdf" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q1 2026 results (23 Jun 2026, PDF)">7</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Cerebras listed on Nasdaq in May 2026 at $185 a share <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering" target="_blank" rel="noopener" title="Cerebras: Cerebras Systems announces pricing of initial public offering (13 May 2026)">8</a>. Its June 2026 quarter: revenue $180.1 million, up 74%; GAAP gross margin 14%; GAAP net loss $450.5 million <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>. It reports $25.4 billion of contracted future revenue (remaining performance obligations) and $8.6 billion of cash <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="company" aria-labelledby="h-company">
+<h2 id="h-company"><span>2.</span>Company card</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras was founded by five engineers led by Andrew Feldman, who is chief executive <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a>. Its website says 2015; its stock-market filing says it was incorporated in April 2016 <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</p>
+<div class="pf-scroll"><table class="spec"><tbody>
+<tr><th>Legal name</th><td>Cerebras Systems Inc. (Delaware) <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a></td></tr>
+<tr><th>Headquarters</th><td>1237 E. Arques Avenue, Sunnyvale, California 94085, USA <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a> (<a href="https://www.openstreetmap.org/search?query=1237%20E%20Arques%20Avenue%20Sunnyvale" target="_blank" rel="noopener">map</a>)</td></tr>
+<tr><th>Founders</th><td>Andrew Feldman, Gary Lauterbach, Michael James, Sean Lie, Jean-Philippe Fricker <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a></td></tr>
+<tr><th>Chief Executive</th><td>Andrew Feldman <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a></td></tr>
+<tr><th>Chief Technology Officer</th><td>Sean Lie <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a></td></tr>
+<tr><th>Chief Financial Officer</th><td>Bob Komin <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a></td></tr>
+<tr><th>Stock</th><td>CBRS, Nasdaq Global Select Market <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering" target="_blank" rel="noopener" title="Cerebras: Cerebras Systems announces pricing of initial public offering (13 May 2026)">8</a></td></tr>
+<tr><th>Investor site</th><td><a href="https://investors.cerebras.ai" target="_blank" rel="noopener">investors.cerebras.ai</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The listing took two tries. Cerebras first filed in 2024 but withdrew in October 2025, days after raising $1.1 billion, press reports say <a class="cite" href="https://techstartups.com/2025/12/19/ai-chipmaker-cerebras-revives-ipo-plans-after-1-1b-raise-and-cfius-clearance/" target="_blank" rel="noopener" title="Tech Startups (press): Cerebras revives IPO plans after $1.1B raise and CFIUS clearance (19 Dec 2025)">11</a>. A US security review (CFIUS) of G42's investment ended in March 2025 with G42 limited to non-voting shares, according to press reports <a class="cite" href="https://www.theregister.com/software/2025/03/31/cerebras-systems-clears-hurdle-on-its-path-to-ipo/1208940" target="_blank" rel="noopener" title="The Register (press): Cerebras clears CFIUS hurdle on its path to IPO (31 Mar 2025)">12</a>. Cerebras refiled and priced its shares on 13 May 2026, above its planned $150 to $160 range <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering" target="_blank" rel="noopener" title="Cerebras: Cerebras Systems announces pricing of initial public offering (13 May 2026)">8</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The IPO sold 30 million shares at $185, raising about $5.55 billion before the underwriters' option <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering" target="_blank" rel="noopener" title="Cerebras: Cerebras Systems announces pricing of initial public offering (13 May 2026)">8</a>. The shares closed their first day at $311.07, up about 68%, press reports say <a class="cite" href="https://finance.yahoo.com/markets/article/cerebras-stock-slides-after-near-70-surge-in-biggest-ipo-of-2026-130757084.html" target="_blank" rel="noopener" title="Yahoo Finance (press): Cerebras stock slides after near-70% surge in biggest IPO of 2026">13</a>. After the IPO, holders of Class B shares control about 99.2% of the votes <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>. An analyst reading of the filing puts staff at 708 at the end of 2025 <a class="cite" href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener" title="Mostly Metrics (analyst): Cerebras IPO: S-1 breakdown">14</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>3.</span>The story</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul class="timeline">
+<li><b>2016</b> Cerebras incorporated <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</li>
+<li><b>2021</b> WSE-2: 2.6 trillion transistors, 850,000 cores <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Second-generation Wafer Scale Engine, 2.6 trillion transistors (Apr 2021)">15</a>.</li>
+<li><b>2023</b> Condor Galaxy 1 supercomputer built with G42 <a class="cite" href="https://www.cerebras.ai/blog/introducing-condor-galaxy-1-a-4-exaflop-supercomputer-for-generative-ai" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Condor Galaxy 1: a 4 exaFLOP supercomputer (20 Jul 2023)">16</a>.</li>
+<li><b>2024</b> WSE-3 (March); Cerebras Inference cloud launches (August) <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world&#x27;s fastest AI inference (27 Aug 2024)">17</a>.</li>
+<li><b>2025</b> Meta's Llama API; six new data centres; $1.1 billion Series G <a class="cite" href="https://www.cerebras.ai/press-release/meta-collaborates-with-cerebras-to-drive-fast-inference-for-developers-in-new-llama-api" target="_blank" rel="noopener" title="Cerebras: Meta collaborates with Cerebras for fast inference in the new Llama API (29 Apr 2025)">18</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener" title="Cerebras: Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)">19</a> <a class="cite" href="https://www.cerebras.ai/press-release/series-g" target="_blank" rel="noopener" title="Cerebras: Cerebras raises $1.1 billion Series G (30 Sep 2025)">20</a>.</li>
+<li><b>2026</b> OpenAI deal, AWS deal, Nasdaq listing, CS-4 <a class="cite" href="https://www.cerebras.ai/blog/openai-partners-with-cerebras-to-bring-high-speed-inference-to-the-mainstream" target="_blank" rel="noopener" title="Cerebras Blog: OpenAI partners with Cerebras to bring high-speed inference to the mainstream (14 Jan 2026)">6</a> <a class="cite" href="https://www.cerebras.ai/press-release/awscollaboration" target="_blank" rel="noopener" title="Cerebras: AWS collaboration: CS-3 in AWS data centres (13 Mar 2026)">21</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering" target="_blank" rel="noopener" title="Cerebras: Cerebras Systems announces pricing of initial public offering (13 May 2026)">8</a> <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Cerebras's value rose fast: $8.1 billion after the September 2025 funding round, $23 billion after February 2026 <a class="cite" href="https://www.cerebras.ai/press-release/series-g" target="_blank" rel="noopener" title="Cerebras: Cerebras raises $1.1 billion Series G (30 Sep 2025)">20</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-raises-usd1-billion-series-h" target="_blank" rel="noopener" title="Cerebras: Cerebras raises $1 billion Series H (3 Feb 2026)">22</a>, and about $70 billion at the end of the first trading day, press reports say <a class="cite" href="https://finance.yahoo.com/markets/article/cerebras-stock-slides-after-near-70-surge-in-biggest-ipo-of-2026-130757084.html" target="_blank" rel="noopener" title="Yahoo Finance (press): Cerebras stock slides after near-70% surge in biggest IPO of 2026">13</a>. The first wafer, WSE-1, was shown in 2019 and the CS-1 system followed <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The business turned from hardware to cloud in 2024. At launch, Cerebras Inference served Llama 3.1 8B at 1,800 tokens a second and Llama 3.1 70B at 450 tokens a second <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world&#x27;s fastest AI inference (27 Aug 2024)">17</a>. By 2026 it was serving OpenAI's GPT-5.6 Sol at up to 750 tokens a second <a class="cite" href="https://www.cerebras.ai/blog/how-cerebras-serves-gpt-5-6-sol-at-up-to-750-tokens-per-second" target="_blank" rel="noopener" title="Cerebras Blog: How Cerebras serves GPT-5.6 Sol at up to 750 tokens per second (27 Aug 2026)">23</a>, and AWS agreed to put CS-3 systems in its own data centres, with Trainium handling one stage of each request and Cerebras the other <a class="cite" href="https://www.cerebras.ai/press-release/awscollaboration" target="_blank" rel="noopener" title="Cerebras: AWS collaboration: CS-3 in AWS data centres (13 Mar 2026)">21</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineup" aria-labelledby="h-lineup">
+<h2 id="h-lineup"><span>4.</span>The lineup</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Product</th><th>What it is</th><th>Status</th></tr></thead><tbody>
+<tr><td>WSE-2 / CS-2</td><td>Second wafer and its system</td><td>2021 <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Second-generation Wafer Scale Engine, 2.6 trillion transistors (Apr 2021)">15</a></td></tr>
+<tr><td>WSE-3 / CS-3</td><td>Third wafer; 15U system up to 23 kW</td><td>2024; in service <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a> <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">24</a></td></tr>
+<tr><td>WSE-3 Turbo</td><td>Faster version of WSE-3: 250 petaflops</td><td>August 2026 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a></td></tr>
+<tr><td>CS-4</td><td>Three WSE-3 Turbo wafers in one system</td><td>Shipping from Q3 2026 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a></td></tr>
+<tr><td>Cerebras Inference</td><td>Cloud service, pay per token</td><td>Since August 2024 <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world&#x27;s fastest AI inference (27 Aug 2024)">17</a></td></tr>
+<tr><td>Cerebras Code</td><td>Monthly coding plans</td><td>Since August 2025 <a class="cite" href="https://www.cerebras.ai/blog/introducing-cerebras-code" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Cerebras Code (1 Aug 2025)">25</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>CS-3 systems can be joined in clusters of up to 2,048, which Cerebras says reach 256 exaflops <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a> <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3: the world&#x27;s fastest and most scalable AI accelerator">26</a>. For training very large models, an external memory unit (MemoryX) holds the model and streams it to the wafer <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3: the world&#x27;s fastest and most scalable AI accelerator">26</a> <a class="cite" href="https://www.cerebras.ai/blog/introducing-condor-galaxy-1-a-4-exaflop-supercomputer-for-generative-ai" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Condor Galaxy 1: a 4 exaFLOP supercomputer (20 Jul 2023)">16</a>. Cerebras says CS-4 is twice as fast as CS-3 and delivers up to 10 times more throughput per watt <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The CS-4 was redesigned for building at scale: 50% fewer parts, 60% more automated manufacturing, and power converted much closer to the chips <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a>. Cerebras says CS-4 can serve "more than 1,000 tokens per second on models exceeding 50 trillion parameters" <a class="cite" href="https://www.cerebras.ai/system" target="_blank" rel="noopener" title="Cerebras: System page: CS-4">27</a>. At Hot Chips 2026 Cerebras previewed a CS-5 for 2027 and a CS-6 with stacked memory, press reports say <a class="cite" href="https://wccftech.com/cerebras-cs-4-30x-uplift-ai-2026-next-gen-rack-solutions-cs-5-10k-tps-2027-cs-6-3d-wafer-scale-sram/" target="_blank" rel="noopener" title="Wccftech (press): Cerebras at Hot Chips 2026: CS-5 in 2027, CS-6 with 3D-stacked SRAM">28</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>How it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras designs the wafer; TSMC manufactures it <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>.</p>
+<ol class="steps">
+<li><b>Design:</b> Cerebras, in Sunnyvale and elsewhere, including an office in Bengaluru <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-accelerates-global-growth-with-new-india-office" target="_blank" rel="noopener" title="Cerebras: Cerebras accelerates global growth with new India office (29 Aug 2022)">29</a>.</li>
+<li><b>Wafer:</b> TSMC, 7 nm for WSE-2 and 5 nm for WSE-3 <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Second-generation Wafer Scale Engine, 2.6 trillion transistors (Apr 2021)">15</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>.</li>
+<li><b>System assembly:</b> Flex, Sanmina and Rocket EMS <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</li>
+<li><b>Cooling:</b> custom water cooling <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener" title="Cerebras: Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)">19</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>A whole wafer always has some faulty spots. Cerebras builds 970,000 tiny cores and uses 900,000, and its on-chip network routes around faulty ones; it calls its chip "about 100x more fault tolerant" than a GPU <a class="cite" href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem" target="_blank" rel="noopener" title="Cerebras Blog: 100x defect tolerance: how Cerebras solved the yield problem (13 Jan 2025)">30</a>. Cerebras says its manufacturing capacity will grow more than tenfold in 2026 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Cerebras's filing warns: "We depend on third-party suppliers, including certain sole sources" <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>. An analyst reading of the filing says TSMC is its only chip factory and there is no long-term supply agreement <a class="cite" href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener" title="Mostly Metrics (analyst): Cerebras IPO: S-1 breakdown">14</a>. Cerebras does not name which TSMC plant makes its wafers or who packages them <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="where" aria-labelledby="h-where">
+<h2 id="h-where"><span>6.</span>Where it’s made: factories and addresses</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras's chip factory is TSMC; Cerebras does not name the plant, so there is no factory address to give <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>. Its own data centres, from official announcements:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Site</th><th>Location</th><th>What we know</th></tr></thead><tbody>
+<tr><td>Condor Galaxy 1</td><td>Santa Clara, California (Colovore)</td><td>64 CS-2 systems, built with G42 <a class="cite" href="https://www.cerebras.ai/blog/introducing-condor-galaxy-1-a-4-exaflop-supercomputer-for-generative-ai" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Condor Galaxy 1: a 4 exaFLOP supercomputer (20 Jul 2023)">16</a></td></tr>
+<tr><td>Condor Galaxy 3</td><td>Dallas, Texas</td><td>64 CS-3 systems <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-g42-announce-condor-galaxy-3" target="_blank" rel="noopener" title="Cerebras: Cerebras and G42 announce Condor Galaxy 3 (13 Mar 2024)">31</a></td></tr>
+<tr><td>Oklahoma City</td><td>Oklahoma, USA (Scale Datacenter)</td><td>More than 300 CS-3s, planned online June 2025 <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener" title="Cerebras: Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)">19</a></td></tr>
+<tr><td>Montreal</td><td>Quebec, Canada (Enovum)</td><td>Planned online July 2025 <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener" title="Cerebras: Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)">19</a></td></tr>
+<tr><td>Mikkeli</td><td>Finland (Compute Nordic)</td><td>165 MW at full size; first 50 MW being built <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-and-compute-nordic-finland-announce-new-165-mw-ai-data" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras and Compute Nordic Finland announce 165 MW AI data centre (1 Sep 2026)">32</a></td></tr>
+</tbody></table></div>
+<p class="note">Cerebras publishes towns but not street addresses for its data centres <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener" title="Cerebras: Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)">19</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>In March 2025 Cerebras said Santa Clara, Stockton and Dallas were already online, with Minneapolis, Oklahoma City, Montreal and sites in the US and Europe to follow, and 85% of capacity in the US <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener" title="Cerebras: Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)">19</a>. In July 2026 it announced 200 MW in France, Norway and Finland by the end of 2027 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-accelerates-european-expansion-200mw-ai-compute" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras accelerates European expansion, 200 MW of AI compute (9 Jul 2026)">33</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Cerebras says it has more than 600 MW of capacity live or under contract, to be delivered by the end of 2027 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>. The OpenAI deal alone is 750 MW, rolled out in stages from 2026 <a class="cite" href="https://www.cerebras.ai/blog/openai-partners-with-cerebras-to-bring-high-speed-inference-to-the-mainstream" target="_blank" rel="noopener" title="Cerebras Blog: OpenAI partners with Cerebras to bring high-speed inference to the mainstream (14 Jan 2026)">6</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="works" aria-labelledby="h-works">
+<h2 id="h-works"><span>7.</span>How it works</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A graphics chip keeps the AI model in separate memory chips beside it and must fetch it for every word it writes. Cerebras puts 44 GB of fast memory (SRAM) right next to the cores on the wafer, so there is almost no fetching <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a> <a class="cite" href="https://www.cerebras.ai/blog/how-cerebras-serves-gpt-5-6-sol-at-up-to-750-tokens-per-second" target="_blank" rel="noopener" title="Cerebras Blog: How Cerebras serves GPT-5.6 Sol at up to 750 tokens per second (27 Aug 2026)">23</a>. Cerebras says its memory bandwidth is 21 petabytes a second, "7,000x that of an H100" <a class="cite" href="https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Cerebras Inference: AI at instant speed (Aug 2024)">2</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Big models do not fit on one wafer, so Cerebras splits them by layer across several systems; each wafer holds its layers and passes the result to the next <a class="cite" href="https://www.cerebras.ai/blog/how-cerebras-serves-gpt-5-6-sol-at-up-to-750-tokens-per-second" target="_blank" rel="noopener" title="Cerebras Blog: How Cerebras serves GPT-5.6 Sol at up to 750 tokens per second (27 Aug 2026)">23</a>. At launch, a 70-billion-parameter model needed "as few as four systems" <a class="cite" href="https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Cerebras Inference: AI at instant speed (Aug 2024)">2</a>. For training, the model is streamed through the wafer "one layer at a time" <a class="cite" href="https://www.cerebras.ai/blog/introducing-condor-galaxy-1-a-4-exaflop-supercomputer-for-generative-ai" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Condor Galaxy 1: a 4 exaFLOP supercomputer (20 Jul 2023)">16</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Each core is about 0.05 mm², against about 6 mm² for one processing block of an NVIDIA H100, which is why a fault costs Cerebras so little of the wafer; Cerebras says 93% of the silicon is usable <a class="cite" href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem" target="_blank" rel="noopener" title="Cerebras Blog: 100x defect tolerance: how Cerebras solved the yield problem (13 Jan 2025)">30</a>. Cerebras says a cluster "looks and programs like a single chip" <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3: the world&#x27;s fastest and most scalable AI accelerator">26</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>8.</span>Specs explained</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras's own figures:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Chip</th><th>Transistors</th><th>Cores</th><th>On-chip memory</th><th>AI compute</th><th>Process</th></tr></thead><tbody>
+<tr><td>WSE-2 (2021)</td><td>2.6 trillion</td><td>850,000</td><td>—</td><td>—</td><td>TSMC 7 nm <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Second-generation Wafer Scale Engine, 2.6 trillion transistors (Apr 2021)">15</a></td></tr>
+<tr><td>WSE-3 (2024)</td><td>4 trillion</td><td>900,000</td><td>44 GB</td><td>125 petaflops</td><td>TSMC 5 nm <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></td></tr>
+<tr><td>WSE-3 Turbo (2026)</td><td>4 trillion</td><td>900,000</td><td>44 GB</td><td>250 petaflops</td><td>Not stated <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a></td></tr>
+</tbody></table></div>
+<p>The wafer measures 46,225 mm², against 815 mm² for the largest GPU when WSE-2 launched <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Second-generation Wafer Scale Engine, 2.6 trillion transistors (Apr 2021)">15</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<div class="table-wrap"><table class="spec"><thead><tr><th>System</th><th>Wafers</th><th>AI compute</th><th>Memory bandwidth</th><th>Size / power</th></tr></thead><tbody>
+<tr><td>CS-3</td><td>1 WSE-3</td><td>125 petaflops</td><td>21 PB/s</td><td>15U, up to 23 kW <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">24</a></td></tr>
+<tr><td>CS-4</td><td>3 WSE-3 Turbo</td><td>750 petaflops</td><td>129.6 PB/s</td><td>Not published <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>WSE-3 Turbo's fabric (on-wafer network) bandwidth is 53.5 PB/s and its off-chip links total 2.4 Tb/s <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a>. Cerebras claims 19 times the transistors and 56 times the compute of an NVIDIA B300 <a class="cite" href="https://www.cerebras.ai/chip" target="_blank" rel="noopener" title="Cerebras: Chip page: Wafer-Scale Engine">34</a>; that is a whole wafer against one chip, so compare systems, not chips.</p>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>9.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras's official cloud prices:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Product</th><th>Price</th></tr></thead><tbody>
+<tr><td>gpt-oss-120b, input</td><td>$0.35 per million tokens <a class="cite" href="https://inference-docs.cerebras.ai/models/openai-oss" target="_blank" rel="noopener" title="Cerebras Inference Docs: OpenAI GPT OSS: price, speed and context">35</a></td></tr>
+<tr><td>gpt-oss-120b, output</td><td>$0.75 per million tokens <a class="cite" href="https://inference-docs.cerebras.ai/models/openai-oss" target="_blank" rel="noopener" title="Cerebras Inference Docs: OpenAI GPT OSS: price, speed and context">35</a></td></tr>
+<tr><td>Free trial</td><td>$5 of credit <a class="cite" href="https://www.cerebras.ai/inference" target="_blank" rel="noopener" title="Cerebras: Inference product page and plans">4</a></td></tr>
+<tr><td>Developer tier</td><td>Pay per token, $10 minimum deposit <a class="cite" href="https://www.cerebras.ai/inference" target="_blank" rel="noopener" title="Cerebras: Inference product page and plans">4</a></td></tr>
+<tr><td>Cerebras Code Pro / Max (at launch)</td><td>$50 / $200 a month <a class="cite" href="https://www.cerebras.ai/blog/introducing-cerebras-code" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Cerebras Code (1 Aug 2025)">25</a></td></tr>
+<tr><td>CS-3 or CS-4 system</td><td>Not published by the company <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>At its 2024 launch Cerebras priced Llama 3.1 8B at 10 cents and Llama 3.1 70B at 60 cents per million tokens <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world&#x27;s fastest AI inference (27 Aug 2024)">17</a>. The docs list gpt-oss-120b at about 3,000 tokens a second, with 65,000 tokens of context on the free tier and 131,000 on paid tiers <a class="cite" href="https://inference-docs.cerebras.ai/models/openai-oss" target="_blank" rel="noopener" title="Cerebras Inference Docs: OpenAI GPT OSS: price, speed and context">35</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The independent tester Artificial Analysis measured Cerebras's gpt-oss-120b at about 1,750 tokens a second, with a blended price of $0.39 per million tokens (third-party measurement) <a class="cite" href="https://artificialanalysis.ai/providers/cerebras" target="_blank" rel="noopener" title="Artificial Analysis (third-party): Cerebras provider benchmarks">36</a>. That is well below the "about 3,000" in Cerebras's docs, a reminder that speeds depend on the test <a class="cite" href="https://inference-docs.cerebras.ai/models/openai-oss" target="_blank" rel="noopener" title="Cerebras Inference Docs: OpenAI GPT OSS: price, speed and context">35</a>. For GPU cloud prices see our <a href="/ai-atlas/ai-chips/nvidia/">NVIDIA guide</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="moat" aria-labelledby="h-moat">
+<h2 id="h-moat"><span>10.</span>The software lock-in</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Speed is Cerebras's selling point. Putting memory on the wafer lets it write answers many times faster than GPU clouds for the same model; Cerebras claims CS-4 is up to 30 times faster than GPU solutions on the gpt-oss-120b model <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a>. Fast answers matter for coding assistants and AI agents that make many calls in a row <a class="cite" href="https://www.cerebras.ai/blog/how-cerebras-serves-gpt-5-6-sol-at-up-to-750-tokens-per-second" target="_blank" rel="noopener" title="Cerebras Blog: How Cerebras serves GPT-5.6 Sol at up to 750 tokens per second (27 Aug 2026)">23</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Few companies have tried wafer-scale chips because faults ruin big chips. Cerebras's answer, tiny cores plus spare ones, is its core engineering know-how <a class="cite" href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem" target="_blank" rel="noopener" title="Cerebras Blog: 100x defect tolerance: how Cerebras solved the yield problem (13 Jan 2025)">30</a>. OpenAI's 750 MW deal is the strongest outside endorsement <a class="cite" href="https://www.cerebras.ai/blog/openai-partners-with-cerebras-to-bring-high-speed-inference-to-the-mainstream" target="_blank" rel="noopener" title="Cerebras Blog: OpenAI partners with Cerebras to bring high-speed inference to the mainstream (14 Jan 2026)">6</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>OpenAI is tied in closely: besides the compute deal, it lent Cerebras $1 billion in January 2026 <a class="cite" href="https://investors.cerebras.ai/node/7126/pdf" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q1 2026 results (23 Jun 2026, PDF)">7</a> ($918.2 million outstanding at 30 June, per a summary of the quarterly filing) <a class="cite" href="https://www.stocktitan.net/sec-filings/CBRS/10-q-cerebras-systems-inc-quarterly-earnings-report-a8d2a2485019.html" target="_blank" rel="noopener" title="StockTitan (press): Summary of Cerebras Q2 2026 Form 10-Q">37</a>, and received a warrant for 33,445,026 shares at an exercise price of $0.00001 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026025762/cerebras-sx1april2026.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1 registration statement (April 2026)">38</a>. It exercised 10.0 million of them in July 2026; about 23.4 million remain subject to milestones <a class="cite" href="https://www.stocktitan.net/sec-filings/CBRS/10-q-cerebras-systems-inc-quarterly-earnings-report-a8d2a2485019.html" target="_blank" rel="noopener" title="StockTitan (press): Summary of Cerebras Q2 2026 Form 10-Q">37</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="buyers" aria-labelledby="h-buyers">
+<h2 id="h-buyers"><span>11.</span>Who buys it and why</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Customers Cerebras names include OpenAI, AWS, Meta, IBM, Mistral, Notion, AlphaSense, GSK, Mayo Clinic, CrowdStrike, Figma and the US Department of Energy <a class="cite" href="https://www.cerebras.ai/press-release/series-g" target="_blank" rel="noopener" title="Cerebras: Cerebras raises $1.1 billion Series G (30 Sep 2025)">20</a> <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>. Developers can also reach it through Hugging Face, where Cerebras says it is the number one inference provider <a class="cite" href="https://www.cerebras.ai/press-release/series-g" target="_blank" rel="noopener" title="Cerebras: Cerebras raises $1.1 billion Series G (30 Sep 2025)">20</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>For years one customer dominated: G42 of Abu Dhabi was 83% of Cerebras's 2023 revenue and 87% in the first half of 2024, according to press reports on the 2024 filing <a class="cite" href="https://www.eetimes.com/cerebras-ipo-paperwork-sheds-light-on-relationship-with-g42/" target="_blank" rel="noopener" title="EE Times (press): Cerebras IPO paperwork sheds light on relationship with G42 (2024)">39</a>. An analyst reading of the 2026 filing says MBZUAI, an Abu Dhabi university, and G42 together were about 86% of 2025 revenue <a class="cite" href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener" title="Mostly Metrics (analyst): Cerebras IPO: S-1 breakdown">14</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Cerebras's filing names its significant customers as OpenAI, G42, MBZUAI and AWS <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>. OpenAI contributed no revenue in 2025, the analyst reading says, so the shift away from Abu Dhabi shows up from 2026 <a class="cite" href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener" title="Mostly Metrics (analyst): Cerebras IPO: S-1 breakdown">14</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>12.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Public facts buried in Cerebras's filings and releases. Each links to the exact document.</p>
+<ol class="hidden-list">
+<li><b>Its customer is also its lender:</b> OpenAI lent Cerebras $1 billion; $918.2 million was still owed at 30 June 2026 <a class="cite" href="https://investors.cerebras.ai/node/7126/pdf" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q1 2026 results (23 Jun 2026, PDF)">7</a> <a class="cite" href="https://www.stocktitan.net/sec-filings/CBRS/10-q-cerebras-systems-inc-quarterly-earnings-report-a8d2a2485019.html" target="_blank" rel="noopener" title="StockTitan (press): Summary of Cerebras Q2 2026 Form 10-Q">37</a>.</li>
+<li><b>OpenAI got a warrant for 33.4 million shares at $0.00001 each</b>, and exercised 10.0 million of them in July 2026 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026025762/cerebras-sx1april2026.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1 registration statement (April 2026)">38</a> <a class="cite" href="https://www.stocktitan.net/sec-filings/CBRS/10-q-cerebras-systems-inc-quarterly-earnings-report-a8d2a2485019.html" target="_blank" rel="noopener" title="StockTitan (press): Summary of Cerebras Q2 2026 Form 10-Q">37</a>.</li>
+<li><b>2025's profit was an accounting gain:</b> $237.8 million of net income came mainly from a one-off non-cash gain on ending a forward contract, not from operations <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026025762/cerebras-sx1april2026.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1 registration statement (April 2026)">38</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</li>
+<li><b>Abu Dhabi customers were most of the revenue for years</b>: G42, then MBZUAI and G42 <a class="cite" href="https://www.eetimes.com/cerebras-ipo-paperwork-sheds-light-on-relationship-with-g42/" target="_blank" rel="noopener" title="EE Times (press): Cerebras IPO paperwork sheds light on relationship with G42 (2024)">39</a> <a class="cite" href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener" title="Mostly Metrics (analyst): Cerebras IPO: S-1 breakdown">14</a>.</li>
+<li><b>Class B holders keep about 99.2% of the votes</b> after the IPO <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ol class="hidden-list" start="6">
+<li><b>Gross margin swung from 45% to 14%</b> between the March and June 2026 quarters on the GAAP measure <a class="cite" href="https://investors.cerebras.ai/node/7126/pdf" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q1 2026 results (23 Jun 2026, PDF)">7</a> <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</li>
+<li><b>$25.4 billion of contracted revenue against $180.1 million in the quarter</b> <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</li>
+<li><b>The founding year differs:</b> 2015 on the website, April 2016 in the filing <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</li>
+<li><b>The G42 investment was cleared only with non-voting shares</b>, press reports say <a class="cite" href="https://www.theregister.com/software/2025/03/31/cerebras-systems-clears-hurdle-on-its-path-to-ipo/1208940" target="_blank" rel="noopener" title="The Register (press): Cerebras clears CFIUS hurdle on its path to IPO (31 Mar 2025)">12</a>.</li>
+<li><b>Cerebras's own tests and outside tests differ</b>: about 3,000 against about 1,750 tokens a second for the same model <a class="cite" href="https://inference-docs.cerebras.ai/models/openai-oss" target="_blank" rel="noopener" title="Cerebras Inference Docs: OpenAI GPT OSS: price, speed and context">35</a> <a class="cite" href="https://artificialanalysis.ai/providers/cerebras" target="_blank" rel="noopener" title="Artificial Analysis (third-party): Cerebras provider benchmarks">36</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<ol class="hidden-list" start="11">
+<li><b>GAAP loss of $450.5 million against a "core" loss of $6.9 million</b> in the June 2026 quarter <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</li>
+<li><b>Most contracted revenue is years away:</b> an analyst reading of the IPO filing put 42% of the then $24.6 billion after four years <a class="cite" href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener" title="Mostly Metrics (analyst): Cerebras IPO: S-1 breakdown">14</a>.</li>
+<li><b>Named system builders:</b> Flex, Sanmina and Rocket EMS <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</li>
+<li><b>The IPO priced above its range</b>, at $185 against $150 to $160 <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering" target="_blank" rel="noopener" title="Cerebras: Cerebras Systems announces pricing of initial public offering (13 May 2026)">8</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</li>
+<li><b>The first Condor Galaxy supercomputer sits in Santa Clara</b>, not Abu Dhabi <a class="cite" href="https://www.cerebras.ai/blog/introducing-condor-galaxy-1-a-4-exaflop-supercomputer-for-generative-ai" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Condor Galaxy 1: a 4 exaFLOP supercomputer (20 Jul 2023)">16</a>.</li>
+</ol>
+</div>
+</section>
+<section class="chip-sec" id="weak" aria-labelledby="h-weak">
+<h2 id="h-weak"><span>13.</span>Weak spots</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Limits, from Cerebras's own filings and statements:</p>
+<ul>
+<li><b>Losses:</b> the filing warns of "a history of generating net losses" <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</li>
+<li><b>Few customers:</b> "A substantial portion of our revenue has been, and is expected to continue to be, driven by a limited number of customers" <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026025762/cerebras-sx1april2026.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1 registration statement (April 2026)">38</a>.</li>
+<li><b>Memory per wafer:</b> 44 GB, so big models need several systems <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a> <a class="cite" href="https://www.cerebras.ai/blog/how-cerebras-serves-gpt-5-6-sol-at-up-to-750-tokens-per-second" target="_blank" rel="noopener" title="Cerebras Blog: How Cerebras serves GPT-5.6 Sol at up to 750 tokens per second (27 Aug 2026)">23</a>.</li>
+<li><b>Sole-source suppliers:</b> the filing names "certain sole sources"; an analyst reading says TSMC is the only chip factory <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a> <a class="cite" href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener" title="Mostly Metrics (analyst): Cerebras IPO: S-1 breakdown">14</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Cerebras's own 2024 comparison puts one NVIDIA B200 GPU at 192 GB of HBM memory, far more than one wafer's 44 GB; Cerebras wins on speed, not capacity <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">24</a>. The public model list is short: two models in the docs catalogue <a class="cite" href="https://inference-docs.cerebras.ai/models/overview" target="_blank" rel="noopener" title="Cerebras Inference Docs: Models overview">40</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The filing names OpenAI, G42, MBZUAI and AWS and warns that losing any of them, or failing to meet its obligations to OpenAI, "would harm our business" <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>. An analyst reading reports accounting control weaknesses flagged in the filing <a class="cite" href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener" title="Mostly Metrics (analyst): Cerebras IPO: S-1 breakdown">14</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="india" aria-labelledby="h-india">
+<h2 id="h-india"><span>14.</span>India angle</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras opened an engineering office in Bengaluru in August 2022, for research and customer support <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-accelerates-global-growth-with-new-india-office" target="_blank" rel="noopener" title="Cerebras: Cerebras accelerates global growth with new India office (29 Aug 2022)">29</a>. Lakshmi Ramachandran is its India Country Lead <a class="cite" href="https://www.cerebras.ai/company" target="_blank" rel="noopener" title="Cerebras: Company page: founders and leadership">9</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>In February 2026, at the AI Impact Summit in New Delhi, G42, MBZUAI and Cerebras announced an 8-exaflop AI supercomputer with India's C-DAC, hosted in India under the IndiaAI Mission <a class="cite" href="https://www.mediaoffice.abudhabi/en/technology/g42-mohamed-bin-zayed-university-of-artificial-intelligence-and-cerebras-partner-with-centre-for-development-of-advanced-computing-to-establish-ai-supercomputer-in-india/" target="_blank" rel="noopener" title="Abu Dhabi Media Office: G42, MBZUAI and Cerebras partner with C-DAC on an AI supercomputer in India (20 Feb 2026)">41</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>No Cerebras data centre in India has been announced, and India is not mentioned in the June 2026 quarterly results <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>. See our India's semiconductor push guide (coming soon).</p>
+</div>
+</section>
+<section class="chip-sec" id="next" aria-labelledby="h-next">
+<h2 id="h-next"><span>15.</span>What’s next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Only what Cerebras has announced:</p>
+<ul>
+<li><b>CS-4:</b> first shipments in Q3 2026 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)">3</a>.</li>
+<li><b>With AMD:</b> a combined inference product in Q4 2026 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</li>
+<li><b>AWS:</b> Cerebras in Amazon Bedrock; announced in March 2026 for later in 2026 <a class="cite" href="https://www.cerebras.ai/press-release/awscollaboration" target="_blank" rel="noopener" title="Cerebras: AWS collaboration: CS-3 in AWS data centres (13 Mar 2026)">21</a>, with the August results pointing to early 2027 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</li>
+<li><b>Capacity:</b> more than 600 MW live or under contract, deliverable by the end of 2027 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Guidance for 2026: "core" revenue of $880 million to $890 million, raised in August <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener" title="Cerebras Investor Relations: Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)">5</a>. The first European data centre is due by the end of 2026 <a class="cite" href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-accelerates-european-expansion-200mw-ai-compute" target="_blank" rel="noopener" title="Cerebras Investor Relations: Cerebras accelerates European expansion, 200 MW of AI compute (9 Jul 2026)">33</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Press coverage of Hot Chips 2026 reports a CS-5 in 2027 aimed at 10,000 tokens a second per user; Cerebras has not issued a release on it <a class="cite" href="https://wccftech.com/cerebras-cs-4-30x-uplift-ai-2026-next-gen-rack-solutions-cs-5-10k-tps-2027-cs-6-3d-wafer-scale-sram/" target="_blank" rel="noopener" title="Wccftech (press): Cerebras at Hot Chips 2026: CS-5 in 2027, CS-6 with 3D-stacked SRAM">28</a>. The test is whether OpenAI's 750 MW turns into revenue on schedule <a class="cite" href="https://www.cerebras.ai/blog/openai-partners-with-cerebras-to-bring-high-speed-inference-to-the-mainstream" target="_blank" rel="noopener" title="Cerebras Blog: OpenAI partners with Cerebras to bring high-speed inference to the mainstream (14 Jan 2026)">6</a> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener" title="Cerebras Systems (SEC): Form S-1/A registration statement (May 2026)">10</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>16.</span>Sources</h2>
+<p class="note">41 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator; <b>Press</b> = news coverage, used only where no official source exists and labelled in the text.</p>
+<ol class="src-list">
+<li id="src-1"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener">Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed" target="_blank" rel="noopener">Introducing Cerebras Inference: AI at instant speed (Aug 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>Cerebras Investor Relations</b>: <a href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-unveils-cs-4-30-times-faster-gpu-based-solutions" target="_blank" rel="noopener">Cerebras unveils CS-4, 30 times faster than GPU-based solutions (18 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>Cerebras</b>: <a href="https://www.cerebras.ai/inference" target="_blank" rel="noopener">Inference product page and plans</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>Cerebras Investor Relations</b>: <a href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-fast-inference-cloud-business-nearly-quadruples" target="_blank" rel="noopener">Q2 2026 results: fast inference cloud business nearly quadruples (12 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/openai-partners-with-cerebras-to-bring-high-speed-inference-to-the-mainstream" target="_blank" rel="noopener">OpenAI partners with Cerebras to bring high-speed inference to the mainstream (14 Jan 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>Cerebras Investor Relations</b>: <a href="https://investors.cerebras.ai/node/7126/pdf" target="_blank" rel="noopener">Q1 2026 results (23 Jun 2026, PDF)</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-systems-announces-pricing-of-initial-public-offering" target="_blank" rel="noopener">Cerebras Systems announces pricing of initial public offering (13 May 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>Cerebras</b>: <a href="https://www.cerebras.ai/company" target="_blank" rel="noopener">Company page: founders and leadership</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>Cerebras Systems (SEC)</b>: <a href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026033143/cerebras-sx1a2.htm" target="_blank" rel="noopener">Form S-1/A registration statement (May 2026)</a><span class="st st-filing">Filing</span></li>
+<li id="src-11"><b>Tech Startups (press)</b>: <a href="https://techstartups.com/2025/12/19/ai-chipmaker-cerebras-revives-ipo-plans-after-1-1b-raise-and-cfius-clearance/" target="_blank" rel="noopener">Cerebras revives IPO plans after $1.1B raise and CFIUS clearance (19 Dec 2025)</a><span class="st st-press">Press</span></li>
+<li id="src-12"><b>The Register (press)</b>: <a href="https://www.theregister.com/software/2025/03/31/cerebras-systems-clears-hurdle-on-its-path-to-ipo/1208940" target="_blank" rel="noopener">Cerebras clears CFIUS hurdle on its path to IPO (31 Mar 2025)</a><span class="st st-press">Press</span></li>
+<li id="src-13"><b>Yahoo Finance (press)</b>: <a href="https://finance.yahoo.com/markets/article/cerebras-stock-slides-after-near-70-surge-in-biggest-ipo-of-2026-130757084.html" target="_blank" rel="noopener">Cerebras stock slides after near-70% surge in biggest IPO of 2026</a><span class="st st-press">Press</span></li>
+<li id="src-14"><b>Mostly Metrics (analyst)</b>: <a href="https://www.mostlymetrics.com/p/cerebras-ipo-s1-breakdown" target="_blank" rel="noopener">Cerebras IPO: S-1 breakdown</a><span class="st st-research">Research</span></li>
+<li id="src-15"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener">Second-generation Wafer Scale Engine, 2.6 trillion transistors (Apr 2021)</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/introducing-condor-galaxy-1-a-4-exaflop-supercomputer-for-generative-ai" target="_blank" rel="noopener">Introducing Condor Galaxy 1: a 4 exaFLOP supercomputer (20 Jul 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-17"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener">Cerebras launches the world&#x27;s fastest AI inference (27 Aug 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/meta-collaborates-with-cerebras-to-drive-fast-inference-for-developers-in-new-llama-api" target="_blank" rel="noopener">Meta collaborates with Cerebras for fast inference in the new Llama API (29 Apr 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener">Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-20"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/series-g" target="_blank" rel="noopener">Cerebras raises $1.1 billion Series G (30 Sep 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/awscollaboration" target="_blank" rel="noopener">AWS collaboration: CS-3 in AWS data centres (13 Mar 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-systems-raises-usd1-billion-series-h" target="_blank" rel="noopener">Cerebras raises $1 billion Series H (3 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/how-cerebras-serves-gpt-5-6-sol-at-up-to-750-tokens-per-second" target="_blank" rel="noopener">How Cerebras serves GPT-5.6 Sol at up to 750 tokens per second (27 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener">Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/introducing-cerebras-code" target="_blank" rel="noopener">Introducing Cerebras Code (1 Aug 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener">Cerebras CS-3: the world&#x27;s fastest and most scalable AI accelerator</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>Cerebras</b>: <a href="https://www.cerebras.ai/system" target="_blank" rel="noopener">System page: CS-4</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>Wccftech (press)</b>: <a href="https://wccftech.com/cerebras-cs-4-30x-uplift-ai-2026-next-gen-rack-solutions-cs-5-10k-tps-2027-cs-6-3d-wafer-scale-sram/" target="_blank" rel="noopener">Cerebras at Hot Chips 2026: CS-5 in 2027, CS-6 with 3D-stacked SRAM</a><span class="st st-press">Press</span></li>
+<li id="src-29"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-systems-accelerates-global-growth-with-new-india-office" target="_blank" rel="noopener">Cerebras accelerates global growth with new India office (29 Aug 2022)</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem" target="_blank" rel="noopener">100x defect tolerance: how Cerebras solved the yield problem (13 Jan 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-g42-announce-condor-galaxy-3" target="_blank" rel="noopener">Cerebras and G42 announce Condor Galaxy 3 (13 Mar 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-32"><b>Cerebras Investor Relations</b>: <a href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-and-compute-nordic-finland-announce-new-165-mw-ai-data" target="_blank" rel="noopener">Cerebras and Compute Nordic Finland announce 165 MW AI data centre (1 Sep 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-33"><b>Cerebras Investor Relations</b>: <a href="https://investors.cerebras.ai/news-releases/news-release-details/cerebras-systems-accelerates-european-expansion-200mw-ai-compute" target="_blank" rel="noopener">Cerebras accelerates European expansion, 200 MW of AI compute (9 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-34"><b>Cerebras</b>: <a href="https://www.cerebras.ai/chip" target="_blank" rel="noopener">Chip page: Wafer-Scale Engine</a><span class="st st-official">Official</span></li>
+<li id="src-35"><b>Cerebras Inference Docs</b>: <a href="https://inference-docs.cerebras.ai/models/openai-oss" target="_blank" rel="noopener">OpenAI GPT OSS: price, speed and context</a><span class="st st-official">Official</span></li>
+<li id="src-36"><b>Artificial Analysis (third-party)</b>: <a href="https://artificialanalysis.ai/providers/cerebras" target="_blank" rel="noopener">Cerebras provider benchmarks</a><span class="st st-research">Research</span></li>
+<li id="src-37"><b>StockTitan (press)</b>: <a href="https://www.stocktitan.net/sec-filings/CBRS/10-q-cerebras-systems-inc-quarterly-earnings-report-a8d2a2485019.html" target="_blank" rel="noopener">Summary of Cerebras Q2 2026 Form 10-Q</a><span class="st st-press">Press</span></li>
+<li id="src-38"><b>Cerebras Systems (SEC)</b>: <a href="https://www.sec.gov/Archives/edgar/data/2021728/000162828026025762/cerebras-sx1april2026.htm" target="_blank" rel="noopener">Form S-1 registration statement (April 2026)</a><span class="st st-filing">Filing</span></li>
+<li id="src-39"><b>EE Times (press)</b>: <a href="https://www.eetimes.com/cerebras-ipo-paperwork-sheds-light-on-relationship-with-g42/" target="_blank" rel="noopener">Cerebras IPO paperwork sheds light on relationship with G42 (2024)</a><span class="st st-press">Press</span></li>
+<li id="src-40"><b>Cerebras Inference Docs</b>: <a href="https://inference-docs.cerebras.ai/models/overview" target="_blank" rel="noopener">Models overview</a><span class="st st-official">Official</span></li>
+<li id="src-41"><b>Abu Dhabi Media Office</b>: <a href="https://www.mediaoffice.abudhabi/en/technology/g42-mohamed-bin-zayed-university-of-artificial-intelligence-and-cerebras-partner-with-centre-for-development-of-advanced-computing-to-establish-ai-supercomputer-in-india/" target="_blank" rel="noopener">G42, MBZUAI and Cerebras partner with C-DAC on an AI supercomputer in India (20 Feb 2026)</a><span class="st st-government">Government</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#company">2. Company card</a><a href="#story">3. The story</a><a href="#lineup">4. The lineup</a><a href="#made">5. How it’s made</a><a href="#where">6. Where it’s made: factories and addresses</a><a href="#works">7. How it works</a><a href="#specs">8. Specs explained</a><a href="#pricing">9. Official pricing</a><a href="#moat">10. The software lock-in</a><a href="#buyers">11. Who buys it and why</a><a href="#hidden">12. Hidden in plain sight</a><a href="#weak">13. Weak spots</a><a href="#india">14. India angle</a><a href="#next">15. What’s next</a><a href="#sources">16. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Headquarters</span><span style="color:var(--fg);font-weight:500;text-align:right">Sunnyvale, California</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Founded</span><span style="color:var(--fg);font-weight:500;text-align:right">2015 (website); incorporated 2016</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>CEO</span><span style="color:var(--fg);font-weight:500;text-align:right">Andrew Feldman</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Makes its own chips?</span><span style="color:var(--fg);font-weight:500;text-align:right">Designs them; TSMC manufactures</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Stock</span><span style="color:var(--fg);font-weight:500;text-align:right">CBRS, Nasdaq (listed May 2026)</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Latest quarter revenue</span><span style="color:var(--fg);font-weight:500;text-align:right">$180.1 million</span></div></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip brands</a><a href="/ai-atlas/ai-chips/amazon-trainium/" class="sidebar-link">Amazon Trainium</a><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD</a><a href="/ai-atlas/ai-chips/apple/" class="sidebar-link">Apple</a><a href="/ai-atlas/ai-chips/google-tpu/" class="sidebar-link">Google TPU</a><a href="/ai-atlas/ai-chips/groq/" class="sidebar-link">Groq</a><a href="/ai-atlas/ai-chips/huawei-ascend/" class="sidebar-link">Huawei Ascend</a><a href="/ai-atlas/ai-chips/intel/" class="sidebar-link">Intel</a><a href="/ai-atlas/ai-chips/meta-mtia/" class="sidebar-link">Meta MTIA</a><a href="/ai-atlas/ai-chips/microsoft-maia/" class="sidebar-link">Microsoft Maia</a><a href="/ai-atlas/ai-chips/nvidia/" class="sidebar-link">NVIDIA</a><a href="/ai-atlas/ai-chips/ai-memory-hbm/" class="sidebar-link">AI memory (HBM) and why it is scarce</a><a href="/ai-atlas/ai-chips/export-rules/" class="sidebar-link">Export rules and the US–China chip contest</a><a href="/ai-atlas/ai-chips/how-a-chip-is-made/" class="sidebar-link">How a chip is made: sand to server</a><a href="/ai-atlas/ai-chips/how-ai-chips-work/" class="sidebar-link">How AI chips work</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Cerebras%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Cerebras%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Cerebras%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Cerebras%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Cerebras%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

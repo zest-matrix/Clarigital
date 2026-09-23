@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Memory (HBM) Explained: Why It Is Scarce | Clarigital</title>
+<meta name="description" content="What HBM memory is, why every AI chip needs it, who makes it, why it is sold out, and what that does to prices. Simple to expert, every figure sourced.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/ai-memory-hbm/">
+<meta property="og:title" content="AI Memory (HBM) Explained: Why It Is Scarce">
+<meta property="og:description" content="What HBM memory is, why every AI chip needs it, who makes it, why it is sold out, and what that does to prices. Simple to expert, every figure sourced.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/ai-memory-hbm/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AI Memory (HBM) and Why It Is Scarce", "description": "What HBM memory is, why every AI chip needs it, who makes it, why it is sold out, and what that does to prices. Simple to expert, every figure sourced.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/ai-memory-hbm/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/ai-memory-hbm/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "citation": ["https://www.micron.com/products/memory/hbm", "https://news.skhynix.com/en/sk-hynix-begins-volume-production-of-the-world-first-12-layer-hbm3e/", "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm", "https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing", "https://www.micron.com/products/memory/hbm/hbm3e", "https://semiconductor.samsung.com/dram/hbm/hbm4/", "https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/", "https://www.jedec.org/news/pressreleases/jedec-publishes-gddr7-graphics-memory-standard", "https://www.tomshardware.com/tech-industry/semiconductors/micron-says-the-silicon-gap-between-hbm-and-ddr5-is-widening-with-every-generation", "https://www.jedec.org/news/pressreleases/jedec-updates-groundbreaking-high-bandwidth-memory-hbm-standard", "https://www.jedec.org/news/pressreleases/jedec-publishes-hbm3-update-high-bandwidth-memory-hbm-standard", "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing", "https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples", "https://news.skhynix.com/en/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/", "https://news.skhynix.com/sk-hynix-showcases-next-generation-ai-memory-innovations-at-ces-2026/", "https://www.jedec.org/news/pressreleases/new-jedec%C2%AE-sphbm4-standard-enables-hbm4-class-bandwidth-organic-substrates", "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/", "https://news.skhynix.com/en/12-layer-hbm4e-sample-1/", "https://www.tomshardware.com/tech-industry/semiconductors/sk-hynix-says-hybrid-bonding-wont-be-ready-for-hbm4e-as-ai-memory-runs-into-a-775-micron-ceiling", "https://www.nvidia.com/en-us/data-center/h100/", "https://docs.nvidia.com/enterprise-reference-architectures/hgx-ai-factory/latest/components.html", "https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era", "https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html", "https://www.amd.com/en/products/accelerators/instinct/mi400.html", "https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/", "https://investors.micron.com/news-releases/news-release-details/micron-innovates-data-center-edge-nvidia", "https://www.sammobile.com/news/samsung-strengthens-position-hbm-market-q2-2026", "https://news.skhynix.com/en/q2-2026-business-results/", "https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx", "https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results", "https://investors.micron.com/news/press-release/2026/Micron-Technology-to-Report-Fiscal-Fourth-Quarter-Results-on-September-30-2026/default.aspx", "https://www.tomshardware.com/pc-components/dram/cxmt-reportedly-begins-risk-production-of-hbm3e-memory-in-breakthrough-for-chinese-dram-production-company-could-be-in-mass-production-in-2027", "https://investors.micron.com/static-files/088991c5-a249-4f66-a0a6-258d9b66f3f9", "https://news.skhynix.com/sk-hynix-announces-16-layer-hbm3e-at-sk-ai-summit-2024/", "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-10/6860312f04fd291d0f26b46c1234f84e6332717e/TSMC%203Q25%20Transcript.pdf", "https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q3-2026-estimates-shares-jump-146-93CH-4759504", "https://en.sedaily.com/finance/2026/04/23/sk-hynixs-hbm-sells-out-for-3-years-dram-supply-runs-short", "https://www.trendforce.com/presscenter/news/20260602-13074.html", "https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business", "https://www.investing.com/news/transcripts/earnings-call-transcript-sk-hynix-posts-record-q2-2026-results-as-shares-fall-93CH-4818480", "https://www.trendforce.com/presscenter/news/20260601-13070.html", "https://www.gartner.com/en/newsroom/press-releases/2026-02-26-gartner-says-surging-memory-costs-will-reduce-global-pc-and-smartphone-shipments-in-2026", "https://sixcolors.com/post/2026/07/one-last-time-this-is-tim-transcript-of-apples-q3-2026-financial-call/", "https://www.trendforce.com/news/2026/09/01/news-hbm3e-spot-prices-said-to-be-4-5x-lta-levels-with-samsung-reportedly-locking-70-of-memory-capacity-through-2031", "https://news.skhynix.com/en/sk-hynix-to-produce-dram-from-m15x-in-cheongju/", "https://news.skhynix.com/en/skhynix-chungju-pt7/", "https://news.skhynix.com/en/groundbreaking-ceremony-in-indiana/", "https://investors.micron.com/news-releases/news-release-details/micron-breaks-ground-new-hbm-advanced-packaging-facility", "https://investors.micron.com/news/press-release/2026/Micron-Completes-Acquisition-of-PSMCs-Tongluo-P5-Site-in-Taiwan-03-15-2026/default.aspx", "https://investors.micron.com/news-releases/news-release-details/micron-celebrates-opening-indias-first-semiconductor-assembly", "https://www.pmindia.gov.in/en/news_updates/pm-inaugurates-micron-technologys-semiconductor-assembly-test-and-packaging-atmp-facility-in-sanandgujarat/", "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=152130&ModuleId=3&reg=3&lang=1", "https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military", "https://www.federalregister.gov/documents/2024/12/05/2024-28270/foreign-produced-direct-product-rule-additions-and-refinements-to-controls-for-advanced-computing", "https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette", "https://news.skhynix.com/en/fab-facility-investment-2026/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "AI memory (HBM) and why it is scarce", "item": "https://www.clarigital.com/ai-atlas/ai-chips/ai-memory-hbm/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>AI memory (HBM) and why it is scarce</span></nav>
+    <span class="label-tag">AI Chips · Explainer</span>
+    <h1>AI Memory (HBM) and Why It Is Scarce</h1>
+    <p class="hero-lead">Every big AI chip sits beside stacks of a special memory called HBM. What it is, why AI needs it, the three companies that make almost all of it, why it is sold out years ahead, and why that is pushing up the price of phones and laptops. Start simple, go as deep as you like.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Explainer</span>
+      <span class="meta-tag mt-gray">8 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">56 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where only a company’s own claim exists, the text says so.</div>
+<section class="chip-sec" id="what" aria-labelledby="h-what">
+<h2 id="h-what"><span>1.</span>What HBM is</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Ordinary computer memory is laid out flat, in chips spread across a circuit board. <b>HBM</b> (high-bandwidth memory) stacks memory chips on top of each other, like floors in a tower, and places the tower right next to the processor <a class="cite" href="https://www.micron.com/products/memory/hbm" target="_blank" rel="noopener" title="Micron: High Bandwidth Memory (HBM) product page">1</a>. Tiny vertical wires run through every floor, so a huge amount of data can move at once <a class="cite" href="https://news.skhynix.com/en/sk-hynix-begins-volume-production-of-the-world-first-12-layer-hbm3e/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix begins volume production of the world&#x27;s first 12-layer HBM3E (26 Sep 2024)">2</a>.</p>
+<p>Micron says each stack's connection is "16 times wider than standard DDR5", the memory in a normal PC <a class="cite" href="https://www.micron.com/products/memory/hbm" target="_blank" rel="noopener" title="Micron: High Bandwidth Memory (HBM) product page">1</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Each floor is a DRAM chip. The vertical wires are called through-silicon vias (TSVs): thousands of fine holes drilled through each chip and filled with metal <a class="cite" href="https://news.skhynix.com/en/sk-hynix-begins-volume-production-of-the-world-first-12-layer-hbm3e/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix begins volume production of the world&#x27;s first 12-layer HBM3E (26 Sep 2024)">2</a>. The stack sits on a base chip and is joined to the processor through a silicon layer underneath both; TSMC's version of this packaging is called CoWoS <a class="cite" href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm" target="_blank" rel="noopener" title="TSMC: CoWoS advanced packaging technology">3</a>. The HBM4 standard allows 4, 8, 12 or 16 floors <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)">4</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>An HBM3E stack has a 1,024-bit interface split into 16 independent channels, at more than 9.2 Gb/s per pin, giving over 1.2 TB/s per stack <a class="cite" href="https://www.micron.com/products/memory/hbm/hbm3e" target="_blank" rel="noopener" title="Micron: HBM3E product page">5</a>. HBM4 doubles the interface to 2,048 bits <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)">4</a> <a class="cite" href="https://semiconductor.samsung.com/dram/hbm/hbm4/" target="_blank" rel="noopener" title="Samsung Semiconductor: HBM4 product page">6</a>. To fit 12 floors into the height of an 8-floor stack, SK hynix made each DRAM chip 40% thinner <a class="cite" href="https://news.skhynix.com/en/sk-hynix-begins-volume-production-of-the-world-first-12-layer-hbm3e/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix begins volume production of the world&#x27;s first 12-layer HBM3E (26 Sep 2024)">2</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="why" aria-labelledby="h-why">
+<h2 id="h-why"><span>2.</span>Why AI chips need it</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>An AI chip can only work as fast as data reaches it. When a chatbot writes an answer, it reads its entire model from memory for every word, so the speed of the memory, not the maths, often sets the pace. NVIDIA says "the decode, or generation, phase of inference is fundamentally memory subsystem bound" <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Rubin GPU architecture">7</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The gap is large. One HBM4 stack can move up to 2 TB/s under the official standard <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)">4</a>; one chip of GDDR7, the fast memory on gaming graphics cards, moves up to 192 GB/s <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-publishes-gddr7-graphics-memory-standard" target="_blank" rel="noopener" title="JEDEC: JEDEC publishes GDDR7 graphics memory standard (5 Mar 2024)">8</a>. At Hot Chips 2026 Micron said a single HBM3E memory chip delivers about 256 GB/s against about 8 GB/s for a DDR5 chip, as reported by Tom's Hardware <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/micron-says-the-silicon-gap-between-hbm-and-ddr5-is-widening-with-every-generation" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): Micron says the silicon gap between HBM and DDR5 is widening (25 Aug 2026)">9</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Micron told Hot Chips 2026 that "the memory wall is still present, and, in fact, maybe getting worse": compute grows about three times every two years while HBM bandwidth grows less than two times, and in two-GPU packages memory takes about 90% of the silicon (press report) <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/micron-says-the-silicon-gap-between-hbm-and-ddr5-is-widening-with-every-generation" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): Micron says the silicon gap between HBM and DDR5 is widening (25 Aug 2026)">9</a>. See our <a href="/ai-atlas/ai-chips/how-ai-chips-work/">How AI chips work</a> guide for the full memory-wall picture.</p>
+</div>
+</section>
+<section class="chip-sec" id="gens" aria-labelledby="h-gens">
+<h2 id="h-gens"><span>3.</span>The generations: HBM to HBM4E</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Generation</th><th>Official standard</th><th>Speed per stack</th></tr></thead><tbody>
+<tr><td>HBM2</td><td>JEDEC update, Jan 2016</td><td>Up to 256 GB/s <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-updates-groundbreaking-high-bandwidth-memory-hbm-standard" target="_blank" rel="noopener" title="JEDEC: JEDEC updates High Bandwidth Memory standard, JESD235A (12 Jan 2016)">10</a></td></tr>
+<tr><td>HBM3</td><td>JEDEC, Jan 2022</td><td>Up to 819 GB/s <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-publishes-hbm3-update-high-bandwidth-memory-hbm-standard" target="_blank" rel="noopener" title="JEDEC: JEDEC publishes HBM3 update to High Bandwidth Memory standard (27 Jan 2022)">11</a></td></tr>
+<tr><td>HBM3E</td><td>Maker products, 2024</td><td>Over 1.2 TB/s <a class="cite" href="https://www.micron.com/products/memory/hbm/hbm3e" target="_blank" rel="noopener" title="Micron: HBM3E product page">5</a></td></tr>
+<tr><td>HBM4</td><td>JEDEC, Apr 2025</td><td>Up to 2 TB/s (standard); up to 3.3 TB/s (Samsung product) <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)">4</a> <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">12</a></td></tr>
+<tr><td>HBM4E</td><td>Samples, 2026</td><td>Up to 3.6 TB/s (Samsung sample) <a class="cite" href="https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung begins shipment of industry-first HBM4E samples (29 May 2026)">13</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The makers race past the standard. JEDEC's HBM4 sets up to 8 Gb/s per pin <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)">4</a>; SK hynix's HBM4 runs at more than 10 Gb/s <a class="cite" href="https://news.skhynix.com/en/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix completes world&#x27;s first HBM4 development (12 Sep 2025)">14</a> and Samsung's at 11.7 Gb/s, up to 13 Gb/s <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">12</a>. Stacks grew too: SK hynix started volume production of a 12-floor, 36 GB HBM3E stack in September 2024 and showed a 16-floor, 48 GB HBM4 stack in January 2026 <a class="cite" href="https://news.skhynix.com/en/sk-hynix-begins-volume-production-of-the-world-first-12-layer-hbm3e/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix begins volume production of the world&#x27;s first 12-layer HBM3E (26 Sep 2024)">2</a> <a class="cite" href="https://news.skhynix.com/sk-hynix-showcases-next-generation-ai-memory-innovations-at-ces-2026/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix showcases next-generation AI memory at CES 2026">15</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>HBM4 allows up to 64 GB per stack using 16 floors of 32 Gb chips, doubles the channels to 32 and improves protection against "row hammer" attacks <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)">4</a>. In July 2026 JEDEC published SPHBM4, which gives "the same aggregate data throughput as HBM4" over 512 signals instead of 2,048, so it can sit on cheaper organic packaging instead of silicon <a class="cite" href="https://www.jedec.org/news/pressreleases/new-jedec%C2%AE-sphbm4-standard-enables-hbm4-class-bandwidth-organic-substrates" target="_blank" rel="noopener" title="JEDEC: New JEDEC SPHBM4 standard: HBM4-class bandwidth on organic substrates (Jul 2026)">16</a>.</p>
+<p>HBM4 also changes who builds the bottom chip of the stack. SK hynix agreed in 2024 to use TSMC's chip-making process for its HBM4 base die <a class="cite" href="https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix partners with TSMC to strengthen HBM leadership (Apr 2024)">17</a>, and Samsung uses its own 4 nm process <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">12</a>; SK hynix describes "custom HBM" that moves some GPU functions into that base die <a class="cite" href="https://news.skhynix.com/sk-hynix-showcases-next-generation-ai-memory-innovations-at-ces-2026/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix showcases next-generation AI memory at CES 2026">15</a>. SK hynix shipped 12-high, 48 GB HBM4E samples in June 2026 <a class="cite" href="https://news.skhynix.com/en/12-layer-hbm4e-sample-1/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix ships samples of 12-layer HBM4E (Jun 2026)">18</a>. It told Hot Chips 2026 that "hybrid bonding", joining chips without solder bumps, will not be ready for HBM4E (press report) <a class="cite" href="https://www.tomshardware.com/tech-industry/semiconductors/sk-hynix-says-hybrid-bonding-wont-be-ready-for-hbm4e-as-ai-memory-runs-into-a-775-micron-ceiling" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): SK hynix says hybrid bonding won&#x27;t be ready for HBM4E (23 Aug 2026)">19</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="inchips" aria-labelledby="h-inchips">
+<h2 id="h-inchips"><span>4.</span>How much is inside today’s AI chips</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Official memory figures for well-known AI chips:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Chip</th><th>HBM</th><th>Bandwidth</th></tr></thead><tbody>
+<tr><td>NVIDIA H100 SXM</td><td>80 GB</td><td>3.35 TB/s <a class="cite" href="https://www.nvidia.com/en-us/data-center/h100/" target="_blank" rel="noopener" title="NVIDIA: H100 Tensor Core GPU product page">20</a></td></tr>
+<tr><td>NVIDIA B200 (HGX server)</td><td>180 GB HBM3e per GPU (the chip itself: 192 GB)</td><td>— <a class="cite" href="https://docs.nvidia.com/enterprise-reference-architectures/hgx-ai-factory/latest/components.html" target="_blank" rel="noopener" title="NVIDIA Docs: HGX AI Factory reference architecture: components">21</a> <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Blackwell Ultra">22</a></td></tr>
+<tr><td>NVIDIA B300 (HGX)</td><td>288 GB HBM3e</td><td>— <a class="cite" href="https://docs.nvidia.com/enterprise-reference-architectures/hgx-ai-factory/latest/components.html" target="_blank" rel="noopener" title="NVIDIA Docs: HGX AI Factory reference architecture: components">21</a></td></tr>
+<tr><td>NVIDIA Rubin</td><td>Up to 288 GB HBM4</td><td>Up to 22 TB/s <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Rubin GPU architecture">7</a></td></tr>
+<tr><td>AMD MI355X</td><td>288 GB HBM3E</td><td>8 TB/s <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener" title="AMD: Instinct MI355X product page">23</a></td></tr>
+<tr><td>AMD MI455X</td><td>432 GB HBM4</td><td>Up to 23.3 TB/s <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series product page">24</a></td></tr>
+<tr><td>Google TPU Ironwood</td><td>192 GB</td><td>7.37 TB/s <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener" title="Google Blog: Ironwood: the first Google TPU for the age of inference (9 Apr 2025)">25</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Memory per chip has grown fast: from 80 GB on the H100 to up to 288 GB on Rubin <a class="cite" href="https://www.nvidia.com/en-us/data-center/h100/" target="_blank" rel="noopener" title="NVIDIA: H100 Tensor Core GPU product page">20</a> <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Rubin GPU architecture">7</a>, and Google's Ironwood has six times the memory of its previous TPU <a class="cite" href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener" title="Google Blog: Ironwood: the first Google TPU for the age of inference (9 Apr 2025)">25</a>. NVIDIA says Rubin's bandwidth is 2.8 times that of Blackwell <a class="cite" href="https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/" target="_blank" rel="noopener" title="NVIDIA Technical Blog: Inside NVIDIA Rubin GPU architecture">7</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Makers name which chips they supply. Micron says its 12-high 36 GB HBM3E is designed into NVIDIA's HGX B300 NVL16 and GB300 NVL72, and its 8-high 24 GB stacks are available for HGX B200 and GB200 NVL72 <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-innovates-data-center-edge-nvidia" target="_blank" rel="noopener" title="Micron Investor Relations: Micron innovates from the data center to the edge with NVIDIA (18 Mar 2025)">26</a>. AMD's Helios rack of 72 MI455X chips carries 31 TB of HBM4 <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series product page">24</a>. See our <a href="/ai-atlas/ai-chips/nvidia/">NVIDIA</a> and <a href="/ai-atlas/ai-chips/amd/">AMD</a> guides.</p>
+</div>
+</section>
+<section class="chip-sec" id="makers" aria-labelledby="h-makers">
+<h2 id="h-makers"><span>5.</span>The three makers</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Three companies make almost all the world's HBM: SK hynix and Samsung in South Korea, and Micron in the United States. In the April–June 2026 quarter the research firm Counterpoint put their shares at 50%, 33% and 18% (an analyst estimate, reported by press) <a class="cite" href="https://www.sammobile.com/news/samsung-strengthens-position-hbm-market-q2-2026" target="_blank" rel="noopener" title="SamMobile (press, citing Counterpoint Research): HBM market shares, Q1 and Q2 2026">27</a>.</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Maker</th><th>Headquarters</th><th>HBM4 status</th></tr></thead><tbody>
+<tr><td>SK hynix</td><td>South Korea</td><td>Mass shipments from Apr–Jun 2026 <a class="cite" href="https://news.skhynix.com/en/q2-2026-business-results/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix second-quarter 2026 business results (29 Jul 2026)">28</a></td></tr>
+<tr><td>Samsung</td><td>South Korea</td><td>Commercial shipments from Feb 2026 <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">12</a></td></tr>
+<tr><td>Micron</td><td>Boise, Idaho, USA</td><td>High-volume shipments for a lead customer <a class="cite" href="https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx" target="_blank" rel="noopener" title="Micron Investor Relations: Micron reports record results for fiscal Q3 2026 (24 Jun 2026)">29</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Memory makers are earning record profits. SK hynix reported April–June 2026 revenue of 79.3 trillion won and operating profit of 60.5 trillion won <a class="cite" href="https://news.skhynix.com/en/q2-2026-business-results/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix second-quarter 2026 business results (29 Jul 2026)">28</a>. Samsung's quarterly operating profit reached a record 89.5 trillion won, 89.2 trillion of it from chips <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second-quarter 2026 results (30 Jul 2026)">30</a>. Micron's March–May 2026 revenue was $41.46 billion, against $9.30 billion a year earlier, and it guides about $50 billion for the next quarter, due on 30 September <a class="cite" href="https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx" target="_blank" rel="noopener" title="Micron Investor Relations: Micron reports record results for fiscal Q3 2026 (24 Jun 2026)">29</a> <a class="cite" href="https://investors.micron.com/news/press-release/2026/Micron-Technology-to-Report-Fiscal-Fourth-Quarter-Results-on-September-30-2026/default.aspx" target="_blank" rel="noopener" title="Micron Investor Relations: Micron to report fiscal fourth-quarter results on 30 Sep 2026">31</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Shares swing quickly: Counterpoint had SK hynix at 58% and Samsung at 21% in January–March 2026, and Samsung rose to 33% the following quarter (analyst estimates) <a class="cite" href="https://www.sammobile.com/news/samsung-strengthens-position-hbm-market-q2-2026" target="_blank" rel="noopener" title="SamMobile (press, citing Counterpoint Research): HBM market shares, Q1 and Q2 2026">27</a>. Samsung expects its HBM sales to "more than triple in 2026" <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">12</a>. China's CXMT has reportedly begun trial production of HBM3E, with mass production possible in 2027 (press report) <a class="cite" href="https://www.tomshardware.com/pc-components/dram/cxmt-reportedly-begins-risk-production-of-hbm3e-memory-in-breakthrough-for-chinese-dram-production-company-could-be-in-mass-production-in-2027" target="_blank" rel="noopener" title="Tom&#x27;s Hardware (press): CXMT reportedly begins risk production of HBM3E (Sep 2026)">32</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="scarce" aria-labelledby="h-scarce">
+<h2 id="h-scarce"><span>6.</span>Why it is scarce</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>HBM is sold out years ahead. Micron said in December 2025 that it had "completed agreements on price and volume for our entire calendar 2026 HBM supply" <a class="cite" href="https://investors.micron.com/static-files/088991c5-a249-4f66-a0a6-258d9b66f3f9" target="_blank" rel="noopener" title="Micron Investor Relations: Fiscal Q1 2026 prepared remarks (17 Dec 2025)">33</a>. SK hynix says "customer demand exceeds supply capabilities" <a class="cite" href="https://news.skhynix.com/en/q2-2026-business-results/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix second-quarter 2026 business results (29 Jul 2026)">28</a>. The main reasons: HBM uses far more factory space per gigabyte than ordinary memory, it is hard to stack <a class="cite" href="https://news.skhynix.com/en/sk-hynix-begins-volume-production-of-the-world-first-12-layer-hbm3e/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix begins volume production of the world&#x27;s first 12-layer HBM3E (26 Sep 2024)">2</a>, and new factories take years to build <a class="cite" href="https://investors.micron.com/static-files/088991c5-a249-4f66-a0a6-258d9b66f3f9" target="_blank" rel="noopener" title="Micron Investor Relations: Fiscal Q1 2026 prepared remarks (17 Dec 2025)">33</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ul>
+<li><b>More wafer per gigabyte:</b> Micron describes a "3-to-1 trade ratio with DDR5, and this trade ratio only increases with future generations of HBM" <a class="cite" href="https://investors.micron.com/static-files/088991c5-a249-4f66-a0a6-258d9b66f3f9" target="_blank" rel="noopener" title="Micron Investor Relations: Fiscal Q1 2026 prepared remarks (17 Dec 2025)">33</a>.</li>
+<li><b>Hard to build:</b> 12 or 16 thinned chips must be stacked and joined perfectly <a class="cite" href="https://news.skhynix.com/en/sk-hynix-begins-volume-production-of-the-world-first-12-layer-hbm3e/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix begins volume production of the world&#x27;s first 12-layer HBM3E (26 Sep 2024)">2</a> <a class="cite" href="https://news.skhynix.com/sk-hynix-announces-16-layer-hbm3e-at-sk-ai-summit-2024/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix announces 16-layer HBM3E at SK AI Summit 2024 (4 Nov 2024)">34</a>.</li>
+<li><b>Packaging bottleneck:</b> TSMC's chief executive said in October 2025 that "frontend and backend capacity is very tight" <a class="cite" href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-10/6860312f04fd291d0f26b46c1234f84e6332717e/TSMC%203Q25%20Transcript.pdf" target="_blank" rel="noopener" title="TSMC Investor Relations: TSMC third-quarter 2025 earnings call transcript (16 Oct 2025)">35</a>.</li>
+<li><b>Slow to add:</b> Micron says "lead times for cleanroom build-out are lengthening" <a class="cite" href="https://investors.micron.com/static-files/088991c5-a249-4f66-a0a6-258d9b66f3f9" target="_blank" rel="noopener" title="Micron Investor Relations: Fiscal Q1 2026 prepared remarks (17 Dec 2025)">33</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>On Micron's June 2026 call, Micron said its HBM demand "not just in 2027, but even 2028, is well above our ability to supply" (transcript) <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q3-2026-estimates-shares-jump-146-93CH-4759504" target="_blank" rel="noopener" title="Investing.com (transcript, press): Micron Q3 2026 earnings call transcript">36</a>. An SK hynix executive said in April 2026 that HBM demand over the next three years "far exceeds our supply capacity" (press report) <a class="cite" href="https://en.sedaily.com/finance/2026/04/23/sk-hynixs-hbm-sells-out-for-3-years-dram-supply-runs-short" target="_blank" rel="noopener" title="Seoul Economic Daily (press): SK hynix&#x27;s HBM sells out for three years (23 Apr 2026)">37</a>. TrendForce estimates HBM takes about 22% of DRAM wafer input by the end of 2026 but only about 9% of DRAM bits (analyst) <a class="cite" href="https://www.trendforce.com/presscenter/news/20260602-13074.html" target="_blank" rel="noopener" title="TrendForce (analyst): HBM share of DRAM wafer input and price outlook (2 Jun 2026)">38</a>. Micron left its Crucial consumer business to support "larger, strategic customers" <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business" target="_blank" rel="noopener" title="Micron Investor Relations: Micron announces exit from Crucial consumer business (3 Dec 2025)">39</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="prices" aria-labelledby="h-prices">
+<h2 id="h-prices"><span>7.</span>Prices and the knock-on effect</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>No maker publishes an HBM price list.</b> Prices are agreed privately with each chip company <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-sk-hynix-posts-record-q2-2026-results-as-shares-fall-93CH-4818480" target="_blank" rel="noopener" title="Investing.com (transcript, press): SK hynix Q2 2026 earnings call transcript">40</a>. What is public is the knock-on effect: ordinary memory for phones and PCs has become far more expensive <a class="cite" href="https://www.trendforce.com/presscenter/news/20260601-13070.html" target="_blank" rel="noopener" title="TrendForce (analyst): DRAM industry revenue and contract prices, 1Q26 (1 Jun 2026)">41</a> <a class="cite" href="https://www.gartner.com/en/newsroom/press-releases/2026-02-26-gartner-says-surging-memory-costs-will-reduce-global-pc-and-smartphone-shipments-in-2026" target="_blank" rel="noopener" title="Gartner (analyst): Surging memory costs will reduce PC and smartphone shipments in 2026 (26 Feb 2026)">42</a>, and TrendForce links this partly to factory space moving to HBM (analyst) <a class="cite" href="https://www.trendforce.com/presscenter/news/20260602-13074.html" target="_blank" rel="noopener" title="TrendForce (analyst): HBM share of DRAM wafer input and price outlook (2 Jun 2026)">38</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The research firm TrendForce says ordinary DRAM contract prices rose 93–98% in January–March 2026 and forecast a further 58–63% in April–June (analyst estimates) <a class="cite" href="https://www.trendforce.com/presscenter/news/20260601-13070.html" target="_blank" rel="noopener" title="TrendForce (analyst): DRAM industry revenue and contract prices, 1Q26 (1 Jun 2026)">41</a>. Gartner expects memory and storage prices to rise 130% by the end of 2026, pushing PC prices up 17% and smartphones up 13% (analyst) <a class="cite" href="https://www.gartner.com/en/newsroom/press-releases/2026-02-26-gartner-says-surging-memory-costs-will-reduce-global-pc-and-smartphone-shipments-in-2026" target="_blank" rel="noopener" title="Gartner (analyst): Surging memory costs will reduce PC and smartphone shipments in 2026 (26 Feb 2026)">42</a>. Apple's Tim Cook called it "a hundred-year flood on the memory pricing" (transcript) <a class="cite" href="https://sixcolors.com/post/2026/07/one-last-time-this-is-tim-transcript-of-apples-q3-2026-financial-call/" target="_blank" rel="noopener" title="Six Colors (transcript, press): Transcript of Apple&#x27;s Q3 2026 financial call">43</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Micron's HBM market estimate rose from about $35 billion in 2025 toward $100 billion by 2028 <a class="cite" href="https://investors.micron.com/static-files/088991c5-a249-4f66-a0a6-258d9b66f3f9" target="_blank" rel="noopener" title="Micron Investor Relations: Fiscal Q1 2026 prepared remarks (17 Dec 2025)">33</a>, then on the June 2026 call to "easily crossing $100 billion in 2027" (transcript) <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q3-2026-estimates-shares-jump-146-93CH-4759504" target="_blank" rel="noopener" title="Investing.com (transcript, press): Micron Q3 2026 earnings call transcript">36</a>. Micron's gross margin reached 84.6% in March–May 2026 <a class="cite" href="https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx" target="_blank" rel="noopener" title="Micron Investor Relations: Micron reports record results for fiscal Q3 2026 (24 Jun 2026)">29</a>. Korean media, cited by TrendForce, say 36 GB HBM3E sells for about $2,100 on the spot market, four to five times long-term contract prices; treat this as unconfirmed <a class="cite" href="https://www.trendforce.com/news/2026/09/01/news-hbm3e-spot-prices-said-to-be-4-5x-lta-levels-with-samsung-reportedly-locking-70-of-memory-capacity-through-2031" target="_blank" rel="noopener" title="TrendForce News (press, citing Korean media): HBM3E spot prices said to be 4 to 5 times contract levels (1 Sep 2026)">44</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="plants" aria-labelledby="h-plants">
+<h2 id="h-plants"><span>8.</span>Where it is made, India and export rules</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Where HBM is made or packaged, from company announcements:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Maker</th><th>Site</th><th>What we know</th></tr></thead><tbody>
+<tr><td>SK hynix</td><td>M15X, Cheongju, South Korea</td><td>New memory plant "best conditioned" for HBM; mass production ramping <a class="cite" href="https://news.skhynix.com/en/sk-hynix-to-produce-dram-from-m15x-in-cheongju/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix to produce DRAM from M15X in Cheongju (24 Apr 2024)">45</a> <a class="cite" href="https://news.skhynix.com/en/q2-2026-business-results/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix second-quarter 2026 business results (29 Jul 2026)">28</a></td></tr>
+<tr><td>SK hynix</td><td>P&amp;T7, Cheongju Technopolis, Oebuk-dong, Heungdeok-gu, Cheongju-si, Chungcheongbuk-do</td><td>HBM packaging plant; lines from Oct 2027 <a class="cite" href="https://news.skhynix.com/en/skhynix-chungju-pt7/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix breaks ground on P&amp;T7 advanced packaging plant (Apr 2026)">46</a></td></tr>
+<tr><td>SK hynix</td><td>Purdue Research Park, West Lafayette, Indiana, USA</td><td>First US HBM packaging plant, over $4 billion, production 2H 2029 <a class="cite" href="https://news.skhynix.com/en/groundbreaking-ceremony-in-indiana/" target="_blank" rel="noopener" title="SK hynix Newsroom: Groundbreaking ceremony in Indiana (27 Aug 2026)">47</a></td></tr>
+<tr><td>Micron</td><td>Singapore</td><td>HBM packaging plant, about $7 billion, meaningful supply from 2027 <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-breaks-ground-new-hbm-advanced-packaging-facility" target="_blank" rel="noopener" title="Micron Investor Relations: Micron breaks ground on new HBM advanced packaging facility in Singapore (8 Jan 2025)">48</a></td></tr>
+<tr><td>Micron</td><td>Tongluo, Taiwan</td><td>Bought 2026 for leading-edge memory "including HBM" <a class="cite" href="https://investors.micron.com/news/press-release/2026/Micron-Completes-Acquisition-of-PSMCs-Tongluo-P5-Site-in-Taiwan-03-15-2026/default.aspx" target="_blank" rel="noopener" title="Micron Investor Relations: Micron completes acquisition of PSMC&#x27;s Tongluo P5 site in Taiwan (15 Mar 2026)">49</a></td></tr>
+<tr><td>Samsung</td><td>Not named</td><td>Samsung does not name its HBM plants <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">12</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p><b>India:</b> Micron opened its Sanand, Gujarat plant on 28 February 2026, India's first memory assembly and test plant <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-celebrates-opening-indias-first-semiconductor-assembly" target="_blank" rel="noopener" title="Micron Investor Relations: Micron celebrates opening of India&#x27;s first semiconductor assembly facility (28 Feb 2026)">50</a> <a class="cite" href="https://www.pmindia.gov.in/en/news_updates/pm-inaugurates-micron-technologys-semiconductor-assembly-test-and-packaging-atmp-facility-in-sanandgujarat/" target="_blank" rel="noopener" title="PM India: PM inaugurates Micron&#x27;s semiconductor ATMP facility in Sanand, Gujarat">51</a>. The investment is ₹22,516 crore with 50% support from the Government of India; Gujarat's share is not stated in that note <a class="cite" href="https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=152130&amp;ModuleId=3&amp;reg=3&amp;lang=1" target="_blank" rel="noopener" title="Press Information Bureau, Government of India: Micron ATMP facility, Sanand: investment and support">52</a>. It turns DRAM and NAND wafers into finished products; HBM is not mentioned <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-celebrates-opening-indias-first-semiconductor-assembly" target="_blank" rel="noopener" title="Micron Investor Relations: Micron celebrates opening of India&#x27;s first semiconductor assembly facility (28 Feb 2026)">50</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p><b>Export rules:</b> in December 2024 the US added "new controls on high-bandwidth memory", aimed at China, and covering HBM made outside the US with US technology <a class="cite" href="https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military" target="_blank" rel="noopener" title="US Bureau of Industry and Security: Commerce strengthens export controls, including new controls on HBM (2 Dec 2024)">53</a> <a class="cite" href="https://www.federalregister.gov/documents/2024/12/05/2024-28270/foreign-produced-direct-product-rule-additions-and-refinements-to-controls-for-advanced-computing" target="_blank" rel="noopener" title="Federal Register: Foreign-produced direct product rule additions and advanced computing controls (5 Dec 2024)">54</a>. The US government is backing SK hynix's Indiana plant with up to $458 million in grants <a class="cite" href="https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette" target="_blank" rel="noopener" title="NIST CHIPS for America: SK hynix, West Lafayette, Indiana: CHIPS award">55</a>. SK hynix is also spending 54 trillion won on two more fabs, Yongin Y2 aimed at HBM and Cheongju M17 <a class="cite" href="https://news.skhynix.com/en/fab-facility-investment-2026/" target="_blank" rel="noopener" title="SK hynix Newsroom: SK hynix announces Yongin Y2 and Cheongju M17 fab investments (7 Aug 2026)">56</a>. For the wider rules see our <a href="/ai-atlas/ai-chips/export-rules/">export rules guide</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>9.</span>Sources</h2>
+<p class="note">56 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator or an annual report; <b>Standard</b> = a published industry standard; <b>Paper</b> = a peer-reviewed or conference paper; <b>Research</b> = an independent research body; <b>Government</b> = a government page; <b>Press</b> = news coverage, used only where no official source exists.</p>
+<ol class="src-list">
+<li id="src-1"><b>Micron</b>: <a href="https://www.micron.com/products/memory/hbm" target="_blank" rel="noopener">High Bandwidth Memory (HBM) product page</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/sk-hynix-begins-volume-production-of-the-world-first-12-layer-hbm3e/" target="_blank" rel="noopener">SK hynix begins volume production of the world&#x27;s first 12-layer HBM3E (26 Sep 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>TSMC</b>: <a href="https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm" target="_blank" rel="noopener">CoWoS advanced packaging technology</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener">JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)</a><span class="st st-standard">Standard</span></li>
+<li id="src-5"><b>Micron</b>: <a href="https://www.micron.com/products/memory/hbm/hbm3e" target="_blank" rel="noopener">HBM3E product page</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/dram/hbm/hbm4/" target="_blank" rel="noopener">HBM4 product page</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/" target="_blank" rel="noopener">Inside NVIDIA Rubin GPU architecture</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec-publishes-gddr7-graphics-memory-standard" target="_blank" rel="noopener">JEDEC publishes GDDR7 graphics memory standard (5 Mar 2024)</a><span class="st st-standard">Standard</span></li>
+<li id="src-9"><b>Tom&#x27;s Hardware (press)</b>: <a href="https://www.tomshardware.com/tech-industry/semiconductors/micron-says-the-silicon-gap-between-hbm-and-ddr5-is-widening-with-every-generation" target="_blank" rel="noopener">Micron says the silicon gap between HBM and DDR5 is widening (25 Aug 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-10"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec-updates-groundbreaking-high-bandwidth-memory-hbm-standard" target="_blank" rel="noopener">JEDEC updates High Bandwidth Memory standard, JESD235A (12 Jan 2016)</a><span class="st st-standard">Standard</span></li>
+<li id="src-11"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec-publishes-hbm3-update-high-bandwidth-memory-hbm-standard" target="_blank" rel="noopener">JEDEC publishes HBM3 update to High Bandwidth Memory standard (27 Jan 2022)</a><span class="st st-standard">Standard</span></li>
+<li id="src-12"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener">Samsung ships industry-first commercial HBM4 (12 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples" target="_blank" rel="noopener">Samsung begins shipment of industry-first HBM4E samples (29 May 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-14"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/sk-hynix-completes-worlds-first-hbm4-development-and-readies-mass-production/" target="_blank" rel="noopener">SK hynix completes world&#x27;s first HBM4 development (12 Sep 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-15"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/sk-hynix-showcases-next-generation-ai-memory-innovations-at-ces-2026/" target="_blank" rel="noopener">SK hynix showcases next-generation AI memory at CES 2026</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/new-jedec%C2%AE-sphbm4-standard-enables-hbm4-class-bandwidth-organic-substrates" target="_blank" rel="noopener">New JEDEC SPHBM4 standard: HBM4-class bandwidth on organic substrates (Jul 2026)</a><span class="st st-standard">Standard</span></li>
+<li id="src-17"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/" target="_blank" rel="noopener">SK hynix partners with TSMC to strengthen HBM leadership (Apr 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/12-layer-hbm4e-sample-1/" target="_blank" rel="noopener">SK hynix ships samples of 12-layer HBM4E (Jun 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>Tom&#x27;s Hardware (press)</b>: <a href="https://www.tomshardware.com/tech-industry/semiconductors/sk-hynix-says-hybrid-bonding-wont-be-ready-for-hbm4e-as-ai-memory-runs-into-a-775-micron-ceiling" target="_blank" rel="noopener">SK hynix says hybrid bonding won&#x27;t be ready for HBM4E (23 Aug 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-20"><b>NVIDIA</b>: <a href="https://www.nvidia.com/en-us/data-center/h100/" target="_blank" rel="noopener">H100 Tensor Core GPU product page</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>NVIDIA Docs</b>: <a href="https://docs.nvidia.com/enterprise-reference-architectures/hgx-ai-factory/latest/components.html" target="_blank" rel="noopener">HGX AI Factory reference architecture: components</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>NVIDIA Technical Blog</b>: <a href="https://developer.nvidia.com/blog/inside-nvidia-blackwell-ultra-the-chip-powering-the-ai-factory-era" target="_blank" rel="noopener">Inside NVIDIA Blackwell Ultra</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>AMD</b>: <a href="https://www.amd.com/en/products/accelerators/instinct/mi350/mi355x.html" target="_blank" rel="noopener">Instinct MI355X product page</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>AMD</b>: <a href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener">Instinct MI400 series product page</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>Google Blog</b>: <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/ironwood-tpu-age-of-inference/" target="_blank" rel="noopener">Ironwood: the first Google TPU for the age of inference (9 Apr 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news-releases/news-release-details/micron-innovates-data-center-edge-nvidia" target="_blank" rel="noopener">Micron innovates from the data center to the edge with NVIDIA (18 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>SamMobile (press, citing Counterpoint Research)</b>: <a href="https://www.sammobile.com/news/samsung-strengthens-position-hbm-market-q2-2026" target="_blank" rel="noopener">HBM market shares, Q1 and Q2 2026</a><span class="st st-press">Press</span></li>
+<li id="src-28"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/q2-2026-business-results/" target="_blank" rel="noopener">SK hynix second-quarter 2026 business results (29 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx" target="_blank" rel="noopener">Micron reports record results for fiscal Q3 2026 (24 Jun 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener">Samsung Electronics announces second-quarter 2026 results (30 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news/press-release/2026/Micron-Technology-to-Report-Fiscal-Fourth-Quarter-Results-on-September-30-2026/default.aspx" target="_blank" rel="noopener">Micron to report fiscal fourth-quarter results on 30 Sep 2026</a><span class="st st-official">Official</span></li>
+<li id="src-32"><b>Tom&#x27;s Hardware (press)</b>: <a href="https://www.tomshardware.com/pc-components/dram/cxmt-reportedly-begins-risk-production-of-hbm3e-memory-in-breakthrough-for-chinese-dram-production-company-could-be-in-mass-production-in-2027" target="_blank" rel="noopener">CXMT reportedly begins risk production of HBM3E (Sep 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-33"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/static-files/088991c5-a249-4f66-a0a6-258d9b66f3f9" target="_blank" rel="noopener">Fiscal Q1 2026 prepared remarks (17 Dec 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-34"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/sk-hynix-announces-16-layer-hbm3e-at-sk-ai-summit-2024/" target="_blank" rel="noopener">SK hynix announces 16-layer HBM3E at SK AI Summit 2024 (4 Nov 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-35"><b>TSMC Investor Relations</b>: <a href="https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2025-10/6860312f04fd291d0f26b46c1234f84e6332717e/TSMC%203Q25%20Transcript.pdf" target="_blank" rel="noopener">TSMC third-quarter 2025 earnings call transcript (16 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-36"><b>Investing.com (transcript, press)</b>: <a href="https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q3-2026-estimates-shares-jump-146-93CH-4759504" target="_blank" rel="noopener">Micron Q3 2026 earnings call transcript</a><span class="st st-press">Press</span></li>
+<li id="src-37"><b>Seoul Economic Daily (press)</b>: <a href="https://en.sedaily.com/finance/2026/04/23/sk-hynixs-hbm-sells-out-for-3-years-dram-supply-runs-short" target="_blank" rel="noopener">SK hynix&#x27;s HBM sells out for three years (23 Apr 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-38"><b>TrendForce (analyst)</b>: <a href="https://www.trendforce.com/presscenter/news/20260602-13074.html" target="_blank" rel="noopener">HBM share of DRAM wafer input and price outlook (2 Jun 2026)</a><span class="st st-research">Research</span></li>
+<li id="src-39"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business" target="_blank" rel="noopener">Micron announces exit from Crucial consumer business (3 Dec 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-40"><b>Investing.com (transcript, press)</b>: <a href="https://www.investing.com/news/transcripts/earnings-call-transcript-sk-hynix-posts-record-q2-2026-results-as-shares-fall-93CH-4818480" target="_blank" rel="noopener">SK hynix Q2 2026 earnings call transcript</a><span class="st st-press">Press</span></li>
+<li id="src-41"><b>TrendForce (analyst)</b>: <a href="https://www.trendforce.com/presscenter/news/20260601-13070.html" target="_blank" rel="noopener">DRAM industry revenue and contract prices, 1Q26 (1 Jun 2026)</a><span class="st st-research">Research</span></li>
+<li id="src-42"><b>Gartner (analyst)</b>: <a href="https://www.gartner.com/en/newsroom/press-releases/2026-02-26-gartner-says-surging-memory-costs-will-reduce-global-pc-and-smartphone-shipments-in-2026" target="_blank" rel="noopener">Surging memory costs will reduce PC and smartphone shipments in 2026 (26 Feb 2026)</a><span class="st st-research">Research</span></li>
+<li id="src-43"><b>Six Colors (transcript, press)</b>: <a href="https://sixcolors.com/post/2026/07/one-last-time-this-is-tim-transcript-of-apples-q3-2026-financial-call/" target="_blank" rel="noopener">Transcript of Apple&#x27;s Q3 2026 financial call</a><span class="st st-press">Press</span></li>
+<li id="src-44"><b>TrendForce News (press, citing Korean media)</b>: <a href="https://www.trendforce.com/news/2026/09/01/news-hbm3e-spot-prices-said-to-be-4-5x-lta-levels-with-samsung-reportedly-locking-70-of-memory-capacity-through-2031" target="_blank" rel="noopener">HBM3E spot prices said to be 4 to 5 times contract levels (1 Sep 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-45"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/sk-hynix-to-produce-dram-from-m15x-in-cheongju/" target="_blank" rel="noopener">SK hynix to produce DRAM from M15X in Cheongju (24 Apr 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-46"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/skhynix-chungju-pt7/" target="_blank" rel="noopener">SK hynix breaks ground on P&amp;T7 advanced packaging plant (Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-47"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/groundbreaking-ceremony-in-indiana/" target="_blank" rel="noopener">Groundbreaking ceremony in Indiana (27 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-48"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news-releases/news-release-details/micron-breaks-ground-new-hbm-advanced-packaging-facility" target="_blank" rel="noopener">Micron breaks ground on new HBM advanced packaging facility in Singapore (8 Jan 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-49"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news/press-release/2026/Micron-Completes-Acquisition-of-PSMCs-Tongluo-P5-Site-in-Taiwan-03-15-2026/default.aspx" target="_blank" rel="noopener">Micron completes acquisition of PSMC&#x27;s Tongluo P5 site in Taiwan (15 Mar 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-50"><b>Micron Investor Relations</b>: <a href="https://investors.micron.com/news-releases/news-release-details/micron-celebrates-opening-indias-first-semiconductor-assembly" target="_blank" rel="noopener">Micron celebrates opening of India&#x27;s first semiconductor assembly facility (28 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-51"><b>PM India</b>: <a href="https://www.pmindia.gov.in/en/news_updates/pm-inaugurates-micron-technologys-semiconductor-assembly-test-and-packaging-atmp-facility-in-sanandgujarat/" target="_blank" rel="noopener">PM inaugurates Micron&#x27;s semiconductor ATMP facility in Sanand, Gujarat</a><span class="st st-government">Government</span></li>
+<li id="src-52"><b>Press Information Bureau, Government of India</b>: <a href="https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=152130&amp;ModuleId=3&amp;reg=3&amp;lang=1" target="_blank" rel="noopener">Micron ATMP facility, Sanand: investment and support</a><span class="st st-government">Government</span></li>
+<li id="src-53"><b>US Bureau of Industry and Security</b>: <a href="https://www.bis.gov/press-release/commerce-strengthens-export-controls-restrict-chinas-capability-produce-advanced-semiconductors-military" target="_blank" rel="noopener">Commerce strengthens export controls, including new controls on HBM (2 Dec 2024)</a><span class="st st-government">Government</span></li>
+<li id="src-54"><b>Federal Register</b>: <a href="https://www.federalregister.gov/documents/2024/12/05/2024-28270/foreign-produced-direct-product-rule-additions-and-refinements-to-controls-for-advanced-computing" target="_blank" rel="noopener">Foreign-produced direct product rule additions and advanced computing controls (5 Dec 2024)</a><span class="st st-government">Government</span></li>
+<li id="src-55"><b>NIST CHIPS for America</b>: <a href="https://www.nist.gov/chips/sk-hynix-indiana-west-lafayette" target="_blank" rel="noopener">SK hynix, West Lafayette, Indiana: CHIPS award</a><span class="st st-government">Government</span></li>
+<li id="src-56"><b>SK hynix Newsroom</b>: <a href="https://news.skhynix.com/en/fab-facility-investment-2026/" target="_blank" rel="noopener">SK hynix announces Yongin Y2 and Cheongju M17 fab investments (7 Aug 2026)</a><span class="st st-official">Official</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#what">1. What HBM is</a><a href="#why">2. Why AI chips need it</a><a href="#gens">3. The generations: HBM to HBM4E</a><a href="#inchips">4. How much is inside today’s AI chips</a><a href="#makers">5. The three makers</a><a href="#scarce">6. Why it is scarce</a><a href="#prices">7. Prices and the knock-on effect</a><a href="#plants">8. Where it is made, India and export rules</a><a href="#sources">9. Sources</a></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip guides</a><a href="/ai-atlas/ai-chips/export-rules/" class="sidebar-link">Export rules and the US–China chip contest</a><a href="/ai-atlas/ai-chips/how-a-chip-is-made/" class="sidebar-link">How a chip is made: sand to server</a><a href="/ai-atlas/ai-chips/how-ai-chips-work/" class="sidebar-link">How AI chips work</a><a href="/ai-atlas/ai-chips/amazon-trainium/" class="sidebar-link">Amazon Trainium guide</a><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD guide</a><a href="/ai-atlas/ai-chips/apple/" class="sidebar-link">Apple guide</a><a href="/ai-atlas/ai-chips/cerebras/" class="sidebar-link">Cerebras guide</a><a href="/ai-atlas/ai-chips/google-tpu/" class="sidebar-link">Google TPU guide</a><a href="/ai-atlas/ai-chips/groq/" class="sidebar-link">Groq guide</a><a href="/ai-atlas/ai-chips/huawei-ascend/" class="sidebar-link">Huawei Ascend guide</a><a href="/ai-atlas/ai-chips/intel/" class="sidebar-link">Intel guide</a><a href="/ai-atlas/ai-chips/meta-mtia/" class="sidebar-link">Meta MTIA guide</a><a href="/ai-atlas/ai-chips/microsoft-maia/" class="sidebar-link">Microsoft Maia guide</a><a href="/ai-atlas/ai-chips/nvidia/" class="sidebar-link">NVIDIA guide</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22AI%20Memory%20%28HBM%29%20and%20Why%20It%20Is%20Scarce%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fai-memory-hbm%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22AI%20Memory%20%28HBM%29%20and%20Why%20It%20Is%20Scarce%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fai-memory-hbm%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22AI%20Memory%20%28HBM%29%20and%20Why%20It%20Is%20Scarce%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fai-memory-hbm%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22AI%20Memory%20%28HBM%29%20and%20Why%20It%20Is%20Scarce%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fai-memory-hbm%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22AI%20Memory%20%28HBM%29%20and%20Why%20It%20Is%20Scarce%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fai-memory-hbm%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

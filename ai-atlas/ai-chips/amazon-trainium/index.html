@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Amazon Trainium AI Chips: The Complete Guide | Clarigital</title>
+<meta name="description" content="Amazon&#x27;s Trainium and Inferentia AI chips: how they work, who designs them, official AWS prices, the Anthropic and OpenAI deals, and filing facts.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/amazon-trainium/">
+<meta property="og:title" content="Amazon Trainium AI Chips: The Complete Guide">
+<meta property="og:description" content="Amazon&#x27;s Trainium and Inferentia AI chips: how they work, who designs them, official AWS prices, the Anthropic and OpenAI deals, and filing facts.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/amazon-trainium/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--faint);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Amazon Trainium: The Complete Guide", "description": "Amazon's Trainium and Inferentia AI chips: how they work, who designs them, official AWS prices, the Anthropic and OpenAI deals, and filing facts.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/amazon-trainium/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/amazon-trainium/", "dateModified": "2026-09-22", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "about": {"@type": "Organization", "name": "Amazon.com, Inc.", "url": "https://www.aboutamazon.com", "tickerSymbol": "NASDAQ: AMZN", "foundingDate": "1994", "address": {"@type": "PostalAddress", "streetAddress": "410 Terry Avenue North", "addressLocality": "Seattle", "addressRegion": "WA", "postalCode": "98109-5210", "addressCountry": "US"}, "numberOfEmployees": {"@type": "QuantitativeValue", "value": 1576000}}, "citation": ["https://www.aws.amazon.com/machine-learning/trainium/", "https://aws.amazon.com/ai/machine-learning/inferentia/", "https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders", "https://www.amazon.science/how-silicon-innovation-became-the-secret-sauce-behind-awss-success", "https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips", "https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/", "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm", "https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/", "https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-amazon-chips-business-q1-2026-earnings", "https://www.investing.com/news/transcripts/earnings-call-transcript-amazon-tops-q2-2026-estimates-as-aws-growth-accelerates-93CH-4826442", "https://companiesmarketcap.com/amazon/sec-reports-10k/0001018724-26-000004/", "https://aws.amazon.com/blogs/aws/twenty-years-of-amazon-s3-and-building-whats-next/", "https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf", "https://amazon.jobs/content/en/teams/amazon-web-services/annapurna-labs", "https://techcrunch.com/2026/03/22/an-exclusive-tour-of-amazons-trainium-lab-the-chip-thats-won-over-anthropic-openai-even-apple/", "https://www.aboutamazon.com/news/company-news/amazon-earnings-q4-2025-report", "https://aws.amazon.com/about-aws/whats-new/2018/11/announcing-amazon-inferentia-machine-learning-inference-microchip", "https://techcrunch.com/2020/12/01/aws-launches-trainium-its-new-custom-ml-training-chip", "https://press.aboutamazon.com/2022/10/aws-announces-general-availability-of-amazon-ec2-trn1-instances-powered-by-aws-designed-trainium-chips", "https://aws.amazon.com/about-aws/whats-new/2023/04/amazon-ec2-inf2-instances-generative-ai-generally-available", "https://press.aboutamazon.com/2023/11/aws-unveils-next-generation-aws-designed-chips", "https://press.aboutamazon.com/2024/12/aws-trainium2-instances-now-generally-available", "https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster", "https://www.aboutamazon.com/news/aws/amazon-open-ai-strategic-partnership-investment", "https://www.anthropic.com/news/anthropic-amazon-compute", "https://aws.amazon.com/about-aws/whats-new/2019/12/introducing-amazon-ec2-inf1-instances-high-performance-and-the-lowest-cost-machine-learning-inference-in-the-cloud", "https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost", "https://www.trendforce.com/news/2024/12/04/news-amazons-next-gen-ai-training-chip-trainium3-to-debut-by-2025-reportedly-built-with-tsmcs-3nm/", "https://english.cw.com.tw/article/article.action?id=4491", "https://www.marvell.com/company/newsroom/marvell-expands-strategic-collaboration-aws-enable-accelerated-infrastructure-ai-cloud.html", "https://aws.amazon.com/about-aws/whats-new/2023/12/amazon-ec2-inf2-instances-generative-ai/", "https://aws.amazon.com/ec2/capacityblocks/pricing/", "https://www.aboutamazon.com/news/company-news/amazon-15-billion-indiana-data-centers", "https://www.semafor.com/article/10/29/2025/aws-massive-multi-state-ai-data-center-is-powering-anthropics-claude", "https://www.aboutamazon.com/news/aws/aws-re-invent-2025-ai-news-updates", "https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium_inferentia2_arch.rst", "https://aws.amazon.com/blogs/aws/amazon-ec2-trn2-instances-and-trn2-ultraservers-for-aiml-training-and-inference-is-now-available", "https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium2_arch.rst", "https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium3_arch.rst", "https://aws.amazon.com/about-aws/whats-new/2025/12/announcing-aws-neuron-2-27", "https://aws.amazon.com/blogs/aws/amazon-ec2-trn1-instances-for-high-performance-model-training-are-now-available", "https://aws.amazon.com/ec2/instance-types/trn1/", "https://aws.amazon.com/ec2/instance-types/inf2/", "https://aws.amazon.com/ec2/instance-types/trn2/", "https://aws.amazon.com/ec2/instance-types/trn3/", "https://www.anthropic.com/news/anthropic-amazon-trainium", "https://awsdocs-neuron.readthedocs-hosted.com/en/latest/about-neuron/whats-new.html", "https://www.aboutamazon.com/news/aws/amazon-invests-additional-4-billion-anthropic-ai", "https://www.geekwire.com/2024/apple-makes-surprise-cameo-at-aws-reinvent/", "https://aws.amazon.com/blogs/machine-learning/scaling-rufus-the-amazon-generative-ai-powered-conversational-shopping-assistant-with-over-80000-aws-inferentia-and-aws-trainium-chips-for-prime-day", "https://anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services", "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm", "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm", "https://www.financial-world.org/news/news/financial/29473/startups-say-amazons-trainium-chips-trail-nvidia-in-real-workloads/", "https://www.aboutamazon.com/news/company-news/amazon-india-investment", "https://www.aboutamazon.in/news/aws/aws-data-centre-hyderabad", "https://press.aboutamazon.com/in/news-releases/news-release-details/aws-invest-inr-105600-crores-us-127-billion-cloud-infrastructure", "https://www.crnasia.com/india/news/2026/aws-partners-with-empanelled-shi-india-to-support-ai-infrastructure-under-indiaai-mission"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "Amazon Trainium", "item": "https://www.clarigital.com/ai-atlas/ai-chips/amazon-trainium/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><span>Amazon Trainium</span></nav>
+    <span class="label-tag">AI Chips · Brand guide</span>
+    <h1>Amazon Trainium: The Complete Guide</h1>
+    <p class="hero-lead">Amazon&#x27;s own AI chips, designed by its Annapurna Labs team and rented through AWS. What Trainium and Inferentia are, how they work, the prices AWS publishes, the gigawatt deals with Anthropic and OpenAI, and the facts buried in Amazon&#x27;s filings. Three reading levels, every number sourced.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Amazon Trainium</span>
+      <span class="meta-tag mt-gray">16 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">58 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Every brand in our AI Chips section uses the same 16 sections in the same order. Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where a company has not published something, we say so rather than estimate.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Trainium is Amazon's own chip for training AI models, and Inferentia its chip for running them <a class="cite" href="https://www.aws.amazon.com/machine-learning/trainium/" target="_blank" rel="noopener" title="AWS: AWS Trainium product page">1</a> <a class="cite" href="https://aws.amazon.com/ai/machine-learning/inferentia/" target="_blank" rel="noopener" title="AWS: AWS Inferentia product page">2</a>. Amazon does not sell the chips; it rents them through its cloud, AWS <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>. They are designed by Annapurna Labs, a chip company Amazon bought in 2015 <a class="cite" href="https://www.amazon.science/how-silicon-innovation-became-the-secret-sauce-behind-awss-success" target="_blank" rel="noopener" title="Amazon Science: How silicon innovation became the secret sauce behind AWS&#x27;s success">4</a> <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a>. The newest chip, <b>Trainium3</b>, went on sale in December 2025 <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a>.</p>
+<div class="fact-grid">
+<div><b>What it is</b>Amazon-designed chips for AI: Trainium (training and inference) and Inferentia (inference) <a class="cite" href="https://www.aws.amazon.com/machine-learning/trainium/" target="_blank" rel="noopener" title="AWS: AWS Trainium product page">1</a> <a class="cite" href="https://aws.amazon.com/ai/machine-learning/inferentia/" target="_blank" rel="noopener" title="AWS: AWS Inferentia product page">2</a></div>
+<div><b>Latest chip</b>Trainium3, on a 3 nm process, in Trn3 UltraServers <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a></div>
+<div><b>Who designs it</b>Annapurna Labs, part of AWS <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a></div>
+<div><b>Biggest users</b>Anthropic, OpenAI, and Amazon's own Bedrock service <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a> <a class="cite" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener" title="Amazon Investor Relations: Amazon.com announces fourth-quarter results (Feb 2026)">8</a></div>
+</div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Amazon's chips have become a large business. In July 2026 Andy Jassy said Amazon's chips business had passed an annual revenue run rate of more than $25 billion <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a>; that figure covers Trainium, Graviton processors and Nitro chips together <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>. He said Trainium2 is about 30% better on price-performance than comparable GPUs and "has largely sold out" <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Amazon's June 2026 quarter: net sales $200.6 billion (up 20%), AWS sales $42.2 billion (up 37%, its fastest growth in 18 quarters) and AWS operating income $16.6 billion <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a>. Trainium commitments stood at more than $225 billion in April 2026 <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-amazon-chips-business-q1-2026-earnings" target="_blank" rel="noopener" title="About Amazon: Andy Jassy on Amazon&#x27;s chips business, Q1 2026 (29 Apr 2026)">9</a>. Amazon planned about $200 billion of capital spending for 2026 in February <a class="cite" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener" title="Amazon Investor Relations: Amazon.com announces fourth-quarter results (Feb 2026)">8</a>; on the July call it raised that to about $220 billion, citing higher memory costs <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-amazon-tops-q2-2026-estimates-as-aws-growth-accelerates-93CH-4826442" target="_blank" rel="noopener" title="Investing.com (press): Amazon Q2 2026 earnings call transcript">10</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="company" aria-labelledby="h-company">
+<h2 id="h-company"><span>2.</span>Company card</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Trainium is made by Amazon, through its cloud business Amazon Web Services (AWS). Amazon was founded in 1994 <a class="cite" href="https://companiesmarketcap.com/amazon/sec-reports-10k/0001018724-26-000004/" target="_blank" rel="noopener" title="companiesmarketcap (10-K copy): Amazon Form 10-K fiscal 2025: company details and executive officers">11</a>; AWS's first big service, S3 storage, launched on 14 March 2006 <a class="cite" href="https://aws.amazon.com/blogs/aws/twenty-years-of-amazon-s3-and-building-whats-next/" target="_blank" rel="noopener" title="AWS News Blog: Twenty years of Amazon S3 (2026)">12</a>.</p>
+<div class="pf-scroll"><table class="spec"><tbody>
+<tr><th>Legal name</th><td>Amazon.com, Inc. <a class="cite" href="https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf" target="_blank" rel="noopener" title="Amazon: 2025 Annual Report and Form 10-K">13</a></td></tr>
+<tr><th>Headquarters</th><td>410 Terry Avenue North, Seattle, Washington 98109-5210, USA <a class="cite" href="https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf" target="_blank" rel="noopener" title="Amazon: 2025 Annual Report and Form 10-K">13</a> (<a href="https://www.openstreetmap.org/search?query=410%20Terry%20Avenue%20North%20Seattle" target="_blank" rel="noopener">map</a>)</td></tr>
+<tr><th>Chief Executive</th><td>Andy Jassy <a class="cite" href="https://companiesmarketcap.com/amazon/sec-reports-10k/0001018724-26-000004/" target="_blank" rel="noopener" title="companiesmarketcap (10-K copy): Amazon Form 10-K fiscal 2025: company details and executive officers">11</a></td></tr>
+<tr><th>AWS Chief Executive</th><td>Matt Garman <a class="cite" href="https://companiesmarketcap.com/amazon/sec-reports-10k/0001018724-26-000004/" target="_blank" rel="noopener" title="companiesmarketcap (10-K copy): Amazon Form 10-K fiscal 2025: company details and executive officers">11</a></td></tr>
+<tr><th>Employees</th><td>About 1,576,000 full- and part-time (31 December 2025) <a class="cite" href="https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf" target="_blank" rel="noopener" title="Amazon: 2025 Annual Report and Form 10-K">13</a></td></tr>
+<tr><th>Stock</th><td>AMZN, Nasdaq Global Select Market <a class="cite" href="https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf" target="_blank" rel="noopener" title="Amazon: 2025 Annual Report and Form 10-K">13</a></td></tr>
+<tr><th>Investor site</th><td><a href="https://ir.aboutamazon.com" target="_blank" rel="noopener">ir.aboutamazon.com</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The chips come from Annapurna Labs, an Israeli start-up Amazon bought in 2015 <a class="cite" href="https://www.amazon.science/how-silicon-innovation-became-the-secret-sauce-behind-awss-success" target="_blank" rel="noopener" title="Amazon Science: How silicon innovation became the secret sauce behind AWS&#x27;s success">4</a>. It designs AWS's Nitro, Graviton and AI chips, from a lab on the outskirts of Austin, Texas <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a>; Amazon's jobs site also lists Annapurna teams in Haifa and Tel Aviv, Israel, and Boston <a class="cite" href="https://amazon.jobs/content/en/teams/amazon-web-services/annapurna-labs" target="_blank" rel="noopener" title="Amazon Jobs: Annapurna Labs team page">14</a>. The purchase price was not disclosed by Amazon; press reports put it at about $350 million <a class="cite" href="https://techcrunch.com/2026/03/22/an-exclusive-tour-of-amazons-trainium-lab-the-chip-thats-won-over-anthropic-openai-even-apple/" target="_blank" rel="noopener" title="TechCrunch (press): An exclusive tour of Amazon&#x27;s Trainium lab (22 Mar 2026)">15</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AWS sold $128.7 billion in 2025, up 20%, with $45.6 billion of operating income <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-earnings-q4-2025-report" target="_blank" rel="noopener" title="About Amazon: Amazon fourth-quarter 2025 results (5 Feb 2026)">16</a>. Amazon's total 2025 net sales were $716.9 billion <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-earnings-q4-2025-report" target="_blank" rel="noopener" title="About Amazon: Amazon fourth-quarter 2025 results (5 Feb 2026)">16</a>. Jeff Bezos, the founder, is Executive Chair <a class="cite" href="https://companiesmarketcap.com/amazon/sec-reports-10k/0001018724-26-000004/" target="_blank" rel="noopener" title="companiesmarketcap (10-K copy): Amazon Form 10-K fiscal 2025: company details and executive officers">11</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>3.</span>The story</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul class="timeline">
+<li><b>2015</b> Amazon buys Annapurna Labs <a class="cite" href="https://www.amazon.science/how-silicon-innovation-became-the-secret-sauce-behind-awss-success" target="_blank" rel="noopener" title="Amazon Science: How silicon innovation became the secret sauce behind AWS&#x27;s success">4</a>.</li>
+<li><b>2018</b> Announces Inferentia, its first AI chip <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2018/11/announcing-amazon-inferentia-machine-learning-inference-microchip" target="_blank" rel="noopener" title="AWS What&#x27;s New: Announcing Amazon Inferentia (28 Nov 2018)">17</a>.</li>
+<li><b>2020</b> Announces Trainium <a class="cite" href="https://techcrunch.com/2020/12/01/aws-launches-trainium-its-new-custom-ml-training-chip" target="_blank" rel="noopener" title="TechCrunch (press): AWS launches Trainium, its new custom ML training chip (1 Dec 2020)">18</a>.</li>
+<li><b>2022</b> Trainium instances (Trn1) go on sale <a class="cite" href="https://press.aboutamazon.com/2022/10/aws-announces-general-availability-of-amazon-ec2-trn1-instances-powered-by-aws-designed-trainium-chips" target="_blank" rel="noopener" title="Amazon Press Center: AWS announces general availability of EC2 Trn1 instances (10 Oct 2022)">19</a>.</li>
+<li><b>2023</b> Inferentia2 on sale; Trainium2 announced <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2023/04/amazon-ec2-inf2-instances-generative-ai-generally-available" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Inf2 instances generally available (13 Apr 2023)">20</a> <a class="cite" href="https://press.aboutamazon.com/2023/11/aws-unveils-next-generation-aws-designed-chips" target="_blank" rel="noopener" title="Amazon Press Center: AWS unveils next-generation AWS-designed chips (28 Nov 2023)">21</a>.</li>
+<li><b>2024</b> Trainium2 on sale <a class="cite" href="https://press.aboutamazon.com/2024/12/aws-trainium2-instances-now-generally-available" target="_blank" rel="noopener" title="Amazon Press Center: AWS Trainium2 instances now generally available (3 Dec 2024)">22</a>.</li>
+<li><b>2025</b> Project Rainier for Anthropic switches on; Trainium3 goes on sale <a class="cite" href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener" title="About Amazon: AWS activates Project Rainier (Oct 2025)">23</a> <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a>.</li>
+<li><b>2026</b> OpenAI deal for about 2 gigawatts of Trainium; Anthropic deal grows to up to 5 gigawatts <a class="cite" href="https://www.aboutamazon.com/news/aws/amazon-open-ai-strategic-partnership-investment" target="_blank" rel="noopener" title="About Amazon: Amazon and OpenAI strategic partnership and investment (27 Feb 2026)">24</a> <a class="cite" href="https://www.anthropic.com/news/anthropic-amazon-compute" target="_blank" rel="noopener" title="Anthropic: Anthropic and Amazon expand compute partnership (20 Apr 2026)">25</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Amazon started with inference. Inferentia was announced in November 2018 <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2018/11/announcing-amazon-inferentia-machine-learning-inference-microchip" target="_blank" rel="noopener" title="AWS What&#x27;s New: Announcing Amazon Inferentia (28 Nov 2018)">17</a> and its Inf1 instances launched in December 2019 with up to 16 chips <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2019/12/introducing-amazon-ec2-inf1-instances-high-performance-and-the-lowest-cost-machine-learning-inference-in-the-cloud" target="_blank" rel="noopener" title="AWS What&#x27;s New: Introducing Amazon EC2 Inf1 instances (3 Dec 2019)">26</a>. Trn1, the first Trainium instances, went on sale in October 2022 with up to 50% lower training cost than comparable GPU instances, on AWS's claim <a class="cite" href="https://press.aboutamazon.com/2022/10/aws-announces-general-availability-of-amazon-ec2-trn1-instances-powered-by-aws-designed-trainium-chips" target="_blank" rel="noopener" title="Amazon Press Center: AWS announces general availability of EC2 Trn1 instances (10 Oct 2022)">19</a>. Trainium2 was announced in November 2023 <a class="cite" href="https://press.aboutamazon.com/2023/11/aws-unveils-next-generation-aws-designed-chips" target="_blank" rel="noopener" title="Amazon Press Center: AWS unveils next-generation AWS-designed chips (28 Nov 2023)">21</a> and went on sale in December 2024, when Trainium3 was also first announced <a class="cite" href="https://press.aboutamazon.com/2024/12/aws-trainium2-instances-now-generally-available" target="_blank" rel="noopener" title="Amazon Press Center: AWS Trainium2 instances now generally available (3 Dec 2024)">22</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Project Rainier, the Trainium2 cluster AWS built for Anthropic, was activated in October 2025 with nearly 500,000 chips, "70% larger than any prior AWS AI platform"; Amazon said Anthropic would have more than a million Trainium2 chips by the end of 2025 <a class="cite" href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener" title="About Amazon: AWS activates Project Rainier (Oct 2025)">23</a>. By February 2026 AWS had landed 1.4 million Trainium2 chips, all subscribed <a class="cite" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener" title="Amazon Investor Relations: Amazon.com announces fourth-quarter results (Feb 2026)">8</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineup" aria-labelledby="h-lineup">
+<h2 id="h-lineup"><span>4.</span>The lineup</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Name</th><th>What it is</th><th>On sale</th></tr></thead><tbody>
+<tr><td>Inferentia2 (Inf2)</td><td>Chip for running models; up to 12 per server</td><td>Apr 2023 <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2023/04/amazon-ec2-inf2-instances-generative-ai-generally-available" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Inf2 instances generally available (13 Apr 2023)">20</a></td></tr>
+<tr><td>Trainium (Trn1)</td><td>First-generation training chip; 16 per server</td><td>Oct 2022 <a class="cite" href="https://press.aboutamazon.com/2022/10/aws-announces-general-availability-of-amazon-ec2-trn1-instances-powered-by-aws-designed-trainium-chips" target="_blank" rel="noopener" title="Amazon Press Center: AWS announces general availability of EC2 Trn1 instances (10 Oct 2022)">19</a></td></tr>
+<tr><td>Trainium2 (Trn2)</td><td>Second generation; 16 per server, 64 per UltraServer</td><td>Dec 2024 <a class="cite" href="https://press.aboutamazon.com/2024/12/aws-trainium2-instances-now-generally-available" target="_blank" rel="noopener" title="Amazon Press Center: AWS Trainium2 instances now generally available (3 Dec 2024)">22</a></td></tr>
+<tr><td>Trainium3 (Trn3)</td><td>Third generation, 3 nm; up to 144 per UltraServer</td><td>Dec 2025 <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a></td></tr>
+<tr><td>Trainium4</td><td>Announced; supports NVIDIA NVLink Fusion</td><td>Deliveries expected 2027 <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a> <a class="cite" href="https://www.aboutamazon.com/news/aws/amazon-open-ai-strategic-partnership-investment" target="_blank" rel="noopener" title="About Amazon: Amazon and OpenAI strategic partnership and investment (27 Feb 2026)">24</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Despite the name, Trainium now does most of the inference too: Amazon says Trainium2 powers the majority of inference on Amazon Bedrock, its service for running AI models <a class="cite" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener" title="Amazon Investor Relations: Amazon.com announces fourth-quarter results (Feb 2026)">8</a>. Jassy wrote in April 2026 that Trainium3, which "just started shipping at the start of 2026", is 30 to 40% more price-performant than Trainium2 and "nearly fully-subscribed" <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Trainium4 is promised to deliver at least six times Trainium3's FP4 performance, three times its FP8 performance and four times its memory bandwidth <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>. In April 2026 Jassy said it was "still about 18 months from broad availability", with a significant share already reserved <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>. AWS has not published its process node or memory size <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>How it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Amazon designs its chips, but does not say who manufactures them <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a>.</p>
+<ol class="steps">
+<li><b>Design:</b> Annapurna Labs, in Austin, Texas and Israel <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a> <a class="cite" href="https://amazon.jobs/content/en/teams/amazon-web-services/annapurna-labs" target="_blank" rel="noopener" title="Amazon Jobs: Annapurna Labs team page">14</a>.</li>
+<li><b>Chip factory:</b> not disclosed by Amazon. Press reports name TSMC for Trainium2 and Trainium3 <a class="cite" href="https://www.trendforce.com/news/2024/12/04/news-amazons-next-gen-ai-training-chip-trainium3-to-debut-by-2025-reportedly-built-with-tsmcs-3nm/" target="_blank" rel="noopener" title="TrendForce (press): Trainium3 reportedly built with TSMC&#x27;s 3nm (4 Dec 2024)">28</a> <a class="cite" href="https://techcrunch.com/2026/03/22/an-exclusive-tour-of-amazons-trainium-lab-the-chip-thats-won-over-anthropic-openai-even-apple/" target="_blank" rel="noopener" title="TechCrunch (press): An exclusive tour of Amazon&#x27;s Trainium lab (22 Mar 2026)">15</a>.</li>
+<li><b>Memory:</b> Trainium3 carries 144 GB of HBM3e memory <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a>; Amazon does not name the supplier.</li>
+<li><b>Servers:</b> AWS builds Trn3 UltraServers of up to 144 chips, joined by its own NeuronSwitch fabric <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a> <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Trainium3 is "the first 3nm AI chip from AWS" <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>. Other partners are named only in the press: CommonWealth Magazine calls Taiwan's Alchip Trainium's main design-services provider and says servers are assembled mainly by Wiwynn <a class="cite" href="https://english.cw.com.tw/article/article.action?id=4491" target="_blank" rel="noopener" title="CommonWealth Magazine (press): Alchip and Amazon&#x27;s AI chip supply chain">29</a>. Marvell has an official five-year agreement to supply AWS with "custom AI products" and networking chips, but its release does not name Trainium <a class="cite" href="https://www.marvell.com/company/newsroom/marvell-expands-strategic-collaboration-aws-enable-accelerated-infrastructure-ai-cloud.html" target="_blank" rel="noopener" title="Marvell: Marvell expands strategic collaboration with AWS">30</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The Austin lab itself is small: press who toured it in March 2026 described it as about the size of two large conference rooms, with a separate test data centre in a co-location facility, and said Trainium3 is liquid-cooled <a class="cite" href="https://techcrunch.com/2026/03/22/an-exclusive-tour-of-amazons-trainium-lab-the-chip-thats-won-over-anthropic-openai-even-apple/" target="_blank" rel="noopener" title="TechCrunch (press): An exclusive tour of Amazon&#x27;s Trainium lab (22 Mar 2026)">15</a>. AWS has not published street addresses for its chip labs <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="where" aria-labelledby="h-where">
+<h2 id="h-where"><span>6.</span>Where it’s made: factories and addresses</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Amazon does not disclose which factory makes Trainium, so there is no factory address to give. What it does publish:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Site</th><th>Location</th><th>What happens there</th></tr></thead><tbody>
+<tr><td>Annapurna Labs chip lab</td><td>Outskirts of Austin, Texas, USA (no street address published) <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a></td><td>Chip design and testing <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a></td></tr>
+<tr><td>Annapurna Labs teams</td><td>Haifa and Tel Aviv, Israel; Boston, USA <a class="cite" href="https://amazon.jobs/content/en/teams/amazon-web-services/annapurna-labs" target="_blank" rel="noopener" title="Amazon Jobs: Annapurna Labs team page">14</a></td><td>Chip engineering <a class="cite" href="https://amazon.jobs/content/en/teams/amazon-web-services/annapurna-labs" target="_blank" rel="noopener" title="Amazon Jobs: Annapurna Labs team page">14</a></td></tr>
+<tr><td>Project Rainier</td><td>Includes St. Joseph County, Indiana, USA; spread across several US data centres <a class="cite" href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener" title="About Amazon: AWS activates Project Rainier (Oct 2025)">23</a></td><td>Anthropic's Trainium2 cluster <a class="cite" href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener" title="About Amazon: AWS activates Project Rainier (Oct 2025)">23</a></td></tr>
+<tr><td>AWS Asia Pacific (Mumbai)</td><td>Mumbai, India</td><td>Inferentia2 instances; Trainium (Trn1) by Capacity Block <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2023/12/amazon-ec2-inf2-instances-generative-ai/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Inf2 instances in more regions, including Mumbai (13 Dec 2023)">31</a> <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Amazon has committed $11 billion to St. Joseph County, Indiana, and in November 2025 added $15 billion for Northern Indiana with 2.4 gigawatts of data centre capacity <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-15-billion-indiana-data-centers" target="_blank" rel="noopener" title="About Amazon: Amazon to invest $15 billion in Northern Indiana data centers (24 Nov 2025)">33</a>. Press reports say Project Rainier also includes sites in Mississippi and Pennsylvania and draws about 1 gigawatt; Amazon has not confirmed those details <a class="cite" href="https://www.semafor.com/article/10/29/2025/aws-massive-multi-state-ai-data-center-is-powering-anthropics-claude" target="_blank" rel="noopener" title="Semafor (press): AWS&#x27;s multi-state AI data center powering Anthropic&#x27;s Claude (29 Oct 2025)">34</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Trainium can now leave AWS's own buildings: "AWS AI Factories" place Trainium or NVIDIA systems in customers' data centres, starting with an AI zone of up to 150,000 chips for HUMAIN in Saudi Arabia <a class="cite" href="https://www.aboutamazon.com/news/aws/aws-re-invent-2025-ai-news-updates" target="_blank" rel="noopener" title="About Amazon: AWS re:Invent 2025 announcements">35</a>. AWS added 3.9 gigawatts of power capacity in 2025 and expects to double its total power by the end of 2027 <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="works" aria-labelledby="h-works">
+<h2 id="h-works"><span>7.</span>How it works</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Each Trainium chip has several NeuronCores. Inside each core, a large grid of maths circuits (a 128 by 128 "systolic array") does the matrix multiplication that dominates AI, while smaller engines handle everything else <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium_inferentia2_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium and Inferentia2 architecture">36</a>. Chips link to each other with AWS's NeuronLink, and servers join through AWS's EFA network <a class="cite" href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener" title="About Amazon: AWS activates Project Rainier (Oct 2025)">23</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>A NeuronCore has four engines: a tensor engine for matrix maths, a vector engine for sums across data, a scalar engine for functions such as GELU, and a "GpSimd" engine of eight programmable processors for custom code <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium_inferentia2_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium and Inferentia2 architecture">36</a>. Each core has its own software-managed on-chip memory (24 MiB on the first Trainium) <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium_inferentia2_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium and Inferentia2 architecture">36</a>. Trainium2 has eight NeuronCores per chip and adds support for "structured sparsity", skipping zeros for up to four times the speed <a class="cite" href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn2-instances-and-trn2-ultraservers-for-aiml-training-and-inference-is-now-available" target="_blank" rel="noopener" title="AWS News Blog: Amazon EC2 Trn2 instances and Trn2 UltraServers now available">37</a> <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium2_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium2 architecture">38</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Trainium3's cores (NeuronCore-v4) run the new MXFP8 and MXFP4 number formats at four times their BF16 speed, speed up the exponential maths used in attention fourfold, and add hardware support for routing in mixture-of-experts models <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium3_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium3 architecture">39</a> <a class="cite" href="https://www.aws.amazon.com/machine-learning/trainium/" target="_blank" rel="noopener" title="AWS: AWS Trainium product page">1</a>. Its UltraServer uses NeuronSwitch-v1, an all-to-all fabric with twice the bandwidth within each UltraServer <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>. Software is the Neuron SDK: PyTorch, JAX, vLLM and Hugging Face work on it, and NKI lets engineers program the chip directly <a class="cite" href="https://www.aws.amazon.com/machine-learning/trainium/" target="_blank" rel="noopener" title="AWS: AWS Trainium product page">1</a>. Neuron 2.27 (December 2025) added native PyTorch ("TorchNeuron") and an open-source NKI compiler, both in private beta <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/announcing-aws-neuron-2-27" target="_blank" rel="noopener" title="AWS What&#x27;s New: Announcing AWS Neuron 2.27 (22 Dec 2025)">40</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>8.</span>Specs explained</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AWS's own figures, per chip. "Dense" and "sparse" are explained in our <a href="/ai-atlas/ai-chips/how-ai-chips-work/">How AI chips work</a> guide.</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Chip</th><th>AI compute</th><th>Memory</th><th>Memory speed</th><th>Process</th></tr></thead><tbody>
+<tr><td>Inferentia2</td><td>Up to 190 TFLOPS FP16</td><td>32 GB HBM</td><td>—</td><td>Not published <a class="cite" href="https://aws.amazon.com/ai/machine-learning/inferentia/" target="_blank" rel="noopener" title="AWS: AWS Inferentia product page">2</a></td></tr>
+<tr><td>Trainium (1)</td><td>3.4 PFLOPS BF16 per 16-chip server</td><td>32 GiB HBM</td><td>820 GB/s</td><td>Not published <a class="cite" href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn1-instances-for-high-performance-model-training-are-now-available" target="_blank" rel="noopener" title="AWS News Blog: Amazon EC2 Trn1 instances are now available">41</a> <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium_inferentia2_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium and Inferentia2 architecture">36</a></td></tr>
+<tr><td>Trainium2</td><td>1.3 PFLOPS FP8 dense (5.2 sparse)</td><td>96 GiB HBM</td><td>2.9 TB/s</td><td>Not published <a class="cite" href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn2-instances-and-trn2-ultraservers-for-aiml-training-and-inference-is-now-available" target="_blank" rel="noopener" title="AWS News Blog: Amazon EC2 Trn2 instances and Trn2 UltraServers now available">37</a></td></tr>
+<tr><td>Trainium3</td><td>2.52 PFLOPS FP8</td><td>144 GB HBM3e</td><td>4.9 TB/s</td><td>3 nm <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a></td></tr>
+</tbody></table></div>
+<p class="note">AWS's Neuron documentation gives slightly different memory speeds: 3 TB/s for Trainium2 and 4.7 TB/s for Trainium3 <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium2_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium2 architecture">38</a> <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium3_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium3 architecture">39</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>System</th><th>Chips</th><th>AI compute (FP8)</th><th>Memory</th></tr></thead><tbody>
+<tr><td>Trn2 instance</td><td>16 Trainium2</td><td>20.8 PFLOPS dense</td><td>1.5 TiB <a class="cite" href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn2-instances-and-trn2-ultraservers-for-aiml-training-and-inference-is-now-available" target="_blank" rel="noopener" title="AWS News Blog: Amazon EC2 Trn2 instances and Trn2 UltraServers now available">37</a></td></tr>
+<tr><td>Trn2 UltraServer</td><td>64 Trainium2</td><td>83 PFLOPS dense</td><td>6 TiB <a class="cite" href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn2-instances-and-trn2-ultraservers-for-aiml-training-and-inference-is-now-available" target="_blank" rel="noopener" title="AWS News Blog: Amazon EC2 Trn2 instances and Trn2 UltraServers now available">37</a></td></tr>
+<tr><td>Trn3 UltraServer</td><td>Up to 144 Trainium3</td><td>362 PFLOPS</td><td>20.7 TB <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a></td></tr>
+</tbody></table></div>
+<p>AWS says a Trn3 UltraServer has up to 4.4 times the performance and four times the performance per watt of Trainium2 <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a>. Those are AWS's claims.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>AWS does not say whether Trainium3's 2.52 petaflops is dense or sparse <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Amazon EC2 Trn3 UltraServers (2 Dec 2025)">6</a>; its Neuron guide lists 315 teraflops of MXFP8 per core across eight cores, which is 2.52 petaflops, so it appears to be dense <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium3_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium3 architecture">39</a>. Its BF16 rate per core (79 teraflops) is the same as Trainium2's: the gain comes from the new 8-bit and 4-bit formats <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium2_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium2 architecture">38</a> <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium3_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium3 architecture">39</a>. EC2 UltraClusters 3.0 can link up to a million Trainium chips <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>9.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>Amazon does not sell Trainium chips, and publishes rental prices only for some of them.</b> AWS list prices, US dollars per hour <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn1/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn1 instances page">42</a> <a class="cite" href="https://aws.amazon.com/ec2/instance-types/inf2/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Inf2 instances page">43</a> <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a>:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Machine</th><th>Chips</th><th>On demand</th><th>1-year / 3-year reserved</th></tr></thead><tbody>
+<tr><td>trn1.32xlarge</td><td>16 Trainium</td><td>$21.50</td><td>$12.60 / $7.59 <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn1/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn1 instances page">42</a></td></tr>
+<tr><td>trn1.2xlarge</td><td>1 Trainium</td><td>$1.34</td><td>$0.79 / $0.4744 <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn1/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn1 instances page">42</a></td></tr>
+<tr><td>inf2.48xlarge</td><td>12 Inferentia2</td><td>$12.98</td><td>$7.79 / $5.19 <a class="cite" href="https://aws.amazon.com/ec2/instance-types/inf2/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Inf2 instances page">43</a></td></tr>
+<tr><td>inf2.xlarge</td><td>1 Inferentia2</td><td>$0.76</td><td>$0.45 / $0.30 <a class="cite" href="https://aws.amazon.com/ec2/instance-types/inf2/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Inf2 instances page">43</a></td></tr>
+<tr><td>Trn2 and Trn3</td><td colspan="3">On-demand price not published by the company <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn2/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn2 instances page">44</a> <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn3/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn3 instances page">45</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<h3>Capacity Blocks (booked in advance)</h3>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Machine</th><th>Price per hour</th><th>Per chip</th><th>Where</th></tr></thead><tbody>
+<tr><td>trn2.48xlarge (16 Trainium2)</td><td>$35.7608</td><td>$2.235</td><td>US East (Ohio) <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a></td></tr>
+<tr><td>trn2.3xlarge (1 Trainium2)</td><td>$2.235</td><td>$2.235</td><td>Melbourne, São Paulo <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a></td></tr>
+<tr><td>trn1.32xlarge (16 Trainium)</td><td>$9.532</td><td>$0.596</td><td>US, Mumbai and others <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a></td></tr>
+</tbody></table></div>
+<p class="note">AWS says Capacity Block prices are next updated in October 2026 <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a>. No Trainium3 Capacity Block price is listed <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>For comparison, AWS lists an NVIDIA H100 at $5.19 per GPU-hour on the same Capacity Block page (see our <a href="/ai-atlas/ai-chips/nvidia/">NVIDIA guide</a>); Trainium2 at $2.235 is less than half that, though the chips are not equal in speed. AWS claims Trn2 has 30 to 40% better price-performance than its GPU-based P5e and P5en machines <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn2/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn2 instances page">44</a>. In India, Trn1 Capacity Blocks are sold in the Mumbai region at the same $9.532 an hour <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="moat" aria-labelledby="h-moat">
+<h2 id="h-moat"><span>10.</span>The software lock-in</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Amazon's advantage is that it controls the chip, the servers, the network and the cloud where customers already run their businesses <a class="cite" href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener" title="About Amazon: Take a look inside the lab where AWS makes custom chips">5</a>. Its biggest AI service, Bedrock, runs most of its inference on Trainium <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>, so Amazon is its own largest customer.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>AWS's Neuron software is the answer to NVIDIA's CUDA: it supports PyTorch, JAX, vLLM, Hugging Face Transformers and TorchTitan, and NKI lets engineers write low-level code for the chip <a class="cite" href="https://www.aws.amazon.com/machine-learning/trainium/" target="_blank" rel="noopener" title="AWS: AWS Trainium product page">1</a>. Anthropic's engineers write kernels for Trainium together with Annapurna Labs and contribute to Neuron <a class="cite" href="https://www.anthropic.com/news/anthropic-amazon-trainium" target="_blank" rel="noopener" title="Anthropic: Powering the next generation of AI development with AWS (Nov 2024)">46</a>. The latest version, Neuron 2.32, supports every generation from Inferentia to Trainium3 <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/latest/about-neuron/whats-new.html" target="_blank" rel="noopener" title="AWS Neuron documentation: What&#x27;s new in Neuron">47</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Amazon is also opening Trainium to NVIDIA's ecosystem: Trainium4 will support NVIDIA's NVLink Fusion connection <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>. Jassy wrote that the chips business would be worth a run rate of about $50 billion if Amazon sold its chips at market prices to AWS and others, and that it is "quite possible" Amazon will sell racks to third parties <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="buyers" aria-labelledby="h-buyers">
+<h2 id="h-buyers"><span>11.</span>Who buys it and why</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Anthropic is the anchor customer. Amazon has invested $8 billion in it and AWS is its "primary training partner" <a class="cite" href="https://www.aboutamazon.com/news/aws/amazon-invests-additional-4-billion-anthropic-ai" target="_blank" rel="noopener" title="About Amazon: Amazon invests additional $4 billion in Anthropic (Nov 2024)">48</a>. In April 2026 the deal grew: Anthropic committed more than $100 billion to AWS over ten years, for up to 5 gigawatts of capacity, and already uses more than a million Trainium2 chips <a class="cite" href="https://www.anthropic.com/news/anthropic-amazon-compute" target="_blank" rel="noopener" title="Anthropic: Anthropic and Amazon expand compute partnership (20 Apr 2026)">25</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ul>
+<li><b>OpenAI (February 2026):</b> Amazon agreed to invest $50 billion ($15 billion now, $35 billion on conditions); OpenAI will use about 2 gigawatts of Trainium3 and Trainium4 capacity, within an AWS agreement expanded by $100 billion over eight years <a class="cite" href="https://www.aboutamazon.com/news/aws/amazon-open-ai-strategic-partnership-investment" target="_blank" rel="noopener" title="About Amazon: Amazon and OpenAI strategic partnership and investment (27 Feb 2026)">24</a>.</li>
+<li><b>Named Trn2 customers:</b> Databricks, poolside, Itaú Unibanco, Ricoh, Hugging Face, Datadog and others <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn2/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn2 instances page">44</a>.</li>
+<li><b>Trainium3 customers:</b> Anthropic, Karakuri, Metagenomi, NetoAI, Ricoh, Splash Music and Decart, several reporting up to 50% lower costs <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>.</li>
+<li><b>Apple:</b> said at re:Invent 2024 it was "in the early stages of evaluating Trainium 2" <a class="cite" href="https://www.geekwire.com/2024/apple-makes-surprise-cameo-at-aws-reinvent/" target="_blank" rel="noopener" title="GeekWire (press): Apple makes surprise cameo at AWS re:Invent (Dec 2024)">49</a>.</li>
+<li><b>Amazon itself:</b> Rufus, its shopping assistant, used more than 80,000 Inferentia and Trainium chips on Prime Day 2024 <a class="cite" href="https://aws.amazon.com/blogs/machine-learning/scaling-rufus-the-amazon-generative-ai-powered-conversational-shopping-assistant-with-over-80000-aws-inferentia-and-aws-trainium-chips-for-prime-day" target="_blank" rel="noopener" title="AWS Machine Learning Blog: Scaling Rufus with over 80,000 Inferentia and Trainium chips for Prime Day (10 Oct 2024)">50</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Amazon's July 2026 release named "multi-year, multi-gigawatt commitments" from Anthropic and OpenAI, plus Trainium customers including TwelveLabs, Poolside, Uber and Pinterest <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a>. Anthropic also uses Google's TPUs and NVIDIA's GPUs, and signed for up to a million Google TPUs in October 2025 <a class="cite" href="https://anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services" target="_blank" rel="noopener" title="Anthropic: Expanding our use of Google Cloud TPUs and services (23 Oct 2025)">51</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>12.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Public facts buried in Amazon's filings and letters. Each links to the exact document.</p>
+<ol class="hidden-list">
+<li><b>Anthropic made Amazon $53.4 billion in one quarter,</b> as pre-tax gains, mostly on its Anthropic stake, in the June 2026 quarter <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a>.</li>
+<li><b>The chips business is racing:</b> Trainium and Graviton alone passed a $10 billion run rate in February 2026 <a class="cite" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener" title="Amazon Investor Relations: Amazon.com announces fourth-quarter results (Feb 2026)">8</a>; by July Amazon said its chips business had passed $25 billion <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a>.</li>
+<li><b>Trainium commitments passed $225 billion</b> by April 2026 <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-amazon-chips-business-q1-2026-earnings" target="_blank" rel="noopener" title="About Amazon: Andy Jassy on Amazon&#x27;s chips business, Q1 2026 (29 Apr 2026)">9</a>.</li>
+<li><b>Amazon's cash flow turned negative:</b> free cash flow over the twelve months to June 2026 was an outflow of $7.6 billion, as capital spending rose 64% <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a>.</li>
+<li><b>Anthropic's spending is AWS revenue:</b> the filing says the commercial deal is "primarily for the provision of AWS cloud services, which includes the use of AWS chips" <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm" target="_blank" rel="noopener" title="Amazon: Form 10-Q, quarter ended 31 March 2026">52</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<ol class="hidden-list" start="6">
+<li><b>Amazon's Anthropic notes were valued at $42.2 billion</b> at 31 March 2026, against $8 billion invested <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm" target="_blank" rel="noopener" title="Amazon: Form 10-Q, quarter ended 31 March 2026">52</a>.</li>
+<li><b>The new $20 billion Anthropic facility pays out only as compute milestones are reached</b> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm" target="_blank" rel="noopener" title="Amazon: Form 10-Q, quarter ended 31 March 2026">52</a>.</li>
+<li><b>Few suppliers:</b> "We rely on a limited group of suppliers for semiconductor products" <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noopener" title="Amazon: Form 10-K, fiscal year 2025 (SEC)">53</a>.</li>
+<li><b>Trainium2 was sold out:</b> 1.4 million chips landed and "fully subscribed" by February 2026 <a class="cite" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener" title="Amazon Investor Relations: Amazon.com announces fourth-quarter results (Feb 2026)">8</a>.</li>
+<li><b>Most of Bedrock runs on Trainium</b>, not NVIDIA <a class="cite" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener" title="Amazon Investor Relations: Amazon.com announces fourth-quarter results (Feb 2026)">8</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<ol class="hidden-list" start="11">
+<li><b>OpenAI's $35 billion second tranche is mandatory</b> on milestones or an IPO before 31 December 2028 <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm" target="_blank" rel="noopener" title="Amazon: Form 10-Q, quarter ended 31 March 2026">52</a>.</li>
+<li><b>Total commitments reached $569.3 billion</b> at 31 March 2026, including $106.3 billion of leases not yet started <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm" target="_blank" rel="noopener" title="Amazon: Form 10-Q, quarter ended 31 March 2026">52</a>.</li>
+<li><b>Trainium3's BF16 speed per core did not rise</b> over Trainium2; the gain is in 8-bit and 4-bit maths <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium2_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium2 architecture">38</a> <a class="cite" href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium3_arch.rst" target="_blank" rel="noopener" title="AWS Neuron documentation: Trainium3 architecture">39</a>.</li>
+<li><b>Capital spending in the June quarter alone was $54.2 billion</b> <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a>.</li>
+<li><b>AWS's water use is 0.15 litres per kilowatt-hour</b>, against 0.375 for the industry, by Amazon's figures <a class="cite" href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener" title="About Amazon: AWS activates Project Rainier (Oct 2025)">23</a>.</li>
+</ol>
+</div>
+</section>
+<section class="chip-sec" id="weak" aria-labelledby="h-weak">
+<h2 id="h-weak"><span>13.</span>Weak spots</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Limits, from Amazon's own documents and reporting:</p>
+<ul>
+<li><b>Few suppliers</b> for semiconductors <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noopener" title="Amazon: Form 10-K, fiscal year 2025 (SEC)">53</a>.</li>
+<li><b>Only through AWS:</b> Trainium is not sold as a chip <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener" title="About Amazon: Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)">3</a>.</li>
+<li><b>Two customers dominate:</b> Anthropic and OpenAI hold the multi-gigawatt commitments <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener" title="Amazon (SEC exhibit): Amazon.com announces second-quarter 2026 results (30 Jul 2026)">7</a>.</li>
+<li><b>Software still maturing:</b> native PyTorch was only in private beta in December 2025 <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2025/12/announcing-aws-neuron-2-27" target="_blank" rel="noopener" title="AWS What&#x27;s New: Announcing AWS Neuron 2.27 (22 Dec 2025)">40</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Customers have not all been happy. Business Insider reported an internal Amazon document from July 2025 in which Cohere found Trainium1 and Trainium2 underperforming NVIDIA's H100 and access to Trainium2 "extremely limited", and Stability AI called Trainium2 "less competitive" on latency and cost; Amazon said Trainium2 was fully subscribed <a class="cite" href="https://www.financial-world.org/news/news/financial/29473/startups-say-amazons-trainium-chips-trail-nvidia-in-real-workloads/" target="_blank" rel="noopener" title="Financial World (press, reporting Business Insider): Startups say Amazon&#x27;s Trainium chips trail NVIDIA in real workloads">54</a>. These are press reports.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Anthropic, the anchor customer, spreads its work across Trainium, Google TPUs and NVIDIA GPUs <a class="cite" href="https://anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services" target="_blank" rel="noopener" title="Anthropic: Expanding our use of Google Cloud TPUs and services (23 Oct 2025)">51</a>. AWS publishes no on-demand price for Trainium2 or Trainium3, which makes outside comparison harder <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn2/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn2 instances page">44</a> <a class="cite" href="https://aws.amazon.com/ec2/instance-types/trn3/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Trn3 instances page">45</a>. Amazon's annual report also names the availability and price of "land, water, and energy" as a risk <a class="cite" href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noopener" title="Amazon: Form 10-K, fiscal year 2025 (SEC)">53</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="india" aria-labelledby="h-india">
+<h2 id="h-india"><span>14.</span>India angle</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>In June 2026 Amazon announced $48 billion of investment in India from 2026 to 2030 <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-india-investment" target="_blank" rel="noopener" title="About Amazon: Amazon&#x27;s investment in India (25 Jun 2026)">55</a>. AWS plans $21 billion for cloud and AI infrastructure in India from 2026 to 2030, including a new data centre in Bharat Future City, Hyderabad, announced in July 2026 <a class="cite" href="https://www.aboutamazon.in/news/aws/aws-data-centre-hyderabad" target="_blank" rel="noopener" title="About Amazon India: AWS data centre in Hyderabad (15 Jul 2026)">56</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>AWS runs two Indian regions: Mumbai (since 2016) and Hyderabad (since November 2022) <a class="cite" href="https://press.aboutamazon.com/in/news-releases/news-release-details/aws-invest-inr-105600-crores-us-127-billion-cloud-infrastructure" target="_blank" rel="noopener" title="Amazon Press Center India: AWS to invest INR 1,05,600 crore (US$12.7 billion) in India by 2030 (18 May 2023)">57</a>. Inferentia2 instances have been available in Mumbai since December 2023 <a class="cite" href="https://aws.amazon.com/about-aws/whats-new/2023/12/amazon-ec2-inf2-instances-generative-ai/" target="_blank" rel="noopener" title="AWS What&#x27;s New: Inf2 instances in more regions, including Mumbai (13 Dec 2023)">31</a>, and Trainium (Trn1) can be booked there by Capacity Block at $9.532 an hour <a class="cite" href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener" title="AWS: Amazon EC2 Capacity Blocks for ML pricing">32</a>. We found no official listing of Trainium2 or Trainium3 in India.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Amazon's 2023 India plan was ₹1,05,600 crore (US$12.7 billion) by 2030 <a class="cite" href="https://press.aboutamazon.com/in/news-releases/news-release-details/aws-invest-inr-105600-crores-us-127-billion-cloud-infrastructure" target="_blank" rel="noopener" title="Amazon Press Center India: AWS to invest INR 1,05,600 crore (US$12.7 billion) in India by 2030 (18 May 2023)">57</a>; the 2026 figures are much larger <a class="cite" href="https://www.aboutamazon.com/news/company-news/amazon-india-investment" target="_blank" rel="noopener" title="About Amazon: Amazon&#x27;s investment in India (25 Jun 2026)">55</a> <a class="cite" href="https://www.aboutamazon.in/news/aws/aws-data-centre-hyderabad" target="_blank" rel="noopener" title="About Amazon India: AWS data centre in Hyderabad (15 Jul 2026)">56</a>. Under the IndiaAI Mission, AWS offers its AI services through an empanelled partner, SHI India; the chip types were not specified <a class="cite" href="https://www.crnasia.com/india/news/2026/aws-partners-with-empanelled-shi-india-to-support-ai-infrastructure-under-indiaai-mission" target="_blank" rel="noopener" title="CRN Asia (press): AWS partners with empanelled SHI India under IndiaAI Mission (Apr 2026)">58</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="next" aria-labelledby="h-next">
+<h2 id="h-next"><span>15.</span>What’s next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Only what Amazon has announced:</p>
+<ul>
+<li><b>Trainium3:</b> ramping through 2026; nearly all supply expected to be committed by mid-2026 <a class="cite" href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener" title="Amazon Investor Relations: Amazon.com announces fourth-quarter results (Feb 2026)">8</a>.</li>
+<li><b>Trainium4:</b> deliveries expected to begin in 2027 <a class="cite" href="https://www.aboutamazon.com/news/aws/amazon-open-ai-strategic-partnership-investment" target="_blank" rel="noopener" title="About Amazon: Amazon and OpenAI strategic partnership and investment (27 Feb 2026)">24</a>.</li>
+<li><b>Anthropic:</b> nearly 1 gigawatt of Trainium2 and Trainium3 by the end of 2026 <a class="cite" href="https://www.anthropic.com/news/anthropic-amazon-compute" target="_blank" rel="noopener" title="Anthropic: Anthropic and Amazon expand compute partnership (20 Apr 2026)">25</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>On the July 2026 call Jassy said there is "a real chance" Amazon will sell Trainium outside AWS in future <a class="cite" href="https://www.investing.com/news/transcripts/earnings-call-transcript-amazon-tops-q2-2026-estimates-as-aws-growth-accelerates-93CH-4826442" target="_blank" rel="noopener" title="Investing.com (press): Amazon Q2 2026 earnings call transcript">10</a>. Anthropic plans Trainium3 capacity later in 2026 and more inference capacity in Asia and Europe <a class="cite" href="https://www.anthropic.com/news/anthropic-amazon-compute" target="_blank" rel="noopener" title="Anthropic: Anthropic and Amazon expand compute partnership (20 Apr 2026)">25</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The test is whether Trainium can win customers beyond its two anchors. OpenAI's 2 gigawatts depend on Trainium3 and Trainium4 arriving on time <a class="cite" href="https://www.aboutamazon.com/news/aws/amazon-open-ai-strategic-partnership-investment" target="_blank" rel="noopener" title="About Amazon: Amazon and OpenAI strategic partnership and investment (27 Feb 2026)">24</a>, and AWS has not yet said who makes Trainium4 or on what process <a class="cite" href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener" title="About Amazon: Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)">27</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>16.</span>Sources</h2>
+<p class="note">58 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator; <b>Press</b> = news coverage, used only where no official source exists and labelled in the text.</p>
+<ol class="src-list">
+<li id="src-1"><b>AWS</b>: <a href="https://www.aws.amazon.com/machine-learning/trainium/" target="_blank" rel="noopener">AWS Trainium product page</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>AWS</b>: <a href="https://aws.amazon.com/ai/machine-learning/inferentia/" target="_blank" rel="noopener">AWS Inferentia product page</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-2025-letter-to-shareholders" target="_blank" rel="noopener">Andy Jassy&#x27;s 2025 letter to shareholders (9 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>Amazon Science</b>: <a href="https://www.amazon.science/how-silicon-innovation-became-the-secret-sauce-behind-awss-success" target="_blank" rel="noopener">How silicon innovation became the secret sauce behind AWS&#x27;s success</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/aws/take-a-look-inside-the-lab-where-aws-makes-custom-chips" target="_blank" rel="noopener">Take a look inside the lab where AWS makes custom chips</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>AWS What&#x27;s New</b>: <a href="https://aws.amazon.com/about-aws/whats-new/2025/12/amazon-ec2-trn3-ultraservers/" target="_blank" rel="noopener">Amazon EC2 Trn3 UltraServers (2 Dec 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>Amazon (SEC exhibit)</b>: <a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm" target="_blank" rel="noopener">Amazon.com announces second-quarter 2026 results (30 Jul 2026)</a><span class="st st-filing">Filing</span></li>
+<li id="src-8"><b>Amazon Investor Relations</b>: <a href="https://ir.aboutamazon.com/news-release/news-release-details/2026/Amazon-com-Announces-Fourth-Quarter-Results/" target="_blank" rel="noopener">Amazon.com announces fourth-quarter results (Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/company-news/amazon-ceo-andy-jassy-amazon-chips-business-q1-2026-earnings" target="_blank" rel="noopener">Andy Jassy on Amazon&#x27;s chips business, Q1 2026 (29 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>Investing.com (press)</b>: <a href="https://www.investing.com/news/transcripts/earnings-call-transcript-amazon-tops-q2-2026-estimates-as-aws-growth-accelerates-93CH-4826442" target="_blank" rel="noopener">Amazon Q2 2026 earnings call transcript</a><span class="st st-press">Press</span></li>
+<li id="src-11"><b>companiesmarketcap (10-K copy)</b>: <a href="https://companiesmarketcap.com/amazon/sec-reports-10k/0001018724-26-000004/" target="_blank" rel="noopener">Amazon Form 10-K fiscal 2025: company details and executive officers</a><span class="st st-research">Research</span></li>
+<li id="src-12"><b>AWS News Blog</b>: <a href="https://aws.amazon.com/blogs/aws/twenty-years-of-amazon-s3-and-building-whats-next/" target="_blank" rel="noopener">Twenty years of Amazon S3 (2026)</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>Amazon</b>: <a href="https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf" target="_blank" rel="noopener">2025 Annual Report and Form 10-K</a><span class="st st-filing">Filing</span></li>
+<li id="src-14"><b>Amazon Jobs</b>: <a href="https://amazon.jobs/content/en/teams/amazon-web-services/annapurna-labs" target="_blank" rel="noopener">Annapurna Labs team page</a><span class="st st-official">Official</span></li>
+<li id="src-15"><b>TechCrunch (press)</b>: <a href="https://techcrunch.com/2026/03/22/an-exclusive-tour-of-amazons-trainium-lab-the-chip-thats-won-over-anthropic-openai-even-apple/" target="_blank" rel="noopener">An exclusive tour of Amazon&#x27;s Trainium lab (22 Mar 2026)</a><span class="st st-press">Press</span></li>
+<li id="src-16"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/company-news/amazon-earnings-q4-2025-report" target="_blank" rel="noopener">Amazon fourth-quarter 2025 results (5 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-17"><b>AWS What&#x27;s New</b>: <a href="https://aws.amazon.com/about-aws/whats-new/2018/11/announcing-amazon-inferentia-machine-learning-inference-microchip" target="_blank" rel="noopener">Announcing Amazon Inferentia (28 Nov 2018)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>TechCrunch (press)</b>: <a href="https://techcrunch.com/2020/12/01/aws-launches-trainium-its-new-custom-ml-training-chip" target="_blank" rel="noopener">AWS launches Trainium, its new custom ML training chip (1 Dec 2020)</a><span class="st st-press">Press</span></li>
+<li id="src-19"><b>Amazon Press Center</b>: <a href="https://press.aboutamazon.com/2022/10/aws-announces-general-availability-of-amazon-ec2-trn1-instances-powered-by-aws-designed-trainium-chips" target="_blank" rel="noopener">AWS announces general availability of EC2 Trn1 instances (10 Oct 2022)</a><span class="st st-official">Official</span></li>
+<li id="src-20"><b>AWS What&#x27;s New</b>: <a href="https://aws.amazon.com/about-aws/whats-new/2023/04/amazon-ec2-inf2-instances-generative-ai-generally-available" target="_blank" rel="noopener">Amazon EC2 Inf2 instances generally available (13 Apr 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>Amazon Press Center</b>: <a href="https://press.aboutamazon.com/2023/11/aws-unveils-next-generation-aws-designed-chips" target="_blank" rel="noopener">AWS unveils next-generation AWS-designed chips (28 Nov 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>Amazon Press Center</b>: <a href="https://press.aboutamazon.com/2024/12/aws-trainium2-instances-now-generally-available" target="_blank" rel="noopener">AWS Trainium2 instances now generally available (3 Dec 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/aws/aws-project-rainier-ai-trainium-chips-compute-cluster" target="_blank" rel="noopener">AWS activates Project Rainier (Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/aws/amazon-open-ai-strategic-partnership-investment" target="_blank" rel="noopener">Amazon and OpenAI strategic partnership and investment (27 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>Anthropic</b>: <a href="https://www.anthropic.com/news/anthropic-amazon-compute" target="_blank" rel="noopener">Anthropic and Amazon expand compute partnership (20 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>AWS What&#x27;s New</b>: <a href="https://aws.amazon.com/about-aws/whats-new/2019/12/introducing-amazon-ec2-inf1-instances-high-performance-and-the-lowest-cost-machine-learning-inference-in-the-cloud" target="_blank" rel="noopener">Introducing Amazon EC2 Inf1 instances (3 Dec 2019)</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/aws/trainium-3-ultraserver-faster-ai-training-lower-cost" target="_blank" rel="noopener">Trainium3 UltraServer: faster AI training at lower cost (Dec 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>TrendForce (press)</b>: <a href="https://www.trendforce.com/news/2024/12/04/news-amazons-next-gen-ai-training-chip-trainium3-to-debut-by-2025-reportedly-built-with-tsmcs-3nm/" target="_blank" rel="noopener">Trainium3 reportedly built with TSMC&#x27;s 3nm (4 Dec 2024)</a><span class="st st-press">Press</span></li>
+<li id="src-29"><b>CommonWealth Magazine (press)</b>: <a href="https://english.cw.com.tw/article/article.action?id=4491" target="_blank" rel="noopener">Alchip and Amazon&#x27;s AI chip supply chain</a><span class="st st-press">Press</span></li>
+<li id="src-30"><b>Marvell</b>: <a href="https://www.marvell.com/company/newsroom/marvell-expands-strategic-collaboration-aws-enable-accelerated-infrastructure-ai-cloud.html" target="_blank" rel="noopener">Marvell expands strategic collaboration with AWS</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>AWS What&#x27;s New</b>: <a href="https://aws.amazon.com/about-aws/whats-new/2023/12/amazon-ec2-inf2-instances-generative-ai/" target="_blank" rel="noopener">Inf2 instances in more regions, including Mumbai (13 Dec 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-32"><b>AWS</b>: <a href="https://aws.amazon.com/ec2/capacityblocks/pricing/" target="_blank" rel="noopener">Amazon EC2 Capacity Blocks for ML pricing</a><span class="st st-official">Official</span></li>
+<li id="src-33"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/company-news/amazon-15-billion-indiana-data-centers" target="_blank" rel="noopener">Amazon to invest $15 billion in Northern Indiana data centers (24 Nov 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-34"><b>Semafor (press)</b>: <a href="https://www.semafor.com/article/10/29/2025/aws-massive-multi-state-ai-data-center-is-powering-anthropics-claude" target="_blank" rel="noopener">AWS&#x27;s multi-state AI data center powering Anthropic&#x27;s Claude (29 Oct 2025)</a><span class="st st-press">Press</span></li>
+<li id="src-35"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/aws/aws-re-invent-2025-ai-news-updates" target="_blank" rel="noopener">AWS re:Invent 2025 announcements</a><span class="st st-official">Official</span></li>
+<li id="src-36"><b>AWS Neuron documentation</b>: <a href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium_inferentia2_arch.rst" target="_blank" rel="noopener">Trainium and Inferentia2 architecture</a><span class="st st-official">Official</span></li>
+<li id="src-37"><b>AWS News Blog</b>: <a href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn2-instances-and-trn2-ultraservers-for-aiml-training-and-inference-is-now-available" target="_blank" rel="noopener">Amazon EC2 Trn2 instances and Trn2 UltraServers now available</a><span class="st st-official">Official</span></li>
+<li id="src-38"><b>AWS Neuron documentation</b>: <a href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium2_arch.rst" target="_blank" rel="noopener">Trainium2 architecture</a><span class="st st-official">Official</span></li>
+<li id="src-39"><b>AWS Neuron documentation</b>: <a href="https://awsdocs-neuron.readthedocs-hosted.com/en/v2.28.0/_sources/nki/guides/architecture/trainium3_arch.rst" target="_blank" rel="noopener">Trainium3 architecture</a><span class="st st-official">Official</span></li>
+<li id="src-40"><b>AWS What&#x27;s New</b>: <a href="https://aws.amazon.com/about-aws/whats-new/2025/12/announcing-aws-neuron-2-27" target="_blank" rel="noopener">Announcing AWS Neuron 2.27 (22 Dec 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-41"><b>AWS News Blog</b>: <a href="https://aws.amazon.com/blogs/aws/amazon-ec2-trn1-instances-for-high-performance-model-training-are-now-available" target="_blank" rel="noopener">Amazon EC2 Trn1 instances are now available</a><span class="st st-official">Official</span></li>
+<li id="src-42"><b>AWS</b>: <a href="https://aws.amazon.com/ec2/instance-types/trn1/" target="_blank" rel="noopener">Amazon EC2 Trn1 instances page</a><span class="st st-official">Official</span></li>
+<li id="src-43"><b>AWS</b>: <a href="https://aws.amazon.com/ec2/instance-types/inf2/" target="_blank" rel="noopener">Amazon EC2 Inf2 instances page</a><span class="st st-official">Official</span></li>
+<li id="src-44"><b>AWS</b>: <a href="https://aws.amazon.com/ec2/instance-types/trn2/" target="_blank" rel="noopener">Amazon EC2 Trn2 instances page</a><span class="st st-official">Official</span></li>
+<li id="src-45"><b>AWS</b>: <a href="https://aws.amazon.com/ec2/instance-types/trn3/" target="_blank" rel="noopener">Amazon EC2 Trn3 instances page</a><span class="st st-official">Official</span></li>
+<li id="src-46"><b>Anthropic</b>: <a href="https://www.anthropic.com/news/anthropic-amazon-trainium" target="_blank" rel="noopener">Powering the next generation of AI development with AWS (Nov 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-47"><b>AWS Neuron documentation</b>: <a href="https://awsdocs-neuron.readthedocs-hosted.com/en/latest/about-neuron/whats-new.html" target="_blank" rel="noopener">What&#x27;s new in Neuron</a><span class="st st-official">Official</span></li>
+<li id="src-48"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/aws/amazon-invests-additional-4-billion-anthropic-ai" target="_blank" rel="noopener">Amazon invests additional $4 billion in Anthropic (Nov 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-49"><b>GeekWire (press)</b>: <a href="https://www.geekwire.com/2024/apple-makes-surprise-cameo-at-aws-reinvent/" target="_blank" rel="noopener">Apple makes surprise cameo at AWS re:Invent (Dec 2024)</a><span class="st st-press">Press</span></li>
+<li id="src-50"><b>AWS Machine Learning Blog</b>: <a href="https://aws.amazon.com/blogs/machine-learning/scaling-rufus-the-amazon-generative-ai-powered-conversational-shopping-assistant-with-over-80000-aws-inferentia-and-aws-trainium-chips-for-prime-day" target="_blank" rel="noopener">Scaling Rufus with over 80,000 Inferentia and Trainium chips for Prime Day (10 Oct 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-51"><b>Anthropic</b>: <a href="https://anthropic.com/news/expanding-our-use-of-google-cloud-tpus-and-services" target="_blank" rel="noopener">Expanding our use of Google Cloud TPUs and services (23 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-52"><b>Amazon</b>: <a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000014/amzn-20260331.htm" target="_blank" rel="noopener">Form 10-Q, quarter ended 31 March 2026</a><span class="st st-filing">Filing</span></li>
+<li id="src-53"><b>Amazon</b>: <a href="https://www.sec.gov/Archives/edgar/data/1018724/000101872426000004/amzn-20251231.htm" target="_blank" rel="noopener">Form 10-K, fiscal year 2025 (SEC)</a><span class="st st-filing">Filing</span></li>
+<li id="src-54"><b>Financial World (press, reporting Business Insider)</b>: <a href="https://www.financial-world.org/news/news/financial/29473/startups-say-amazons-trainium-chips-trail-nvidia-in-real-workloads/" target="_blank" rel="noopener">Startups say Amazon&#x27;s Trainium chips trail NVIDIA in real workloads</a><span class="st st-press">Press</span></li>
+<li id="src-55"><b>About Amazon</b>: <a href="https://www.aboutamazon.com/news/company-news/amazon-india-investment" target="_blank" rel="noopener">Amazon&#x27;s investment in India (25 Jun 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-56"><b>About Amazon India</b>: <a href="https://www.aboutamazon.in/news/aws/aws-data-centre-hyderabad" target="_blank" rel="noopener">AWS data centre in Hyderabad (15 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-57"><b>Amazon Press Center India</b>: <a href="https://press.aboutamazon.com/in/news-releases/news-release-details/aws-invest-inr-105600-crores-us-127-billion-cloud-infrastructure" target="_blank" rel="noopener">AWS to invest INR 1,05,600 crore (US$12.7 billion) in India by 2030 (18 May 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-58"><b>CRN Asia (press)</b>: <a href="https://www.crnasia.com/india/news/2026/aws-partners-with-empanelled-shi-india-to-support-ai-infrastructure-under-indiaai-mission" target="_blank" rel="noopener">AWS partners with empanelled SHI India under IndiaAI Mission (Apr 2026)</a><span class="st st-press">Press</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#company">2. Company card</a><a href="#story">3. The story</a><a href="#lineup">4. The lineup</a><a href="#made">5. How it’s made</a><a href="#where">6. Where it’s made: factories and addresses</a><a href="#works">7. How it works</a><a href="#specs">8. Specs explained</a><a href="#pricing">9. Official pricing</a><a href="#moat">10. The software lock-in</a><a href="#buyers">11. Who buys it and why</a><a href="#hidden">12. Hidden in plain sight</a><a href="#weak">13. Weak spots</a><a href="#india">14. India angle</a><a href="#next">15. What’s next</a><a href="#sources">16. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Headquarters</span><span style="color:var(--fg);font-weight:500;text-align:right">Seattle, Washington</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Founded</span><span style="color:var(--fg);font-weight:500;text-align:right">1994</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>CEO</span><span style="color:var(--fg);font-weight:500;text-align:right">Andy Jassy</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Makes its own chips?</span><span style="color:var(--fg);font-weight:500;text-align:right">Designs them (Annapurna Labs)</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Main chip factory</span><span style="color:var(--fg);font-weight:500;text-align:right">Not disclosed by Amazon</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Latest quarter AWS sales</span><span style="color:var(--fg);font-weight:500;text-align:right">$42.2 billion</span></div></div></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip brands</a><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD</a><a href="/ai-atlas/ai-chips/apple/" class="sidebar-link">Apple</a><a href="/ai-atlas/ai-chips/cerebras/" class="sidebar-link">Cerebras</a><a href="/ai-atlas/ai-chips/google-tpu/" class="sidebar-link">Google TPU</a><a href="/ai-atlas/ai-chips/groq/" class="sidebar-link">Groq</a><a href="/ai-atlas/ai-chips/huawei-ascend/" class="sidebar-link">Huawei Ascend</a><a href="/ai-atlas/ai-chips/intel/" class="sidebar-link">Intel</a><a href="/ai-atlas/ai-chips/meta-mtia/" class="sidebar-link">Meta MTIA</a><a href="/ai-atlas/ai-chips/microsoft-maia/" class="sidebar-link">Microsoft Maia</a><a href="/ai-atlas/ai-chips/nvidia/" class="sidebar-link">NVIDIA</a><a href="/ai-atlas/ai-chips/ai-memory-hbm/" class="sidebar-link">AI memory (HBM) and why it is scarce</a><a href="/ai-atlas/ai-chips/export-rules/" class="sidebar-link">Export rules and the US–China chip contest</a><a href="/ai-atlas/ai-chips/how-a-chip-is-made/" class="sidebar-link">How a chip is made: sand to server</a><a href="/ai-atlas/ai-chips/how-ai-chips-work/" class="sidebar-link">How AI chips work</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Amazon%20Trainium%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famazon-trainium%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Amazon%20Trainium%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famazon-trainium%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Amazon%20Trainium%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famazon-trainium%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Amazon%20Trainium%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famazon-trainium%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Amazon%20Trainium%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famazon-trainium%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>
