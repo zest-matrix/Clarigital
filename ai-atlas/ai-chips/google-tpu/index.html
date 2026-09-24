@@ -226,6 +226,7 @@ p{line-height:1.75;color:var(--muted)}
 .chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
 .lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
 .lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl-deep{border-left:3px solid var(--red,#EF4444)}
 .lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
 .lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
 .lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
@@ -268,7 +269,12 @@ a.brand-card:hover{border-color:var(--indigo)}
 .timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
 .steps li,.hidden-list li{margin-bottom:.75rem}
 .hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
-</style>
+
+/*chip-products-v1*/
+.cp-strip{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cp-strip a{display:inline-block;font-size:.82rem;font-weight:600;color:var(--indigo);background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:6px 12px;text-decoration:none}
+.cp-strip a:hover{border-color:var(--indigo)}
+/*chip-products-v1-end*/</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -424,7 +430,7 @@ a.brand-card:hover{border-color:var(--indigo)}
 <div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
 <p>Ironwood has two TensorCores and four SparseCores per chip <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>; Trillium has one TensorCore <a class="cite" href="https://docs.cloud.google.com/tpu/docs/v6e" target="_blank" rel="noopener" title="Google Cloud: TPU v6e (Trillium) documentation">29</a>. Google's documentation says TensorFlow is not supported on Ironwood; JAX and PyTorch are <a class="cite" href="https://docs.cloud.google.com/tpu/docs/tpu7x" target="_blank" rel="noopener" title="Google Cloud: TPU7x (Ironwood) documentation">28</a>. TPU 8i pods hold up to 1,152 chips in a new "Boardfly" layout that cuts the longest path between chips from 16 hops to 7 <a class="cite" href="https://cloud.google.com/blog/products/compute/tpu-8t-and-tpu-8i-technical-deep-dive" target="_blank" rel="noopener" title="Google Cloud Blog: TPU 8t and TPU 8i technical deep dive">30</a>.</p>
 </div>
-</section>
+<!--chip-products--><div class="cp-strip" role="note" aria-label="Individual chip pages"><a href="/ai-atlas/ai-chips/google-tpu/ironwood/">Google Ironwood (TPU7x) →</a><a href="/ai-atlas/ai-chips/google-tpu/tpu-8i/">Google TPU 8i →</a><a href="/ai-atlas/ai-chips/google-tpu/tpu-8t/">Google TPU 8t →</a><a href="/ai-atlas/ai-chips/google-tpu/trillium/">Google Trillium (TPU v6e) →</a><a href="/ai-atlas/ai-chips/google-tpu/v1/">Google TPU v1 →</a><a href="/ai-atlas/ai-chips/google-tpu/v2/">Google TPU v2 →</a><a href="/ai-atlas/ai-chips/google-tpu/v3/">Google TPU v3 →</a><a href="/ai-atlas/ai-chips/google-tpu/v4/">Google TPU v4 →</a><a href="/ai-atlas/ai-chips/google-tpu/v5e/">Google TPU v5e →</a><a href="/ai-atlas/ai-chips/google-tpu/v5p/">Google TPU v5p →</a></div><!--/chip-products--></section>
 <section class="chip-sec" id="made" aria-labelledby="h-made">
 <h2 id="h-made"><span>5.</span>How it’s made</h2>
 <div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>

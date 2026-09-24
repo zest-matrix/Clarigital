@@ -226,6 +226,7 @@ p{line-height:1.75;color:var(--muted)}
 .chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
 .lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
 .lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl-deep{border-left:3px solid var(--red,#EF4444)}
 .lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
 .lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
 .lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
@@ -268,7 +269,12 @@ a.brand-card:hover{border-color:var(--indigo)}
 .timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
 .steps li,.hidden-list li{margin-bottom:.75rem}
 .hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
-</style>
+
+/*chip-products-v1*/
+.cp-strip{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px}
+.cp-strip a{display:inline-block;font-size:.82rem;font-weight:600;color:var(--indigo);background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:6px 12px;text-decoration:none}
+.cp-strip a:hover{border-color:var(--indigo)}
+/*chip-products-v1-end*/</style>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -424,7 +430,7 @@ a.brand-card:hover{border-color:var(--indigo)}
 <div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
 <p>Apple's AI features need a recent chip: at WWDC 2026 the next Apple Intelligence was listed for iPhone 15 Pro and later, iPad and Mac with M1 or later, MacBook Neo (A18 Pro), Vision Pro and recent Apple Watch models <a class="cite" href="https://www.apple.com/newsroom/2026/06/apple-unveils-next-generation-of-apple-intelligence-siri-ai-and-more/" target="_blank" rel="noopener" title="Apple Newsroom: Apple unveils next generation of Apple Intelligence and Siri AI (8 Jun 2026)">24</a>. Apple's announcements do not name the chip inside its servers; 9to5Mac, reading Apple's own server software release, reports that Apple has started using M5 chips (press report) <a class="cite" href="https://9to5mac.com/2026/02/17/apple-plans-m5-based-private-cloud-compute-architecture-for-apple-intelligence/" target="_blank" rel="noopener" title="9to5Mac (press): Apple plans M5-based Private Cloud Compute architecture (17 Feb 2026)">25</a>.</p>
 </div>
-</section>
+<!--chip-products--><div class="cp-strip" role="note" aria-label="Individual chip pages"><a href="/ai-atlas/ai-chips/apple/a11/">Apple A11 Bionic →</a><a href="/ai-atlas/ai-chips/apple/a12/">Apple A12 Bionic →</a><a href="/ai-atlas/ai-chips/apple/a13/">Apple A13 Bionic →</a><a href="/ai-atlas/ai-chips/apple/a14/">Apple A14 Bionic →</a><a href="/ai-atlas/ai-chips/apple/a15/">Apple A15 Bionic →</a><a href="/ai-atlas/ai-chips/apple/a16/">Apple A16 Bionic →</a><a href="/ai-atlas/ai-chips/apple/a17-pro/">Apple A17 Pro →</a><a href="/ai-atlas/ai-chips/apple/a18/">Apple A18 and A18 Pro →</a><a href="/ai-atlas/ai-chips/apple/a19/">Apple A19 and A19 Pro →</a><a href="/ai-atlas/ai-chips/apple/a20-pro/">Apple A20 Pro →</a><a href="/ai-atlas/ai-chips/apple/m1/">Apple M1 Family →</a><a href="/ai-atlas/ai-chips/apple/m2/">Apple M2 Family →</a><a href="/ai-atlas/ai-chips/apple/m3/">Apple M3 Family →</a><a href="/ai-atlas/ai-chips/apple/m4/">Apple M4 Family →</a><a href="/ai-atlas/ai-chips/apple/m5/">Apple M5 Family →</a></div><!--/chip-products--></section>
 <section class="chip-sec" id="made" aria-labelledby="h-made">
 <h2 id="h-made"><span>5.</span>How it’s made</h2>
 <div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
@@ -686,7 +692,7 @@ a.brand-card:hover{border-color:var(--indigo)}
 </div>
 </div>
 
-<!--chipnews--><section class="cnews" data-terms="Private Cloud Compute|Apple silicon|Neural Engine|M5 Ultra|A20 Pro|A19 Pro|M5 Pro|M5 Max" aria-label="In the news"><h2>In the news</h2><p class="cnews-sub">Newest stories mentioning Apple Silicon, straight from the companies’ own newsrooms and the wider press. Links open the original.</p><ul></ul><a class="cnews-all" href="/ai-news/">All of today’s AI news →</a></section><script>/*chipnews*/(function(){
+<!--chipnews--><section class="cnews" data-terms="Private Cloud Compute|Apple silicon|Neural Engine|M5 Ultra|A19 Pro|A20 Pro|M5 Max|M5 Pro" aria-label="In the news"><h2>In the news</h2><p class="cnews-sub">Newest stories mentioning Apple Silicon, straight from the companies’ own newsrooms and the wider press. Links open the original.</p><ul></ul><a class="cnews-all" href="/ai-news/">All of today’s AI news →</a></section><script>/*chipnews*/(function(){
   var box=document.querySelector('.cnews');if(!box)return;
   var terms=(box.getAttribute('data-terms')||'').split('|').filter(Boolean);if(!terms.length)return;
   function esc(t){return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
