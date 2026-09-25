@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add("js");</script>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>What AI Can and Cannot Read From a Face | Clarigital</title>
+<meta name="description" content="Face matching and liveness work and are measured. Emotion, stress and deception detection are contested science and restricted in law. How to tell them apart.">
+<link rel="canonical" href="https://www.clarigital.com/fintech-ai/reading-the-human/">
+<meta property="og:type" content="article"><meta property="og:title" content="What AI Can and Cannot Read From a Face">
+<meta property="og:description" content="Face matching and liveness work and are measured. Emotion, stress and deception detection are contested science and restricted in law. How to tell them apart."><meta property="og:url" content="https://www.clarigital.com/fintech-ai/reading-the-human/">
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-fintech.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="What AI Can and Cannot Read From a Face">
+<meta name="twitter:description" content="Face matching and liveness work and are measured. Emotion, stress and deception detection are contested science and restricted in law. How to tell them apart."><meta name="twitter:image" content="https://www.clarigital.com/og-fintech.png">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzEwQjk4MSIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "What AI Can and Cannot Read From a Face", "description": "Face matching and liveness work and are measured. Emotion, stress and deception detection are contested science and restricted in law. How to tell them apart.", "url": "https://www.clarigital.com/fintech-ai/reading-the-human/", "author": {"@type": "Organization", "name": "Clarigital"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "dateModified": "2026-09-15"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Fintech AI", "item": "https://www.clarigital.com/fintech-ai/"}, {"@type": "ListItem", "position": 3, "name": "What AI Can and Cannot Read From a Face", "item": "https://www.clarigital.com/fintech-ai/reading-the-human/"}]}</script>
+
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.rail-ask{display:block;margin-top:16px;padding:11px 12px;border:1px solid var(--border2);border-radius:9px;background:var(--bg2);text-decoration:none}
+.rail-ask:hover{border-color:var(--indigo)}
+.rail-ask b{display:block;font-size:.8rem;font-weight:700;color:var(--fg);line-height:1.35}
+.rail-ask span{display:block;font-size:.72rem;color:var(--faint);margin-top:3px;line-height:1.45}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+:root{--bg:#0F172A;--bg2:#111827;--card:#151C2C;--border:#1E293B;--border2:#243044;
+--fg:#F1F5F9;--muted:#94A3B8;--faint:#64748B;--green:#10B981;--teal:#14B8A6;--teal-dim:rgba(20,184,166,.09);--indigo:#6366F1;--amber:#F59E0B;--red:#EF4444;--blue:#2563EB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--fg);line-height:1.75;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+.site-nav{background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 24px;height:58px;display:flex;align-items:center;gap:20px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-weight:700;color:var(--fg);font-size:1rem}
+.logo-mark{width:30px;height:30px;border-radius:8px;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff}
+.nav-links{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-size:.82rem;color:var(--muted);padding:6px 11px;border-radius:7px}
+.nav-links a:hover,.nav-links a.active{background:var(--border);color:var(--fg);text-decoration:none}
+/* hero */
+.page-hero{padding:44px 0 28px;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(20,184,166,.08),transparent)}
+.breadcrumb{font-size:.78rem;color:var(--faint);margin-bottom:14px}
+.breadcrumb a{color:var(--faint)}.breadcrumb .sep{margin:0 7px;opacity:.5}
+.label-tag{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.28);padding:4px 12px;border-radius:100px;margin-bottom:14px}
+h1{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.18;margin-bottom:14px}
+.hero-lead{font-size:1.05rem;color:var(--muted);max-width:760px;line-height:1.75}
+.art-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta-tag{font-size:.72rem;color:var(--muted);background:var(--bg2);border:1px solid var(--border2);padding:4px 11px;border-radius:100px}
+/* LAYOUT: sticky left rail */
+.ft-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:40px;padding:32px 0 72px;align-items:start}
+.ft-rail{position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto;padding-right:6px}
+.rail-group{margin-bottom:22px}
+.rail-title{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--faint);margin-bottom:9px}
+.lane-btn{display:flex;align-items:center;gap:9px;width:100%;background:none;border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.84rem;font-weight:600;text-align:left;padding:9px 12px;border-radius:9px;cursor:pointer;margin-bottom:7px;transition:all .15s}
+.lane-btn:hover{border-color:var(--faint);color:var(--fg)}
+.lane-btn.active{background:var(--card);color:var(--fg);border-color:currentColor}
+.lane-btn.active.lb-green{border-color:var(--green);color:var(--green)}
+.lane-btn.active.lb-indigo{border-color:var(--indigo);color:var(--indigo)}
+.lane-btn.active.lb-amber{border-color:var(--amber);color:var(--amber)}
+.lane-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-green{background:var(--green)}.dot-indigo{background:var(--indigo)}.dot-amber{background:var(--amber)}
+.toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--border2);line-height:1.5}
+.toc a:hover{color:var(--fg);border-left-color:var(--teal);text-decoration:none}
+.toc a.sub{padding-left:22px;font-size:.75rem;color:var(--faint)}
+/* content */
+.ft-body h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:36px 0 14px;scroll-margin-top:78px}
+.ft-body h2:first-child{margin-top:0}
+.ft-body h3{font-size:1.08rem;font-weight:600;margin:26px 0 10px;color:var(--fg);scroll-margin-top:78px}
+.ft-body p{margin-bottom:15px;color:#CBD5E1}
+.ft-body ul,.ft-body ol{margin:0 0 16px 22px;color:#CBD5E1}
+.ft-body li{margin-bottom:8px}
+.ft-body strong{color:var(--fg);font-weight:600}
+.ft-body code{background:var(--bg2);border:1px solid var(--border2);border-radius:5px;padding:1px 6px;font-size:.87em;font-family:ui-monospace,Menlo,monospace;color:#A5B4FC}
+.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:48px 0 22px;padding-top:10px;border-top:1px solid var(--border2)}.lane-section:first-child .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 13px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green);background:rgba(16,185,129,.09)}.db-indigo{color:var(--indigo);background:rgba(99,102,241,.09)}.db-amber{color:var(--amber);background:rgba(245,158,11,.09)}.depth-note{font-size:.8rem;color:var(--faint)}.toc a .tdot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:7px;vertical-align:middle}.toc-heading{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:15px 0 5px;padding-left:11px}
+@keyframes fi{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+/* code block + copy */
+.cb{position:relative;margin:0 0 20px}
+.cb-head{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border2);border-bottom:none;border-radius:10px 10px 0 0;padding:8px 13px}
+.cb-lang{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--faint)}
+.cb-copy{background:var(--border);border:1px solid var(--border2);color:var(--muted);font-family:inherit;font-size:.72rem;font-weight:600;padding:4px 11px;border-radius:6px;cursor:pointer;transition:all .15s}
+.cb-copy:hover{background:var(--border2);color:var(--fg)}
+.cb-copy.done{background:rgba(16,185,129,.15);border-color:var(--green);color:var(--green)}
+.cb pre{background:#0B1220;border:1px solid var(--border2);border-radius:0 0 10px 10px;padding:15px 16px;overflow-x:auto;margin:0}
+.cb pre code{background:none;border:none;padding:0;color:#CBD5E1;font-size:.84rem;line-height:1.7}
+/* callouts */
+.note{border-left:3px solid var(--teal);background:var(--teal-dim);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.warn{border-left:3px solid var(--amber);background:rgba(245,158,11,.07);border-radius:0 9px 9px 0;padding:14px 17px;margin:0 0 20px}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+.note-lbl{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:5px;display:block}
+.warn .note-lbl{color:var(--amber)}
+/* tables */
+.ft-body table{width:100%;border-collapse:collapse;margin:0 0 22px;font-size:.88rem}
+.ft-body th{background:var(--bg2);text-align:left;padding:10px 13px;font-weight:600;color:var(--fg);border:1px solid var(--border2);font-size:.8rem}
+.ft-body td{padding:10px 13px;border:1px solid var(--border2);color:#CBD5E1;vertical-align:top}
+/* registry */
+.reg{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:0 0 22px}
+.reg-foot{border-top:1px solid var(--border2);margin-top:12px;padding-top:11px;font-size:.8rem;color:var(--muted);line-height:1.6}
+.reg-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.reg-head h3{font-size:.95rem;font-weight:700;color:var(--fg)}
+.reg-date{font-size:.7rem;color:var(--faint);background:var(--bg2);border:1px solid var(--border2);padding:3px 10px;border-radius:100px;white-space:nowrap}
+.reg-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--border2);font-size:.86rem}
+.reg-row:last-child{border-bottom:none}
+.reg-row .n{font-weight:600;color:var(--fg)}
+.reg-row .d{color:var(--muted)}
+.pill{display:inline-block;font-size:.66rem;font-weight:600;padding:2px 8px;border-radius:100px;margin-left:6px}
+.p-direct{background:rgba(16,185,129,.15);color:var(--green)}
+.p-indirect{background:rgba(99,102,241,.15);color:#A5B4FC}
+.p-oss{background:rgba(245,158,11,.15);color:var(--amber)}
+/* module cards */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin:0 0 26px}
+.mod-card{display:block;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:18px;transition:border-color .18s,transform .18s}
+.mod-card:hover{border-color:var(--green);transform:translateY(-2px);text-decoration:none}
+.mod-num{font-size:.68rem;font-weight:700;color:var(--green);letter-spacing:.08em;margin-bottom:7px}
+.mod-card h3{font-size:1rem;font-weight:600;color:var(--fg);margin-bottom:6px}
+.mod-card p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0}
+.site-footer{border-top:1px solid var(--border);padding:26px 0;text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
+@media(max-width:900px){
+ .ft-layout{grid-template-columns:1fr;gap:20px}
+ .ft-rail{position:static;max-height:none;border-bottom:1px solid var(--border);padding-bottom:16px}
+ .toc{display:none}
+ .lane-btn{display:inline-flex;width:auto;margin-right:7px}
+ .reg-row{grid-template-columns:1fr;gap:3px}
+}
+
+/* ---- Fintech AI section identity (Session 62) ---- */
+.ft-tag{display:inline-flex;align-items:center;gap:6px;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(20,184,166,.28);padding:4px 11px;border-radius:100px;margin-bottom:13px}
+.ft-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--teal)}
+.mod-card{position:relative;transition:border-color .18s,transform .18s,background .18s}
+.mod-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:2px;border-radius:0 2px 2px 0;background:var(--teal);opacity:0;transition:opacity .18s}
+.mod-card:hover::before{opacity:1}
+.mod-card:hover{border-color:rgba(20,184,166,.45);transform:translateY(-1px)}
+.mod-num{color:var(--teal)}
+.ft-stats{display:flex;flex-wrap:wrap;border:1px solid var(--border);border-radius:12px;overflow:hidden;margin:24px 0 8px}
+.ft-stat{flex:1;min-width:124px;padding:15px 17px;border-right:1px solid var(--border)}
+.ft-stat:last-child{border-right:0}
+.ft-stat-n{font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-.02em}
+.ft-stat-l{font-size:.68rem;color:var(--faint);margin-top:5px;text-transform:uppercase;letter-spacing:.07em}
+.sheet-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(206px,1fr));gap:10px;margin:14px 0 4px}
+.sheet-card{display:block;padding:13px 15px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--teal);border-radius:0 10px 10px 0;text-decoration:none;transition:border-color .18s,background .18s}
+.sheet-card:hover{background:var(--bg2);border-color:rgba(20,184,166,.5);border-left-color:var(--teal)}
+.sheet-n{font-size:.62rem;font-weight:700;letter-spacing:.08em;color:var(--teal);text-transform:uppercase}
+.sheet-t{font-size:.85rem;font-weight:600;color:var(--fg);margin-top:3px;line-height:1.35}
+h2{scroll-margin-top:70px}
+.ft-body h2::after{content:"";display:block;width:26px;height:2px;background:var(--teal);border-radius:2px;margin-top:9px;opacity:.75}
+@media(max-width:640px){.ft-stat{min-width:50%;border-bottom:1px solid var(--border)}.sheet-grid{grid-template-columns:1fr}}
+
+.srcs{margin-top:10px;border-top:1px solid var(--border);padding-top:16px}
+.srcs ol{list-style:none;counter-reset:s;padding:0;margin:0}
+.srcs li{counter-increment:s;position:relative;padding:9px 0 9px 30px;border-bottom:1px solid var(--border);font-size:.82rem;line-height:1.6;color:var(--muted)}
+.srcs li:last-child{border-bottom:0}
+.srcs li::before{content:counter(s);position:absolute;left:0;top:10px;font-size:.68rem;font-weight:700;color:var(--faint);font-variant-numeric:tabular-nums}
+.src-k{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 7px;border-radius:100px;margin-right:7px;vertical-align:1px}
+.src-official{background:rgba(20,184,166,.12);color:var(--teal);border:1px solid rgba(20,184,166,.3)}
+.src-research{background:rgba(99,102,241,.12);color:var(--indigo);border:1px solid rgba(99,102,241,.3)}
+.src-vendor{background:rgba(245,158,11,.12);color:var(--amber);border:1px solid rgba(245,158,11,.3)}
+.src-industry{background:rgba(148,163,184,.1);color:var(--muted);border:1px solid var(--border2)}
+.srcs strong{color:var(--fg);font-weight:600}
+.srcs a{word-break:break-word}
+/*wf-v1 — S152 workflow step with collapsible options. Native <details>, no JS:
+  the whole workflow reads top-to-bottom closed; a reader opens only the step
+  they are actually building. Everything collapsed is a CHOICE; everything
+  open is the WORKFLOW.*/
+.wf-step{border:1px solid var(--border2);border-radius:12px;padding:18px 20px;margin:18px 0;background:var(--card)}
+.wf-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.wf-n{flex:none;font-size:.64rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--green);background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);padding:3px 10px;border-radius:100px}
+.wf-head h3{font-size:1.05rem;font-weight:700;letter-spacing:-.01em;margin:0}
+.wf-facts{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:.88rem;margin:0 0 14px}
+.wf-facts dt{color:var(--faint);font-weight:600;white-space:nowrap}
+.wf-facts dd{color:var(--muted);margin:0}
+.wf-opts{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.wf-opt{border:1px solid var(--border2);border-radius:9px;background:var(--bg2);overflow:hidden}
+.wf-opt>summary{cursor:pointer;padding:10px 14px;font-size:.88rem;font-weight:600;color:var(--fg);list-style:none;display:flex;align-items:center;gap:10px}
+.wf-opt>summary::-webkit-details-marker{display:none}
+.wf-opt>summary::before{content:"+";flex:none;width:17px;height:17px;border-radius:5px;border:1px solid var(--border2);color:var(--teal);font-weight:700;font-size:.8rem;line-height:15px;text-align:center}
+.wf-opt[open]>summary::before{content:"\2212"}
+.wf-opt>summary:hover{background:var(--border)}
+.wf-opt[open]>summary{border-bottom:1px solid var(--border2)}
+.wf-opt-body{padding:12px 14px 14px;font-size:.88rem;color:var(--muted)}
+.wf-opt-body p{margin:0 0 9px}.wf-opt-body p:last-child{margin-bottom:0}
+.wf-opt-body strong{color:var(--fg);font-weight:600}
+.wf-flow{font-size:.84rem;color:var(--faint);border-top:1px solid var(--border);padding-top:11px;margin:0}
+.wf-flow b{color:var(--muted);font-weight:600}
+.cite{font-size:.7rem;vertical-align:2px;color:var(--teal);text-decoration:none;padding:0 1px}
+.cite:hover{text-decoration:underline}
+/*S152: pages that print the full source URL as visible text push the whole
+  layout wider than a 320px screen -- a single long URL with no spaces is one
+  unbreakable token, and word-break:break-word above does not break it. Added
+  as a separate rule rather than editing the line above, which pg02 matches on
+  by regex.*/
+.srcs li a{overflow-wrap:anywhere;word-break:break-all}
+/*S152: skip link moved into the builder. Thirteen guide scripts each patched
+  this in after the fact; a fourteenth would have repeated the bug. Guides
+  built before this still carry their own copy and guard on it, so a rebuild
+  of one of those cannot double-add.*/
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+@media(max-width:560px){.wf-facts{grid-template-columns:1fr;gap:2px 0}.wf-facts dd{margin-bottom:8px}.wf-step{padding:15px 14px}
+/*S152: the single-column fallback is not enough on its own -- the nowrap above
+  keeps a long label on one line and forces the whole page past 320px.*/
+.wf-facts dt{white-space:normal}}
+/*wf-v1-end*/
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav class="site-nav"><div class="nav-in"><a href="/" class="nav-logo"><div class="logo-mark">CL</div><span>Clarigital</span></a><div class="nav-links"><a href="/codex/">Codex</a><a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a><a href="/fintech-ai/" class="active">Fintech AI</a><a href="/ai-kids/">AI Kids</a><a href="/courses/">Courses</a><a href="/about/">About</a></div></div></nav>
+<div class="page-hero" id="main-content"><div class="wrap">
+  <nav class="breadcrumb"><a href="/">Home</a><span class="sep">&rsaquo;</span><a href="/fintech-ai/">Fintech AI</a><span class="sep">&rsaquo;</span><span>What AI Can and Cannot Read From a Face</span></nav>
+  <div class="label-tag">Fintech AI · Explainer</div>
+  <div class="ft-tag">Fintech AI</div><h1>What AI Can and Cannot Read From a Face</h1>
+  <p class="hero-lead">Identity verification from a face is standardised, independently tested and required by regulators. Inferring emotion, stress or deception from the same video is contested science with no independent benchmark this site could find and, in some settings, is now prohibited. The evidence for both, with sources.</p>
+  <div class="art-meta"><span class="meta-tag">Verified September 2026</span><span class="meta-tag">Free &middot; No signup</span><span class="meta-tag">Official sources only</span></div>
+</div></div>
+<div class="wrap"><div class="ft-layout">
+  <aside class="ft-rail">
+    <div class="rail-group"><div class="rail-title">On this page</div><div class="toc"><div class="toc-heading" style="color:var(--green)">Beginner</div><a href="#s-green-0"><span class="tdot" style="background:var(--green)"></span>The short version</a><a href="#s-green-1"><span class="tdot" style="background:var(--green)"></span>The two columns</a><a href="#s-green-2"><span class="tdot" style="background:var(--green)"></span>Why this page exists</a><div class="toc-heading" style="color:var(--indigo)">Intermediate</div><a href="#s-indigo-0"><span class="tdot" style="background:var(--indigo)"></span>Column A — what actually works</a><a href="#s-indigo-1"><span class="tdot" style="background:var(--indigo)"></span>Column B — reading emotion from a face</a><a href="#s-indigo-2"><span class="tdot" style="background:var(--indigo)"></span>Detecting deception</a><a href="#s-indigo-3"><span class="tdot" style="background:var(--indigo)"></span>Pupil dilation and stress</a><a href="#s-indigo-4"><span class="tdot" style="background:var(--indigo)"></span>Heart rate from video</a><div class="toc-heading" style="color:var(--amber)">Advanced</div><a href="#s-amber-0"><span class="tdot" style="background:var(--amber)"></span>The law: the EU AI Act</a><a href="#s-amber-1"><span class="tdot" style="background:var(--amber)"></span>The law: India</a><a href="#s-amber-2"><span class="tdot" style="background:var(--amber)"></span>The asymmetry, and what to ask</a><a href="#s-amber-3"><span class="tdot" style="background:var(--amber)"></span>Where to go next</a><a class="sub" href="#sources">Sources</a></div></div>
+  <a class="rail-ask" href="#ask-ai"><b>Stuck? Ask an AI &rarr;</b><span>Opens your assistant with this page as the source</span></a></aside>
+  <main class="ft-body"><div class="lane-section" data-lane="green"><div class="depth-band"><span class="depth-badge db-green">Beginner</span><span class="depth-note">Start here. No prior knowledge assumed.</span></div>
+<h2 id="s-green-0">The short version</h2>
+
+<p>Point a camera at someone&rsquo;s face and software can do two very different kinds of thing.</p>
+<p>It can <strong>check who they are</strong> &mdash; is this the same face as the passport, is there a
+live human here rather than a photograph. That works. It is measured by national standards bodies, it
+has published error rates, and regulators require it.</p>
+<p>It can also claim to <strong>tell you what they are feeling</strong> &mdash; are they stressed,
+confident, nervous, lying. That is a different proposition with a much weaker evidence base, no
+independent benchmark this site could find against which to check a vendor&rsquo;s accuracy claim, and
+in some settings it is now illegal.</p>
+<p>These two get sold together, in the same demo, by the same vendor, on the same screen. This page is
+about telling them apart.</p>
+<div class="note"><span class="note-lbl">In one paragraph</span><p><strong>The short version.</strong> Identity verification from a face is a solved, standardised, independently-measured technology with known and fixable weaknesses. Emotion, stress and deception inference from a face is not &mdash; and the EU has written the scientific critique of it into binding law. If a vendor bundles the second into a quote for the first, that is the moment to slow down.</p></div>
+<h2 id="s-green-1">The two columns</h2>
+
+<p>Here is the whole page in one table.</p>
+<div class="pf-scroll"><table>
+<tr><th></th><th>Column A &mdash; works</th><th>Column B &mdash; contested</th></tr>
+<tr><td><strong>What it does</strong></td><td>Is this the right person? Is this a live human?</td><td>What is this person feeling or intending?</td></tr>
+<tr><td><strong>Examples</strong></td><td>Face matching against an ID, liveness and spoof detection, document authenticity</td><td>Emotion recognition, stress detection, confidence scoring, deception detection</td></tr>
+<tr><td><strong>Independent standard</strong></td><td>ISO/IEC 30107-3 for spoof testing; NIST evaluations for matching accuracy</td><td>None found</td></tr>
+<tr><td><strong>Published error rates</strong></td><td>Yes &mdash; by algorithm, by demographic group</td><td>No agreed metric to publish</td></tr>
+<tr><td><strong>Indian regulator</strong></td><td>RBI requires it for video KYC</td><td>Not required, not mentioned</td></tr>
+<tr><td><strong>EU AI Act</strong></td><td>One-to-one verification carved out of the biometric high-risk list</td><td>Prohibited at work and in education; high-risk everywhere else</td></tr>
+</table></div>
+<div class="note"><span class="note-lbl">Where the line is drawn</span><p><strong>That split is not a framing this page invented.</strong> It is the structure of the statute. Annex III of the EU AI Act lists high-risk biometric systems in a single numbered point: sub-paragraph (a) carves <em>out</em> one-to-one verification &ldquo;the sole purpose of which is to confirm that a specific natural person is the person he or she claims to be&rdquo;, and sub-paragraph (c) pulls <em>in</em> &ldquo;AI systems intended to be used for emotion recognition&rdquo; <a href="#sources" class="cite">[21]</a>. Two adjacent sub-paragraphs, opposite treatment.</p></div>
+<h2 id="s-green-2">Why this page exists</h2>
+
+<p>Because the second column is being sold into Indian fintech right now, on top of products that do
+the first column perfectly well.</p>
+<p>The pitch is reasonable-sounding: you are already recording a video call for KYC, the customer is
+already on camera, so why not also score whether they seem nervous and flag the risky ones? No extra
+hardware, no extra friction, one more line on the invoice.</p>
+<p>The problem is that every part of that sentence is true except the part where it works.</p>
+
+</div><div class="lane-section" data-lane="indigo"><div class="depth-band"><span class="depth-badge db-indigo">Intermediate</span><span class="depth-note">Build it. Pipelines, tools and working code.</span></div>
+<h2 id="s-indigo-0">Column A — what actually works</h2>
+
+<p>Start with the half that does work, because taking it seriously is what earns the right to be
+sceptical about the other half.</p>
+<h3>Liveness and spoof detection</h3>
+<p><strong>ISO/IEC 30107-3:2023</strong> is the international standard for testing whether a system can
+tell a real face from a presented fake. Its published scope covers the performance assessment and
+reporting of presentation attack detection <a href="#sources" class="cite">[16]</a>. The standard itself &mdash; which defines the two
+error rates the industry quotes, APCER for attacks wrongly accepted and BPCER for genuine users wrongly
+rejected &mdash; sits behind ISO&rsquo;s paywall, so this page works from the catalogue scope and from
+iBeta&rsquo;s published methodology below rather than from the text.</p>
+<p><strong>iBeta</strong> is the best-known independent lab testing against it. Its published levels are
+worth understanding precisely, because vendors quote them as though they meant &ldquo;spoof-proof&rdquo;
+and they do not:</p>
+<div class="pf-scroll"><table>
+<tr><th></th><th>Level 1</th><th>Level 2</th></tr>
+<tr><td>Time per attack species</td><td>8 hours</td><td>2&ndash;4 days</td></tr>
+<tr><td>Attacker expertise assumed</td><td>None</td><td>Has done at least one prior PAD test</td></tr>
+<tr><td>Materials budget cap</td><td>$30</td><td>$300</td></tr>
+<tr><td>Attack success allowed</td><td>0%</td><td>1%</td></tr>
+<tr><td>Genuine users it may reject</td><td colspan="2">Up to 15%</td></tr>
+</table></div>
+<p>Source: iBeta&rsquo;s own published methodology <a href="#sources" class="cite">[17]</a>.</p>
+<p>So a Level 1 certificate means: resistant to a thirty-dollar attack, by someone with no relevant
+expertise, given one working day. That is a real, testable, meaningful claim. It is also much narrower
+than the badge implies &mdash; and note the last row, which allows a compliant system to reject up to
+fifteen percent of your genuine customers.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>The gap that matters most in 2026: injection attacks are outside the standard.</strong> ISO/IEC 30107-3 explicitly scopes out attacks occurring anywhere other than &ldquo;at the biometric capture device during presentation&rdquo; <a href="#sources" class="cite">[16]</a>. An injection attack does not hold a screen up to the camera &mdash; it replaces the camera feed entirely with a virtual driver and pipes synthetic video straight into your application. Every pixel-level check passes, because the pixels are perfect. <strong>An &ldquo;ISO 30107-3 certified&rdquo; badge says nothing whatsoever about deepfake injection resistance.</strong> NIST's own PAD evaluation excludes digital injection attacks too <a href="#sources" class="cite">[20]</a>. Ask vendors about injection separately, in writing.</p></div>
+<h3>Face matching</h3>
+<p>NIST runs the long-standing independent evaluation, now split into FRTE for recognition and FATE for
+face analysis <a href="#sources" class="cite">[18]</a>. Its demographic study remains the reference point: <strong>189 algorithms from
+99 developers, tested against 18.27 million images of 8.49 million people</strong> <a href="#sources" class="cite">[19]</a>.</p>
+<p>The findings, in NIST&rsquo;s words:</p>
+<ul>
+<li>&ldquo;False positive rates often vary by factors of 10 to beyond 100 times&rdquo; across
+demographic groups.</li>
+<li>&ldquo;False positive rates are highest in West and East African and East Asian people, and lowest
+in Eastern European individuals.&rdquo;</li>
+<li>&ldquo;&hellip;false positives to be between 2 and 5 times higher in women than men&rdquo; &mdash; with
+the multiple varying by algorithm, country of origin and age.</li>
+<li>&ldquo;&hellip;elevated false positives in the elderly and in children.&rdquo;</li>
+<li>But false negatives &ldquo;tend to be more algorithm-specific, and vary often by factors below
+3&rdquo;.</li>
+</ul>
+<p>That is a serious problem and this page is not minimising it. But read the next finding carefully,
+because it is the one most often left out of the summary:</p>
+<p><strong>&ldquo;A number of algorithms developed in China give low false positive rates on East Asian
+faces, and sometimes these are lower than those with Caucasian faces.&rdquo;</strong> <a href="#sources" class="cite">[19]</a></p>
+<p>The differential is a property of what the algorithm was trained on, not of faces. It is an
+engineering failure, which means it is fixable, and NIST&rsquo;s finding of a &ldquo;wide range in
+accuracy across developers, with the most accurate algorithms producing many fewer errors&rdquo; means
+<strong>choosing your vendor is a real lever</strong>.</p>
+<p>Hold on to that, because it is precisely the lever that does not exist in Column B.</p>
+<h3>What India actually requires</h3>
+<p>The RBI&rsquo;s KYC Master Direction requires that a video KYC application have &ldquo;components with
+face liveness / spoof detection as well as face matching technology with high degree of accuracy&rdquo;,
+and adds that &ldquo;appropriate artificial intelligence (AI) technology can be used to ensure that the
+V-CIP is robust&rdquo; <a href="#sources" class="cite">[24]</a>.</p>
+<p>Both halves of Column A, named explicitly. Note what that AI sentence is actually about: the
+robustness of the identification process. It is the sentence most likely to be quoted at you out of
+context.</p>
+
+<h2 id="s-indigo-1">Column B — reading emotion from a face</h2>
+
+<p>Now the other column.</p>
+<h3>The review that defines the field</h3>
+<p>In 2019 five researchers &mdash; Lisa Feldman Barrett, Ralph Adolphs, Stacy Marsella, Aleix Martinez
+and Seth Pollak &mdash; published a 68-page systematic review in <em>Psychological Science in the Public
+Interest</em> examining whether you can infer emotion from facial movement <a href="#sources" class="cite">[1]</a>.</p>
+<p>Be fair to what it found, because the nuanced version is stronger than the caricature. It did
+<em>not</em> conclude that faces tell you nothing. From the abstract:</p>
+<p><em>&ldquo;The available scientific evidence suggests that people do sometimes smile when happy, frown
+when sad, scowl when angry, and so on, as proposed by the common view, more than what would be expected
+by chance. Yet how people communicate anger, disgust, fear, happiness, sadness, and surprise varies
+substantially across cultures, situations, and even across people within a single situation.
+Furthermore, similar configurations of facial movements variably express instances of more than one
+emotion category.&rdquo;</em> <a href="#sources" class="cite">[1]</a></p>
+<p>Better than chance. Not reliable, not specific, not generalisable. Their verdict:</p>
+<p><strong>&ldquo;&hellip;hypothesized facial configurations are not observed reliably or specifically
+enough to justify using them to infer a person&rsquo;s emotional state, whether in the lab or in everyday
+life.&rdquo;</strong> <a href="#sources" class="cite">[1]</a></p>
+<p>The numbers behind it: an average correlation of <strong>r = .31</strong> between the intensity of a
+facial configuration and the corresponding emotion, which the authors characterise as weak evidence of
+reliability; and a hypothesised expression actually appearing during the matching emotional event about
+<strong>22% of the time</strong> <a href="#sources" class="cite">[1]</a>.</p>
+<div class="note"><span class="note-lbl">The missing number</span><p><strong>And one absence that should shape how you read every vendor datasheet.</strong> On specificity, the review reports that no overall assessment could be made &mdash; &ldquo;because most published studies do not report the false-positive rate&rdquo; <a href="#sources" class="cite">[1]</a>. That is the same gap you will find in commercial accuracy claims. A system that flags stress correctly 90% of the time is worthless if it also flags calm people 40% of the time, and the false-positive rate is the number nobody volunteers.</p></div>
+<h3>The other side of the argument</h3>
+<p>There is a real scientific dispute here and this page is more useful for naming it. The same journal
+issue carried a companion article by Alan Cowen, Disa Sauter, Jessica Tracy and Dacher Keltner arguing
+that the six-basic-emotion framework is the wrong target, and that a higher-dimensional taxonomy of
+emotional expression does show systematic structure <a href="#sources" class="cite">[2]</a>.</p>
+<p>That is a genuine challenge to Barrett&rsquo;s framing. Note, though, what it is not: it is a
+disagreement about how emotion should be modelled, not a demonstration that a camera can tell you
+whether a loan applicant is being honest.</p>
+<p>A 2021 meta-analysis in <em>Emotion</em> came down on Barrett&rsquo;s side, concluding that
+&ldquo;what are commonly known as the six classic basic emotions do not reliably co-occur with their
+predicted facial signal&rdquo;, with co-occurrence effect sizes of 0.13 for a whole predicted expression
+and 0.23 for whole-or-partial <a href="#sources" class="cite">[3]</a>. A published comment in the same journal disputes that analysis,
+under the title &ldquo;Emotions do reliably co-occur with predicted facial signals&rdquo;
+<a href="#sources" class="cite">[4]</a> &mdash; which states its position plainly enough. This page goes no further than the
+title, because this site could not retrieve the full text to check the argument behind it.</p>
+<h3>What happens when you test a commercial system</h3>
+<p>A 2026 cross-corpus evaluation ran a commercial automatic facial coding system against five
+spontaneous-emotion databases. Overall accuracy was <strong>34.4%</strong> against a 20% chance baseline
+<a href="#sources" class="cite">[5]</a>.</p>
+<p>The breakdown is more interesting than the headline. Happiness: 94%. Surprise and disgust: around
+24%. Fear and sadness: 14&ndash;16%. And the failure mode is systematic &mdash; the system misclassified
+<strong>44.9% of surprise, 61.7% of fear and 58.7% of disgust as &ldquo;happiness&rdquo;</strong>
+<a href="#sources" class="cite">[5]</a>.</p>
+<p>A system that reads most fear as happiness is not a weak emotion detector. It is substantially a
+smile detector with a confident user interface.</p>
+
+<h2 id="s-indigo-2">Detecting deception</h2>
+
+<p>Deception detection deserves its own section because it is the claim most likely to be made to a
+fraud team, and it has the weakest evidence of anything on this page.</p>
+<h3>Humans are barely above chance</h3>
+<p>The definitive meta-analysis synthesised 206 documents covering <strong>24,483 judges</strong>. People
+correctly classify lies and truths <strong>54% of the time</strong>, against a 50% baseline &mdash; and
+that breaks down as 47% of lies correctly identified against 61% of truths <a href="#sources" class="cite">[6]</a>.</p>
+<p>Read that asymmetry again. The above-chance performance is largely a bias toward believing people,
+which pays off because most statements in these studies are true. And crucially for anything
+video-based, judges were <strong>more accurate judging audible than visible lies</strong> <a href="#sources" class="cite">[6]</a>. The
+face is the weaker channel, not the stronger one.</p>
+<h3>The cues themselves are weak, and may be weaker than published</h3>
+<p>The largest review of behavioural cues to deception examined 158 cues across 120 independent samples
+and found that &ldquo;many behaviors showed no discernible links, or only weak links, to deceit&rdquo;
+<a href="#sources" class="cite">[7]</a>.</p>
+<p>A 2019 analysis went further, using simulations to show that reported effect sizes in this literature
+are likely inflated by publication bias and low power. Its conclusion is the strongest honest statement
+available on the subject:</p>
+<p><strong>&ldquo;The informational value of the present deception literature is quite low, such that it
+is not possible to determine whether any given effect is real or a false positive.&rdquo;</strong>
+<a href="#sources" class="cite">[8]</a></p>
+<h3>Do machines do better? The honest answer is: nobody has shown it</h3>
+<p>A 2023 systematic review in <em>PLOS ONE</em> covered 81 peer-reviewed machine-learning deception
+studies. Reported accuracies span 51% to 100%, with 19 studies above 90% &mdash; a spread the authors
+attribute to incomparable experimental conditions rather than genuine progress <a href="#sources" class="cite">[9]</a>.</p>
+<p>The findings that matter:</p>
+<ul>
+<li><strong>70% of studies used mock deception</strong> &mdash; people instructed to lie in a lab &mdash;
+rather than real-world data.</li>
+<li>The most-reused real-life dataset contains <strong>121 video samples</strong>. Some real-life
+datasets had as few as six.</li>
+<li>The authors&rsquo; own verdict: <strong>&ldquo;Industry application looks premature at present. Most
+experiments are based on mock data.&rdquo;</strong> <a href="#sources" class="cite">[9]</a></li>
+</ul>
+<p>So when a vendor shows you 95% deception-detection accuracy, the overwhelmingly likely explanation is
+an in-domain result on acted lies, from a corpus of perhaps a hundred videos, tested on data resembling
+its training set. It is not evidence about your customers.</p>
+
+<h2 id="s-indigo-3">Pupil dilation and stress</h2>
+
+<p>This one is worth care, because unlike deception detection there <em>is</em> real science underneath
+&mdash; which is exactly what makes the overreach persuasive.</p>
+<h3>What is genuinely established</h3>
+<p>Pupils do dilate with cognitive load and arousal. Kahneman and Beatty demonstrated it in
+<em>Science</em> in 1966 <a href="#sources" class="cite">[10]</a>, and it has held up for sixty years. The modern authoritative
+review confirms the effect is real and not trivial in size <a href="#sources" class="cite">[11]</a>.</p>
+<h3>Why that does not let you read a mind</h3>
+<p>From that same review:</p>
+<p><em>&ldquo;Anything that somehow activates the mind, or anything that increases the mind&rsquo;s
+&lsquo;processing load&rsquo;… also causes the pupil to dilate.&rdquo;</em> <a href="#sources" class="cite">[11]</a></p>
+<p>And more bluntly:</p>
+<p><strong>&ldquo;Attempts to link specific cognitive processes to the [pupillary response] (not mediated
+by processing load) are therefore, in my view, doomed to fail.&rdquo;</strong> <a href="#sources" class="cite">[11]</a></p>
+<p>Pupil dilation is a many-to-one signal. Effort, interest, surprise, arousal, anxiety, a difficult
+question, an unfamiliar interface, caffeine &mdash; all produce it. Nothing in sixty years of research
+makes dilation diagnostic of <em>deception</em> rather than of <em>thinking</em>.</p>
+<h3>The lighting problem is not a caveat, it is the whole thing</h3>
+<p>The pupil changes the light entering the eye by a factor of roughly <strong>16</strong>. Cognitive
+effects on pupil size are, in the review&rsquo;s words, &ldquo;generally modest&rdquo; &mdash; from under
+1% to about 5% <a href="#sources" class="cite">[11]</a>.</p>
+<p>The confound is an order of magnitude larger than the signal. In a lab with fixed luminance you can
+subtract it. On a phone, with ambient light changing, the user moving relative to a window, and
+<em>the screen itself changing brightness as the interface changes</em>, you cannot &mdash; and worst
+of all, the screen brightness changes at the same moments the questions do. The confound is correlated
+with your independent variable.</p>
+<h3>Even in ideal lab conditions it does not work per-person</h3>
+<p>A 2022 study used research-grade eye tracking in a controlled paradigm to detect concealed
+information. Result: <strong>&ldquo;while most participants showed this effect qualitatively, it was not
+statistically significant for most participants individually&rdquo;</strong>, and the authors concluded
+that further development is needed for &ldquo;a valid and reliable concealed identity information
+detector at the individual level&rdquo; <a href="#sources" class="cite">[12]</a>.</p>
+<p>A group-level effect that does not reach significance per person is useless for a product that must
+make a decision about one applicant.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>And on an Indian user base, the measurement often fails before the inference does.</strong> Published research on smartphone pupillometry notes that &ldquo;the melanin in the iris absorbs light such that it is difficult to distinguish the pupil aperture that appears black&rdquo;, and that prior work &ldquo;either exclude[s] individuals with dark iris colors from the analysis or report[s] poor performance&rdquo; <a href="#sources" class="cite">[13]</a>. A far-red workaround produced a <strong>624% contrast improvement</strong> for dark-brown-eyed participants &mdash; which quantifies how badly the ordinary visible-spectrum approach fails. On standard phone cameras, across most Indian users, a pupillometry feature is largely measuring segmentation noise.</p></div>
+<h2 id="s-indigo-4">Heart rate from video</h2>
+
+<p>Reading heart rate from ordinary video &mdash; remote photoplethysmography &mdash; increasingly
+appears in video KYC products as a stress signal. Here the honest answer splits in two.</p>
+<h3>Heart rate: broadly real. Heart rate variability: not under these conditions</h3>
+<p>A 2026 scoping review asked precisely the question a fintech needs answered, and its finding is
+quotable:</p>
+<p><em>&ldquo;rPPG supports robust non-contact heart-rate estimation, while HRV/PRV reliability degrades
+under head motion, illumination variability, and short analysis windows.&rdquo;</em> <a href="#sources" class="cite">[14]</a></p>
+<p>That distinction is the entire story, because every stress claim rests on variability, not on rate.
+The review&rsquo;s stated minimum conditions for a defensible inference: analysis windows of at least
+<strong>120 seconds</strong> for time-domain HRV, with windows under 60 seconds restricted to heart rate
+and coarse trends only; signal-quality monitoring with explicit abstention on poor segments; and
+validation against ECG or high-quality contact sensors <a href="#sources" class="cite">[14]</a>.</p>
+<p>Now describe a video KYC call: around a minute, the subject talking, head moving, lighting whatever
+the room offers, video compressed for transmission. That sits squarely inside the review&rsquo;s own
+explicit do-not-infer conditions.</p>
+<h3>The skin-tone differential is published and large</h3>
+<p>An analysis of 100 rPPG studies found datasets skewed heavily toward participants of European or
+East Asian descent, and collated the performance gap <a href="#sources" class="cite">[15]</a>:</p>
+<div class="pf-scroll"><table>
+<tr><th>Study</th><th>Lighter skin</th><th>Darker skin</th></tr>
+<tr><td>Dasari et al., traditional methods</td><td>5.2 bpm error</td><td>14.1 bpm</td></tr>
+<tr><td>Dasari et al., deep learning</td><td>6.0 bpm error</td><td>9.5 bpm</td></tr>
+<tr><td>Nowara et al.</td><td>4.23 bpm error</td><td>13.58 bpm</td></tr>
+</table></div>
+<p>Read those rows separately rather than averaging them. The gap is about 2.7&times; and 3.2&times;
+for the traditional methods, but 1.6&times; for the deep-learning approach &mdash; which is what most
+vendors now ship. The penalty is real and large, and it is also narrowing with better models.</p>
+<p>Even at 1.6&times;, though, it lands on the measurement everything downstream depends on. For an
+Indian customer base that is not a fairness footnote; it is a core accuracy problem that pushes the
+derived stress score toward noise for a large share of your users.</p>
+
+</div><div class="lane-section" data-lane="amber"><div class="depth-band"><span class="depth-badge db-amber">Advanced</span><span class="depth-note">Ship it. Failure modes, thresholds and evidence.</span></div>
+<h2 id="s-amber-0">The law: the EU AI Act</h2>
+
+<p>This is where the science and the law stop being two separate arguments.</p>
+<h3>What the Act covers</h3>
+<p>The EU AI Act defines an emotion recognition system as one &ldquo;for the purpose of identifying or
+inferring emotions <strong>or intentions</strong> of natural persons on the basis of their biometric
+data&rdquo; <a href="#sources" class="cite">[21]</a>.</p>
+<p>Note &ldquo;or intentions&rdquo;. A product marketed as detecting intent to defraud is inside this
+definition, not outside it.</p>
+<h3>The prohibition</h3>
+<p>Article 5(1)(f) prohibits &ldquo;the placing on the market, the putting into service for this specific
+purpose, or the use of AI systems to infer emotions of a natural person in the areas of workplace and
+education institutions, except where the use of the AI system is intended to be put in place or into the
+market for medical or safety reasons&rdquo; <a href="#sources" class="cite">[21]</a>.</p>
+<p>Where it is not prohibited, it is high-risk. Annex III point 1(c) captures emotion recognition
+generally <a href="#sources" class="cite">[21]</a>, and the Commission&rsquo;s guidelines on prohibited practices address the same
+fallback <a href="#sources" class="cite">[23]</a> &mdash; a document this site could not open directly, so it is cited rather than
+quoted.</p>
+<h3>The recital that ties this page together</h3>
+<div class="note"><span class="note-lbl">Recital 44</span><p>Recital 44 of the Act, verbatim: <em>&ldquo;There are serious concerns about the scientific basis of AI systems aiming to identify or infer emotions, particularly as expression of emotions vary considerably across cultures and situations, and even within a single individual. Among the key shortcomings of such systems are <strong>the limited reliability, the lack of specificity and the limited generalisability</strong>.&rdquo;</em> <a href="#sources" class="cite">[21]</a></p></div>
+<p>Compare that with the review in the section above. Barrett and colleagues set out four criteria a
+facial-inference claim must meet &mdash; reliability, specificity, generalizability and validity
+<a href="#sources" class="cite">[1]</a> &mdash; and found the evidence failed on the first three.</p>
+<p>The EU legislature listed the same three shortcomings, in the same order, in the operative recital of
+a regulation carrying penalties of up to <strong>&euro;35 million or 7% of worldwide annual
+turnover</strong> <a href="#sources" class="cite">[21]</a> &mdash; the highest tier in the entire Act, above GDPR&rsquo;s 4%.</p>
+<p>This was not a privacy decision that happens to align with the science. The regulator adopted the
+scientists&rsquo; reasoning explicitly.</p>
+<h3>What applies today, and what was delayed</h3>
+<p>The Act&rsquo;s timeline was amended in July 2026 by the Digital Omnibus on AI, which deferred parts
+of the high-risk regime <a href="#sources" class="cite">[22]</a>. Reading that as &ldquo;emotion recognition is fine until
+2027&rdquo; gets it backwards. As at this page&rsquo;s check date:</p>
+<div class="pf-scroll"><table>
+<tr><th>Provision</th><th>Applies from</th><th>Status today</th></tr>
+<tr><td>Article 5(1)(f) prohibition</td><td>2 February 2025</td><td><strong>In force</strong></td></tr>
+<tr><td>Article 99 penalties</td><td>2 August 2025</td><td><strong>In force</strong></td></tr>
+<tr><td>Article 50(3) transparency duty</td><td>2 August 2026</td><td><strong>In force</strong></td></tr>
+<tr><td>Annex III high-risk obligations</td><td>2 December 2027 (was 2 August 2026)</td><td>Not yet</td></tr>
+<tr><td>Annex I embedded high-risk</td><td>2 August 2028 (was 2 August 2027)</td><td>Not yet</td></tr>
+</table></div>
+<p>The prohibition and the disclosure duty are live now. Only the compliance machinery moved.</p>
+<p>Article 50(3) requires deployers of an emotion recognition system to inform the people exposed to it
+of its operation, and Article 50(5) requires that information at the latest at the time of first
+interaction <a href="#sources" class="cite">[21]</a>.</p>
+<div class="warn"><span class="note-lbl">Watch out</span><p><strong>If you are building an AI interview tool, assume recruitment is inside the prohibition.</strong> Whether hiring counts as &ldquo;workplace&rdquo; for Article 5(1)(f) decides whether an emotion-inferring interview product is prohibited at 7% of global turnover or merely high-risk. The Commission's guidelines on prohibited practices address the scope of the term, and are reported to read it broadly &mdash; covering any physical or virtual space where work is performed, and extending to recruitment and hiring rather than only to existing employees. <strong>This site could not open that guidance document itself, so it is cited but not quoted here</strong> <a href="#sources" class="cite">[23]</a> &mdash; but the direction is clear enough that the safe assumption is prohibition rather than high-risk. Annex III point 4(a) does separately treat recruitment as high-risk <a href="#sources" class="cite">[21]</a>; that is the regime for recruitment tools which do <em>not</em> infer emotion, not a licence for ones that do. Take advice before building either.</p></div>
+<h2 id="s-amber-1">The law: India</h2>
+
+<h3>The RBI neither requires nor mentions it</h3>
+<p>The V-CIP provisions of the KYC Master Direction require liveness, spoof detection and face matching
+<a href="#sources" class="cite">[24]</a>. On emotion, affect, stress or deception, this site found <strong>no mention anywhere in the
+Direction</strong>.</p>
+<p>That produces a cleaner argument than a prohibition would. In India, emotion inference in a KYC
+context is not required, not contemplated, and earns you no regulatory credit whatsoever. A vendor
+selling it as &ldquo;RBI-compliant enhanced KYC&rdquo; is selling an unrequested feature that adds legal
+exposure and returns nothing.</p>
+<h3>DPDP: the absence of a biometric category makes this harder, not easier</h3>
+<p>The Digital Personal Data Protection Act, 2023 has no &ldquo;sensitive personal data&rdquo; category
+and does not mention biometric data at all <a href="#sources" class="cite">[25]</a> &mdash; a deliberate break from both the GDPR and
+India&rsquo;s own earlier SPDI Rules, whose statutory basis the Act repealed <a href="#sources" class="cite">[25]</a>.</p>
+<p>Founders sometimes read that as permission. It is not, and the reason is section 6(1): consent must
+be &ldquo;free, specific, informed, unconditional and unambiguous&rdquo; and &ldquo;<strong>limited to
+such personal data as is necessary for such specified purpose</strong>&rdquo; <a href="#sources" class="cite">[25]</a>.</p>
+<p>A customer consenting to identity verification has consented to a face match. Running affect or
+deception inference over the same video is a different purpose, and that data is not necessary for the
+verification purpose. On the plain words of the section, it needs its own specific, informed consent.</p>
+<div class="note"><span class="note-lbl">Write the consent notice first</span><p><strong>A useful test.</strong> Write the consent line you would have to show: &ldquo;We will analyse your facial expressions and voice to infer your emotional state and assess whether you may be being deceptive.&rdquo; If that sentence is one you would not want on the screen, the feature is not one you should be shipping. The discomfort is the compliance analysis.</p></div>
+<p>The DPDP Rules were notified in November 2025 with an 18-month phased compliance timeline, and
+require a separate, clear consent notice explaining the specific purpose. The headline penalty &mdash; up
+to &#8377;250 crore &mdash; attaches specifically to a failure to maintain reasonable security
+safeguards rather than to the consent duty. Significant Data Fiduciaries must carry out impact
+assessments and &ldquo;follow stricter checks while using new or sensitive technologies&rdquo;
+<a href="#sources" class="cite">[26]</a>.</p>
+<p>An emotion-inference layer is unambiguously a new or sensitive technology. Which means an impact
+assessment &mdash; into which, per everything above, there is no validity evidence to put.</p>
+
+<h2 id="s-amber-2">The asymmetry, and what to ask</h2>
+
+<p>Here is the structural fact that should settle it.</p>
+<p>For everything in Column A there is an independent body publishing error rates against an agreed
+metric. ISO/IEC 30107-3 defines APCER and BPCER. iBeta tests against it. NIST evaluates 189 face-matching
+algorithms against 18 million images and publishes the demographic breakdown.</p>
+<p>For Column B, this site searched ISO and NIST and found <strong>no standard specifying test and
+reporting methodology for emotion recognition accuracy, no NIST evaluation programme, and no independent
+conformity-assessment body</strong>. What exists instead are academic benchmark datasets &mdash; research
+corpora with no agreed error metrics, no independent testing houses, no pass criteria, and no validated
+ground truth, since the labels are themselves human guesses about inner states from faces.</p>
+<div class="note"><span class="note-lbl">Stated carefully</span><p>This is a negative search result, so it is stated as one: no such standard or independent benchmark <em>appears</em> to exist. This site cannot prove none exists anywhere. But the asymmetry is not marginal &mdash; it is the difference between an industry with independent referees and one without any.</p></div>
+<h3>The questions to ask a vendor</h3>
+<p>Not &ldquo;is your 94% accurate?&rdquo; &mdash; you cannot check that. Ask instead:</p>
+<ul>
+<li><strong>What is the false-positive rate?</strong> The review in the section above found most
+published emotion studies do not report one <a href="#sources" class="cite">[1]</a>. Most datasheets do not either.</li>
+<li><strong>Who measured it, against what ground truth?</strong> If the answer is an internal test set
+with labels assigned by human annotators guessing from faces, the ceiling of the system is the accuracy
+of the guess.</li>
+<li><strong>Was it validated on real behaviour or acted behaviour?</strong> Seventy percent of the
+machine-learning deception literature used instructed lies in a lab <a href="#sources" class="cite">[9]</a>.</li>
+<li><strong>What is the error rate broken down by skin tone?</strong> For anything camera-derived, on an
+Indian user base, this is the question that decides whether the feature works for your customers
+<a href="#sources" class="cite">[15]</a><a href="#sources" class="cite">[13]</a>.</li>
+<li><strong>Show me the independent certificate.</strong> For liveness there is one to show. For emotion
+this site could find nowhere to get one &mdash; and a vendor who can prove otherwise has just answered
+the question.</li>
+</ul>
+<h3>What to do instead</h3>
+<p>Everything Column B claims to deliver &mdash; fraud signal, risk scoring &mdash; has better sources.
+Device and network signals, behavioural biometrics on the application itself, document forensics,
+cross-referencing against your own history with that customer, and injection-attack detection on the
+video path. All of them are measurable, none of them requires guessing at somebody&rsquo;s inner state,
+and none of them carries a 7%-of-turnover prohibition.</p>
+<p>Build Column A properly. It is harder than it looks, the injection-attack gap is real and current, and
+doing it well is worth more than any amount of inferred emotion.</p>
+
+<h2 id="s-amber-3">Where to go next</h2>
+
+<p><strong>Read next:</strong></p>
+<ul>
+<li><a href="/fintech-ai/products/video-kyc/">Video KYC: How to Build It</a> &mdash; the eight steps of
+the regulated process, where Column A does the work.</li>
+<li><a href="/fintech-ai/products/video-interaction/">AI Video Interaction: How to Build It</a> &mdash;
+the live-conversation stack this analysis usually gets sold alongside.</li>
+<li><a href="/fintech-ai/fraud-risk/">Fraud and Risk</a> &mdash; the signals that do carry evidence.</li>
+<li><a href="/fintech-ai/governance/">Governance</a> &mdash; model risk, documentation and who signs.</li>
+</ul>
+<h3 id="sources">Sources</h3><p>Every claim on this page traces to one of these: peer-reviewed research, an official regulatory text, or a standards body. Where this site could not retrieve a primary source, the page says so rather than paraphrasing from secondary coverage.</p><div class="srcs"><ol><li><span class="src-k src-research">research</span><strong>Barrett, Adolphs, Marsella, Martinez & Pollak (2019), Psychological Science in the Public Interest 20(1):1–68</strong> &mdash; &ldquo;Emotional Expressions Reconsidered&rdquo; — the four criteria, the r = .31 and 22% figures, the absence of reported false-positive rates, and the conclusion that facial configurations are not observed reliably or specifically enough to infer emotional state. <a href="https://journals.sagepub.com/doi/full/10.1177/1529100619832930" target="_blank" rel="noopener">https://journals.sagepub.com/doi/full/10.1177/1529100619832930</a></li><li><span class="src-k src-research">research</span><strong>Cowen, Sauter, Tracy & Keltner (2019), Psychological Science in the Public Interest 20(1)</strong> &mdash; &ldquo;Mapping the Passions&rdquo; — the companion article arguing for a higher-dimensional taxonomy, published as a counterpoint in the same issue. <a href="https://journals.sagepub.com/doi/10.1177/1529100619850176" target="_blank" rel="noopener">https://journals.sagepub.com/doi/10.1177/1529100619850176</a></li><li><span class="src-k src-research">research</span><strong>Durán & Fernández-Dols (2021), Emotion</strong> &mdash; meta-analysis finding the six classic basic emotions do not reliably co-occur with their predicted facial signal; co-occurrence effect sizes of 0.13 and 0.23. <a href="https://pubmed.ncbi.nlm.nih.gov/34780241/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/34780241/</a></li><li><span class="src-k src-research">research</span><strong>&ldquo;Emotions do reliably co-occur with predicted facial signals: Comment on Durán and Fernández-Dols (2021)&rdquo;, Emotion (2023)</strong> &mdash; a published dispute of that meta-analysis. Cited by title; this site could not retrieve the full text and does not characterise the argument behind it. <a href="https://pubmed.ncbi.nlm.nih.gov/37079837/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/37079837/</a></li><li><span class="src-k src-research">research</span><strong>Cross-corpus evaluation of a commercial facial coding system, Electronics 15(4):849 (2026)</strong> &mdash; 34.4% overall accuracy against a 20% baseline, the per-category breakdown, and the systematic misclassification of fear, surprise and disgust as happiness. <a href="https://www.mdpi.com/2079-9292/15/4/849" target="_blank" rel="noopener">https://www.mdpi.com/2079-9292/15/4/849</a></li><li><span class="src-k src-research">research</span><strong>Bond & DePaulo (2006), Personality and Social Psychology Review 10(3):214–234</strong> &mdash; 206 documents, 24,483 judges; 54% overall accuracy, the 47%/61% split, and higher accuracy on audible than visible lies. <a href="https://journals.sagepub.com/doi/10.1207/s15327957pspr1003_2" target="_blank" rel="noopener">https://journals.sagepub.com/doi/10.1207/s15327957pspr1003_2</a></li><li><span class="src-k src-research">research</span><strong>DePaulo et al. (2003), Psychological Bulletin 129(1):74–118</strong> &mdash; 158 cues across 120 samples; many behaviours show no discernible or only weak links to deceit. <a href="https://psycnet.apa.org/record/2002-11509-006" target="_blank" rel="noopener">https://psycnet.apa.org/record/2002-11509-006</a></li><li><span class="src-k src-research">research</span><strong>Luke (2019), Perspectives on Psychological Science 14(4)</strong> &mdash; simulation evidence that deception-cue effect sizes are inflated by publication bias and low power, and that real effects cannot be distinguished from false positives. <a href="https://journals.sagepub.com/doi/10.1177/1745691619838258" target="_blank" rel="noopener">https://journals.sagepub.com/doi/10.1177/1745691619838258</a></li><li><span class="src-k src-research">research</span><strong>Constâncio et al. (2023), PLOS ONE 18(2):e0281323</strong> &mdash; systematic review of 81 machine-learning deception studies; 70% used mock deception, the largest real-life dataset holds 121 videos, and industry application is premature. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281323" target="_blank" rel="noopener">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0281323</a></li><li><span class="src-k src-research">research</span><strong>Kahneman & Beatty (1966), Science 154(3756):1583–1585</strong> &mdash; the founding demonstration that pupil diameter tracks memory load. <a href="https://doi.org/10.1126/science.154.3756.1583" target="_blank" rel="noopener">https://doi.org/10.1126/science.154.3756.1583</a></li><li><span class="src-k src-research">research</span><strong>Mathôt (2018), Journal of Cognition 1(1):16</strong> &mdash; pupillometry review — that anything increasing processing load dilates the pupil, that linking specific cognitive processes to the response is doomed to fail, and the factor-of-16 light response against 1–5% cognitive effects. <a href="https://journalofcognition.org/articles/10.5334/joc.18" target="_blank" rel="noopener">https://journalofcognition.org/articles/10.5334/joc.18</a></li><li><span class="src-k src-research">research</span><strong>Chen, Karabay, Mathôt, Bowman & Akyürek (2022)</strong> &mdash; concealed-information detection with research-grade pupillometry: the effect was not statistically significant for most participants individually. <a href="https://pubmed.ncbi.nlm.nih.gov/35867974/" target="_blank" rel="noopener">https://pubmed.ncbi.nlm.nih.gov/35867974/</a></li><li><span class="src-k src-research">research</span><strong>Barry & Wang (2023), Scientific Reports 13:13841</strong> &mdash; iris melanin obscuring the pupil aperture on RGB cameras, the exclusion of dark-iris participants from prior work, and the 624% contrast improvement using far-red illumination. <a href="https://www.nature.com/articles/s41598-023-40796-0" target="_blank" rel="noopener">https://www.nature.com/articles/s41598-023-40796-0</a></li><li><span class="src-k src-research">research</span><strong>PRISMA-ScR scoping review, Frontiers in Digital Health (2026)</strong> &mdash; rPPG supports robust heart-rate estimation while HRV reliability degrades under motion, illumination variability and short windows; the 120-second and 60-second thresholds and the do-not-infer conditions. <a href="https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1855425/full" target="_blank" rel="noopener">https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1855425/full</a></li><li><span class="src-k src-research">research</span><strong>Bondarenko, Menon & Elgendi (2025), npj Digital Medicine 8:593</strong> &mdash; demographic bias across 100 rPPG studies and the collated error rates by skin tone. <a href="https://www.nature.com/articles/s41746-025-01973-9" target="_blank" rel="noopener">https://www.nature.com/articles/s41746-025-01973-9</a></li><li><span class="src-k src-official">official</span><strong>ISO/IEC 30107-3:2023</strong> &mdash; presentation attack detection testing: the APCER and BPCER metrics, and the exclusion of attacks occurring other than at the capture device during presentation. <a href="https://www.iso.org/standard/79520.html" target="_blank" rel="noopener">https://www.iso.org/standard/79520.html</a></li><li><span class="src-k src-industry">industry</span><strong>iBeta published PAD testing methodology</strong> &mdash; Level 1 and Level 2 definitions: time per species, assumed attacker expertise, materials budget caps, permitted attack success and the 15% genuine-user rejection allowance. <a href="https://www.ibeta.com/iso-30107-3-presentation-attack-detection-confirmation-letters/" target="_blank" rel="noopener">https://www.ibeta.com/iso-30107-3-presentation-attack-detection-confirmation-letters/</a></li><li><span class="src-k src-official">official</span><strong>NIST Face Technology Evaluations (FRTE / FATE)</strong> &mdash; the current evaluation programme, split into face-recognition and face-analysis tracks. <a href="https://www.nist.gov/programs-projects/face-technology-evaluations-frtefate" target="_blank" rel="noopener">https://www.nist.gov/programs-projects/face-technology-evaluations-frtefate</a></li><li><span class="src-k src-official">official</span><strong>NISTIR 8280 — FRVT Part 3: Demographic Effects (2019)</strong> &mdash; 189 algorithms from 99 developers over 18.27 million images; false-positive variation by factors of 10 to beyond 100; the sex, age and region findings; and the China-developed-algorithm result showing the differential tracks training data. <a href="https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf" target="_blank" rel="noopener">https://nvlpubs.nist.gov/nistpubs/ir/2019/NIST.IR.8280.pdf</a></li><li><span class="src-k src-official">official</span><strong>NIST IR 8491 — FATE Part 10: Passive Software-Based PAD (2023)</strong> &mdash; 82 algorithms from 45 developers across nine attack categories, and the explicit exclusion of digital injection attacks from scope. <a href="https://nvlpubs.nist.gov/nistpubs/ir/2023/NIST.IR.8491.pdf" target="_blank" rel="noopener">https://nvlpubs.nist.gov/nistpubs/ir/2023/NIST.IR.8491.pdf</a></li><li><span class="src-k src-official">official</span><strong>Regulation (EU) 2024/1689 (EU AI Act)</strong> &mdash; the Article 3(39) definition including intentions, the Article 5(1)(f) prohibition, Recital 44, Annex III point 1 and point 4(a), the Article 50(3) and 50(5) transparency duties, and the Article 99 penalty tiers. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727" target="_blank" rel="noopener">https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727</a></li><li><span class="src-k src-official">official</span><strong>Regulation (EU) 2026/1744 (Digital Omnibus on AI)</strong> &mdash; the July 2026 amendment deferring entry into application of the Annex III high-risk obligations to 2 December 2027 and Annex I to 2 August 2028. <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A32026R1744" target="_blank" rel="noopener">https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A32026R1744</a></li><li><span class="src-k src-official">official</span><strong>European Commission — Guidelines on prohibited AI practices (February 2025)</strong> &mdash; the treatment of emotion recognition systems falling outside the Article 5(1)(f) prohibition, and the scope of &ldquo;workplace&rdquo;. This site could not open the document directly and does not quote it. <a href="https://ai-act-service-desk.ec.europa.eu/sites/default/files/2025-08/guidelines_on_prohibited_artificial_intelligence_practices_established_by_regulation_eu_20241689_ai_act_english_ied3r5nwo50xggpcfmwckm3nuc_112367-1.PDF" target="_blank" rel="noopener">https://ai-act-service-desk.ec.europa.eu/sites/default/files/2025-08/guidelines_on_prohibited_artificial_intelligence_practices_established_by_regulation_eu_20241689_ai_act_english_ied3r5nwo50xggpcfmwckm3nuc_112367-1.PDF</a></li><li><span class="src-k src-official">official</span><strong>RBI Master Direction on Know Your Customer</strong> &mdash; the V-CIP requirement for face liveness / spoof detection and face matching, and the permissive sentence on AI being used to make V-CIP robust. No provision on emotion, affect or deception appears in the Direction. <a href="https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=11566" target="_blank" rel="noopener">https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=11566</a></li><li><span class="src-k src-official">official</span><strong>Digital Personal Data Protection Act, 2023</strong> &mdash; the absence of a sensitive-personal-data or biometric category, the section 6(1) consent standard limited to what is necessary for the specified purpose, and the repeal of section 43A of the IT Act. <a href="https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf" target="_blank" rel="noopener">https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf</a></li><li><span class="src-k src-official">official</span><strong>DPDP Rules, 2025 — official release</strong> &mdash; the 18-month phased compliance timeline, the separate consent-notice requirement, the ₹250 crore maximum penalty, and the impact-assessment and stricter-checks duties on Significant Data Fiduciaries using new or sensitive technologies. <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190655&reg=48&lang=2" target="_blank" rel="noopener">https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190655&reg=48&lang=2</a></li></ol><p style="font-size:.75rem;color:var(--faint);margin-top:12px">Checked September 2026. The EU AI Act timeline was amended in July 2026; the date is part of the claim.</p></div>
+</div><div class="ask-ai" data-col="1" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22What%20AI%20Can%20and%20Cannot%20Read%20From%20a%20Face%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Freading-the-human%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22What%20AI%20Can%20and%20Cannot%20Read%20From%20a%20Face%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Freading-the-human%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22What%20AI%20Can%20and%20Cannot%20Read%20From%20a%20Face%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Freading-the-human%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22What%20AI%20Can%20and%20Cannot%20Read%20From%20a%20Face%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Freading-the-human%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22What%20AI%20Can%20and%20Cannot%20Read%20From%20a%20Face%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Ffintech-ai%2Freading-the-human%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div></main>
+</div></div>
+<footer class="site-footer"><div class="wrap"><p>Part of <a href="/">Clarigital.com</a> &middot; Free &middot; Official sources &middot; No paywalls</p></div></footer>
+<script>
+(function(){
+  var btns=document.querySelectorAll('.lane-btn'), secs=document.querySelectorAll('.lane-section');
+  function show(l){
+    btns.forEach(function(b){b.classList.toggle('active',b.dataset.lane===l);});
+    secs.forEach(function(s){s.classList.toggle('active',s.dataset.lane===l);});
+    document.querySelectorAll('.toc-group').forEach(function(g){g.style.display=g.dataset.lane===l?'block':'none';});
+    try{history.replaceState(null,'','#'+l);}catch(e){}
+  }
+  window.showLane=show;
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.lane);});});
+  var h=(location.hash||'').replace('#','');
+  show(['green','indigo','amber'].indexOf(h)>-1?h:'green');
+
+  document.querySelectorAll('.cb-copy').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.cb').querySelector('pre code');
+      var txt=pre?pre.innerText:'';
+      function ok(){btn.textContent='Copied';btn.classList.add('done');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('done');},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok).catch(function(){fb(txt,ok);});}
+      else{fb(txt,ok);}
+    });
+  });
+  function fb(t,cb){var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity=0;document.body.appendChild(a);a.select();try{document.execCommand('copy');cb();}catch(e){}document.body.removeChild(a);}
+
+  var links=document.querySelectorAll('.toc a[href^="#s-"]');
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      links.forEach(function(a){a.style.color='';a.style.borderLeftColor='';});
+      var a=document.querySelector('.toc a[href="#'+e.target.id+'"]');
+      if(a){a.style.color='var(--fg)';a.style.borderLeftColor='var(--green)';}
+    });
+  },{rootMargin:'-78px 0px -70% 0px'});
+  document.querySelectorAll('.ft-body h2[id],.ft-body h3[id]').forEach(function(h){obs.observe(h);});
+})();
+</script>
+</body>
+</html>
