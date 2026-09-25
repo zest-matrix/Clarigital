@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AMD Instinct MI455X: The Complete Guide | Clarigital</title>
+<meta name="description" content="What the MI455X is, the chip inside AMD’s Helios rack and the centre of its deals with OpenAI, Meta and Anthropic — its full spec sheet, every figure sourced.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/amd/mi455x/">
+<meta property="og:title" content="AMD Instinct MI455X: The Complete Guide">
+<meta property="og:description" content="What the MI455X is, the chip inside AMD’s Helios rack and the centre of its deals with OpenAI, Meta and Anthropic — its full spec sheet, every figure sourced.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/amd/mi455x/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "AMD Instinct MI455X", "description": "What the MI455X is, the chip inside AMD’s Helios rack and the centre of its deals with OpenAI, Meta and Anthropic — its full spec sheet, every figure sourced.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/amd/mi455x/", "brand": {"@type": "Organization", "name": "AMD"}, "manufacturer": {"@type": "Organization", "name": "AMD"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AMD Instinct MI455X: The Complete Guide", "description": "What the MI455X is, the chip inside AMD’s Helios rack and the centre of its deals with OpenAI, Meta and Anthropic — its full spec sheet, every figure sourced.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/amd/mi455x/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/amd/mi455x/", "dateModified": "2026-09-23", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "citation": ["https://newsroom.amd.com/news/aai-2026-mi400-instinct-update/", "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era", "https://www.amd.com/en/blogs/2025/amd-delivering-open-rack-scale-ai-infrastructure-to-unlock-agentic-ai.html", "https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html", "https://www.oracle.com/news/announcement/ai-world-oracle-and-amd-expand-partnership-to-help-customers-achieve-next-generation-ai-scale-2025-10-14/", "https://openai.com/index/openai-amd-strategic-partnership/", "https://www.amd.com/en/newsroom/press-releases/2026-2-24-amd-and-meta-announce-expanded-strategic-partnersh.html", "https://ir.amd.com/news-events/press-releases/detail/1291/microsoft-to-deploy-next-gen-amd-instinct-and-amd-epyc-processors-as-the-companies-expand-their-long-term-strategic-partnership", "https://newsroom.amd.com/news/amd-anthropic-strategic-partnership/", "https://www.amd.com/en/products/accelerators/instinct/mi400.html", "https://ir.amd.com/news-events/press-releases/detail/1245/amd-achieves-first-tsmc-n2-product-silicon-milestone", "https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/", "https://blogs.microsoft.com/blog/2026/07/20/microsoft-expands-azure-ai-and-hpc-infrastructure-with-amd/", "https://www.amd.com/en/blogs/2025/amd-instinct-mi350-series-and-beyond-accelerating-the-future-of-ai-and-hpc.html", "https://www.amd.com/en/products/rackscale-solutions/helios.html"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "AMD", "item": "https://www.clarigital.com/ai-atlas/ai-chips/amd/"}, {"@type": "ListItem", "position": 5, "name": "AMD Instinct MI455X", "item": "https://www.clarigital.com/ai-atlas/ai-chips/amd/mi455x/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl-deep{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+<style>
+.ask-icons{display:flex;gap:8px;align-items:center;margin:14px 0 4px;flex-wrap:wrap}
+.ask-icons .aic-label{font-size:.72rem;color:var(--faint);margin-right:2px}
+.ask-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;color:#fff;font-size:.72rem;font-weight:700;text-decoration:none;flex-shrink:0}
+.ask-icon:hover{filter:brightness(1.15);outline:2px solid var(--indigo);outline-offset:1px}</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/amd/">AMD</a><span class="sep">/</span><span>AMD Instinct MI455X</span></nav>
+    <span class="label-tag">AI Chips · Product page</span>
+    <h1>AMD Instinct MI455X: The Complete Guide</h1>
+    <p class="hero-lead">AMD’s newest AI chip, and the one its biggest customers are betting billions of watts on. Simple to expert, every number links to its source.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="ask-icons"><span class="aic-label">Ask an AI about this chip:</span><a class="ask-icon" style="background:#10A37F" href="https://chatgpt.com/?q=I%27m%20looking%20at%20the%20AMD%20Instinct%20MI455X%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask ChatGPT about the AMD Instinct MI455X">C</a><a class="ask-icon" style="background:#D97757" href="https://claude.ai/new?q=I%27m%20looking%20at%20the%20AMD%20Instinct%20MI455X%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask Claude about the AMD Instinct MI455X">A</a><a class="ask-icon" style="background:#4285F4" href="https://gemini.google.com/app?q=I%27m%20looking%20at%20the%20AMD%20Instinct%20MI455X%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask Gemini about the AMD Instinct MI455X">G</a><a class="ask-icon" style="background:#20808D" href="https://www.perplexity.ai/search?q=I%27m%20looking%20at%20the%20AMD%20Instinct%20MI455X%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask Perplexity about the AMD Instinct MI455X">P</a><a class="ask-icon" style="background:#000000" href="https://grok.com/?q=I%27m%20looking%20at%20the%20AMD%20Instinct%20MI455X%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask Grok about the AMD Instinct MI455X">X</a></div>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">AMD Instinct MI455X</span>
+      <span class="meta-tag mt-gray">10 sections · 2 levels</span>
+      <span class="meta-tag mt-gray">15 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Each section starts <b>Simple</b>, then goes to a <b>Deep dive</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where the maker has not published a figure -- a price, a die size, a factory address -- this page says so rather than estimate it.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>MI455X</b> is AMD’s newest AI chip, part of the MI400 series, in production from July 2026. It does not ship alone — AMD sells it inside Helios, a complete rack that pairs 72 MI455X chips with 18 of AMD’s own EPYC &ldquo;Venice&rdquo; CPUs <a class="cite" href="https://newsroom.amd.com/news/aai-2026-mi400-instinct-update/" target="_blank" rel="noopener" title="AMD Newsroom: AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era">1</a><a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era">2</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>MI455X was first previewed at AMD’s Advancing AI 2025 event on 12 June 2025 <a class="cite" href="https://www.amd.com/en/blogs/2025/amd-delivering-open-rack-scale-ai-infrastructure-to-unlock-agentic-ai.html" target="_blank" rel="noopener" title="AMD: AMD Delivering Open Rack-Scale AI Infrastructure to Unlock Agentic AI (12 Jun 2025)">3</a>, then entered production a little over a year later. AMD’s own July 2026 material treats the chip and the Helios rack as one story rather than two — nearly every performance figure AMD publishes for MI455X is stated at the rack level, not the single-chip level <a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD: AMD Launches Helios, the Highest-Performing Rack-Scale AI Infrastructure Solution (23 Jul 2026)">4</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>2.</span>Launch and history</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Three of the largest names in AI — OpenAI, Meta and Anthropic — have each signed multi-gigawatt deals for chips from this exact family, alongside Oracle and Microsoft. AMD’s next few years of AI-chip revenue rest heavily on this one generation actually shipping on schedule.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>All five deals are dated within a single 12-month stretch: Oracle (October 2025), OpenAI (October 2025), Meta (February 2026), Microsoft (July 2026) and Anthropic (July 2026) <a class="cite" href="https://www.oracle.com/news/announcement/ai-world-oracle-and-amd-expand-partnership-to-help-customers-achieve-next-generation-ai-scale-2025-10-14/" target="_blank" rel="noopener" title="Oracle: AI World: Oracle and AMD Expand Partnership to Help Customers Achieve Next-Generation AI Scale (14 Oct 2025)">5</a><a class="cite" href="https://openai.com/index/openai-amd-strategic-partnership/" target="_blank" rel="noopener" title="OpenAI: OpenAI and AMD announce strategic partnership (6 Oct 2025)">6</a><a class="cite" href="https://www.amd.com/en/newsroom/press-releases/2026-2-24-amd-and-meta-announce-expanded-strategic-partnersh.html" target="_blank" rel="noopener" title="AMD: AMD and Meta Announce Expanded Strategic Partnership (24 Feb 2026)">7</a><a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1291/microsoft-to-deploy-next-gen-amd-instinct-and-amd-epyc-processors-as-the-companies-expand-their-long-term-strategic-partnership" target="_blank" rel="noopener" title="AMD Investor Relations: Microsoft to Deploy Next-Gen AMD Instinct and AMD EPYC Processors as the Companies Expand Their Long-Term Strategic Partnership (20 Jul 2026)">8</a><a class="cite" href="https://newsroom.amd.com/news/amd-anthropic-strategic-partnership/" target="_blank" rel="noopener" title="AMD Newsroom: AMD and Anthropic Strategic Partnership (22 Jul 2026)">9</a> — see the Systems section for the figures behind each one. That concentration is itself worth noting: MI455X is not one customer’s chip, it is the chip AMD is betting several of its largest relationships on at once.</p>
+</div>
+</section>
+<section class="chip-sec" id="architecture" aria-labelledby="h-architecture">
+<h2 id="h-architecture"><span>3.</span>What’s inside it</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>MI455X uses AMD’s fifth-generation CDNA architecture and carries 256 Work Group Processors, per AMD’s own product page <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series product page">10</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>AMD’s MI400 product page states the architecture directly as &ldquo;5th Gen AMD CDNA architecture&rdquo; with 256 Work Group Processors <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series product page">10</a>. <b>AMD does not publish a transistor count or a specific manufacturing process node for the MI455X GPU die itself</b> on this page or in any other official material this page could find — a figure of 320 billion transistors circulates in secondary technology coverage, but this page does not repeat it without an AMD source confirming it.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>4.</span>Full spec table</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>432 GB of HBM4 memory, up to 23.3 TB/s of memory bandwidth, 40 PFLOPS of FP4 performance, 20 PFLOPS of FP8 <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series product page">10</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Spec</th><th>AMD Instinct MI455X</th></tr></thead><tbody><tr><th>Architecture</th><td>5th Gen AMD CDNA</td></tr><tr><th>Work Group Processors</th><td>256</td></tr><tr><th>Memory</th><td>432 GB HBM4, integrated</td></tr><tr><th>Memory bandwidth</th><td>up to 23.3 TB/s peak theoretical, per AMD’s current product page and Helios launch blog. AMD’s own June 2025 preview is reported by secondary outlets as showing a lower 19.6 TB/s figure at the time; this page could not confirm that earlier figure directly from AMD’s own June 2025 text, so only the current 23.3 TB/s figure is stated as fact</td></tr><tr><th>FP4 (dense)</th><td>40 PFLOPS peak</td></tr><tr><th>FP8 (dense)</th><td>20 PFLOPS peak</td></tr><tr><th>FP16 / BF16</th><td>5 PFLOPS peak</td></tr><tr><th>Process node</th><td>Not published by AMD for this GPU. AMD’s EPYC &ldquo;Venice&rdquo; CPU — the companion chip in the same Helios rack — is confirmed on TSMC’s 2-nanometre N2 process by a separate AMD release, but that release is explicitly about the CPU, not MI455X <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1245/amd-achieves-first-tsmc-n2-product-silicon-milestone" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Achieves First TSMC N2 Product Silicon Milestone (14 Apr 2025)">11</a></td></tr><tr><th>Transistors</th><td>Not published by AMD</td></tr><tr><th>TDP</th><td>Not published by AMD</td></tr></tbody></table></div><p class="note">Figures per AMD’s own MI400 product page <a class="cite" href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener" title="AMD: Instinct MI400 series product page">10</a>. AMD does not say on this page whether the compute figures above are dense or include sparsity, unlike its MI350-series materials, which state this explicitly.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>Where it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD has not published which foundry or process node makes the MI455X GPU itself. Its companion CPU in the same rack, EPYC &ldquo;Venice&rdquo;, is confirmed on TSMC’s 2-nanometre N2 process <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1245/amd-achieves-first-tsmc-n2-product-silicon-milestone" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Achieves First TSMC N2 Product Silicon Milestone (14 Apr 2025)">11</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>This is a genuine and specific gap in AMD’s own public material: AMD’s April 2025 press release states plainly that &ldquo;Venice&rdquo;, the CPU, is &ldquo;the first HPC product in the industry to be taped out and brought up on the TSMC advanced 2nm (N2) process technology&rdquo; <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1245/amd-achieves-first-tsmc-n2-product-silicon-milestone" target="_blank" rel="noopener" title="AMD Investor Relations: AMD Achieves First TSMC N2 Product Silicon Milestone (14 Apr 2025)">11</a> — but that claim is about the CPU by name, not the MI455X GPU that ships alongside it. Comments attributed to AMD’s CEO in earnings-call coverage suggest a 2-nanometre process for the MI450-series GPU too, but this page could not locate a primary AMD product page, press release or conference slide stating that directly for the GPU, so it reports the gap rather than repeating an unconfirmed figure.</p>
+</div>
+</section>
+<section class="chip-sec" id="systems" aria-labelledby="h-systems">
+<h2 id="h-systems"><span>6.</span>Which systems use it</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>MI455X ships inside Helios, a rack pairing 72 MI455X chips with 18 EPYC &ldquo;Venice&rdquo; CPUs, and is the chip behind AMD’s largest customer deals: OpenAI, Meta, Anthropic, Oracle and Microsoft <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era">2</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Customer</th><th>Announced</th><th>Terms</th></tr></thead><tbody><tr><td>OpenAI</td><td>6 Oct 2025</td><td>6 gigawatts of AMD GPUs over multiple generations, starting with 1 gigawatt of MI450-series chips in the second half of 2026; AMD issued OpenAI a warrant for up to 160 million AMD shares <a class="cite" href="https://openai.com/index/openai-amd-strategic-partnership/" target="_blank" rel="noopener" title="OpenAI: OpenAI and AMD announce strategic partnership (6 Oct 2025)">6</a><a class="cite" href="https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/" target="_blank" rel="noopener" title="AMD Newsroom: AMD and OpenAI Announce Strategic Partnership">12</a></td></tr><tr><td>Meta</td><td>24 Feb 2026</td><td>6 gigawatts of AMD Instinct GPUs, first gigawatt of custom MI450-series chips shipping in the second half of 2026; a matching 160-million-share warrant <a class="cite" href="https://www.amd.com/en/newsroom/press-releases/2026-2-24-amd-and-meta-announce-expanded-strategic-partnersh.html" target="_blank" rel="noopener" title="AMD: AMD and Meta Announce Expanded Strategic Partnership (24 Feb 2026)">7</a></td></tr><tr><td>Oracle</td><td>14 Oct 2025</td><td>50,000 MI450-series GPUs, initial deployment in the third quarter of 2026, expanding into 2027; Oracle named as first hyperscaler to offer a public AI supercluster on these chips <a class="cite" href="https://www.oracle.com/news/announcement/ai-world-oracle-and-amd-expand-partnership-to-help-customers-achieve-next-generation-ai-scale-2025-10-14/" target="_blank" rel="noopener" title="Oracle: AI World: Oracle and AMD Expand Partnership to Help Customers Achieve Next-Generation AI Scale (14 Oct 2025)">5</a></td></tr><tr><td>Microsoft</td><td>20 Jul 2026</td><td>Deploying Helios (MI455X) on Azure, alongside 6th-generation EPYC &ldquo;Venice&rdquo;-based VM series, shipping from the second half of 2026 <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1291/microsoft-to-deploy-next-gen-amd-instinct-and-amd-epyc-processors-as-the-companies-expand-their-long-term-strategic-partnership" target="_blank" rel="noopener" title="AMD Investor Relations: Microsoft to Deploy Next-Gen AMD Instinct and AMD EPYC Processors as the Companies Expand Their Long-Term Strategic Partnership (20 Jul 2026)">8</a><a class="cite" href="https://blogs.microsoft.com/blog/2026/07/20/microsoft-expands-azure-ai-and-hpc-infrastructure-with-amd/" target="_blank" rel="noopener" title="Microsoft: Microsoft expands Azure AI and HPC infrastructure with AMD (20 Jul 2026)">13</a></td></tr><tr><td>Anthropic</td><td>22 Jul 2026</td><td>Up to 2 gigawatts of MI450-series chips in Helios racks, deployment beginning in the first half of 2027; AMD investing up to $5 billion in Anthropic as part of the deal <a class="cite" href="https://newsroom.amd.com/news/amd-anthropic-strategic-partnership/" target="_blank" rel="noopener" title="AMD Newsroom: AMD and Anthropic Strategic Partnership (22 Jul 2026)">9</a></td></tr></tbody></table></div><p class="note">All five figures are AMD’s own stated terms, or a named counterparty’s own stated terms, dated within a single 12-month span (October 2025 to July 2026).</p>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>7.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Not published by AMD. MI455X is sold through Helios rack deployments and direct hyperscaler deals rather than listed with a per-chip or per-GPU-hour price.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>Given that MI455X is brand new to production as of this page’s last check and its confirmed customers are hyperscalers buying at gigawatt scale rather than renting individual GPU-hours, no cloud provider’s own pricing page yet lists it, and AMD has not published a list price for the chip or the rack.</p>
+</div>
+</section>
+<section class="chip-sec" id="performance" aria-labelledby="h-performance">
+<h2 id="h-performance"><span>8.</span>Real-world performance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD’s own headline claim: Helios delivers 34 times the token throughput of MI355X-based systems at high interactivity, on the DeepSeek-V4-Flash model <a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD: AMD Launches Helios, the Highest-Performing Rack-Scale AI Infrastructure Solution (23 Jul 2026)">4</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>The exact wording, from AMD’s own July 2026 Helios launch blog: &ldquo;34X higher token throughput at high interactivity&rdquo; compared with MI355X-based systems, plus a separate claim of &ldquo;18X lower token cost&rdquo;, both benchmarked specifically on DeepSeek-V4-Flash <a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD: AMD Launches Helios, the Highest-Performing Rack-Scale AI Infrastructure Solution (23 Jul 2026)">4</a>. This is AMD’s own first-party benchmark, tied to one named model and one named operating condition (&ldquo;high interactivity&rdquo;) — this page states those qualifiers rather than repeating &ldquo;34x faster&rdquo; as an unconditional, general claim.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineage" aria-labelledby="h-lineage">
+<h2 id="h-lineage"><span>9.</span>What came before, what came next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>Came before:</b> the MI350 series, announced June 2025. <b>What AMD says comes next:</b> MI500 in 2027, MI600 in 2028.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>AMD’s own July 2026 release states its roadmap in one line: &ldquo;Next-generation AMD Instinct MI500 Series GPUs are coming in 2027, with next-generation compute, memory and interconnect technologies for leadership performance,&rdquo; with MI600 series &ldquo;coming in 2028&rdquo; <a class="cite" href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener" title="AMD Investor Relations: AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era">2</a>. AMD’s own June 2025 material had already described MI350-to-MI400 as up to a &ldquo;4x generation-on-generation AI compute increase,&rdquo; giving some sense of the pace AMD is claiming between generations <a class="cite" href="https://www.amd.com/en/blogs/2025/amd-instinct-mi350-series-and-beyond-accelerating-the-future-of-ai-and-hpc.html" target="_blank" rel="noopener" title="AMD: AMD Instinct MI350 Series and Beyond: Accelerating the Future of AI and HPC (12 Jun 2025)">14</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>10.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>AMD barely talks about MI455X as a standalone chip — almost every number it publishes is at the level of the whole Helios rack, not the single GPU, which is itself a statement about how AMD expects this generation to be bought and used.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>Helios’s own rack-level figures are striking on their own terms: 31 TB of combined HBM4 memory, 1.7 petabytes per second of combined bandwidth, 260 TB/s of scale-up networking bandwidth (AMD states this uses UALink, the open interconnect standard AMD co-founded, at 21.6 TB/s bidirectional per switch) and 43 TB/s of scale-out networking through AMD’s own Pensando &ldquo;Vulcano&rdquo; 800 Gbps network cards <a class="cite" href="https://www.amd.com/en/products/rackscale-solutions/helios.html" target="_blank" rel="noopener" title="AMD: Helios rack-scale solution product page">15</a><a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD: AMD Launches Helios, the Highest-Performing Rack-Scale AI Infrastructure Solution (23 Jul 2026)">4</a>. At the rack level, AMD states 2.9 exaflops of dense FP4 compute and 1.4 exaflops of FP8 — figures that only make sense once you know they describe 72 chips working together, not one <a class="cite" href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener" title="AMD: AMD Launches Helios, the Highest-Performing Rack-Scale AI Infrastructure Solution (23 Jul 2026)">4</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>11.</span>Sources</h2>
+<p class="note">15 sources, checked September 2026. Where NVIDIA or another maker has not published a figure, this page says so rather than estimate it.</p>
+<ol class="src-list">
+<li id="src-1"><b>AMD Newsroom</b>: <a href="https://newsroom.amd.com/news/aai-2026-mi400-instinct-update/" target="_blank" rel="noopener">AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era" target="_blank" rel="noopener">AAI 2026: AMD Delivers Full-Stack Compute for the Agentic AI Era</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>AMD</b>: <a href="https://www.amd.com/en/blogs/2025/amd-delivering-open-rack-scale-ai-infrastructure-to-unlock-agentic-ai.html" target="_blank" rel="noopener">AMD Delivering Open Rack-Scale AI Infrastructure to Unlock Agentic AI (12 Jun 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>AMD</b>: <a href="https://www.amd.com/en/blogs/2026/amd-launches-helios-the-highest-performing-rackscale-ai-infrastructure-solution.html" target="_blank" rel="noopener">AMD Launches Helios, the Highest-Performing Rack-Scale AI Infrastructure Solution (23 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>Oracle</b>: <a href="https://www.oracle.com/news/announcement/ai-world-oracle-and-amd-expand-partnership-to-help-customers-achieve-next-generation-ai-scale-2025-10-14/" target="_blank" rel="noopener">AI World: Oracle and AMD Expand Partnership to Help Customers Achieve Next-Generation AI Scale (14 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>OpenAI</b>: <a href="https://openai.com/index/openai-amd-strategic-partnership/" target="_blank" rel="noopener">OpenAI and AMD announce strategic partnership (6 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>AMD</b>: <a href="https://www.amd.com/en/newsroom/press-releases/2026-2-24-amd-and-meta-announce-expanded-strategic-partnersh.html" target="_blank" rel="noopener">AMD and Meta Announce Expanded Strategic Partnership (24 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1291/microsoft-to-deploy-next-gen-amd-instinct-and-amd-epyc-processors-as-the-companies-expand-their-long-term-strategic-partnership" target="_blank" rel="noopener">Microsoft to Deploy Next-Gen AMD Instinct and AMD EPYC Processors as the Companies Expand Their Long-Term Strategic Partnership (20 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>AMD Newsroom</b>: <a href="https://newsroom.amd.com/news/amd-anthropic-strategic-partnership/" target="_blank" rel="noopener">AMD and Anthropic Strategic Partnership (22 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>AMD</b>: <a href="https://www.amd.com/en/products/accelerators/instinct/mi400.html" target="_blank" rel="noopener">Instinct MI400 series product page</a><span class="st st-official">Official</span></li>
+<li id="src-11"><b>AMD Investor Relations</b>: <a href="https://ir.amd.com/news-events/press-releases/detail/1245/amd-achieves-first-tsmc-n2-product-silicon-milestone" target="_blank" rel="noopener">AMD Achieves First TSMC N2 Product Silicon Milestone (14 Apr 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>AMD Newsroom</b>: <a href="https://newsroom.amd.com/news/amd-and-openai-announce-strategic-partnership-to-d/" target="_blank" rel="noopener">AMD and OpenAI Announce Strategic Partnership</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>Microsoft</b>: <a href="https://blogs.microsoft.com/blog/2026/07/20/microsoft-expands-azure-ai-and-hpc-infrastructure-with-amd/" target="_blank" rel="noopener">Microsoft expands Azure AI and HPC infrastructure with AMD (20 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-14"><b>AMD</b>: <a href="https://www.amd.com/en/blogs/2025/amd-instinct-mi350-series-and-beyond-accelerating-the-future-of-ai-and-hpc.html" target="_blank" rel="noopener">AMD Instinct MI350 Series and Beyond: Accelerating the Future of AI and HPC (12 Jun 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-15"><b>AMD</b>: <a href="https://www.amd.com/en/products/rackscale-solutions/helios.html" target="_blank" rel="noopener">Helios rack-scale solution product page</a><span class="st st-official">Official</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#story">2. Launch and history</a><a href="#architecture">3. What’s inside it</a><a href="#specs">4. Full spec table</a><a href="#made">5. Where it’s made</a><a href="#systems">6. Which systems use it</a><a href="#pricing">7. Official pricing</a><a href="#performance">8. Real-world performance</a><a href="#lineage">9. What came before, what came next</a><a href="#hidden">10. Hidden in plain sight</a><a href="#sources">11. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>In production</span><span style="color:var(--fg);font-weight:500;text-align:right">from Jul 2026</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Architecture</span><span style="color:var(--fg);font-weight:500;text-align:right">CDNA 5 (5th gen)</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Memory</span><span style="color:var(--fg);font-weight:500;text-align:right">432 GB HBM4</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Ships inside</span><span style="color:var(--fg);font-weight:500;text-align:right">Helios: 72 MI455X + 18 EPYC &quot;Venice&quot; CPUs per rack</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Process node</span><span style="color:var(--fg);font-weight:500;text-align:right">Not published by AMD for this GPU specifically</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Official price</span><span style="color:var(--fg);font-weight:500;text-align:right">Not published by AMD</span></div></div></div>
+<div class="sidebar-card"><h3>AMD chips</h3><a href="/ai-atlas/ai-chips/amd/" class="sidebar-link">AMD brand guide</a><a href="/ai-atlas/ai-chips/amd/mi250x/" class="sidebar-link">AMD Instinct MI250X</a><a href="/ai-atlas/ai-chips/amd/mi300a/" class="sidebar-link">AMD Instinct MI300A</a><a href="/ai-atlas/ai-chips/amd/mi300x/" class="sidebar-link">AMD Instinct MI300X</a><a href="/ai-atlas/ai-chips/amd/mi325x/" class="sidebar-link">AMD Instinct MI325X</a><a href="/ai-atlas/ai-chips/amd/mi350/" class="sidebar-link">AMD Instinct MI350 series</a></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip brands</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22AMD%20Instinct%20MI455X%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22AMD%20Instinct%20MI455X%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22AMD%20Instinct%20MI455X%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22AMD%20Instinct%20MI455X%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22AMD%20Instinct%20MI455X%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Famd%2Fmi455x%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>
