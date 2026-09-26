@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cerebras CS-3 (WSE-3): The Complete Guide | Clarigital</title>
+<meta name="description" content="Cerebras’s current wafer-sized chip, 2024 — 900,000 cores, 125 petaflops, and the silicon behind its fastest-inference cloud claim. Every figure sourced.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/ai-chips/cerebras/cs3/">
+<meta property="og:title" content="Cerebras CS-3 (WSE-3): The Complete Guide">
+<meta property="og:description" content="Cerebras’s current wafer-sized chip, 2024 — 900,000 cores, 125 petaflops, and the silicon behind its fastest-inference cloud claim. Every figure sourced.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/ai-chips/cerebras/cs3/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Cerebras CS-3 (WSE-3)", "description": "Cerebras’s current wafer-sized chip, 2024 — 900,000 cores, 125 petaflops, and the silicon behind its fastest-inference cloud claim. Every figure sourced.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/cerebras/cs3/", "brand": {"@type": "Organization", "name": "Cerebras"}, "manufacturer": {"@type": "Organization", "name": "Cerebras"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Cerebras CS-3 (WSE-3): The Complete Guide", "description": "Cerebras’s current wafer-sized chip, 2024 — 900,000 cores, 125 petaflops, and the silicon behind its fastest-inference cloud claim. Every figure sourced.", "url": "https://www.clarigital.com/ai-atlas/ai-chips/cerebras/cs3/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/ai-chips/cerebras/cs3/", "dateModified": "2026-09-23", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "citation": ["https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine", "https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference", "https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared", "https://www.cerebras.ai/press-release/cerebras-g42-announce-condor-galaxy-3", "https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed", "https://www.cerebras.ai/blog/cerebras-cs3", "https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem", "https://www.cerebras.ai/press-release/awscollaboration", "https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s", "https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "AI Chips", "item": "https://www.clarigital.com/ai-atlas/ai-chips/"}, {"@type": "ListItem", "position": 4, "name": "Cerebras", "item": "https://www.clarigital.com/ai-atlas/ai-chips/cerebras/"}, {"@type": "ListItem", "position": 5, "name": "Cerebras CS-3 (WSE-3)", "item": "https://www.clarigital.com/ai-atlas/ai-chips/cerebras/cs3/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl-deep{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government{color:#A78BFA;background:rgba(167,139,250,.12)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+</style>
+<style>
+.ask-icons{display:flex;gap:8px;align-items:center;margin:14px 0 4px;flex-wrap:wrap}
+.ask-icons .aic-label{font-size:.72rem;color:var(--faint);margin-right:2px}
+.ask-icon{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;color:#fff;font-size:.72rem;font-weight:700;text-decoration:none;flex-shrink:0}
+.ask-icon:hover{filter:brightness(1.15);outline:2px solid var(--indigo);outline-offset:1px}</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/">AI Chips</a><span class="sep">/</span><a href="/ai-atlas/ai-chips/cerebras/">Cerebras</a><span class="sep">/</span><span>Cerebras CS-3 (WSE-3)</span></nav>
+    <span class="label-tag">AI Chips · Product page</span>
+    <h1>Cerebras CS-3 (WSE-3): The Complete Guide</h1>
+    <p class="hero-lead">The chip Cerebras still sells and rents today — 4 trillion transistors on one wafer, clustered up to 2,048 at a time, and the machine behind its instant-inference cloud. Simple to expert, every number links to its source.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="ask-icons"><span class="aic-label">Ask an AI about this chip:</span><a class="ask-icon" style="background:#10A37F" href="https://chatgpt.com/?q=I%27m%20looking%20at%20the%20Cerebras%20CS-3%20%28WSE-3%29%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask ChatGPT about the Cerebras CS-3 (WSE-3)">C</a><a class="ask-icon" style="background:#D97757" href="https://claude.ai/new?q=I%27m%20looking%20at%20the%20Cerebras%20CS-3%20%28WSE-3%29%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask Claude about the Cerebras CS-3 (WSE-3)">A</a><a class="ask-icon" style="background:#4285F4" href="https://gemini.google.com/app?q=I%27m%20looking%20at%20the%20Cerebras%20CS-3%20%28WSE-3%29%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask Gemini about the Cerebras CS-3 (WSE-3)">G</a><a class="ask-icon" style="background:#20808D" href="https://www.perplexity.ai/search?q=I%27m%20looking%20at%20the%20Cerebras%20CS-3%20%28WSE-3%29%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask Perplexity about the Cerebras CS-3 (WSE-3)">P</a><a class="ask-icon" style="background:#000000" href="https://grok.com/?q=I%27m%20looking%20at%20the%20Cerebras%20CS-3%20%28WSE-3%29%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20work%20out%20if%20it%20fits%20what%20I%27m%20building." target="_blank" rel="noopener" title="Ask Grok about the Cerebras CS-3 (WSE-3)">X</a></div>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Cerebras CS-3 (WSE-3)</span>
+      <span class="meta-tag mt-gray">10 sections · 2 levels</span>
+      <span class="meta-tag mt-gray">10 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Each section starts <b>Simple</b>, then goes to a <b>Deep dive</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where the maker has not published a figure -- a price, a die size, a factory address -- this page says so rather than estimate it.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>WSE-3, announced 13 March 2024, is Cerebras’s current wafer-sized chip: 4 trillion transistors and 900,000 cores on one piece of silicon, delivering 125 petaflops of AI compute <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>. It is the chip behind Cerebras Inference, launched August 2024, which the company calls the world’s fastest AI inference cloud <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world’s fastest AI inference (27 Aug 2024)">2</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>Cerebras’s own head-to-head math against NVIDIA’s then-new B200: &ldquo;a single CS-3 equates to about 3.5 DGX B200 servers&rdquo; on raw compute (125 vs. 36 petaflops), a 2.2x improvement in performance per watt <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">3</a> — see the performance section below for why that is not the same as CS-3 drawing less power in absolute terms. This is Cerebras’s own comparison, not an independent benchmark.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>2.</span>Launch and history</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>WSE-3 is the generation where Cerebras’s business model changed. It launched the same day as a new supercomputer deal (Condor Galaxy 3, with G42) but within five months had also launched a pay-per-token inference cloud — the product line that now earns Cerebras more revenue than selling systems outright (see the Cerebras brand guide on this site) <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-g42-announce-condor-galaxy-3" target="_blank" rel="noopener" title="Cerebras: Cerebras and G42 break ground on Condor Galaxy 3, an 8 exaFLOPs AI supercomputer (13 Mar 2024)">4</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world’s fastest AI inference (27 Aug 2024)">2</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>At its inference launch, Cerebras served Meta’s Llama 3.1 8B model at &ldquo;1,800 tokens a second&rdquo; and Llama 3.1 70B at &ldquo;450 tokens a second&rdquo; — speeds it attributed directly to keeping the model’s weights on the wafer’s own memory rather than fetching them from separate memory chips <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world’s fastest AI inference (27 Aug 2024)">2</a> <a class="cite" href="https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Cerebras Inference: AI at instant speed (Aug 2024)">5</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="architecture" aria-labelledby="h-architecture">
+<h2 id="h-architecture"><span>3.</span>What’s inside it</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>900,000 cores, up from 850,000 on WSE-2, joined by an upgraded &ldquo;SwarmX&rdquo; interconnect that links up to 2,048 CS-3 systems into one cluster <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a> — a &ldquo;10x improvement&rdquo; over WSE-2’s 192-system limit, per Cerebras’s own blog <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3: the world’s fastest and most scalable AI accelerator">6</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>For models too large for one wafer’s on-chip memory, Cerebras pairs the chip with an external unit called MemoryX, offered in sizes from 24 TB and 36 TB (enterprise) up to 120 TB and 1,200 TB (hyperscale); the largest configuration can hold &ldquo;models with 24 trillion parameters&rdquo; <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3: the world’s fastest and most scalable AI accelerator">6</a>. Cerebras says a full 2,048-system cluster, using its Weight Streaming architecture, &ldquo;looks and programs like a single chip&rdquo; <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3: the world’s fastest and most scalable AI accelerator">6</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>4.</span>Full spec table</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Spec</th><th>Cerebras WSE-3 (CS-3)</th></tr></thead><tbody><tr><th>Transistors</th><td>4 trillion <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></td></tr><tr><th>Cores</th><td>900,000 AI cores <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></td></tr><tr><th>On-chip memory</th><td>44 GB SRAM <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></td></tr><tr><th>Memory bandwidth</th><td>21 petabytes/s, Cerebras says — &ldquo;7,000x that of an H100&rdquo; <a class="cite" href="https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed" target="_blank" rel="noopener" title="Cerebras Blog: Introducing Cerebras Inference: AI at instant speed (Aug 2024)">5</a></td></tr><tr><th>AI compute</th><td>125 petaflops <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></td></tr><tr><th>External memory (MemoryX)</th><td>Up to 1.2 PB (see note) <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></td></tr><tr><th>Process node</th><td>TSMC 5 nm <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a></td></tr><tr><th>System size / power</th><td>15U, up to 23 kW <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">3</a></td></tr></tbody></table></div><p class="note">Cerebras’s own launch materials give two different sets of MemoryX tier sizes: the March 2024 announcement lists &ldquo;1.5TB, 12TB, or 1.2PB&rdquo; options <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>, while a separate Cerebras blog post lists &ldquo;24TB and 36TB&rdquo; for enterprise customers and &ldquo;120TB and 1,200TB&rdquo; for hyperscalers <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3: the world’s fastest and most scalable AI accelerator">6</a>. Only the top tier (1.2 PB = 1,200 TB) matches between the two; this page reports both rather than picking one, since Cerebras’s own materials do not reconcile the difference.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>Cerebras’s own comparison against a full NVIDIA NVL72 rack (72 GPUs): a single CS-3 &ldquo;provides more than 200x the interconnect bandwidth&rdquo; — stated as 27 petabytes per second of aggregate on-wafer fabric bandwidth across the chip’s 900,000 cores — and &ldquo;over 80x the memory capacity&rdquo; when paired with its largest MemoryX configuration <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">3</a>. This 27 PB/s core-to-core fabric figure is a different measurement from the 21 PB/s figure above, which Cerebras states separately as memory-to-core bandwidth — both describe traffic within one wafer, not between separate chips, and Cerebras’s own materials do not explain how the two relate to each other.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>Where it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Designed by Cerebras; the wafer made by TSMC on its 5 nm process, its most advanced node yet for this chip line <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>Cerebras’s January 2025 blog post on this generation’s manufacturing says each wafer builds 970,000 physical cores and activates 900,000 of them, routing around the rest, and describes the chip as &ldquo;about 100x more fault tolerant&rdquo; than a GPU because a single core failure costs a much smaller share of the total wafer <a class="cite" href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem" target="_blank" rel="noopener" title="Cerebras Blog: 100x defect tolerance: how Cerebras solved the yield problem (13 Jan 2025)">7</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="systems" aria-labelledby="h-systems">
+<h2 id="h-systems"><span>6.</span>Which systems use it</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Sold as the CS-3 system and rented through Cerebras’s own cloud. Named deployments include Condor Galaxy 3 with G42 (announced the same day as the chip itself) and a March 2026 collaboration to run CS-3 systems inside AWS’s own data centres <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-g42-announce-condor-galaxy-3" target="_blank" rel="noopener" title="Cerebras: Cerebras and G42 break ground on Condor Galaxy 3, an 8 exaFLOPs AI supercomputer (13 Mar 2024)">4</a> <a class="cite" href="https://www.cerebras.ai/press-release/awscollaboration" target="_blank" rel="noopener" title="Cerebras: AWS collaboration: CS-3 in AWS data centres (13 Mar 2026)">8</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>By March 2025 Cerebras said its own data centres in Santa Clara, Stockton and Dallas were already online, running on this generation, with more sites in the US and Europe planned <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener" title="Cerebras: Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)">9</a>. Under the AWS collaboration, Cerebras’s CS-3 handles one stage of an AI request and AWS’s own Trainium chips handle another (see the Amazon Trainium guide on this site) <a class="cite" href="https://www.cerebras.ai/press-release/awscollaboration" target="_blank" rel="noopener" title="Cerebras: AWS collaboration: CS-3 in AWS data centres (13 Mar 2026)">8</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>7.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras has not published a CS-3 hardware list price. Its cloud service, built on CS-3, bills per token — see the Cerebras brand guide on this site for current rates, which apply to the models served on this chip.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>At its August 2024 inference launch, Cerebras priced Llama 3.1 8B at 10 cents and Llama 3.1 70B at 60 cents per million tokens — the earliest published Cerebras Inference prices, all served from CS-3 hardware <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world’s fastest AI inference (27 Aug 2024)">2</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="performance" aria-labelledby="h-performance">
+<h2 id="h-performance"><span>8.</span>Real-world performance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras’s own comparison against NVIDIA’s DGX B200: 125 petaflops versus 36 petaflops — about 3.5 DGX B200 servers’ worth of compute in one CS-3 — which Cerebras calls &ldquo;a 2.2x improvement in performance per watt&rdquo; <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">3</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p><b>This is Cerebras’s own published comparison, not an independent third-party benchmark, and its &ldquo;half the power consumption&rdquo; framing needs a caveat.</b> By the same source’s own figures, CS-3 draws up to 23 kW peak against a DGX B200’s 14.3 kW — more absolute power, not less. &ldquo;Half&rdquo; refers to power per unit of compute (performance per watt), which is where the 2.2x figure comes from; it is not a claim that a CS-3 system pulls fewer watts off the wall <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">3</a>. Cerebras also claims a full 2,048-system CS-3 cluster can &ldquo;train Llama2-70B from scratch in less than a day&rdquo; versus &ldquo;approximately a month&rdquo; it attributes to Meta’s own GPU infrastructure for the same task <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3: the world’s fastest and most scalable AI accelerator">6</a> — a claim about a specific competitor’s reported training time, not a controlled side-by-side test Cerebras ran itself.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineage" aria-labelledby="h-lineage">
+<h2 id="h-lineage"><span>9.</span>What came before, what came next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<b>Came before:</b> WSE-2 (CS-2), covered on its own page on this site. <b>Came after:</b> WSE-3 Turbo and CS-4, announced August 2026 but not yet confirmed shipped as of this page’s last check — see the Cerebras brand guide on this site.
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>WSE-3 launched almost three years after WSE-2 (April 2021 to March 2024), a longer gap than the roughly 20 months between the first two generations <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Second-generation Wafer Scale Engine, 2.6 trillion transistors (20 Apr 2021)">10</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>. Its successor, CS-4, was announced in August 2026 with Cerebras saying &ldquo;first CS-4 shipments begin this quarter&rdquo; — language this site treats as a projection, not a confirmed shipment, until an actual customer delivery is reported.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>10.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Cerebras’s own numbers show this chip is not actually faster per core than its predecessor — it wins by adding cores and memory, not by making each core quicker: cores grew from 850,000 to 900,000 (about 6%), while the compute figure Cerebras publishes (125 petaflops) is a whole-wafer number, not a per-core speed <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Second-generation Wafer Scale Engine, 2.6 trillion transistors (20 Apr 2021)">10</a> <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a>.</p>
+</div>
+<div class="lvl lvl-deep"><div class="lvl-top"><span class="depth-badge db-red">Deep dive</span><span class="depth-note">The technical detail</span></div>
+<p>The August 2024 inference launch reframed this chip’s purpose in Cerebras’s own business: WSE-3 was announced in March 2024 as a training chip, competing on raw petaflops against NVIDIA’s training GPUs <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener" title="Cerebras: Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)">1</a> <a class="cite" href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener" title="Cerebras Blog: Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)">3</a>, but within five months Cerebras was marketing the same silicon’s speed advantage for serving finished models to users, not just training them <a class="cite" href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener" title="Cerebras: Cerebras launches the world’s fastest AI inference (27 Aug 2024)">2</a> — the same hardware, sold against two different competitive claims within one calendar year.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>11.</span>Sources</h2>
+<p class="note">10 sources, checked September 2026. Where NVIDIA or another maker has not published a figure, this page says so rather than estimate it.</p>
+<ol class="src-list">
+<li id="src-1"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine" target="_blank" rel="noopener">Cerebras announces third-generation Wafer Scale Engine (13 Mar 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-launches-the-worlds-fastest-ai-inference" target="_blank" rel="noopener">Cerebras launches the world’s fastest AI inference (27 Aug 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/cerebras-cs-3-vs-nvidia-b200-2024-ai-accelerators-compared" target="_blank" rel="noopener">Cerebras CS-3 vs NVIDIA B200: 2024 AI accelerators compared (Apr 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-g42-announce-condor-galaxy-3" target="_blank" rel="noopener">Cerebras and G42 break ground on Condor Galaxy 3, an 8 exaFLOPs AI supercomputer (13 Mar 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/introducing-cerebras-inference-ai-at-instant-speed" target="_blank" rel="noopener">Introducing Cerebras Inference: AI at instant speed (Aug 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/cerebras-cs3" target="_blank" rel="noopener">Cerebras CS-3: the world’s fastest and most scalable AI accelerator</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>Cerebras Blog</b>: <a href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem" target="_blank" rel="noopener">100x defect tolerance: how Cerebras solved the yield problem (13 Jan 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/awscollaboration" target="_blank" rel="noopener">AWS collaboration: CS-3 in AWS data centres (13 Mar 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-announces-six-new-ai-datacenters-across-north-america-and-europe-to-deliver-industry-s" target="_blank" rel="noopener">Cerebras announces six new AI data centres across North America and Europe (11 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>Cerebras</b>: <a href="https://www.cerebras.ai/press-release/cerebras-systems-smashes-the-2-5-trillion-transistor-mark-with-new-second-generation-wafer-scale-engine" target="_blank" rel="noopener">Second-generation Wafer Scale Engine, 2.6 trillion transistors (20 Apr 2021)</a><span class="st st-official">Official</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#story">2. Launch and history</a><a href="#architecture">3. What’s inside it</a><a href="#specs">4. Full spec table</a><a href="#made">5. Where it’s made</a><a href="#systems">6. Which systems use it</a><a href="#pricing">7. Official pricing</a><a href="#performance">8. Real-world performance</a><a href="#lineage">9. What came before, what came next</a><a href="#hidden">10. Hidden in plain sight</a><a href="#sources">11. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Announced</span><span style="color:var(--fg);font-weight:500;text-align:right">13 Mar 2024</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Role</span><span style="color:var(--fg);font-weight:500;text-align:right">AI model training and inference</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Cores</span><span style="color:var(--fg);font-weight:500;text-align:right">900,000</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>On-chip memory</span><span style="color:var(--fg);font-weight:500;text-align:right">44 GB SRAM, 21 PB/s bandwidth</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>AI compute</span><span style="color:var(--fg);font-weight:500;text-align:right">125 petaflops per wafer (Cerebras)</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Price</span><span style="color:var(--fg);font-weight:500;text-align:right">Not published; cloud rental billed per token</span></div></div></div>
+<div class="sidebar-card"><h3>Cerebras chips</h3><a href="/ai-atlas/ai-chips/cerebras/" class="sidebar-link">Cerebras brand guide</a><a href="/ai-atlas/ai-chips/cerebras/cs1/" class="sidebar-link">Cerebras CS-1 (WSE-1)</a><a href="/ai-atlas/ai-chips/cerebras/cs2/" class="sidebar-link">Cerebras CS-2 (WSE-2)</a></div>
+<div class="sidebar-card"><h3>AI Chips</h3><a href="/ai-atlas/ai-chips/" class="sidebar-link">All chip brands</a><a href="/ai-news/" class="sidebar-link">Today’s AI news</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Cerebras%20CS-3%20%28WSE-3%29%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Cerebras%20CS-3%20%28WSE-3%29%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Cerebras%20CS-3%20%28WSE-3%29%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Cerebras%20CS-3%20%28WSE-3%29%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Cerebras%20CS-3%20%28WSE-3%29%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fai-chips%2Fcerebras%2Fcs3%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>
