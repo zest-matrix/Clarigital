@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Samsung Memory: The Complete Guide | Clarigital</title>
+<meta name="description" content="Samsung&#x27;s DRAM, NAND and HBM: what it makes, which fabs make it, what HBM4 actually ships, and what Samsung will not publish.">
+<link rel="canonical" href="https://www.clarigital.com/ai-atlas/memory/samsung/">
+<meta property="og:title" content="Samsung Memory: The Complete Guide">
+<meta property="og:description" content="Samsung&#x27;s DRAM, NAND and HBM: what it makes, which fabs make it, what HBM4 actually ships, and what Samsung will not publish.">
+<meta property="og:url" content="https://www.clarigital.com/ai-atlas/memory/samsung/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Samsung Memory: The Complete Guide", "description": "Samsung's DRAM, NAND and HBM: what it makes, which fabs make it, what HBM4 actually ships, and what Samsung will not publish.", "url": "https://www.clarigital.com/ai-atlas/memory/samsung/", "mainEntityOfPage": "https://www.clarigital.com/ai-atlas/memory/samsung/", "dateModified": "2026-09-26", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "about": {"@type": "Organization", "name": "Samsung Electronics Co., Ltd.", "url": "https://semiconductor.samsung.com", "foundingDate": "1969", "address": {"@type": "PostalAddress", "streetAddress": "129, Samsung-ro, Yeongtong-gu", "addressLocality": "Suwon-si", "addressRegion": "Gyeonggi-do", "postalCode": "16677", "addressCountry": "KR"}}, "citation": ["https://images.samsung.com/kdp/ir/business-introduction/Samsung_Investor_Presentation_Memory_2026_V2.pdf", "https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing", "https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_2Q_conference_eng.pdf", "https://semiconductor.samsung.com/about-us/locations/", "https://semiconductor.samsung.com/dram/ddr/ddr5/", "https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results", "https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026", "https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf", "https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf", "https://www.samsung.com/global/ir/governance-csr/board-of-directors.html", "https://news.samsung.com/global/samsung-electronics-announces-new-leadership-4", "https://news.samsung.com/global/samsung-unveils-next-gen-3d-memory-vision-at-fms-2026-charting-the-future-of-ai-infrastructure", "https://semiconductor.samsung.com/news-events/news/samsung-electronics-announces-most-advanced-12nm-class-ddr5-dram-has-started-mass-production/", "https://news.samsungsemiconductor.com/global/about-us/", "https://news.samsung.com/global/samsung-electronics-begins-mass-production-at-new-semiconductor-plant-in-pyeongtaek-south-korea", "https://semiconductor.samsung.com/about-us/our-story/", "https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples", "https://news.samsung.com/global/samsung-electronics-announces-third-quarter-2025-results", "https://semiconductor.samsung.com/news-events/tech-blog/ces-innovations-awards-2026-honoree-interview-lpddr6/", "https://semiconductor.samsung.com/dram/gddr/", "https://semiconductor.samsung.com/news-events/news/samsung-electronics-begins-industrys-first-mass-production-of-9th-gen-v-nand/", "https://news.samsung.com/us/samsung-announces-9100-pro-series-ssds-with-breakthrough-pcie-5-0-performance/", "https://news.samsung.com/in/samsung-showcases-p9-and-p7-ssds-featuring-usb4-at-gamescom-2026", "https://semiconductor.samsung.com/news-events/tech-blog/introducing-samsungs-socamm2-new-lpddr-memory-module-empowering-next-generation-ai-infrastructure/", "https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results", "https://semiconductor.samsung.com/news-events/tech-blog/fms-2026-3d-nand-innovation-award-v10-bv-nand-pushing-the-boundaries-of-ai-storage-beyond-400-layers/", "https://news.samsung.com/global/samsung-electronics-and-asml-expand-strategic-collaboration-for-next-generation-semiconductor-manufacturing", "https://news.samsung.com/global/samsung-announces-operation-of-its-memory-facility-in-xian-china", "https://semiconductor.samsung.com/dram/hbm/hbm3e/", "https://semiconductor.samsung.com/news-events/news/samsung-develops-industry-first-36gb-hbm3e-12h-dram/", "https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing", "https://www.jedec.org/news/pressreleases/jedec%C2%AE-releases-new-lpddr6-standard-enhance-mobile-and-ai-memory-performance", "https://www.samsung.com/us/memory-storage/nvme-ssd/990-evo-plus-gen4-nvme-ssd-2tb-sku-mz-v9s2t0b-am/", "https://semiconductor.samsung.com/sas/company/taylor", "https://image.semiconductor.samsung.com/content/samsung/p6/semiconductor-us/sas/chips-and-science-act_240416/samsung-factsheet-chips-final.pdf", "https://news.samsung.com/global/samsung-develops-industrys-first-gddr7-dram-to-unlock-the-next-generation-of-graphics-performance", "https://semiconductor.samsung.com/ssir/"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "AI Atlas", "item": "https://www.clarigital.com/ai-atlas/"}, {"@type": "ListItem", "position": 3, "name": "Memory", "item": "https://www.clarigital.com/ai-atlas/memory/"}, {"@type": "ListItem", "position": 4, "name": "Samsung", "item": "https://www.clarigital.com/ai-atlas/memory/samsung/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl-deep{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government,.st-analyst{color:#A78BFA;background:rgba(167,139,250,.12)}.st-vendor{color:var(--muted);background:var(--bg2)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+
+.mem-group-h{font-size:1.02rem;font-weight:700;color:var(--fg);margin:26px 0 4px}
+.mem-group-p{font-size:.86rem;color:var(--muted);margin:0 0 14px;max-width:72ch}
+.mem-soon{opacity:.62}
+.mem-soon .brand-card-t{color:var(--muted)}
+.mem-badge{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:100px;padding:1px 8px;margin-left:6px;color:var(--muted);background:var(--bg2);border:1px solid var(--border2)}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/ai-atlas/">AI Atlas</a><span class="sep">/</span><a href="/ai-atlas/memory/">Memory</a><span class="sep">/</span><span>Samsung</span></nav>
+    <span class="label-tag">Memory · Maker guide</span>
+    <h1>Samsung Memory: The Complete Guide</h1>
+    <p class="hero-lead">The largest memory maker in the world, and the one whose official timeline has no HBM in it at all. What Samsung makes, where, what its own filings say, and the gap between its releases and the coverage of them. Three reading levels, every number sourced.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Samsung</span>
+      <span class="meta-tag mt-gray">16 sections · 3 levels</span>
+      <span class="meta-tag mt-gray">37 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Every maker in our Memory section uses the same 16 sections in the same order, the same shape as our AI Chips brand guides. Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where a company has not published something, we say so rather than estimate.</div>
+<section class="chip-sec" id="glance" aria-labelledby="h-glance">
+<h2 id="h-glance"><span>1.</span>At a glance</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>Samsung</b> is the world's largest memory maker. It makes both kinds of memory that matter: <b>DRAM</b>, the fast working memory a computer forgets when you switch it off, and <b>NAND flash</b>, the slower storage that remembers <a class="cite" href="https://images.samsung.com/kdp/ir/business-introduction/Samsung_Investor_Presentation_Memory_2026_V2.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: Investor presentation: Memory (2026)">1</a>. It also makes <b>HBM</b>, the stacked DRAM that sits beside AI accelerators <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>.</p>
+<div class="fact-grid">
+<div><b>What it makes</b>DRAM, NAND flash and HBM, plus the SSDs and modules built from them <a class="cite" href="https://images.samsung.com/kdp/ir/business-introduction/Samsung_Investor_Presentation_Memory_2026_V2.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: Investor presentation: Memory (2026)">1</a></div>
+<div><b>How big</b>KRW 120.8 trillion of memory revenue in one quarter, Q2 2026 <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_2Q_conference_eng.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2Q 2026 earnings presentation">3</a></div>
+<div><b>Who makes it</b>Samsung's own fabs, mostly in Korea plus Xi'an in China <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a></div>
+<div><b>Can you buy direct?</b>Not the chips. Samsung publishes no price for any memory chip <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/ddr5/" target="_blank" rel="noopener" title="Samsung Semiconductor: DDR5 product page">5</a></div>
+</div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Samsung reports memory inside a division it calls <b>DS</b>, for Device Solutions. In Q2 2026 the DS Division posted "KRW 127.5 trillion in consolidated revenue and KRW 89.2 trillion in operating profit", both company records <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>, of which the memory line alone was KRW 120.8 trillion of revenue <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_2Q_conference_eng.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2Q 2026 earnings presentation">3</a>. Samsung does not break out an operating profit for memory on its own &mdash; that figure exists only at DS-Division level <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_2Q_conference_eng.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2Q 2026 earnings presentation">3</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung's own investor deck puts its 2025 share at "DRAM 34% NAND 33%" on $74 billion of memory revenue, though the share figures are Samsung citing IDC rather than measuring itself <a class="cite" href="https://images.samsung.com/kdp/ir/business-introduction/Samsung_Investor_Presentation_Memory_2026_V2.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: Investor presentation: Memory (2026)">1</a>. Its distinctive claim is scope rather than size: at GTC 2026 it called itself "the industry's only semiconductor company offering a total AI solution spanning memory, logic, foundry and advanced packaging" <a class="cite" href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils HBM4E at NVIDIA GTC 2026 (17 Mar 2026)">7</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="company" aria-labelledby="h-company">
+<h2 id="h-company"><span>2.</span>Company card</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Samsung's memory business is one division of Samsung Electronics, a company that also makes phones and televisions. It is not a separate company.</p>
+<div class="pf-scroll"><table class="spec"><tbody>
+<tr><th>Legal name</th><td>Samsung Electronics Co., Ltd. <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 Half-Year Interim Report">8</a></td></tr>
+<tr><th>Registered HQ</th><td>129, Samsung-ro, Yeongtong-gu, Suwon-si, Gyeonggi-do, 16677, Korea <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 Half-Year Interim Report">8</a></td></tr>
+<tr><th>Semiconductor HQ</th><td>1, Samsung-ro, Giheung-gu, Yongin-si, Gyeonggi-do 17113, Korea <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a></td></tr>
+<tr><th>Incorporated</th><td>1969, under the laws of the Republic of Korea <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 1Q Interim Report">9</a></td></tr>
+<tr><th>Listed</th><td>Korea Stock Exchange, 1975 <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 1Q Interim Report">9</a></td></tr>
+<tr><th>Runs memory</th><td>Young Hyun Jun, Vice Chairman and co-CEO, Head of Device Solutions and Head of Memory Business <a class="cite" href="https://www.samsung.com/global/ir/governance-csr/board-of-directors.html" target="_blank" rel="noopener" title="Samsung Electronics: Board of Directors">10</a> <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-new-leadership-4" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces new leadership (21 Nov 2025)">11</a></td></tr>
+</tbody></table></div>
+<p class="note">Samsung's own filings say "listed its shares on the Korea Stock Exchange in 1975" without giving a ticker code <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 1Q Interim Report">9</a>. The widely-quoted code 005930 does not appear in the Samsung documents checked here, so this page does not state one.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Samsung's November 2025 leadership release names <b>Young Hyun Jun</b> as "Vice Chairman and Head of Device Solutions (DS) Division", appointed "as co-CEOs of the Company", and states that "Vice Chairman Jun will remain as Head of Memory Business" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-new-leadership-4" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces new leadership (21 Nov 2025)">11</a> &mdash; one person holding both the division and the memory business. Samsung's board page gives his title as "Vice Chairman &amp; CEO (DS Division)" and spells the name "YoungHyun Jun", one word <a class="cite" href="https://www.samsung.com/global/ir/governance-csr/board-of-directors.html" target="_blank" rel="noopener" title="Samsung Electronics: Board of Directors">10</a>; this page uses the spelling from the newsroom release.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Below him, the people Samsung quotes on memory in its own releases are <b>Sang Joon Hwang</b>, "Executive Vice President and Head of Memory Development" <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>, <b>Jin-Yub Lee</b>, "Executive Vice President and Head of Flash Product &amp; Technology" <a class="cite" href="https://news.samsung.com/global/samsung-unveils-next-gen-3d-memory-vision-at-fms-2026-charting-the-future-of-ai-infrastructure" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils next-gen 3D memory vision at FMS 2026 (5 Aug 2026)">12</a>, and <b>Jooyoung Lee</b>, "Executive Vice President of DRAM Product &amp; Technology" <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-announces-most-advanced-12nm-class-ddr5-dram-has-started-mass-production/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung announces most advanced 12nm-class DDR5 DRAM has started mass production">13</a>. Samsung publishes no separate memory-division headcount, no memory-only balance sheet and no memory-only operating profit <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_2Q_conference_eng.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2Q 2026 earnings presentation">3</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="story" aria-labelledby="h-story">
+<h2 id="h-story"><span>3.</span>The story</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul class="timeline">
+<li><b>1974</b> Samsung Electronics acquires Hankook Semiconductor &mdash; the start of the chip business <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>.</li>
+<li><b>1983</b> Develops a 64Kb DRAM and establishes the Giheung campus <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>.</li>
+<li><b>1992</b> Two milestones in one year on Samsung's timeline: "Develops industry's first 64Mb DRAM" and "Achieves world's largest DRAM market share" <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>.</li>
+<li><b>2013</b> First mass production of 3D V-NAND, the stacked flash design still used today <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>.</li>
+<li><b>2017</b> Begins production at Pyeongtaek <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a> <a class="cite" href="https://news.samsung.com/global/samsung-electronics-begins-mass-production-at-new-semiconductor-plant-in-pyeongtaek-south-korea" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung begins mass production at new Pyeongtaek plant (4 Jul 2017)">15</a>.</li>
+<li><b>2026</b> Begins mass production of HBM4 and ships it commercially <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Samsung dates its own leadership from the early 1990s: "We have been the leading memory provider in the industry for the past 30 years", and it marks 1993 with two entries, "Opens industry's first 200mm fabrication line (Line 5)" and "Achieves world's largest memory market share" <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>. Its own framing of the 1974 start is that "we took our first step into uncharted territory" <a class="cite" href="https://semiconductor.samsung.com/about-us/our-story/" target="_blank" rel="noopener" title="Samsung Semiconductor: Our story">16</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The published timeline is worth reading for what it leaves out. It runs from 1974 to 2024 and records LPDDR4, DDR5, CXL, LPCAMM2, GDDR7 and every V-NAND generation &mdash; and <b>contains no HBM entry of any kind</b>: no HBM2, HBM2E, HBM3, HBM3E or HBM4 <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>. For the product line that now dominates coverage of Samsung's memory business, its own official history is silent.</p>
+</div>
+</section>
+<section class="chip-sec" id="lineup" aria-labelledby="h-lineup">
+<h2 id="h-lineup"><span>4.</span>The lineup</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Product</th><th>What it is</th><th>Status</th></tr></thead><tbody>
+<tr><td>HBM4</td><td>Stacked DRAM for AI accelerators</td><td>Mass production; shipped commercially Feb 2026 <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a></td></tr>
+<tr><td>HBM4E</td><td>The next HBM step</td><td>Samples shipped May 2026; no production date given <a class="cite" href="https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung begins shipment of industry-first HBM4E samples (29 May 2026)">17</a></td></tr>
+<tr><td>HBM3E</td><td>Previous HBM generation</td><td>In mass production, "sold to all related customers" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-third-quarter-2025-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces third quarter 2025 results (30 Oct 2025)">18</a></td></tr>
+<tr><td>DDR5</td><td>Main PC and server memory</td><td>In production, 12nm-class <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-announces-most-advanced-12nm-class-ddr5-dram-has-started-mass-production/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung announces most advanced 12nm-class DDR5 DRAM has started mass production">13</a></td></tr>
+<tr><td>LPDDR6</td><td>Low-power memory for phones</td><td>Announced; Samsung does not state production status <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/ces-innovations-awards-2026-honoree-interview-lpddr6/" target="_blank" rel="noopener" title="Samsung Semiconductor: CES 2026 Innovation Award honoree interview: LPDDR6 (4 Sep 2026)">19</a></td></tr>
+<tr><td>GDDR7</td><td>Graphics memory</td><td>Listed at up to 40 Gbps on Samsung's product page <a class="cite" href="https://semiconductor.samsung.com/dram/gddr/" target="_blank" rel="noopener" title="Samsung Semiconductor: GDDR product page">20</a></td></tr>
+<tr><td>9th-gen V-NAND</td><td>Current flash generation</td><td>Mass production since April 2024 <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-begins-industrys-first-mass-production-of-9th-gen-v-nand/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung begins industry’s first mass production of 9th-gen V-NAND (23 Apr 2024)">21</a></td></tr>
+<tr><td>SSDs (9100 PRO, 990, P9/P7)</td><td>Finished drives Samsung sells itself</td><td>On sale, with published prices <a class="cite" href="https://news.samsung.com/us/samsung-announces-9100-pro-series-ssds-with-breakthrough-pcie-5-0-performance/" target="_blank" rel="noopener" title="Samsung Newsroom (US): Samsung announces 9100 PRO series SSDs (18 Mar 2025)">22</a> <a class="cite" href="https://news.samsung.com/in/samsung-showcases-p9-and-p7-ssds-featuring-usb4-at-gamescom-2026" target="_blank" rel="noopener" title="Samsung Newsroom (India): Samsung showcases P9 and P7 SSDs featuring USB4 (27 Aug 2026)">23</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Samsung also sells module formats built for AI servers. <b>SOCAMM2</b> is an LPDDR-based server module Samsung says "delivers more than twice the bandwidth of traditional RDIMM while consuming over 55% less power" <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/introducing-samsungs-socamm2-new-lpddr-memory-module-empowering-next-generation-ai-infrastructure/" target="_blank" rel="noopener" title="Samsung Semiconductor: Introducing Samsung’s SOCAMM2">24</a>. Its status is stated two ways in Samsung's own material: the GTC release says it "is currently in mass production, an industry-first to reach that milestone" <a class="cite" href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils HBM4E at NVIDIA GTC 2026 (17 Mar 2026)">7</a>, while the product blog describes "customer samples already being supplied" <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/introducing-samsungs-socamm2-new-lpddr-memory-module-empowering-next-generation-ai-infrastructure/" target="_blank" rel="noopener" title="Samsung Semiconductor: Introducing Samsung’s SOCAMM2">24</a>. The Q1 2026 results release settles it, recording "mass product sales of HBM4 and SOCAMM2 for NVIDIA's Vera Rubin platform" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces first quarter 2026 results (30 Apr 2026)">25</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung's investor deck lays out the generational ladders plainly: V-NAND as "V4 V5 V6 V7 V8 V9 V10 V11 Next" and DRAM as "28nm 25nm 20nm 1xnm 1ynm 1znm" then "1anm 1bnm 1cnm" <a class="cite" href="https://images.samsung.com/kdp/ir/business-introduction/Samsung_Investor_Presentation_Memory_2026_V2.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: Investor presentation: Memory (2026)">1</a>. Beyond those, <b>V10 BV-NAND</b> is announced with "more than 400 layers" and, per Samsung's technical post, "a more than 58% increase in bit density over the previous generation" <a class="cite" href="https://news.samsung.com/global/samsung-unveils-next-gen-3d-memory-vision-at-fms-2026-charting-the-future-of-ai-infrastructure" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils next-gen 3D memory vision at FMS 2026 (5 Aug 2026)">12</a> <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/fms-2026-3d-nand-innovation-award-v10-bv-nand-pushing-the-boundaries-of-ai-storage-beyond-400-layers/" target="_blank" rel="noopener" title="Samsung Semiconductor: FMS 2026 3D NAND Innovation Award: V10 BV-NAND beyond 400 layers (31 Aug 2026)">26</a> &mdash; but neither Samsung page says V10 is sampling or in production <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/fms-2026-3d-nand-innovation-award-v10-bv-nand-pushing-the-boundaries-of-ai-storage-beyond-400-layers/" target="_blank" rel="noopener" title="Samsung Semiconductor: FMS 2026 3D NAND Innovation Award: V10 BV-NAND beyond 400 layers (31 Aug 2026)">26</a>. <b>zHBM</b> and <b>HBM5</b> appear only as concepts <a class="cite" href="https://news.samsung.com/global/samsung-unveils-next-gen-3d-memory-vision-at-fms-2026-charting-the-future-of-ai-infrastructure" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils next-gen 3D memory vision at FMS 2026 (5 Aug 2026)">12</a>, and this page treats them as such.</p>
+</div>
+</section>
+<section class="chip-sec" id="made" aria-labelledby="h-made">
+<h2 id="h-made"><span>5.</span>How it’s made</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Samsung makes its memory in its own fabs, on processes it names by generation rather than by a plain nanometre figure.</p>
+<ol class="steps">
+<li><b>DRAM:</b> Samsung's current leading node is what it calls "6th-generation 10 nanometer (nm)-class DRAM process (1c)" <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>.</li>
+<li><b>NAND:</b> the current shipping generation is 9th-gen V-NAND, in mass production since April 2024 <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-begins-industrys-first-mass-production-of-9th-gen-v-nand/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung begins industry’s first mass production of 9th-gen V-NAND (23 Apr 2024)">21</a>.</li>
+<li><b>Packaging:</b> HBM stacks are built and tested by Samsung itself, alongside its logic and foundry work <a class="cite" href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils HBM4E at NVIDIA GTC 2026 (17 Mar 2026)">7</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The naming needs care, because Samsung uses two systems and never publishes a map between them. Its HBM4 release says "6th-generation 10 nanometer (nm)-class DRAM process (1c)" <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>, while its DDR5 release calls the same era of technology "12 nanometer (nm)-class" throughout <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-announces-most-advanced-12nm-class-ddr5-dram-has-started-mass-production/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung announces most advanced 12nm-class DDR5 DRAM has started mass production">13</a>. Both are Samsung's own words; they are not stated to be the same thing, and this page does not assert that they are.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung has announced no standalone release for 1c development or 1c mass production. The node appears only inside the HBM4 announcement <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a> and in the Q3 2025 results line "the Company plans to proactively respond with capacity expansion in 1c" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-third-quarter-2025-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces third quarter 2025 results (30 Oct 2025)">18</a>. Looking forward, Samsung and ASML said in September 2026 that Samsung plans to bring High-NA EUV into DRAM production <b>by 2028</b>, which Samsung describes as "the first time in the industry" for high-volume memory <a class="cite" href="https://news.samsung.com/global/samsung-electronics-and-asml-expand-strategic-collaboration-for-next-generation-semiconductor-manufacturing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung and ASML expand strategic collaboration (8 Sep 2026)">27</a>. Samsung does not publish the layer count of its 9th-gen V-NAND; its naming is generational only <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-begins-industrys-first-mass-production-of-9th-gen-v-nand/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung begins industry’s first mass production of 9th-gen V-NAND (23 Apr 2024)">21</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="where" aria-labelledby="h-where">
+<h2 id="h-where"><span>6.</span>Where it’s made: fabs and addresses</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Samsung publishes street addresses for its chip sites, which is unusual in this industry. The memory fabs are in Korea, with one in China.</p>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Site</th><th>Address as Samsung publishes it</th></tr></thead><tbody>
+<tr><td>Giheung, Korea</td><td>1, Samsung-ro, Giheung-gu, Yongin-si, Gyeonggi-do 17113 &mdash; "Chip fabrication" <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a></td></tr>
+<tr><td>Hwaseong, Korea</td><td>1, Samsungjeonja-ro, Hwaseong-si, Gyeonggi-do 18448 &mdash; "Chip fabrication" <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a></td></tr>
+<tr><td>Pyeongtaek, Korea</td><td>114, Samsung-ro, Godeok-myun, Pyeongtaek-si, Gyeonggi-do 17786 <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a></td></tr>
+<tr><td>Cheonan, Korea</td><td>465, Beonyeong-ro, Seobuk-gu, Cheonan-si, Chungcheongnam-do 31086 <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a></td></tr>
+<tr><td>Onyang, Korea</td><td>158, Baebang-ro, Baebang-eup, Asan-si, Chungcheongnam-do 31489 <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a></td></tr>
+<tr><td>Xi'an, China</td><td>No.1999, North Xiaohe Road, Gaoxin District, Xi'an, Shaanxi, 710119 <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p><b>Pyeongtaek</b> opened in July 2017 making "fourth-generation V-NAND (64 layers)", which Samsung then called "currently the largest single Fab in the industry", built with a planned KRW 30 trillion of investment through 2021 <a class="cite" href="https://news.samsung.com/global/samsung-electronics-begins-mass-production-at-new-semiconductor-plant-in-pyeongtaek-south-korea" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung begins mass production at new Pyeongtaek plant (4 Jul 2017)">15</a>. <b>Xi'an</b> opened in 2014 to make "Samsung's advanced NAND flash memory chips: 3D V-NAND" <a class="cite" href="https://news.samsung.com/global/samsung-announces-operation-of-its-memory-facility-in-xian-china" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung announces operation of its memory facility in Xi’an, China (9 May 2014)">28</a>. For Xi'an, that 2014 release is effectively the last word: Samsung publishes no investment figure, no capacity and no current process node for the site <a class="cite" href="https://news.samsung.com/global/samsung-announces-operation-of-its-memory-facility-in-xian-china" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung announces operation of its memory facility in Xi’an, China (9 May 2014)">28</a> <a class="cite" href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener" title="Samsung Semiconductor: Locations: campuses and addresses">4</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The only capacity figure Samsung publishes is an aggregate. Its 1Q 2026 filing gives memory output as "658,532,038 (1,000 units)" in 1Gb equivalents at a utilisation rate of 100%, where "The utilization rate was calculated as the actual production time relative to the potential production capacity" <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 1Q Interim Report">9</a>. That is the whole memory business in one number: not per fab, not in wafers, and not split between DRAM and NAND. Anyone quoting a per-site Samsung memory capacity is not quoting Samsung <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 Half-Year Interim Report">8</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="works" aria-labelledby="h-works">
+<h2 id="h-works"><span>7.</span>How the memory works</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>The two products work on opposite principles. <b>DRAM</b> stores each bit as a charge in a tiny capacitor, which leaks &mdash; so the chip rewrites every bit thousands of times a second, and loses everything when power goes. <b>NAND</b> traps charge in a cell that holds it without power, which is why your files survive a reboot.</p>
+<p>Samsung's NAND is <b>V-NAND</b>: instead of shrinking cells sideways, it stacks them vertically, which is how capacity keeps rising <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p><b>HBM</b> is a third arrangement rather than a third technology. It is ordinary DRAM dies stacked on top of each other and wired vertically, sitting right next to the processor instead of across the board. The point is width, not raw speed per wire: Samsung's HBM4 delivers "a maximum of 3.3 terabytes-per-second (TB/s)" per stack <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>, where DDR5 runs at up to 8,000 megabits per second on each individual pin <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/ddr5/" target="_blank" rel="noopener" title="Samsung Semiconductor: DDR5 product page">5</a> &mdash; about 1 gigabyte per second per pin. HBM wins by having thousands of those connections at once rather than by making any one of them dramatically faster.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung's HBM4 splits the job across two different processes: the memory dies use the "6th-generation 10 nanometer (nm)-class DRAM process (1c)", while the base die underneath &mdash; the logic layer that talks to the processor &mdash; is built on a "4nm logic process" <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>. That combination is the practical argument behind Samsung's "memory, logic, foundry and advanced packaging" claim <a class="cite" href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils HBM4E at NVIDIA GTC 2026 (17 Mar 2026)">7</a>: an HBM stack is now a memory product that needs a logic fab to build.</p>
+</div>
+</section>
+<section class="chip-sec" id="specs" aria-labelledby="h-specs">
+<h2 id="h-specs"><span>8.</span>Specs explained</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Product</th><th>Headline numbers Samsung publishes</th></tr></thead><tbody>
+<tr><td>HBM4</td><td>11.7 Gbps per pin, "can be further enhanced up to 13Gbps"; up to 3.3 TB/s per stack; 24&ndash;36GB at 12-high, up to 48GB at 16-high <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a></td></tr>
+<tr><td>HBM4E</td><td>14 Gbps, scalable to 16 Gbps; up to 3.6 TB/s; 48GB, with 32GB and 64GB planned <a class="cite" href="https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung begins shipment of industry-first HBM4E samples (29 May 2026)">17</a></td></tr>
+<tr><td>HBM3E</td><td>36GB; 9.2 Gbps <a class="cite" href="https://semiconductor.samsung.com/dram/hbm/hbm3e/" target="_blank" rel="noopener" title="Samsung Semiconductor: HBM3E product page">29</a></td></tr>
+<tr><td>DDR5</td><td>Up to 8,000 Mbps; 16Gb to 32Gb densities; on-die ECC <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/ddr5/" target="_blank" rel="noopener" title="Samsung Semiconductor: DDR5 product page">5</a></td></tr>
+<tr><td>GDDR7</td><td>Up to 40 Gbps; 24Gb and 16Gb; PAM3 signalling <a class="cite" href="https://semiconductor.samsung.com/dram/gddr/" target="_blank" rel="noopener" title="Samsung Semiconductor: GDDR product page">20</a></td></tr>
+<tr><td>LPDDR6</td><td>Up to 10.7 Gbps; up to 16GB <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/ces-innovations-awards-2026-honoree-interview-lpddr6/" target="_blank" rel="noopener" title="Samsung Semiconductor: CES 2026 Innovation Award honoree interview: LPDDR6 (4 Sep 2026)">19</a></td></tr>
+<tr><td>9th-gen V-NAND</td><td>Toggle 5.1 at "up to 3.2 gigabits-per-second (Gbps)"; layer count not published <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-begins-industrys-first-mass-production-of-9th-gen-v-nand/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung begins industry’s first mass production of 9th-gen V-NAND (23 Apr 2024)">21</a></td></tr>
+</tbody></table></div>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Two of Samsung's own pages disagree about HBM3E, and this page will not blend them. The February 2024 development release put the 36GB part at "up to 1,280 gigabytes per second (GB/s)" <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-develops-industry-first-36gb-hbm3e-12h-dram/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung develops industry-first 36GB HBM3E 12H DRAM (27 Feb 2024)">30</a>; the current HBM3E product page gives "bandwidth of up to 1,180 gigabytes per second (GB/s)" for the same 36GB capacity <a class="cite" href="https://semiconductor.samsung.com/dram/hbm/hbm3e/" target="_blank" rel="noopener" title="Samsung Semiconductor: HBM3E product page">29</a>. Samsung has not published a correction reconciling the two, so both are reported here with their dates.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung's HBM4 is deliberately faster than the standard it implements. JEDEC's HBM4 specification, <b>JESD270-4</b>, sets 8 Gb/s per pin across 32 channels for up to 2 TB/s per stack and a 64GB maximum <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener" title="JEDEC: JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)">31</a>; Samsung's part runs at 11.7 Gbps and it says so directly, describing it as "exceeding the industry standard of 8Gbps by approximately 46%" <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>. The same pattern holds for LPDDR6: JEDEC's <b>JESD209-6</b> defines the architecture &mdash; dual sub-channels, on-the-fly burst length, Per Row Activation Counting &mdash; without stating a maximum data rate <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-releases-new-lpddr6-standard-enhance-mobile-and-ai-memory-performance" target="_blank" rel="noopener" title="JEDEC: JEDEC releases new LPDDR6 standard (9 Jul 2025)">32</a>, so Samsung's 10.7 Gbps is a product claim, not a ceiling set by the standard <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/ces-innovations-awards-2026-honoree-interview-lpddr6/" target="_blank" rel="noopener" title="Samsung Semiconductor: CES 2026 Innovation Award honoree interview: LPDDR6 (4 Sep 2026)">19</a>. Note also that Samsung's DDR5 product page is internally inconsistent, giving both 7,200 Mbps and 8,000 Mbps on the same page <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/ddr5/" target="_blank" rel="noopener" title="Samsung Semiconductor: DDR5 product page">5</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="pricing" aria-labelledby="h-pricing">
+<h2 id="h-pricing"><span>9.</span>Official pricing</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>Samsung publishes no price for any memory chip.</b> Its DRAM, HBM, GDDR and NAND pages carry specifications and a contact form, and no figure of any kind <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/ddr5/" target="_blank" rel="noopener" title="Samsung Semiconductor: DDR5 product page">5</a> <a class="cite" href="https://semiconductor.samsung.com/dram/hbm/hbm3e/" target="_blank" rel="noopener" title="Samsung Semiconductor: HBM3E product page">29</a> <a class="cite" href="https://semiconductor.samsung.com/dram/gddr/" target="_blank" rel="noopener" title="Samsung Semiconductor: GDDR product page">20</a>. Chips are sold through negotiated contracts and distributors, not a price list. It does publish how much its average selling price has <i>moved</i>, in its filings &mdash; see Expert below <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 1Q Interim Report">9</a>.</p>
+<p>Finished Samsung-branded drives are different &mdash; those do have published prices <a class="cite" href="https://news.samsung.com/us/samsung-announces-9100-pro-series-ssds-with-breakthrough-pcie-5-0-performance/" target="_blank" rel="noopener" title="Samsung Newsroom (US): Samsung announces 9100 PRO series SSDs (18 Mar 2025)">22</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<div class="pf-scroll"><table class="spec"><thead><tr><th>Product</th><th>Published price</th></tr></thead><tbody>
+<tr><td>9100 PRO 1TB / 2TB / 4TB</td><td>$199.99 / $299.99 / $549.99 at launch, March 2025 <a class="cite" href="https://news.samsung.com/us/samsung-announces-9100-pro-series-ssds-with-breakthrough-pcie-5-0-performance/" target="_blank" rel="noopener" title="Samsung Newsroom (US): Samsung announces 9100 PRO series SSDs (18 Mar 2025)">22</a></td></tr>
+<tr><td>990 EVO Plus 2TB</td><td>$579.99 on Samsung's own US store <a class="cite" href="https://www.samsung.com/us/memory-storage/nvme-ssd/990-evo-plus-gen4-nvme-ssd-2tb-sku-mz-v9s2t0b-am/" target="_blank" rel="noopener" title="Samsung: 990 EVO Plus 2TB product page">33</a></td></tr>
+<tr><td>P9 portable, 1TB to 8TB</td><td>&#8377;32,639 to &#8377;259,199, India, August 2026 <a class="cite" href="https://news.samsung.com/in/samsung-showcases-p9-and-p7-ssds-featuring-usb4-at-gamescom-2026" target="_blank" rel="noopener" title="Samsung Newsroom (India): Samsung showcases P9 and P7 SSDs featuring USB4 (27 Aug 2026)">23</a></td></tr>
+</tbody></table></div>
+<p>Those first two rows are worth reading together. A 4TB 9100 PRO launched at $549.99 in March 2025; by the time of this check a 2TB 990 EVO Plus was listed at $579.99 &mdash; half the capacity, a higher price, eighteen months apart <a class="cite" href="https://news.samsung.com/us/samsung-announces-9100-pro-series-ssds-with-breakthrough-pcie-5-0-performance/" target="_blank" rel="noopener" title="Samsung Newsroom (US): Samsung announces 9100 PRO series SSDs (18 Mar 2025)">22</a> <a class="cite" href="https://www.samsung.com/us/memory-storage/nvme-ssd/990-evo-plus-gen4-nvme-ssd-2tb-sku-mz-v9s2t0b-am/" target="_blank" rel="noopener" title="Samsung: 990 EVO Plus 2TB product page">33</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung does not publish price levels, but it does publish price <i>movements</i> &mdash; and its filings contain two different memory figures that are easy to mix up, because they run in opposite directions.</p>
+<p>Under the heading "Changes in average selling price", Samsung's 1Q 2026 report states "Memory saw an increase of approximately 146%" <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 1Q Interim Report">9</a>. <b>That is Samsung's own selling price</b> &mdash; what its memory business charges. Separately, under "Production material price trends", the same report notes "the price of memory for mobile increased by around 107%" <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 1Q Interim Report">9</a>, and the half-year report gives "prices increased by approximately 6% for mobile APs&mdash;a major production material for the DX Division&mdash;and 211% for memory for mobile" <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 Half-Year Interim Report">8</a>. <b>Those are what Samsung's own phone division pays</b> to buy memory as an input.</p>
+<p>So Samsung is simultaneously the seller enjoying a 146% ASP rise and a buyer absorbing a 211% cost rise on mobile memory, and it discloses both in the same document <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 1Q Interim Report">9</a> <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2026 Half-Year Interim Report">8</a>. Neither is a price list, but together they are an official, dated measure of the 2026 memory surge from both sides of it.</p>
+</div>
+</section>
+<section class="chip-sec" id="hbm" aria-labelledby="h-hbm">
+<h2 id="h-hbm"><span>10.</span>The HBM position</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>HBM is the memory that sits beside AI chips, and it is the most contested part of Samsung's business. The plain position as of this check: Samsung's <b>HBM4 is in mass production and has shipped commercially</b> <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>, and Samsung itself names NVIDIA as the customer <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces first quarter 2026 results (30 Apr 2026)">25</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Samsung's February 2026 release is unambiguous: it "has begun mass production of its industry-leading HBM4 and has shipped commercial products to customers" <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>. The customer is named in the Q1 2026 results, which record "the industry's first mass product sales of HBM4 and SOCAMM2 for NVIDIA's Vera Rubin platform" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces first quarter 2026 results (30 Apr 2026)">25</a>, and the GTC release describes the part as "designed for the NVIDIA Vera Rubin platform" <a class="cite" href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils HBM4E at NVIDIA GTC 2026 (17 Mar 2026)">7</a>. HBM4E samples followed in May 2026 <a class="cite" href="https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung begins shipment of industry-first HBM4E samples (29 May 2026)">17</a>, confirmed again in the Q2 results as "the industry's first HBM4E samples to major customers" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>What Samsung has <b>not</b> said matters as much, because a great deal of coverage fills these gaps. Samsung has published no statement that it passed NVIDIA's HBM3E 12-high qualification &mdash; its own wording stays at HBM3E being "in mass production and being sold to all related customers", with no customer named <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-third-quarter-2025-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces third quarter 2025 results (30 Oct 2025)">18</a>. It names no HBM3E customer at all. It gives no mass-production date for HBM4E, only that production will be "aligned with customer schedules" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung begins shipment of industry-first HBM4E samples (29 May 2026)">17</a>. And it publishes no claim that its 2026 HBM output is sold out. Each of those is widely reported; none is sourced to Samsung here, so none is stated as fact on this page.</p>
+</div>
+</section>
+<section class="chip-sec" id="buyers" aria-labelledby="h-buyers">
+<h2 id="h-buyers"><span>11.</span>Who buys it and why</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Almost everything with a screen or a server rack in it contains memory from one of three companies, and Samsung is the largest. Its customers are the people building the finished thing: phone makers, PC makers, cloud operators and, now, AI accelerator makers <a class="cite" href="https://images.samsung.com/kdp/ir/business-introduction/Samsung_Investor_Presentation_Memory_2026_V2.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: Investor presentation: Memory (2026)">1</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The one buyer Samsung names in its own memory material is <b>NVIDIA</b>, for HBM4 and SOCAMM2 on the Vera Rubin platform <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces first quarter 2026 results (30 Apr 2026)">25</a> <a class="cite" href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils HBM4E at NVIDIA GTC 2026 (17 Mar 2026)">7</a>. Beyond that, Samsung describes demand by category rather than by customer: in July 2026 it said it expects "robust demand centered on servers stemming from continued AI infrastructure capex and broader adoption of agentic AI" with growth in "server DRAM, eSSDs, and HBM" accelerating <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung's stated commercial posture in 2026 is scarcity management rather than volume growth: the Memory Business "achieved another record-breaking quarter by proactively addressing AI demand <b>despite limited capacity</b> with a primary focus on server products" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>. Its plan is to "lead the market by addressing strong demand with a focus on high-value-added products, such as HBM4, DDR5, SOCAMM2" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>, and it expects the market to stay "undersupplied, despite partial demand moderation in mobile and PCs" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>. In an undersupplied market, who gets allocation is the commercial decision, and Samsung does not publish how it makes it.</p>
+</div>
+</section>
+<section class="chip-sec" id="hidden" aria-labelledby="h-hidden">
+<h2 id="h-hidden"><span>12.</span>Hidden in plain sight</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>Samsung makes no memory in Texas.</b> The Taylor, Texas project, widely described in coverage of Samsung's US expansion, is a logic and foundry site: Samsung's own page describes "two new leading-edge logic fabs and research and development (R&amp;D) in Taylor" <a class="cite" href="https://semiconductor.samsung.com/sas/company/taylor" target="_blank" rel="noopener" title="Samsung Semiconductor: Taylor, Texas site page">34</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Samsung's CHIPS Act factsheet sets out the whole US plan: Taylor gets "two fab projects, a R&amp;D facility, and an advanced packaging facility" at nodes of "4nm + 2nm", and Austin gets "expansion and modernization of the existing semiconductor manufacturing campus" <a class="cite" href="https://image.semiconductor.samsung.com/content/samsung/p6/semiconductor-us/sas/chips-and-science-act_240416/samsung-factsheet-chips-final.pdf" target="_blank" rel="noopener" title="Samsung Semiconductor: CHIPS and Science Act factsheet">35</a>. Samsung's investment there is real and large &mdash; its Taylor page gives "$17 BILLION" as "Samsung's initial minimum investment in the Taylor fab", against "up to $4.745 billion in direct funding under the CHIPS and Science Act" <a class="cite" href="https://semiconductor.samsung.com/sas/company/taylor" target="_blank" rel="noopener" title="Samsung Semiconductor: Taylor, Texas site page">34</a> &mdash; but none of it is described by Samsung as memory production. Note that the April 2024 factsheet quotes the earlier, preliminary figure of "$6.4 billion in direct funding from the U.S. Department of Commerce" <a class="cite" href="https://image.semiconductor.samsung.com/content/samsung/p6/semiconductor-us/sas/chips-and-science-act_240416/samsung-factsheet-chips-final.pdf" target="_blank" rel="noopener" title="Samsung Semiconductor: CHIPS and Science Act factsheet">35</a>; the $4.745 billion on Samsung's current page is the finalised award, and this page leads with that.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The second thing hidden in plain sight is the timeline gap noted earlier: Samsung's official milestone history records every V-NAND generation and every DRAM first from 64Kb in 1983 onward, and does not mention HBM once <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>. A third: Samsung's current Taylor page gives the "Year when all CHIPS and Science Act facilities will be operational" as <b>2030</b>, against a groundbreaking year of 2022 <a class="cite" href="https://semiconductor.samsung.com/sas/company/taylor" target="_blank" rel="noopener" title="Samsung Semiconductor: Taylor, Texas site page">34</a> &mdash; an eight-year build. Earlier and much nearer dates circulated widely when the project was announced; this page quotes only the figure Samsung publishes now.</p>
+</div>
+</section>
+<section class="chip-sec" id="weak" aria-labelledby="h-weak">
+<h2 id="h-weak"><span>13.</span>Weak spots</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<ul>
+<li><b>Capacity, in its own words.</b> Samsung says it met Q2 2026 demand "despite limited capacity" <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>.</li>
+<li><b>No HBM history.</b> Its official timeline has no HBM milestone at all, in the generation where HBM decides the league table <a class="cite" href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener" title="Samsung Semiconductor Newsroom: About us: semiconductor milestone timeline">14</a>.</li>
+<li><b>Unclear own numbers.</b> Its DDR5 page gives two different top speeds, and its HBM3E bandwidth differs between two Samsung pages <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/ddr5/" target="_blank" rel="noopener" title="Samsung Semiconductor: DDR5 product page">5</a> <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-develops-industry-first-36gb-hbm3e-12h-dram/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung develops industry-first 36GB HBM3E 12H DRAM (27 Feb 2024)">30</a> <a class="cite" href="https://semiconductor.samsung.com/dram/hbm/hbm3e/" target="_blank" rel="noopener" title="Samsung Semiconductor: HBM3E product page">29</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The disclosure gap is a real weakness for anyone trying to check Samsung's position. There is no Samsung release announcing 1c development or production <a class="cite" href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung ships industry-first commercial HBM4 (12 Feb 2026)">2</a>; no published layer count for 9th-gen V-NAND <a class="cite" href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-begins-industrys-first-mass-production-of-9th-gen-v-nand/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung begins industry’s first mass production of 9th-gen V-NAND (23 Apr 2024)">21</a>; no Samsung statement of GDDR7 mass production, only a product page listing the speed <a class="cite" href="https://semiconductor.samsung.com/dram/gddr/" target="_blank" rel="noopener" title="Samsung Semiconductor: GDDR product page">20</a> <a class="cite" href="https://news.samsung.com/global/samsung-develops-industrys-first-gddr7-dram-to-unlock-the-next-generation-of-graphics-performance" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung develops industry’s first GDDR7 DRAM (19 Jul 2023)">36</a>; and no stated production status for LPDDR6 <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/ces-innovations-awards-2026-honoree-interview-lpddr6/" target="_blank" rel="noopener" title="Samsung Semiconductor: CES 2026 Innovation Award honoree interview: LPDDR6 (4 Sep 2026)">19</a>. In each case the widely-cited figure comes from somewhere other than Samsung.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Structurally, the weak spot is that memory profit is not separable from the rest of DS. Samsung reports DS-Division operating profit only <a class="cite" href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_2Q_conference_eng.pdf" target="_blank" rel="noopener" title="Samsung Electronics IR: 2Q 2026 earnings presentation">3</a>, so the margin on HBM specifically &mdash; the number that would settle most arguments about whether Samsung is winning or losing the AI memory race &mdash; is not published by Samsung at all, and cannot be derived from its filings. The second is China: Xi'an is a significant NAND site whose current technology Samsung has not described publicly since 2014 <a class="cite" href="https://news.samsung.com/global/samsung-announces-operation-of-its-memory-facility-in-xian-china" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung announces operation of its memory facility in Xi’an, China (9 May 2014)">28</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="india" aria-labelledby="h-india">
+<h2 id="h-india"><span>14.</span>India angle</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>Samsung has no memory fab in India.</b> What it has is research: Samsung Semiconductor India Research (SSIR), in Bengaluru, Karnataka <a class="cite" href="https://semiconductor.samsung.com/ssir/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung Semiconductor India Research (SSIR)">37</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Samsung describes SSIR as "part of the global network of Samsung Electronics Co., Ltd. for providing component solutions, featuring industry-leading technologies in the areas of System LSI, Memory and Foundry in Asia Pacific region" <a class="cite" href="https://semiconductor.samsung.com/ssir/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung Semiconductor India Research (SSIR)">37</a>. Its memory scope is given as "DRAM and Flash technologies for various applications including servers, big data, AI/HPC, PC, IoT, 5G, automotive and more", covering DRAM, SSD, eStorage and MCP work <a class="cite" href="https://semiconductor.samsung.com/ssir/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung Semiconductor India Research (SSIR)">37</a>. Samsung publishes neither an establishment date nor a headcount for it <a class="cite" href="https://semiconductor.samsung.com/ssir/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung Semiconductor India Research (SSIR)">37</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung does publish Indian prices for finished drives &mdash; the P9 and P7 portable SSDs were launched with rupee pricing from &#8377;27,839 to &#8377;259,199 <a class="cite" href="https://news.samsung.com/in/samsung-showcases-p9-and-p7-ssds-featuring-usb4-at-gamescom-2026" target="_blank" rel="noopener" title="Samsung Newsroom (India): Samsung showcases P9 and P7 SSDs featuring USB4 (27 Aug 2026)">23</a> &mdash; so India is a priced retail market for Samsung storage even though it is not a manufacturing location for Samsung memory. No Samsung source found in this check announces memory manufacturing, assembly or test investment in India, and this page states that as a finding rather than leaving it unsaid <a class="cite" href="https://semiconductor.samsung.com/ssir/" target="_blank" rel="noopener" title="Samsung Semiconductor: Samsung Semiconductor India Research (SSIR)">37</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="next" aria-labelledby="h-next">
+<h2 id="h-next"><span>15.</span>What’s next</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Only what Samsung has actually announced:</p>
+<ul>
+<li><b>HBM4E:</b> samples shipped; mass production "aligned with customer schedules", no date <a class="cite" href="https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung begins shipment of industry-first HBM4E samples (29 May 2026)">17</a>.</li>
+<li><b>V10 BV-NAND:</b> announced with over 400 layers; no production status stated <a class="cite" href="https://news.samsung.com/global/samsung-unveils-next-gen-3d-memory-vision-at-fms-2026-charting-the-future-of-ai-infrastructure" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils next-gen 3D memory vision at FMS 2026 (5 Aug 2026)">12</a> <a class="cite" href="https://semiconductor.samsung.com/news-events/tech-blog/fms-2026-3d-nand-innovation-award-v10-bv-nand-pushing-the-boundaries-of-ai-storage-beyond-400-layers/" target="_blank" rel="noopener" title="Samsung Semiconductor: FMS 2026 3D NAND Innovation Award: V10 BV-NAND beyond 400 layers (31 Aug 2026)">26</a>.</li>
+<li><b>High-NA EUV in DRAM:</b> planned by 2028, with ASML <a class="cite" href="https://news.samsung.com/global/samsung-electronics-and-asml-expand-strategic-collaboration-for-next-generation-semiconductor-manufacturing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung and ASML expand strategic collaboration (8 Sep 2026)">27</a>.</li>
+</ul>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Samsung's own H2 2026 outlook expects demand "centered on servers", with "growth in demand for server DRAM, eSSDs, and HBM" accelerating and the market staying undersupplied <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>. Its stated response is product mix rather than volume: HBM4, DDR5 and SOCAMM2 <a class="cite" href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung Electronics announces second quarter 2026 results (30 Jul 2026)">6</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Further out, Samsung's FMS 2026 material describes <b>zHBM</b> as a concept promising "approximately eight times the performance of HBM5" and "more than 10 times the memory density of HBM5" <a class="cite" href="https://news.samsung.com/global/samsung-unveils-next-gen-3d-memory-vision-at-fms-2026-charting-the-future-of-ai-infrastructure" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung unveils next-gen 3D memory vision at FMS 2026 (5 Aug 2026)">12</a>. Both zHBM and HBM5 are concepts in Samsung's own framing, with no product claim attached, and this page reports them that way. The nearer and more consequential item is the ASML agreement: Young Hyun Jun's framing of it &mdash; "The AI era is transforming the semiconductor industry and increasing the importance of technological innovation across the entire value chain" &mdash; sits alongside a concrete 2028 target for High-NA EUV in high-volume DRAM <a class="cite" href="https://news.samsung.com/global/samsung-electronics-and-asml-expand-strategic-collaboration-for-next-generation-semiconductor-manufacturing" target="_blank" rel="noopener" title="Samsung Newsroom: Samsung and ASML expand strategic collaboration (8 Sep 2026)">27</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>16.</span>Sources</h2>
+<p class="note">37 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator; <b>Standard</b> = a published industry standard; <b>Press</b> = news coverage, used only where no official source exists and labelled as such in the text.</p>
+<ol class="src-list">
+<li id="src-1"><b>Samsung Electronics IR</b>: <a href="https://images.samsung.com/kdp/ir/business-introduction/Samsung_Investor_Presentation_Memory_2026_V2.pdf" target="_blank" rel="noopener">Investor presentation: Memory (2026)</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing" target="_blank" rel="noopener">Samsung ships industry-first commercial HBM4 (12 Feb 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>Samsung Electronics IR</b>: <a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_2Q_conference_eng.pdf" target="_blank" rel="noopener">2Q 2026 earnings presentation</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/about-us/locations/" target="_blank" rel="noopener">Locations: campuses and addresses</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/dram/ddr/ddr5/" target="_blank" rel="noopener">DDR5 product page</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results" target="_blank" rel="noopener">Samsung Electronics announces second quarter 2026 results (30 Jul 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-unveils-hbm4e-showcasing-comprehensive-ai-solutions-nvidia-partnership-and-vision-at-nvidia-gtc-2026" target="_blank" rel="noopener">Samsung unveils HBM4E at NVIDIA GTC 2026 (17 Mar 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>Samsung Electronics IR</b>: <a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_Half_Interim_Report.pdf" target="_blank" rel="noopener">2026 Half-Year Interim Report</a><span class="st st-filing">Filing</span></li>
+<li id="src-9"><b>Samsung Electronics IR</b>: <a href="https://images.samsung.com/is/content/samsung/assets/global/ir/docs/2026_1Q_Interim_Report.pdf" target="_blank" rel="noopener">2026 1Q Interim Report</a><span class="st st-filing">Filing</span></li>
+<li id="src-10"><b>Samsung Electronics</b>: <a href="https://www.samsung.com/global/ir/governance-csr/board-of-directors.html" target="_blank" rel="noopener">Board of Directors</a><span class="st st-official">Official</span></li>
+<li id="src-11"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-announces-new-leadership-4" target="_blank" rel="noopener">Samsung Electronics announces new leadership (21 Nov 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-unveils-next-gen-3d-memory-vision-at-fms-2026-charting-the-future-of-ai-infrastructure" target="_blank" rel="noopener">Samsung unveils next-gen 3D memory vision at FMS 2026 (5 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-announces-most-advanced-12nm-class-ddr5-dram-has-started-mass-production/" target="_blank" rel="noopener">Samsung announces most advanced 12nm-class DDR5 DRAM has started mass production</a><span class="st st-official">Official</span></li>
+<li id="src-14"><b>Samsung Semiconductor Newsroom</b>: <a href="https://news.samsungsemiconductor.com/global/about-us/" target="_blank" rel="noopener">About us: semiconductor milestone timeline</a><span class="st st-official">Official</span></li>
+<li id="src-15"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-begins-mass-production-at-new-semiconductor-plant-in-pyeongtaek-south-korea" target="_blank" rel="noopener">Samsung begins mass production at new Pyeongtaek plant (4 Jul 2017)</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/about-us/our-story/" target="_blank" rel="noopener">Our story</a><span class="st st-official">Official</span></li>
+<li id="src-17"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-begins-shipment-of-industry-first-hbm4e-samples" target="_blank" rel="noopener">Samsung begins shipment of industry-first HBM4E samples (29 May 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-announces-third-quarter-2025-results" target="_blank" rel="noopener">Samsung Electronics announces third quarter 2025 results (30 Oct 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/news-events/tech-blog/ces-innovations-awards-2026-honoree-interview-lpddr6/" target="_blank" rel="noopener">CES 2026 Innovation Award honoree interview: LPDDR6 (4 Sep 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-20"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/dram/gddr/" target="_blank" rel="noopener">GDDR product page</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/news-events/news/samsung-electronics-begins-industrys-first-mass-production-of-9th-gen-v-nand/" target="_blank" rel="noopener">Samsung begins industry’s first mass production of 9th-gen V-NAND (23 Apr 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>Samsung Newsroom (US)</b>: <a href="https://news.samsung.com/us/samsung-announces-9100-pro-series-ssds-with-breakthrough-pcie-5-0-performance/" target="_blank" rel="noopener">Samsung announces 9100 PRO series SSDs (18 Mar 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>Samsung Newsroom (India)</b>: <a href="https://news.samsung.com/in/samsung-showcases-p9-and-p7-ssds-featuring-usb4-at-gamescom-2026" target="_blank" rel="noopener">Samsung showcases P9 and P7 SSDs featuring USB4 (27 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/news-events/tech-blog/introducing-samsungs-socamm2-new-lpddr-memory-module-empowering-next-generation-ai-infrastructure/" target="_blank" rel="noopener">Introducing Samsung’s SOCAMM2</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-announces-first-quarter-2026-results" target="_blank" rel="noopener">Samsung Electronics announces first quarter 2026 results (30 Apr 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/news-events/tech-blog/fms-2026-3d-nand-innovation-award-v10-bv-nand-pushing-the-boundaries-of-ai-storage-beyond-400-layers/" target="_blank" rel="noopener">FMS 2026 3D NAND Innovation Award: V10 BV-NAND beyond 400 layers (31 Aug 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-electronics-and-asml-expand-strategic-collaboration-for-next-generation-semiconductor-manufacturing" target="_blank" rel="noopener">Samsung and ASML expand strategic collaboration (8 Sep 2026)</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-announces-operation-of-its-memory-facility-in-xian-china" target="_blank" rel="noopener">Samsung announces operation of its memory facility in Xi’an, China (9 May 2014)</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/dram/hbm/hbm3e/" target="_blank" rel="noopener">HBM3E product page</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/news-events/news/samsung-develops-industry-first-36gb-hbm3e-12h-dram/" target="_blank" rel="noopener">Samsung develops industry-first 36GB HBM3E 12H DRAM (27 Feb 2024)</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-and-industry-leaders-collaborate-release-jesd270-4-hbm4-standard-advancing" target="_blank" rel="noopener">JEDEC releases JESD270-4 HBM4 standard (16 Apr 2025)</a><span class="st st-standard">Standard</span></li>
+<li id="src-32"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec%C2%AE-releases-new-lpddr6-standard-enhance-mobile-and-ai-memory-performance" target="_blank" rel="noopener">JEDEC releases new LPDDR6 standard (9 Jul 2025)</a><span class="st st-standard">Standard</span></li>
+<li id="src-33"><b>Samsung</b>: <a href="https://www.samsung.com/us/memory-storage/nvme-ssd/990-evo-plus-gen4-nvme-ssd-2tb-sku-mz-v9s2t0b-am/" target="_blank" rel="noopener">990 EVO Plus 2TB product page</a><span class="st st-official">Official</span></li>
+<li id="src-34"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/sas/company/taylor" target="_blank" rel="noopener">Taylor, Texas site page</a><span class="st st-official">Official</span></li>
+<li id="src-35"><b>Samsung Semiconductor</b>: <a href="https://image.semiconductor.samsung.com/content/samsung/p6/semiconductor-us/sas/chips-and-science-act_240416/samsung-factsheet-chips-final.pdf" target="_blank" rel="noopener">CHIPS and Science Act factsheet</a><span class="st st-official">Official</span></li>
+<li id="src-36"><b>Samsung Newsroom</b>: <a href="https://news.samsung.com/global/samsung-develops-industrys-first-gddr7-dram-to-unlock-the-next-generation-of-graphics-performance" target="_blank" rel="noopener">Samsung develops industry’s first GDDR7 DRAM (19 Jul 2023)</a><span class="st st-official">Official</span></li>
+<li id="src-37"><b>Samsung Semiconductor</b>: <a href="https://semiconductor.samsung.com/ssir/" target="_blank" rel="noopener">Samsung Semiconductor India Research (SSIR)</a><span class="st st-official">Official</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#glance">1. At a glance</a><a href="#company">2. Company card</a><a href="#story">3. The story</a><a href="#lineup">4. The lineup</a><a href="#made">5. How it’s made</a><a href="#where">6. Where it’s made: fabs and addresses</a><a href="#works">7. How the memory works</a><a href="#specs">8. Specs explained</a><a href="#pricing">9. Official pricing</a><a href="#hbm">10. The HBM position</a><a href="#buyers">11. Who buys it and why</a><a href="#hidden">12. Hidden in plain sight</a><a href="#weak">13. Weak spots</a><a href="#india">14. India angle</a><a href="#next">15. What’s next</a><a href="#sources">16. Sources</a></div></div>
+<div class="sidebar-card"><h3>Quick facts</h3><div style="font-size:.82rem;color:var(--muted);line-height:1.6"><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Legal name</span><span style="color:var(--fg);font-weight:500;text-align:right">Samsung Electronics Co., Ltd.</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Registered HQ</span><span style="color:var(--fg);font-weight:500;text-align:right">Suwon, Gyeonggi-do, Korea</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Memory run by</span><span style="color:var(--fg);font-weight:500;text-align:right">Young Hyun Jun, Vice Chairman, co-CEO</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Memory revenue</span><span style="color:var(--fg);font-weight:500;text-align:right">KRW 120.8 trillion (Q2 2026)</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Makes its own chips?</span><span style="color:var(--fg);font-weight:500;text-align:right">Yes — its own fabs</span></div><div style="display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--border2)"><span>Chip prices published?</span><span style="color:var(--fg);font-weight:500;text-align:right">No</span></div></div></div>
+<div class="sidebar-card"><h3>Memory</h3><a href="/ai-atlas/memory/" class="sidebar-link">All memory makers</a><a href="/ai-atlas/memory/sk-hynix/" class="sidebar-link">SK hynix</a><a href="/ai-atlas/memory/micron/" class="sidebar-link">Micron</a><a href="/ai-atlas/memory/kioxia/" class="sidebar-link">Kioxia</a><a href="/ai-atlas/ai-chips/" class="sidebar-link">AI chips</a><a href="/ai-atlas/ai-chips/ai-memory-hbm/" class="sidebar-link">HBM explained</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Samsung%20Memory%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2Fsamsung%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Samsung%20Memory%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2Fsamsung%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Samsung%20Memory%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2Fsamsung%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Samsung%20Memory%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2Fsamsung%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Samsung%20Memory%3A%20The%20Complete%20Guide%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2Fsamsung%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>
