@@ -260,6 +260,10 @@ a.brand-card:hover{border-color:var(--indigo)}
 .mem-group-p{font-size:.86rem;color:var(--muted);margin:0 0 14px;max-width:72ch}
 .mem-soon{opacity:.62}
 .mem-soon .brand-card-t{color:var(--muted)}
+/* S174: these two were used on every memory card since S165 with no rule behind them,
+   so the hub cards rendered on browser defaults. */
+.brand-card-t{font-size:1.02rem;font-weight:650;color:var(--fg);line-height:1.35;margin-bottom:6px}
+.brand-card-d{font-size:.84rem;color:var(--muted);line-height:1.5;margin:0}
 .mem-badge{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
   border-radius:100px;padding:1px 8px;margin-left:6px;color:var(--muted);background:var(--bg2);border:1px solid var(--border2)}
 </style>
@@ -326,9 +330,9 @@ a.brand-card:hover{border-color:var(--indigo)}
     <span class="label-tag">AI Atlas · Memory</span>
     <h1>Memory: DRAM, NAND and HBM, maker by maker</h1>
     <p class="hero-lead">Who actually makes the world’s memory, what they make, where the fabs are, and what each
-    company publishes about it — against what it does not. Every number links to the company’s own document.</p>
+    company publishes about it — against what it does not. Every number links to the company’s own document.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
     <div class="art-meta">
-      <span class="meta-tag mt-indigo">16 of 23 guides written</span>
+      <span class="meta-tag mt-indigo">18 of 23 guides written</span>
       <span class="meta-tag mt-gray">Official sources only</span>
       <span class="meta-tag mt-gray">Checked September 2026</span>
     </div>
@@ -371,10 +375,21 @@ sold at retail. Some own their own assembly and test plants; none run a DRAM or 
 <a href="/ai-atlas/memory/patriot/" class="brand-card"><div class="brand-card-t">Patriot Memory</div><div class="brand-card-d">Viper Xtreme 5 at the top, Viper Steel 5 Infinite and Elite 5 beneath, Signature Line for value, ECC, RDIMM and CUDIMM</div></a>
 <div class="brand-card mem-soon"><div class="brand-card-t">Mushkin<span class="mem-badge">Planned</span></div><div class="brand-card-d">Guide not written yet. This card is here so the list of makers is complete, not so it looks finished.</div></div>
 <a href="/ai-atlas/memory/lexar/" class="brand-card"><div class="brand-card-t">Lexar</div><div class="brand-card-d">ARES for overclockers, THOR for mainstream gaming, plain Lexar DDR5 at JEDEC speed — but memory is only a tenth of the catalogue</div></a>
-<div class="brand-card mem-soon"><div class="brand-card-t">PNY<span class="mem-badge">Planned</span></div><div class="brand-card-d">Guide not written yet. This card is here so the list of makers is complete, not so it looks finished.</div></div>
+<a href="/ai-atlas/memory/pny/" class="brand-card"><div class="brand-card-t">PNY</div><div class="brand-card-d">XLR8 Gaming, EPIC-X RGB, Performance and Low Profile lines; its own pages report 21 memory results against 31 consumer graphics cards</div></a>
 <div class="brand-card mem-soon"><div class="brand-card-t">Transcend<span class="mem-badge">Planned</span></div><div class="brand-card-d">Guide not written yet. This card is here so the list of makers is complete, not so it looks finished.</div></div>
-<div class="brand-card mem-soon"><div class="brand-card-t">Silicon Power<span class="mem-badge">Planned</span></div><div class="brand-card-d">Guide not written yet. This card is here so the list of makers is complete, not so it looks finished.</div></div>
+<a href="/ai-atlas/memory/silicon-power/" class="brand-card"><div class="brand-card-t">Silicon Power</div><div class="brand-card-d">XPOWER gaming lines led by Cyclone and Zenith, including a DDR5 CUDIMM, with Turbine and AirCool on DDR4; plain SP UDIMM and SODIMM down to DDR3; DDR5 and DDR4 RDIMM for servers</div></a>
 </div>
+
+<h2 class="mem-group-h">Start here: how memory actually behaves</h2>
+<p class="mem-group-p">Plain-English explainers that the brand guides above assume you already know.</p>
+<div class="brand-grid">
+<a href="/ai-atlas/memory/xmp-expo-explained/" class="brand-card"><div class="brand-card-t">XMP, EXPO and why your memory runs slower than the box says</div><div class="brand-card-d">Why a fast kit boots slow, what a profile really is, and what Intel and AMD say about your warranty.</div></a><a href="/ai-atlas/memory/whose-dies-are-inside/" class="brand-card"><div class="brand-card-t">Whose DRAM chips are actually inside your memory stick</div><div class="brand-card-d">Two brands publish a code that tells you. Most say nothing. What is actually knowable, and how.</div></a><a href="/ai-atlas/memory/memory-warranty-compared/" class="brand-card"><div class="brand-card-t">What a memory &quot;lifetime warranty&quot; actually promises</div><div class="brand-card-d">Five brands, five meanings of one word — and the clause that ends your cover for reading a chip.</div></a><a href="/ai-atlas/memory/buying-memory-in-india/" class="brand-card"><div class="brand-card-t">Buying memory in India: what the brands actually promise you</div><div class="brand-card-d">Who is actually here, what your warranty is worth, and what the law does and does not require.</div></a>
+</div>
+
+<h2 class="mem-group-h">Compare them all</h2>
+<p class="mem-group-p">Every guide written so far in one table &mdash; what each company makes, whose chips the brands use,
+where it is made and what each publishes about price.
+<a href="/ai-atlas/memory/compare/">Open the comparison page</a>.</p>
 
 <h2 class="mem-group-h">Related reading</h2>
 <p class="mem-group-p">Memory is where a lot of the AI hardware story is decided. These pages sit in our AI Chips
@@ -386,7 +401,7 @@ section and cover the same ground from the chip side.</p>
 </div>
 </div>
 
-<footer class="site-footer">
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Memory%3A%20DRAM%2C%20NAND%20and%20HBM%2C%20maker%20by%20maker%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Memory%3A%20DRAM%2C%20NAND%20and%20HBM%2C%20maker%20by%20maker%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Memory%3A%20DRAM%2C%20NAND%20and%20HBM%2C%20maker%20by%20maker%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Memory%3A%20DRAM%2C%20NAND%20and%20HBM%2C%20maker%20by%20maker%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Memory%3A%20DRAM%2C%20NAND%20and%20HBM%2C%20maker%20by%20maker%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fai-atlas%2Fmemory%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">
