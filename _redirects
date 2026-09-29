@@ -8,6 +8,11 @@
 
 # --- dynamic ---
 /wsp/*  /csp/:splat  301
+# S182: the /hardware/ restructure -- ai-chips and memory moved out from under
+# /ai-atlas/. Two wildcard rules cover every page in both sections instead of
+# ~85 individual ones, the same pattern the /wsp/ rule above already uses.
+/ai-atlas/ai-chips/*  /hardware/ai-chips/:splat  301
+/ai-atlas/memory/*  /hardware/memory/:splat  301
 
 # --- one-off URL changes ---
 /home.html  /  301

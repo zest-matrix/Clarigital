@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Whose DRAM Chips Are Inside Your Memory? | Clarigital</title>
+<meta name="description" content="Three companies make almost all the world&#x27;s DRAM. Which one made the chips on your memory stick, how to find out, and why most brands will not tell you.">
+<link rel="canonical" href="https://www.clarigital.com/hardware/memory/whose-dies-are-inside/">
+<meta property="og:title" content="Whose DRAM Chips Are Inside Your Memory?">
+<meta property="og:description" content="Three companies make almost all the world&#x27;s DRAM. Which one made the chips on your memory stick, how to find out, and why most brands will not tell you.">
+<meta property="og:url" content="https://www.clarigital.com/hardware/memory/whose-dies-are-inside/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Whose DRAM chips are actually inside your memory stick", "description": "Three companies make almost all the world's DRAM. Which one made the chips on your memory stick, how to find out, and why most brands will not tell you.", "url": "https://www.clarigital.com/hardware/memory/whose-dies-are-inside/", "mainEntityOfPage": "https://www.clarigital.com/hardware/memory/whose-dies-are-inside/", "dateModified": "2026-09-26", "inLanguage": "en", "author": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "citation": ["https://semiconductor.samsung.com/dram/ddr/", "https://www.micron.com/products/memory/dram-components", "https://www.kingston.com/en/blog/system-builder/reliable-quality-dram-testing", "https://www.kingston.com/en/memory/gaming/fury-renegade-ddr5-rgb", "https://news.skhynix.com/en/semiconductor-101-sk-hynix-guide-to-key-industry-players/", "https://www.skhynix.com/company/UI-FR-CP0401/", "https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/", "https://americas.lexar.com/product/lexar-thor-oc-ddr5-desktop-memory/", "https://www.corsair.com/us/en/explorer/diy-builder/memory/what-integrated-circuits-ics-are-used-on-my-corsair-memory/", "https://help.corsair.com/hc/en-us/articles/34383413781777-RAM-FAQ", "https://www.corsair.com/us/en/explorer/diy-builder/memory/how-to-decode-your-corsair-memory/", "https://www.kingston.com/en/memory/memory-part-number-decoder", "https://semiconductor.samsung.com/support/", "https://download.semiconductor.samsung.com/resources/part-number-decoder/ddr3_sdram_module-0.pdf", "https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf", "https://semiconductor.samsung.com/dram/module/rdimm/m393a2k40bb2-ctd/", "https://www.micron.com/sales-support/design-tools/fbga-parts-decoder", "https://www.micron.com/support/tools-and-utilities/fbga", "https://www.micron.com/sales-support/design-tools", "https://www.kingston.com/en/support/technical/products/gaming-memory", "https://americas.lexar.com/support/faqs/", "https://www.patriotmemory.com/products/xtreme5-ddr5-performance-ram", "https://pnysupport.freshdesk.com/support/solutions/articles/43000646567-can-i-mix-different-brands-of-ram-", "https://www.silicon-power.com/faq/memory-faq/", "https://mushkin.com/memory/", "https://www.micron.com/sales-support/sales-network/consumer-brand", "https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business", "https://www.mouser.com/datasheet/2/671/ddr5_rdimm_core-3310292.pdf", "https://media.digikey.com/pdf/Data%20Sheets/Micron%20Technology%20Inc%20PDFs/DDR4_SDRAM_RDIMM_Core_RevB_Dec2021.pdf", "https://www.micron.com/sales-support/design-tools/serial-presence-detect", "https://www.jedec.org/standards-documents/docs/jesd400-5d", "https://www.jedec.org/standards-documents/docs/jesd300-5", "https://www.jedec.org/standards-documents/docs/jesd79-5d", "https://www.jedec.org/news/pressreleases/jedec-announces-publication-spd5118-hub-and-serial-presence-detect-device-and", "https://www.jedec.org/standards-documents/docs/jep-106ab", "https://www.jedec.org/standards-documents/id-codes-order-form", "https://www.jedec.org/standards-documents/dictionary/terms/mfr-code", "https://download.semiconductor.samsung.com/resources/user-manual/x16%20only_8G_C_DDR4_Samsung_Spec_Rev1.5_Apr.17.pdf", "https://www.corsair.com/us/en/p/memory/cmt64gx5m2b6000c30/dominator-titanium-rgb-64gb-2x32gb-ddr5-dram-6000mt-s-cl30-memory-kit-black-cmt64gx5m2b6000c30", "https://www.kingston.com/en/company/testing-process", "https://support.patriotmemory.com/hc/en-us/articles/360009380133--General-FAQ-Do-I-need-to-send-the-entire-DRAM-kit-in-if-only-one-of-the-sticks-is-malfunctioning", "https://www.kingston.com/en/support/technical/products/desktop-notebook-memory", "https://www.corsair.com/us/en/s/icue", "https://www.kingston.com/en/gaming/fury-ctrl"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Hardware", "item": "https://www.clarigital.com/hardware/"}, {"@type": "ListItem", "position": 3, "name": "Memory", "item": "https://www.clarigital.com/hardware/memory/"}, {"@type": "ListItem", "position": 4, "name": "Whose DRAM chips are actually inside your memory stick", "item": "https://www.clarigital.com/hardware/memory/whose-dies-are-inside/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl-deep{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government,.st-analyst{color:#A78BFA;background:rgba(167,139,250,.12)}.st-vendor{color:var(--muted);background:var(--bg2)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+
+.mem-group-h{font-size:1.02rem;font-weight:700;color:var(--fg);margin:26px 0 4px}
+.mem-group-p{font-size:.86rem;color:var(--muted);margin:0 0 14px;max-width:72ch}
+.mem-soon{opacity:.62}
+.mem-soon .brand-card-t{color:var(--muted)}
+/* S174: these two were used on every memory card since S165 with no rule behind them,
+   so the hub cards rendered on browser defaults. */
+.brand-card-t{font-size:1.02rem;font-weight:650;color:var(--fg);line-height:1.35;margin-bottom:6px}
+.brand-card-d{font-size:.84rem;color:var(--muted);line-height:1.5;margin:0}
+.mem-badge{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:100px;padding:1px 8px;margin-left:6px;color:var(--muted);background:var(--bg2);border:1px solid var(--border2)}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/hardware/">Hardware</a><span class="sep">/</span><a href="/hardware/memory/">Memory</a><span class="sep">/</span><span>Whose DRAM chips are actually inside your memory stick</span></nav>
+    <span class="label-tag">Memory &middot; Explainer</span>
+    <h1>Whose DRAM chips are actually inside your memory stick</h1>
+    <p class="hero-lead">Three companies make almost all the world’s DRAM. Everything else on the shelf is their silicon on somebody else’s circuit board. So which of the three made the chips you bought? Two brands publish a code that tells you, two admit the answer can change without the part number changing, and most say nothing at all. What is readable off the sticker, what is readable off the chip, what is stored on the module itself, and what nobody publishes. Three reading levels, every claim sourced.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Explainer</span>
+      <span class="meta-tag mt-gray">8 sections &middot; 3 levels</span>
+      <span class="meta-tag mt-gray">44 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Each section starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document. Where only a company&rsquo;s own claim exists, the text says so.</div>
+<section class="chip-sec" id="question" aria-labelledby="h-question">
+<h2 id="h-question"><span>1.</span>The question, and why it is hard to answer</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Three companies make almost all of the world&rsquo;s DRAM: <b>Samsung</b>, <b>SK hynix</b> and <b>Micron</b>. Everything else you see on a shelf &mdash; Corsair, Kingston, Lexar, Patriot, Mushkin, PNY and the rest &mdash; is one of those three companies&rsquo; silicon soldered onto somebody else&rsquo;s circuit board.</p>
+<p>So a reasonable question: whose chips did you actually buy?</p>
+<p>It turns out to be a surprisingly hard question, and the reason is not secrecy so much as structure. The company whose name is on the box usually did not make the part that matters, and is rarely obliged to say who did.</p>
+<p>Two brands do publish a code that tells you. Two admit the answer can change without the part number changing. Most publish nothing at all. This page sets out exactly which is which.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Start with the two-layer structure, because everything else follows from it. Samsung states the division in its own words: "A DRAM chip is an individual semiconductor device that stores data temporarily using an array of memory cells", while "A DRAM module is a memory component that integrates multiple DRAM chips onto a small circuit board and serves as the main memory in computers and electronic devices." And the reason the second exists: "A single DRAM chip cannot be used directly as system memory, so multiple chips are assembled onto a circuit board to create a form that can be installed in a computer or server." <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/" target="_blank" rel="noopener" title="Samsung: DDR: chips and modules">1</a></p>
+<p>Micron keeps the same split in its catalogue, selling <b>DRAM components</b> and <b>DRAM modules</b> as separate product categories, and pitching the former at people who will build something from them: "Accelerate your time to market with quality DRAM components &mdash; rigorously tested for a wide range of applications." <a class="cite" href="https://www.micron.com/products/memory/dram-components" target="_blank" rel="noopener" title="Micron: DRAM memory components">2</a></p>
+<p>The module brands buy from that components business. Kingston is the most forthcoming about it, naming all three suppliers as a set: "We leverage our strong relationships with the world&rsquo;s leading DRAM suppliers&mdash;Micron, SK Hynix, and Samsung&mdash;to ensure the DRAM components we use meet our stringent requirements for reliability and performance." <a class="cite" href="https://www.kingston.com/en/blog/system-builder/reliable-quality-dram-testing" target="_blank" rel="noopener" title="Kingston: Reliable quality: how Kingston tests DRAM">3</a></p>
+<p class="note">Note what that sentence does and does not tell you. It names the <b>pool</b> of three. It does not tell you which of the three is in the box in your hand, and Kingston&rsquo;s consumer product pages do not either &mdash; the FURY Renegade DDR5 RGB page lists heat spreader design, RGB lighting, XMP certification and motherboard qualification, and names no chip maker at all <a class="cite" href="https://www.kingston.com/en/memory/gaming/fury-renegade-ddr5-rgb" target="_blank" rel="noopener" title="Kingston: FURY Renegade DDR5 RGB product page">4</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>There is an asymmetry in this market worth naming at the outset, because it shapes every section below. <b>The chip makers have no commercial reason to tell you which modules contain their dies, and the module brands have a commercial reason not to.</b></p>
+<p>On the chip-maker side, SK hynix&rsquo;s own newsroom says it "is classed as an integrated device manufacturer (IDM) that is capable of handling both the design and production of chips at its in-house facilities" <a class="cite" href="https://news.skhynix.com/en/semiconductor-101-sk-hynix-guide-to-key-industry-players/" target="_blank" rel="noopener" title="SK hynix: Semiconductor 101: a guide to key industry players">5</a> &mdash; a description of what it makes, not of who resells it. Checked for a published list of module brands using its dies: its brand-identity page <a class="cite" href="https://www.skhynix.com/company/UI-FR-CP0401/" target="_blank" rel="noopener" title="SK hynix: Brand identity">6</a>, its industry-players explainer <a class="cite" href="https://news.skhynix.com/en/semiconductor-101-sk-hynix-guide-to-key-industry-players/" target="_blank" rel="noopener" title="SK hynix: Semiconductor 101: a guide to key industry players">5</a> and its back-end process series <a class="cite" href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener" title="SK hynix: Semiconductor back-end process episode 1: understanding semiconductor testing">7</a>. <b>No such list was found on any of them.</b></p>
+<p class="note">A concrete instance of that asymmetry. Lexar has published an "Empowered By SK hynix" Gold Label certification, dated 2023, on at least one product page &mdash; recorded and sourced on our Lexar guide, and <b>not present on the THOR OC page checked here</b> <a class="cite" href="https://americas.lexar.com/product/lexar-thor-oc-ddr5-desktop-memory/" target="_blank" rel="noopener" title="Lexar: THOR OC DDR5 desktop memory product page">8</a>. A targeted search of <code>skhynix.com</code>, <code>news.skhynix.com</code> and <code>product.skhynix.com</code> for any SK hynix side of that programme <b>returned nothing</b>, and SK hynix&rsquo;s brand-identity page carries no logo-use, co-branding or partner-certification guidance <a class="cite" href="https://www.skhynix.com/company/UI-FR-CP0401/" target="_blank" rel="noopener" title="SK hynix: Brand identity">6</a>. So the claim that a given module holds SK hynix dies is made by the module vendor and cannot be checked against anything SK hynix publishes. <b>That does not make the claim false.</b> It makes it unverifiable from the outside, which is a different and more common situation than it sounds.</p>
+<p>One important limit on this whole page, stated here rather than buried. <b>SK hynix&rsquo;s entire product documentation was unreachable for this check.</b> Its corporate site publishes no product pages and routes all product content to <code>product.skhynix.com</code>, whose <code>robots.txt</code> returned an HTTP 500 on one attempt and timed out on another, so our retrieval tool declined every path on that host &mdash; including its part-number search tool and all its datasheets. <b>That is our fetcher&rsquo;s policy on an unreadable robots file, not a refusal by SK hynix.</b> Where this page reports that SK hynix publishes nothing on a question, read it as <b>&ldquo;not establishable from here&rdquo;</b> rather than as a finding about SK hynix. Samsung and Micron were both readable, and are treated accordingly.</p>
+</div>
+</section>
+<section class="chip-sec" id="sticker" aria-labelledby="h-sticker">
+<h2 id="h-sticker"><span>2.</span>What the module itself tells you</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>The quickest answer, on two brands, is printed on the label.</p>
+<p><b>Corsair</b> puts a version code on the sticker, and publishes what it maps to <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-integrated-circuits-ics-are-used-on-my-corsair-memory/" target="_blank" rel="noopener" title="Corsair: What integrated circuits (ICs) are used on my CORSAIR memory?">9</a>:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Version on the label</th><th>Corsair&rsquo;s own words</th></tr></thead><tbody>
+<tr><td>V3.XX</td><td>"Micron-based ICs"</td></tr>
+<tr><td>V4.XX</td><td>"Samsung-based ICs"</td></tr>
+<tr><td>V5.XX</td><td>"Hynix-based ICs"</td></tr>
+</tbody></table></div>
+<p>So on a Corsair kit you can read the chip maker off the box &mdash; after you have bought it. The same table appears on Corsair&rsquo;s RAM FAQ and on its part-number decoding page, so it is not a one-page accident <a class="cite" href="https://help.corsair.com/hc/en-us/articles/34383413781777-RAM-FAQ" target="_blank" rel="noopener" title="Corsair: RAM FAQ">10</a> <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/how-to-decode-your-corsair-memory/" target="_blank" rel="noopener" title="Corsair: Decode the part number and version of your CORSAIR memory">11</a>.</p>
+<p><b>Kingston</b> encodes it in the part number itself on some lines, which we come to next. Every other brand covered here publishes nothing of the kind.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Kingston&rsquo;s part-number decoder is the most detailed disclosure found in this check, and it is also the most uneven &mdash; which makes it more interesting, not less. The decoder defines a <b>DRAM manufacturer</b> field on some product lines and omits it entirely on others <a class="cite" href="https://www.kingston.com/en/memory/memory-part-number-decoder" target="_blank" rel="noopener" title="Kingston: Memory part number decoder">12</a>:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Kingston line</th><th>Names the chip maker?</th></tr></thead><tbody>
+<tr><td>Server Premier, DDR4 and DDR5</td><td>Yes</td></tr>
+<tr><td>Design-In, DDR5</td><td>Yes</td></tr>
+<tr><td>Design-In, DDR4</td><td>Yes, plus two</td></tr>
+<tr><td>ValueRAM, DDR4</td><td>Yes</td></tr>
+<tr><td>ValueRAM, DDR5</td><td><b>No</b></td></tr>
+<tr><td>FURY, DDR4 and DDR5</td><td><b>No</b></td></tr>
+</tbody></table></div>
+<p>The values themselves, where the field exists: Server Premier and Design-In DDR5 use "H &ndash; SK Hynix, M &ndash; Micron, S &ndash; Samsung"; Design-In DDR4 adds "N &ndash; Nanya" and "K &ndash; Kingston"; ValueRAM DDR4 labels it "H = DRAM MFGR" and offers SK Hynix, Micron, Samsung and Kingston. On FURY, the character in that position is a revision number instead <a class="cite" href="https://www.kingston.com/en/memory/memory-part-number-decoder" target="_blank" rel="noopener" title="Kingston: Memory part number decoder">12</a>.</p>
+<p class="note"><b>Read the two ValueRAM rows together, because that is the finding.</b> Kingston&rsquo;s ValueRAM DDR4 part numbers name the chip maker; its ValueRAM DDR5 part numbers dropped the field <a class="cite" href="https://www.kingston.com/en/memory/memory-part-number-decoder" target="_blank" rel="noopener" title="Kingston: Memory part number decoder">12</a>. The disclosure went backwards across a generation within a single product family. Kingston publishes no explanation for the change, and none was found in this check.</p>
+<p>And note which lines kept it: <b>server and design-in parts</b>, sold to people who integrate memory into systems and who have contractual reasons to care which die is inside. The gaming line &mdash; FURY, the one an enthusiast buys &mdash; carries no such field on any of the DDR3, DDR4 or DDR5 layouts Kingston documents.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Samsung publishes a part-number decoder too, and the story of it is worth telling because it is a case where a company&rsquo;s navigation and its file server disagree.</p>
+<p>Samsung&rsquo;s support section <b>does not link a part-number decoder</b>. Its support index lists Quality Support, Tools &amp; Resources, Consumer Storage Support, FAQs and contact information, and no decoder appears among them &mdash; nor on its Tools &amp; Resources page, which lists Technical Resources, Fabrication Process, Dictionary, DS Open-Ecosystem, Magician and Tools &amp; Software <a class="cite" href="https://semiconductor.samsung.com/support/" target="_blank" rel="noopener" title="Samsung: Semiconductor support">13</a>. But a decoder is live on Samsung&rsquo;s download host: a PDF titled <b>&ldquo;DDR3 Code Information&rdquo;</b>, subtitled <b>&ldquo;Module&rdquo;</b> and dated <b>&ldquo;Aug.2012&rdquo;</b>, which walks the module part number position by position <a class="cite" href="https://download.semiconductor.samsung.com/resources/part-number-decoder/ddr3_sdram_module-0.pdf" target="_blank" rel="noopener" title="Samsung: DDR3 Code Information: Module (part number decoder, Aug. 2012)">14</a>.</p>
+<p>Its most relevant field for this page is <b>field 10, &ldquo;Component Revision&rdquo;</b>, which enumerates eight die letters, M-die through G-die <a class="cite" href="https://download.semiconductor.samsung.com/resources/part-number-decoder/ddr3_sdram_module-0.pdf" target="_blank" rel="noopener" title="Samsung: DDR3 Code Information: Module (part number decoder, Aug. 2012)">14</a>. Samsung also encodes the speed there, at fields 15 to 16, as codes such as "K0 : DDR3-1600 (800MHz@CL=11, tRCD=11, tRP=11)" <a class="cite" href="https://download.semiconductor.samsung.com/resources/part-number-decoder/ddr3_sdram_module-0.pdf" target="_blank" rel="noopener" title="Samsung: DDR3 Code Information: Module (part number decoder, Aug. 2012)">14</a>. So on a Samsung-branded module the die revision is not merely knowable &mdash; it is a character in the part number.</p>
+<p class="note">Three limits on that, all of which matter. <b>First, it is DDR3 and dated August 2012.</b> Probes for DDR4 and DDR5 equivalents on the same host returned 404, and a targeted search across Samsung&rsquo;s three semiconductor hosts for other &ldquo;Code Information&rdquo; documents returned only this one file. <b>Second, it decodes Samsung-branded modules</b>, not a third party&rsquo;s module built from Samsung chips &mdash; it tells you nothing about a Corsair or Patriot stick. <b>Third, it is unlinked:</b> reachable by direct URL but from no navigation path found in this check, and the older <code>www.samsung.com</code> decoder URLs now redirect to the semiconductor homepage. Treat it as a surviving document rather than a maintained one.</p>
+<p>There is a sharper Samsung asymmetry on the same question, between how Samsung documents a module in a PDF and how it documents modules on the web. Its DDR4 Unbuffered DIMM datasheet publishes an ordering-information table that <b>names the exact component inside each module</b> &mdash; part number M378A1K43DB2-CTD is listed with a component composition of "1Gx8(K4A8G085WD-BCTD)*8" <a class="cite" href="https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf" target="_blank" rel="noopener" title="Samsung: DDR4 8Gb D-die Unbuffered DIMM datasheet, Rev. 1.1, June 2018">15</a>. Its public DDR chips-and-modules pages give capacity, speed, voltage and package and <b>no component part number or die revision</b> <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/" target="_blank" rel="noopener" title="Samsung: DDR: chips and modules">1</a>. The information exists, published by Samsung, in the PDF and not on the web page.</p>
+<p class="note">A limit on that comparison, stated rather than glossed. <b>Samsung&rsquo;s individual module product pages could not be retrieved for this check</b> &mdash; the registered-DIMM URL tried here resolved to the DDR category page instead, and the part number did not appear on what rendered <a class="cite" href="https://semiconductor.samsung.com/dram/module/rdimm/m393a2k40bb2-ctd/" target="_blank" rel="noopener" title="Samsung: M393A2K40BB2-CTD registered DIMM product page">16</a>. So what any one Samsung module page does or does not list is <b>not established here</b>, and the contrast above rests on the category pages that did render. The two documents are also different module families: the datasheet covers unbuffered DIMMs, the product URL a registered one.</p>
+</div>
+</section>
+<section class="chip-sec" id="chip" aria-labelledby="h-chip">
+<h2 id="h-chip"><span>3.</span>Reading the chip</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>If the label will not tell you, the chips themselves might. Every DRAM package carries printed markings, and one maker publishes a tool for turning them into a part number.</p>
+<p><b>Micron</b> runs a public decoder for the short code on its chips. Its instruction is simple: "Simply enter the five-digit code in the FBGA Code field and click &lsquo;Search&rsquo; to get the full part number." It works the other way too: "To view the FBGA code for a full part number, enter the part number in the Part Number field and click &lsquo;Search&rsquo; to return the FBGA code." <a class="cite" href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener" title="Micron: FBGA parts decoder">17</a></p>
+<p>And it tells you where to look on the chip: "The FGBA code is the second 5-digit code found in the chip marking. It is typically preceded by an MT mark." <a class="cite" href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener" title="Micron: FBGA parts decoder">17</a></p>
+<p class="note">The misspelling of &ldquo;FBGA&rdquo; as <b>&ldquo;FGBA&rdquo;</b> is Micron&rsquo;s own, and it appears that way on both instances of the tool <a class="cite" href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener" title="Micron: FBGA parts decoder">17</a> <a class="cite" href="https://www.micron.com/support/tools-and-utilities/fbga" target="_blank" rel="noopener" title="Micron: FBGA and Component Marking Decoder">18</a>. The <b>MT</b> prefix is the useful part for our question: an MT mark is itself a Micron signature.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Why a short code at all? Because a DRAM package is small. Micron describes the FBGA code as an abbreviated marking that differs from the full part number, used because of space limitations on FBGA-packaged components <a class="cite" href="https://www.micron.com/support/tools-and-utilities/fbga" target="_blank" rel="noopener" title="Micron: FBGA and Component Marking Decoder">18</a>, and frames its tool as making that marking legible: its design-tools index says the "FBGA Part Marking Decoder makes it easier to understand that part marking" <a class="cite" href="https://www.micron.com/sales-support/design-tools" target="_blank" rel="noopener" title="Micron: Design tools">19</a>.</p>
+<p class="note">A small oddity, recorded because a careful reader will hit it: <b>Micron names this one tool two different ways, and its URL a third.</b> Its design-tools index describes it as the "FBGA Part Marking Decoder" <a class="cite" href="https://www.micron.com/sales-support/design-tools" target="_blank" rel="noopener" title="Micron: Design tools">19</a>; both live instances of the tool head it "FBGA and component marking decoder" and carry the browser title "FBGA and part decoder" <a class="cite" href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener" title="Micron: FBGA parts decoder">17</a> <a class="cite" href="https://www.micron.com/support/tools-and-utilities/fbga" target="_blank" rel="noopener" title="Micron: FBGA and Component Marking Decoder">18</a>; and the sales-support URL slug reads <code>fbga-parts-decoder</code>.</p>
+<p>Both instances of the decoder point the reader at a fuller document for the position of the code on the component &mdash; <b>Customer Service Note 11</b> <a class="cite" href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener" title="Micron: FBGA parts decoder">17</a> <a class="cite" href="https://www.micron.com/support/tools-and-utilities/fbga" target="_blank" rel="noopener" title="Micron: FBGA and Component Marking Decoder">18</a>. <b>That note could not be retrieved in this check.</b> Its indexed URL returned 404, and Micron&rsquo;s PDF host rejected automated retrieval outright with a page reading "The requested URL was rejected. Please consult with your administrator." So Micron names a topside-marking position guide that this page cannot read, and cannot summarise.</p>
+<p>What about the other two makers? <b>Samsung:</b> checked its support index, its tools-and-resources pages, its DRAM and DDR pages, a module product page, and ran a targeted search across its three semiconductor hosts for marking, topside-marking and package-marking documents. <b>No statement on chip markings was found.</b> <a class="cite" href="https://semiconductor.samsung.com/support/" target="_blank" rel="noopener" title="Samsung: Semiconductor support">13</a> <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/" target="_blank" rel="noopener" title="Samsung: DDR: chips and modules">1</a> <a class="cite" href="https://semiconductor.samsung.com/dram/module/rdimm/m393a2k40bb2-ctd/" target="_blank" rel="noopener" title="Samsung: M393A2K40BB2-CTD registered DIMM product page">16</a></p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>SK hynix does not publish a marking guide that this check could find, but it does publish the clearest explanation of <i>why</i> anything is printed on a DRAM package at all &mdash; and the answer connects markings to testing rather than to branding.</p>
+<p>From its own engineering series: "When testing is completed, the test results must be recorded on the exterior of the package and, consequently, laser marking is required." <a class="cite" href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener" title="SK hynix: Semiconductor back-end process episode 1: understanding semiconductor testing">7</a> The marking, in other words, is the test result made physical. The same article sets out what is tested and when: "Wafer testing is the process of examining the electrical characteristics of a chip at the wafer level", and "Wafer tests inspect the properties and qualities of the numerous chips that are on a wafer." <a class="cite" href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener" title="SK hynix: Semiconductor back-end process episode 1: understanding semiconductor testing">7</a></p>
+<p>It also publishes the order of operations: "Wafer testing usually follows the following process: EPM (Electrical Parameter Monitoring) &rarr; Wafer Burn-in &rarr; Test &rarr; Repair &rarr; Test." <a class="cite" href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener" title="SK hynix: Semiconductor back-end process episode 1: understanding semiconductor testing">7</a></p>
+<p class="note">What was checked, and what was not. The testing article and the industry-players explainer were both read; <b>neither contains a guide to what the marking fields mean</b>, and a search of the newsroom found no marking-specific article <a class="cite" href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener" title="SK hynix: Semiconductor back-end process episode 1: understanding semiconductor testing">7</a> <a class="cite" href="https://news.skhynix.com/en/semiconductor-101-sk-hynix-guide-to-key-industry-players/" target="_blank" rel="noopener" title="SK hynix: Semiconductor 101: a guide to key industry players">5</a>. SK hynix&rsquo;s datasheets, which would carry ordering-information tables, live only on the host that could not be reached at all (see the Expert level of the first section). <b>So the correct statement is that no SK hynix marking guide was reachable, not that none exists.</b></p>
+<p>The practical upshot of this section is narrower than it first looks. Reading a chip marking works well for Micron, because Micron publishes a decoder and prints an MT prefix <a class="cite" href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener" title="Micron: FBGA parts decoder">17</a>. For Samsung it works if you already know the component part-number scheme, which Samsung publishes in datasheets rather than as a marking guide <a class="cite" href="https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf" target="_blank" rel="noopener" title="Samsung: DDR4 8Gb D-die Unbuffered DIMM datasheet, Rev. 1.1, June 2018">15</a>. For SK hynix, nothing readable here supports it. And in all three cases <b>you must be able to see the chips</b> &mdash; which on most consumer kits means removing a heat spreader that is often glued on, and doing so may well end your warranty.</p>
+</div>
+</section>
+<section class="chip-sec" id="substitution" aria-labelledby="h-substitution">
+<h2 id="h-substitution"><span>4.</span>The same part number, different chips</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>Here is the fact that makes the whole question slippery, and only two brands in this section state it plainly.</p>
+<p><b>Corsair</b>, on its own page about which chips it uses: "CORSAIR memory kits may be built with different integrated circuits (ICs) even if the kits share the same part number." <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-integrated-circuits-ics-are-used-on-my-corsair-memory/" target="_blank" rel="noopener" title="Corsair: What integrated circuits (ICs) are used on my CORSAIR memory?">9</a></p>
+<p><b>Kingston</b>, in its gaming-memory support answers: "Since parts may be built with different combinations of components at the factory under a single part number, it&rsquo;s always recommended to buy them as a kit of 2 or kit of 4, which are built and packaged with the same identical components." <a class="cite" href="https://www.kingston.com/en/support/technical/products/gaming-memory" target="_blank" rel="noopener" title="Kingston: Technical support: gaming memory">20</a></p>
+<p>So the part number is not a promise about the silicon. Two kits with identical model numbers, bought a year apart, may hold chips from two different companies &mdash; and both brands say so in writing.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Corsair states it twice on the same page, once in the opening paragraph and once beneath the version-code table, and the identical sentence also appears on its RAM FAQ <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-integrated-circuits-ics-are-used-on-my-corsair-memory/" target="_blank" rel="noopener" title="Corsair: What integrated circuits (ICs) are used on my CORSAIR memory?">9</a> <a class="cite" href="https://help.corsair.com/hc/en-us/articles/34383413781777-RAM-FAQ" target="_blank" rel="noopener" title="Corsair: RAM FAQ">10</a>. Its decoding page puts the same point differently: "The same part number may be available in several revisions on the market", and describes the sub-version specifically as "the IC manufacturer revision or PCB revision" <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/how-to-decode-your-corsair-memory/" target="_blank" rel="noopener" title="Corsair: Decode the part number and version of your CORSAIR memory">11</a>.</p>
+<p>That is the reason Corsair&rsquo;s version code exists at all. The version is not decoration; it is how a fixed part number is allowed to hold a moving target.</p>
+<p class="note"><b>The five other brands readable here never tell buyers this.</b> Checked, page by page, for any statement that the ICs may change under a fixed part number: Lexar&rsquo;s support FAQ and its THOR OC product page <a class="cite" href="https://americas.lexar.com/support/faqs/" target="_blank" rel="noopener" title="Lexar: Support FAQs">21</a> <a class="cite" href="https://americas.lexar.com/product/lexar-thor-oc-ddr5-desktop-memory/" target="_blank" rel="noopener" title="Lexar: THOR OC DDR5 desktop memory product page">8</a>; Patriot&rsquo;s Viper Xtreme 5 product page <a class="cite" href="https://www.patriotmemory.com/products/xtreme5-ddr5-performance-ram" target="_blank" rel="noopener" title="Patriot: Viper Xtreme 5 DDR5 performance RAM product page">22</a>; PNY&rsquo;s memory knowledge base <a class="cite" href="https://pnysupport.freshdesk.com/support/solutions/articles/43000646567-can-i-mix-different-brands-of-ram-" target="_blank" rel="noopener" title="PNY: Can I mix different brands of RAM?">23</a>; Silicon Power&rsquo;s memory FAQ <a class="cite" href="https://www.silicon-power.com/faq/memory-faq/" target="_blank" rel="noopener" title="Silicon Power: Memory FAQ">24</a>; Mushkin&rsquo;s memory pages <a class="cite" href="https://mushkin.com/memory/" target="_blank" rel="noopener" title="Mushkin: Memory product lines">25</a>. <b>No such statement was found on any of them.</b> The nearest approach is Lexar&rsquo;s THOR OC page, which notes that "Timing and voltage parameters may vary from batch to batch" <a class="cite" href="https://americas.lexar.com/product/lexar-thor-oc-ddr5-desktop-memory/" target="_blank" rel="noopener" title="Lexar: THOR OC DDR5 desktop memory product page">8</a> &mdash; a batch-variation disclosure that stops short of naming the ICs as the thing that varies. Several of these brands nonetheless advise buying matched kits, advice whose actual reason goes unstated.</p>
+<p>Crucial is a gap rather than an absence, and the distinction matters. <b>Every page of <code>crucial.com</code> was refused in this check</b>, in every region tried, by a web-application firewall returning "The requested URL was rejected. Please consult with your administrator." That is not a robots exclusion and not a statement by Crucial; it is a block on automated retrieval. <b>Nothing on this page should be read as a finding about what Crucial does or does not publish.</b></p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Crucial does have one thing settled, though by construction rather than by disclosure. Micron describes Crucial as "Micron&rsquo;s global consumer brand", "uniquely able to connect millions of customers to the innovation and technology that Micron has been perfecting for more than four decades" <a class="cite" href="https://www.micron.com/sales-support/sales-network/consumer-brand" target="_blank" rel="noopener" title="Micron: Our consumer brand">26</a>.</p>
+<p class="note">A precision point, because it is tempting to overclaim here. That page establishes that <b>Crucial is Micron&rsquo;s brand</b>. It does not state that Crucial modules are built with Micron DRAM, and <b>no page was readable in this check that says so in Micron&rsquo;s or Crucial&rsquo;s own words</b> &mdash; the one page whose title promises exactly that is on the blocked domain. So &ldquo;a Crucial module holds Micron dies&rdquo; is a reasonable inference from the brand relationship, and this page presents it as an inference rather than a quotation.</p>
+<p>That inference is also now historical at the consumer end. On <b>3 December 2025</b> Micron "announced its decision to exit the Crucial consumer business, including the sale of Crucial consumer-branded products at key retailers, e-tailers and distributors worldwide", with shipments continuing "through the consumer channel until the end of fiscal Q2 (February 2026)" <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business" target="_blank" rel="noopener" title="Micron: Micron announces exit from Crucial consumer business (3 December 2025)">27</a>. Its stated reason, from EVP and Chief Business Officer Sumit Sadana: "The AI-driven growth in the data center has led to a surge in demand for memory and storage." <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business" target="_blank" rel="noopener" title="Micron: Micron announces exit from Crucial consumer business (3 December 2025)">27</a> Micron committed to "continued warranty service and support for Crucial products" and to continuing "the sale of Micron-branded enterprise products to commercial channel customers globally" <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business" target="_blank" rel="noopener" title="Micron: Micron announces exit from Crucial consumer business (3 December 2025)">27</a>.</p>
+<p>Which leaves a neat irony worth stating. <b>The one consumer brand whose die maker was never in doubt is the one leaving the consumer market</b> &mdash; and it left because the dies were worth more sold to data centres than sold to you. That is the same force behind the substitution clauses above: when die supply is tight and priced by the hour, a brand that fixed its part number to one supplier&rsquo;s silicon would be unable to ship.</p>
+<p>Two notes on how far the admissions go. Corsair&rsquo;s applies to the ICs specifically and is paired with a code that lets you check after the fact <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-integrated-circuits-ics-are-used-on-my-corsair-memory/" target="_blank" rel="noopener" title="Corsair: What integrated circuits (ICs) are used on my CORSAIR memory?">9</a>. Kingston&rsquo;s is broader &mdash; "different combinations of components", not only DRAM <a class="cite" href="https://www.kingston.com/en/support/technical/products/gaming-memory" target="_blank" rel="noopener" title="Kingston: Technical support: gaming memory">20</a> &mdash; and is <b>not</b> paired with a consumer-line code that lets you check, since FURY part numbers carry no manufacturer field <a class="cite" href="https://www.kingston.com/en/memory/memory-part-number-decoder" target="_blank" rel="noopener" title="Kingston: Memory part number decoder">12</a>. Of the two disclosures, Corsair&rsquo;s is the one a buyer can act on.</p>
+</div>
+</section>
+<section class="chip-sec" id="spd" aria-labelledby="h-spd">
+<h2 id="h-spd"><span>5.</span>Is it machine-readable?</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>There is a chip on every memory module whose whole job is to describe the module to the computer. It is called <b>SPD</b>, for Serial Presence Detect, and it is how your machine knows what you plugged in.</p>
+<p>So the obvious hope: does the SPD record who made the DRAM? If it did, software could simply tell you.</p>
+<p>The honest answer is that <b>this page cannot establish it either way</b>, and the reason is worth understanding, because it is not the reason you would guess. The document that would settle it is <b>free of charge</b> &mdash; it simply requires registering with JEDEC to download, which this check did not do.</p>
+<p>What can be said is that the space exists. A manufacturer&rsquo;s datasheet shows two whole blocks of the SPD chip set aside for "Manufacturing information" <a class="cite" href="https://www.mouser.com/datasheet/2/671/ddr5_rdimm_core-3310292.pdf" target="_blank" rel="noopener" title="Micron: 288-pin DDR5 RDIMM core product description, Rev. G, May 2023">28</a>. What is written in them is defined by a standard this page did not read.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Take the structure first, from Micron&rsquo;s DDR5 RDIMM documentation. The SPD is a 1024-byte device divided into blocks, and two of those blocks are reserved for manufacturing data <a class="cite" href="https://www.mouser.com/datasheet/2/671/ddr5_rdimm_core-3310292.pdf" target="_blank" rel="noopener" title="Micron: 288-pin DDR5 RDIMM core product description, Rev. G, May 2023">28</a>:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Block</th><th>Bytes</th><th>Micron&rsquo;s own label</th></tr></thead><tbody>
+<tr><td>8</td><td>512&ndash;575</td><td>"Manufacturing information"</td></tr>
+<tr><td>9</td><td>576&ndash;639</td><td>"Manufacturing information"</td></tr>
+</tbody></table></div>
+<p>And Micron then hands off responsibility for what goes in them: "The first 640 bytes are programmed by Micron to comply with JEDEC standard JESD400-5, &lsquo;DDR5 Serial Presence Detect (SPD) Contents.&rsquo;" <a class="cite" href="https://www.mouser.com/datasheet/2/671/ddr5_rdimm_core-3310292.pdf" target="_blank" rel="noopener" title="Micron: 288-pin DDR5 RDIMM core product description, Rev. G, May 2023">28</a> The datasheet contains <b>no byte-level table</b> naming a manufacturer or vendor identifier.</p>
+<p>This is not a DDR5 quirk. The DDR4 generation did the same thing lower down a smaller SPD, in 128-byte blocks rather than 64: bytes 320&ndash;383 labelled "Manufacturing information", with the first 384 bytes "programmed by Micron to comply with JEDEC standard JC-45, &lsquo;Appendix X: Serial Presence Detect (SPD) for DDR4 SDRAM Modules.&rsquo;" <a class="cite" href="https://media.digikey.com/pdf/Data%20Sheets/Micron%20Technology%20Inc%20PDFs/DDR4_SDRAM_RDIMM_Core_RevB_Dec2021.pdf" target="_blank" rel="noopener" title="Micron: DDR4 SDRAM RDIMM core product description, Rev. B, December 2021">29</a> <b>Consistent practice across two generations: publish the block, name the standard, do not republish the byte map.</b></p>
+<p class="note">Micron also runs a public SPD lookup tool, which tells you what it is for and stops short of our question: "A system&rsquo;s basic input/output system (BIOS) may depend on serial presence-detect (SPD) data to properly configure and optimize the memory sub-system", and "Micron&rsquo;s SPD data conforms to JEDEC industry standards&hellip;" <a class="cite" href="https://www.micron.com/sales-support/design-tools/serial-presence-detect" target="_blank" rel="noopener" title="Micron: Serial presence detect lookup tool">30</a>. <b>It makes no claim that SPD records a DRAM manufacturer.</b></p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Now the part that surprised this check, and that corrects a premise we started with. <b>The paywall in this story is in the wrong place.</b></p>
+<p>The documents describing the <i>module</i> are free. JESD400-5D.01, "DDR5 SERIAL PRESENCE DETECT (SPD) CONTENTS", Release 1.4, published January 2026, is listed by JEDEC as "Free download. Registration or login required." <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd400-5d" target="_blank" rel="noopener" title="JEDEC: JESD400-5D.01, DDR5 Serial Presence Detect (SPD) Contents, Release 1.4, January 2026">31</a> So is the SPD hub standard, JESD300-5B.01, published May 2023 <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd300-5" target="_blank" rel="noopener" title="JEDEC: JESD300-5B.01, SPD5118 Hub and Serial Presence Detect Device Standard, May 2023">32</a>. The only priced document in the chain is the one describing the <i>die</i>: JESD79-5D, DDR5 SDRAM, version 1.41, November 2025, at a non-member price of <b>US$423</b> <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd79-5d" target="_blank" rel="noopener" title="JEDEC: JESD79-5D, DDR5 SDRAM, version 1.41, November 2025">33</a>.</p>
+<p class="note">So the obstacle to answering &ldquo;whose dies are these?&rdquo; from the standards is <b>a registration form, not a paywall</b>. Ten JEDEC pages and press releases were read for this check, and none of the free, unauthenticated material names a manufacturer-ID field in SPD <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd400-5d" target="_blank" rel="noopener" title="JEDEC: JESD400-5D.01, DDR5 Serial Presence Detect (SPD) Contents, Release 1.4, January 2026">31</a> <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd300-5" target="_blank" rel="noopener" title="JEDEC: JESD300-5B.01, SPD5118 Hub and Serial Presence Detect Device Standard, May 2023">32</a> <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-announces-publication-spd5118-hub-and-serial-presence-detect-device-and" target="_blank" rel="noopener" title="JEDEC: JEDEC announces publication of the SPD5118 hub and DDR5 SPD contents specifications (10 November 2022)">34</a>. <b>That is a statement about what the free pages say, not about what the standard defines.</b> Given that Micron labels two entire 64-byte blocks "Manufacturing information" and points at JESD400-5 for their contents, the likelier reality is that the standard does define such fields and the free material simply never describes them. This page asserts neither.</p>
+<p>JEDEC does run a registry of manufacturer identities, which is the closest thing to a definitive answer that exists. <b>JEP106BP</b>, "Standard Manufacturer&rsquo;s Identification Code", published September 2026, defines the format: "The manufacturers identification code is defined by one or more 8 bit fields, each consisting of 7 data bits plus 1 odd parity bit", and it is "assigned, maintained and updated by the JEDEC Office" <a class="cite" href="https://www.jedec.org/standards-documents/docs/jep-106ab" target="_blank" rel="noopener" title="JEDEC: JEP106BP, Standard Manufacturer’s Identification Code, September 2026 (JEDEC’s URL slug still reads jep-106ab; the page serves the current BP revision)">35</a>. Note &ldquo;manufacturers&rdquo; without an apostrophe in JEDEC&rsquo;s description, against the apostrophe in its title; both are reproduced as printed.</p>
+<p>Crucially, JEP106 is not only a format &mdash; <b>it is the register of assignments</b>. JEDEC&rsquo;s order form states that for a company obtaining a code, "the company name and ID code assigned will be included in JEDEC publication JEP106 (all future versions)", and directs readers to "Refer to JEDEC Publication JEP106" for the list <a class="cite" href="https://www.jedec.org/standards-documents/id-codes-order-form" target="_blank" rel="noopener" title="JEDEC: Order JEDEC standard manufacturer’s ID code">36</a>. Its own dictionary confirms it: an MFR code is "A code assigned by JEDEC that identifies manufacturers. JEP-106 is the publication containing the codes." <a class="cite" href="https://www.jedec.org/standards-documents/dictionary/terms/mfr-code" target="_blank" rel="noopener" title="JEDEC: Dictionary: MFR code">37</a> Getting one costs "$750 (one time fee)", and "JEDEC Membership is NOT required to purchase an ID Code" <a class="cite" href="https://www.jedec.org/standards-documents/id-codes-order-form" target="_blank" rel="noopener" title="JEDEC: Order JEDEC standard manufacturer’s ID code">36</a>.</p>
+<p>So the code-to-company mapping is published, free, and sits inside a registration-gated download &mdash; with <b>no separate free public list found</b> across the three JEDEC pages read here <a class="cite" href="https://www.jedec.org/standards-documents/docs/jep-106ab" target="_blank" rel="noopener" title="JEDEC: JEP106BP, Standard Manufacturer’s Identification Code, September 2026 (JEDEC’s URL slug still reads jep-106ab; the page serves the current BP revision)">35</a> <a class="cite" href="https://www.jedec.org/standards-documents/id-codes-order-form" target="_blank" rel="noopener" title="JEDEC: Order JEDEC standard manufacturer’s ID code">36</a> <a class="cite" href="https://www.jedec.org/standards-documents/dictionary/terms/mfr-code" target="_blank" rel="noopener" title="JEDEC: Dictionary: MFR code">37</a>.</p>
+<p class="note">One route this page deliberately leaves open rather than closing. DDR5 modules carry an SPD hub and a power-management chip, both standardised <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd300-5" target="_blank" rel="noopener" title="JEDEC: JESD300-5B.01, SPD5118 Hub and Serial Presence Detect Device Standard, May 2023">32</a>. Whether either reports a manufacturer identity readable by the host is <b>not established</b>: the register maps that would settle it are inside JESD300-5B.01 and the PMIC standard, and the vendor datasheets that would show them were either behind login walls or truncated before the register tables. <b>Do not read this section as saying they do not. Read it as saying nobody in the free chain prints the byte.</b></p>
+</div>
+</section>
+<section class="chip-sec" id="binning" aria-labelledby="h-binning">
+<h2 id="h-binning"><span>6.</span>Why one die becomes three products</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>One more thing makes &ldquo;whose chips?&rdquo; a harder question than it sounds: <b>the same chip design is sold as several different products.</b></p>
+<p>Samsung publishes the proof itself. In the specification for its 8Gb DDR4 <b>C-die</b>, a single part &mdash; one organisation, one die, one package &mdash; is listed for sale under <b>three different part numbers</b>, one per speed grade <a class="cite" href="https://download.semiconductor.samsung.com/resources/user-manual/x16%20only_8G_C_DDR4_Samsung_Spec_Rev1.5_Apr.17.pdf" target="_blank" rel="noopener" title="Samsung: 8Gb C-die DDR4 SDRAM specification, Rev. 1.5, April 2017">38</a>:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>Speed grade</th><th>Samsung part number</th></tr></thead><tbody>
+<tr><td>DDR4-2133 (15-15-15)</td><td>K4A8G165WC-BCPB</td></tr>
+<tr><td>DDR4-2400 (17-17-17)</td><td>K4A8G165WC-BCRC</td></tr>
+<tr><td>DDR4-2666 (19-19-19)</td><td>K4A8G165WC-BCTD</td></tr>
+</tbody></table></div>
+<p>Read the part numbers: identical but for the final two characters. Same die, sorted after manufacture into three speeds, and the speed written into the name.</p>
+<p>So &ldquo;it has Samsung C-die&rdquo; does not tell you how fast the chip is rated. And &ldquo;whose die is it&rdquo; and &ldquo;how good is this particular die&rdquo; are two different questions.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The table above is Samsung&rsquo;s "[ Table 1 ] Samsung 8Gb DDR4 C-die ordering information table", covering the 512Mx16 organisation in a 96FBGA package <a class="cite" href="https://download.semiconductor.samsung.com/resources/user-manual/x16%20only_8G_C_DDR4_Samsung_Spec_Rev1.5_Apr.17.pdf" target="_blank" rel="noopener" title="Samsung: 8Gb C-die DDR4 SDRAM specification, Rev. 1.5, April 2017">38</a>. The same document carries per-grade timing tables headed "[ Table 33 ] DDR4-2133 Speed Bins and Operations", "[ Table 34 ] DDR4-2400 Speed Bins and Operations" and "[ Table 35 ] DDR4-2666 Speed Bins and Operations", along with lower grades at DDR4-1600 and DDR4-1866 <a class="cite" href="https://download.semiconductor.samsung.com/resources/user-manual/x16%20only_8G_C_DDR4_Samsung_Spec_Rev1.5_Apr.17.pdf" target="_blank" rel="noopener" title="Samsung: 8Gb C-die DDR4 SDRAM specification, Rev. 1.5, April 2017">38</a>.</p>
+<p>Samsung&rsquo;s module datasheet then shows the next link in the chain: which component goes into which module. Part number M378A1K43DB2-CTD is listed with a component composition of "1Gx8(K4A8G085WD-BCTD)*8", and M378A2K43DB1-CTD with the same component "*16" <a class="cite" href="https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf" target="_blank" rel="noopener" title="Samsung: DDR4 8Gb D-die Unbuffered DIMM datasheet, Rev. 1.1, June 2018">15</a>. The module&rsquo;s speed and the component&rsquo;s speed suffix travel together, and the datasheet notes that "TD(2666Mbps 19-19-19) - DDR4-2666(19-19-19) is backward compatible to lower frequency." <a class="cite" href="https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf" target="_blank" rel="noopener" title="Samsung: DDR4 8Gb D-die Unbuffered DIMM datasheet, Rev. 1.1, June 2018">15</a></p>
+<p class="note"><b>What Samsung publishes and what it does not.</b> It publishes the <i>result</i> of sorting &mdash; which part numbers exist, at which grades, with which timings. Checked its two datasheets above, its DDR chips-and-modules page and its semiconductor support hub: <b>no statement was found describing the sorting or grading process</b> by which a wafer&rsquo;s dies are assigned to those bins <a class="cite" href="https://download.semiconductor.samsung.com/resources/user-manual/x16%20only_8G_C_DDR4_Samsung_Spec_Rev1.5_Apr.17.pdf" target="_blank" rel="noopener" title="Samsung: 8Gb C-die DDR4 SDRAM specification, Rev. 1.5, April 2017">38</a> <a class="cite" href="https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf" target="_blank" rel="noopener" title="Samsung: DDR4 8Gb D-die Unbuffered DIMM datasheet, Rev. 1.1, June 2018">15</a> <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/" target="_blank" rel="noopener" title="Samsung: DDR: chips and modules">1</a> <a class="cite" href="https://semiconductor.samsung.com/support/" target="_blank" rel="noopener" title="Samsung: Semiconductor support">13</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>SK hynix comes closest to describing the mechanism, and stops just short of the grading step. Its back-end process series gives the test flow &mdash; "Wafer testing usually follows the following process: EPM (Electrical Parameter Monitoring) &rarr; Wafer Burn-in &rarr; Test &rarr; Repair &rarr; Test" &mdash; and explains that results are then laser-marked onto the package <a class="cite" href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener" title="SK hynix: Semiconductor back-end process episode 1: understanding semiconductor testing">7</a>.</p>
+<p class="note">Note what that article does <b>not</b> contain, because the temptation to fill it in is strong. Checked for the terms EDS, electrical die sorting, speed bin, grading and good-die sorting: <b>none appears.</b> ("Sort" and "sorting" do occur, but only of defects &mdash; "manufacturers sort out pressed balls, missing balls, and other defects.") The article describes testing and repair; it does not say how a tested die is assigned to a speed grade <a class="cite" href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener" title="SK hynix: Semiconductor back-end process episode 1: understanding semiconductor testing">7</a>. The step that connects &ldquo;we measured this die&rdquo; to &ldquo;therefore it ships as DDR4-2666&rdquo; is published by none of the three makers in anything read for this check.</p>
+<p>Nor does JEDEC fill the gap in its free material. JESD79-5D, which defines the DDR5 device, is the priced document at US$423 <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd79-5d" target="_blank" rel="noopener" title="JEDEC: JESD79-5D, DDR5 SDRAM, version 1.41, November 2025">33</a>. The free material confirms only that bins exist and are enumerated: JEDEC&rsquo;s 2022 SPD release says "Example SPD codes are given for all JEDEC standard speed grades, assisting suppliers and users in the interpretation of the content definitions", and that the update "covers example timing tables for DDR5 speed bins up to and including DDR5-7200" <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-announces-publication-spd5118-hub-and-serial-presence-detect-device-and" target="_blank" rel="noopener" title="JEDEC: JEDEC announces publication of the SPD5118 hub and DDR5 SPD contents specifications (10 November 2022)">34</a>. <b>How a bin is constituted, and how parts are graded into one, is not in the free material.</b></p>
+<p>What the module brands say about their own sorting is thinner than their marketing implies, and one case is worth recording precisely. Corsair&rsquo;s Dominator Platinum RGB DDR5 product page (CMT64GX5M2B6000C30) carries the feature heading <b>&ldquo;HAND-SORTED, TIGHTLY-SCREENED MEMORY CHIPS&rdquo;</b> <a class="cite" href="https://www.corsair.com/us/en/p/memory/cmt64gx5m2b6000c30/dominator-titanium-rgb-64gb-2x32gb-ddr5-dram-6000mt-s-cl30-memory-kit-black-cmt64gx5m2b6000c30" target="_blank" rel="noopener" title="Corsair: Dominator Platinum RGB 64GB DDR5 6000MT/s CL30 memory kit product page (CMT64GX5M2B6000C30)">39</a>. <b>That page was fetched three times to find the explanatory text beneath it, and there is none</b> &mdash; though four of its other feature headings are equally bare, so this is the page&rsquo;s layout rather than a silence chosen for this claim. Corsair states the screening and states no method. Patriot does the same thing more briefly: "High-quality IC: Selected and screened for enhanced overclocking capabilities", with no chip maker named anywhere on its site <a class="cite" href="https://www.patriotmemory.com/products/xtreme5-ddr5-performance-ram" target="_blank" rel="noopener" title="Patriot: Viper Xtreme 5 DDR5 performance RAM product page">22</a>.</p>
+<p>Kingston is the exception, and describes its qualification of suppliers rather than of individual dies: "Because one of the most important components of a memory module is the DRAM, Kingston strictly qualifies our DRAM suppliers", explaining that "Slight physical variances among component manufacturers make this a necessary step", and naming an outside lab &mdash; "Kingston uses services provided by AVL for DRAM qualification", where "AVL (Advanced Validation Labs) is a technology services company specializing in the pre-production and post-production testing and validation of memory to industry OEMs" <a class="cite" href="https://www.kingston.com/en/company/testing-process" target="_blank" rel="noopener" title="Kingston: Our testing process">40</a>.</p>
+<p class="note">A contradiction in candour worth noting, between two Kingston pages. The formal corporate testing page says Kingston "strictly qualifies our DRAM suppliers" and <b>names none of them</b> <a class="cite" href="https://www.kingston.com/en/company/testing-process" target="_blank" rel="noopener" title="Kingston: Our testing process">40</a>. The company blog names all three: "Micron, SK Hynix, and Samsung" <a class="cite" href="https://www.kingston.com/en/blog/system-builder/reliable-quality-dram-testing" target="_blank" rel="noopener" title="Kingston: Reliable quality: how Kingston tests DRAM">3</a>. The blog is the more forthcoming document.</p>
+</div>
+</section>
+<section class="chip-sec" id="kits" aria-labelledby="h-kits">
+<h2 id="h-kits"><span>7.</span>What this means when you buy a second stick</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>This is where the question stops being trivia and starts costing money.</p>
+<p>If the chips inside a part number can change, then <b>two sticks of the same model bought at different times may not match</b> &mdash; and every brand that discusses the matter tells you to buy them together instead.</p>
+<p>Kingston puts the reason and the advice in one sentence: "Since parts may be built with different combinations of components at the factory under a single part number, it&rsquo;s always recommended to buy them as a kit of 2 or kit of 4, which are built and packaged with the same identical components." <a class="cite" href="https://www.kingston.com/en/support/technical/products/gaming-memory" target="_blank" rel="noopener" title="Kingston: Technical support: gaming memory">20</a></p>
+<p>Corsair is blunter: "We strongly recommend you do NOT combine multiple kits of CORSAIR DDR5 memory. Our memory kits are only validated for their rated performance when using only the modules provided within that specific kit (box). Combining multiple kits, even if they are rated for the same speed, may result in your memory modules not being able to reach their rated performance specification." <a class="cite" href="https://help.corsair.com/hc/en-us/articles/34383413781777-RAM-FAQ" target="_blank" rel="noopener" title="Corsair: RAM FAQ">10</a></p>
+<p>So the practical rule is simple. <b>Buy all the memory you want in one box, at one time.</b> If you may want 64&nbsp;GB later, buying 64&nbsp;GB now as a kit is safer than buying 32&nbsp;GB twice.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The brands differ sharply in how far their disclaimers reach, and the differences are worth laying side by side because they are not what you would expect.</p>
+<p><b>Patriot goes furthest</b>, disclaiming even two of its own single modules used together: "Patriot will not guarantee products meet advertised specifications when a single module is paired with another single module and operated as a dual kit. Patriot will not guarantee products meet advertised specifications when a dual kit is paired with another dual kit and operated as a quad kit." <a class="cite" href="https://www.patriotmemory.com/products/xtreme5-ddr5-performance-ram" target="_blank" rel="noopener" title="Patriot: Viper Xtreme 5 DDR5 performance RAM product page">22</a> Its RMA policy follows the same logic from the other direction: "We require the return of entire kits for RMA (Return Merchandise Authorization) submissions. This policy is in place to guarantee the compatibility of replacement modules and facilitate a seamless transition." Patriot adds that a buyer needing "to deviate from this requirement" should contact it before shipping, and that "The RMA department will evaluate such requests individually." <a class="cite" href="https://support.patriotmemory.com/hc/en-us/articles/360009380133--General-FAQ-Do-I-need-to-send-the-entire-DRAM-kit-in-if-only-one-of-the-sticks-is-malfunctioning" target="_blank" rel="noopener" title="Patriot: General FAQ: do I need to send the entire DRAM kit in if only one stick is malfunctioning?">41</a></p>
+<p><b>Lexar&rsquo;s disclaimer has a hole Patriot&rsquo;s does not.</b> It covers use "together with other kits or memory modules from other manufacturers", and adds that it will not guarantee specifications "if a single module is paired with another manufacturers&rsquo; DRAM module to operate as dual kit" <a class="cite" href="https://americas.lexar.com/product/lexar-thor-oc-ddr5-desktop-memory/" target="_blank" rel="noopener" title="Lexar: THOR OC DDR5 desktop memory product page">8</a>. Read it carefully: <b>the carve-out is about another manufacturer&rsquo;s module.</b> Lexar says nothing about pairing two Lexar single modules &mdash; the commonest real-world case, and exactly the one Patriot spells out.</p>
+<p><b>PNY addresses brand mixing only.</b> Its entire guidance, in full: "Sometimes, but not recommended. Different brands/timings/voltages can cause instability. For best results, use identical sticks from the same kit." <a class="cite" href="https://pnysupport.freshdesk.com/support/solutions/articles/43000646567-can-i-mix-different-brands-of-ram-" target="_blank" rel="noopener" title="PNY: Can I mix different brands of RAM?">23</a> <b>Silicon Power</b> likewise addresses differing specifications rather than differing batches: "Mixing memory modules with different speeds or capacities can cause stability issues, lower performance, or even prevent your computer from starting" &mdash; though it then qualifies the capacity half of that, saying "Mixing different memory sizes is possible but may disrupt dual-channel mode, resulting in reduced performance." <a class="cite" href="https://www.silicon-power.com/faq/memory-faq/" target="_blank" rel="noopener" title="Silicon Power: Memory FAQ">24</a></p>
+<p class="note">Checked Mushkin&rsquo;s memory pages for any guidance on mixing kits or adding a module later: <b>no statement was found</b> <a class="cite" href="https://mushkin.com/memory/" target="_blank" rel="noopener" title="Mushkin: Memory product lines">25</a>. Mushkin&rsquo;s customer support is handled on a third-party ticketing domain, which this page does not treat as a company source, so there is no first-party knowledge base to check.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Kingston&rsquo;s own pages are the most informative material on this question and they also contain the sharpest contradiction found in this check. <b>Both of the following are on the same support page, about the same practice.</b></p>
+<p>Under the question about adding a module of the same part number later, answer reference KTF-001002-005: "Mixing modules, even if they are the same specification and part number, may result in degraded performance, instability, or incompatibility." <a class="cite" href="https://www.kingston.com/en/support/technical/products/gaming-memory" target="_blank" rel="noopener" title="Kingston: Technical support: gaming memory">20</a></p>
+<p>Under the question about kit versus individual part numbers, answer reference KTM-020911-GEN-19: "Kingston ensures that only modules with matching components are packaged into dual (K2), quad (K4), and octal (K8) channel kits. Single modules purchased at different times may feature different components. While it is unlikely to cause any performance or compatibility issues, it&rsquo;s recommended to always buy kits for multi-channel systems, so that all components are the same." <a class="cite" href="https://www.kingston.com/en/support/technical/products/gaming-memory" target="_blank" rel="noopener" title="Kingston: Technical support: gaming memory">20</a></p>
+<p class="note"><b>So Kingston tells the same buyer, on one page, that mixing same-part-number modules &ldquo;may result in degraded performance, instability, or incompatibility&rdquo; and that it &ldquo;is unlikely to cause any performance or compatibility issues.&rdquo;</b> Both quotations are Kingston&rsquo;s, both were retrieved twice, and this page does not attempt to reconcile them. The advice they arrive at is the same; the risk they describe is not. If you are deciding whether to risk it, note that the more cautious sentence is the one attached to the question you would actually be asking.</p>
+<p>Kingston also draws a distinction the other brands do not, between standard and overclocking parts: "For JEDEC spec (industry standard) memory modules (ValueRAM, Server Premier, non-overclock), mixing across banks is okay, but Kingston does not recommend mixing memory within the same bank group. Doing so on PCs/laptops disables channel architecture optimization, forcing the memory to perform at half the potential bandwidth." And separately: "Mixing overclockable (Kingston FURY&trade;) memory modules or kits featuring different DRAM densities or specifications in a PC/laptop is not recommended, as this may cause instability or fail to overclock." <a class="cite" href="https://www.kingston.com/en/support/technical/products/desktop-notebook-memory" target="_blank" rel="noopener" title="Kingston: Technical support: desktop and notebook memory">42</a></p>
+<p>That distinction is the tidiest summary of the whole page. <b>A JEDEC-standard module is defined by the standard, so mixing is a question about the standard. An overclocking module is defined by a tested profile on particular silicon, so mixing is a question about the silicon</b> &mdash; which is the thing you cannot see, whose maker most brands will not name, and which may have changed since the last one you bought.</p>
+<p class="note">Software will not rescue you here either. Checked what each brand&rsquo;s own utility claims to show: Corsair&rsquo;s iCUE page offers to "Manage DRAM Profiles" and <b>makes no claim to report the IC manufacturer</b> <a class="cite" href="https://www.corsair.com/us/en/s/icue" target="_blank" rel="noopener" title="Corsair: iCUE software">43</a>; Kingston&rsquo;s FURY CTRL is described as software to "customize the lighting effects of Kingston FURY RGB products" <a class="cite" href="https://www.kingston.com/en/gaming/fury-ctrl" target="_blank" rel="noopener" title="Kingston: FURY CTRL software">44</a>. <b>No vendor tool examined in this check reports the DRAM die maker to the user.</b> Corsair&rsquo;s route to that answer remains a sticker on the module.</p>
+</div>
+</section>
+<section class="chip-sec" id="cannot" aria-labelledby="h-cannot">
+<h2 id="h-cannot"><span>8.</span>What cannot be established, and why</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A page like this should be clear about where it stops. Here is what could <b>not</b> be established, and why.</p>
+<p><b>Before you buy, on most brands, the chip maker is simply not published.</b> <b>Of the seven module brands whose own pages could be read</b> &mdash; an eighth, Crucial, refused automated retrieval entirely &mdash; only Corsair gives you a code you can read afterwards, and only Kingston encodes the maker in a part number. Kingston does that on server, design-in and ValueRAM DDR4 parts, not on the gaming line most people buy <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-integrated-circuits-ics-are-used-on-my-corsair-memory/" target="_blank" rel="noopener" title="Corsair: What integrated circuits (ICs) are used on my CORSAIR memory?">9</a> <a class="cite" href="https://www.kingston.com/en/memory/memory-part-number-decoder" target="_blank" rel="noopener" title="Kingston: Memory part number decoder">12</a>.</p>
+<p><b>Nothing here should be read as saying a brand hides the answer.</b> In most cases the brand has published nothing on the subject at all, which is a different thing from refusing.</p>
+<p>And where a company&rsquo;s own website could not be read from this build environment, this page says so rather than guessing.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The retrieval failures, listed plainly, because several of them change how the sections above should be read:</p>
+<div class="table-wrap"><table class="spec"><thead><tr><th>What could not be read</th><th>How it failed</th></tr></thead><tbody>
+<tr><td>Every page of <code>crucial.com</code>, in all regions tried</td><td>A web-application firewall refused automated retrieval: "The requested URL was rejected. Please consult with your administrator." Not a robots exclusion.</td></tr>
+<tr><td>All of SK hynix&rsquo;s product documentation, including its part-number search tool and every datasheet</td><td>Its product host&rsquo;s <code>robots.txt</code> returned an HTTP 500 on one attempt and timed out on another, so every path on that host is refused.</td></tr>
+<tr><td>Micron&rsquo;s written part-numbering guides, and Customer Service Note 11 on marking position</td><td>Indexed but not retrievable: one URL 404s; Micron&rsquo;s PDF host refuses automated retrieval.</td></tr>
+<tr><td>Samsung&rsquo;s regional partner-collaboration pages</td><td>Redirect loops.</td></tr>
+</tbody></table></div>
+<p class="note">The consequence, stated once and meant throughout: <b>where this page reports that SK hynix or Crucial publishes nothing on a question, that is a limit of this check and not a finding about the company.</b> Samsung and Micron were both substantially readable, so their absences are better evidenced &mdash; but even there, every absence claim above names the pages that were read.</p>
+<p>Three further things remain genuinely open rather than merely unread:</p>
+<ol class="steps">
+<li><b>Whether JESD400-5D defines a DRAM manufacturer ID in SPD.</b> The standard is a free download behind a registration form <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd400-5d" target="_blank" rel="noopener" title="JEDEC: JESD400-5D.01, DDR5 Serial Presence Detect (SPD) Contents, Release 1.4, January 2026">31</a>. Registering and reading it would settle the question this page leaves open.</li>
+<li><b>Whether the SPD hub or the PMIC reports a manufacturer identity to the host.</b> Both standards are free with registration <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd300-5" target="_blank" rel="noopener" title="JEDEC: JESD300-5B.01, SPD5118 Hub and Serial Presence Detect Device Standard, May 2023">32</a>; the vendor datasheets that would show the register maps were login-walled or truncated.</li>
+<li><b>How any of the three makers actually grades a tested die into a speed bin.</b> Published by none of them in anything read here, and the document that would define the bins costs US$423 <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd79-5d" target="_blank" rel="noopener" title="JEDEC: JESD79-5D, DDR5 SDRAM, version 1.41, November 2025">33</a>.</li>
+</ol>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Finally, the shape of the answer, since the individual findings can obscure it.</p>
+<p><b>The information exists at every level except the one you can see.</b> The chip maker knows exactly which die it shipped; it marks the package with the test result <a class="cite" href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener" title="SK hynix: Semiconductor back-end process episode 1: understanding semiconductor testing">7</a> and publishes a decoder for the marking, at least in Micron&rsquo;s case <a class="cite" href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener" title="Micron: FBGA parts decoder">17</a>. The module brand knows which components it fitted; Kingston says it "strictly qualifies" its suppliers and uses an outside lab to do it <a class="cite" href="https://www.kingston.com/en/company/testing-process" target="_blank" rel="noopener" title="Kingston: Our testing process">40</a>. The module itself carries two blocks of a chip labelled "Manufacturing information" <a class="cite" href="https://www.mouser.com/datasheet/2/671/ddr5_rdimm_core-3310292.pdf" target="_blank" rel="noopener" title="Micron: 288-pin DDR5 RDIMM core product description, Rev. G, May 2023">28</a>. JEDEC maintains a registry mapping identification codes to company names <a class="cite" href="https://www.jedec.org/standards-documents/docs/jep-106ab" target="_blank" rel="noopener" title="JEDEC: JEP106BP, Standard Manufacturer’s Identification Code, September 2026 (JEDEC’s URL slug still reads jep-106ab; the page serves the current BP revision)">35</a> <a class="cite" href="https://www.jedec.org/standards-documents/id-codes-order-form" target="_blank" rel="noopener" title="JEDEC: Order JEDEC standard manufacturer’s ID code">36</a>.</p>
+<p class="note">Every link in that chain is documented. The chain simply is not joined up for the buyer &mdash; and <b>nothing read here states why.</b> No party in the chain publishes a rationale for withholding the die maker, so what follows is <b>this page&rsquo;s reading rather than a sourced finding</b>: a brand tied to one supplier&rsquo;s silicon loses flexibility when that supplier reallocates output, and reallocation is demonstrably happening. Micron announced on 3 December 2025 that it would exit its Crucial consumer business, with sales continuing to February 2026, "in order to improve supply and support for our larger, strategic customers in faster-growing segments", after "AI-driven growth in the data center has led to a surge in demand for memory and storage" <a class="cite" href="https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business" target="_blank" rel="noopener" title="Micron: Micron announces exit from Crucial consumer business (3 December 2025)">27</a>.</p>
+<p>So the practical answer, ranked by how much work it takes:</p>
+<ol class="steps">
+<li><b>Buy Corsair and read the version code</b> &mdash; V3 Micron, V4 Samsung, V5 Hynix, published by Corsair itself <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-integrated-circuits-ics-are-used-on-my-corsair-memory/" target="_blank" rel="noopener" title="Corsair: What integrated circuits (ICs) are used on my CORSAIR memory?">9</a>. This is the only route on a consumer kit that needs no tools.</li>
+<li><b>Buy a Kingston Server Premier, Design-In or ValueRAM DDR4 part</b> and read the manufacturer character in the part number <a class="cite" href="https://www.kingston.com/en/memory/memory-part-number-decoder" target="_blank" rel="noopener" title="Kingston: Memory part number decoder">12</a>. Not available on FURY or on ValueRAM DDR5.</li>
+<li><b>Look at the chips.</b> On Micron silicon the five-digit code decodes to a part number through Micron&rsquo;s own tool, and Micron says it "is typically preceded by an MT mark" <a class="cite" href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener" title="Micron: FBGA parts decoder">17</a>. The tool is interactive and was not exercised from this build environment; only its description was read. This usually means removing a heat spreader, which may end your warranty, and on Samsung requires knowing the component scheme from a datasheet rather than a marking guide <a class="cite" href="https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf" target="_blank" rel="noopener" title="Samsung: DDR4 8Gb D-die Unbuffered DIMM datasheet, Rev. 1.1, June 2018">15</a>.</li>
+<li><b>Buy a Samsung-branded module</b>, where the component part number is published in the datasheet&rsquo;s ordering table &mdash; for the unbuffered parts, "1Gx8(K4A8G085WD-BCTD)*8" <a class="cite" href="https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf" target="_blank" rel="noopener" title="Samsung: DDR4 8Gb D-die Unbuffered DIMM datasheet, Rev. 1.1, June 2018">15</a> &mdash; while the web pages carry module specifications only <a class="cite" href="https://semiconductor.samsung.com/dram/ddr/" target="_blank" rel="noopener" title="Samsung: DDR: chips and modules">1</a>.</li>
+<li><b>Accept that you cannot know</b>, which is the honest position on Lexar, Patriot, PNY, Silicon Power and Mushkin, none of which names a die maker anywhere this check could read <a class="cite" href="https://americas.lexar.com/support/faqs/" target="_blank" rel="noopener" title="Lexar: Support FAQs">21</a> <a class="cite" href="https://www.patriotmemory.com/products/xtreme5-ddr5-performance-ram" target="_blank" rel="noopener" title="Patriot: Viper Xtreme 5 DDR5 performance RAM product page">22</a> <a class="cite" href="https://pnysupport.freshdesk.com/support/solutions/articles/43000646567-can-i-mix-different-brands-of-ram-" target="_blank" rel="noopener" title="PNY: Can I mix different brands of RAM?">23</a> <a class="cite" href="https://www.silicon-power.com/faq/memory-faq/" target="_blank" rel="noopener" title="Silicon Power: Memory FAQ">24</a> <a class="cite" href="https://mushkin.com/memory/" target="_blank" rel="noopener" title="Mushkin: Memory product lines">25</a>.</li>
+</ol>
+<p>And the one piece of advice that follows from all of it, which every brand that addresses the subject agrees on even where it disagrees about the risk: <b>buy the memory you want in a single kit, in one box, at one time</b> <a class="cite" href="https://www.kingston.com/en/support/technical/products/gaming-memory" target="_blank" rel="noopener" title="Kingston: Technical support: gaming memory">20</a> <a class="cite" href="https://help.corsair.com/hc/en-us/articles/34383413781777-RAM-FAQ" target="_blank" rel="noopener" title="Corsair: RAM FAQ">10</a> <a class="cite" href="https://www.patriotmemory.com/products/xtreme5-ddr5-performance-ram" target="_blank" rel="noopener" title="Patriot: Viper Xtreme 5 DDR5 performance RAM product page">22</a> <a class="cite" href="https://americas.lexar.com/product/lexar-thor-oc-ddr5-desktop-memory/" target="_blank" rel="noopener" title="Lexar: THOR OC DDR5 desktop memory product page">8</a> <a class="cite" href="https://pnysupport.freshdesk.com/support/solutions/articles/43000646567-can-i-mix-different-brands-of-ram-" target="_blank" rel="noopener" title="PNY: Can I mix different brands of RAM?">23</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>9.</span>Sources</h2>
+<p class="note">44 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator or an annual report; <b>Standard</b> = a published industry standard; <b>Paper</b> = a peer-reviewed or conference paper; <b>Research</b> = an independent research body; <b>Government</b> = a government page; <b>Press</b> = news coverage, used only where no official source exists.</p>
+<ol class="src-list">
+<li id="src-1"><b>Samsung</b>: <a href="https://semiconductor.samsung.com/dram/ddr/" target="_blank" rel="noopener">DDR: chips and modules</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>Micron</b>: <a href="https://www.micron.com/products/memory/dram-components" target="_blank" rel="noopener">DRAM memory components</a><span class="st st-official">Official</span></li>
+<li id="src-3"><b>Kingston</b>: <a href="https://www.kingston.com/en/blog/system-builder/reliable-quality-dram-testing" target="_blank" rel="noopener">Reliable quality: how Kingston tests DRAM</a><span class="st st-official">Official</span></li>
+<li id="src-4"><b>Kingston</b>: <a href="https://www.kingston.com/en/memory/gaming/fury-renegade-ddr5-rgb" target="_blank" rel="noopener">FURY Renegade DDR5 RGB product page</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>SK hynix</b>: <a href="https://news.skhynix.com/en/semiconductor-101-sk-hynix-guide-to-key-industry-players/" target="_blank" rel="noopener">Semiconductor 101: a guide to key industry players</a><span class="st st-official">Official</span></li>
+<li id="src-6"><b>SK hynix</b>: <a href="https://www.skhynix.com/company/UI-FR-CP0401/" target="_blank" rel="noopener">Brand identity</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>SK hynix</b>: <a href="https://news.skhynix.com/en/semiconductor-back-end-process-episode-1-understanding-semiconductor-testing/" target="_blank" rel="noopener">Semiconductor back-end process episode 1: understanding semiconductor testing</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>Lexar</b>: <a href="https://americas.lexar.com/product/lexar-thor-oc-ddr5-desktop-memory/" target="_blank" rel="noopener">THOR OC DDR5 desktop memory product page</a><span class="st st-official">Official</span></li>
+<li id="src-9"><b>Corsair</b>: <a href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-integrated-circuits-ics-are-used-on-my-corsair-memory/" target="_blank" rel="noopener">What integrated circuits (ICs) are used on my CORSAIR memory?</a><span class="st st-official">Official</span></li>
+<li id="src-10"><b>Corsair</b>: <a href="https://help.corsair.com/hc/en-us/articles/34383413781777-RAM-FAQ" target="_blank" rel="noopener">RAM FAQ</a><span class="st st-official">Official</span></li>
+<li id="src-11"><b>Corsair</b>: <a href="https://www.corsair.com/us/en/explorer/diy-builder/memory/how-to-decode-your-corsair-memory/" target="_blank" rel="noopener">Decode the part number and version of your CORSAIR memory</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>Kingston</b>: <a href="https://www.kingston.com/en/memory/memory-part-number-decoder" target="_blank" rel="noopener">Memory part number decoder</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>Samsung</b>: <a href="https://semiconductor.samsung.com/support/" target="_blank" rel="noopener">Semiconductor support</a><span class="st st-official">Official</span></li>
+<li id="src-14"><b>Samsung</b>: <a href="https://download.semiconductor.samsung.com/resources/part-number-decoder/ddr3_sdram_module-0.pdf" target="_blank" rel="noopener">DDR3 Code Information: Module (part number decoder, Aug. 2012)</a><span class="st st-official">Official</span></li>
+<li id="src-15"><b>Samsung</b>: <a href="https://download.semiconductor.samsung.com/resources/data-sheet/DDR4_8Gb_D_die_Unbuffered_DIMM_Rev1.1_Jun.18.pdf" target="_blank" rel="noopener">DDR4 8Gb D-die Unbuffered DIMM datasheet, Rev. 1.1, June 2018</a><span class="st st-official">Official</span></li>
+<li id="src-16"><b>Samsung</b>: <a href="https://semiconductor.samsung.com/dram/module/rdimm/m393a2k40bb2-ctd/" target="_blank" rel="noopener">M393A2K40BB2-CTD registered DIMM product page</a><span class="st st-official">Official</span></li>
+<li id="src-17"><b>Micron</b>: <a href="https://www.micron.com/sales-support/design-tools/fbga-parts-decoder" target="_blank" rel="noopener">FBGA parts decoder</a><span class="st st-official">Official</span></li>
+<li id="src-18"><b>Micron</b>: <a href="https://www.micron.com/support/tools-and-utilities/fbga" target="_blank" rel="noopener">FBGA and Component Marking Decoder</a><span class="st st-official">Official</span></li>
+<li id="src-19"><b>Micron</b>: <a href="https://www.micron.com/sales-support/design-tools" target="_blank" rel="noopener">Design tools</a><span class="st st-official">Official</span></li>
+<li id="src-20"><b>Kingston</b>: <a href="https://www.kingston.com/en/support/technical/products/gaming-memory" target="_blank" rel="noopener">Technical support: gaming memory</a><span class="st st-official">Official</span></li>
+<li id="src-21"><b>Lexar</b>: <a href="https://americas.lexar.com/support/faqs/" target="_blank" rel="noopener">Support FAQs</a><span class="st st-official">Official</span></li>
+<li id="src-22"><b>Patriot</b>: <a href="https://www.patriotmemory.com/products/xtreme5-ddr5-performance-ram" target="_blank" rel="noopener">Viper Xtreme 5 DDR5 performance RAM product page</a><span class="st st-official">Official</span></li>
+<li id="src-23"><b>PNY</b>: <a href="https://pnysupport.freshdesk.com/support/solutions/articles/43000646567-can-i-mix-different-brands-of-ram-" target="_blank" rel="noopener">Can I mix different brands of RAM?</a><span class="st st-official">Official</span></li>
+<li id="src-24"><b>Silicon Power</b>: <a href="https://www.silicon-power.com/faq/memory-faq/" target="_blank" rel="noopener">Memory FAQ</a><span class="st st-official">Official</span></li>
+<li id="src-25"><b>Mushkin</b>: <a href="https://mushkin.com/memory/" target="_blank" rel="noopener">Memory product lines</a><span class="st st-official">Official</span></li>
+<li id="src-26"><b>Micron</b>: <a href="https://www.micron.com/sales-support/sales-network/consumer-brand" target="_blank" rel="noopener">Our consumer brand</a><span class="st st-official">Official</span></li>
+<li id="src-27"><b>Micron</b>: <a href="https://investors.micron.com/news-releases/news-release-details/micron-announces-exit-crucial-consumer-business" target="_blank" rel="noopener">Micron announces exit from Crucial consumer business (3 December 2025)</a><span class="st st-official">Official</span></li>
+<li id="src-28"><b>Micron</b>: <a href="https://www.mouser.com/datasheet/2/671/ddr5_rdimm_core-3310292.pdf" target="_blank" rel="noopener">288-pin DDR5 RDIMM core product description, Rev. G, May 2023</a><span class="st st-official">Official</span></li>
+<li id="src-29"><b>Micron</b>: <a href="https://media.digikey.com/pdf/Data%20Sheets/Micron%20Technology%20Inc%20PDFs/DDR4_SDRAM_RDIMM_Core_RevB_Dec2021.pdf" target="_blank" rel="noopener">DDR4 SDRAM RDIMM core product description, Rev. B, December 2021</a><span class="st st-official">Official</span></li>
+<li id="src-30"><b>Micron</b>: <a href="https://www.micron.com/sales-support/design-tools/serial-presence-detect" target="_blank" rel="noopener">Serial presence detect lookup tool</a><span class="st st-official">Official</span></li>
+<li id="src-31"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jesd400-5d" target="_blank" rel="noopener">JESD400-5D.01, DDR5 Serial Presence Detect (SPD) Contents, Release 1.4, January 2026</a><span class="st st-standard">Standard</span></li>
+<li id="src-32"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jesd300-5" target="_blank" rel="noopener">JESD300-5B.01, SPD5118 Hub and Serial Presence Detect Device Standard, May 2023</a><span class="st st-standard">Standard</span></li>
+<li id="src-33"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jesd79-5d" target="_blank" rel="noopener">JESD79-5D, DDR5 SDRAM, version 1.41, November 2025</a><span class="st st-standard">Standard</span></li>
+<li id="src-34"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec-announces-publication-spd5118-hub-and-serial-presence-detect-device-and" target="_blank" rel="noopener">JEDEC announces publication of the SPD5118 hub and DDR5 SPD contents specifications (10 November 2022)</a><span class="st st-standard">Standard</span></li>
+<li id="src-35"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jep-106ab" target="_blank" rel="noopener">JEP106BP, Standard Manufacturer’s Identification Code, September 2026 (JEDEC’s URL slug still reads jep-106ab; the page serves the current BP revision)</a><span class="st st-standard">Standard</span></li>
+<li id="src-36"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/id-codes-order-form" target="_blank" rel="noopener">Order JEDEC standard manufacturer’s ID code</a><span class="st st-standard">Standard</span></li>
+<li id="src-37"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/dictionary/terms/mfr-code" target="_blank" rel="noopener">Dictionary: MFR code</a><span class="st st-standard">Standard</span></li>
+<li id="src-38"><b>Samsung</b>: <a href="https://download.semiconductor.samsung.com/resources/user-manual/x16%20only_8G_C_DDR4_Samsung_Spec_Rev1.5_Apr.17.pdf" target="_blank" rel="noopener">8Gb C-die DDR4 SDRAM specification, Rev. 1.5, April 2017</a><span class="st st-official">Official</span></li>
+<li id="src-39"><b>Corsair</b>: <a href="https://www.corsair.com/us/en/p/memory/cmt64gx5m2b6000c30/dominator-titanium-rgb-64gb-2x32gb-ddr5-dram-6000mt-s-cl30-memory-kit-black-cmt64gx5m2b6000c30" target="_blank" rel="noopener">Dominator Platinum RGB 64GB DDR5 6000MT/s CL30 memory kit product page (CMT64GX5M2B6000C30)</a><span class="st st-official">Official</span></li>
+<li id="src-40"><b>Kingston</b>: <a href="https://www.kingston.com/en/company/testing-process" target="_blank" rel="noopener">Our testing process</a><span class="st st-official">Official</span></li>
+<li id="src-41"><b>Patriot</b>: <a href="https://support.patriotmemory.com/hc/en-us/articles/360009380133--General-FAQ-Do-I-need-to-send-the-entire-DRAM-kit-in-if-only-one-of-the-sticks-is-malfunctioning" target="_blank" rel="noopener">General FAQ: do I need to send the entire DRAM kit in if only one stick is malfunctioning?</a><span class="st st-official">Official</span></li>
+<li id="src-42"><b>Kingston</b>: <a href="https://www.kingston.com/en/support/technical/products/desktop-notebook-memory" target="_blank" rel="noopener">Technical support: desktop and notebook memory</a><span class="st st-official">Official</span></li>
+<li id="src-43"><b>Corsair</b>: <a href="https://www.corsair.com/us/en/s/icue" target="_blank" rel="noopener">iCUE software</a><span class="st st-official">Official</span></li>
+<li id="src-44"><b>Kingston</b>: <a href="https://www.kingston.com/en/gaming/fury-ctrl" target="_blank" rel="noopener">FURY CTRL software</a><span class="st st-official">Official</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#question">1. The question, and why it is hard to answer</a><a href="#sticker">2. What the module itself tells you</a><a href="#chip">3. Reading the chip</a><a href="#substitution">4. The same part number, different chips</a><a href="#spd">5. Is it machine-readable?</a><a href="#binning">6. Why one die becomes three products</a><a href="#kits">7. What this means when you buy a second stick</a><a href="#cannot">8. What cannot be established, and why</a><a href="#sources">9. Sources</a></div></div>
+<div class="sidebar-card"><h3>Memory</h3><a href="/hardware/memory/" class="sidebar-link">All memory guides</a><a href="/hardware/memory/compare/" class="sidebar-link">Compare the brands</a><a href="/hardware/memory/buying-memory-in-india/" class="sidebar-link">Buying memory in India: what the brands actually promise you</a><a href="/hardware/memory/memory-price-surge-2026/" class="sidebar-link">The 2026 memory price surge, in the makers&#x27; own numbers</a><a href="/hardware/memory/memory-warranty-compared/" class="sidebar-link">What a memory &quot;lifetime warranty&quot; actually promises</a><a href="/hardware/memory/xmp-expo-explained/" class="sidebar-link">XMP, EXPO and why your memory runs slower than the box says</a><a href="/hardware/memory/kingston/" class="sidebar-link">Kingston Technology</a><a href="/hardware/memory/crucial/" class="sidebar-link">Crucial</a><a href="/hardware/memory/corsair/" class="sidebar-link">Corsair</a><a href="/hardware/memory/gskill/" class="sidebar-link">G.Skill</a><a href="/hardware/memory/adata/" class="sidebar-link">ADATA</a><a href="/hardware/memory/patriot/" class="sidebar-link">Patriot Memory</a><a href="/hardware/memory/mushkin/" class="sidebar-link">Mushkin</a><a href="/hardware/memory/lexar/" class="sidebar-link">Lexar</a><a href="/hardware/memory/pny/" class="sidebar-link">PNY</a><a href="/hardware/memory/silicon-power/" class="sidebar-link">Silicon Power</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Whose%20DRAM%20chips%20are%20actually%20inside%20your%20memory%20stick%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fwhose-dies-are-inside%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Whose%20DRAM%20chips%20are%20actually%20inside%20your%20memory%20stick%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fwhose-dies-are-inside%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Whose%20DRAM%20chips%20are%20actually%20inside%20your%20memory%20stick%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fwhose-dies-are-inside%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Whose%20DRAM%20chips%20are%20actually%20inside%20your%20memory%20stick%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fwhose-dies-are-inside%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Whose%20DRAM%20chips%20are%20actually%20inside%20your%20memory%20stick%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fwhose-dies-are-inside%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Memory Glossary: DIMM, RDIMM, ECC and More | Clarigital</title>
+<meta name="description" content="Plain definitions of DIMM, RDIMM, ECC, CAS latency, XMP, EXPO and 20+ other memory terms, each sourced to JEDEC, Kingston, Corsair, Intel or AMD.">
+<link rel="canonical" href="https://www.clarigital.com/hardware/memory/glossary/">
+<meta property="og:title" content="Memory Glossary: DIMM, RDIMM, ECC and More">
+<meta property="og:description" content="Plain definitions of DIMM, RDIMM, ECC, CAS latency, XMP, EXPO and 20+ other memory terms, each sourced to JEDEC, Kingston, Corsair, Intel or AMD.">
+<meta property="og:url" content="https://www.clarigital.com/hardware/memory/glossary/">
+<meta property="og:type" content="article">
+
+
+
+
+
+
+
+
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzI1NjNFQiIvPjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgbGV0dGVyLXNwYWNpbmc9Ii0uNSI+Q0w8L3RleHQ+PC9zdmc+">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFK94MRK7"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7DFK94MRK7');</script>
+<style>
+/*phone-fit-v9*/
+.pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
+pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
+@media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
+@media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
+@media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
+.nav-drawer{overflow:hidden}
+@media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
+@media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
+/*phone-fit-v9-end*/
+.ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
+.ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --bg:#0F172A;--bg2:#1E293B;--bg3:#263043;
+  --fg:#F1F5F9;--fg2:#E2E8F0;
+  --muted:rgba(241,245,249,.6);--faint:rgba(241,245,249,.3);
+  --blue:#60A5FA;--blue-dk:#3B82F6;--blue-dim:rgba(96,165,250,.12);--blue-dim2:rgba(96,165,250,.06);
+  --indigo:#818CF8;--indigo-dim:rgba(99,102,241,.15);
+  --green:#10B981;--red:#EF4444;
+  --border:rgba(241,245,249,.1);--border2:rgba(241,245,249,.05);
+  --card-bg:#111827;--card-border:rgba(96,165,250,.14);
+  --nav-bg:rgba(15,23,42,.93);--input-bg:#1E293B;
+  --shadow:none;
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  --max:1080px;--r:10px;--t:.18s ease;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .15s}
+a{text-decoration:none;color:inherit}
+p{line-height:1.75;color:var(--muted)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:200;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:0 16px;height:62px;display:flex;align-items:center;gap:12px}
+.nav-logo{display:flex;align-items:center;gap:9px;font-size:.93rem;font-weight:700;letter-spacing:-.01em;flex-shrink:0;color:var(--fg)}
+.logo-mark{width:32px;height:32px;background:var(--blue-dk);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;color:#fff;flex-shrink:0}
+.logo-clar{color:var(--blue)}
+.nav-search{position:relative;flex:1;max-width:280px;margin:0 6px}
+.nav-search input{width:100%;height:34px;background:var(--input-bg);border:1px solid var(--border);border-radius:8px;padding:0 10px 0 32px;font-size:.81rem;color:var(--fg);outline:none;font-family:var(--font);transition:border-color .18s}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search input:focus{border-color:var(--indigo)}
+.nav-search .si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--card-bg);border:1px solid var(--border);border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.15);max-height:400px;overflow-y:auto;display:none;z-index:300}
+.search-result-item{display:block;padding:10px 14px;border-bottom:1px solid var(--border2);color:var(--fg);transition:background .15s}
+.search-result-item:last-child{border-bottom:none}
+.search-result-item:hover{background:var(--bg2)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{font-size:.8rem;font-weight:500;color:var(--muted);padding:5px 10px;border-radius:6px;transition:color .18s,background .18s;white-space:nowrap}
+.nav-links a:hover{color:var(--fg);background:var(--blue-dim2)}
+.nav-links a.active{color:var(--indigo);font-weight:600}
+.btn{display:inline-block;font-size:.82rem;font-weight:600;padding:7px 14px;border-radius:7px;transition:opacity .18s}
+.btn:hover{opacity:.88}
+.btn-indigo{background:var(--indigo);color:#fff}
+.btn-blue{background:var(--blue-dk);color:#fff}
+.btn-sm{font-size:.76rem;padding:5px 11px}
+.theme-toggle{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card-bg);color:var(--muted);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .18s,color .18s}
+.theme-toggle:hover{color:var(--fg);border-color:var(--indigo)}
+@media(max-width:860px){.nav-links{display:none}.nav-ham{display:flex!important}}
+@media(max-width:600px){.nav-search{display:none}}
+.nav-ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;flex-shrink:0}
+.nav-ham span{display:block;width:20px;height:1.5px;background:var(--muted);border-radius:2px}
+.nav-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+.nav-drawer.open{opacity:1;pointer-events:all}
+.nav-panel{position:absolute;top:0;right:0;height:100%;width:min(290px,88vw);background:var(--bg2);border-left:1px solid var(--border);padding:20px;transform:translateX(100%);transition:transform .24s ease;display:flex;flex-direction:column;gap:3px;overflow-y:auto}
+.nav-drawer.open .nav-panel{transform:translateX(0)}
+.nav-panel-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.nav-close{background:none;border:none;cursor:pointer;font-size:1.1rem;color:var(--muted);padding:4px 8px}
+.nav-panel a.di{display:block;padding:10px 12px;font-size:.87rem;color:var(--muted);border-radius:7px;transition:background .18s,color .18s}
+.nav-panel a.di:hover{background:var(--blue-dim);color:var(--fg)}
+
+/* PAGE LAYOUT */
+.page-hero{padding:52px 0 36px;border-bottom:1px solid var(--border)}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--muted);margin-bottom:14px;flex-wrap:wrap}
+.breadcrumb a{color:var(--indigo)}
+.sep{color:var(--faint)}
+.label-tag{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);background:var(--indigo-dim);padding:3px 10px;border-radius:100px;margin-bottom:12px}
+.page-hero h1{font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1.2;margin-bottom:14px;color:var(--fg)}
+.hero-lead{font-size:clamp(.9rem,2vw,1.03rem);color:var(--muted);max-width:680px;line-height:1.75;margin-bottom:16px}
+.art-meta{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.meta-tag{font-size:.72rem;font-weight:500;padding:3px 10px;border-radius:100px;background:var(--bg2);color:var(--muted);border:1px solid var(--border)}
+.mt-indigo{background:var(--indigo-dim);color:var(--indigo);border-color:rgba(99,102,241,.2)}
+.mt-gray{background:var(--bg2);color:var(--muted)}
+.art-layout{display:grid;grid-template-columns:1fr 260px;gap:40px;padding:36px 0}
+@media(max-width:768px){.art-layout{grid-template-columns:1fr}}
+.art-sidebar{display:flex;flex-direction:column;gap:16px}
+.sidebar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px}
+.sidebar-card h3{font-size:.78rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px}
+.sidebar-link{display:block;font-size:.83rem;color:var(--indigo);padding:5px 0;border-bottom:1px solid var(--border2)}
+.sidebar-link:last-child{border-bottom:none}
+.sidebar-link:hover{color:var(--fg)}
+
+/* LANE TABS */
+.lane-section{display:block}html.js html.js .lane-tabs{display:flex;gap:4px;padding:0 0 0;overflow-x:auto}
+.lane-tab{background:none;border:none;cursor:pointer;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--muted);border-bottom:2px solid transparent;transition:color .18s,border-color .18s;white-space:nowrap;font-family:var(--font)}
+.lane-tab:hover{color:var(--fg)}
+.lane-tab.active{color:var(--fg);border-bottom-color:var(--indigo)}
+.lane-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.dot-green{background:var(--green)}
+.dot-indigo{background:var(--indigo)}
+.dot-red{background:var(--red)}
+.lane-label{font-size:.82rem}
+
+
+.lane-section h2{font-size:clamp(1.1rem,2.2vw,1.35rem);font-weight:700;color:var(--fg);margin:28px 0 12px;letter-spacing:-.02em}
+.lane-section h2:first-child{margin-top:0}
+.lane-section h3{font-size:1rem;font-weight:700;color:var(--fg);margin:24px 0 10px}
+.lane-section ul{margin:0 0 1.2rem 1.4rem;color:var(--muted)}
+.lane-section li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lane-section p{font-size:.95rem;margin-bottom:1.1rem}
+
+/* CALLOUTS */
+.callout{border-radius:10px;padding:16px 18px;margin:20px 0;border-left:3px solid}
+.callout-head{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.callout-simple{background:var(--blue-dim);border-color:var(--blue)}
+.callout-simple .callout-head{color:var(--blue)}
+.callout-tip{background:rgba(16,185,129,.08);border-color:var(--green)}
+.callout-tip .callout-head{color:var(--green)}
+.callout-deep{background:rgba(239,68,68,.07);border-color:var(--red)}
+.callout-deep .callout-head{color:var(--red)}
+
+/* PROMPTS */
+.prompt-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px;margin:14px 0;position:relative;box-shadow:var(--shadow)}
+.prompt-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--indigo);margin-bottom:8px}
+.prompt-text{font-size:.87rem;color:var(--muted);line-height:1.65;padding-right:60px}
+.prompt-copy{position:absolute;top:14px;right:14px;background:var(--indigo);color:#fff;border:none;cursor:pointer;font-size:.72rem;font-weight:600;padding:5px 11px;border-radius:6px;font-family:var(--font);transition:opacity .18s}
+.prompt-copy:hover{opacity:.85}
+.prompt-copy.copied{background:var(--green)}
+
+/* FOOTER */
+.site-footer{background:var(--bg2);border-top:1px solid var(--border);padding:48px 0 28px;margin-top:60px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:32px;margin-bottom:36px}
+@media(max-width:820px){.ft-grid{grid-template-columns:1fr 1fr;gap:28px}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+.ft-brand-logo{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ft-brand p{font-size:.8rem;color:var(--muted);line-height:1.6;max-width:200px}
+.ft-col .ft-h{font-size:.72rem;font-weight:700;color:var(--faint);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:8px}
+.ft-col a{font-size:.82rem;color:var(--muted);transition:color .18s}
+.ft-col a:hover{color:var(--fg)}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:20px;flex-wrap:wrap;gap:8px}
+.ft-bot span{font-size:.74rem;color:var(--faint)}
+
+.art-body{min-width:0;overflow-wrap:break-word}
+.nav-logo-name{font-size:.93rem;font-weight:700;color:#F1F5F9;letter-spacing:-.01em}
+.art-layout{grid-template-columns:260px 1fr}.art-sidebar{order:-1;position:sticky;top:70px;align-self:start;max-height:calc(100vh - 90px);overflow-y:auto}.lane-section{display:block}.depth-band{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:44px 0 20px;padding-top:10px;border-top:1px solid var(--card-border,#243044)}.lane-section:first-of-type .depth-band{margin-top:0;border-top:none;padding-top:0}.depth-badge{display:inline-flex;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;padding:5px 12px;border-radius:100px;border:1px solid currentColor}.db-green{color:var(--green)}.db-indigo{color:var(--indigo)}.db-red{color:var(--red,#EF4444)}.depth-note{font-size:.78rem;color:var(--faint,#64748b)}.pg-toc a{display:block;font-size:.79rem;color:var(--muted);padding:5px 0 5px 11px;border-left:2px solid var(--card-border,#243044);line-height:1.45;text-decoration:none}.pg-toc a:hover{color:var(--fg);border-left-color:var(--indigo)}.pg-toc .th{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin:13px 0 5px;padding-left:11px}.pg-toc .th:first-child{margin-top:0}@media(max-width:900px){.art-layout{grid-template-columns:1fr}.art-sidebar{position:static;max-height:none;order:0}}
+
+.skip-link{position:absolute;left:-9999px;top:0;z-index:999;background:#0F172A;color:#fff;padding:10px 16px;border-radius:0 0 8px 0;font-size:.85rem;font-weight:600;text-decoration:none}
+.skip-link:focus{left:0;outline:2px solid #14B8A6;outline-offset:2px}
+
+/*ask-v4*/
+.ask-ai{box-sizing:border-box;width:calc(100% - 32px);max-width:1040px;margin:56px auto;padding:30px 32px;border-radius:18px;position:relative;overflow:hidden;text-align:left;background:linear-gradient(135deg,#1e1b4b 0%,#172554 55%,#0f172a 100%);border:1px solid rgba(165,180,252,.28);box-shadow:0 18px 40px -18px rgba(15,23,42,.55);font-family:inherit}
+.ask-ai *,.ask-ai *::before,.ask-ai *::after{box-sizing:border-box}
+.ask-ai h2::after{content:none;display:none}
+.ask-ai[data-col]{width:100%;margin:44px 0 8px}
+.ask-ai::after{content:"";position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(129,140,248,.35),rgba(129,140,248,0) 70%);pointer-events:none}
+.ask-ai h2{display:flex;align-items:center;gap:12px;font-size:1.2rem;line-height:1.3;font-weight:700;letter-spacing:-.01em;color:#fff;margin:0 0 8px;padding:0;border:0}
+.ask-ai h2::before{content:"\2726";flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#a855f7);color:#fff;font-size:15px}
+.ask-ai p{font-size:.92rem;line-height:1.6;color:#cbd5e1;margin:0 0 20px;max-width:60ch}
+.ask-row{display:flex;flex-wrap:wrap;gap:10px;position:relative;z-index:1}
+.ask-btn{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;font-weight:600;line-height:1;color:#f1f5f9;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:11px 18px;text-decoration:none;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.ask-btn::after{content:"\2197";font-size:.8em;opacity:.6}
+.ask-btn:hover,.ask-btn:focus-visible{background:#fff;color:#1e1b4b;border-color:#fff;transform:translateY(-1px);text-decoration:none}
+.ask-btn:focus-visible{outline:2px solid #a5b4fc;outline-offset:2px}
+.ask-ai p.ask-note{font-size:.76rem;color:#94a3b8;margin:16px 0 0;max-width:none}
+@media(max-width:600px){.ask-ai{padding:22px 18px;margin:40px auto;border-radius:14px}.ask-ai h2{font-size:1.05rem}.ask-btn{flex:1 1 calc(50% - 10px);justify-content:center}}
+/*ask-v4-end*/
+</style>
+
+<meta property="og:site_name" content="Clarigital">
+<meta property="og:image" content="https://www.clarigital.com/og-ai-atlas.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:image" content="https://www.clarigital.com/og-ai-atlas.png">
+
+
+<script>document.documentElement.classList.add("js");</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "DefinedTermSet", "name": "Memory Glossary", "description": "Plain definitions of DIMM, RDIMM, ECC, CAS latency, XMP, EXPO and 20+ other memory terms, each sourced to JEDEC, Kingston, Corsair, Intel or AMD.", "url": "https://www.clarigital.com/hardware/memory/glossary/", "dateModified": "2026-09-26", "inLanguage": "en", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com/"}, "citation": ["https://www.kingston.com/en/blog/gaming/the-ultimate-ram-guide-for-gamers", "https://www.jedec.org/standards-documents/dictionary/terms/dual-line-memory-module-dimm", "https://www.jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance", "https://www.kingston.com/en/blog/pc-performance/ddr5-overview", "https://www.jedec.org/standards-documents/docs/jesd79-5d", "https://www.kingston.com/en/memory/kingston-glossary", "https://www.corsair.com/us/en/explorer/diy-builder/memory/dimm-vs-udimm-vs-rdimm-vs-sodimm-vs-cudimm-whats-the-difference/", "https://www.jedec.org/standards-documents/docs/jesd323b", "https://www.jedec.org/standards-documents/docs/jesd324", "https://www.kingston.com/en/blog/system-builder/understanding-memory-modules-cudimm-csodimm-camm2-mrdimm-video", "https://www.corsair.com/us/en/explorer/diy-builder/memory/what-is-cas-latency-ddr5-latencies-explained/", "https://www.intel.com/content/www/us/en/gaming/extreme-memory-profile-xmp.html", "https://www.amd.com/en/products/processors/technologies/expo.html", "https://www.jedec.org/standards-documents/docs/jesd400-5d01", "https://www.jedec.org/standards-documents/docs/jesd300-5", "https://www.jedec.org/news/pressreleases/jedec-announces-publication-spd5118-hub-and-serial-presence-detect-device-and"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Hardware", "item": "https://www.clarigital.com/hardware/"}, {"@type": "ListItem", "position": 3, "name": "Memory", "item": "https://www.clarigital.com/hardware/memory/"}, {"@type": "ListItem", "position": 4, "name": "Glossary", "item": "https://www.clarigital.com/hardware/memory/glossary/"}]}</script>
+<style>
+.chip-howto{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin:0 0 30px;font-size:.88rem;color:var(--muted)}
+.chip-howto b{color:var(--fg)}
+.chip-sec{margin:0 0 44px;scroll-margin-top:80px}
+.chip-sec>h2{font-size:clamp(1.15rem,2.3vw,1.4rem);font-weight:700;color:var(--fg);margin:0 0 14px;letter-spacing:-.02em}
+.chip-sec>h2 span{color:var(--faint);font-weight:600;margin-right:6px}
+.lvl{margin:0 0 14px;padding:14px 16px 6px;border-radius:10px;background:var(--bg2);border:1px solid var(--border2)}
+.lvl-simple{border-left:3px solid var(--green)}.lvl-deeper{border-left:3px solid var(--indigo)}.lvl-expert{border-left:3px solid var(--red,#EF4444)}
+.lvl-deep{border-left:3px solid var(--red,#EF4444)}
+.lvl .lvl-top{display:flex;gap:10px;align-items:center;margin-bottom:10px}
+.lvl p{font-size:.95rem;margin-bottom:.9rem;line-height:1.75}
+.lvl ul,.lvl ol{margin:0 0 1rem 1.3rem;color:var(--muted)}
+.lvl li{margin-bottom:.5rem;line-height:1.65;font-size:.93rem}
+.lvl li b,.lvl p b{color:var(--fg)}
+.lvl h3{font-size:.95rem;color:var(--fg);margin:6px 0 8px}
+a.cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--blue);margin-left:1px;padding:0 3px;border-radius:3px;background:var(--blue-dim);text-decoration:none;font-weight:600}
+a.cite:hover{background:var(--blue);color:#0F172A}
+.table-wrap{overflow-x:auto;margin:6px 0 14px}
+table.spec{width:100%;border-collapse:collapse;font-size:.84rem;margin:6px 0 12px}
+table.spec th,table.spec td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--border2);color:var(--muted)}
+table.spec th{color:var(--fg);font-weight:600;white-space:nowrap}
+table.spec thead th{font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;color:var(--faint)}
+table.spec a{color:var(--blue)}
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:4px 0 14px}
+.fact-grid div{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:10px 12px;font-size:.86rem;color:var(--muted);line-height:1.5}
+.fact-grid b{display:block;color:var(--fg);font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.note{font-size:.8rem;color:var(--faint);line-height:1.6}
+.src-list{padding-left:22px}
+.src-list li{font-size:.84rem;color:var(--muted);padding:5px 0;line-height:1.55}
+.src-list a{color:var(--blue)}
+.st{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:1px 8px;margin-left:6px}
+.st-official{color:var(--green);background:rgba(16,185,129,.12)}.st-filing{color:var(--indigo);background:var(--indigo-dim)}.st-press{color:#F59E0B;background:rgba(245,158,11,.12)}
+.st-standard,.st-paper,.st-conference{color:var(--blue);background:var(--blue-dim)}.st-research,.st-government,.st-analyst{color:#A78BFA;background:rgba(167,139,250,.12)}.st-vendor{color:var(--muted);background:var(--bg2)}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:10px 0 30px}
+.brand-card{display:block;background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--r);padding:16px}
+a.brand-card:hover{border-color:var(--indigo)}
+.brand-card h3{font-size:1.05rem;color:var(--fg);margin-bottom:8px}
+.brand-card dl{font-size:.82rem;margin:0}
+.brand-card dt{color:var(--faint);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;margin-top:8px}
+.brand-card dd{color:var(--muted);margin:2px 0 0}
+.brand-card .soon{display:inline-block;font-size:.72rem;color:var(--faint);border:1px dashed var(--border);border-radius:100px;padding:2px 10px;margin-top:10px}
+.brand-card .go{display:inline-block;font-size:.8rem;color:var(--indigo);font-weight:600;margin-top:12px}
+.tpl-list{columns:2;column-gap:28px;padding-left:20px;margin:6px 0 24px}
+.tpl-list li{font-size:.9rem;color:var(--muted);padding:3px 0;break-inside:avoid}
+@media(max-width:600px){.tpl-list{columns:1}}
+.gloss dt{color:var(--fg);font-weight:700;font-size:.92rem;margin-top:14px}
+.gloss dd{color:var(--muted);font-size:.9rem;margin:3px 0 0;line-height:1.65}
+.lvl ul.timeline{list-style:none;margin-left:0}
+.timeline li b{display:inline-block;min-width:54px;color:var(--indigo)}
+.steps li,.hidden-list li{margin-bottom:.75rem}
+.hub-h2{font-size:clamp(1.2rem,2.4vw,1.5rem);color:var(--fg);font-weight:700;margin:34px 0 8px;letter-spacing:-.02em}
+
+.mem-group-h{font-size:1.02rem;font-weight:700;color:var(--fg);margin:26px 0 4px}
+.mem-group-p{font-size:.86rem;color:var(--muted);margin:0 0 14px;max-width:72ch}
+.mem-soon{opacity:.62}
+.mem-soon .brand-card-t{color:var(--muted)}
+/* S174: these two were used on every memory card since S165 with no rule behind them,
+   so the hub cards rendered on browser defaults. */
+.brand-card-t{font-size:1.02rem;font-weight:650;color:var(--fg);line-height:1.35;margin-bottom:6px}
+.brand-card-d{font-size:.84rem;color:var(--muted);line-height:1.5;margin:0}
+.mem-badge{display:inline-block;font-size:.64rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border-radius:100px;padding:1px 8px;margin-left:6px;color:var(--muted);background:var(--bg2);border:1px solid var(--border2)}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header>
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="nav-in">
+    <a href="/" class="nav-logo" aria-label="Clarigital home">
+      <div class="logo-mark">CL</div>
+      <span class="nav-logo-name">Clarigital</span>
+    </a>
+    <div class="nav-search" role="search">
+      <svg class="si" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search 331 guides…" aria-label="Search guides" data-search-input autocomplete="off" spellcheck="false">
+      <div class="search-results" data-search-results role="listbox"></div>
+    </div>
+    <div class="nav-links">
+      <a href="/fintech-ai/" style="color:#14B8A6">Fintech AI</a><a href="/ai-kids/">AI Kids</a>
+      <a href="/codex/">Codex</a>
+      <a href="/ai-atlas/">AI Atlas</a><a href="/ai-news/" data-news-link>AI News</a>
+      <a href="/courses/">Courses</a>
+      <a href="/curriculum/">Curriculum</a>
+      <a href="/about/">About</a>
+    </div>
+    <div style="display:flex;gap:6px;flex-shrink:0">
+      <a href="/ai-atlas/" class="btn btn-indigo btn-sm">AI Atlas</a>
+      
+    </div>
+    <button class="nav-ham" id="navHam" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer" role="dialog" aria-modal="true">
+  <div class="nav-panel">
+    <div class="nav-panel-top">
+      <div class="nav-logo"><div class="logo-mark">CL</div><span class="nav-logo-name">Clarigital</span></div>
+      <button class="nav-close" id="navClose">&#x2715;</button>
+    </div>
+    <a href="/ai-news/" class="di" data-news-link>&#128240; AI News today</a>
+    <a href="/fintech-ai/" class="di">Fintech AI</a>
+    <a href="/ai-kids/" class="di">AI Kids</a>
+    <a href="/courses/" class="di">Courses</a>
+    <a href="/" class="di">&#127968; Home</a>
+    <a href="/codex/" class="di">&#128218; Codex — 331 guides</a>
+    <a href="/ai-atlas/" class="di">&#129504; AI Atlas</a>
+    <a href="/ai-atlas/tools/chatgpt/" class="di">&#8627; ChatGPT</a>
+    <a href="/ai-atlas/tools/claude/" class="di">&#8627; Claude</a>
+    <a href="/ai-atlas/tools/gemini/" class="di">&#8627; Gemini</a>
+    <a href="/ai-atlas/start-here/" class="di">&#128161; What is AI?</a>
+    <a href="/ai-atlas/prompt-library/" class="di">&#128221; Prompt Library</a>
+    <a href="/sources/" class="di">&#128221; Sources</a>
+    <a href="/about/" class="di">&#8505;&#65039; About</a>
+    </div>
+</div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap" id="main-content">
+    <nav class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><a href="/hardware/">Hardware</a><span class="sep">/</span><a href="/hardware/memory/">Memory</a><span class="sep">/</span><span>Glossary</span></nav>
+    <span class="label-tag">Memory &middot; Glossary</span>
+    <h1>Memory Glossary</h1>
+    <p class="hero-lead">Every term below is defined the way the company or standards body that owns it defines it, not the way a forum thread does. Where two official sources phrase a term differently, both are given.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
+    <div class="art-meta">
+      <span class="meta-tag mt-indigo">Glossary</span>
+      <span class="meta-tag mt-gray">8 sections &middot; 3 levels</span>
+      <span class="meta-tag mt-gray">16 linked sources</span>
+      <span class="meta-tag mt-gray">Checked September 2026</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="art-layout">
+<div class="art-body">
+<div class="chip-howto" role="note"><b>How to read this page.</b> Each entry starts <b>Simple</b>, then goes <b>Deeper</b>, then <b>Expert</b>: stop wherever you have what you need. The small numbers are sources: click one to open the original document.</div>
+<section class="chip-sec" id="generations" aria-labelledby="h-generations">
+<h2 id="h-generations"><span>1.</span>Generations and standards</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>DDR</b> stands for Double Data Rate, and it is the family every mainstream desktop and laptop memory module belongs to. Each new generation &mdash; DDR3, then DDR4, then DDR5 &mdash; is a separate, physically incompatible standard, not a speed upgrade of the last one. Kingston&rsquo;s own RAM guide puts it plainly: &ldquo;A DDR5 memory module will not physically fit into a DDR4 or DDR3 memory socket. While they may look similar, a notch on the bottom of the module acts as a key and will only fit into a compatible socket&rdquo; <a class="cite" href="https://www.kingston.com/en/blog/gaming/the-ultimate-ram-guide-for-gamers" target="_blank" rel="noopener" title="Kingston Technology: The ultimate RAM guide for gamers">1</a>. <b>JEDEC</b>, the industry standards body, owns the specification for each generation <a class="cite" href="https://www.jedec.org/standards-documents/dictionary/terms/dual-line-memory-module-dimm" target="_blank" rel="noopener" title="JEDEC: Dual in-line memory module (DIMM), JEDEC dictionary of terms">2</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>JEDEC&rsquo;s own announcement of the DDR5 standard put the jump in numbers: DDR5 was &ldquo;expected to be launched at 4.8 Gbps (50% higher than DDR4&rsquo;s end of life speed of 3.2 Gbps)&rdquo; and &ldquo;supports double the bandwidth as compared to its predecessor, DDR4&rdquo; <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance" target="_blank" rel="noopener" title="JEDEC: JEDEC publishes new DDR5 standard for advancing next-generation high performance computing systems">3</a>. Kingston&rsquo;s own overview states the same comparison in its own words: &ldquo;DDR5 starts at 4800MT/s, while DDR4 tops out at 3200MT/s&rdquo; <a class="cite" href="https://www.kingston.com/en/blog/pc-performance/ddr5-overview" target="_blank" rel="noopener" title="Kingston Technology: DDR5 memory standard: an introduction to the next generation of DRAM module technology">4</a>. Both figures describe the JEDEC-defined baseline speed of each generation, not what any particular kit is sold at &mdash; see Speed, timing and latency below for that distinction.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>The current DDR5 standard is JESD79-5D, and Kingston dates the standard&rsquo;s development to 2017, describing it as begun &ldquo;by the industry standards body JEDEC&hellip; with input from the leading global memory semiconductor and chipset architecture vendors, including Kingston&rdquo; <a class="cite" href="https://www.kingston.com/en/blog/pc-performance/ddr5-overview" target="_blank" rel="noopener" title="Kingston Technology: DDR5 memory standard: an introduction to the next generation of DRAM module technology">4</a> <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd79-5d" target="_blank" rel="noopener" title="JEDEC: DDR5 SDRAM, JESD79-5D, version 1.41, November 2025">5</a>. JEDEC revises each generation&rsquo;s document over its life: this site&rsquo;s citation for the DDR5 standard is version 1.41, dated November 2025 <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd79-5d" target="_blank" rel="noopener" title="JEDEC: DDR5 SDRAM, JESD79-5D, version 1.41, November 2025">5</a>. The keyed notch mentioned above (see Simple) is Kingston&rsquo;s own description of the physical mechanism <a class="cite" href="https://www.kingston.com/en/blog/gaming/the-ultimate-ram-guide-for-gamers" target="_blank" rel="noopener" title="Kingston Technology: The ultimate RAM guide for gamers">1</a>; JEDEC&rsquo;s dictionary defines the general DIMM form the connector belongs to as &ldquo;a packaging arrangement of memory devices on a socketable substrate&rdquo; <a class="cite" href="https://www.jedec.org/standards-documents/dictionary/terms/dual-line-memory-module-dimm" target="_blank" rel="noopener" title="JEDEC: Dual in-line memory module (DIMM), JEDEC dictionary of terms">2</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="formfactors" aria-labelledby="h-formfactors">
+<h2 id="h-formfactors"><span>2.</span>Form factors: DIMM, SO-DIMM and beyond</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A <b>DIMM</b> (Dual In-line Memory Module) is the standard memory stick shape used in desktop PCs. Kingston&rsquo;s own glossary defines it as a module &ldquo;that has separate electrical contacts on each side of the module&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>. A <b>SO-DIMM</b> (Small Outline DIMM) is the same idea in a shorter form factor: Kingston&rsquo;s glossary describes SO-DIMMs as being &ldquo;used mainly in laptops and small form factor PCs&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Beyond plain DIMM and SO-DIMM, the module world splits by what sits between the memory chips and the memory controller. Kingston&rsquo;s glossary defines an <b>UDIMM</b> (Unbuffered DIMM) as a module &ldquo;that does not feature a Register or buffers&rdquo;, used &ldquo;traditionally&hellip; in PCs/workstations/laptops&rdquo;, and an <b>RDIMM</b> (Registered DIMM) as &ldquo;a server class memory module that features a Register component, also known as a Registered Clock Driver (RCD), which acts as a buffer between the DRAM&hellip; components&hellip; and the memory controller&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>. An <b>LRDIMM</b> (Load Reduced DIMM) goes further: Kingston describes it as featuring &ldquo;data buffers to reduce loads on the memory controller, which would otherwise toggle memory speeds down to compensate&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a> &mdash; a step up from RDIMM aimed at systems with many modules per channel.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>DDR5 added a further pair of clocked formats, each with its own JEDEC common standard. A <b>CUDIMM</b> adds an onboard clock driver: Corsair&rsquo;s own explainer describes the added chip as &ldquo;responsible for regenerating the clock signal used by the memory chips&rdquo; for stability at higher speed <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/dimm-vs-udimm-vs-rdimm-vs-sodimm-vs-cudimm-whats-the-difference/" target="_blank" rel="noopener" title="Corsair: What&#x27;s the difference between DIMM, UDIMM, RDIMM, SODIMM, and CUDIMM?">7</a>, and JEDEC&rsquo;s own standard for it is titled &ldquo;DDR5 clocked unbuffered dual inline memory module (CUDIMM and CQDIMM) common standard&rdquo;, JESD323B <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd323b" target="_blank" rel="noopener" title="JEDEC: DDR5 clocked unbuffered dual inline memory module (CUDIMM and CQDIMM) common standard, JESD323B">8</a>. Its small-outline counterpart, <b>CSODIMM</b>, has its own JEDEC standard, JESD324B <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd324" target="_blank" rel="noopener" title="JEDEC: DDR5 clocked small outline dual inline memory module (CSODIMM) common standard, JESD324B">9</a>. Two further formats depart from the DIMM shape entirely. <b>CAMM2</b> (Compression Attached Memory Module 2) is, in Kingston&rsquo;s own words, &ldquo;the JEDEC industry standard iteration of Dell&rsquo;s CAMM technology, specifically designed to provide modular memory solutions for manufacturers of ultra-thin laptops&rdquo; <a class="cite" href="https://www.kingston.com/en/blog/system-builder/understanding-memory-modules-cudimm-csodimm-camm2-mrdimm-video" target="_blank" rel="noopener" title="Kingston Technology: Understanding a new generation of DDR5 memory modules: CUDIMM, CSODIMM, CAMM2 and MRDIMM">10</a>; Corsair&rsquo;s explainer adds that it uses &ldquo;a pin grid array, similar to modern processors, as opposed to the double-sided format used by traditional DIMMs&rdquo;, so it &ldquo;lay[s] flat on the motherboard instead of perpendicular to it&rdquo; <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/dimm-vs-udimm-vs-rdimm-vs-sodimm-vs-cudimm-whats-the-difference/" target="_blank" rel="noopener" title="Corsair: What&#x27;s the difference between DIMM, UDIMM, RDIMM, SODIMM, and CUDIMM?">7</a>. <b>MRDIMM</b> (Multiplexed-Rank DIMM) is server-only: Kingston calls it &ldquo;a cutting-edge memory solution designed specifically for data centers and enterprise server systems where scalability and performance are key&rdquo; <a class="cite" href="https://www.kingston.com/en/blog/system-builder/understanding-memory-modules-cudimm-csodimm-camm2-mrdimm-video" target="_blank" rel="noopener" title="Kingston Technology: Understanding a new generation of DDR5 memory modules: CUDIMM, CSODIMM, CAMM2 and MRDIMM">10</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="timing" aria-labelledby="h-timing">
+<h2 id="h-timing"><span>3.</span>Speed, timing and latency</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A memory stick&rsquo;s speed is usually written as a single number, like DDR5-6000, but that hides several separate numbers. Kingston&rsquo;s glossary calls the headline figure the <b>data rate</b>: &ldquo;the speed class of a memory module (formerly referred to as frequency)&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>, measured in <b>MT/s</b>, which Kingston defines as &ldquo;million transfers per second&hellip; the correct term used to describe the data rate (speed) of all DDR memory modules&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>Alongside the data rate sits a second figure, usually printed next to it, like CL30: <b>CAS Latency (CL)</b>. Corsair&rsquo;s own explainer defines it as &ldquo;the number of cycles it takes between the processor asking for data from the memory and returning it&rdquo; <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-is-cas-latency-ddr5-latencies-explained/" target="_blank" rel="noopener" title="Corsair: What is CAS latency? DDR5 latencies explained">11</a>; Kingston&rsquo;s glossary describes CAS (Column Address Strobe) as the mechanism, with CL being &ldquo;the time it takes in clock cycles to find the open row of memory needed to be accessed&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>. A lower CL at the same data rate means less delay per access &mdash; the same reasoning that separates a rated speed from what a system actually runs at, covered in full on <a href="/hardware/memory/xmp-expo-explained/">XMP, EXPO and why your memory runs slower than the box says</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>CL is one of four timing parameters usually quoted together, e.g. &ldquo;CL30-37-37-96&rdquo;. Corsair&rsquo;s own explainer defines the other three: <b>tRCD</b> (RAS to CAS Delay) as &ldquo;the number of cycles it takes between the activation of the line (RAS) and the column (CAS) where the data are stored in the matrix&rdquo;; <b>tRP</b> (RAS Precharge) as &ldquo;the number of cycles it takes between disabling the access to a line of data and the beginning of the access to another line of data&rdquo;; and <b>tRAS</b> (Active to Precharge Delay) as &ldquo;&hellip;how long the memory must wait until the next memory access request can be initiated&rdquo; <a class="cite" href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-is-cas-latency-ddr5-latencies-explained/" target="_blank" rel="noopener" title="Corsair: What is CAS latency? DDR5 latencies explained">11</a>. All four are cycle counts, not fixed time durations, so the same CL number represents a different real-world delay at different data rates &mdash; a lower CL at a lower data rate can be a longer delay in nanoseconds than a higher CL at a higher data rate.</p>
+</div>
+</section>
+<section class="chip-sec" id="profiles" aria-labelledby="h-profiles">
+<h2 id="h-profiles"><span>4.</span>XMP and EXPO: overclocking profiles</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A memory stick&rsquo;s box speed is not what a new PC boots at by default; JEDEC&rsquo;s baseline speed for the generation is what actually runs until something turns on a faster profile. <b>XMP</b> (Intel) and <b>EXPO</b> (AMD) are each company&rsquo;s own name for that profile. Intel&rsquo;s own page is titled &ldquo;Intel Extreme Memory Profile Unlocks Gaming Performance&rdquo;, and describes an XMP profile as a set of &ldquo;preset combinations of speed, timing, and voltage, tested by the manufacturer for stability&rdquo; <a class="cite" href="https://www.intel.com/content/www/us/en/gaming/extreme-memory-profile-xmp.html" target="_blank" rel="noopener" title="Intel: Intel Extreme Memory Profile unlocks gaming performance">12</a>. AMD describes EXPO as allowing &ldquo;user-friendly memory overclocking support of all types of memory, giving users an easy path to&hellip; accelerated memory in their system&rdquo; <a class="cite" href="https://www.amd.com/en/products/processors/technologies/expo.html" target="_blank" rel="noopener" title="AMD: Get in the game faster with AMD EXPO">13</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>The two are not interchangeable: XMP profiles are read by Intel-platform motherboards and EXPO profiles by AMD Socket AM5 boards, and the site&rsquo;s own explainer on this covers what each company says about warranty if you enable one &mdash; see <a href="/hardware/memory/xmp-expo-explained/">XMP, EXPO and why your memory runs slower than the box says</a> for the full comparison, including what each vendor will and will not promise once a profile is turned on.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>XMP has gone through two generations that matter for compatibility. Kingston&rsquo;s own glossary defines <b>XMP 2.0</b> as &ldquo;an Intel specification for allowing memory and motherboard vendors to set overclock profiles (DDR3 &amp; DDR4) to allow easy overclocking for the end user&rdquo;, and <b>XMP 3.0</b> as &ldquo;the latest version of XMP made for DDR5 supporting up to five profiles, three for the memory manufacturer and two customizable for manual overclocking by the end user&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>. Full technical detail for XMP 3.0 is published as an Intel datasheet, cited on the XMP &amp; EXPO explainer <a class="cite" href="https://www.intel.com/content/www/us/en/gaming/extreme-memory-profile-xmp.html" target="_blank" rel="noopener" title="Intel: Intel Extreme Memory Profile unlocks gaming performance">12</a>.</p>
+</div>
+</section>
+<section class="chip-sec" id="channels" aria-labelledby="h-channels">
+<h2 id="h-channels"><span>5.</span>Channels, ranks and population</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A <b>memory channel</b> is the data path between a module and the memory controller. Kingston&rsquo;s glossary defines it as &ldquo;the data transfer path between a memory module and a memory controller (typically found within the processor)&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>. Installing two matched modules across two channels &mdash; <b>dual channel</b> &mdash; or four across four &mdash; <b>quad channel</b> &mdash; adds bandwidth rather than just capacity: Kingston defines each as a &ldquo;socket architecture where [two/four] identical memory modules installed aggregate their bandwidth to increase system performance&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>How many channels a system actually has is set by the CPU and motherboard, not by the memory itself &mdash; a stick that supports dual channel operation will still only run single-channel if it is the only module installed, or if it is installed in the wrong pair of slots for that board. This is the first fact a &ldquo;will it fit my machine&rdquo; check has to establish, and it sits outside what any individual memory maker publishes: the module data sheet states the memory&rsquo;s own capability, but the motherboard manual states which physical slots pair into which channel.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>A <b>rank</b> is a narrower unit than a channel or even a module. Kingston&rsquo;s glossary defines it as &ldquo;a data block that is 64-bits wide&rdquo;, adding that &ldquo;the amount of bits is determined by the amount of banks, not DRAM chips&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>. A single module can be single-rank or dual-rank: dual-rank packs two independently addressable 64-bit blocks onto one physical stick, which is why two sticks with the same advertised capacity are not always electrically equivalent to a system&rsquo;s memory controller. RDIMM and LRDIMM (see Form factors above) exist specifically to let a system support more ranks per channel than an unbuffered module can drive reliably.</p>
+</div>
+</section>
+<section class="chip-sec" id="ecc" aria-labelledby="h-ecc">
+<h2 id="h-ecc"><span>6.</span>ECC and server memory</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>ECC</b> stands for Error Correction Code. Kingston&rsquo;s glossary defines it as &ldquo;an algorithm that can detect and correct single or multiple bit data corruption in computing&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>. Server and workstation memory commonly carries ECC; most desktop and laptop memory does not.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>DDR5 also introduced a second, separate kind of error correction that is easy to confuse with module-level ECC. Kingston&rsquo;s glossary defines <b>on-die ECC</b> (ODECC) as &ldquo;ECC incorporated within the DRAM chip to correct bit errors before they transmit to the module&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>, and JEDEC&rsquo;s own announcement of the DDR5 standard names it as a standard feature: &ldquo;on-die ECC and other scaling features enable manufacturing on advanced process nodes&rdquo; <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance" target="_blank" rel="noopener" title="JEDEC: JEDEC publishes new DDR5 standard for advancing next-generation high performance computing systems">3</a>. The two are not the same protection: on-die ECC corrects errors inside a single chip before the data ever leaves it, while module-level ECC (an extra chip, and an extra data path to the memory controller) catches errors that occur afterwards, in transit or elsewhere on the module.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Because on-die ECC is a chip-level feature described in JEDEC&rsquo;s own DDR5 standard announcement <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance" target="_blank" rel="noopener" title="JEDEC: JEDEC publishes new DDR5 standard for advancing next-generation high performance computing systems">3</a> <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd79-5d" target="_blank" rel="noopener" title="JEDEC: DDR5 SDRAM, JESD79-5D, version 1.41, November 2025">5</a> rather than a module-level add-on, its presence is not what a buyer means by asking for &ldquo;ECC memory&rdquo;: that phrase refers to module-level ECC, which requires a compatible memory controller and is the feature server and workstation platforms specifically advertise support for. RDIMM vs. UDIMM (see Form factors above) is a separate, buffering-related distinction, not itself the ECC/non-ECC distinction &mdash; a module can in principle be unbuffered and ECC, or registered and non-ECC &mdash; though ECC and RDIMM are commonly paired in server products.</p>
+</div>
+</section>
+<section class="chip-sec" id="density" aria-labelledby="h-density">
+<h2 id="h-density"><span>7.</span>Density, organization and physical layout</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p>A module&rsquo;s printed capacity, like 16GB, is not the same number as a chip&rsquo;s <b>density</b>. Kingston&rsquo;s glossary defines density as &ldquo;the individual capacity of a DRAM chip&hellip; measured in Megabits or Gigabits&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a> &mdash; the module&rsquo;s total capacity comes from how many of those chips are populated on it.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>How wide each chip&rsquo;s data path is also varies. Kingston&rsquo;s glossary calls this <b>chip organization</b>: &ldquo;the column width of a DRAM component. The DRAM column widths used for memory modules are x16 (&lsquo;by 16&rsquo;), meaning 16 columns, x8, and x4&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a>. A module built from fewer, wider (x16) chips reaches the same total capacity as one built from more, narrower (x8 or x4) chips, and the two are not always interchangeable to a given memory controller.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>Kingston&rsquo;s glossary also defines <b>form factor</b> broadly, covering both memory and storage products as a description of &ldquo;the size and shape of an electronic component&rdquo; <a class="cite" href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener" title="Kingston Technology: Kingston glossary">6</a> &mdash; the same word used elsewhere on this site for a module&rsquo;s physical shape (DIMM, SO-DIMM, CAMM2 and the rest, covered above) rather than a specification of its electrical behaviour.</p>
+</div>
+</section>
+<section class="chip-sec" id="spd" aria-labelledby="h-spd">
+<h2 id="h-spd"><span>8.</span>SPD: what a module reports about itself</h2>
+<div class="lvl lvl-simple"><div class="lvl-top"><span class="depth-badge db-green">Simple</span><span class="depth-note">Start here</span></div>
+<p><b>SPD</b> (Serial Presence Detect) is a small chip on every module that reports the module&rsquo;s own specifications &mdash; capacity, speed, timings and, on DDR5, any XMP or EXPO profile &mdash; to the system at boot. JEDEC&rsquo;s standard for what a DDR5 module&rsquo;s SPD must contain is JESD400-5D.01 <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd400-5d01" target="_blank" rel="noopener" title="JEDEC: DDR5 serial presence detect (SPD) contents, JESD400-5D.01">14</a>.</p>
+</div>
+<div class="lvl lvl-deeper"><div class="lvl-top"><span class="depth-badge db-indigo">Deeper</span><span class="depth-note">The detail</span></div>
+<p>DDR5 changed how SPD is read: instead of the memory controller reading the SPD chip directly, a separate <b>SPD hub</b> chip sits between them. JEDEC&rsquo;s own standard for this hub is JESD300-5B.01 <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd300-5" target="_blank" rel="noopener" title="JEDEC: SPD5 hub and serial presence detect device standard, JESD300-5B.01">15</a>, first announced alongside the SPD contents standard: JEDEC&rsquo;s own press release for that original publication is titled &ldquo;JEDEC Announces Publication of the SPD5118 Hub and Serial Presence Detect Device and the DDR5 SPD Contents Specifications&rdquo; <a class="cite" href="https://www.jedec.org/news/pressreleases/jedec-announces-publication-spd5118-hub-and-serial-presence-detect-device-and" target="_blank" rel="noopener" title="JEDEC: JEDEC announces publication of the SPD5118 hub and serial presence detect device and the DDR5 SPD contents specifications">16</a>. Both standards have been revised since that first release; this site cites the current versions, JESD300-5B.01 and JESD400-5D.01, directly <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd300-5" target="_blank" rel="noopener" title="JEDEC: SPD5 hub and serial presence detect device standard, JESD300-5B.01">15</a> <a class="cite" href="https://www.jedec.org/standards-documents/docs/jesd400-5d01" target="_blank" rel="noopener" title="JEDEC: DDR5 serial presence detect (SPD) contents, JESD400-5D.01">14</a>.</p>
+</div>
+<div class="lvl lvl-expert"><div class="lvl-top"><span class="depth-badge db-red">Expert</span><span class="depth-note">For specialists</span></div>
+<p>What SPD does and does not report about who actually manufactured the DRAM die inside a given stick &mdash; a separate question from the module brand printed on the label &mdash; is its own explainer rather than repeated here, to avoid the same content drifting in two places: see <a href="/hardware/memory/whose-dies-are-inside/">whose DRAM chips are actually inside your memory stick</a>, which reads the JESD400-5D.01 and JESD300-5B.01 standards specifically for that question.</p>
+</div>
+</section>
+<section class="chip-sec" id="sources" aria-labelledby="h-sources">
+<h2 id="h-sources"><span>9.</span>Sources</h2>
+<p class="note">16 sources, all checked September 2026. <b>Official</b> = the company or organisation’s own page; <b>Filing</b> = a document filed with a regulator or an annual report; <b>Standard</b> = a published industry standard; <b>Paper</b> = a peer-reviewed or conference paper; <b>Research</b> = an independent research body; <b>Government</b> = a government page; <b>Press</b> = news coverage, used only where no official source exists.</p>
+<ol class="src-list">
+<li id="src-1"><b>Kingston Technology</b>: <a href="https://www.kingston.com/en/blog/gaming/the-ultimate-ram-guide-for-gamers" target="_blank" rel="noopener">The ultimate RAM guide for gamers</a><span class="st st-official">Official</span></li>
+<li id="src-2"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/dictionary/terms/dual-line-memory-module-dimm" target="_blank" rel="noopener">Dual in-line memory module (DIMM), JEDEC dictionary of terms</a><span class="st st-standard">Standard</span></li>
+<li id="src-3"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec-publishes-new-ddr5-standard-advancing-next-generation-high-performance" target="_blank" rel="noopener">JEDEC publishes new DDR5 standard for advancing next-generation high performance computing systems</a><span class="st st-standard">Standard</span></li>
+<li id="src-4"><b>Kingston Technology</b>: <a href="https://www.kingston.com/en/blog/pc-performance/ddr5-overview" target="_blank" rel="noopener">DDR5 memory standard: an introduction to the next generation of DRAM module technology</a><span class="st st-official">Official</span></li>
+<li id="src-5"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jesd79-5d" target="_blank" rel="noopener">DDR5 SDRAM, JESD79-5D, version 1.41, November 2025</a><span class="st st-standard">Standard</span></li>
+<li id="src-6"><b>Kingston Technology</b>: <a href="https://www.kingston.com/en/memory/kingston-glossary" target="_blank" rel="noopener">Kingston glossary</a><span class="st st-official">Official</span></li>
+<li id="src-7"><b>Corsair</b>: <a href="https://www.corsair.com/us/en/explorer/diy-builder/memory/dimm-vs-udimm-vs-rdimm-vs-sodimm-vs-cudimm-whats-the-difference/" target="_blank" rel="noopener">What&#x27;s the difference between DIMM, UDIMM, RDIMM, SODIMM, and CUDIMM?</a><span class="st st-official">Official</span></li>
+<li id="src-8"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jesd323b" target="_blank" rel="noopener">DDR5 clocked unbuffered dual inline memory module (CUDIMM and CQDIMM) common standard, JESD323B</a><span class="st st-standard">Standard</span></li>
+<li id="src-9"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jesd324" target="_blank" rel="noopener">DDR5 clocked small outline dual inline memory module (CSODIMM) common standard, JESD324B</a><span class="st st-standard">Standard</span></li>
+<li id="src-10"><b>Kingston Technology</b>: <a href="https://www.kingston.com/en/blog/system-builder/understanding-memory-modules-cudimm-csodimm-camm2-mrdimm-video" target="_blank" rel="noopener">Understanding a new generation of DDR5 memory modules: CUDIMM, CSODIMM, CAMM2 and MRDIMM</a><span class="st st-official">Official</span></li>
+<li id="src-11"><b>Corsair</b>: <a href="https://www.corsair.com/us/en/explorer/diy-builder/memory/what-is-cas-latency-ddr5-latencies-explained/" target="_blank" rel="noopener">What is CAS latency? DDR5 latencies explained</a><span class="st st-official">Official</span></li>
+<li id="src-12"><b>Intel</b>: <a href="https://www.intel.com/content/www/us/en/gaming/extreme-memory-profile-xmp.html" target="_blank" rel="noopener">Intel Extreme Memory Profile unlocks gaming performance</a><span class="st st-official">Official</span></li>
+<li id="src-13"><b>AMD</b>: <a href="https://www.amd.com/en/products/processors/technologies/expo.html" target="_blank" rel="noopener">Get in the game faster with AMD EXPO</a><span class="st st-official">Official</span></li>
+<li id="src-14"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jesd400-5d01" target="_blank" rel="noopener">DDR5 serial presence detect (SPD) contents, JESD400-5D.01</a><span class="st st-standard">Standard</span></li>
+<li id="src-15"><b>JEDEC</b>: <a href="https://www.jedec.org/standards-documents/docs/jesd300-5" target="_blank" rel="noopener">SPD5 hub and serial presence detect device standard, JESD300-5B.01</a><span class="st st-standard">Standard</span></li>
+<li id="src-16"><b>JEDEC</b>: <a href="https://www.jedec.org/news/pressreleases/jedec-announces-publication-spd5118-hub-and-serial-presence-detect-device-and" target="_blank" rel="noopener">JEDEC announces publication of the SPD5118 hub and serial presence detect device and the DDR5 SPD contents specifications</a><span class="st st-standard">Standard</span></li>
+</ol>
+</section>
+</div>
+<div class="art-sidebar">
+<div class="sidebar-card"><h3>On this page</h3><div class="pg-toc"><a href="#generations">1. Generations and standards</a><a href="#formfactors">2. Form factors: DIMM, SO-DIMM and beyond</a><a href="#timing">3. Speed, timing and latency</a><a href="#profiles">4. XMP and EXPO: overclocking profiles</a><a href="#channels">5. Channels, ranks and population</a><a href="#ecc">6. ECC and server memory</a><a href="#density">7. Density, organization and physical layout</a><a href="#spd">8. SPD: what a module reports about itself</a><a href="#sources">9. Sources</a></div></div>
+<div class="sidebar-card"><h3>Memory</h3><a href="/hardware/memory/" class="sidebar-link">All memory guides</a><a href="/hardware/memory/compare/" class="sidebar-link">Compare the brands</a><a href="/hardware/memory/buying-memory-in-india/" class="sidebar-link">Buying memory in India: what the brands actually promise you</a><a href="/hardware/memory/memory-price-surge-2026/" class="sidebar-link">The 2026 memory price surge, in the makers&#x27; own numbers</a><a href="/hardware/memory/memory-warranty-compared/" class="sidebar-link">What a memory &quot;lifetime warranty&quot; actually promises</a><a href="/hardware/memory/whose-dies-are-inside/" class="sidebar-link">Whose DRAM chips are actually inside your memory stick</a><a href="/hardware/memory/xmp-expo-explained/" class="sidebar-link">XMP, EXPO and why your memory runs slower than the box says</a></div>
+</div>
+</div>
+</div>
+
+<div class="ask-ai" id="ask-ai"><h2>Ask an AI about this page</h2><p>Opens your assistant with this page as the source, and a question rather than a summary. It will ask what you are building before it answers.</p><div class="ask-row"><a class="ask-btn" href="https://chatgpt.com/?q=I%27m%20reading%20%22Memory%20Glossary%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fglossary%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">ChatGPT</a><a class="ask-btn" href="https://claude.ai/new?q=I%27m%20reading%20%22Memory%20Glossary%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fglossary%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Claude</a><a class="ask-btn" href="https://gemini.google.com/app?q=I%27m%20reading%20%22Memory%20Glossary%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fglossary%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Gemini</a><a class="ask-btn" href="https://www.perplexity.ai/search?q=I%27m%20reading%20%22Memory%20Glossary%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fglossary%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Perplexity</a><a class="ask-btn" href="https://grok.com/?q=I%27m%20reading%20%22Memory%20Glossary%22%20at%20https%3A%2F%2Fwww.clarigital.com%2Fhardware%2Fmemory%2Fglossary%2F.%20Help%20me%20apply%20it%20to%20my%20situation%20%E2%80%94%20ask%20me%20what%20I%27m%20building%20first." target="_blank" rel="noopener">Grok</a></div><p class="ask-note">Nothing is sent from here. The link carries only this page&rsquo;s title and address.</p></div><footer class="site-footer">
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <div class="ft-brand-logo">
+          <div class="logo-mark" style="width:26px;height:26px;font-size:.68rem">CL</div>
+          <span style="font-size:.88rem;font-weight:700"><span class="logo-clar">Clar</span><span style="color:var(--faint)">igital</span></span>
+        </div>
+        <p>AI Atlas &amp; Digital Marketing Codex. Official sources only. Free forever.</p>
+        <p style="margin-top:8px;font-size:.72rem;color:var(--faint)">&#169; 2026 Clarigital</p>
+      </div>
+      <div class="ft-col"><div class="ft-h">AI Atlas</div><ul>
+        <li><a href="/ai-atlas/">Hub</a></li>
+        <li><a href="/ai-atlas/start-here/">What is AI?</a></li>
+        <li><a href="/ai-atlas/history/">AI History</a></li>
+        <li><a href="/ai-atlas/prompt-library/">Prompt Library</a></li>
+        <li><a href="/ai-atlas/which-ai/">Which AI?</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">AI Tools</div><ul>
+        <li><a href="/ai-atlas/tools/chatgpt/">ChatGPT</a></li>
+        <li><a href="/ai-atlas/tools/claude/">Claude</a></li>
+        <li><a href="/ai-atlas/tools/gemini/">Gemini</a></li>
+        <li><a href="/ai-atlas/tools/copilot/">Copilot</a></li>
+        <li><a href="/ai-atlas/tools/perplexity/">Perplexity</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-h">Clarigital</div><ul>
+        <li><a href="/codex/">The Codex</a></li>
+        <li><a href="/sources/">Sources</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy-policy/">Privacy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>Clarigital.com</span>
+      <span>Official sources only &#183; No ads &#183; Free forever</span>
+    </div>
+  </div>
+</footer>
+<script src="/theme-search.js" defer></script>
+<script>
+(function(){
+  var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+  function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  if(ham)ham.addEventListener('click',open);
+  if(close)close.addEventListener('click',shut);
+  if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
+</body>
+</html>
