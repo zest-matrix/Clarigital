@@ -341,5 +341,14 @@ function showLane(l){document.querySelectorAll('.lane-section').forEach(s=>s.cla
 function copyPrompt(btn){var t=btn.previousElementSibling.textContent;navigator.clipboard.writeText(t).then(function(){var o=btn.textContent;btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent=o;btn.classList.remove('copied');},2000);});}
 document.addEventListener('DOMContentLoaded',function(){var f=document.querySelector('.lane-tab');if(f)f.click();});
 </script>
+<script>
+(function(){var ham=document.getElementById('navHam'),drawer=document.getElementById('navDrawer'),close=document.getElementById('navClose');
+function open(){drawer.classList.add('open');ham.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+function shut(){drawer.classList.remove('open');ham.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+if(ham&&drawer)ham.addEventListener('click',open);
+if(close&&drawer)close.addEventListener('click',shut);
+if(drawer)drawer.addEventListener('click',function(e){if(e.target===drawer)shut();});
+})();
+</script>
 </body>
 </html>
