@@ -15,18 +15,19 @@
 <meta name="description" content="How to use GA4's cohort analysis and funnel analysis to understand user retention, conversion drop-off, and the paths users take through the site.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.clarigital.com/codex/analytics-cro/cohort-funnel-analysis/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cohort & Funnel Analysis: Understanding User Journeys in GA4","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-06","articleSection":"Analytics & CRO","wordCount":"5,000"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Cohort & Funnel Analysis: Understanding User Journeys in GA4","author":{"@type":"Organization","name":"Digital Codex"},"datePublished":"2026-04-06","articleSection":"Analytics & CRO","wordCount":"1700"}</script>
 <style>
-/*phone-fit-v9*/
+/*phone-fit-v10*/
 .pf-scroll{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch}
 pre{max-width:100%;overflow-x:auto}main,article{min-width:0}
 @media(max-width:760px){main,article,aside,section,.ft-body,.ft-rail,.guide-main,.guide-content,.content,.layout>*,[class*="-layout"]>*,[class*="-grid"]>*,[class*="grid"]>*{min-width:0}[style*="grid-template-columns"]>*,[style*="display:grid"]>*,.path-step>*{min-width:0}.prompt-text{overflow-wrap:anywhere}[style*="repeat(3,1fr)"],[style*="repeat(4,1fr)"],[style*="repeat(3, 1fr)"],[style*="repeat(4, 1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}pre{max-width:100%;overflow-x:auto}:not(pre)>code{white-space:pre-wrap;overflow-wrap:anywhere}p,li,td,dd,p a,li a,td a{overflow-wrap:anywhere}img,video,iframe{max-width:100%;height:auto}.table-wrap{max-width:100%}}
 @media(max-width:760px){.site-nav .nav-in:not(:has(.nav-ham)){height:auto;flex-wrap:wrap;row-gap:4px;padding-top:10px;padding-bottom:6px}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links{display:flex!important;flex-wrap:nowrap;overflow-x:auto;width:100%;margin-left:0;scrollbar-width:none;-webkit-overflow-scrolling:touch}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links::-webkit-scrollbar{display:none}.site-nav .nav-in:not(:has(.nav-ham)) .nav-links a{flex-shrink:0}}
 @media(max-width:480px){.site-nav .nav-cta{display:none!important}.nav-search{min-width:0}.nav-ham{flex-shrink:0}}
 .nav-drawer{overflow:hidden}
+.nav-links>li{flex-shrink:0}.nav-links>li>a{white-space:nowrap;padding-left:6px;padding-right:6px}.site-nav .nav-links:has(>li){min-width:0;flex-wrap:wrap;row-gap:2px}.site-nav .nav-in:has(.nav-links>li){height:auto;min-height:60px;gap:14px}
 @media(max-width:480px){.cta-in>*,.cta-inner>*{min-width:0;max-width:100%;flex-shrink:1}.cta-btns .btn,.cta-actions .btn{white-space:normal;max-width:100%}[style*="display:flex"]:has(>a[style*="white-space:nowrap"][style*="flex-shrink:0"]){flex-wrap:wrap;row-gap:6px}a[style*="white-space:nowrap"][style*="flex-shrink:0"]{max-width:100%;white-space:normal!important}}
 @media(max-width:400px){.topbar{padding:8px 12px!important;height:auto!important;flex-wrap:wrap;row-gap:4px}.topbar .t-right{flex-wrap:wrap;row-gap:2px;gap:10px}.topbar .t-note,.topbar .t-pill{display:none!important}.course-grid,.hub-grid,.co-grid,.tr-cols{grid-template-columns:minmax(0,1fr)!important}.site-nav .nav-in>div[style*="flex-shrink:0"]:has(.btn){display:none!important}}
-/*phone-fit-v9-end*/
+/*phone-fit-v10-end*/
 .ask-top{display:inline-block;margin:2px 0 16px;font-size:.78rem;color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--border2);padding-bottom:1px}
 .ask-top:hover{color:var(--indigo);border-bottom-color:var(--indigo)}
 
@@ -239,7 +240,7 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
   <h1>Cohort &#38; Funnel Analysis &#183; User Journeys in GA4</h1>
   <p class="hero-lead">Two of the most valuable analytical capabilities in GA4 are cohort analysis and funnel analysis — yet both are consistently underutilised by teams who primarily use the standard reports. Cohort analysis answers a fundamental question about business health: are the users we acquire continuing to return and engage over time? Funnel analysis answers the conversion question: at what specific step are users dropping off on the path from arrival to conversion? Together, they reveal the full picture of user behaviour — not just what happened in aggregate, but when users fall away and where the conversion barriers are. This guide covers how to build, interpret, and act on both types of analysis in GA4.</p><a class="ask-top" href="#ask-ai">Stuck at any point? Ask an AI about this page &rarr;</a>
   <div class="art-meta">
-    <span class="meta-tag mt-seo">Analytics &amp; CRO</span><span class="meta-tag mt-gray">5,000 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
+    <span class="meta-tag mt-seo">Analytics &amp; CRO</span><span class="meta-tag mt-gray">1,700 words</span><span class="meta-tag mt-gray">Updated Apr 2026</span>
     <button class="share-btn" id="shareBtn">Share</button>
   </div>
 </div></section>
@@ -374,7 +375,7 @@ aside{position:sticky;top:calc(60px + 44px + 16px)}
   <h3 class="rg-head">Related Guides</h3>
   <div class="rg-grid"><a href="/codex/seo/fundamentals/core-web-vitals/" class="related-card"><span class="rc-tag">SEO</span><span class="rc-title">Core Web Vitals</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/saas-metrics-kpis/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">SaaS Metrics & KPIs</span><span class="rc-arr">&#8594;</span></a><a href="/codex/business-strategy/marketing-funnel-frameworks/" class="related-card"><span class="rc-tag">Business Strategy</span><span class="rc-title">Marketing Funnel Frameworks</span><span class="rc-arr">&#8594;</span></a></div>
 </div>
-<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 5,000 &nbsp;&#183;&nbsp; <strong>Session:</strong> 12 of 16</p></div>
+<div class="art-footer"><p><strong>Published:</strong> 6 April 2026 &nbsp;&#183;&nbsp; <strong>Words:</strong> 1,700 &nbsp;&#183;&nbsp; <strong>Session:</strong> 12 of 16</p></div>
 </div></article>
 <aside>
   <div class="sb-box"><div class="sb-head">On This Page</div><div class="sb-body" id="toc"><a href="#why-cohort-funnel" class="sb-link on">Why These Analyses</a><a href="#cohort-basics" class="sb-link">Cohort Basics</a><a href="#building-cohorts" class="sb-link">Building Cohorts</a><a href="#interpreting-cohorts" class="sb-link">Interpreting Cohorts</a><a href="#funnel-basics" class="sb-link">Funnel Basics</a><a href="#building-funnels" class="sb-link">Building Funnels</a><a href="#interpreting-funnels" class="sb-link">Interpreting Drop-off</a><a href="#funnel-segments" class="sb-link">Funnel Segments</a><a href="#path-analysis" class="sb-link">Path Analysis</a><a href="#acting-on-data" class="sb-link">Acting on Findings</a><a href="#sources" class="sb-link">Sources</a></div></div>
