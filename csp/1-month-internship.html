@@ -94,8 +94,8 @@ a{text-decoration:none;color:inherit}
 <meta name="twitter:title" content="CSP Registration">
 <meta name="twitter:description" content="Apply for the Clarigital 1-month digital marketing internship. Practical SEO, paid ads and analytics experience on live projects. Free to join.">
 <meta name="twitter:image" content="https://www.clarigital.com/og-image.png">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CSP Registration", "description": "Apply for the Clarigital 1-month digital marketing internship. Practical SEO, paid ads and analytics experience on live projects. Free to join.", "url": "https://www.clarigital.com/wsp/1-month-internship", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "Wsp", "item": "https://www.clarigital.com/wsp/"}, {"@type": "ListItem", "position": 3, "name": "CSP Registration", "item": "https://www.clarigital.com/wsp/1-month-internship/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CSP Registration", "description": "Apply for the Clarigital 1-month digital marketing internship. Practical SEO, paid ads and analytics experience on live projects. Free to join.", "url": "https://www.clarigital.com/csp/1-month-internship", "publisher": {"@type": "Organization", "name": "Clarigital", "url": "https://www.clarigital.com"}, "author": {"@type": "Organization", "name": "Clarigital"}, "dateModified": "2026-05-22"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.clarigital.com/"}, {"@type": "ListItem", "position": 2, "name": "CSP", "item": "https://www.clarigital.com/csp/"}, {"@type": "ListItem", "position": 3, "name": "CSP Registration", "item": "https://www.clarigital.com/csp/1-month-internship/"}]}</script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -166,18 +166,18 @@ a{text-decoration:none;color:inherit}
       <div class="field full"><label>Referral ID <span style="font-weight:400;text-transform:none;letter-spacing:0">(optional — if someone referred you)</span></label><input type="text" id="ref-id" placeholder="e.g. CSP-2026-1234"></div>
     </div>
     <div class="checks">
-      <div class="check-item"><input type="checkbox" id="c1"><label for="c1">I give permission for Clarigital to communicate with me via email and WhatsApp regarding the CSP program and my progress.</label></div>
+      <div class="check-item"><input type="checkbox" id="c1"><label for="c1">I give permission for Clarigital to communicate with me via email and WhatsApp regarding the CSP program and my progress. See our <a href="/privacy-policy/" target="_blank" rel="noopener">privacy policy</a>.</label></div>
       <div class="check-item"><input type="checkbox" id="c2"><label for="c2">I understand this is an unpaid internship. There are no fees and no payments. I participate voluntarily.</label></div>
       <div class="check-item"><input type="checkbox" id="c3"><label for="c3">I confirm I will submit each day's task on the assigned weekday. I understand late submissions may not count.</label></div>
     </div>
-    <button class="btn-submit" id="reg-btn" onclick="submitReg()">Register &amp; Get My CSP ID →</button>
+    <button class="btn-submit" id="reg-btn" data-s222="1" onclick="submitReg()">Register &amp; Get My CSP ID →</button>
   </div>
 
   <div class="success-card" id="success">
     <div style="font-size:2.5rem;margin-bottom:8px">🎉</div>
     <h2>You're registered!</h2>
     <p>Your unique 1MI ID is:</p>
-    <div class="csp-id" id="csp-id-display">1MI-2026-XXXX</div>
+    <div class="csp-id" id="csp-id-display">1MI-2026-7K3QF9</div>
     <p><strong>Save this ID.</strong> You'll need it to submit tasks and refer friends.</p>
     <p style="margin-top:12px">Read both orientation pages this weekend, then your Day 1 task opens on Monday.</p>
     <div class="success-next">
@@ -198,7 +198,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function generate1MIId() {
   const year = new Date().getFullYear();
-  const num = String(Math.floor(1000 + Math.random() * 9000));
+  const A='23456789ABCDEFGHJKMNPQRSTUVWXYZ'; const b=new Uint8Array(6); crypto.getRandomValues(b);
+  let num=''; for (const x of b) num += A[x % A.length];
   return `1MI-${year}-${num}`;
 }
 
@@ -233,7 +234,8 @@ async function submitReg() {
   btn.disabled = true;
   btn.textContent = 'Registering...';
 
-  const cspId = generate1MIId();
+  let cspId = null; try { cspId = localStorage.getItem('csp_pending_id'); } catch(e) {}
+  if (!cspId || cspId.indexOf('1MI-') !== 0) { cspId = generate1MIId(); try { localStorage.setItem('csp_pending_id', cspId); } catch(e) {} }
   const now = new Date();
 
   const payload = {
@@ -259,13 +261,25 @@ async function submitReg() {
     submitted_at_utc: now.toISOString()
   };
 
+  let ok = false;
   try {
-    await fetch(WEBHOOK_URL, {
+    const r = await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(payload)
     });
+    ok = r.ok;
   } catch(e) { console.log('Webhook error', e); }
+  if (!ok) {
+    btn.disabled = false; btn.textContent = 'Try again →';
+    let box = document.getElementById('regErr');
+    if (!box) { box = document.createElement('div'); box.id = 'regErr'; box.setAttribute('role', 'alert');
+      box.style.cssText = 'margin-top:12px;padding:12px 14px;border-radius:10px;background:#fff4e5;border:1px solid #f5c27a;color:#7a4b00;font-size:14px;line-height:1.5';
+      btn.parentNode.insertBefore(box, btn.nextSibling); }
+    box.innerHTML = '<strong>Your registration did not go through.</strong> Please check your internet connection and press Try again. If it keeps failing, email <a href="mailto:hello@clarigital.com">hello@clarigital.com</a> with your name and programme.';
+    return;
+  }
+  try { localStorage.setItem('csp_student_id', cspId); localStorage.removeItem('csp_pending_id'); } catch(e) {}
 
   sessionStorage.setItem('csp_id', cspId);
   sessionStorage.setItem('csp_name', fname);

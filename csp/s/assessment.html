@@ -134,7 +134,7 @@ a{text-decoration:none;color:inherit}
   <div class="id-gate" id="idGate">
     <h2>Enter your CSP ID to begin</h2>
     <p>This assessment is only for students who have completed all 14 days of the CSP program.</p>
-    <input type="text" class="id-input" id="cspIdInput" placeholder="CSP-2026-XXXX">
+    <input type="text" class="id-input" id="cspIdInput" placeholder="CSP-2026-7K3QF9">
     <br>
     <button class="btn-unlock" onclick="unlockAssessment()">Begin Assessment →</button>
   </div>
@@ -209,7 +209,7 @@ a{text-decoration:none;color:inherit}
     <div style="font-size:2.5rem;margin-bottom:8px" id="resultEmoji">🏅</div>
     <div class="result-score" id="resultScore">0/20</div>
     <div class="result-label" id="resultLabel">Assessment Passed</div>
-    <div class="result-id" id="resultId">CSP-2026-XXXX</div>
+    <div class="result-id" id="resultId">CSP-2026-7K3QF9</div>
     <p style="font-size:.88rem;color:var(--ink3);margin-top:12px;line-height:1.7" id="resultMsg">Your score and pass status have been recorded.</p>
   </div>
 </div>
@@ -225,7 +225,7 @@ function istStr(){const n=new Date(),i=new Date(n.getTime()+5.5*3600000),p=x=>St
 
 function unlockAssessment(){
   const val = document.getElementById('cspIdInput').value.trim().toUpperCase();
-  if(!val.startsWith('CSP-')){alert('Please enter a valid CSP ID (format: CSP-2026-XXXX)');return;}
+  if(!val.startsWith('CSP-')){alert('Please enter a valid CSP ID (format: CSP-2026-7K3QF9)');return;}
   cspId = val;
   document.getElementById('idGate').style.display = 'none';
   document.getElementById('timerBar').classList.add('on');
